@@ -510,15 +510,15 @@ X<~> X<negation, binary>
 
 =end original
 
-単項演算子の "~" はビットごとの否定を行ないます。
-つまり、1 の補数を返します。
-例えば、C<0666 & ~027> は 0640 です。
-(L<Integer Arithmetic> と L<Bitwise String Operators> も参照して下さい。)
-結果の幅はプラットホーム依存であることに注意してください。
-~0 は 32-bit プラットホームでは 32 ビット幅ですが、
-64-bit プラットホームでは 64 ビット幅ですので、
-特定のビット幅を仮定する場合は、
-余分なビットをマスクするために & 演算子を使うことを忘れないでください。
+단항연산자의 "~"는 비트단위의 부정을 수행합니다. 즉, 1의 보수를 반환합니다.
+예를들면, C<0666 & ~027> 는 0640 입니다.
+(L<Integer Arithmetic> 과 L<Bitwise String Operators> 를 참조해주세요)
+결과의 너비은 플랫폼에 의존하고 있으니 주의해주세요.
+~0 는 32-bit 플랫폼에서 32비트의 너비이지만,
+64-bit 플랫폼에서는 64비트의 너비이니
+특정의 비트 너비를 가정하는 경우는, 남은 비트를 마스크하기위해 & 연산자를
+사용하는 것을 잊지 않도록 주의 하세요.
+
 X<~> X<negation, binary>
 
 =begin original
@@ -531,10 +531,10 @@ X<+>
 
 =end original
 
-単項演算子の "+" は、たとえ文字列に対して用いられた場合にも、何もしません。
-関数名に続けて括弧付きの式を書く場合に、関数の引数リストと
-解釈されないようにするために用いることができます。
-(下記 L<Terms and List Operators (Leftward)> の例を参照してください。)
+단항연산자인 "+"는 예를 들어 문자열에 대해 사용할 경우에는 아무것도 하지 않습니다.
+함수 이름에 이어 괄호가 붙은 식을 쓰는 경우에는, 함수의 인수리스트로 
+해석되지 않기 위해서 사용할 수 있습니다.
+(아래에 쓴 L<Terms and List Operators (Leftward)> 의 예를 참조해주세요)
 X<+>
 
 =begin original
@@ -547,10 +547,10 @@ X<\> X<reference> X<backslash>
 
 =end original
 
-単項演算子の "\" はその後に続くものへのリファレンスを生成します。
-L<perlreftut> と L<perlref> を参照してください。
-この用法も文字列中のバックスラッシュも、後に続くものが展開されるのを
-防ぐことになりますが、動作を混同しないでください。
+단항연산자인 "\" 는 뒤에 붙은 것에 대한 리퍼런스를 생성합니다.
+L<perlreftut> 과 L<perlref> 를 참조해주세요.
+이 사용법도 문자열 안에 백슬래쉬도 뒤에 오는 것 전개되는 것을 
+막는 것이 가능하지만 동작을 혼동하지 말아주세요.
 X<\> X<reference> X<backslash>
 
 =head2 Binding Operators
@@ -572,15 +572,15 @@ L<perlretut> for examples using these operators.
 
 =end original
 
-二項演算子の "=~" は、スカラ式をパターンマッチに拘束します。
-デフォルトで $_ の文字列を検索したり、変更したりする演算があります。
-この演算子は、そのような演算を他の文字列に対して行なわせるようにするものです。
-右引数は、検索パターン、置換、文字変換のいずれかです。
-左引数は、デフォルトの $_ の代わりに検索、置換、文字変換の対象となるものです。
-スカラコンテキストで使うと、返り値は一般的に演算の結果が成功したか否かです。
-リストコンテキストでの振る舞いは演算子に依存します。
-詳しくは L</"Regexp Quote-Like Operators"> を、これらの演算子を使った
-例については L<perlretut> を参照して下さい。
+이항연산자인 "=~" 는, 스칼라식을 패턴매치로 묶습니다.
+기본적으로 $_ 의 문자열을 검색하거나 변경하거나 하는 연산이 있습니다.
+이 연산자는 그같은 연산을 다른 문자열에 대해 수행시키는 것입니다.
+오른쪽 인수는 검색 패턴, 치환, 문자변환 중 어느 것입니다.
+왼쪽 인수는 기본적인 $_ 대신에 검색, 치환, 문자변환의 대상이 됩니다.
+스칼라콘텍스트에서 사용하면 반환값은 일반적으로 연산의 결과가 성공했는가 실패했는 가 입니다.
+리스트콘텍스트에서의 행동은 연산자에 의존합니다.
+자세한 내용은 L</"Regexp Quote-Like Operators"> 를, 
+이 연산자들을 사용한 예제에 대해서는 L<perlretut> 를 참조하세요。
 
 =begin original
 
@@ -590,10 +590,10 @@ time. Note that this means that its contents will be interpolated twice, so
 
 =end original
 
-右引数が検索パターン、置換、文字変換ではなく、式であれば、
-それは実行時に決まる検索パターンと解釈されます。
-これは、内容が 2 回展開されることを意味することに注意してください;
-つまり:
+오른쪽인수가 검색 패턴, 치환, 문자변환이 아닌 식이라면 
+그것은 실행할 때에 결정되는 검색패턴으로 해석됩니다.
+이것은 내용이 2번 전개되는 것을 의미하는 것임으로 주의해주세
+즉:
 
   '\\' =~ q'\\';
 
@@ -604,8 +604,8 @@ pattern C<\>, which it will consider a syntax error.
 
 =end original
 
-は正しくありません; 正規表現エンジンは最終的にパターン C<\> を
-コンパイルしようとして、これは文法エラーと考えるからです。
+은 바르지 않습니다. 정규표현엔진은 최종적으로 패턴 C<\>를
+컴파일하려고해서, 이것은 문법에러로 생각하기 때문입니다.
 
 =begin original
 
@@ -614,8 +614,7 @@ the logical sense.
 
 =end original
 
-二項演算子の "!~" は、返される値が論理否定されることを除いて
-"=~" と同じです。
+이항연산자인 "!~"는 반환값이 논리부정되는 것을 제외하고는 "=~"와 같습니다.
 
 =head2 Multiplicative Operators
 X<operator, multiplicative>
@@ -629,6 +628,7 @@ X<*>
 
 =end original
 
+이항연산자인 "*" 는 2개의 숫자값의 곱을 반환합니다.
 二項演算子の "*" は 2 つの数値の積を返します。
 X<*>
 
@@ -639,7 +639,8 @@ X</> X<slash>
 
 =end original
 
-二項演算子の "/" は 2 つの数値の商を返します。
+이항연산자인 "/" 는 2개의 숫자값의 나눈 값을 반환합니다.
+
 X</> X<slash>
 
 =begin original
@@ -668,12 +669,12 @@ X<%> X<remainder> X<modulus> X<mod>
 
 =end original
 
-二項演算子の "%" は 2 つの数値の剰余を返します。
-C<$a> と C<$b> の二つの整数の被演算子を取ります。
-C<$b> が正の場合、C<$a % $b> は、C<$a> から C<$a> を超えない
-最大の C<$b> の倍数を引いた値です。
-C<$b> が負の場合、C<$a % $b> は、C<$a> から C<$a> を下回らない
-最小の C<$b> の倍数を引いた値です。(従って結果はゼロ以下になります。)
+이항연산자인 "%" 는 2개의 숫자값의 나머지를 반환합니다.
+C<$a> 와 C<$b> 의 2개의 정수의 피연산자를 취합니다.
+C<$b> 가 높은 경우 C<$a % $b> 는 C<$a> 에서 C<$a> 를 넘지않는
+최대의 C<$b> 의 배수를 끌어온 값(?)입니다. 
+C<$b> 가 낮은 경우 C<$a % $b> 는 C<$a> 에서 C<$a> 보다 낮지 않은 
+최소의 C<$b> 배수를 끌어온 값입니다.(따라서 결과는 0 이하)
 If the operands
 C<$a> and C<$b> are floating point values and the absolute value of
 C<$b> (that is C<abs($b)>) is less than C<(UV_MAX + 1)>, only
@@ -685,10 +686,10 @@ C<$r> in the equation C<($r = $a - $i*$b)> where C<$i> is a certain
 integer that makes C<$r> should have the same sign as the right operand
 C<$b> (B<not> as the left operand C<$a> like C function C<fmod()>)
 and the absolute value less than that of C<$b>.
-C<use integer> がスコープ内にある場合、
-"%" は C コンパイラで実装された剰余演算子を使います。
-この演算子は被演算子が負の場合の挙動が不確実ですが、
-より高速です。
+
+C<use integer> 가 스코프 안에 있는 경우,
+"%" 는 C 컴파일러로 구축된 나머지연산자를 사용합니다. 
+이 연산자는 피연산자가 낮은 경우의 움직임이 불확실하지만 보다 빠르게 실행됩니다.
 X<%> X<remainder> X<modulus> X<mod>
 (TBT)
 
@@ -705,14 +706,15 @@ X<x>
 
 =end original
 
-二項演算子の "x" は繰り返し演算子です。
-スカラコンテキストまたは左辺値が括弧で括られていない場合は、
-左被演算子を右被演算子に示す数だけ繰り返したもので構成される
-文字列を返します。
-リストコンテキストでは、左被演算子が括弧で括られているか、C<qw/STRING> の
-形のリストの場合、リストを繰り返します。
-右オペランドが 0 か負数の場合、コンテキストによって、空文字列か空リストを
-返します。
+이항연산자인 "x" 는 반복반환연산자입니다.
+스칼라 컨텍스트 혹은 왼쪽의 값이 괄호로 감싸진 경우에는
+왼쪽 피연산자를 오른쪽 피연산자에 표시 횟수만 반복해 얻은 값으로 구성된
+문자열을 리턴합니다.
+리스트 컨텐스트에서는 왼쪽 피연산자가 괄호 감싸진 경우 혹은 , 　C<qw/STRING>의
+형태의 리스트의 경우 리스트를 반복한 값이 반환됩니다.
+오른쪽 피연산자가 0 혹은 낮은 값일 경우, 콘텍스트에 의해 빈 문자열 혹은 
+빈 리스트를 반환합니다.
+
 X<x>
 
     print '-' x 80;		# print row of dashes
@@ -726,7 +728,7 @@ X<x>
 =head2 Additive Operators
 X<operator, additive>
 
-(加法演算子)
+(덧셈연산자)
 
 =begin original
 
@@ -735,7 +737,7 @@ X<+>
 
 =end original
 
-二項演算子の "+" は 2 つの数値の和を返します。
+이항연산자의 "+" 는 두 숫자값의 합을 반환합니다.
 X<+>
 
 =begin original
@@ -745,7 +747,7 @@ X<->
 
 =end original
 
-二項演算子の "-" は 2 つの数値の差を返します。
+이항연산자의 "-"는 두 숫자값의 뺀 값을 반환합니다.
 X<->
 
 =begin original
@@ -756,7 +758,7 @@ X<cat> X<concat> X<concatenate> X<.>
 
 =end original
 
-二項演算子の "." は 2 つの文字列を連結します。
+이항연산자인 "." 는 두 문자열을 연결합니다.
 X<string, concatenation> X<concatenation>
 X<cat> X<concat> X<concatenate> X<.>
 
@@ -765,7 +767,7 @@ X<shift operator> X<operator, shift> X<<< << >>>
 X<<< >> >>> X<right shift> X<left shift> X<bitwise shift>
 X<shl> X<shr> X<shift, right> X<shift, left>
 
-(シフト演算子)
+(시프트 연산자)
 
 =begin original
 
@@ -775,9 +777,9 @@ integers.  (See also L<Integer Arithmetic>.)
 
 =end original
 
-二項演算子の "<<" は左引数の値を、右引数で示すビット数だけ、
-左にシフトした値を返します。
-引数は整数でなければなりません。
+이항연산자인 "<<" 는 왼쪽 인수의 값을 오른쪽 인수가 나타내는 비트의 수만큼
+왼쪽으로 시프트한 값을 반환합니다.
+인수는 정수가 아니면 안됩니다.
 (L<Integer Arithmetic> も参照して下さい。)
 
 =begin original
