@@ -208,13 +208,12 @@ Be careful with parentheses:
 
 =end original
 
-では、sort の右のコンマは sort よりも前に評価されます (右側から
-見ると sort の優先順位が低い) が、左側のコンマは sort のあとに
-評価されます (左側から見ると sort の方が優先順位が高く
-なっている)。
-言い方を変えると、リスト演算子は自分の後にある引数をすべて使って処理を行ない、
-その結果を自分の前の式に対する「項」であるかのように見せるということです。
-ただし、括弧には気を付けないといけません:
+위와 같은 경우 sort 의 오른쪽 콤마는 sort보다도 앞에서 평가되지만
+(오른쪽에서 보면 soft의 우선순위기 낮음), 왼쪽의 콤마는 sort의 뒤에
+평가됩니다(왼쪽에서 보면 sort 쪽이 우선순위가 높아짐)
+바꿔 말하면, 리스트연산자는 자신의 뒤에 오는 인수를 모두 사용해 처리를 하지않고,
+그 결과를 자신의 앞의 식에 대한 "항"인것 처럼 보이게 하는 것입니다.
+물론, 괄호에는 주의해 주세요.
 
 =begin original
 
@@ -224,9 +223,9 @@ Be careful with parentheses:
 
 =end original
 
-    # 以下は print を行なう前に exit を評価します:
-    print($foo, exit);  # 明らかにやりたいことではないでしょう。
-    print $foo, exit;   # これでもない。
+    # 다음은 print 를 실행하기 전에 exit 를 평가합니다.
+    print($foo, exit);  # 이런 짓은 하고 싶지 않겠죠?
+    print $foo, exit;   # 이것도 아니겠고
 
 =begin original
 
@@ -237,10 +236,10 @@ Be careful with parentheses:
 
 =end original
 
-    # 以下は exit を評価する前に print を行ないます:
-    (print $foo), exit; # これがしたかった。
-    print($foo), exit;  # これでもいい。
-    print ($foo), exit; # これも OK。
+    # 다음은 exit 를 평가하기 전에 print를 실행합니다.
+    (print $foo), exit; # 이런 것을 하려고 하셨죠?
+    print($foo), exit;  # 아님 이거?。
+    print ($foo), exit; # 이것도 OK。
 
 =begin original
 
@@ -248,7 +247,7 @@ Also note that
 
 =end original
 
-また、
+또한,
 
     print ($foo & 255) + 1, "\n";
 
@@ -261,11 +260,11 @@ of C<print> (usually 1).  The result is something like this:
 
 =end original
 
-の動作を一目見ただけで判断するのは、難しいでしょう。
-かっこは C<print> のために評価される引数リストを囲っています
-(C<$foo & 255> の結果が表示されます)。
-それから C<print> の返り値 (通常は 1) に 1 が加えられます。
-結果は以下のようになります:
+의 동작을 한 번 보는 것만으로 판단하는 것은 어렵겠죠?
+괄호는 C<print> 를 위해 평가되는 인수리스트를 감싸고 있습니다.
+(C<$foo & 255> 라는 결과가 표시됩니다)。
+그리고 C<print> 의 리턴값(보통은 1)에 1이 더해집니다. 
+결과는 아래와 같습니다.
 
     1 + 1, "\n";    # Obviously not what you meant.
 
@@ -275,7 +274,7 @@ To do what you meant properly, you must write:
 
 =end original
 
-意味したいことを適切に行うには、以下のように書く必要があります:
+자신의 원했던 것을 적절히 실행하기 위해서는 아래와 같이써야됩니다.
 
     print(($foo & 255) + 1, "\n");
 
@@ -285,7 +284,7 @@ See L<Named Unary Operators> for more discussion of this.
 
 =end original
 
-詳しくは、L<Named Unary Operators> を参照してください。
+자세한 내용은 L<Named Unary Operators> 을 참조해주세요.
 
 =begin original
 
@@ -295,9 +294,8 @@ constructors C<[]> and C<{}>.
 
 =end original
 
-この他に「項」として解析されるものには、C<do {}> や C<eval {}> の
-構成、サブルーティンやメソッドの呼び出し、無名のコンストラクタ
-C<[]> と C<{}> があります。
+이 외에는 "항"으로 해석되는 것으로는 C<do {}>나 C<eval {}>의 구성
+서브루틴이나 메소드의 호출, 이름없는 콘스트럭트 C<[]>와 C<{}>가 있습니다.
 
 =begin original
 
@@ -306,8 +304,7 @@ as well as L</"I/O Operators">.
 
 =end original
 
-後の方のL<Quote and Quote-like Operators>や
-L<"/I/O Operators">も参照してください。
+뒤의 L<Quote and Quote-like Operators>와 L<"/I/O Operators">도 참조하세요.
 
 =head2 The Arrow Operator
 X<arrow> X<dereference> X<< -> >>
@@ -326,13 +323,11 @@ assignment.)  See L<perlreftut> and L<perlref>.
 
 =end original
 
-C や C++ と同じように "C<< -> >>" は中置の被参照演算子です。
-右側が C<[...]>, C<{...}>,
-C<(...)> のいずれかの形の添字であれば、左側は配列、ハッシュ、
-サブルーチンへのハードリファレンスかシンボリックリファレンス (あるいは
-技術的には、配列またはハードリファレンスが代入可能であれば
-ハードリファレンスを保持できる場所)
-でなければなりません。L<perlreftut> と L<perlref> を参照してください。
+C 와 C++ 과 마찬가지로, "C<< -> >>"는 가운데에 놓는 피참조 연산자입니다.
+오른쪽이 C<[...]>, C<{...}>, C<(...)> 중 어떤 형태의 첨자이면 좌측은 배열,
+해쉬, 서브루틴으로 하드 레퍼런스 아니면 심볼릭 레퍼런스 (혹은 기술적으로는 
+해열 혹은 하드 레퍼런스가 대입가능하면 하드 레퍼런스를 가지는 장소) 가 아니면 안되니다.
+L<perlreftut> 와 L<perlref> 를 참조하세요.
 
 =begin original
 
@@ -343,10 +338,9 @@ or a class name (that is, a package name).  See L<perlobj>.
 
 =end original
 
-そうでなければ、右側はメソッド名かサブルーチンのリファレンスを持った
-単純スカラ変数で、左側はオブジェクト (bless されたリファレンス) か
-クラス名でなければなりません。
-L<perlobj> を参照してください。
+그렇지 않으면, 오른쪽은 메소드이름과 서브루틴의 리퍼런스를 가진 단순 스칼라변수로
+왼쪽은 오브젝트 (bless 된 레퍼런스)  아니면 클래스 이름이 아니면 안됩니다.
+L<perlobj> 를 참조하세요.
 
 =head2 Auto-increment and Auto-decrement
 X<increment> X<auto-increment> X<++> X<decrement> X<auto-decrement> X<-->
@@ -362,10 +356,9 @@ value.
 
 =end original
 
-"++" と "--" は、C の場合と同じように動作します。
-つまり、変数の前に置かれれば、値を返す前に変数を 1 インクリメントまたは
-デクリメントし、後に置かれれば、値を返した後で変数を
-インクリメントまたはデクリメントします。
+"++" 과 "--" 는 C의 경우와 같은 방식으로 동작합니다.
+변수의 앞에 올때에는 값을 리턴하기 전에 변수를 1 증가 혹은 감소하고,
+뒤에 올때에는, 값을 리턴한 뒤에 변수를 증가 혹은 감소합니다.
 
     $i = 0;  $j = 0;
     print $i++;  # prints 0
@@ -381,12 +374,10 @@ Avoid statements like:
 
 =end original
 
-C と同様、Perl は B<いつ> 変数がインクリメントまたはデクリメントされるかは
-定義されません。
-値が返される前か後のどこかで行われる、ということだけがわかります。
-これは、同じ文である変数を 2 回修正すると、振る舞いが未定義になることを
-意味します。
-以下のような文は避けてください:
+C 와 마찬가지로, Perl은 B<언제> 변수가 증가 혹은 감소되는 것에 대해서는 정의할 수 없습니다.
+값이 리턴되기 전/후에 실행된다는 것 만 알 수 있습니다. 
+이것은 같은 같은 구문인 변수를 2번 수정하면, 실행 혹은 미정의 상태가 되는 것을 의미합니다.
+아래와 같은 것은 삼가해 주세요:
 
     $i = $i ++;
     print ++ $i + $i ++;
@@ -397,7 +388,7 @@ Perl will not guarantee what the result of the above statements is.
 
 =end original
 
-Perl は上記の文の結果について保障しません。
+Perl 은 위와 같은 구문의 결과를 보장하지 않습니다.
 
 =begin original
 
@@ -411,13 +402,13 @@ character within its range, with carry:
 
 =end original
 
-インクリメント演算子には、ちょっと風変わりな機能が組み込まれています。
-数値が入った変数や、数値の文脈で使われてきた変数を
-インクリメントする場合には、通常のインクリメントとして動作します。
-しかし、その変数が設定されてからずっと文字列の文脈で
-しか使われていなくて、空文字列でなく、 C</^[a-zA-Z]*[0-9]*\z/> にマッチする
-値を持っているときには、個々の文字の範囲を保ちながら桁あげを行なって、
-文字列としてインクリメントが行なわれます (マジカルインクリメントと呼ばれます):
+증가연산자에는 조금 분위기가 다른 기능이 포함되어 있습니다.
+숫자값이 들어간 변수나 숫자값의 문맥으로 사용된 변수를 증가시키는 경우에는
+보통 증가 라는 의미로 동작하게 됩니다. 
+그러나, 그 변수가 정의되고 계속 문자열의 문맥으로만 사용되지 않고
+공백도 아닌, C</^[a-zA-Z]*[0-9]*\z/> 에 매치되는 값을 가지고 있을 때는 
+각 문자의 범위를 보호하면서 글자수를 늘리고, 문자열로써의 증가를 수행합니다.
+(매지컬 증가라고 불립니다.)
 
     print ++($foo = '99');	# prints '100'
     print ++($foo = 'a0');	# prints 'a1'
