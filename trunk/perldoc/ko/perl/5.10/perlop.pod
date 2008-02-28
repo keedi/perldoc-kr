@@ -1,5 +1,5 @@
 
-=encoding euc-jp
+=encoding UTF-8
 
 =head1 NAME
 X<operator>
@@ -17,7 +17,7 @@ perlop - Perl의 연산자와 우선순위
 =head2 Operator Precedence and Associativity
 X<operator, precedence> X<precedence> X<associativity>
 
-(演算子の優先順位と結合性)
+(연산자의 우선순위와 결합성)
 
 =begin original
 
@@ -26,7 +26,7 @@ they do in mathematics.
 
 =end original
 
-Perl での演算子の優先順位と結合性は多かれ少なかれ数学のものと似ています。
+Perl 에서의 연산자의 우선순위와 결합성은 적잖은 부분에서 수학과 비슷합니다.
 
 =begin original
 
@@ -122,7 +122,7 @@ C 로부터 가져온 연산자의 우선순위는 C 에서의 우선순위가 �
     왼쪽결합    || //
     결합안함    .. ...
     오른쪽결합  ?:
-    오른쪽결합  = += -= *= などの代入演算子
+    오른쪽결합  = += -= *= 등의 대입연산자
     왼쪽결합    , =>
     결합안함    리스트 연산자 (오른쪽에 대해서)
     오른쪽결합  not
@@ -191,9 +191,9 @@ For example, in
 
 =end original
 
-括弧が無い場合には、C<print>、C<sort>、C<chmod> のようなリスト演算子の
-優先順位は、演算子の左側をからすると非常に高く、右側からすると
-非常に低く見えます。たとえば、
+괄호가 없는 경우에는, C<print>, C<sort> C<chmod> 같은 리스트 연산자의
+우선순위는, 연산자의 왼쪽에서 하면 대단히 높고, 오른쪽에서 하면 대단히 낮게 보입니다.
+예를 들면
 
     @ary = (1, 3, sort 4, 2);
     print @ary;		# prints 1324
@@ -295,7 +295,7 @@ constructors C<[]> and C<{}>.
 =end original
 
 이 외에는 "항"으로 해석되는 것으로는 C<do {}>나 C<eval {}>의 구성
-서브루틴이나 메소드의 호출, 이름없는 콘스트럭트 C<[]>와 C<{}>가 있습니다.
+서브루틴이나 메소드의 호출, 이름없는 구조인 C<[]>와 C<{}>가 있습니다.
 
 =begin original
 
@@ -345,7 +345,7 @@ L<perlobj> 를 참조하세요.
 =head2 Auto-increment and Auto-decrement
 X<increment> X<auto-increment> X<++> X<decrement> X<auto-decrement> X<-->
 
-(インクリメントとデクリメント)
+(증가와 감소)
 
 =begin original
 
@@ -423,9 +423,8 @@ will return C<0> rather than C<undef>).
 
 =end original
 
-C<undef> は常に数値として扱われ、特にインクリメントされる前には C<0> に
-変換されます(従って、undef のポストインクリメント値は C<undef> ではなく
-C<0> になります)。
+C<undef> 는 항상 숫자값으로 취급되고, 특히 증가되기전에는 C<0>로 바뀝니다.
+(따라서, undef의 후증가값은 C<undef>가 아닌 C<0>가 됩니다).
 
 =begin original
 
@@ -433,12 +432,12 @@ The auto-decrement operator is not magical.
 
 =end original
 
-デクリメント演算子には、マジカルなものはありません。
+감소연산자에는 매지컬한것은 없습니다. 
 
 =head2 Exponentiation
 X<**> X<exponentiation> X<power>
 
-(指数演算子)
+(지수 연산자)
 
 =begin original
 
@@ -449,16 +448,15 @@ internally.)
 
 =end original
 
-二項演算子の "**" は指数演算子です。
-この演算子は、単項のマイナスよりも結合が強い演算子で、
--2**4 は (-2)**4 ではなく、-(2**4) と解釈されます。
-(これは C の pow(3) を使って実装されていますので、
-内部的には double で動作します。)
+이항연산자의 "**"는 지수연산자입니다.
+이 연산자는 단항의 빼기에서 결합이 강한 연산자로
+-2**4 는 (-2)**4 이 아니라 -(2**4) 로 해석됩니다.
+(이것은 C 의 pow(3) 을 사용해 구축되어 있어서 내부적으로 double 로 동작합니다. 
 
 =head2 Symbolic Unary Operators
 X<unary operator> X<operator, unary>
 
-(単項演算子)
+(단항연산자)
 
 =begin original
 
@@ -468,9 +466,8 @@ X<!>
 
 =end original
 
-単項演算子の "!" は論理否定を行ないます。
-つまり 「not」 ということです。
-この演算子の優先順位を低くしたものとして、C<not> が用意されています。
+단항연산자의 "!"는 논리부정을 처리합니다. 즉, "not"입니다.
+이 연산자의 우선순위를 작게하려면 C<not>가 사용하면 됩니다.
 X<!>
 
 =begin original
@@ -489,17 +486,16 @@ X<-> X<negation, arithmetic>
 
 =end original
 
-単項演算子の "-" は被演算子が数値であれば、算術否定を行ないます。
-被演算子が識別子ならば、マイナス記号にその識別子をつなげた
-文字列が返されます。
-これ以外で被演算子の最初の文字がプラスかマイナスのときには、
-その記号を逆のものに置き換えた文字列を返します。
-この規則の結果、-bareword が文字列 "-bareword" に等価となります。
-しかし、文字列が英字以外("+" と "-" を除く)で始まっていると、
-Perl は文字列を数値に変換しようとし、それから算術否定が実行されます。
-もし文字列が明確に数値に変換できない場合、Perl は
-B<Argument "the string" isn't numeric in negation (-) at ...> という
-警告を出します。
+단항연산자의 "-"는 피연산자가 숫자값이면 산술부정합니다..
+피연산자가  식별자라면, 빼기 기호(-)에 그 식별자를 이어 문자열이 반환됩니다.
+이외에 피연산자의 최초의 문자가 더하기 혹은 빼기 일때에는
+그 기호를 거꾸로 바꾼 문자열을 반환합니다.
+이 규칙의 결과 -bareword 가 문자열 "-bareword"와 같은 값이 됩니다.
+하지만, 문자열이 영어이외("+"와 "-"를 제외하고)의 문자로 시작되면
+Perl 은 문자열을 수치로 변환하려고 하고, 그래서 산술부정이 샐행됩니다.
+만약 문자열이 명확하게 숫자값으로 변환되지않을 때는, Perl은
+B<Argument "the string" isn't numeric in negation (-) at ...> 라는
+경고를 냅니다.
 X<-> X<negation, arithmetic>
 
 =begin original
