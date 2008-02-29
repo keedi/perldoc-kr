@@ -10,14 +10,14 @@ perlop - Perl operators and precedence
 
 =end original
 
-perlop - Perlì˜ ì—°ì‚°ìžì™€ ìš°ì„ ìˆœìœ„
+perlop - Perl“ÀÇ “¿¬“»ê“ÀÚ“¿Í “¿ì“¼±“¼ø“À§
 
 =head1 DESCRIPTION
 
 =head2 Operator Precedence and Associativity
 X<operator, precedence> X<precedence> X<associativity>
 
-(ì—°ì‚°ìžì˜ ìš°ì„ ìˆœìœ„ì™€ ê²°í•©ì„±)
+(“¿¬“»ê“ÀÚ“ÀÇ “¿ì“¼±“¼ø“À§“¿Í “°á“ÇÕ“¼º)
 
 =begin original
 
@@ -26,7 +26,7 @@ they do in mathematics.
 
 =end original
 
-Perl ì—ì„œì˜ ì—°ì‚°ìžì˜ ìš°ì„ ìˆœìœ„ì™€ ê²°í•©ì„±ì€ ì ìž–ì€ ë¶€ë¶„ì—ì„œ ìˆ˜í•™ê³¼ ë¹„ìŠ·í•©ë‹ˆë‹¤.
+Perl “¿¡“¼­“ÀÇ “¿¬“»ê“ÀÚ“ÀÇ “¿ì“¼±“¼ø“À§“¿Í “°á“ÇÕ“¼º“Àº “Àû“ÀÝ“Àº “ºÎ“ºÐ“¿¡“¼­ “¼ö“ÇÐ“°ú “ºñ“½Á“ÇÕ“´Ï“´Ù.
 
 =begin original
 
@@ -37,10 +37,11 @@ precedence so C<4 * 5> is evaluated first yielding C<2 + 20 ==
 
 =end original
 
-I<ì—°ì‚°ìžì™€ ìš°ì„ ìˆœìœ„> ë¼ëŠ” ê²ƒì€ ë‹¤ë¥¸ ì—°ì‚°ìžë³´ë‹¤ ë¨¼ì € í‰ê°€ë°›ëŠ” ì—°ì‚°ìžê°€ ìžˆë‹¤ëŠ” ê²ƒìž…ë‹ˆë‹¤.
-ì˜ˆë¥¼ë“¤ë©´, C<2 + 4 * 5>ì˜ ê²½ìš° ê³±ì…ˆì´ ë†’ì€ ìš°ì„ ìˆœìœ„ë¥¼ ê°€ì§€ê³ ìžˆê¸° ë•Œë¬¸ì—
-C<4 * 5>ì´ ë¨¼ì € í‰ê°€ë°›ê³  ê²°ê³¼ëŠ” C<6 * 5 == 30> ì´ ì•„ë‹Œ
-C<2 + 20 == 22> ì´ ë©ë‹ˆë‹¤.
+I<“¿¬“»ê“ÀÚ“¿Í “¿ì“¼±“¼ø“À§> “¶ó“´Â “°Í“Àº “´Ù“¸¥ “¿¬“»ê“ÀÚ“º¸“´Ù 
+“¸Õ“Àú “Æò“°¡“¹Þ“´Â “¿¬“»ê“ÀÚ“°¡ “ÀÖ“´Ù“´Â “°Í“ÀÔ“´Ï“´Ù.
+“¿¹“¸¦“µé“¸é, C<2 + 4 * 5>“ÀÇ “°æ“¿ì “°ö“¼À“ÀÌ “³ô“Àº “¿ì“¼±“¼ø“À§“¸¦ “°¡“Áö“°í“ÀÖ“±â “¶§“¹®“¿¡
+C<4 * 5>“ÀÌ “¸Õ“Àú “Æò“°¡“¹Þ“°í “°á“°ú“´Â C<6 * 5 == 30> “ÀÌ “¾Æ“´Ñ
+C<2 + 20 == 22> “ÀÌ “µË“´Ï“´Ù.
 
 =begin original
 
@@ -53,11 +54,13 @@ expression C<4 - 2 == 2> and not C<8 - 2 == 6>.
 
 =end original
 
-I<ì—°ì‚°ìžì˜ ê²°í•©ì„±> ì€ ê°™ì€ ì—°ì‚°ìžê°€ ì—°ì†í•´ì„œ ë‚˜íƒ€ë‚  ê²½ìš°ì— ë¬´ì—‡ì´ ì¼ì–´ë‚ ì§€ë¥¼ ì •ì˜í•©ë‹ˆë‹¤. 
-: ì—°ì‚°ê¸°ê°€ ì¢Œì¸¡ì„ ë¨¼ì € í‰ê°€í•  ê²ƒì¸ê°€ ìš°ì¸¡ì„ ë¨¼ì € í‰ê°€í•  ê²ƒì¸ê°€ í•˜ëŠ” ê²ƒìž…ë‹ˆë‹¤.
-ì˜ˆë¥¼ë“¤ë©´, C<8 - 4 - 2>ì˜ ê²½ìš° ë¹¼ê¸°ëŠ” ì™¼ìª½ê²°í•©ì´ê¸°ì— íŽ„ì€ ê³„ì‚°ì‹ì„ ì™¼ìª½ì—ì„œ ì˜¤ë¥¸ìª½ìœ¼ë¡œ í‰ê°€í•©ë‹ˆë‹¤.
-C<8 - 4>ì´ ë¨¼ì € í‰ê°€ë˜ê¸°ë•Œë¬¸ì— C<8 - 2 = 6>ì´ ì•„ë‹Œ
-C<4 - 2 == 2> ì´ ë©ë‹ˆë‹¤.
+I<“¿¬“»ê“ÀÚ“ÀÇ “°á“ÇÕ“¼º> “Àº “°°“Àº “¿¬“»ê“ÀÚ“°¡ “¿¬“¼Ó“ÇØ“¼­ “³ª“Å¸“³¯ “°æ“¿ì“¿¡ 
+“¹«“¾ù“ÀÌ “ÀÏ“¾î“³¯“Áö“¸¦ “Á¤“ÀÇ“ÇÕ“´Ï“´Ù. 
+: “¿¬“»ê“±â“°¡ “ÁÂ“Ãø“À» “¸Õ“Àú “Æò“°¡“ÇÒ “°Í“ÀÎ“°¡ “¿ì“Ãø“À» “¸Õ“Àú “Æò“°¡“ÇÒ “°Í“ÀÎ“°¡ “ÇÏ“´Â “°Í“ÀÔ“´Ï“´Ù.
+“¿¹“¸¦“µé“¸é, C<8 - 4 - 2>“ÀÇ “°æ“¿ì “»©“±â“´Â “¿Þ“ÂÊ“°á“ÇÕ“ÀÌ“±â“¿¡ 
+“ÆÞ“Àº “°è“»ê“½Ä“À» “¿Þ“ÂÊ“¿¡“¼­ “¿À“¸¥“ÂÊ“À¸“·Î “Æò“°¡“ÇÕ“´Ï“´Ù.
+C<8 - 4>“ÀÌ “¸Õ“Àú “Æò“°¡“µÇ“±â“¶§“¹®“¿¡ C<8 - 2 = 6>“ÀÌ “¾Æ“´Ñ
+C<4 - 2 == 2> “ÀÌ “µË“´Ï“´Ù.
 
 =begin original
 
@@ -70,10 +73,12 @@ values only, not array values.
 
 =end original
 
-Perl ì˜ ì—°ì‚°ìžì—ëŠ” ì•„ëž˜ì™€ê°™ì€ ê²°í•©ì„±ê³¼ ìš°ì„ ìˆœìœ„(ë†’ì€ ìš°ì„ ìˆœìœ„ë¶€í„° ë‚®ì€ ìš°ì„ ìˆœìœ„)ê°€ ìžˆìŠµë‹ˆë‹¤.
-C ë¡œë¶€í„° ê°€ì ¸ì˜¨ ì—°ì‚°ìžì˜ ìš°ì„ ìˆœìœ„ëŠ” C ì—ì„œì˜ ìš°ì„ ìˆœìœ„ê°€ ë‹¤ì†Œ ì´ìƒí•´ë„, ê·¸ëŒ€ë¡œ ì“°ê³  ìžˆìŠµë‹ˆë‹¤.
-(ì´ê²ƒì€ C ë¥¼ ì‚¬ìš©í•´ë³´ì‹  ë¶„ì´ Perl ì— ì ì‘í•˜ê¸° ì‰½ê²Œ ë˜ì–´ìžˆìŠµë‹ˆë‹¤.)
-ëª‡ ì•ˆë˜ëŠ” ê²ƒì„ ë¹¼ë©´ ëª¨ë“  ì—°ì‚°ìžëŠ” ìŠ¤ì¹¼ë¼ê°’ë§Œ ê°€ì§€ê³ , ë°°ì—´ê°’ì„ ê°€ì§€ì§€ ì•ŠìŠµë‹ˆë‹¤.
+Perl “ÀÇ “¿¬“»ê“ÀÚ“¿¡“´Â “¾Æ“·¡“¿Í“°°“Àº “°á“ÇÕ“¼º“°ú “¿ì“¼±“¼ø“À§
+(“³ô“Àº “¿ì“¼±“¼ø“À§“ºÎ“ÅÍ “³·“Àº “¿ì“¼±“¼ø“À§)“°¡ “ÀÖ“½À“´Ï“´Ù.
+C “·Î“ºÎ“ÅÍ “°¡“Á®“¿Â “¿¬“»ê“ÀÚ“ÀÇ “¿ì“¼±“¼ø“À§“´Â C “¿¡“¼­“ÀÇ “¿ì“¼±“¼ø“À§“°¡ “´Ù“¼Ò “ÀÌ“»ó“ÇØ“µµ, 
+“±×“´ë“·Î “Â÷“¿ë“ÇÏ“°í “ÀÖ“½À“´Ï“´Ù.
+(“ÀÌ“°Í“Àº C “¸¦ “»ç“¿ë“ÇØ“º¸“½Å “ºÐ“ÀÌ Perl “¿¡ “Àû“ÀÀ“ÇÏ“±â “½±“°Ô “µÇ“¾î“ÀÖ“½À“´Ï“´Ù.)
+“¸î “¾È“µÇ“´Â “°Í“À» “»©“¸é “¸ð“µç “¿¬“»ê“ÀÚ“´Â “½º“Ä®“¶ó“°ª“¸¸ “°¡“Áö“°í, “¹è“¿­“°ª“À» “°¡“Áö“Áö “¾Ê“½À“´Ï“´Ù.
 
 =begin original
 
@@ -104,30 +109,30 @@ C ë¡œë¶€í„° ê°€ì ¸ì˜¨ ì—°ì‚°ìžì˜ ìš°ì„ ìˆœìœ„ëŠ” C ì—ì„œì˜ ìš°ì„ ìˆœìœ„ê°€ ë
 
 =end original
 
-    ì™¼ìª½ê²°í•©    í•­ëª© ë¦¬ìŠ¤íŠ¸ì—°ì‚°ìž (ì™¼ìª½ì— ëŒ€í•´ì„œ) 
-    ì™¼ìª½ê²°í•©    ->
-    ê²°í•©ì•ˆí•¨ã€€ã€€++ --
-    ì˜¤ë¥¸ìª½ê²°í•©  **
-    ì˜¤ë¥¸ìª½ê²°í•©  ! ~ \ ë‹¨í•­ì˜+ ë‹¨í•­ì˜-
-    ì™¼ìª½ê²°í•©    =~ !~
-    ì™¼ìª½ê²°í•©    * / % x
-    ì™¼ìª½ê²°í•©    + - .
-    ì™¼ìª½ê²°í•©    << >>
-    ê²°í•©ì•ˆí•¨    ì´ë¦„ë¶™ì€ë‹¨í•­ì—°ì‚°ìž
-    ê²°í•©ì•ˆí•¨    < > <= >= lt gt le ge
-    ê²°í•©ì•ˆí•¨    == != <=> eq ne cmp ~~
-    ì™¼ìª½ê²°í•©    &
-    ì™¼ìª½ê²°í•©    | ^
-    ì™¼ìª½ê²°í•©    &&
-    ì™¼ìª½ê²°í•©    || //
-    ê²°í•©ì•ˆí•¨    .. ...
-    ì˜¤ë¥¸ìª½ê²°í•©  ?:
-    ì˜¤ë¥¸ìª½ê²°í•©  = += -= *= ë“±ì˜ ëŒ€ìž…ì—°ì‚°ìž
-    ì™¼ìª½ê²°í•©    , =>
-    ê²°í•©ì•ˆí•¨    ë¦¬ìŠ¤íŠ¸ ì—°ì‚°ìž (ì˜¤ë¥¸ìª½ì— ëŒ€í•´ì„œ)
-    ì˜¤ë¥¸ìª½ê²°í•©  not
-    ì™¼ìª½ê²°í•©    and
-    ì™¼ìª½ê²°í•©    or xor
+    “¿Þ“ÂÊ“°á“ÇÕ    “Ç×“¸ñ “¸®“½º“Æ®“¿¬“»ê“ÀÚ (“¿Þ“ÂÊ“¿¡ “´ë“ÇØ“¼­) 
+    “¿Þ“ÂÊ“°á“ÇÕ    ->
+    “°á“ÇÕ“¾È“ÇÔ“¡¡“¡¡++ --
+    “¿À“¸¥“ÂÊ“°á“ÇÕ  **
+    “¿À“¸¥“ÂÊ“°á“ÇÕ  ! ~ \ “´Ü“Ç×“ÀÇ+ “´Ü“Ç×“ÀÇ-
+    “¿Þ“ÂÊ“°á“ÇÕ    =~ !~
+    “¿Þ“ÂÊ“°á“ÇÕ    * / % x
+    “¿Þ“ÂÊ“°á“ÇÕ    + - .
+    “¿Þ“ÂÊ“°á“ÇÕ    << >>
+    “°á“ÇÕ“¾È“ÇÔ    “ÀÌ“¸§“ºÙ“Àº“´Ü“Ç×“¿¬“»ê“ÀÚ
+    “°á“ÇÕ“¾È“ÇÔ    < > <= >= lt gt le ge
+    “°á“ÇÕ“¾È“ÇÔ    == != <=> eq ne cmp ~~
+    “¿Þ“ÂÊ“°á“ÇÕ    &
+    “¿Þ“ÂÊ“°á“ÇÕ    | ^
+    “¿Þ“ÂÊ“°á“ÇÕ    &&
+    “¿Þ“ÂÊ“°á“ÇÕ    || //
+    “°á“ÇÕ“¾È“ÇÔ    .. ...
+    “¿À“¸¥“ÂÊ“°á“ÇÕ  ?:
+    “¿À“¸¥“ÂÊ“°á“ÇÕ  = += -= *= “µî“ÀÇ “´ë“ÀÔ“¿¬“»ê“ÀÚ
+    “¿Þ“ÂÊ“°á“ÇÕ    , =>
+    “°á“ÇÕ“¾È“ÇÔ    “¸®“½º“Æ® “¿¬“»ê“ÀÚ (“¿À“¸¥“ÂÊ“¿¡ “´ë“ÇØ“¼­)
+    “¿À“¸¥“ÂÊ“°á“ÇÕ  not
+    “¿Þ“ÂÊ“°á“ÇÕ    and
+    “¿Þ“ÂÊ“°á“ÇÕ    or xor
 
 =begin original
 
@@ -143,13 +148,13 @@ Many operators can be overloaded for objects.  See L<overload>.
 
 =end original
 
-ëŒ€ë¶€ë¶„ì˜ ì—°ì‚°ìžëŠ” ì˜¤ë¸Œì íŠ¸ë¡œ ì˜¤ë²„ë¡œë“œê°€ ê°€ëŠ¥í•©ë‹ˆë‹¤.
-L<overload> ë¥¼ ì°¸ì¡°í•˜ì„¸ìš”ã€‚
+“´ë“ºÎ“ºÐ“ÀÇ “¿¬“»ê“ÀÚ“´Â “¿À“ºê“Á§“Æ®“·Î “¿À“¹ö“·Î“µå“°¡ “°¡“´É“ÇÕ“´Ï“´Ù.
+L<overload> “¸¦ “Âü“Á¶“ÇÏ“¼¼“¿ä“¡£
 
 =head2 Terms and List Operators (Leftward)
 X<list operator> X<operator, list> X<term>
 
-(í•­ê³¼ ë¦¬ìŠ¤íŠ¸ ì—°ì‚°ìž (ì™¼ìª½ ë°©í–¥))
+(“Ç×“°ú “¸®“½º“Æ® “¿¬“»ê“ÀÚ (“¿Þ“ÂÊ “¹æ“Çâ))
 
 =begin original
 
@@ -162,12 +167,12 @@ the arguments.  These are all documented in L<perlfunc>.
 
 =end original
 
-ã€Œí•­ã€ì€ Perl ì—ì„œ ê°€ìž¥ ìš°ì„ ìˆœìœ„ê°€ ë†’ì€ ë…€ì„ìž…ë‹ˆë‹¤.
-ì—¬ê¸°ì—ëŠ” ë³€ìˆ˜, Quoteì™€ Quoteê°™ì€ ì—°ì‚°ìž, ê´„í˜¸ë¡œ ê°ì‹¼ ìž„ì˜ì˜ì‹ 
-ì¸ìˆ˜ë¥¼ ê´„í˜¸ë¡œ ê°ì‹¼ ìž„ì˜ì˜í•¨ìˆ˜ê°€ í¬í•¨ë©ë‹ˆë‹¤.
-ì‹¤ì œë¡œëŠ” ì´ ì˜ë¯¸ë¡œ ì§„ì§œ í•¨ìˆ˜ê°€ ì•„ë‹Œ ë¦¬ìŠ¤íŠ¸ ì—°ì‚°ìžì™€ í•¨ìˆ˜ê°™ì´ ì›€ì§ì´ëŠ”
-ë‹¨í•­ì—°ì‚°ìžê°€ ì¸ìˆ˜ë¥¼ ê´„í˜¸ë¡œ ê°ì‹¸ê¸°ë•Œë¬¸ì— ê·¸ë ‡ê²Œ ë³´ìž…ë‹ˆë‹¤.
-ì´ê²ƒì— ëŒ€í•´ì„œëŠ” L<perlfunc>ì— ê¸°ìˆ í•˜ê³  ìžˆìŠµë‹ˆë‹¤.
+“¡¸“Ç×“¡¹“Àº Perl “¿¡“¼­ “°¡“Àå “¿ì“¼±“¼ø“À§“°¡ “³ô“Àº “³à“¼®“ÀÔ“´Ï“´Ù.
+“¿©“±â“¿¡“´Â “º¯“¼ö, Quote“¿Í Quote“°°“Àº “¿¬“»ê“ÀÚ, “°ý“È£“·Î “°¨“½Ñ “ÀÓ“ÀÇ“ÀÇ“½Ä 
+“ÀÎ“¼ö“¸¦ “°ý“È£“·Î “°¨“½Ñ “ÀÓ“ÀÇ“ÀÇ“ÇÔ“¼ö“°¡ “Æ÷“ÇÔ“µË“´Ï“´Ù.
+“½Ç“Á¦“·Î“´Â “ÀÌ “ÀÇ“¹Ì“·Î “Áø“Â¥ “ÇÔ“¼ö“°¡ “¾Æ“´Ñ “¸®“½º“Æ® “¿¬“»ê“ÀÚ“¿Í “ÇÔ“¼ö“°°“ÀÌ “¿ò“Á÷“ÀÌ“´Â
+“´Ü“Ç×“¿¬“»ê“ÀÚ“°¡ “ÀÎ“¼ö“¸¦ “°ý“È£“·Î “°¨“½Î“±â“¶§“¹®“¿¡ “±×“·¸“°Ô “º¸“ÀÔ“´Ï“´Ù.
+“ÀÌ“°Í“¿¡ “´ë“ÇØ“¼­“´Â L<perlfunc>“¿¡ “±â“¼ú“ÇÏ“°í “ÀÖ“½À“´Ï“´Ù.
 
 =begin original
 
@@ -178,9 +183,9 @@ just like a normal function call.
 
 =end original
 
-ë§Œì•½, ë¦¬ìŠ¤íŠ¸ì—°ì‚°ìž(print() ë“±ë“±)ë‚˜ ë‹¨í•­ì—°ì‚°ìž (chdir() ë“±ë“±) ì˜
-ì´ë¦„ì˜ ë’¤ì— ì—´ë¦°ê´„í˜¸('(')ê°€ ì˜¤ëŠ” ê²½ìš°ì—ëŠ” ê·¸ ì—°ì‚°ìžì™€ ê´„í˜¸ì•ˆì˜ ì¸ìˆ˜ëŠ”
-ë³´í†µ í•¨ìˆ˜í˜¸ì¶œê°™ì´ ë¬´ì—‡ë³´ë‹¤ ë†’ì€ ìš°ì„ ìˆœìœ„ ì²˜ë¦¬ë©ë‹ˆë‹¤.
+“¸¸“¾à, “¸®“½º“Æ®“¿¬“»ê“ÀÚ(print() “µî“µî)“³ª “´Ü“Ç×“¿¬“»ê“ÀÚ (chdir() “µî“µî) “ÀÇ
+“ÀÌ“¸§“ÀÇ “µÚ“¿¡ “¿­“¸°“°ý“È£('(')“°¡ “¿À“´Â “°æ“¿ì“¿¡“´Â “±× “¿¬“»ê“ÀÚ“¿Í “°ý“È£“¾È“ÀÇ “ÀÎ“¼ö“´Â
+“º¸“Åë “ÇÔ“¼ö“È£“Ãâ“°°“ÀÌ “¹«“¾ù“º¸“´Ù “³ô“Àº “¿ì“¼±“¼ø“À§ “Ã³“¸®“µË“´Ï“´Ù.
 
 =begin original
 
@@ -191,9 +196,10 @@ For example, in
 
 =end original
 
-ê´„í˜¸ê°€ ì—†ëŠ” ê²½ìš°ì—ëŠ”, C<print>, C<sort> C<chmod> ê°™ì€ ë¦¬ìŠ¤íŠ¸ ì—°ì‚°ìžì˜
-ìš°ì„ ìˆœìœ„ëŠ”, ì—°ì‚°ìžì˜ ì™¼ìª½ì—ì„œ í•˜ë©´ ëŒ€ë‹¨ížˆ ë†’ê³ , ì˜¤ë¥¸ìª½ì—ì„œ í•˜ë©´ ëŒ€ë‹¨ížˆ ë‚®ê²Œ ë³´ìž…ë‹ˆë‹¤.
-ì˜ˆë¥¼ ë“¤ë©´
+“°ý“È£“°¡ “¾ø“´Â “°æ“¿ì“¿¡“´Â, C<print>, C<sort> C<chmod> “°°“Àº “¸®“½º“Æ® “¿¬“»ê“ÀÚ“ÀÇ
+“¿ì“¼±“¼ø“À§“´Â, “¿¬“»ê“ÀÚ“ÀÇ “¿Þ“ÂÊ“¿¡“¼­ “ÇÏ“¸é “´ë“´Ü“È÷ “³ô“°í, 
+“¿À“¸¥“ÂÊ“¿¡“¼­ “ÇÏ“¸é “´ë“´Ü“È÷ “³·“°Ô “º¸“ÀÔ“´Ï“´Ù.
+“¿¹“¸¦ “µé“¸é
 
     @ary = (1, 3, sort 4, 2);
     print @ary;		# prints 1324
@@ -208,12 +214,13 @@ Be careful with parentheses:
 
 =end original
 
-ìœ„ì™€ ê°™ì€ ê²½ìš° sort ì˜ ì˜¤ë¥¸ìª½ ì½¤ë§ˆëŠ” sortë³´ë‹¤ë„ ì•žì—ì„œ í‰ê°€ë˜ì§€ë§Œ
-(ì˜¤ë¥¸ìª½ì—ì„œ ë³´ë©´ softì˜ ìš°ì„ ìˆœìœ„ê¸° ë‚®ìŒ), ì™¼ìª½ì˜ ì½¤ë§ˆëŠ” sortì˜ ë’¤ì—
-í‰ê°€ë©ë‹ˆë‹¤(ì™¼ìª½ì—ì„œ ë³´ë©´ sort ìª½ì´ ìš°ì„ ìˆœìœ„ê°€ ë†’ì•„ì§)
-ë°”ê¿” ë§í•˜ë©´, ë¦¬ìŠ¤íŠ¸ì—°ì‚°ìžëŠ” ìžì‹ ì˜ ë’¤ì— ì˜¤ëŠ” ì¸ìˆ˜ë¥¼ ëª¨ë‘ ì‚¬ìš©í•´ ì²˜ë¦¬ë¥¼ í•˜ì§€ì•Šê³ ,
-ê·¸ ê²°ê³¼ë¥¼ ìžì‹ ì˜ ì•žì˜ ì‹ì— ëŒ€í•œ "í•­"ì¸ê²ƒ ì²˜ëŸ¼ ë³´ì´ê²Œ í•˜ëŠ” ê²ƒìž…ë‹ˆë‹¤.
-ë¬¼ë¡ , ê´„í˜¸ì—ëŠ” ì£¼ì˜í•´ ì£¼ì„¸ìš”.
+“À§“¿Í “°°“Àº “°æ“¿ì sort “ÀÇ “¿À“¸¥“ÂÊ “ÄÞ“¸¶“´Â sort“º¸“´Ù“µµ “¾Õ“¿¡“¼­ “Æò“°¡“µÇ“Áö“¸¸
+(“¿À“¸¥“ÂÊ“¿¡“¼­ “º¸“¸é soft“ÀÇ “¿ì“¼±“¼ø“À§“±â “³·“À½), “¿Þ“ÂÊ“ÀÇ “ÄÞ“¸¶“´Â sort“ÀÇ “µÚ“¿¡
+“Æò“°¡“µË“´Ï“´Ù(“¿Þ“ÂÊ“¿¡“¼­ “º¸“¸é sort “ÂÊ“ÀÌ “¿ì“¼±“¼ø“À§“°¡ “³ô“¾Æ“Áü).
+“¹Ù“²ã “¸»“ÇÏ“¸é, “¸®“½º“Æ®“¿¬“»ê“ÀÚ“´Â “ÀÚ“½Å“ÀÇ “µÚ“¿¡ “¿À“´Â “ÀÎ“¼ö“¸¦ 
+“¸ð“µÎ “»ç“¿ë“ÇØ “Ã³“¸®“¸¦ “ÇÏ“Áö“¾Ê“°í,
+“±× “°á“°ú“¸¦ “ÀÚ“½Å“ÀÇ “¾Õ“ÀÇ “½Ä“¿¡ “´ë“ÇÑ "“Ç×"“ÀÎ“°Í “Ã³“·³ “º¸“ÀÌ“°Ô “ÇÏ“´Â “°Í“ÀÔ“´Ï“´Ù.
+“¹°“·Ð, “°ý“È£“¿¡“´Â “ÁÖ“ÀÇ“ÇØ “ÁÖ“¼¼“¿ä.
 
 =begin original
 
@@ -223,9 +230,9 @@ Be careful with parentheses:
 
 =end original
 
-    # ë‹¤ìŒì€ print ë¥¼ ì‹¤í–‰í•˜ê¸° ì „ì— exit ë¥¼ í‰ê°€í•©ë‹ˆë‹¤.
-    print($foo, exit);  # ì´ëŸ° ì§“ì€ í•˜ê³  ì‹¶ì§€ ì•Šê² ì£ ?
-    print $foo, exit;   # ì´ê²ƒë„ ì•„ë‹ˆê² ê³ 
+    # “´Ù“À½“Àº print “¸¦ “½Ç“Çà“ÇÏ“±â “Àü“¿¡ exit “¸¦ “Æò“°¡“ÇÕ“´Ï“´Ù.
+    print($foo, exit);  # “ÀÌ“·± “Áþ“Àº “ÇÏ“°í “½Í“Áö “¾Ê“°Ú“ÁÒ?
+    print $foo, exit;   # “ÀÌ“°Í“µµ “¾Æ“´Ï“°Ú“°í
 
 =begin original
 
@@ -236,10 +243,10 @@ Be careful with parentheses:
 
 =end original
 
-    # ë‹¤ìŒì€ exit ë¥¼ í‰ê°€í•˜ê¸° ì „ì— printë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
-    (print $foo), exit; # ì´ëŸ° ê²ƒì„ í•˜ë ¤ê³  í•˜ì…¨ì£ ?
-    print($foo), exit;  # ì•„ë‹˜ ì´ê±°?ã€‚
-    print ($foo), exit; # ì´ê²ƒë„ OKã€‚
+    # “´Ù“À½“Àº exit “¸¦ “Æò“°¡“ÇÏ“±â “Àü“¿¡ print“¸¦ “½Ç“Çà“ÇÕ“´Ï“´Ù.
+    (print $foo), exit; # “ÀÌ“·± “°Í“À» “ÇÏ“·Á“°í “ÇÏ“¼Ì“ÁÒ?
+    print($foo), exit;  # “¾Æ“´Ô “ÀÌ“°Å?“¡£
+    print ($foo), exit; # “ÀÌ“°Í“µµ OK“¡£
 
 =begin original
 
@@ -247,7 +254,7 @@ Also note that
 
 =end original
 
-ë˜í•œ,
+“¶Ç“ÇÑ,
 
     print ($foo & 255) + 1, "\n";
 
@@ -260,11 +267,11 @@ of C<print> (usually 1).  The result is something like this:
 
 =end original
 
-ì˜ ë™ìž‘ì„ í•œ ë²ˆ ë³´ëŠ” ê²ƒë§Œìœ¼ë¡œ íŒë‹¨í•˜ëŠ” ê²ƒì€ ì–´ë µê² ì£ ?
-ê´„í˜¸ëŠ” C<print> ë¥¼ ìœ„í•´ í‰ê°€ë˜ëŠ” ì¸ìˆ˜ë¦¬ìŠ¤íŠ¸ë¥¼ ê°ì‹¸ê³  ìžˆìŠµë‹ˆë‹¤.
-(C<$foo & 255> ë¼ëŠ” ê²°ê³¼ê°€ í‘œì‹œë©ë‹ˆë‹¤)ã€‚
-ê·¸ë¦¬ê³  C<print> ì˜ ë¦¬í„´ê°’(ë³´í†µì€ 1)ì— 1ì´ ë”í•´ì§‘ë‹ˆë‹¤. 
-ê²°ê³¼ëŠ” ì•„ëž˜ì™€ ê°™ìŠµë‹ˆë‹¤.
+“ÀÇ “µ¿“ÀÛ“À» “ÇÑ “¹ø “º¸“´Â “°Í“¸¸“À¸“·Î “ÆÇ“´Ü“ÇÏ“´Â “°Í“Àº “¾î“·Æ“°Ú“ÁÒ?
+“°ý“È£“´Â C<print> “¸¦ “À§“ÇØ “Æò“°¡“µÇ“´Â “ÀÎ“¼ö“¸®“½º“Æ®“¸¦ “°¨“½Î“°í “ÀÖ“½À“´Ï“´Ù.
+(C<$foo & 255> “¶ó“´Â “°á“°ú“°¡ “Ç¥“½Ã“µË“´Ï“´Ù)“¡£
+“±×“¸®“°í C<print> “ÀÇ “¸®“ÅÏ“°ª(“º¸“Åë“Àº 1)“¿¡ 1“ÀÌ “´õ“ÇØ“Áý“´Ï“´Ù. 
+“°á“°ú“´Â “¾Æ“·¡“¿Í “°°“½À“´Ï“´Ù.
 
     1 + 1, "\n";    # Obviously not what you meant.
 
@@ -274,7 +281,7 @@ To do what you meant properly, you must write:
 
 =end original
 
-ìžì‹ ì˜ ì›í–ˆë˜ ê²ƒì„ ì ì ˆížˆ ì‹¤í–‰í•˜ê¸° ìœ„í•´ì„œëŠ” ì•„ëž˜ì™€ ê°™ì´ì¨ì•¼ë©ë‹ˆë‹¤.
+“ÀÚ“½Å“ÀÇ “¿ø“Çß“´ø “°Í“À» “Àû“Àý“È÷ “½Ç“Çà“ÇÏ“±â “À§“ÇØ“¼­“´Â “¾Æ“·¡“¿Í “°°“ÀÌ“½á“¾ß“µË“´Ï“´Ù.
 
     print(($foo & 255) + 1, "\n");
 
@@ -284,7 +291,7 @@ See L<Named Unary Operators> for more discussion of this.
 
 =end original
 
-ìžì„¸í•œ ë‚´ìš©ì€ L<Named Unary Operators> ì„ ì°¸ì¡°í•´ì£¼ì„¸ìš”.
+“ÀÚ“¼¼“ÇÑ “³»“¿ë“Àº L<Named Unary Operators> “À» “Âü“Á¶“ÇØ“ÁÖ“¼¼“¿ä.
 
 =begin original
 
@@ -294,8 +301,8 @@ constructors C<[]> and C<{}>.
 
 =end original
 
-ì´ ì™¸ì—ëŠ” "í•­"ìœ¼ë¡œ í•´ì„ë˜ëŠ” ê²ƒìœ¼ë¡œëŠ” C<do {}>ë‚˜ C<eval {}>ì˜ êµ¬ì„±
-ì„œë¸Œë£¨í‹´ì´ë‚˜ ë©”ì†Œë“œì˜ í˜¸ì¶œ, ì´ë¦„ì—†ëŠ” êµ¬ì¡°ì¸ C<[]>ì™€ C<{}>ê°€ ìžˆìŠµë‹ˆë‹¤.
+“ÀÌ “¿Ü“¿¡“´Â "“Ç×"“À¸“·Î “ÇØ“¼®“µÇ“´Â “°Í“À¸“·Î“´Â C<do {}>“³ª C<eval {}>“ÀÇ “±¸“¼º
+“¼­“ºê“·ç“Æ¾“ÀÌ“³ª “¸Þ“¼Ò“µå“ÀÇ “È£“Ãâ, “ÀÌ“¸§“¾ø“´Â “±¸“Á¶“ÀÎ C<[]>“¿Í C<{}>“°¡ “ÀÖ“½À“´Ï“´Ù.
 
 =begin original
 
@@ -304,12 +311,12 @@ as well as L</"I/O Operators">.
 
 =end original
 
-ë’¤ì˜ L<Quote and Quote-like Operators>ì™€ L<"/I/O Operators">ë„ ì°¸ì¡°í•˜ì„¸ìš”.
+“µÚ“ÀÇ L<Quote and Quote-like Operators>“¿Í L<"/I/O Operators">“µµ “Âü“Á¶“ÇÏ“¼¼“¿ä.
 
 =head2 The Arrow Operator
 X<arrow> X<dereference> X<< -> >>
 
-(çŸ¢å°æ¼”ç®—å­)
+(“ãÅ“ìÔ“æÑ“ß©“í­)
 
 =begin original
 
@@ -323,11 +330,12 @@ assignment.)  See L<perlreftut> and L<perlref>.
 
 =end original
 
-C ì™€ C++ ê³¼ ë§ˆì°¬ê°€ì§€ë¡œ, "C<< -> >>"ëŠ” ê°€ìš´ë°ì— ë†“ëŠ” í”¼ì°¸ì¡° ì—°ì‚°ìžìž…ë‹ˆë‹¤.
-ì˜¤ë¥¸ìª½ì´ C<[...]>, C<{...}>, C<(...)> ì¤‘ ì–´ë–¤ í˜•íƒœì˜ ì²¨ìžì´ë©´ ì¢Œì¸¡ì€ ë°°ì—´,
-í•´ì‰¬, ì„œë¸Œë£¨í‹´ìœ¼ë¡œ í•˜ë“œ ë ˆí¼ëŸ°ìŠ¤ ì•„ë‹ˆë©´ ì‹¬ë³¼ë¦­ ë ˆí¼ëŸ°ìŠ¤ (í˜¹ì€ ê¸°ìˆ ì ìœ¼ë¡œëŠ” 
-í•´ì—´ í˜¹ì€ í•˜ë“œ ë ˆí¼ëŸ°ìŠ¤ê°€ ëŒ€ìž…ê°€ëŠ¥í•˜ë©´ í•˜ë“œ ë ˆí¼ëŸ°ìŠ¤ë¥¼ ê°€ì§€ëŠ” ìž¥ì†Œ) ê°€ ì•„ë‹ˆë©´ ì•ˆë˜ë‹ˆë‹¤.
-L<perlreftut> ì™€ L<perlref> ë¥¼ ì°¸ì¡°í•˜ì„¸ìš”.
+C “¿Í C++ “°ú “¸¶“Âù“°¡“Áö“·Î, "C<< -> >>"“´Â “°¡“¿î“µ¥“¿¡ “³õ“´Â “ÇÇ“Âü“Á¶ “¿¬“»ê“ÀÚ“ÀÔ“´Ï“´Ù.
+“¿À“¸¥“ÂÊ“ÀÌ C<[...]>, C<{...}>, C<(...)> “Áß “¾î“¶² “Çü“ÅÂ“ÀÇ “Ã·“ÀÚ“ÀÌ“¸é “ÁÂ“Ãø“Àº “¹è“¿­,
+“ÇØ“½¬, “¼­“ºê“·ç“Æ¾“À¸“·Î “ÇÏ“µå “·¹“ÆÛ“·±“½º “¾Æ“´Ï“¸é “½É“º¼“¸¯ “·¹“ÆÛ“·±“½º (“È¤“Àº “±â“¼ú“Àû“À¸“·Î“´Â 
+“¹è“¿­ “È¤“Àº “ÇÏ“µå “·¹“ÆÛ“·±“½º“°¡ “´ë“ÀÔ“°¡“´É“ÇÏ“¸é “ÇÏ“µå “·¹“ÆÛ“·±“½º“¸¦ “°¡“Áö“´Â “Àå“¼Ò) “°¡ 
+“¾Æ“´Ï“¸é “¾È“µË“´Ï“´Ù.
+L<perlreftut> “¿Í L<perlref> “¸¦ “Âü“Á¶“ÇÏ“¼¼“¿ä.
 
 =begin original
 
@@ -338,14 +346,15 @@ or a class name (that is, a package name).  See L<perlobj>.
 
 =end original
 
-ê·¸ë ‡ì§€ ì•Šìœ¼ë©´, ì˜¤ë¥¸ìª½ì€ ë©”ì†Œë“œì´ë¦„ê³¼ ì„œë¸Œë£¨í‹´ì˜ ë¦¬í¼ëŸ°ìŠ¤ë¥¼ ê°€ì§„ ë‹¨ìˆœ ìŠ¤ì¹¼ë¼ë³€ìˆ˜ë¡œ
-ì™¼ìª½ì€ ì˜¤ë¸Œì íŠ¸ (bless ëœ ë ˆí¼ëŸ°ìŠ¤)  ì•„ë‹ˆë©´ í´ëž˜ìŠ¤ ì´ë¦„ì´ ì•„ë‹ˆë©´ ì•ˆë©ë‹ˆë‹¤.
-L<perlobj> ë¥¼ ì°¸ì¡°í•˜ì„¸ìš”.
+“±×“·¸“Áö “¾Ê“À¸“¸é, “¿À“¸¥“ÂÊ“Àº “¸Þ“¼Ò“µå“ÀÌ“¸§“°ú “¼­“ºê“·ç“Æ¾“ÀÇ “¸®“ÆÛ“·±“½º“¸¦ 
+“°¡“Áø “´Ü“¼ø “½º“Ä®“¶ó“º¯“¼ö“·Î
+“¿Þ“ÂÊ“Àº “¿À“ºê“Á§“Æ® (bless “µÈ “·¹“ÆÛ“·±“½º)  “È¤“Àº “Å¬“·¡“½º “ÀÌ“¸§“ÀÌ “¾Æ“´Ï“¸é “¾È“µË“´Ï“´Ù.
+L<perlobj> “¸¦ “Âü“Á¶“ÇÏ“¼¼“¿ä.
 
 =head2 Auto-increment and Auto-decrement
 X<increment> X<auto-increment> X<++> X<decrement> X<auto-decrement> X<-->
 
-(ì¦ê°€ì™€ ê°ì†Œ)
+(“Áõ“°¡“¿Í “°¨“¼Ò)
 
 =begin original
 
@@ -356,9 +365,9 @@ value.
 
 =end original
 
-"++" ê³¼ "--" ëŠ” Cì˜ ê²½ìš°ì™€ ê°™ì€ ë°©ì‹ìœ¼ë¡œ ë™ìž‘í•©ë‹ˆë‹¤.
-ë³€ìˆ˜ì˜ ì•žì— ì˜¬ë•Œì—ëŠ” ê°’ì„ ë¦¬í„´í•˜ê¸° ì „ì— ë³€ìˆ˜ë¥¼ 1 ì¦ê°€ í˜¹ì€ ê°ì†Œí•˜ê³ ,
-ë’¤ì— ì˜¬ë•Œì—ëŠ”, ê°’ì„ ë¦¬í„´í•œ ë’¤ì— ë³€ìˆ˜ë¥¼ ì¦ê°€ í˜¹ì€ ê°ì†Œí•©ë‹ˆë‹¤.
+"++" “°ú "--" “´Â C“ÀÇ “°æ“¿ì“¿Í “°°“Àº “¹æ“½Ä“À¸“·Î “µ¿“ÀÛ“ÇÕ“´Ï“´Ù.
+“º¯“¼ö“ÀÇ “¾Õ“¿¡ “¿Ã“¶§“¿¡“´Â “°ª“À» “¸®“ÅÏ“ÇÏ“±â “Àü“¿¡ “º¯“¼ö“¸¦ 1 “Áõ“°¡ “È¤“Àº “°¨“¼Ò“ÇÏ“°í,
+“µÚ“¿¡ “¿Ã“¶§“¿¡“´Â, “°ª“À» “¸®“ÅÏ“ÇÑ “µÚ“¿¡ “º¯“¼ö“¸¦ “Áõ“°¡ “È¤“Àº “°¨“¼Ò“ÇÕ“´Ï“´Ù.
 
     $i = 0;  $j = 0;
     print $i++;  # prints 0
@@ -374,10 +383,12 @@ Avoid statements like:
 
 =end original
 
-C ì™€ ë§ˆì°¬ê°€ì§€ë¡œ, Perlì€ B<ì–¸ì œ> ë³€ìˆ˜ê°€ ì¦ê°€ í˜¹ì€ ê°ì†Œë˜ëŠ” ê²ƒì— ëŒ€í•´ì„œëŠ” ì •ì˜í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.
-ê°’ì´ ë¦¬í„´ë˜ê¸° ì „/í›„ì— ì‹¤í–‰ëœë‹¤ëŠ” ê²ƒ ë§Œ ì•Œ ìˆ˜ ìžˆìŠµë‹ˆë‹¤. 
-ì´ê²ƒì€ ê°™ì€ ê°™ì€ êµ¬ë¬¸ì¸ ë³€ìˆ˜ë¥¼ 2ë²ˆ ìˆ˜ì •í•˜ë©´, ì‹¤í–‰ í˜¹ì€ ë¯¸ì •ì˜ ìƒíƒœê°€ ë˜ëŠ” ê²ƒì„ ì˜ë¯¸í•©ë‹ˆë‹¤.
-ì•„ëž˜ì™€ ê°™ì€ ê²ƒì€ ì‚¼ê°€í•´ ì£¼ì„¸ìš”:
+C “¿Í “¸¶“Âù“°¡“Áö“·Î, Perl“Àº B<“¾ð“Á¦> “º¯“¼ö“°¡ “Áõ“°¡ “È¤“Àº “°¨“¼Ò“µÇ“´Â “°Í“¿¡ 
+“´ë“ÇØ“¼­“´Â “Á¤“ÀÇ“ÇÒ “¼ö “¾ø“½À“´Ï“´Ù.
+“°ª“ÀÌ “¸®“ÅÏ“µÇ“±â “Àü/“ÈÄ“¿¡ “½Ç“Çà“µÈ“´Ù“´Â “°Í “¸¸ “¾Ë “¼ö “ÀÖ“½À“´Ï“´Ù. 
+“ÀÌ“°Í“Àº “°°“Àº “°°“Àº “±¸“¹®“ÀÎ “º¯“¼ö“¸¦ 2“¹ø “¼ö“Á¤“ÇÏ“¸é, 
+“½Ç“Çà “È¤“Àº “¹Ì“Á¤“ÀÇ “»ó“ÅÂ“°¡ “µÇ“´Â “°Í“À» “ÀÇ“¹Ì“ÇÕ“´Ï“´Ù.
+“¾Æ“·¡“¿Í “°°“Àº “°Í“Àº “»ï“°¡“ÇØ “ÁÖ“¼¼“¿ä:
 
     $i = $i ++;
     print ++ $i + $i ++;
@@ -388,7 +399,7 @@ Perl will not guarantee what the result of the above statements is.
 
 =end original
 
-Perl ì€ ìœ„ì™€ ê°™ì€ êµ¬ë¬¸ì˜ ê²°ê³¼ë¥¼ ë³´ìž¥í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
+Perl “Àº “À§“¿Í “°°“Àº “±¸“¹®“ÀÇ “°á“°ú“¸¦ “º¸“Àå“ÇÏ“Áö “¾Ê“½À“´Ï“´Ù.
 
 =begin original
 
@@ -402,13 +413,13 @@ character within its range, with carry:
 
 =end original
 
-ì¦ê°€ì—°ì‚°ìžì—ëŠ” ì¡°ê¸ˆ ë¶„ìœ„ê¸°ê°€ ë‹¤ë¥¸ ê¸°ëŠ¥ì´ í¬í•¨ë˜ì–´ ìžˆìŠµë‹ˆë‹¤.
-ìˆ«ìžê°’ì´ ë“¤ì–´ê°„ ë³€ìˆ˜ë‚˜ ìˆ«ìžê°’ì˜ ë¬¸ë§¥ìœ¼ë¡œ ì‚¬ìš©ëœ ë³€ìˆ˜ë¥¼ ì¦ê°€ì‹œí‚¤ëŠ” ê²½ìš°ì—ëŠ”
-ë³´í†µ ì¦ê°€ ë¼ëŠ” ì˜ë¯¸ë¡œ ë™ìž‘í•˜ê²Œ ë©ë‹ˆë‹¤. 
-ê·¸ëŸ¬ë‚˜, ê·¸ ë³€ìˆ˜ê°€ ì •ì˜ë˜ê³  ê³„ì† ë¬¸ìžì—´ì˜ ë¬¸ë§¥ìœ¼ë¡œë§Œ ì‚¬ìš©ë˜ì§€ ì•Šê³ 
-ê³µë°±ë„ ì•„ë‹Œ, C</^[a-zA-Z]*[0-9]*\z/> ì— ë§¤ì¹˜ë˜ëŠ” ê°’ì„ ê°€ì§€ê³  ìžˆì„ ë•ŒëŠ” 
-ê° ë¬¸ìžì˜ ë²”ìœ„ë¥¼ ë³´í˜¸í•˜ë©´ì„œ ê¸€ìžìˆ˜ë¥¼ ëŠ˜ë¦¬ê³ , ë¬¸ìžì—´ë¡œì¨ì˜ ì¦ê°€ë¥¼ ìˆ˜í–‰í•©ë‹ˆë‹¤.
-(ë§¤ì§€ì»¬ ì¦ê°€ë¼ê³  ë¶ˆë¦½ë‹ˆë‹¤.)
+“Áõ“°¡“¿¬“»ê“ÀÚ“¿¡“´Â “Á¶“±Ý “ºÐ“À§“±â“°¡ “´Ù“¸¥ “±â“´É“ÀÌ “Æ÷“ÇÔ“µÇ“¾î “ÀÖ“½À“´Ï“´Ù.
+“¼ý“ÀÚ“°ª“ÀÌ “µé“¾î“°£ “º¯“¼ö“³ª “¼ý“ÀÚ“°ª“ÀÇ “¹®“¸Æ“À¸“·Î “»ç“¿ë“µÈ “º¯“¼ö“¸¦ “Áõ“°¡“½Ã“Å°“´Â “°æ“¿ì“¿¡“´Â
+“º¸“Åë “Áõ“°¡ “¶ó“´Â “ÀÇ“¹Ì“·Î “µ¿“ÀÛ“ÇÏ“°Ô “µË“´Ï“´Ù. 
+“±×“·¯“³ª, “±× “º¯“¼ö“°¡ “Á¤“ÀÇ“µÇ“°í “°è“¼Ó “¹®“ÀÚ“¿­“ÀÇ “¹®“¸Æ“À¸“·Î“¸¸ “»ç“¿ë“µÇ“Áö “¾Ê“°í
+“°ø“¹é“µµ “¾Æ“´Ñ, C</^[a-zA-Z]*[0-9]*\z/> “¿¡ “¸Å“Ä¡“µÇ“´Â “°ª“À» “°¡“Áö“°í “ÀÖ“À» “¶§“´Â 
+“°¢ “¹®“ÀÚ“ÀÇ “¹ü“À§“¸¦ “º¸“È£“ÇÏ“¸é“¼­ “±Û“ÀÚ“¼ö“¸¦ “´Ã“¸®“°í, “¹®“ÀÚ“¿­“·Î“½á“ÀÇ “Áõ“°¡“¸¦ “¼ö“Çà“ÇÕ“´Ï“´Ù.
+(“¸Å“Áö“ÄÃ “Áõ“°¡“¶ó“°í “ºÒ“¸³“´Ï“´Ù.)
 
     print ++($foo = '99');	# prints '100'
     print ++($foo = 'a0');	# prints 'a1'
@@ -423,8 +434,8 @@ will return C<0> rather than C<undef>).
 
 =end original
 
-C<undef> ëŠ” í•­ìƒ ìˆ«ìžê°’ìœ¼ë¡œ ì·¨ê¸‰ë˜ê³ , íŠ¹ížˆ ì¦ê°€ë˜ê¸°ì „ì—ëŠ” C<0>ë¡œ ë°”ë€ë‹ˆë‹¤.
-(ë”°ë¼ì„œ, undefì˜ í›„ì¦ê°€ê°’ì€ C<undef>ê°€ ì•„ë‹Œ C<0>ê°€ ë©ë‹ˆë‹¤).
+C<undef> “´Â “Ç×“»ó “¼ý“ÀÚ“°ª“À¸“·Î “Ãë“±Þ“µÇ“°í, “Æ¯“È÷ “Áõ“°¡“µÇ“±â“Àü“¿¡“´Â C<0>“·Î “¹Ù“²ò“´Ï“´Ù.
+(“µû“¶ó“¼­, undef“ÀÇ “ÈÄ“Áõ“°¡“°ª“Àº C<undef>“°¡ “¾Æ“´Ñ C<0>“°¡ “µË“´Ï“´Ù).
 
 =begin original
 
@@ -432,12 +443,12 @@ The auto-decrement operator is not magical.
 
 =end original
 
-ê°ì†Œì—°ì‚°ìžì—ëŠ” ë§¤ì§€ì»¬í•œê²ƒì€ ì—†ìŠµë‹ˆë‹¤. 
+“°¨“¼Ò“¿¬“»ê“ÀÚ“¿¡“´Â “¸Å“Áö“ÄÃ“ÇÑ“°Í“Àº “¾ø“½À“´Ï“´Ù. 
 
 =head2 Exponentiation
 X<**> X<exponentiation> X<power>
 
-(ì§€ìˆ˜ ì—°ì‚°ìž)
+(“Áö“¼ö “¿¬“»ê“ÀÚ)
 
 =begin original
 
@@ -448,15 +459,15 @@ internally.)
 
 =end original
 
-ì´í•­ì—°ì‚°ìžì˜ "**"ëŠ” ì§€ìˆ˜ì—°ì‚°ìžìž…ë‹ˆë‹¤.
-ì´ ì—°ì‚°ìžëŠ” ë‹¨í•­ì˜ ë¹¼ê¸°ì—ì„œ ê²°í•©ì´ ê°•í•œ ì—°ì‚°ìžë¡œ
--2**4 ëŠ” (-2)**4 ì´ ì•„ë‹ˆë¼ -(2**4) ë¡œ í•´ì„ë©ë‹ˆë‹¤.
-(ì´ê²ƒì€ C ì˜ pow(3) ì„ ì‚¬ìš©í•´ êµ¬ì¶•ë˜ì–´ ìžˆì–´ì„œ ë‚´ë¶€ì ìœ¼ë¡œ double ë¡œ ë™ìž‘í•©ë‹ˆë‹¤. 
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÇ "**"“´Â “Áö“¼ö“¿¬“»ê“ÀÚ“ÀÔ“´Ï“´Ù.
+“ÀÌ “¿¬“»ê“ÀÚ“´Â “´Ü“Ç×“ÀÇ “»©“±â“¿¡“¼­ “°á“ÇÕ“ÀÌ “°­“ÇÑ “¿¬“»ê“ÀÚ“·Î
+-2**4 “´Â (-2)**4 “ÀÌ “¾Æ“´Ï“¶ó -(2**4) “·Î “ÇØ“¼®“µË“´Ï“´Ù.
+(“ÀÌ“°Í“Àº C “ÀÇ pow(3) “À» “»ç“¿ë“ÇØ “±¸“Ãà“µÇ“¾î “ÀÖ“¾î“¼­ “³»“ºÎ“Àû“À¸“·Î double “·Î “µ¿“ÀÛ“ÇÕ“´Ï“´Ù. 
 
 =head2 Symbolic Unary Operators
 X<unary operator> X<operator, unary>
 
-(ë‹¨í•­ì—°ì‚°ìž)
+(“´Ü“Ç×“¿¬“»ê“ÀÚ)
 
 =begin original
 
@@ -466,8 +477,8 @@ X<!>
 
 =end original
 
-ë‹¨í•­ì—°ì‚°ìžì˜ "!"ëŠ” ë…¼ë¦¬ë¶€ì •ì„ ì²˜ë¦¬í•©ë‹ˆë‹¤. ì¦‰, "not"ìž…ë‹ˆë‹¤.
-ì´ ì—°ì‚°ìžì˜ ìš°ì„ ìˆœìœ„ë¥¼ ìž‘ê²Œí•˜ë ¤ë©´ C<not>ê°€ ì‚¬ìš©í•˜ë©´ ë©ë‹ˆë‹¤.
+“´Ü“Ç×“¿¬“»ê“ÀÚ“ÀÇ "!"“´Â “³í“¸®“ºÎ“Á¤“À» “Ã³“¸®“ÇÕ“´Ï“´Ù. “Áï, "not"“ÀÔ“´Ï“´Ù.
+“ÀÌ “¿¬“»ê“ÀÚ“ÀÇ “¿ì“¼±“¼ø“À§“¸¦ “ÀÛ“°Ô“ÇÏ“·Á“¸é C<not>“°¡ “»ç“¿ë“ÇÏ“¸é “µË“´Ï“´Ù.
 X<!>
 
 =begin original
@@ -486,16 +497,16 @@ X<-> X<negation, arithmetic>
 
 =end original
 
-ë‹¨í•­ì—°ì‚°ìžì˜ "-"ëŠ” í”¼ì—°ì‚°ìžê°€ ìˆ«ìžê°’ì´ë©´ ì‚°ìˆ ë¶€ì •í•©ë‹ˆë‹¤..
-í”¼ì—°ì‚°ìžê°€  ì‹ë³„ìžë¼ë©´, ë¹¼ê¸° ê¸°í˜¸(-)ì— ê·¸ ì‹ë³„ìžë¥¼ ì´ì–´ ë¬¸ìžì—´ì´ ë°˜í™˜ë©ë‹ˆë‹¤.
-ì´ì™¸ì— í”¼ì—°ì‚°ìžì˜ ìµœì´ˆì˜ ë¬¸ìžê°€ ë”í•˜ê¸° í˜¹ì€ ë¹¼ê¸° ì¼ë•Œì—ëŠ”
-ê·¸ ê¸°í˜¸ë¥¼ ê±°ê¾¸ë¡œ ë°”ê¾¼ ë¬¸ìžì—´ì„ ë°˜í™˜í•©ë‹ˆë‹¤.
-ì´ ê·œì¹™ì˜ ê²°ê³¼ -bareword ê°€ ë¬¸ìžì—´ "-bareword"ì™€ ê°™ì€ ê°’ì´ ë©ë‹ˆë‹¤.
-í•˜ì§€ë§Œ, ë¬¸ìžì—´ì´ ì˜ì–´ì´ì™¸("+"ì™€ "-"ë¥¼ ì œì™¸í•˜ê³ )ì˜ ë¬¸ìžë¡œ ì‹œìž‘ë˜ë©´
-Perl ì€ ë¬¸ìžì—´ì„ ìˆ˜ì¹˜ë¡œ ë³€í™˜í•˜ë ¤ê³  í•˜ê³ , ê·¸ëž˜ì„œ ì‚°ìˆ ë¶€ì •ì´ ìƒí–‰ë©ë‹ˆë‹¤.
-ë§Œì•½ ë¬¸ìžì—´ì´ ëª…í™•í•˜ê²Œ ìˆ«ìžê°’ìœ¼ë¡œ ë³€í™˜ë˜ì§€ì•Šì„ ë•ŒëŠ”, Perlì€
-B<Argument "the string" isn't numeric in negation (-) at ...> ë¼ëŠ”
-ê²½ê³ ë¥¼ ëƒ…ë‹ˆë‹¤.
+“´Ü“Ç×“¿¬“»ê“ÀÚ“ÀÇ "-"“´Â “ÇÇ“¿¬“»ê“ÀÚ“°¡ “¼ý“ÀÚ“°ª“ÀÌ“¸é “»ê“¼ú“ºÎ“Á¤“ÇÕ“´Ï“´Ù..
+“ÇÇ“¿¬“»ê“ÀÚ“°¡  “½Ä“º°“ÀÚ“¶ó“¸é, “»©“±â “±â“È£(-)“¿¡ “±× “½Ä“º°“ÀÚ“¸¦ “ÀÌ“¾î “¹®“ÀÚ“¿­“ÀÌ “¹Ý“È¯“µË“´Ï“´Ù.
+“ÀÌ“¿Ü“¿¡ “ÇÇ“¿¬“»ê“ÀÚ“ÀÇ “ÃÖ“ÃÊ“ÀÇ “¹®“ÀÚ“°¡ “´õ“ÇÏ“±â “È¤“Àº “»©“±â “ÀÏ“¶§“¿¡“´Â
+“±× “±â“È£“¸¦ “°Å“²Ù“·Î “¹Ù“²Û “¹®“ÀÚ“¿­“À» “¹Ý“È¯“ÇÕ“´Ï“´Ù.
+“ÀÌ “±Ô“Ä¢“ÀÇ “°á“°ú -bareword “°¡ “¹®“ÀÚ“¿­ "-bareword"“¿Í “°°“Àº “°ª“ÀÌ “µË“´Ï“´Ù.
+“ÇÏ“Áö“¸¸, “¹®“ÀÚ“¿­“ÀÌ “¿µ“¾î“ÀÌ“¿Ü("+"“¿Í "-"“¸¦ “Á¦“¿Ü“ÇÏ“°í)“ÀÇ “¹®“ÀÚ“·Î “½Ã“ÀÛ“µÇ“¸é
+Perl “Àº “¹®“ÀÚ“¿­“À» “¼ö“Ä¡“·Î “º¯“È¯“ÇÏ“·Á“°í “ÇÏ“°í, “±×“·¡“¼­ “»ê“¼ú“ºÎ“Á¤“ÀÌ “»ø“Çà“µË“´Ï“´Ù.
+“¸¸“¾à “¹®“ÀÚ“¿­“ÀÌ “¸í“È®“ÇÏ“°Ô “¼ý“ÀÚ“°ª“À¸“·Î “º¯“È¯“µÇ“Áö“¾Ê“À» “¶§“´Â, Perl“Àº
+B<Argument "the string" isn't numeric in negation (-) at ...> “¶ó“´Â
+“°æ“°í“¸¦ “³À“´Ï“´Ù.
 X<-> X<negation, arithmetic>
 
 =begin original
@@ -510,14 +521,14 @@ X<~> X<negation, binary>
 
 =end original
 
-ë‹¨í•­ì—°ì‚°ìžì˜ "~"ëŠ” ë¹„íŠ¸ë‹¨ìœ„ì˜ ë¶€ì •ì„ ìˆ˜í–‰í•©ë‹ˆë‹¤. ì¦‰, 1ì˜ ë³´ìˆ˜ë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
-ì˜ˆë¥¼ë“¤ë©´, C<0666 & ~027> ëŠ” 0640 ìž…ë‹ˆë‹¤.
-(L<Integer Arithmetic> ê³¼ L<Bitwise String Operators> ë¥¼ ì°¸ì¡°í•´ì£¼ì„¸ìš”)
-ê²°ê³¼ì˜ ë„ˆë¹„ì€ í”Œëž«í¼ì— ì˜ì¡´í•˜ê³  ìžˆìœ¼ë‹ˆ ì£¼ì˜í•´ì£¼ì„¸ìš”.
-~0 ëŠ” 32-bit í”Œëž«í¼ì—ì„œ 32ë¹„íŠ¸ì˜ ë„ˆë¹„ì´ì§€ë§Œ,
-64-bit í”Œëž«í¼ì—ì„œëŠ” 64ë¹„íŠ¸ì˜ ë„ˆë¹„ì´ë‹ˆ
-íŠ¹ì •ì˜ ë¹„íŠ¸ ë„ˆë¹„ë¥¼ ê°€ì •í•˜ëŠ” ê²½ìš°ëŠ”, ë‚¨ì€ ë¹„íŠ¸ë¥¼ ë§ˆìŠ¤í¬í•˜ê¸°ìœ„í•´ & ì—°ì‚°ìžë¥¼
-ì‚¬ìš©í•˜ëŠ” ê²ƒì„ ìžŠì§€ ì•Šë„ë¡ ì£¼ì˜ í•˜ì„¸ìš”.
+“´Ü“Ç×“¿¬“»ê“ÀÚ“ÀÇ "~"“´Â “ºñ“Æ®“´Ü“À§“ÀÇ “ºÎ“Á¤“À» “¼ö“Çà“ÇÕ“´Ï“´Ù. “Áï, 1“ÀÇ “º¸“¼ö“¸¦ “¹Ý“È¯“ÇÕ“´Ï“´Ù.
+“¿¹“¸¦“µé“¸é, C<0666 & ~027> “´Â 0640 “ÀÔ“´Ï“´Ù.
+(L<Integer Arithmetic> “°ú L<Bitwise String Operators> “¸¦ “Âü“Á¶“ÇØ“ÁÖ“¼¼“¿ä)
+“°á“°ú“ÀÇ “³Ê“ºñ“Àº “ÇÃ“·§“Æû“¿¡ “ÀÇ“Á¸“ÇÏ“°í “ÀÖ“À¸“´Ï “ÁÖ“ÀÇ“ÇØ“ÁÖ“¼¼“¿ä.
+~0 “´Â 32-bit “ÇÃ“·§“Æû“¿¡“¼­ 32“ºñ“Æ®“ÀÇ “³Ê“ºñ“ÀÌ“Áö“¸¸,
+64-bit “ÇÃ“·§“Æû“¿¡“¼­“´Â 64“ºñ“Æ®“ÀÇ “³Ê“ºñ“ÀÌ“´Ï
+“Æ¯“Á¤“ÀÇ “ºñ“Æ® “³Ê“ºñ“¸¦ “°¡“Á¤“ÇÏ“´Â “°æ“¿ì“´Â, “³²“Àº “ºñ“Æ®“¸¦ “¸¶“½º“Å©“ÇÏ“±â“À§“ÇØ & “¿¬“»ê“ÀÚ“¸¦
+“»ç“¿ë“ÇÏ“´Â “°Í“À» “ÀØ“Áö “¾Ê“µµ“·Ï “ÁÖ“ÀÇ “ÇÏ“¼¼“¿ä.
 
 X<~> X<negation, binary>
 
@@ -531,10 +542,11 @@ X<+>
 
 =end original
 
-ë‹¨í•­ì—°ì‚°ìžì¸ "+"ëŠ” ì˜ˆë¥¼ ë“¤ì–´ ë¬¸ìžì—´ì— ëŒ€í•´ ì‚¬ìš©í•  ê²½ìš°ì—ëŠ” ì•„ë¬´ê²ƒë„ í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
-í•¨ìˆ˜ ì´ë¦„ì— ì´ì–´ ê´„í˜¸ê°€ ë¶™ì€ ì‹ì„ ì“°ëŠ” ê²½ìš°ì—ëŠ”, í•¨ìˆ˜ì˜ ì¸ìˆ˜ë¦¬ìŠ¤íŠ¸ë¡œ 
-í•´ì„ë˜ì§€ ì•Šê¸° ìœ„í•´ì„œ ì‚¬ìš©í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
-(ì•„ëž˜ì— ì“´ L<Terms and List Operators (Leftward)> ì˜ ì˜ˆë¥¼ ì°¸ì¡°í•´ì£¼ì„¸ìš”)
+“´Ü“Ç×“¿¬“»ê“ÀÚ“ÀÎ "+"“´Â “¿¹“¸¦ “µé“¾î “¹®“ÀÚ“¿­“¿¡ “´ë“ÇØ “»ç“¿ë“ÇÒ “°æ“¿ì“¿¡“´Â 
+“¾Æ“¹«“°Í“µµ “ÇÏ“Áö “¾Ê“½À“´Ï“´Ù.
+“ÇÔ“¼ö “ÀÌ“¸§“¿¡ “ÀÌ“¾î “°ý“È£“°¡ “ºÙ“Àº “½Ä“À» “¾²“´Â “°æ“¿ì“¿¡“´Â, “ÇÔ“¼ö“ÀÇ “ÀÎ“¼ö“¸®“½º“Æ®“·Î 
+“ÇØ“¼®“µÇ“Áö “¾Ê“±â “À§“ÇØ“¼­ “»ç“¿ë“ÇÒ “¼ö “ÀÖ“½À“´Ï“´Ù.
+(“¾Æ“·¡“¿¡ “¾´ L<Terms and List Operators (Leftward)> “ÀÇ “¿¹“¸¦ “Âü“Á¶“ÇØ“ÁÖ“¼¼“¿ä)
 X<+>
 
 =begin original
@@ -547,16 +559,16 @@ X<\> X<reference> X<backslash>
 
 =end original
 
-ë‹¨í•­ì—°ì‚°ìžì¸ "\" ëŠ” ë’¤ì— ë¶™ì€ ê²ƒì— ëŒ€í•œ ë¦¬í¼ëŸ°ìŠ¤ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
-L<perlreftut> ê³¼ L<perlref> ë¥¼ ì°¸ì¡°í•´ì£¼ì„¸ìš”.
-ì´ ì‚¬ìš©ë²•ë„ ë¬¸ìžì—´ ì•ˆì— ë°±ìŠ¬ëž˜ì‰¬ë„ ë’¤ì— ì˜¤ëŠ” ê²ƒ ì „ê°œë˜ëŠ” ê²ƒì„ 
-ë§‰ëŠ” ê²ƒì´ ê°€ëŠ¥í•˜ì§€ë§Œ ë™ìž‘ì„ í˜¼ë™í•˜ì§€ ë§ì•„ì£¼ì„¸ìš”.
+“´Ü“Ç×“¿¬“»ê“ÀÚ“ÀÎ "\" “´Â “µÚ“¿¡ “ºÙ“Àº “°Í“¿¡ “´ë“ÇÑ “¸®“ÆÛ“·±“½º“¸¦ “»ý“¼º“ÇÕ“´Ï“´Ù.
+L<perlreftut> “°ú L<perlref> “¸¦ “Âü“Á¶“ÇØ“ÁÖ“¼¼“¿ä.
+“ÀÌ “»ç“¿ë“¹ý“µµ “¹®“ÀÚ“¿­ “¾È“¿¡ “¹é“½½“·¡“½¬“µµ “µÚ“¿¡ “¿À“´Â “°Í “Àü“°³“µÇ“´Â “°Í“À» 
+“¸·“´Â “°Í“ÀÌ “°¡“´É“ÇÏ“Áö“¸¸ “µ¿“ÀÛ“À» “È¥“µ¿“ÇÏ“Áö “¸»“¾Æ“ÁÖ“¼¼“¿ä.
 X<\> X<reference> X<backslash>
 
 =head2 Binding Operators
 X<binding> X<operator, binding> X<=~> X<!~>
 
-(æ‹˜æŸæ¼”ç®—å­)
+(“Ï¬“áÖ“æÑ“ß©“í­)
 
 =begin original
 
@@ -572,15 +584,16 @@ L<perlretut> for examples using these operators.
 
 =end original
 
-ì´í•­ì—°ì‚°ìžì¸ "=~" ëŠ”, ìŠ¤ì¹¼ë¼ì‹ì„ íŒ¨í„´ë§¤ì¹˜ë¡œ ë¬¶ìŠµë‹ˆë‹¤.
-ê¸°ë³¸ì ìœ¼ë¡œ $_ ì˜ ë¬¸ìžì—´ì„ ê²€ìƒ‰í•˜ê±°ë‚˜ ë³€ê²½í•˜ê±°ë‚˜ í•˜ëŠ” ì—°ì‚°ì´ ìžˆìŠµë‹ˆë‹¤.
-ì´ ì—°ì‚°ìžëŠ” ê·¸ê°™ì€ ì—°ì‚°ì„ ë‹¤ë¥¸ ë¬¸ìžì—´ì— ëŒ€í•´ ìˆ˜í–‰ì‹œí‚¤ëŠ” ê²ƒìž…ë‹ˆë‹¤.
-ì˜¤ë¥¸ìª½ ì¸ìˆ˜ëŠ” ê²€ìƒ‰ íŒ¨í„´, ì¹˜í™˜, ë¬¸ìžë³€í™˜ ì¤‘ ì–´ëŠ ê²ƒìž…ë‹ˆë‹¤.
-ì™¼ìª½ ì¸ìˆ˜ëŠ” ê¸°ë³¸ì ì¸ $_ ëŒ€ì‹ ì— ê²€ìƒ‰, ì¹˜í™˜, ë¬¸ìžë³€í™˜ì˜ ëŒ€ìƒì´ ë©ë‹ˆë‹¤.
-ìŠ¤ì¹¼ë¼ì½˜í…ìŠ¤íŠ¸ì—ì„œ ì‚¬ìš©í•˜ë©´ ë°˜í™˜ê°’ì€ ì¼ë°˜ì ìœ¼ë¡œ ì—°ì‚°ì˜ ê²°ê³¼ê°€ ì„±ê³µí–ˆëŠ”ê°€ ì‹¤íŒ¨í–ˆëŠ” ê°€ ìž…ë‹ˆë‹¤.
-ë¦¬ìŠ¤íŠ¸ì½˜í…ìŠ¤íŠ¸ì—ì„œì˜ í–‰ë™ì€ ì—°ì‚°ìžì— ì˜ì¡´í•©ë‹ˆë‹¤.
-ìžì„¸í•œ ë‚´ìš©ì€ L</"Regexp Quote-Like Operators"> ë¥¼, 
-ì´ ì—°ì‚°ìžë“¤ì„ ì‚¬ìš©í•œ ì˜ˆì œì— ëŒ€í•´ì„œëŠ” L<perlretut> ë¥¼ ì°¸ì¡°í•˜ì„¸ìš”ã€‚
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ "=~" “´Â, “½º“Ä®“¶ó“½Ä“À» “ÆÐ“ÅÏ“¸Å“Ä¡“·Î “¹­“½À“´Ï“´Ù.
+“±â“º»“Àû“À¸“·Î $_ “ÀÇ “¹®“ÀÚ“¿­“À» “°Ë“»ö“ÇÏ“°Å“³ª “º¯“°æ“ÇÏ“°Å“³ª “ÇÏ“´Â “¿¬“»ê“ÀÌ “ÀÖ“½À“´Ï“´Ù.
+“ÀÌ “¿¬“»ê“ÀÚ“´Â “±×“°°“Àº “¿¬“»ê“À» “´Ù“¸¥ “¹®“ÀÚ“¿­“¿¡ “´ë“ÇØ “¼ö“Çà“½Ã“Å°“´Â “°Í“ÀÔ“´Ï“´Ù.
+“¿À“¸¥“ÂÊ “ÀÎ“¼ö“´Â “°Ë“»ö “ÆÐ“ÅÏ, “Ä¡“È¯, “¹®“ÀÚ“º¯“È¯ “Áß “¾î“´À “°Í“ÀÔ“´Ï“´Ù.
+“¿Þ“ÂÊ “ÀÎ“¼ö“´Â “±â“º»“Àû“ÀÎ $_ “´ë“½Å“¿¡ “°Ë“»ö, “Ä¡“È¯, “¹®“ÀÚ“º¯“È¯“ÀÇ “´ë“»ó“ÀÌ “µË“´Ï“´Ù.
+“½º“Ä®“¶ó“ÄÜ“ÅØ“½º“Æ®“¿¡“¼­ “»ç“¿ë“ÇÏ“¸é “¹Ý“È¯“°ª“Àº 
+“ÀÏ“¹Ý“Àû“À¸“·Î “¿¬“»ê“ÀÇ “°á“°ú“°¡ “¼º“°ø“Çß“´Â“°¡ “½Ç“ÆÐ“Çß“´Â “°¡ “ÀÔ“´Ï“´Ù.
+“¸®“½º“Æ®“ÄÜ“ÅØ“½º“Æ®“¿¡“¼­“ÀÇ “Çà“µ¿“Àº “¿¬“»ê“ÀÚ“¿¡ “ÀÇ“Á¸“ÇÕ“´Ï“´Ù.
+“ÀÚ“¼¼“ÇÑ “³»“¿ë“Àº L</"Regexp Quote-Like Operators"> “¸¦, 
+“ÀÌ “¿¬“»ê“ÀÚ“µé“À» “»ç“¿ë“ÇÑ “¿¹“Á¦“¿¡ “´ë“ÇØ“¼­“´Â L<perlretut> “¸¦ “Âü“Á¶“ÇÏ“¼¼“¿ä“¡£
 
 =begin original
 
@@ -590,10 +603,10 @@ time. Note that this means that its contents will be interpolated twice, so
 
 =end original
 
-ì˜¤ë¥¸ìª½ì¸ìˆ˜ê°€ ê²€ìƒ‰ íŒ¨í„´, ì¹˜í™˜, ë¬¸ìžë³€í™˜ì´ ì•„ë‹Œ ì‹ì´ë¼ë©´ 
-ê·¸ê²ƒì€ ì‹¤í–‰í•  ë•Œì— ê²°ì •ë˜ëŠ” ê²€ìƒ‰íŒ¨í„´ìœ¼ë¡œ í•´ì„ë©ë‹ˆë‹¤.
-ì´ê²ƒì€ ë‚´ìš©ì´ 2ë²ˆ ì „ê°œë˜ëŠ” ê²ƒì„ ì˜ë¯¸í•˜ëŠ” ê²ƒìž„ìœ¼ë¡œ ì£¼ì˜í•´ì£¼ì„¸
-ì¦‰:
+“¿À“¸¥“ÂÊ“ÀÎ“¼ö“°¡ “°Ë“»ö “ÆÐ“ÅÏ, “Ä¡“È¯, “¹®“ÀÚ“º¯“È¯“ÀÌ “¾Æ“´Ñ “½Ä“ÀÌ“¶ó“¸é 
+“±×“°Í“Àº “½Ç“Çà“ÇÒ “¶§“¿¡ “°á“Á¤“µÇ“´Â “°Ë“»ö“ÆÐ“ÅÏ“À¸“·Î “ÇØ“¼®“µË“´Ï“´Ù.
+“ÀÌ“°Í“Àº “³»“¿ë“ÀÌ 2“¹ø “Àü“°³“µÇ“´Â “°Í“À» “ÀÇ“¹Ì“ÇÏ“´Â “°Í“ÀÓ“À¸“·Î “ÁÖ“ÀÇ“ÇØ“ÁÖ“¼¼
+“Áï:
 
   '\\' =~ q'\\';
 
@@ -604,8 +617,8 @@ pattern C<\>, which it will consider a syntax error.
 
 =end original
 
-ì€ ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. ì •ê·œí‘œí˜„ì—”ì§„ì€ ìµœì¢…ì ìœ¼ë¡œ íŒ¨í„´ C<\>ë¥¼
-ì»´íŒŒì¼í•˜ë ¤ê³ í•´ì„œ, ì´ê²ƒì€ ë¬¸ë²•ì—ëŸ¬ë¡œ ìƒê°í•˜ê¸° ë•Œë¬¸ìž…ë‹ˆë‹¤.
+“Àº “¹Ù“¸£“Áö “¾Ê“½À“´Ï“´Ù. “Á¤“±Ô“Ç¥“Çö“¿£“Áø“Àº “ÃÖ“Á¾“Àû“À¸“·Î “ÆÐ“ÅÏ C<\>“¸¦
+“ÄÄ“ÆÄ“ÀÏ“ÇÏ“·Á“°í“ÇØ“¼­, “ÀÌ“°Í“Àº “¹®“¹ý“¿¡“·¯“·Î “»ý“°¢“ÇÏ“±â “¶§“¹®“ÀÔ“´Ï“´Ù.
 
 =begin original
 
@@ -614,12 +627,12 @@ the logical sense.
 
 =end original
 
-ì´í•­ì—°ì‚°ìžì¸ "!~"ëŠ” ë°˜í™˜ê°’ì´ ë…¼ë¦¬ë¶€ì •ë˜ëŠ” ê²ƒì„ ì œì™¸í•˜ê³ ëŠ” "=~"ì™€ ê°™ìŠµë‹ˆë‹¤.
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ "!~"“´Â “¹Ý“È¯“°ª“ÀÌ “³í“¸®“ºÎ“Á¤“µÇ“´Â “°Í“À» “Á¦“¿Ü“ÇÏ“°í“´Â "=~"“¿Í “°°“½À“´Ï“´Ù.
 
 =head2 Multiplicative Operators
 X<operator, multiplicative>
 
-(ä¹—æ³•æ¼”ç®—å­)
+(’¾è“Ûö“æÑ“ß©“í­)
 
 =begin original
 
@@ -628,8 +641,7 @@ X<*>
 
 =end original
 
-ì´í•­ì—°ì‚°ìžì¸ "*" ëŠ” 2ê°œì˜ ìˆ«ìžê°’ì˜ ê³±ì„ ë°˜í™˜í•©ë‹ˆë‹¤.
-äºŒé …æ¼”ç®—å­ã® "*" ã¯ 2 ã¤ã®æ•°å€¤ã®ç©ã‚’è¿”ã—ã¾ã™ã€‚
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ "*" “´Â 2“°³“ÀÇ “¼ý“ÀÚ“°ª“ÀÇ “°ö“À» “¹Ý“È¯“ÇÕ“´Ï“´Ù.
 X<*>
 
 =begin original
@@ -639,7 +651,7 @@ X</> X<slash>
 
 =end original
 
-ì´í•­ì—°ì‚°ìžì¸ "/" ëŠ” 2ê°œì˜ ìˆ«ìžê°’ì˜ ë‚˜ëˆˆ ê°’ì„ ë°˜í™˜í•©ë‹ˆë‹¤.
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ "/" “´Â 2“°³“ÀÇ “¼ý“ÀÚ“°ª“ÀÇ “³ª“´« “°ª“À» “¹Ý“È¯“ÇÕ“´Ï“´Ù.
 
 X</> X<slash>
 
@@ -669,12 +681,12 @@ X<%> X<remainder> X<modulus> X<mod>
 
 =end original
 
-ì´í•­ì—°ì‚°ìžì¸ "%" ëŠ” 2ê°œì˜ ìˆ«ìžê°’ì˜ ë‚˜ë¨¸ì§€ë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
-C<$a> ì™€ C<$b> ì˜ 2ê°œì˜ ì •ìˆ˜ì˜ í”¼ì—°ì‚°ìžë¥¼ ì·¨í•©ë‹ˆë‹¤.
-C<$b> ê°€ ë†’ì€ ê²½ìš° C<$a % $b> ëŠ” C<$a> ì—ì„œ C<$a> ë¥¼ ë„˜ì§€ì•ŠëŠ”
-ìµœëŒ€ì˜ C<$b> ì˜ ë°°ìˆ˜ë¥¼ ëŒì–´ì˜¨ ê°’(?)ìž…ë‹ˆë‹¤. 
-C<$b> ê°€ ë‚®ì€ ê²½ìš° C<$a % $b> ëŠ” C<$a> ì—ì„œ C<$a> ë³´ë‹¤ ë‚®ì§€ ì•Šì€ 
-ìµœì†Œì˜ C<$b> ë°°ìˆ˜ë¥¼ ëŒì–´ì˜¨ ê°’ìž…ë‹ˆë‹¤.(ë”°ë¼ì„œ ê²°ê³¼ëŠ” 0 ì´í•˜)
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ "%" “´Â 2“°³“ÀÇ “¼ý“ÀÚ“°ª“ÀÇ “³ª“¸Ó“Áö“¸¦ “¹Ý“È¯“ÇÕ“´Ï“´Ù.
+C<$a> “¿Í C<$b> “ÀÇ 2“°³“ÀÇ “Á¤“¼ö“ÀÇ “ÇÇ“¿¬“»ê“ÀÚ“¸¦ “Ãë“ÇÕ“´Ï“´Ù.
+C<$b> “°¡ “³ô“Àº “°æ“¿ì C<$a % $b> “´Â C<$a> “¿¡“¼­ C<$a> “¸¦ “³Ñ“Áö“¾Ê“´Â
+“ÃÖ“´ë“ÀÇ C<$b> “ÀÇ “¹è“¼ö“¸¦ “²ø“¾î“¿Â “°ª(?)“ÀÔ“´Ï“´Ù. 
+C<$b> “°¡ “³·“Àº “°æ“¿ì C<$a % $b> “´Â C<$a> “¿¡“¼­ C<$a> “º¸“´Ù “³·“Áö “¾Ê“Àº 
+“ÃÖ“¼Ò“ÀÇ C<$b> “¹è“¼ö“¸¦ “²ø“¾î“¿Â “°ª“ÀÔ“´Ï“´Ù.(“µû“¶ó“¼­ “°á“°ú“´Â 0 “ÀÌ“ÇÏ)
 If the operands
 C<$a> and C<$b> are floating point values and the absolute value of
 C<$b> (that is C<abs($b)>) is less than C<(UV_MAX + 1)>, only
@@ -687,9 +699,9 @@ integer that makes C<$r> should have the same sign as the right operand
 C<$b> (B<not> as the left operand C<$a> like C function C<fmod()>)
 and the absolute value less than that of C<$b>.
 
-C<use integer> ê°€ ìŠ¤ì½”í”„ ì•ˆì— ìžˆëŠ” ê²½ìš°,
-"%" ëŠ” C ì»´íŒŒì¼ëŸ¬ë¡œ êµ¬ì¶•ëœ ë‚˜ë¨¸ì§€ì—°ì‚°ìžë¥¼ ì‚¬ìš©í•©ë‹ˆë‹¤. 
-ì´ ì—°ì‚°ìžëŠ” í”¼ì—°ì‚°ìžê°€ ë‚®ì€ ê²½ìš°ì˜ ì›€ì§ìž„ì´ ë¶ˆí™•ì‹¤í•˜ì§€ë§Œ ë³´ë‹¤ ë¹ ë¥´ê²Œ ì‹¤í–‰ë©ë‹ˆë‹¤.
+C<use integer> “°¡ “½º“ÄÚ“ÇÁ “¾È“¿¡ “ÀÖ“´Â “°æ“¿ì,
+"%" “´Â C “ÄÄ“ÆÄ“ÀÏ“·¯“·Î “±¸“Ãà“µÈ “³ª“¸Ó“Áö“¿¬“»ê“ÀÚ“¸¦ “»ç“¿ë“ÇÕ“´Ï“´Ù. 
+“ÀÌ“°Í“Àº “ÇÇ“¿¬“»ê“ÀÚ“°¡ “³·“Àº “°æ“¿ì“ÀÇ “¿ò“Á÷“ÀÓ“ÀÌ “ºÒ“È®“½Ç“ÇÏ“Áö“¸¸ “º¸“´Ù “ºü“¸£“°Ô “½Ç“Çà“µË“´Ï“´Ù.
 X<%> X<remainder> X<modulus> X<mod>
 (TBT)
 
@@ -706,14 +718,14 @@ X<x>
 
 =end original
 
-ì´í•­ì—°ì‚°ìžì¸ "x" ëŠ” ë°˜ë³µë°˜í™˜ì—°ì‚°ìžìž…ë‹ˆë‹¤.
-ìŠ¤ì¹¼ë¼ ì»¨í…ìŠ¤íŠ¸ í˜¹ì€ ì™¼ìª½ì˜ ê°’ì´ ê´„í˜¸ë¡œ ê°ì‹¸ì§„ ê²½ìš°ì—ëŠ”
-ì™¼ìª½ í”¼ì—°ì‚°ìžë¥¼ ì˜¤ë¥¸ìª½ í”¼ì—°ì‚°ìžì— í‘œì‹œ íšŸìˆ˜ë§Œ ë°˜ë³µí•´ ì–»ì€ ê°’ìœ¼ë¡œ êµ¬ì„±ëœ
-ë¬¸ìžì—´ì„ ë¦¬í„´í•©ë‹ˆë‹¤.
-ë¦¬ìŠ¤íŠ¸ ì»¨í…ìŠ¤íŠ¸ì—ì„œëŠ” ì™¼ìª½ í”¼ì—°ì‚°ìžê°€ ê´„í˜¸ ê°ì‹¸ì§„ ê²½ìš° í˜¹ì€ , ã€€C<qw/STRING>ì˜
-í˜•íƒœì˜ ë¦¬ìŠ¤íŠ¸ì˜ ê²½ìš° ë¦¬ìŠ¤íŠ¸ë¥¼ ë°˜ë³µí•œ ê°’ì´ ë°˜í™˜ë©ë‹ˆë‹¤.
-ì˜¤ë¥¸ìª½ í”¼ì—°ì‚°ìžê°€ 0 í˜¹ì€ ë‚®ì€ ê°’ì¼ ê²½ìš°, ì½˜í…ìŠ¤íŠ¸ì— ì˜í•´ ë¹ˆ ë¬¸ìžì—´ í˜¹ì€ 
-ë¹ˆ ë¦¬ìŠ¤íŠ¸ë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ "x" “´Â “¹Ý“º¹“¹Ý“È¯“¿¬“»ê“ÀÚ“ÀÔ“´Ï“´Ù.
+“½º“Ä®“¶ó “ÄÁ“ÅØ“½º“Æ® “È¤“Àº “¿Þ“ÂÊ“ÀÇ “°ª“ÀÌ “°ý“È£“·Î “°¨“½Î“Áø “°æ“¿ì“¿¡“´Â
+“¿Þ“ÂÊ “ÇÇ“¿¬“»ê“ÀÚ“¸¦ “¿À“¸¥“ÂÊ “ÇÇ“¿¬“»ê“ÀÚ“¿¡ “Ç¥“½Ã “È½“¼ö“¸¸ “¹Ý“º¹“ÇØ “¾ò“Àº “°ª“À¸“·Î “±¸“¼º“µÈ
+“¹®“ÀÚ“¿­“À» “¸®“ÅÏ“ÇÕ“´Ï“´Ù.
+“¸®“½º“Æ® “ÄÁ“ÅÙ“½º“Æ®“¿¡“¼­“´Â “¿Þ“ÂÊ “ÇÇ“¿¬“»ê“ÀÚ“°¡ “°ý“È£ “°¨“½Î“Áø “°æ“¿ì “È¤“Àº , “¡¡C<qw/STRING>“ÀÇ
+“Çü“ÅÂ“ÀÇ “¸®“½º“Æ®“ÀÇ “°æ“¿ì “¸®“½º“Æ®“¸¦ “¹Ý“º¹“ÇÑ “°ª“ÀÌ “¹Ý“È¯“µË“´Ï“´Ù.
+“¿À“¸¥“ÂÊ “ÇÇ“¿¬“»ê“ÀÚ“°¡ 0 “È¤“Àº “³·“Àº “°ª“ÀÏ “°æ“¿ì, “ÄÜ“ÅØ“½º“Æ®“¿¡ “ÀÇ“ÇØ “ºó “¹®“ÀÚ“¿­ “È¤“Àº 
+“ºó “¸®“½º“Æ®“¸¦ “¹Ý“È¯“ÇÕ“´Ï“´Ù.
 
 X<x>
 
@@ -728,7 +740,7 @@ X<x>
 =head2 Additive Operators
 X<operator, additive>
 
-(ë§ì…ˆì—°ì‚°ìž)
+(“µ¡“¼À“¿¬“»ê“ÀÚ)
 
 =begin original
 
@@ -737,7 +749,7 @@ X<+>
 
 =end original
 
-ì´í•­ì—°ì‚°ìžì˜ "+" ëŠ” ë‘ ìˆ«ìžê°’ì˜ í•©ì„ ë°˜í™˜í•©ë‹ˆë‹¤.
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÇ "+" “´Â “µÎ “¼ý“ÀÚ“°ª“ÀÇ “ÇÕ“À» “¹Ý“È¯“ÇÕ“´Ï“´Ù.
 X<+>
 
 =begin original
@@ -747,7 +759,7 @@ X<->
 
 =end original
 
-ì´í•­ì—°ì‚°ìžì˜ "-"ëŠ” ë‘ ìˆ«ìžê°’ì˜ ëº€ ê°’ì„ ë°˜í™˜í•©ë‹ˆë‹¤.
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÇ "-"“´Â “µÎ “¼ý“ÀÚ“°ª“ÀÇ “»« “°ª“À» “¹Ý“È¯“ÇÕ“´Ï“´Ù.
 X<->
 
 =begin original
@@ -758,7 +770,7 @@ X<cat> X<concat> X<concatenate> X<.>
 
 =end original
 
-ì´í•­ì—°ì‚°ìžì¸ "." ëŠ” ë‘ ë¬¸ìžì—´ì„ ì—°ê²°í•©ë‹ˆë‹¤.
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ "." “´Â “µÎ “¹®“ÀÚ“¿­“À» “¿¬“°á“ÇÕ“´Ï“´Ù.
 X<string, concatenation> X<concatenation>
 X<cat> X<concat> X<concatenate> X<.>
 
@@ -767,7 +779,7 @@ X<shift operator> X<operator, shift> X<<< << >>>
 X<<< >> >>> X<right shift> X<left shift> X<bitwise shift>
 X<shl> X<shr> X<shift, right> X<shift, left>
 
-(ì‹œí”„íŠ¸ ì—°ì‚°ìž)
+(“½Ã“ÇÁ“Æ® “¿¬“»ê“ÀÚ)
 
 =begin original
 
@@ -777,10 +789,10 @@ integers.  (See also L<Integer Arithmetic>.)
 
 =end original
 
-ì´í•­ì—°ì‚°ìžì¸ "<<" ëŠ” ì™¼ìª½ ì¸ìˆ˜ì˜ ê°’ì„ ì˜¤ë¥¸ìª½ ì¸ìˆ˜ê°€ ë‚˜íƒ€ë‚´ëŠ” ë¹„íŠ¸ì˜ ìˆ˜ë§Œí¼
-ì™¼ìª½ìœ¼ë¡œ ì‹œí”„íŠ¸í•œ ê°’ì„ ë°˜í™˜í•©ë‹ˆë‹¤.
-ì¸ìˆ˜ëŠ” ì •ìˆ˜ê°€ ì•„ë‹ˆë©´ ì•ˆë©ë‹ˆë‹¤.
-(L<Integer Arithmetic> ã‚‚å‚ç…§ã—ã¦ä¸‹ã•ã„ã€‚)
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ "<<" “´Â “¿Þ“ÂÊ “ÀÎ“¼ö“ÀÇ “°ª“À» “¿À“¸¥“ÂÊ “ÀÎ“¼ö“°¡ “³ª“Å¸“³»“´Â “ºñ“Æ®“ÀÇ “¼ö“¸¸“Å­
+“¿Þ“ÂÊ“À¸“·Î “½Ã“ÇÁ“Æ®“ÇÑ “°ª“À» “¹Ý“È¯“ÇÕ“´Ï“´Ù.
+“ÀÎ“¼ö“´Â “Á¤“¼ö“°¡ “¾Æ“´Ï“¸é “¾È“µË“´Ï“´Ù.
+(L<Integer Arithmetic> “ªâ‘²Î“ðÎ“ª·“ªÆ“ù»“ªµ“ª¤“¡£)
 
 =begin original
 
@@ -790,10 +802,10 @@ be integers.  (See also L<Integer Arithmetic>.)
 
 =end original
 
-äºŒé …æ¼”ç®—å­ã® ">>" ã¯å·¦å¼•æ•°ã®å€¤ã‚’ã€å³å¼•æ•°ã§ç¤ºã™ãƒ“ãƒƒãƒˆæ•°ã ã‘ã€
-å³ã«ã‚·ãƒ•ãƒˆã—ãŸå€¤ã‚’è¿”ã—ã¾ã™ã€‚
-å¼•æ•°ã¯æ•´æ•°ã§ãªã‘ã‚Œã°ãªã‚Šã¾ã›ã‚“ã€‚
-(L<Integer Arithmetic> ã‚‚å‚ç…§ã—ã¦ä¸‹ã•ã„ã€‚)
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ ">>" “´Â “¿Þ“ÂÊ “ÀÎ“¼ö“ÀÇ “°ª“À» “¿À“¸¥“ÂÊ “ÀÎ“¼ö“°¡ “³ª“Å¸“³»“´Â “ºñ“Æ®“ÀÇ “¼ö“¸¸“Å­
+“¿À“¸¥“ÂÊ“À¸“·Î “½Ã“ÇÁ“Æ®“ÇÑ “°ª“À» “¹Ý“È¯“ÇÕ“´Ï“´Ù.
+“ÀÎ“¼ö“´Â “Á¤“¼ö“°¡ “¾Æ“´Ï“¸é “¾È“µË“´Ï“´Ù.
+(L<Integer Arithmetic> “À» “Âü“Á¶“ÇØ“ÁÖ“¼¼“¿ä)
 
 =begin original
 
@@ -806,12 +818,13 @@ or 64 bits).
 
 =end original
 
-Perl ã§ã® "<<" ã¨ ">>" ã¯ C ã§ã® "<<" ã¨ ">>" ã‚’ç›´æŽ¥åˆ©ç”¨ã—ã¦
-å®Ÿè£…ã•ã‚Œã¦ã„ã‚‹ã“ã¨ã«æ³¨æ„ã—ã¦ãã ã•ã„ã€‚
-C<use integer> (L<Integer Arithmetic> ã‚’å‚ç…§ã—ã¦ãã ã•ã„)ãŒæœ‰åŠ¹ãªå ´åˆã€
-C ã®ç¬¦å·ä»˜ãæ•´æ•°ãŒä½¿ã‚ã‚Œã€ãã†ã§ãªã„å ´åˆã¯ C ã®ç¬¦å·ãªã—æ•´æ•°ãŒä½¿ã‚ã‚Œã¾ã™ã€‚
-ã©ã¡ã‚‰ã®å ´åˆã‚‚ã€ã“ã®å®Ÿè£…ã¯ Perl ãŒãƒ“ãƒ«ãƒ‰ã•ã‚ŒãŸæ•´æ•°åž‹ã®ã‚µã‚¤ã‚º(32 ãƒ“ãƒƒãƒˆã‹
-64 ãƒ“ãƒƒãƒˆ)ã‚ˆã‚Šã‚‚å¤§ãã„çµæžœã‚’ç”Ÿæˆã™ã‚‹ã“ã¨ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
+Perl “¿¡“¼­ "<<" “¿Í ">>" “´Â C “¿¡“¼­“ÀÇ "<<" “¿Í ">>" “¸¦ “Á÷“Á¢ “ÀÌ“¿ë“ÇØ“¼­
+“±¸“Ãà“µÇ“¾î “ÀÖ“À½“¿¡ “ÁÖ“ÀÇ“ÇØ“ÁÖ“¼¼“¿ä
+C<use integer> (L<Integer Arithmetic> “¸¦ “Âü“Á¶)“°¡ “À¯“È¿“ÀÎ“°æ“¿ì“¿¡“´Â 
+C “ÀÇ “ºÎ“È£“°¡ “ºÙ“Àº “Á¤“¼ö“°¡ “»ç“¿ë“µÇ“°í, “±×“·¸“Áö “¾Ê“Àº “°æ“¿ì“¿¡“´Â C “ÀÇ “ºÎ“È£“¾ø“´Â “Á¤“¼ö“°¡
+“»ç“¿ë“µË“´Ï“´Ù. (unsigned int)
+“¾î“´À “°æ“¿ì“¿¡“µµ “ÀÌ “±¸“Á¶“´Â Perl “ÀÌ “ºô“µå“µÈ “Á¤“¼ö“Çü“ÀÇ “»ç“ÀÌ“Áî(32“ºñ“Æ® “È¤“Àº 64“ºñ“Æ®)
+“º¸“´Ù “Å« “°á“°ú“¸¦ “¸¸“µé“¾î“³»“´Â “°æ“¿ì“´Â “¾ø“½À“´Ï“´Ù.
 
 =begin original
 
@@ -822,14 +835,14 @@ of bits is also undefined.
 
 =end original
 
-æ•´æ•°ã®ç¯„å›²ã‚’ã‚ªãƒ¼ãƒãƒ¼ãƒ•ãƒ­ãƒ¼ã—ãŸå ´åˆã®çµæžœã¯ã€C ã§ã‚‚æœªå®šç¾©ãªã®ã§ã€æœªå®šç¾©ã§ã™ã€‚
-è¨€ã„æ›ãˆã‚‹ã¨ã€32 ãƒ“ãƒƒãƒˆæ•´æ•°ã‚’ä½¿ã£ã¦ã„ã‚‹ã¨ãã€C<< 1 << 32 >> ã¯æœªå®šç¾©ã§ã™ã€‚
-ã‚·ãƒ•ãƒˆã™ã‚‹ãƒ“ãƒƒãƒˆæ•°ã¨ã—ã¦è² ã®æ•°ã‚’æŒ‡å®šã—ãŸå ´åˆã‚‚æœªå®šç¾©ã§ã™ã€‚
+“Á¤“¼ö“ÀÇ “¹ü“À§“¸¦ “³Ñ“¾î“¼± “°æ“¿ì“ÀÇ “°á“°ú“´Â C“¿¡“¼­“µµ “¹Ì“Á¤“ÀÇ“µÇ“¾ú“±â“¿¡, Perl“µµ “¸¶“Âù“°¡“Áö“·Î
+“¹Ì“Á¤“ÀÇ“µÇ“¾î “ÀÖ“½À“´Ï“´Ù. “¹Ù“²ã “¸»“ÇÏ“¸é 32“ºñ“Æ®“Á¤“¼ö“¸¦ “»ç“¿ë“ÇÒ “¶§, C<< 1 << 32>>“´Â
+“¹Ì“Á¤“ÀÇ“ÀÔ“´Ï“´Ù. “½Ã“ÇÁ“Æ® “ÇÏ“´Â “ºñ“Æ®“¼ö“·Î “Àû“Àº “¼ö“¸¦ “Áö“Á¤“ÇÑ “°æ“¿ì“µµ “Á¤“ÀÇ“µÇ“Áö “¾Ê“½À“´Ï“´Ù.
 
 =head2 Named Unary Operators
 X<operator, named unary>
 
-(åå‰ä»˜ãå˜é …æ¼”ç®—å­)
+(“ÀÌ“¸§“ºÙ“Àº “´Ü“Ç×“¿¬“»ê“ÀÚ)
 
 =begin original
 
@@ -838,8 +851,9 @@ argument, with optional parentheses.
 
 =end original
 
-ã•ã¾ã–ã¾ãªåå‰ä»˜ãå˜é …æ¼”ç®—å­ãŒã€å¼•æ•°ã‚’ 1 ã¤æŒã¡ã€æ‹¬å¼§ãŒçœç•¥å¯èƒ½ãªã€
-é–¢æ•°ã¨ã—ã¦æ‰±ã‚ã‚Œã¾ã™ã€‚
+“¿©“·¯“°¡“Áö “ÀÌ“¸§“ÀÌ “ºÙ“Àº “´Ü“Ç×“¿¬“»ê“ÀÚ“´Â “ÇÏ“³ª“ÀÇ “ÀÎ“¼ö“¸¦ “°¡“Áö“°í “°ý“È£“°¡ “»ý“·«“°¡“´É“ÇÑ
+“ÇÔ“¼ö“·Î “Ãë“±Þ“µË“´Ï“´Ù.
+
 
 =begin original
 
@@ -851,11 +865,11 @@ because named unary operators are higher precedence than ||:
 
 =end original
 
-ãƒªã‚¹ãƒˆæ¼”ç®—å­ (print() ãªã©) ã‚„å˜é …æ¼”ç®—å­ (chdir() ãªã©) ã¯ã€
-ã™ã¹ã¦æ¬¡ã®ãƒˆãƒ¼ã‚¯ãƒ³ã¨ã—ã¦é–‹ãæ‹¬å¼§ãŒç¶šãã¨ã€ãã®æ¼”ç®—å­ã¨æ‹¬å¼§å†…ã®å¼•æ•°ã¯ã€
-é€šå¸¸ã®é–¢æ•°å‘¼ã³å‡ºã—ã®ã‚ˆã†ã«ã‚‚ã£ã¨ã‚‚é«˜ã„å„ªå…ˆé †ä½ã¨ã—ã¦æ‰±ã‚ã‚Œã¾ã™ã€‚
-ãŸã¨ãˆã°ã€åå‰ã¤ãå˜é …æ¼”ç®—å­ã¯ || ã‚ˆã‚Šå„ªå…ˆé †ä½ãŒé«˜ã„ã®ã§ã€
-ä»¥ä¸‹ã®ã‚ˆã†ã«ãªã‚Šã¾ã™:
+“¸®“½º“Æ®“¿¬“»ê“ÀÚ (print() “µî“µî) “³ª “´Ü“Ç×“¿¬“»ê“ÀÚ (chdir() “µî“µî) “Àº “¸ð“µÎ
+“´Ù“À½ “Åä“Å«“À¸“·Î “¿­“¸°“°ý“È£“°¡ “¿À“¸é, “±× “¿¬“»ê“ÀÚ“¿Í “°ý“È£“¾È“ÀÇ “ÀÎ“¼ö“´Â
+“º¸“Åë “ÇÔ“¼ö“È£“Ãâ“°ú “°°“Àº “ÃÖ“°í“ÀÇ “¿ì“¼±“¼ø“À§“·Î “Ãë“±Þ“µË“´Ï“´Ù.
+“¿¹“¸¦ “µé“¾î “ÀÌ“¸§“ºÙ“Àº “´Ü“Ç×“¿¬“»ê“ÀÚ“´Â || “º¸“´Ù “¿ì“¼±“¼ø“À§“°¡ “³ô“¾Æ“¼­,
+“¾Æ“·¡“¿Í “°°“ÀÌ “µË“´Ï“´Ù.
 
     chdir $foo    || die;	# (chdir $foo) || die
     chdir($foo)   || die;	# (chdir $foo) || die
@@ -868,7 +882,7 @@ but, because * is higher precedence than named operators:
 
 =end original
 
-ã—ã‹ã— * ã¯åå‰ã¤ãæ¼”ç®—å­ã‚ˆã‚Šå„ªå…ˆé †ä½ãŒé«˜ã„ã®ã§ã€ä»¥ä¸‹ã®ã‚ˆã†ã«ãªã‚Šã¾ã™:
+“ÇÏ“Áö“¸¸ * “´Â “ÀÌ“¸§“ºÙ“Àº “¿¬“»ê“ÀÚ“º¸“´Ù “¿ì“¼±“¼ø“À§“°¡ “³ô“À¸“¹Ç“·Î “¾Æ“·¡“¿Í “°°“ÀÌ “µË“´Ï“´Ù.
 
     chdir $foo * 20;	# chdir ($foo * 20)
     chdir($foo) * 20;	# (chdir $foo) * 20
@@ -890,10 +904,10 @@ X<-X> X<filetest> X<operator, filetest>
 
 =end original
 
-å„ªå…ˆé †ä½ã«é–¢ã—ã¦ã€C<-f> ã‚„ C<-M> ã®ã‚ˆã†ãªãƒ•ã‚¡ã‚¤ãƒ«ãƒ†ã‚¹ãƒˆæ¼”ç®—å­ã¯ã€åå‰ä»˜ã
-å˜é …æ¼”ç®—å­ã¨ã—ã¦æ‰±ã‚ã‚Œã¾ã™ãŒã€ã“ã®é–¢æ•°ã®ã‹ã£ã“ãƒ«ãƒ¼ãƒ«ã¯é©ç”¨ã•ã‚Œã¾ã›ã‚“ã€‚
-ã“ã‚Œã¯ã€ä¾‹ãˆã° C<-f($file).".bak"> ã¯ C<-f "$file.bak"> ã¨ç­‰ä¾¡ã§ã‚ã‚‹ã“ã¨ã‚’
-æ„å‘³ã—ã¾ã™ã€‚
+“¿ì“¼±“¼ø“À§“¿¡ “°ü“ÇØ“¼­ C<-f> “³ª <C-M>“°°“Àº “ÆÄ“ÀÏ “Å×“½º“Æ®“¿¬“»ê“ÀÚ“´Â “ÀÌ“¸§“ºÙ“Àº “´Ü“Ç×“¿¬“»ê“ÀÚ“·Î
+“Ãë“±Þ“µÇ“Áö“¸¸, “ÀÌ “ÇÔ“¼ö“ÀÇ “°ý“È£“·ê“Àº “Àû“¿ë“µÇ“Áö “¾Ê“½À“´Ï“´Ù. 
+“¿¹“¸¦ “µé“ÀÚ“¸é C<-f($file).".bak"> “Àº C<-f "$file.bak"> “°°“Àº “°Í“À¸“·Î “Ãë“±Þ“ÇÕ“´Ï“´Ù.
+
 X<-X> X<filetest> X<operator, filetest>
 
 =begin original
@@ -902,12 +916,12 @@ See also L<"Terms and List Operators (Leftward)">.
 
 =end original
 
-L<"Terms and List Operators (Leftward)"> ã‚‚å‚ç…§ã—ã¦ä¸‹ã•ã„ã€‚
+L<"Terms and List Operators (Leftward)"> “¸¦ “Âü“Á¶“ÇÏ“¼¼“¿ä“¡£
 
 =head2 Relational Operators
 X<relational operator> X<operator, relational>
 
-(æ¯”è¼ƒæ¼”ç®—å­)
+(“ºñ“±³“¿¬“»ê“ÀÚ)
 
 =begin original
 
@@ -917,8 +931,8 @@ X<< < >>
 
 =end original
 
-äºŒé …æ¼”ç®—å­ã® "<" ã¯å·¦å¼•æ•°ãŒæ•°å€¤çš„ã«å³å¼•æ•°ã‚ˆã‚Šã‚‚å°ã•ã‘ã‚Œã°ã€
-çœŸã‚’è¿”ã—ã¾ã™ã€‚
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ "<" “Àº “¿Þ“ÂÊ “ÀÎ“¼ö“°¡ “¼ö“Ä¡“Àû“À¸“·Î “¿À“¸¥“ÂÊ “ÀÎ“¼ö“º¸“´Ù “ÀÛ“À¸“¸é
+"“Âü" “À» “¹Ý“È¯“ÇÕ“´Ï“´Ù.
 
 =begin original
 
@@ -928,8 +942,8 @@ X<< > >>
 
 =end original
 
-äºŒé …æ¼”ç®—å­ã® ">" ã¯å·¦å¼•æ•°ãŒæ•°å€¤çš„ã«å³å¼•æ•°ã‚ˆã‚Šã‚‚å¤§ãã‘ã‚Œã°ã€
-çœŸã‚’è¿”ã—ã¾ã™ã€‚
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ "<" “´Â “¿Þ“ÂÊ “ÀÎ“¼ö“°¡ “¼ö“Ä¡“Àû“À¸“·Î “¿À“¸¥“ÂÊ “ÀÎ“¼ö“º¸“´Ù “Å©“¸é
+"“Âü" “À» “¹Ý“È¯“ÇÕ“´Ï“´Ù.
 
 =begin original
 
@@ -939,8 +953,8 @@ X<< <= >>
 
 =end original
 
-äºŒé …æ¼”ç®—å­ã® "<=" ã¯å·¦å¼•æ•°ãŒæ•°å€¤çš„ã«å³å¼•æ•°ã‚ˆã‚Šã‚‚å°ã•ã„ã‹ç­‰ã—ã‘ã‚Œã°ã€
-çœŸã‚’è¿”ã—ã¾ã™ã€‚
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ "<=" “´Â “¿Þ“ÂÊ “ÀÎ“¼ö“°¡ “¼ö“Ä¡“Àû“À¸“·Î “¿À“¸¥“ÂÊ “ÀÎ“¼ö“º¸“´Ù “ÀÛ“°Å“³ª “°°“À¸“¸é
+"“Âü" “À» “¹Ý“È¯“ÇÕ“´Ï“´Ù.
 
 =begin original
 
@@ -950,8 +964,8 @@ X<< >= >>
 
 =end original
 
-äºŒé …æ¼”ç®—å­ã® ">=" ã¯å·¦å¼•æ•°ãŒæ•°å€¤çš„ã«å³å¼•æ•°ã‚ˆã‚Šã‚‚å¤§ãã„ã‹ç­‰ã—ã‘ã‚Œã°ã€
-çœŸã‚’è¿”ã—ã¾ã™ã€‚
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ ">=" “´Â “¿Þ“ÂÊ“ÀÎ“¼ö“°¡ “¼ö“Ä¡“Àû“À¸“·Î “¿À“¸¥“ÂÊ “ÀÎ“¼ö“º¸“´Ù “Å©“°Å“³ª “°°“À¸“¸é
+"“Âü" “À» “¹Ý“È¯“ÇÕ“´Ï“´Ù.
 
 =begin original
 
@@ -961,8 +975,8 @@ X<< lt >>
 
 =end original
 
-äºŒé …æ¼”ç®—å­ã® "lt" ã¯å·¦å¼•æ•°ãŒæ–‡å­—åˆ—çš„ã«å³å¼•æ•°ã‚ˆã‚Šã‚‚å°ã•ã‘ã‚Œã°ã€
-çœŸã‚’è¿”ã—ã¾ã™ã€‚
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ "lt" “´Â “¿Þ“ÂÊ “ÀÎ“¼ö“°¡ “¹®“ÀÚ“¿­“·Î“½á “¿À“¸¥“ÂÊ “ÀÎ“¼ö“º¸“´Ù “ÀÛ“À¸“¸é 
+"“Âü"“À» “¹Ý“È¯“ÇÕ“´Ï“´Ù.
 
 =begin original
 
@@ -972,8 +986,8 @@ X<< gt >>
 
 =end original
 
-äºŒé …æ¼”ç®—å­ã® "gt" ã¯å·¦å¼•æ•°ãŒæ–‡å­—åˆ—çš„ã«å³å¼•æ•°ã‚ˆã‚Šã‚‚å¤§ãã‘ã‚Œã°ã€
-çœŸã‚’è¿”ã—ã¾ã™ã€‚
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ "gt" “´Â “¿Þ“ÂÊ “ÀÎ“¼ö“°¡ “¹®“ÀÚ“¿­“·Î“½á “¿À“¸¥“ÂÊ “ÀÎ“¼ö“º¸“´Ù “ÀÛ“À¸“¸é
+"“Âü"“À» “¹Ý“È¯“ÇÕ“´Ï“´Ù.
 
 =begin original
 
@@ -983,8 +997,8 @@ X<< le >>
 
 =end original
 
-äºŒé …æ¼”ç®—å­ã® "le" ã¯å·¦å¼•æ•°ãŒæ–‡å­—åˆ—çš„ã«å³å¼•æ•°ã‚ˆã‚Šã‚‚å°ã•ã„ã‹ç­‰ã—ã‘ã‚Œã°ã€
-çœŸã‚’è¿”ã—ã¾ã™ã€‚
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ "le" “´Â “¿Þ“ÂÊ “ÀÎ“¼ö“°¡ “¹®“ÀÚ“¿­“·Î“½á “¿À“¸¥“ÂÊ “ÀÎ“¼ö“º¸“´Ù “ÀÛ“°Å“³ª “°°“À¸“¸é
+"“Âü"“À» “¹Ý“È¯“ÇÕ“´Ï“´Ù.
 
 =begin original
 
@@ -994,13 +1008,13 @@ X<< ge >>
 
 =end original
 
-äºŒé …æ¼”ç®—å­ã® "ge" ã¯å·¦å¼•æ•°ãŒæ–‡å­—åˆ—çš„ã«å³å¼•æ•°ã‚ˆã‚Šã‚‚å¤§ãã„ã‹ç­‰ã—ã‘ã‚Œã°ã€
-çœŸã‚’è¿”ã—ã¾ã™ã€‚
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ "ge" “´Â “¿Þ“ÂÊ “ÀÎ“¼ö“°¡ “¹®“ÀÚ“¿­“·Î“½á “¿À“¸¥“ÂÊ “ÀÎ“¼ö“º¸“´Ù “Å©“°Å“³ª “°°“À¸“¸é
+"“Âü"“À» “¹Ý“È¯“ÇÕ“´Ï“´Ù.
 
 =head2 Equality Operators
 X<equality> X<equal> X<equals> X<operator, equality>
 
-(ç­‰ä¾¡æ¼”ç®—å­)
+(“µî“°¡“¿¬“»ê“ÀÚ)
 
 =begin original
 
@@ -1010,8 +1024,8 @@ X<==>
 
 =end original
 
-äºŒé …æ¼”ç®—å­ã® "==" ã¯å·¦å¼•æ•°ãŒæ•°å€¤çš„ã«å³å¼•æ•°ã¨ç­‰ã—ã‘ã‚Œã°ã€
-çœŸã‚’è¿”ã—ã¾ã™ã€‚
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ "==" “´Â “¿Þ“ÂÊ “ÀÎ“¼ö“°¡ “¼ö“Ä¡“·Î“½á “¿À“¸¥“ÂÊ “ÀÎ“¼ö“º¸“´Ù “°°“À¸“¸é
+"“Âü"“À» “¹Ý“È¯“ÇÕ“´Ï“´Ù.
 
 =begin original
 
@@ -1021,8 +1035,8 @@ X<!=>
 
 =end original
 
-äºŒé …æ¼”ç®—å­ã® "!=" ã¯å·¦å¼•æ•°ãŒæ•°å€¤çš„ã«å³å¼•æ•°ã¨ç­‰ã—ããªã‘ã‚Œã°ã€
-çœŸã‚’è¿”ã—ã¾ã™ã€‚
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ "!=" “´Â “¿Þ“ÂÊ “ÀÎ“¼ö“°¡ “¼ö“Ä¡“·Î“½á “¿À“¸¥“ÂÊ “ÀÎ“¼ö“¿Í “°°“Áö “¾Ê“À¸“¸é
+"“Âü"“À» “¹Ý“È¯“ÇÕ“´Ï“´Ù.
 
 =begin original
 
@@ -1037,15 +1051,16 @@ X<< <=> >> X<spaceship>
 
 =end original
 
-äºŒé …æ¼”ç®—å­ã® "<=>" ã¯å·¦å¼•æ•°ãŒæ•°å€¤çš„ã«å³å¼•æ•°ã‚ˆã‚Šå°ã•ã„ã‹ã€ç­‰ã—ã„ã‹ã€
-å¤§ãã„ã‹ã«å¾“ã£ã¦ã€-1, 0, 1 ã‚’è¿”ã—ã¾ã™ã€‚
-æ•°å€¤ã¨ã—ã¦ NaN (éžæ•°) ã«å¯¾å¿œã—ã¦ã„ã‚‹ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã§ã¯ã€
-NaN ã«å¯¾ã—ã¦ "<=>" ã‚’ä½¿ã†ã¨ undef ã‚’è¿”ã—ã¾ã™ã€‚
-NaN ã¯ã©ã®å€¤ã«å¯¾ã—ã¦ã‚‚(NaN ã«å¯¾ã—ã¦ã§ã•ãˆã‚‚) "<", "==", ">",
-"<=", ">=" ã®ã„ãšã‚Œã‚‚æˆç«‹ã—ãªã„ã®ã§ã€ã“ã‚Œã‚‰ã¯å…¨ã¦å½ã¨ãªã‚Šã¾ã™ã€‚
-NaN != NaN ã¯çœŸã‚’è¿”ã—ã¾ã™ãŒã€ãã®ä»–ã®ã©ã®å€¤ã«å¯¾ã—ã¦ã‚‚ != ã¯å½ã‚’è¿”ã—ã¾ã™ã€‚
-NaN ã«å¯¾å¿œã—ã¦ã„ãªã„ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã§ã¯ã€NaN ã¯
-å˜ã«æ•°ã¨ã—ã¦ã®å€¤ 0 ã‚’æŒã¤æ–‡å­—åˆ—ã§ã™ã€‚
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ "<=>" “´Â “¿Þ“ÂÊ “ÀÎ“¼ö“°¡ “¼ö“Ä¡“·Î“½á “¿À“¸¥“ÂÊ “ÀÎ“¼ö“º¸“´Ù
+“ÀÛ“Àº“°¡, “°°“Àº“°¡, “Å«“°¡“¿¡ “µû“¶ó -1, 0, 1 “À» “¹Ý“È¯“ÇÕ“´Ï“´Ù.
+“¼ö“Ä¡“·Î“½á NaN(“¼ý“ÀÚ“°¡ “¾Æ“´Ñ) “¿¡ “´ë“ÀÀ“ÇÏ“°í “ÀÖ“´Â “ÇÃ“·§“Æû“¿¡“¼­“´Â
+NaN “¿¡ “´ë“ÇØ "<=>"“¸¦ “»ç“¿ë“ÇÏ“¸é undef “¸¦ “¹Ý“È¯“ÇÕ“´Ï“´Ù.
+NaN “Àº “¾î“´À “°ª“¿¡ “´ë“ÇØ“¼­“µµ (NaN“¿¡ “´ë“ÇØ“¼­“µµ) "<", "==", ">", "<=", ">="
+“Áß “¾î“´À “ÇÏ“³ª“µµ “¼º“¸³“ÇÏ“Áö “¾Ê“±â“¶§“¹®“¿¡ “ÀÌ“°Í“Àº “¸ð“µÎ "“°Å“Áþ"“ÀÌ “µË“´Ï“´Ù.
+NaN != NaN “Àº "“Âü"“À» “¹Ý“È¯“ÇÏ“Áö“¸¸, “±× “¿Ü“ÀÇ “¾î“´À “°ª“¿¡ “´ë“ÇØ“¼­“µµ != “´Â
+"“°Å“Áþ"“À» “¹Ý“È¯“ÇÕ“´Ï“´Ù. 
+NaN “¿¡ “´ë“ÀÀ“ÇÏ“Áö “¾Ê“´Â “ÇÃ“·§“Æû“¿¡“¼­“´Â NaN “Àº “´Ü“¼ø“È÷ “¼ý“ÀÚ“·Î“½á“ÀÇ “°ª 0“À» “°¡“Áø
+“¹®“ÀÚ“¿­“ÀÔ“´Ï“´Ù.
 
     perl -le '$a = "NaN"; print "No NaN support here" if $a == $a'
     perl -le '$a = "NaN"; print "NaN support here" if $a != $a'
@@ -1058,8 +1073,8 @@ X<eq>
 
 =end original
 
-äºŒé …æ¼”ç®—å­ã® "eq" ã¯å·¦å¼•æ•°ãŒæ–‡å­—åˆ—çš„ã«å³å¼•æ•°ã¨ç­‰ã—ã‘ã‚Œã°ã€
-çœŸã‚’è¿”ã—ã¾ã™ã€‚
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ "eq" “´Â “¿Þ“ÂÊ “ÀÎ“¼ö“°¡ “¹®“ÀÚ“¿­“·Î“½á “¿À“¸¥“ÂÊ “ÀÎ“¼ö“¿Í “°°“´Ù“¸é
+"“Âü" “À» “¹Ý“È¯“ÇÕ“´Ï“´Ù.
 
 =begin original
 
@@ -1069,8 +1084,8 @@ X<ne>
 
 =end original
 
-äºŒé …æ¼”ç®—å­ã® "ne" ã¯å·¦å¼•æ•°ãŒæ–‡å­—åˆ—çš„ã«å³å¼•æ•°ã¨ç­‰ã—ããªã‘ã‚Œã°ã€
-çœŸã‚’è¿”ã—ã¾ã™ã€‚
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ "ne" “´Â “¿Þ“ÂÊ“ÀÎ“¼ö“°¡ “¹®“ÀÚ“¿­“·Î“½á “¿À“¸¥“ÂÊ “ÀÎ“¼ö“¿Í “°°“Áö “¾Ê“´Ù“¸é
+"“Âü"“À» “¹Ý“È¯“ÇÕ“´Ï“´Ù.
 
 =begin original
 
@@ -1081,8 +1096,8 @@ X<cmp>
 
 =end original
 
-äºŒé …æ¼”ç®—å­ã® "cmp" ã¯å·¦å¼•æ•°ãŒæ–‡å­—åˆ—çš„ã«å³å¼•æ•°ã‚ˆã‚Šå°ã•ã„ã‹ã€
-ç­‰ã—ã„ã‹ã€å¤§ãã„ã‹ã«å¾“ã£ã¦ã€-1, 0, 1 ã‚’è¿”ã—ã¾ã™ã€‚
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ "cmp"“´Â “¿Þ“ÂÊ“ÀÎ“¼ö“°¡ “¹®“ÀÚ“¿­“·Î“½á “¿À“¸¥“ÂÊ “ÀÎ“¼ö“º¸“´Ù,
+“ÀÛ“°Å“³ª, “°°“°Å“³ª, “Å©“°Å“³ª “µû“¶ó“¼­ -1, -, 1 “À» “¹Ý“È¯“ÇÕ“´Ï“´Ù.
 
 =begin original
 
@@ -1094,11 +1109,12 @@ X<~~>
 
 =end original
 
-äºŒé …æ¼”ç®—å­ã® "~~" ã¯ã‚¹ãƒžãƒ¼ãƒˆãƒžãƒƒãƒãƒ³ã‚°ã¨ã—ã¦åƒãã¾ã™ã€‚
-ã‚¹ãƒžãƒ¼ãƒˆãƒžãƒƒãƒãƒ³ã‚°ã«ã¤ã„ã¦ã¯ L<perlsyn/"Smart matching in detail"> ã§
-è¿°ã¹ã‚‰ã‚Œã¦ã„ã¾ã™ã€‚
-ã“ã®æ¼”ç®—å­ã¯ "~~" æ©Ÿèƒ½ãŒæœ‰åŠ¹ãªå ´åˆã«ã®ã¿ä½¿ç”¨å¯èƒ½ã§ã™:
-æ›´ãªã‚‹æƒ…å ±ã«ã¤ã„ã¦ã¯ L<feature> ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚
+“ÀÌ“Ç×“¿¬“»ê“Áö“ÀÎ "~~"“´Â “½º“¸¶“Æ®“¸Å“Äª“À¸“·Î“½á “µ¿“ÀÛ“ÇÕ“´Ï“´Ù.
+“½º“¸¶“Æ® “¸Å“Äª“¿¡ “´ë“ÇØ“¼­“´Â L<perlsyn/"Smart matching in detail"> “¿¡“¼­
+“±â“¼ú“ÇÏ“°í “ÀÖ“½À“´Ï“´Ù.
+“ÀÌ “¿¬“»ê“ÀÚ“´Â "~~" “±â“´É“ÀÌ “À¯“È¿“ÇÑ “°æ“¿ì“¸¸ “»ç“¿ë“°¡“´É“ÇÕ“´Ï“´Ù.
+“ÀÌ“¿¡ “´ë“ÇÑ “Á¤“º¸“¿¡ “´ë“ÇØ“¼­“´Â L<feature> “¸¦ “Âü“Á¶“ÇØ“ÁÖ“¼¼“¿ä.
+
 X<~~>
 
 =begin original
@@ -1108,14 +1124,14 @@ by the current locale if C<use locale> is in effect.  See L<perllocale>.
 
 =end original
 
-"lt", "le", "ge", "gt", "cmp" ã¯ C<use locale> ãŒæœ‰åŠ¹ãªå ´åˆã¯
-ç¾åœ¨ã®ãƒ­ã‚±ãƒ¼ãƒ«ã§æŒ‡å®šã•ã‚ŒãŸè¾žæ›¸(ã‚½ãƒ¼ãƒˆ)é †ãŒä½¿ã‚ã‚Œã¾ã™ã€‚
-L<perllocale> ã‚’å‚ç…§ã—ã¦ä¸‹ã•ã„ã€‚
+"lt", "le", "ge", "gt", "cmp" “´Â C<use locale> “°¡ “À¯“È¿“ÇÑ “°æ“¿ì“´Â
+“Çö“Àç“ÀÇ “·Î“ÄÉ“ÀÏ“¿¡“¼­ “Áö“Á¤“µÈ “Æä“ÀÌ“Áö“¼ø“¼­“·Î “»ç“¿ë“µË“´Ï“´Ù.
+L<perllocale> “À» “Âü“Á¶“ÇÏ“¼¼“¿ä.
 
 =head2 Bitwise And
 X<operator, bitwise, and> X<bitwise and> X<&>
 
-(ãƒ“ãƒƒãƒˆã”ã¨ã® AND)
+(“ºñ“Æ®“´Ü“À§“ÀÇ AND)
 
 =begin original
 
@@ -1124,9 +1140,9 @@ Binary "&" returns its operands ANDed together bit by bit.
 
 =end original
 
-äºŒé …æ¼”ç®—å­ã® "&" ã¯ã€ä¸¡ã‚ªãƒšãƒ©ãƒ³ãƒ‰ã®ãƒ“ãƒƒãƒˆã”ã¨ã«è«–ç†ç©ã‚’ã¨ã£ã¦ã€
-ãã®çµæžœã‚’è¿”ã—ã¾ã™ã€‚
-(L<Integer Arithmetic> ã¨ L<Bitwise String Operators> ã‚‚å‚ç…§ã—ã¦ä¸‹ã•ã„ã€‚)
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ "&" “´Â, “µÎ “ÇÇ“¿¬“»ê“ÀÚ“ÀÇ “ºñ“Æ®“¸¶“´Ù “³í“¸®“°ö“À» “Ãë“ÇØ,
+“±× “°á“°ú“¸¦ “¹Ý“È¯“ÇÕ“´Ï“´Ù.
+(L<Integer Arithmetic> “°ú L<Bitwise String Operators> “À» “Âü“Á¶“ÇØ“ÁÖ“¼¼“¿ä)
 
 =begin original
 
@@ -1135,8 +1151,8 @@ the brackets are essential in a test like
 
 =end original
 
-"&" ã¯é–¢ä¿‚æ¼”ç®—å­ã‚ˆã‚Šå„ªå…ˆé †ä½ãŒä½Žã„ã®ã§ã€ä¾‹ãˆã°ä»¥ä¸‹ã®ã‚ˆã†ãªãƒ†ã‚¹ãƒˆã§ã¯ã€
-ã‹ã£ã“ãŒé‡è¦ã§ã™:
+"&" “´Â “°ü“°è“¿¬“»ê“ÀÚ“º¸“´Ù “¿ì“¼±“¼ø“À§“°¡ “³·“±â“¶§“¹®“¿¡, “¾Æ“·¡“¿Í “°°“Àº “Å×“½º“Æ®“¿¡“¼­“´Â
+“°ý“È£“°¡ “ÇÊ“¿ä“ÇÕ“´Ï“´Ù.
 
 	print "Even\n" if ($x & 1) == 0;
 
@@ -1144,7 +1160,7 @@ the brackets are essential in a test like
 X<operator, bitwise, or> X<bitwise or> X<|> X<operator, bitwise, xor>
 X<bitwise xor> X<^>
 
-(ãƒ“ãƒƒãƒˆã”ã¨ã® OR ã¨ XOR)
+(“ºñ“Æ®“´Ü“À§“ÀÇ OR “¿Í XOR)
 
 =begin original
 
@@ -1153,9 +1169,9 @@ Binary "|" returns its operands ORed together bit by bit.
 
 =end original
 
-äºŒé …æ¼”ç®—å­ã® "|" ã¯ã€ä¸¡ã‚ªãƒšãƒ©ãƒ³ãƒ‰ã®ãƒ“ãƒƒãƒˆã”ã¨ã«è«–ç†å’Œã‚’ã¨ã£ã¦ã€
-ãã®çµæžœã‚’è¿”ã—ã¾ã™ã€‚
-(L<Integer Arithmetic> ã¨ L<Bitwise String Operators> ã‚‚å‚ç…§ã—ã¦ä¸‹ã•ã„ã€‚)
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ "|" “´Â “µÎ “ÇÇ“¿¬“»ê“ÀÚ“ÀÇ “ºñ“Æ®“¸¶“´Ù “³í“¸®“ÇÕ“À» “Ãë“ÇØ,
+“±× “°á“°ú“¸¦ “¹Ý“È¯“ÇÕ“´Ï“´Ù.
+(L<Integer Arithmetic> “°ú L<Bitwise String Operators> “¸¦ “Âü“Á¶“ÇØ“ÁÖ“¼¼“¿ä)
 
 =begin original
 
@@ -1164,9 +1180,9 @@ Binary "^" returns its operands XORed together bit by bit.
 
 =end original
 
-äºŒé …æ¼”ç®—å­ã® "^" ã¯ã€ä¸¡ã‚ªãƒšãƒ©ãƒ³ãƒ‰ã®ãƒ“ãƒƒãƒˆã”ã¨ã«æŽ’ä»–è«–ç†å’Œã‚’ã¨ã£ã¦ã€
-ãã®çµæžœã‚’è¿”ã—ã¾ã™ã€‚
-(L<Integer Arithmetic> ã¨ L<Bitwise String Operators> ã‚‚å‚ç…§ã—ã¦ä¸‹ã•ã„ã€‚)
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ "^" “´Â “µÎ “ÇÇ“¿¬“»ê“ÀÚ“ÀÇ “ºñ“Æ®“¸¶“´Ù “¹è“Å¸“³í“¸®“ÇÕ“À» “Ãë“ÇØ
+“±× “°á“°ú“¸¦ “¹Ý“È¯“ÇÕ“´Ï“´Ù.
+(L<Integer Arithmetic> “°ú L<Bitwise String Operators> “¸¦ “Âü“Á¶“ÇØ“ÁÖ“¼¼“¿ä)
 
 =begin original
 
@@ -1175,15 +1191,15 @@ for example the brackets are essential in a test like
 
 =end original
 
-"|" ã¨ "^" ã¯é–¢ä¿‚æ¼”ç®—å­ã‚ˆã‚Šå„ªå…ˆé †ä½ãŒä½Žã„ã®ã§ã€ä¾‹ãˆã°ä»¥ä¸‹ã®ã‚ˆã†ãª
-ãƒ†ã‚¹ãƒˆã§ã¯ã€ã‹ã£ã“ãŒé‡è¦ã§ã™:
+"|" “¿Í "^" “Àº “°ü“°è“¿¬“»ê“ÀÚ“º¸“´Ù “¿ì“¼±“¼ø“À§“°¡ “³·“±â“¶§“¹®“¿¡, “¾Æ“·¡“¿Í “°°“Àº
+“Å×“½º“Æ®“¿¡“¼­“´Â “°ý“È£“°¡ “ÇÊ“¿ä“ÇÕ“´Ï“´Ù.
 
 	print "false\n" if (8 | 2) != 10;
 
 =head2 C-style Logical And
 X<&&> X<logical and> X<operator, logical, and>
 
-(C ã‚¹ã‚¿ã‚¤ãƒ«ã®è«–ç†ç©)
+(C “½º“Å¸“ÀÏ“ÀÇ “³í“¸®“°ö)
 
 =begin original
 
@@ -1194,16 +1210,16 @@ is evaluated.
 
 =end original
 
-äºŒé …æ¼”ç®—å­ã® "&&" ã¯ã€çŸ­çµ¡ã®è«–ç†ç©æ¼”ç®—ã‚’è¡Œãªã„ã¾ã™ã€‚
-ã¤ã¾ã‚Šã€å·¦è¢«æ¼”ç®—å­ãŒå½ã§ã‚ã‚Œã°ã€å³è¢«æ¼”ç®—å­ã¯è©•ä¾¡ã•ãˆ
-è¡Œãªã‚ã‚Œãªã„ã¨ã„ã†ã“ã¨ã§ã™ã€‚
-è©•ä¾¡ã•ã‚Œã‚‹å ´åˆã«ã¯ã€ã‚¹ã‚«ãƒ©ãƒ¼ã‹ãƒªã‚¹ãƒˆã‹ã¨ã„ã†ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã¯ã€
-å³è¢«æ¼”ç®—å­ã«ã‚‚åŠã³ã¾ã™ã€‚
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ "&&"“´Â “´Ü“¶ô“ÀÇ “³í“¸®“°ö“¿¬“»ê“À» “¼ö“Çà“ÇÕ“´Ï“´Ù. 
+“Áï, “¿Þ“ÂÊ “ÇÇ“¿¬“»ê“ÀÚ“°¡ "“°Å“Áþ"“À» “°æ“¿ì“¿¡“´Â “¿À“¸¥“ÂÊ “ÇÇ“¿¬“»ê“¸¦ “Æò“°¡“ÇØ“¼­
+“½Ç“Çà“ÇÏ“Áö “¾Ê“µµ“·Ï “ÇÏ“´Â “°Í“ÀÔ“´Ï“´Ù.
+“Æò“°¡“µÉ “°æ“¿¡“´Â, “½º“Ä®“¶ó “È¤“Àº “¸®“½º“Æ® “ÄÜ“ÅØ“½º“Æ®“´Â
+“¿À“¸¥“ÂÊ “ÇÇ“¿¬“»ê“ÀÚ“¿¡“µµ “Àü“´Þ“ÇÕ“´Ï“´Ù.
 
 =head2 C-style Logical Or
 X<||> X<operator, logical, or>
 
-(C ã‚¹ã‚¿ã‚¤ãƒ«ã®è«–ç†å’Œ)
+(C “½º“Å¸“ÀÏ“ÀÇ “³í“¸®“ÇÕ)
 
 =begin original
 
@@ -1214,16 +1230,16 @@ is evaluated.
 
 =end original
 
-äºŒé …æ¼”ç®—å­ã® "||" ã¯ã€çŸ­çµ¡ã®è«–ç†å’Œæ¼”ç®—ã‚’è¡Œãªã„ã¾ã™ã€‚
-ã¤ã¾ã‚Šã€å·¦è¢«æ¼”ç®—å­ãŒçœŸã§ã‚ã‚Œã°ã€å³è¢«æ¼”ç®—å­ã¯è©•ä¾¡ã•ãˆ
-è¡Œãªã‚ã‚Œãªã„ã¨ã„ã†ã“ã¨ã§ã™ã€‚
-è©•ä¾¡ã•ã‚Œã‚‹å ´åˆã«ã¯ã€ã‚¹ã‚«ãƒ©ãƒ¼ã‹ãƒªã‚¹ãƒˆã‹ã¨ã„ã†ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã¯ã€
-å³è¢«æ¼”ç®—å­ã«ã‚‚åŠã³ã¾ã™ã€‚
+“ÀÌ“Ç×“¿¬“»ê“ÀÚ“ÀÎ "||" “´Â, “´Ü“¶ô“ÀÇ “³í“¸®“ÇÕ“¿¬“»ê“À» “¼ö“Çà“ÇÕ“´Ï“´Ù.
+“Áï, “¿Þ“ÂÊ “ÇÇ“¿¬“»ê“ÀÚ“°¡ "“Âü"“ÀÏ “°æ“¿ì,“¿À“¸¥“ÂÊ “¿¬“»ê“ÀÚ“´Â “Æò“°¡“µÇ“Áö
+“¾Ê“°Ô “ÇÏ“´Â “°Í“ÀÔ“´Ï“´Ù.
+“Æò“°¡“µÉ “°æ“¿ì“¿¡“´Â, “½º“Ä®“¶ó “È¤“Àº “¸®“½º“Æ® “ÄÜ“ÅØ“½º“Æ®“´Â
+“¿À“¸¥“ÂÊ “ÇÇ“¿¬“»ê“ÀÚ“¿¡“µµ “Àü“´Þ“µË“´Ï“´Ù.
 
 =head2 C-style Logical Defined-Or
 X<//> X<operator, logical, defined-or>
 
-(C ã‚¹ã‚¿ã‚¤ãƒ«ã®å®šç¾©æ€§å’Œ)
+(C “½º“Å¸“ÀÏ“ÀÇ “Á¤“ÀÇ“¼º“ÇÕ)
 
 =begin original
 
@@ -1256,9 +1272,9 @@ portable way to find out the home directory might be:
 
 =end original
 
-C<||>, C<//>,  C<&&> æ¼”ç®—å­ã¯ã€(C ã®ã‚ˆã†ã« å˜ã« 0 ã‚„ 1 ã‚’è¿”ã™ã®ã§ã¯ãªã)æœ€å¾Œã«
-è©•ä¾¡ã•ã‚ŒãŸå€¤ã‚’è¿”ã—ã¾ã™ã€‚
-ã“ã‚Œã«ã‚ˆã‚Šã€ã‹ãªã‚Šä¸€èˆ¬çš„ã«ä½¿ãˆã‚‹ãƒ›ãƒ¼ãƒ ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’æŽ¢ã™æ–¹æ³•ã¯:
+C<||>, C<//>,  C<&&> “¿¬“»ê“ÀÚ“´Â, (C “Ã³“·³ “´Ü“¼ø“È÷ 0 “ÀÌ“³ª 1“À» “¹Ý“È¯“ÇÏ“´Â “°Í“ÀÌ “¾Æ“´Ñ) 
+“¸¶“Áö“¸·“¿¡ “Æò“°¡“µÇ“´Â “°ª“À» “¹Ý“È¯“ÇÕ“´Ï“´Ù.
+“ÀÌ“¿¡ “ÀÇ“ÇØ“¼­ “ÀÏ“¹Ý“Àû“À¸“·Î “»ç“¿ë“ÇÒ “¼ö “ÀÖ“´Â “È¨ “µð“·º“Åä“¸®“¸¦ “Ã£“´Â “¹æ“¹ý“Àº : 
 
     $home = $ENV{'HOME'} // $ENV{'LOGDIR'} //
 	(getpwuid($<))[7] // die "You're homeless!\n";
@@ -1270,8 +1286,8 @@ for selecting between two aggregates for assignment:
 
 =end original
 
-ç‰¹ã«ã€ã“ã‚Œã¯ä»£å…¥ã®ãŸã‚ã«äºŒã¤ã®é›†åˆã‚’é¸æŠžã™ã‚‹ãŸã‚ã«ã¯
-ä½¿ã†ã¹ãã§ã¯ãªã„ã“ã¨ã‚’æ„å‘³ã—ã¾ã™ã€‚
+“Æ¯“º°“È÷ “ÀÌ“°Í“ÀÎ “´ë“ÀÔ“À» “À§“ÇØ “µÎ“°³“ÀÇ “Áý“ÇÕ“À» “¼±“ÅÃ“ÇÏ“±â “À§“ÇØ 
+“»ç“¿ë“ÇÏ“´Â “°Í“ÀÌ “¾Æ“´Ô“À» “ÀÇ“¹Ì“ÇÕ“´Ï“´Ù.
 
     @a = @b || @c;		# this is wrong
     @a = scalar(@b) || @c;	# really meant this
@@ -1287,12 +1303,10 @@ list operator without the need for parentheses:
 
 =end original
 
-Perl ã§ã¯ã€ãƒ•ãƒ­ãƒ¼åˆ¶å¾¡ã«ä½¿ã†å ´åˆã®å¤šå°‘èª­ã¿ã‚„ã™ã„ C<&&> ã¨ C<||> ã®åŒç¾©èªžã¨ã—ã¦ã€
-C<and> æ¼”ç®—å­ã¨ C<or> æ¼”ç®—å­ãŒç”¨æ„ã•ã‚Œã¦ã„ã¾ã™ (ä¸‹è¨˜å‚ç…§)ã€‚
-çŸ­çµ¡ã®å‹•ä½œã¯å…¨ãåŒã˜ã§ã™ã€‚
-ã—ã‹ã—ã€"and" ã¨ "or" ã®å„ªå…ˆé †ä½ã¯ã‹ãªã‚Šä½Žãã—ã¦ã‚ã‚‹ã®ã§ã€
-å¼•æ•°ã«æ‹¬å¼§ã‚’ä½¿ã£ã¦ã„ãªã„ãƒªã‚¹ãƒˆæ¼”ç®—å­ã®ã‚ã¨ã«ç¶šã‘ã¦ä½¿ã†å ´åˆã«ã‚‚ã€
-å®‰å¿ƒã—ã¦ä½¿ã†ã“ã¨ãŒã§ãã¾ã™:
+Perl “¿¡“¼­“´Â “Èå“¸§“Á¦“¾î“¿¡ “»ç“¿ë“ÇÏ“´Â “°æ“¿ì“ÀÇ “´Ù“¼Ò “ÀÐ“±â “½¬“¿î C<&&> “¿Í C<||> “ÀÇ “µ¿“ÀÇ“¾î“·Î C<and> “¿¬“»ê“ÀÚ“¿Í C<or> “¿¬“»ê“ÀÚ“°¡ “ÀÖ“½À“´Ï“´Ù.(“¾Æ“·¡ “Âü“Á¶) 
+“´Ü“¶ô“ÀÇ “µ¿“ÀÛ“Àº “¸ð“µÎ “°°“½À“´Ï“¸¸, "and"“¿Í "or"“ÀÇ “¿ì“¼±“¼ø“À§“´Â “²Ï “³·“À¸“¹Ç“·Î,
+“ÀÎ“¼ö“¿¡ “°ý“È£“¸¦ “»ç“¿ë“ÇÏ“Áö “¾Ê“´Â “¸®“½º“Æ®“¿¬“»ê“ÀÚ“ÀÇ “µÚ“¿¡ “ºÙ“¿©“¼­ “¾µ “°æ“¿ì“¿¡“µµ
+“¾È“½É“ÇØ“¼­ “»ç“¿ë“ÇÒ “¼ö “ÀÖ“½À“´Ï“´Ù.
 
     unlink "alpha", "beta", "gamma"
 	    or gripe(), next LINE;
@@ -1303,7 +1317,7 @@ With the C-style operators that would have been written like this:
 
 =end original
 
-C ã‚¹ã‚¿ã‚¤ãƒ«ã®æ¼”ç®—å­ã§ã¯ä»¥ä¸‹ã®ã‚ˆã†ã«æ›¸ãå¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
+C “½º“Å¸“ÀÏ“ÀÇ “¿¬“»ê“ÀÚ“¿¡“¼­“´Â “¾Æ“·¡“¿Í “°°“ÀÌ “¾µ “ÇÊ“¿ä“°¡ “ÀÖ“½À“´Ï“´Ù.
 
     unlink("alpha", "beta", "gamma")
 	    || (gripe(), next LINE);
@@ -1314,13 +1328,13 @@ Using "or" for assignment is unlikely to do what you want; see below.
 
 =end original
 
-ä»£å…¥ã§ "or" ã‚’ä½¿ã†ã¨ã€ã—ãŸã„ã“ã¨ã¨é•ã†ã“ã¨ã«ãªã‚Šã¾ã™ã€‚
-ä»¥ä¸‹ã‚’å‚ç…§ã—ã¦ä¸‹ã•ã„ã€‚
+“ÓÛ“ìý“ªÇ "or" “ªò“ÞÅ“ª¦“ªÈ“¡¢“ª·“ª¿“ª¤“ª³“ªÈ“ªÈ“êÞ“ª¦“ª³“ªÈ“ªË“ªÊ“ªê“ªÞ“ª¹“¡£
+“ì¤“ù»“ªò‘²Î“ðÎ“ª·“ªÆ“ù»“ªµ“ª¤“¡£
 
 =head2 Range Operators
 X<operator, range> X<range> X<..> X<...>
 
-(ç¯„å›²æ¼”ç®—å­)
+(“Ûô’°Ï“æÑ“ß©“í­)
 
 =begin original
 
@@ -1337,16 +1351,16 @@ like this:
 
 =end original
 
-äºŒé …æ¼”ç®—å­ã® ".." ã¯ç¯„å›²æ¼”ç®—å­ã§ã€ä½¿ã‚ã‚Œã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«ã‚ˆã£ã¦
-ç•°ãªã‚‹å‹•ä½œã‚’ã™ã‚‹ 2 ã¤ã®æ¼”ç®—å­ã‚’åˆã‚ã›ãŸã‚‚ã®ã§ã™ã€‚
-ãƒªã‚¹ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã¯ã€å·¦ã®å€¤ã‹ã‚‰å³ã®å€¤ã¾ã§ (1 ã¥ã¤æ˜‡é †ã§) æ•°ãˆã‚ã’ãŸå€¤ã‹ã‚‰
-ãªã‚‹ãƒªã‚¹ãƒˆã‚’è¿”ã—ã¾ã™ã€‚
-å·¦å´ã®å€¤ãŒå³å´ã®å€¤ã‚ˆã‚Šå¤§ãã„å ´åˆã¯ã€ç©ºãƒªã‚¹ãƒˆã‚’è¿”ã—ã¾ã™ã€‚
-ç¯„å›²æ¼”ç®—å­ã¯ã€C<foreach (1..10)> ã®ã‚ˆã†ãªãƒ«ãƒ¼ãƒ—ã‚’æ›¸ãã¨ãã‚„ã€
-é…åˆ—ã®ã‚¹ãƒ©ã‚¤ã‚¹æ¼”ç®—ã‚’è¡Œãªã†ã¨ãã«ä¾¿åˆ©ã§ã™ã€‚
-ç¾çŠ¶ã®å®Ÿè£…ã§ã¯ã€C<foreach> ãƒ«ãƒ¼ãƒ—ã®å¼ã®ä¸­ã§ç¯„å›²æ¼”ç®—å­ã‚’ä½¿ã£ã¦ã‚‚
-ä¸€æ™‚é…åˆ—ã¯ä½œã‚Šã¾ã›ã‚“ãŒã€å¤ã„ Perl ã¯ä»¥ä¸‹ã®ã‚ˆã†ãªã“ã¨ã‚’æ›¸ãã¨ã€
-å¤§é‡ã®ãƒ¡ãƒ¢ãƒªã‚’æ¶ˆè²»ã™ã‚‹ã“ã¨ã«ãªã‚Šã¾ã™:
+“ì£“ú£“æÑ“ß©“í­“ªÎ ".." “ªÏ“Ûô’°Ï“æÑ“ß©“í­“ªÇ“¡¢“ÞÅ“ªï“ªì“ªë“«³“«ó“«Æ“«­“«¹“«È“ªË“ªè“ªÃ“ªÆ
+“ì¶“ªÊ“ªë“ÔÑ“íÂ“ªò“ª¹“ªë 2 “ªÄ“ªÎ“æÑ“ß©“í­“ªò“ùê“ªï“ª»“ª¿“ªâ“ªÎ“ªÇ“ª¹“¡£
+“«ê“«¹“«È“«³“«ó“«Æ“«­“«¹“«È“ªÇ“ªÏ“¡¢“ñ§“ªÎ“ö·“ª«“ªé“éÓ“ªÎ“ö·“ªÞ“ªÇ (1 “ªÅ“ªÄ“ã°“â÷“ªÇ) ‘Êý“ª¨“ª¢“ª²“ª¿“ö·“ª«“ªé
+“ªÊ“ªë“«ê“«¹“«È“ªò“Ú÷“ª·“ªÞ“ª¹“¡£
+“ñ§“ö°“ªÎ“ö·“ª¬“éÓ“ö°“ªÎ“ö·“ªè“ªê“ÓÞ“ª­“ª¤“íÞ“ùê“ªÏ“¡¢“Íö“«ê“«¹“«È“ªò“Ú÷“ª·“ªÞ“ª¹“¡£
+“Ûô’°Ï“æÑ“ß©“í­“ªÏ“¡¢C<foreach (1..10)> “ªÎ“ªè“ª¦“ªÊ“«ë’¡¼“«×“ªò“ßö“ª¯“ªÈ“ª­“ªä“¡¢
+“ÛÕ“Öª“ªÎ“«¹“«é“«¤“«¹“æÑ“ß©“ªò“ú¼“ªÊ“ª¦“ªÈ“ª­“ªË“øµ“××“ªÇ“ª¹“¡£
+“úÞ‘×´“ªÎ’¼Â‘×°“ªÇ“ªÏ“¡¢C<foreach> “«ë’¡¼“«×“ªÎ“ãÒ“ªÎ“ñé“ªÇ“Ûô’°Ï“æÑ“ß©“í­“ªò“ÞÅ“ªÃ“ªÆ“ªâ
+“ìé“ãÁ“ÛÕ“Öª“ªÏ“íÂ“ªê“ªÞ“ª»“ªó“ª¬“¡¢“Í¯“ª¤ Perl “ªÏ“ì¤“ù»“ªÎ“ªè“ª¦“ªÊ“ª³“ªÈ“ªò“ßö“ª¯“ªÈ“¡¢
+“ÓÞ“Õá“ªÎ“«á“«â“«ê“ªò“á¼“Þ¨“ª¹“ªë“ª³“ªÈ“ªË“ªÊ“ªê“ªÞ“ª¹:
 
     for (1 .. 1_000_000) {
 	# code
@@ -1359,8 +1373,8 @@ see below.
 
 =end original
 
-ç¯„å›²æ¼”ç®—å­ã¯ã€ãƒžã‚¸ã‚«ãƒ«è‡ªå‹•ã‚¤ãƒ³ã‚¯ãƒªãƒ¡ãƒ³ãƒˆã‚’ä½¿ã†ã“ã¨ã§æ–‡å­—åˆ—ã§ã‚‚å‹•ä½œã—ã¾ã™ã€‚
-ä»¥ä¸‹ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚
+“Ûô’°Ï“æÑ“ß©“í­“ªÏ“¡¢“«Þ“«¸“««“«ë“í»“ÔÑ“«¤“«ó“«¯“«ê“«á“«ó“«È“ªò“ÞÅ“ª¦“ª³“ªÈ“ªÇ“Ùþ“í®“Öª“ªÇ“ªâ“ÔÑ“íÂ“ª·“ªÞ“ª¹“¡£
+“ì¤“ù»“ªò‘²Î“ðÎ“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
 
 =begin original
 
@@ -1379,21 +1393,21 @@ two.  In all other regards, "..." behaves just like ".." does.
 
 =end original
 
-ã‚¹ã‚«ãƒ©ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ä½¿ã‚ã‚ŒãŸã¨ãã«ã¯ã€".." ã¯çœŸå½å€¤ã‚’è¿”ã—ã¾ã™ã€‚
-ã“ã®æ¼”ç®—å­ã¯ã€ãƒ•ãƒªãƒƒãƒ—ãƒ•ãƒ­ãƒƒãƒ—ã®ã‚ˆã†ã« 2 å€¤å®‰å®šã§ã€
-B<sed> ã‚„ B<awk> ã‚„å¤šãã®ã‚¨ãƒ‡ã‚£ã‚¿ã§ã®è¡Œç¯„å›² (ã‚³ãƒ³ãƒž) æ¼”ç®—å­ã‚’
-ã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ãƒˆã™ã‚‹ã‚‚ã®ã¨ãªã‚Šã¾ã™ã€‚
-å„ã€…ã® ".." æ¼”ç®—å­ãŒãã‚Œãžã‚Œã«ç‹¬ç«‹ã—ã¦è‡ªåˆ†ã®çœŸå½çŠ¶æ…‹ã‚’ç®¡ç†ã—ã¾ã™ã€‚
-ã¯ã˜ã‚ã¯ã€å·¦è¢«æ¼”ç®—å­ãŒå½ã§ã‚ã‚‹é–“ã€æ¼”ç®—å…¨ä½“ã‚‚å½ã¨ãªã£ã¦ã„ã¾ã™ã€‚
-ç¯„å›²æ¼”ç®—å­ã¯ã€ã„ã£ãŸã‚“å·¦è¢«æ¼”ç®—å­ãŒçœŸã«ãªã‚‹ã¨ã€å³è¢«æ¼”ç®—å­ãŒçœŸã§ã‚ã‚‹é–“ã€
-çœŸã‚’è¿”ã™ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚
-å³è¢«æ¼”ç®—å­ãŒå½ã«ãªã‚‹ã¨ã€æ¼”ç®—å­ã‚‚å½ã‚’è¿”ã™ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚
-(æ¬¡ã«ç¯„å›²æ¼”ç®—å­ãŒè©•ä¾¡ã•ã‚Œã‚‹ã¾ã§ã¯ã€å½ã¨ã¯ãªã‚Šã¾ã›ã‚“ã€‚
-(B<awk> ã§ã®ã‚ˆã†ã«) çœŸã¨ãªã£ãŸã€ãã®è©•ä¾¡ã®ä¸­ã§å³è¢«æ¼”ç®—å­ã‚’ãƒ†ã‚¹ãƒˆã—ã€
-å½ã¨ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ãŒã€1 åº¦ã¯çœŸã‚’è¿”ã™ã“ã¨ã«ãªã‚Šã¾ã™ã€‚
-B<sed> ã§ã®ã‚ˆã†ã«ã€æ¬¡ã«è©•ä¾¡ã•ã‚Œã‚‹ã¾ã§å³è¢«æ¼”ç®—å­ã‚’ãƒ†ã‚¹ãƒˆã—ãŸããªã‘ã‚Œã°ã€
-2 å€‹ã®ãƒ‰ãƒƒãƒˆã®ä»£ã‚ã‚Šã« 3 ã¤ã®ãƒ‰ãƒƒãƒˆ ("...") ã‚’ä½¿ã£ã¦ãã ã•ã„ã€‚
-ãã®ä»–ã®ç‚¹ã§ã¯ã€"..." ã¯ ".." ã¨åŒæ§˜ã«æŒ¯èˆžã„ã¾ã™ï¼Ž
+“«¹“««“«é“«³“«ó“«Æ“«­“«¹“«È“ªÇ“ÞÅ“ªï“ªì“ª¿“ªÈ“ª­“ªË“ªÏ“¡¢".." “ªÏ‘Õæ˜ºô“ö·“ªò“Ú÷“ª·“ªÞ“ª¹“¡£
+“ª³“ªÎ“æÑ“ß©“í­“ªÏ“¡¢“«Õ“«ê“«Ã“«×“«Õ“«í“«Ã“«×“ªÎ“ªè“ª¦“ªË 2 “ö·“äÌ“ïÒ“ªÇ“¡¢
+B<sed> “ªä B<awk> “ªä“Òý“ª¯“ªÎ“«¨“«Ç“«£“«¿“ªÇ“ªÎ“ú¼“Ûô’°Ï (“«³“«ó“«Þ) “æÑ“ß©“í­“ªò
+“«¨“«ß“«å“«ì’¡¼“«È“ª¹“ªë“ªâ“ªÎ“ªÈ“ªÊ“ªê“ªÞ“ª¹“¡£
+“ÊÀ‘¡©“ªÎ ".." “æÑ“ß©“í­“ª¬“ª½“ªì“ª¾“ªì“ªË‘¶À“Ø¡“ª·“ªÆ“í»“ÝÂ“ªÎ‘Õæ˜ºô‘×´“÷¾“ªò“Î·“×â“ª·“ªÞ“ª¹“¡£
+“ªÏ“ª¸“ªá“ªÏ“¡¢“ñ§“ù¬“æÑ“ß©“í­“ª¬˜ºô“ªÇ“ª¢“ªë“Êà“¡¢“æÑ“ß©“îï‘Ìå“ªâ˜ºô“ªÈ“ªÊ“ªÃ“ªÆ“ª¤“ªÞ“ª¹“¡£
+“Ûô’°Ï“æÑ“ß©“í­“ªÏ“¡¢“ª¤“ªÃ“ª¿“ªó“ñ§“ù¬“æÑ“ß©“í­“ª¬‘Õæ“ªË“ªÊ“ªë“ªÈ“¡¢“éÓ“ù¬“æÑ“ß©“í­“ª¬‘Õæ“ªÇ“ª¢“ªë“Êà“¡¢
+‘Õæ“ªò“Ú÷“ª¹“ªè“ª¦“ªË“ªÊ“ªê“ªÞ“ª¹“¡£
+“éÓ“ù¬“æÑ“ß©“í­“ª¬˜ºô“ªË“ªÊ“ªë“ªÈ“¡¢“æÑ“ß©“í­“ªâ˜ºô“ªò“Ú÷“ª¹“ªè“ª¦“ªË“ªÊ“ªê“ªÞ“ª¹“¡£
+(“ó­“ªË“Ûô’°Ï“æÑ“ß©“í­“ª¬“øÄ’²Á“ªµ“ªì“ªë“ªÞ“ªÇ“ªÏ“¡¢˜ºô“ªÈ“ªÏ“ªÊ“ªê“ªÞ“ª»“ªó“¡£
+(B<awk> “ªÇ“ªÎ“ªè“ª¦“ªË) ‘Õæ“ªÈ“ªÊ“ªÃ“ª¿“¡¢“ª½“ªÎ“øÄ’²Á“ªÎ“ñé“ªÇ“éÓ“ù¬“æÑ“ß©“í­“ªò“«Æ“«¹“«È“ª·“¡¢
+˜ºô“ªÈ“ª¹“ªë“ª³“ªÈ“ª¬“ªÇ“ª­“ªÞ“ª¹“ª¬“¡¢1 “Óø“ªÏ‘Õæ“ªò“Ú÷“ª¹“ª³“ªÈ“ªË“ªÊ“ªê“ªÞ“ª¹“¡£
+B<sed> “ªÇ“ªÎ“ªè“ª¦“ªË“¡¢“ó­“ªË“øÄ’²Á“ªµ“ªì“ªë“ªÞ“ªÇ“éÓ“ù¬“æÑ“ß©“í­“ªò“«Æ“«¹“«È“ª·“ª¿“ª¯“ªÊ“ª±“ªì“ªÐ“¡¢
+2 “ËÁ“ªÎ“«É“«Ã“«È“ªÎ“ÓÛ“ªï“ªê“ªË 3 “ªÄ“ªÎ“«É“«Ã“«È ("...") “ªò“ÞÅ“ªÃ“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
+“ª½“ªÎ“öâ“ªÎ“ïÃ“ªÇ“ªÏ“¡¢"..." “ªÏ ".." “ªÈ“ÔÒ’ÍÍ“ªË“òÉ“Ùñ“ª¤“ªÞ“ª¹“£®
 
 =begin original
 
@@ -1411,17 +1425,17 @@ than 1.
 
 =end original
 
-å³è¢«æ¼”ç®—å­ã¯ã€æ¼”ç®—å­ã®çŠ¶æ…‹ãŒã€Œå½ã€ã§ã‚ã‚‹é–“ã¯è©•ä¾¡ã•ã‚Œã‚‹ã“ã¨ãŒãªãã€
-å·¦è¢«æ¼”ç®—å­ã¯ã€æ¼”ç®—å­ã®çŠ¶æ…‹ãŒã€ŒçœŸã€ã§ã‚ã‚‹é–“ã¯è©•ä¾¡ã•ã‚Œã‚‹ã“ã¨ãŒã‚ã‚Šã¾ã›ã‚“ã€‚
-å„ªå…ˆé †ä½ã¯ã€|| ã¨ && ã®å°‘ã—ä¸‹ã§ã™ã€‚
-å½ã¨ã—ã¦ã¯ç©ºæ–‡å­—åˆ—ãŒè¿”ã•ã‚Œã€
-çœŸã¨ã—ã¦ã¯ (1 ã‹ã‚‰å§‹ã¾ã‚‹) é †ã«ä¸¦ã‚“ã æ•°å€¤ãŒè¿”ã•ã‚Œã¾ã™ã€‚
-ã“ã®é€šã—ç•ªå·ã¯ã€æ–°ãŸã«ç¯„å›²ãŒå§‹ã¾ã‚‹ã”ã¨ã«ãƒªã‚»ãƒƒãƒˆã•ã‚Œã¾ã™ã€‚
-ç¯„å›²ã®æœ€å¾Œã®æ•°å­—ã«ã¯ã€æ–‡å­—åˆ— "E0" ãŒãŠå°»ã«ã¤ã‘ã‚‰ã‚Œã¾ã™ã€‚
-ã“ã‚Œã¯ã€æ•°å€¤ã¨ã—ã¦ã¯ä½•ã®å½±éŸ¿ã‚‚ã‚ã‚Šã¾ã›ã‚“ãŒã€ç¯„å›²ã®çµ‚ã‚ã‚Šã§ä½•ã‹ç‰¹åˆ¥ãªã“ã¨ã‚’
-ã—ãŸã„å ´åˆã«ã€ç›®å°ã¨ã—ã¦ä½¿ã†ã“ã¨ãŒã§ãã¾ã™ã€‚
-ç¯„å›²ã®å§‹ã¾ã‚Šã§ä½•ã‹ã—ãŸã„å ´åˆã«ã¯ã€é€šã—ç•ªå·ãŒ 1 ã‚ˆã‚Šã‚‚å¤§ãããªã‚‹ã®ã‚’
-å¾…ã£ã¦ã„ã‚Œã°ã‚ˆã„ã§ã—ã‚‡ã†ã€‚
+“éÓ“ù¬“æÑ“ß©“í­“ªÏ“¡¢“æÑ“ß©“í­“ªÎ‘×´“÷¾“ª¬“¡¸˜ºô“¡¹“ªÇ“ª¢“ªë“Êà“ªÏ“øÄ’²Á“ªµ“ªì“ªë“ª³“ªÈ“ª¬“ªÊ“ª¯“¡¢
+“ñ§“ù¬“æÑ“ß©“í­“ªÏ“¡¢“æÑ“ß©“í­“ªÎ‘×´“÷¾“ª¬“¡¸‘Õæ“¡¹“ªÇ“ª¢“ªë“Êà“ªÏ“øÄ’²Á“ªµ“ªì“ªë“ª³“ªÈ“ª¬“ª¢“ªê“ªÞ“ª»“ªó“¡£
+“éÐ“à»“â÷“êÈ“ªÏ“¡¢|| “ªÈ && “ªÎ“á´“ª·“ù»“ªÇ“ª¹“¡£
+˜ºô“ªÈ“ª·“ªÆ“ªÏ“Íö“Ùþ“í®“Öª“ª¬“Ú÷“ªµ“ªì“¡¢
+‘Õæ“ªÈ“ª·“ªÆ“ªÏ (1 “ª«“ªé“ã·“ªÞ“ªë) “â÷“ªË˜­å“ªó“ªÀ‘Êý“ö·“ª¬“Ú÷“ªµ“ªì“ªÞ“ª¹“¡£
+“ª³“ªÎ“÷×“ª·“Ûã‘ºÅ“ªÏ“¡¢“ãæ“ª¿“ªË“Ûô’°Ï“ª¬“ã·“ªÞ“ªë“ª´“ªÈ“ªË“«ê“«»“«Ã“«È“ªµ“ªì“ªÞ“ª¹“¡£
+“Ûô’°Ï“ªÎ“õÌ“ý­“ªÎ‘Êý“í®“ªË“ªÏ“¡¢“Ùþ“í®“Öª "E0" “ª¬“ªª“Í¶“ªË“ªÄ“ª±“ªé“ªì“ªÞ“ª¹“¡£
+“ª³“ªì“ªÏ“¡¢‘Êý“ö·“ªÈ“ª·“ªÆ“ªÏ“ù¼“ªÎ“ç¯“úÂ“ªâ“ª¢“ªê“ªÞ“ª»“ªó“ª¬“¡¢“Ûô’°Ï“ªÎ“ðû“ªï“ªê“ªÇ“ù¼“ª«“÷å“Ü¬“ªÊ“ª³“ªÈ“ªò
+“ª·“ª¿“ª¤“íÞ“ùê“ªË“¡¢“ÙÍ“ìÔ“ªÈ“ª·“ªÆ“ÞÅ“ª¦“ª³“ªÈ“ª¬“ªÇ“ª­“ªÞ“ª¹“¡£
+“Ûô’°Ï“ªÎ“ã·“ªÞ“ªê“ªÇ“ù¼“ª«“ª·“ª¿“ª¤“íÞ“ùê“ªË“ªÏ“¡¢“÷×“ª·“Ûã‘ºÅ“ª¬ 1 “ªè“ªê“ªâ“ÓÞ“ª­“ª¯“ªÊ“ªë“ªÎ“ªò
+“Óâ“ªÃ“ªÆ“ª¤“ªì“ªÐ“ªè“ª¤“ªÇ“ª·“ªç“ª¦“¡£
 
 =begin original
 
@@ -1431,8 +1445,8 @@ input line number (the C<$.> variable).
 
 =end original
 
-ã‚¹ã‚«ãƒ©ã® ".." ã®è¢«æ¼”ç®—å­ãŒå®šæ•°è¡¨ç¾ã§ã‚ã‚‹ã¨ãã¯ã€ãã®è¢«æ¼”ç®—å­ã¯æš—é»™ã«ã€
-ç¾åœ¨ã®å…¥åŠ›è¡Œç•ªå·(å¤‰æ•° C<$.>) ã¨ç­‰ã—ã„(C<==>) å ´åˆã«çœŸã¨ãªã‚Šã¾ã™ã€‚
+“«¹“««“«é“ªÎ ".." “ªÎ“ù¬“æÑ“ß©“í­“ª¬“ïÒ‘Êý“øú“úÞ“ªÇ“ª¢“ªë“ªÈ“ª­“ªÏ“¡¢“ª½“ªÎ“ù¬“æÑ“ß©“í­“ªÏ“äÞ’ÌÛ“ªË“¡¢
+“úÞ“î¤“ªÎ“ìý“Õô“ú¼“Ûã‘ºÅ(’ÊÑ‘Êý C<$.>) “ªÈ“Ôõ“ª·“ª¤(C<==>) “íÞ“ùê“ªË‘Õæ“ªÈ“ªÊ“ªê“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -1447,14 +1461,14 @@ using their integer representation.
 
 =end original
 
-ã¨ã¦ã‚‚ç´°ã‹ã„è©±ã‚’ã™ã‚‹ã¨ã€æ¯”è¼ƒã¯å®Ÿéš›ã«ã¯ C<int(EXPR) == int(EXPR)> ã§ã™ãŒã€
-ã“ã‚Œã¯æµ®å‹•å°æ•°ç‚¹æ•°ã‚’ä½¿ã†ã¨ãã«ã ã‘å•é¡Œã«ãªã‚Šã¾ã™; å‰ã®æ®µè½ã§è¨˜è¿°ã—ãŸã‚ˆã†ã«
-æ˜Žç¤ºçš„ã« C<$.> ã‚’ä½¿ã£ãŸã¨ãã€æ¯”è¼ƒã¯ C<int(EXPR) == int($.)> ã¨ãªã‚Šã€
-C<$.> ã«æµ®å‹•å°æ•°ç‚¹æ•°ãŒã‚»ãƒƒãƒˆã•ã‚Œã€ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰èª­ã¿è¾¼ã¿ã‚’è¡Œã‚ãªã„å ´åˆã«ã®ã¿
-å•é¡Œã«ãªã‚Šã¾ã™ã€‚
-ã•ã‚‰ã«ã€C<"span" .. "spat"> ã‚„ C<2.18 .. 3.14> ã¯ã€ãã‚Œãžã‚Œã®ã‚ªãƒšãƒ©ãƒ³ãƒ‰ãŒ
-æ•´æ•°è¡¨ç¾ã‚’ä½¿ã£ã¦è©•ä¾¡ã•ã‚Œã‚‹ãŸã‚ã€ã‚¹ã‚«ãƒ©ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã¯æœ›ã¿ã©ãŠã‚Šã®çµæžœã«
-ãªã‚Šã¾ã›ã‚“ã€‚
+“ªÈ“ªÆ“ªâ“á¬“ª«“ª¤“ü¥“ªò“ª¹“ªë“ªÈ“¡¢“Ýï“Îò“ªÏ’¼Â“ð·“ªË“ªÏ C<int(EXPR) == int(EXPR)> “ªÇ“ª¹“ª¬“¡¢
+“ª³“ªì“ªÏ“Ý©“ÔÑ“á³‘Êý“ïÃ‘Êý“ªò“ÞÅ“ª¦“ªÈ“ª­“ªË“ªÀ“ª±“Ùý“ð¹“ªË“ªÊ“ªê“ªÞ“ª¹; “îñ“ªÎ“Ó«“Õª“ªÇ“ÑÀ“âû“ª·“ª¿“ªè“ª¦“ªË
+“Ù¥“ãÆ“îÜ“ªË C<$.> “ªò“ÞÅ“ªÃ“ª¿“ªÈ“ª­“¡¢“Ýï“Îò“ªÏ C<int(EXPR) == int($.)> “ªÈ“ªÊ“ªê“¡¢
+C<$.> “ªË“Ý©“ÔÑ“á³‘Êý“ïÃ‘Êý“ª¬“«»“«Ã“«È“ªµ“ªì“¡¢“«Õ“«¡“«¤“«ë“ª«“ªé’ÆÉ“ªß’¹þ“ªß“ªò“ú¼“ªï“ªÊ“ª¤“íÞ“ùê“ªË“ªÎ“ªß
+“Ùý“ð¹“ªË“ªÊ“ªê“ªÞ“ª¹“¡£
+“ªµ“ªé“ªË“¡¢C<"span" .. "spat"> “ªä C<2.18 .. 3.14> “ªÏ“¡¢“ª½“ªì“ª¾“ªì“ªÎ“«ª“«Ú“«é“«ó“«É“ª¬
+“ïÚ‘Êý“øú“úÞ“ªò“ÞÅ“ªÃ“ªÆ“øÄ’²Á“ªµ“ªì“ªë“ª¿“ªá“¡¢“«¹“««“«é“«³“«ó“«Æ“«­“«¹“«È“ªÇ“ªÏ“ØÐ“ªß“ªÉ“ªª“ªê“ªÎ“Ì¿“Íý“ªË
+“ªÊ“ªê“ªÞ“ª»“ªó“¡£
 
 =begin original
 
@@ -1462,7 +1476,7 @@ Examples:
 
 =end original
 
-ä¾‹:
+“ÖÇ:
 
 =begin original
 
@@ -1470,7 +1484,7 @@ As a scalar operator:
 
 =end original
 
-ã‚¹ã‚«ãƒ©æ¼”ç®—å­ã¨ã—ã¦:
+“«¹“««“«é“æÑ“ß©“í­“ªÈ“ª·“ªÆ:
 
     if (101 .. 200) { print; } # print 2nd hundred lines, short for
                                #   if ($. == 101 .. $. == 200) ...
@@ -1501,7 +1515,7 @@ the two range operators:
 
 =end original
 
-ä»¥ä¸‹ã¯äºŒã¤ã®ç¯„å›²æ¼”ç®—å­ã®é•ã„ã‚’ç¤ºã™å˜ç´”ãªä¾‹ã§ã™:
+“ì¤“ù»“ªÏ“ì£“ªÄ“ªÎ“Ûô’°Ï“æÑ“ß©“í­“ªÎ“êÞ“ª¤“ªò“ãÆ“ª¹’Ã±“âí“ªÊ“ÖÇ“ªÇ“ª¹:
 
     @lines = ("   - Foo",
               "01 - Bar",
@@ -1522,8 +1536,8 @@ the range operator is changed to C<...>, it will also print the
 
 =end original
 
-ã“ã®ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã¯ "Bar" ã‚’å«ã‚€è¡Œã ã‘ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
-ç¯„å›²æ¼”ç®—å­ã‚’ C<...> ã«å¤‰æ›´ã™ã‚‹ã¨ã€"Baz" ã®è¡Œã‚‚è¡¨ç¤ºã—ã¾ã™ã€‚
+“ª³“ªÎ“«×“«í“«°“«é“«à“ªÏ "Bar" “ªò“ùß“ªà“ú¼“ªÀ“ª±“ªò“øú“ãÆ“ª·“ªÞ“ª¹“¡£
+“Ûô’°Ï“æÑ“ß©“í­“ªò C<...> “ªË’ÊÑ“ÌÚ“ª¹“ªë“ªÈ“¡¢"Baz" “ªÎ“ú¼“ªâ“øú“ãÆ“ª·“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -1531,7 +1545,7 @@ And now some examples as a list operator:
 
 =end original
 
-ã“ã‚Œã¯ãƒªã‚¹ãƒˆæ¼”ç®—å­ã®ä¾‹ã§ã™:
+“ª³“ªì“ªÏ“«ê“«¹“«È“æÑ“ß©“í­“ªÎ“ÖÇ“ªÇ“ª¹:
 
     for (101 .. 200) { print; }	# print $_ 100 times
     @foo = @foo[0 .. $#foo];	# an expensive no-op
@@ -1545,9 +1559,9 @@ can say
 
 =end original
 
-(ãƒªã‚¹ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã®) ç¯„å›²æ¼”ç®—å­ã¯ã€è¢«æ¼”ç®—å­ãŒæ–‡å­—åˆ—ã§ã‚ã‚‹ã¨ãã«ã¯ã€
-ãƒžã‚¸ã‚«ãƒ«ã‚¤ãƒ³ã‚¯ãƒªãƒ¡ãƒ³ãƒˆã®æ©Ÿèƒ½ã‚’ä½¿ã„ã¾ã™ã€‚
-ä»¥ä¸‹ã®ã‚ˆã†ã«æ›¸ãã¨:
+(“«ê“«¹“«È“«³“«ó“«Æ“«­“«¹“«È“ªÇ“ªÎ) “Ûô’°Ï“æÑ“ß©“í­“ªÏ“¡¢“ù¬“æÑ“ß©“í­“ª¬“Ùþ“í®“Öª“ªÇ“ª¢“ªë“ªÈ“ª­“ªË“ªÏ“¡¢
+“«Þ“«¸“««“«ë“«¤“«ó“«¯“«ê“«á“«ó“«È“ªÎ“Ñ¦“Òö“ªò“ÞÅ“ª¤“ªÞ“ª¹“¡£
+“ì¤“ù»“ªÎ“ªè“ª¦“ªË“ßö“ª¯“ªÈ:
 
     @alphabet = ('A' .. 'Z');
 
@@ -1557,7 +1571,7 @@ to get all normal letters of the English alphabet, or
 
 =end original
 
-è‹±èªžã®å¤§æ–‡å­—ã™ã¹ã¦ã‚’å¾—ã‚‰ã‚Œã¾ã™ã—:
+“çÈ“åÞ“ªÎ“ÓÞ“Ùþ“í®“ª¹“ªÙ“ªÆ“ªò“Ôð“ªé“ªì“ªÞ“ª¹“ª·:
 
     $hexdigit = (0 .. 9, 'a' .. 'f')[$num & 15];
 
@@ -1567,7 +1581,7 @@ to get a hexadecimal digit, or
 
 =end original
 
-ã¨æ›¸ã‘ã°ã€16 é€²ã®æ•°å­—ãŒå¾—ã‚‰ã‚Œã¾ã™ã—ã€
+“ªÈ“ßö“ª±“ªÐ“¡¢16 “òä“ªÎ‘Êý“í®“ª¬“Ôð“ªé“ªì“ªÞ“ª¹“ª·“¡¢
 
     @z2 = ('01' .. '31');  print $z2[$mday];
 
@@ -1577,7 +1591,7 @@ to get dates with leading zeros.
 
 =end original
 
-ã¨ã™ã‚Œã°ã€0 ä»˜ãã®æ—¥ä»˜ãŒå¾—ã‚‰ã‚Œã¾ã™ã€‚
+“ªÈ“ª¹“ªì“ªÐ“¡¢0 “Üõ“ª­“ªÎ“ìí“Üõ“ª¬“Ôð“ªé“ªì“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -1587,10 +1601,10 @@ be longer than the final value specified.
 
 =end original
 
-ãƒžã‚¸ã‚«ãƒ«ã‚¤ãƒ³ã‚¯ãƒªãƒ¡ãƒ³ãƒˆã«ã‚ˆã£ã¦å¾—ã‚‰ã‚Œã‚‹å€¤ã®ä¸­ã«æŒ‡å®šã—ãŸæœ€çµ‚å€¤ã«
-ã¡ã‚‡ã†ã©ä¸€è‡´ã™ã‚‹ã‚‚ã®ãŒè¦‹ã¤ã‹ã‚‰ãªã„ã‚ˆã†ãªå ´åˆã«ã¯ã€
-ãƒžã‚¸ã‚«ãƒ«ã‚¤ãƒ³ã‚¯ãƒªãƒ¡ãƒ³ãƒˆã«ã‚ˆã£ã¦å¾—ã‚‰ã‚Œã‚‹æ¬¡ã®å€¤ã®æ–‡å­—åˆ—é•·ãŒã€
-æœ€çµ‚å€¤ã¨ã—ã¦æŒ‡å®šã—ãŸå€¤ã®ã‚‚ã®ã‚ˆã‚Šé•·ããªã‚‹ã¾ã§ã‚¤ãƒ³ã‚¯ãƒªãƒ¡ãƒ³ãƒˆãŒç¶šã‘ã‚‰ã‚Œã¾ã™ã€‚
+“«Þ“«¸“««“«ë“«¤“«ó“«¯“«ê“«á“«ó“«È“ªË“ªè“ªÃ“ªÆ“Ôð“ªé“ªì“ªë“ö·“ªÎ“ñé“ªË“ò¦“ïÒ“ª·“ª¿“õÌ“ðû“ö·“ªË
+“ªÁ“ªç“ª¦“ªÉ“ìé“öÈ“ª¹“ªë“ªâ“ªÎ“ª¬“Ì¸“ªÄ“ª«“ªé“ªÊ“ª¤“ªè“ª¦“ªÊ“íÞ“ùê“ªË“ªÏ“¡¢
+“«Þ“«¸“««“«ë“«¤“«ó“«¯“«ê“«á“«ó“«È“ªË“ªè“ªÃ“ªÆ“Ôð“ªé“ªì“ªë“ó­“ªÎ“ö·“ªÎ“Ùþ“í®“Öª“íþ“ª¬“¡¢
+“õÌ“ðû“ö·“ªÈ“ª·“ªÆ“ò¦“ïÒ“ª·“ª¿“ö·“ªÎ“ªâ“ªÎ“ªè“ªê“íþ“ª¯“ªÊ“ªë“ªÞ“ªÇ“«¤“«ó“«¯“«ê“«á“«ó“«È“ª¬’Â³“ª±“ªé“ªì“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -1616,7 +1630,7 @@ To get lower-case greek letters, use this instead:
 
 =end original
 
-å°æ–‡å­—ã®ã‚®ãƒªã‚·ãƒ£æ–‡å­—ã‚’å¾—ã‚‹ãŸã‚ã«ã¯ã€ä»£ã‚ã‚Šã«ä»¥ä¸‹ã®ã‚ˆã†ã«ã—ã¦ãã ã•ã„:
+“á³“Ùþ“í®“ªÎ“«®“«ê“«·“«ã“Ùþ“í®“ªò“Ôð“ªë“ª¿“ªá“ªË“ªÏ“¡¢“ÓÛ“ªï“ªê“ªË“ì¤“ù»“ªÎ“ªè“ª¦“ªË“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤:
 
     my @greek_small =  map { chr } ( ord("\N{alpha}") .. ord("\N{omega}") );
 
@@ -1627,15 +1641,15 @@ return two elements in list context.
 
 =end original
 
-ãã‚Œãžã‚Œã®ã‚ªãƒšãƒ©ãƒ³ãƒ‰ã¯æ•´æ•°ã®å½¢ã§è©•ä¾¡ã•ã‚Œã‚‹ã®ã§ã€C<2.18 .. 3.14> ã¯
-ãƒªã‚¹ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã¯äºŒã¤ã®è¦ç´ ã‚’è¿”ã—ã¾ã™ã€‚
+“ª½“ªì“ª¾“ªì“ªÎ“«ª“«Ú“«é“«ó“«É“ªÏ“ïÚ‘Êý“ªÎ“û¡“ªÇ“øÄ’²Á“ªµ“ªì“ªë“ªÎ“ªÇ“¡¢C<2.18 .. 3.14> “ªÏ
+“«ê“«¹“«È“«³“«ó“«Æ“«­“«¹“«È“ªÇ“ªÏ“ì£“ªÄ“ªÎ“é©“áÈ“ªò“Ú÷“ª·“ªÞ“ª¹“¡£
 
     @list = (2.18 .. 3.14); # same as @list = (2 .. 3);
 
 =head2 Conditional Operator
 X<operator, conditional> X<operator, ternary> X<ternary> X<?:>
 
-(æ¡ä»¶æ¼”ç®—å­)
+(‘Ìõ“Ëì“æÑ“ß©“í­)
 
 =begin original
 
@@ -1646,10 +1660,10 @@ is returned.  For example:
 
 =end original
 
-ä¸‰é …æ¼”ç®—å­ã® "?:" ã¯ã€C ã®å ´åˆã¨åŒã˜æ¡ä»¶æ¼”ç®—å­ã§ã™ã€‚
-ã“ã‚Œã¯ã€if-then-else ã®ã‚ˆã†ã«åƒãã¾ã™ã€‚
-"?" ã®å‰ã®å¼•æ•°ãŒçœŸã§ã‚ã‚Œã° ":" ã®å‰ã®å¼•æ•°ãŒè¿”ã•ã‚Œã¾ã™ãŒã€
-çœŸã§ãªã‘ã‚Œã°ã€":" ã®å¾Œã®å¼•æ•°ãŒè¿”ã•ã‚Œã¾ã™ã€‚ä¾‹:
+“ß²“ú£“æÑ“ß©“í­“ªÎ "?:" “ªÏ“¡¢C “ªÎ“íÞ“ùê“ªÈ“ÔÒ“ª¸‘Ìõ“Ëì“æÑ“ß©“í­“ªÇ“ª¹“¡£
+“ª³“ªì“ªÏ“¡¢if-then-else “ªÎ“ªè“ª¦“ªË’Æ¯“ª­“ªÞ“ª¹“¡£
+"?" “ªÎ“îñ“ªÎ“ìÚ‘Êý“ª¬‘Õæ“ªÇ“ª¢“ªì“ªÐ ":" “ªÎ“îñ“ªÎ“ìÚ‘Êý“ª¬“Ú÷“ªµ“ªì“ªÞ“ª¹“ª¬“¡¢
+‘Õæ“ªÇ“ªÊ“ª±“ªì“ªÐ“¡¢":" “ªÎ“ý­“ªÎ“ìÚ‘Êý“ª¬“Ú÷“ªµ“ªì“ªÞ“ª¹“¡£“ÖÇ:
 
     printf "I have %d dog%s.\n", $n,
 	    ($n == 1) ? '' : "s";
@@ -1661,8 +1675,8 @@ or 3rd argument, whichever is selected.
 
 =end original
 
-ã‚¹ã‚«ãƒ©ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‹ãƒªã‚¹ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‹ã¨ã„ã†çŠ¶æ³ã¯ã€
-é¸æŠžã•ã‚ŒãŸ 2 ç•ªç›®ã‚‚ã—ãã¯ 3 ç•ªç›®ã®å¼•æ•°ã«ã¾ã§ä¼ã‚ã‚Šã¾ã™ã€‚
+“«¹“««“«é“«³“«ó“«Æ“«­“«¹“«È“ª«“«ê“«¹“«È“«³“«ó“«Æ“«­“«¹“«È“ª«“ªÈ“ª¤“ª¦‘×´“üÏ“ªÏ“¡¢
+“àÔ’Âò“ªµ“ªì“ª¿ 2 “Ûã“ÙÍ“ªâ“ª·“ª¯“ªÏ 3 “Ûã“ÙÍ“ªÎ“ìÚ‘Êý“ªË“ªÞ“ªÇ™¡ó“ªï“ªê“ªÞ“ª¹“¡£
 
     $a = $ok ? $b : $c;  # get a scalar
     @a = $ok ? @b : @c;  # get an array
@@ -1675,8 +1689,8 @@ legal lvalues (meaning that you can assign to them):
 
 =end original
 
-2 ç•ªç›®ã¨ 3 ç•ªç›®ã®å¼•æ•°åŒæ–¹ãŒå·¦è¾ºå€¤ (ä»£å…¥å¯èƒ½ã¨ã„ã†ã“ã¨)ã§ã‚ã‚Œã°ã€
-ã“ã®æ¼”ç®—å­ã«ä»£å…¥ã‚’è¡Œãªã†ã“ã¨ã‚‚ã§ãã¾ã™:
+2 “Ûã“ÙÍ“ªÈ 3 “Ûã“ÙÍ“ªÎ“ìÚ‘Êý‘Ë«“Û°“ª¬“ñ§’ÊÕ“ö· (“ÓÛ“ìý“Ê¦“Òö“ªÈ“ª¤“ª¦“ª³“ªÈ)“ªÇ“ª¢“ªì“ªÐ“¡¢
+“ª³“ªÎ“æÑ“ß©“í­“ªË“ÓÛ“ìý“ªò“ú¼“ªÊ“ª¦“ª³“ªÈ“ªâ“ªÇ“ª­“ªÞ“ª¹:
 
     ($a_or_b ? $a : $b) = $c;
 
@@ -1687,8 +1701,8 @@ without parentheses will get you in trouble.  For example, this:
 
 =end original
 
-ã“ã®æ¼”ç®—å­ã¯ä»£å…¥å¯èƒ½ãªçµæžœã‚’ç”Ÿã¿å‡ºã™ã®ã§ã€
-æ‹¬å¼§ãªã—ã§ä»£å…¥ã‚’è¡Œã†ã¨ãŠã‹ã—ããªã‚‹ã‹ã‚‚ã—ã‚Œã¾ã›ã‚“ã€‚ä¾‹ãˆã°:
+“ª³“ªÎ“æÑ“ß©“í­“ªÏ“ÓÛ“ìý“Ê¦“Òö“ªÊ“Ì¿“Íý“ªò“ßæ“ªß“õó“ª¹“ªÎ“ªÇ“¡¢
+“ÎÀ“ûÁ“ªÊ“ª·“ªÇ“ÓÛ“ìý“ªò“ú¼“ª¦“ªÈ“ªª“ª«“ª·“ª¯“ªÊ“ªë“ª«“ªâ“ª·“ªì“ªÞ“ª»“ªó“¡£“ÖÇ“ª¨“ªÐ:
 
     $a % 2 ? $a += 10 : $a += 2
 
@@ -1698,7 +1712,7 @@ Really means this:
 
 =end original
 
-ã¯ä»¥ä¸‹ã‚’æ„å‘³ã—:
+“ªÏ“ì¤“ù»“ªò“ëò“Ú«“ª·:
 
     (($a % 2) ? ($a += 10) : $a) += 2
 
@@ -1708,7 +1722,7 @@ Rather than this:
 
 =end original
 
-ä»¥ä¸‹ã®ã‚ˆã†ã«ã¯ãªã‚Šã¾ã›ã‚“:
+“ì¤“ù»“ªÎ“ªè“ª¦“ªË“ªÏ“ªÊ“ªê“ªÞ“ª»“ªó:
 
     ($a % 2) ? ($a += 10) : ($a += 2)
 
@@ -1718,7 +1732,7 @@ That should probably be written more simply as:
 
 =end original
 
-æã‚‰ãä»¥ä¸‹ã®ã‚ˆã†ã«ã‚‚ã£ã¨å˜ç´”ã«æ›¸ãã¹ãã§ã—ã‚‡ã†:
+“Íð“ªé“ª¯“ì¤“ù»“ªÎ“ªè“ª¦“ªË“ªâ“ªÃ“ªÈ’Ã±“âí“ªË“ßö“ª¯“ªÙ“ª­“ªÇ“ª·“ªç“ª¦:
 
     $a += ($a % 2) ? 10 : 2;
 
@@ -1727,7 +1741,7 @@ X<assignment> X<operator, assignment> X<=> X<**=> X<+=> X<*=> X<&=>
 X<<< <<= >>> X<&&=> X<-=> X</=> X<|=> X<<< >>= >>> X<||=> X<//=> X<.=>
 X<%=> X<^=> X<x=>
 
-(ä»£å…¥æ¼”ç®—å­)
+(“ÓÛ“ìý“æÑ“ß©“í­)
 
 =begin original
 
@@ -1735,7 +1749,7 @@ X<%=> X<^=> X<x=>
 
 =end original
 
-"=" ã¯é€šå¸¸ã®ä»£å…¥æ¼”ç®—å­ã§ã™ã€‚
+"=" “ªÏ“÷×“ßÈ“ªÎ“ÓÛ“ìý“æÑ“ß©“í­“ªÇ“ª¹“¡£
 
 =begin original
 
@@ -1743,7 +1757,7 @@ Assignment operators work as in C.  That is,
 
 =end original
 
-ä»£å…¥æ¼”ç®—å­ã¯ C ã®å ´åˆã¨åŒæ§˜ã®åƒãã‚’ã—ã¾ã™ã€‚ã¤ã¾ã‚Šã€
+“ÓÛ“ìý“æÑ“ß©“í­“ªÏ C “ªÎ“íÞ“ùê“ªÈ“ÔÒ’ÍÍ“ªÎ’Æ¯“ª­“ªò“ª·“ªÞ“ª¹“¡£“ªÄ“ªÞ“ªê“¡¢
 
     $a += 2;
 
@@ -1753,7 +1767,7 @@ is equivalent to
 
 =end original
 
-ã¯ä»¥ä¸‹ã¨ç­‰ä¾¡ã§ã™ã€‚
+“ªÏ“ì¤“ù»“ªÈ“Ôõ’²Á“ªÇ“ª¹“¡£
 
     $a = $a + 2;
 
@@ -1765,9 +1779,9 @@ The following are recognized:
 
 =end original
 
-ã—ã‹ã—ã€tie() ã®ã‚ˆã†ãªã‚‚ã®ã§èµ·ã“ã‚‹å·¦è¾ºå€¤ã®è¢«å‚ç…§ã«ã‚ˆã‚‹
-å‰¯ä½œç”¨ãŒ 2 å›žèµ·ã“ã‚‹ã“ã¨ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
-ä»–ã®ä»£å…¥æ¼”ç®—ã‚‚åŒæ§˜ã«åƒãã¾ã™ã€‚ä»¥ä¸‹ã®ã‚‚ã®ãŒèªè­˜ã•ã‚Œã¾ã™:
+“ª·“ª«“ª·“¡¢tie() “ªÎ“ªè“ª¦“ªÊ“ªâ“ªÎ“ªÇ“ÑÃ“ª³“ªë“ñ§’ÊÕ“ö·“ªÎ“ù¬‘²Î“ðÎ“ªË“ªè“ªë
+“Üù“íÂ“éÄ“ª¬ 2 “üÞ“ÑÃ“ª³“ªë“ª³“ªÈ“ªÏ“ª¢“ªê“ªÞ“ª»“ªó“¡£
+“öâ“ªÎ“ÓÛ“ìý“æÑ“ß©“ªâ“ÔÒ’ÍÍ“ªË’Æ¯“ª­“ªÞ“ª¹“¡£“ì¤“ù»“ªÎ“ªâ“ªÎ“ª¬“ìã“ãÛ“ªµ“ªì“ªÞ“ª¹:
 
     **=    +=    *=    &=    <<=    &&=
            -=    /=    |=    >>=    ||=
@@ -1781,8 +1795,8 @@ of assignment.
 
 =end original
 
-ã‚°ãƒ«ãƒ¼ãƒ—åˆ†ã‘ã—ã¦ã‚ã‚Šã¾ã™ãŒã€ã“ã‚Œã‚‰ã¯ã„ãšã‚Œã‚‚ä»£å…¥æ¼”ç®—å­ã¨ã—ã¦
-åŒã˜å„ªå…ˆé †ä½ã¨ãªã£ã¦ã„ã¾ã™ã€‚
+“«°“«ë’¡¼“«×“ÝÂ“ª±“ª·“ªÆ“ª¢“ªê“ªÞ“ª¹“ª¬“¡¢“ª³“ªì“ªé“ªÏ“ª¤“ªº“ªì“ªâ“ÓÛ“ìý“æÑ“ß©“í­“ªÈ“ª·“ªÆ
+“ÔÒ“ª¸“éÐ“à»“â÷“êÈ“ªÈ“ªÊ“ªÃ“ªÆ“ª¤“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -1793,10 +1807,10 @@ for modifying a copy of something, like this:
 
 =end original
 
-C ã¨é•ã£ã¦ã€ã‚¹ã‚«ãƒ©ä»£å…¥æ¼”ç®—å­ã¯æœ‰åŠ¹ãªå·¦è¾ºå€¤ã‚’ä½œã‚Šå‡ºã—ã¾ã™ã€‚
-ä»£å…¥ã‚’ä¿®æ­£ã™ã‚‹ã“ã¨ã¯ã€ä»£å…¥ã‚’è¡Œãªã£ã¦ã‹ã‚‰ã€ãã®ä»£å…¥ã•ã‚ŒãŸå¤‰æ•°ã‚’ä¿®æ­£ã™ã‚‹ã®ã¨
-åŒã˜ã“ã¨ã«ãªã‚Šã¾ã™ã€‚
-ã“ã‚Œã¯ã€ä»¥ä¸‹ã®ã‚ˆã†ã«ä½•ã‹ã®ã‚³ãƒ”ãƒ¼ã‚’å¤‰æ›´ã—ãŸã„ã¨ãã«ä¾¿åˆ©ã§ã™:
+C “ªÈ“êÞ“ªÃ“ªÆ“¡¢“«¹“««“«é“ÓÛ“ìý“æÑ“ß©“í­“ªÏ“êó’¸ú“ªÊ“ñ§’ÊÕ“ö·“ªò“íÂ“ªê“õó“ª·“ªÞ“ª¹“¡£
+“ÓÛ“ìý“ªò“áó“ïá“ª¹“ªë“ª³“ªÈ“ªÏ“¡¢“ÓÛ“ìý“ªò“ú¼“ªÊ“ªÃ“ªÆ“ª«“ªé“¡¢“ª½“ªÎ“ÓÛ“ìý“ªµ“ªì“ª¿’ÊÑ‘Êý“ªò“áó“ïá“ª¹“ªë“ªÎ“ªÈ
+“ÔÒ“ª¸“ª³“ªÈ“ªË“ªÊ“ªê“ªÞ“ª¹“¡£
+“ª³“ªì“ªÏ“¡¢“ì¤“ù»“ªÎ“ªè“ª¦“ªË“ù¼“ª«“ªÎ“«³“«Ô’¡¼“ªò’ÊÑ“ÌÚ“ª·“ª¿“ª¤“ªÈ“ª­“ªË“øµ“××“ªÇ“ª¹:
 
     ($tmp = $global) =~ tr [A-Z] [a-z];
 
@@ -1806,7 +1820,7 @@ Likewise,
 
 =end original
 
-åŒæ§˜ã«ã€
+“ÔÒ’ÍÍ“ªË“¡¢
 
     ($a += 2) *= 3;
 
@@ -1816,7 +1830,7 @@ is equivalent to
 
 =end original
 
-ã¯ä»¥ä¸‹ã¨åŒç­‰ã§ã™ã€‚
+“ªÏ“ì¤“ù»“ªÈ“ÔÒ“Ôõ“ªÇ“ª¹“¡£
 
     $a += 2;
     $a *= 3;
@@ -1830,14 +1844,14 @@ side of the assignment.
 
 =end original
 
-åŒæ§˜ã«ã€ãƒªã‚¹ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã®ãƒªã‚¹ãƒˆã¸ã®ä»£å…¥ã¯ä»£å…¥å¯èƒ½ãªå·¦è¾ºå€¤ã®ãƒªã‚¹ãƒˆã¨ãªã‚Šã€
-ã‚¹ã‚«ãƒ©ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã®ãƒªã‚¹ãƒˆã¸ã®ä»£å…¥ã¯ä»£å…¥ã®å³å´ã®å¼ã§ä½œæˆã•ã‚ŒãŸ
-è¦ç´ ã®æ•°ã‚’è¿”ã—ã¾ã™ã€‚
+“ÔÒ’ÍÍ“ªË“¡¢“«ê“«¹“«È“«³“«ó“«Æ“«­“«¹“«È“ªÇ“ªÎ“«ê“«¹“«È“ªØ“ªÎ“ÓÛ“ìý“ªÏ“ÓÛ“ìý“Ê¦“Òö“ªÊ“ñ§’ÊÕ“ö·“ªÎ“«ê“«¹“«È“ªÈ“ªÊ“ªê“¡¢
+“«¹“««“«é“«³“«ó“«Æ“«­“«¹“«È“ªÇ“ªÎ“«ê“«¹“«È“ªØ“ªÎ“ÓÛ“ìý“ªÏ“ÓÛ“ìý“ªÎ“éÓ“ö°“ªÎ“ãÒ“ªÇ“íÂ“à÷“ªµ“ªì“ª¿
+“é©“áÈ“ªÎ‘Êý“ªò“Ú÷“ª·“ªÞ“ª¹“¡£
 
 =head2 Comma Operator
 X<comma> X<operator, comma> X<,>
 
-(ã‚³ãƒ³ãƒžæ¼”ç®—å­)
+(“«³“«ó“«Þ“æÑ“ß©“í­)
 
 =begin original
 
@@ -1847,10 +1861,10 @@ argument and returns that value.  This is just like C's comma operator.
 
 =end original
 
-äºŒé …æ¼”ç®—å­ã® "," ã¯ã‚³ãƒ³ãƒžæ¼”ç®—å­ã§ã™ã€‚
-ã‚¹ã‚«ãƒ©ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã¯ãã®å·¦å¼•æ•°ã‚’è©•ä¾¡ã—ã€ãã®å€¤ã‚’æ¨ã¦ã¦ã€
-ãã‚Œã‹ã‚‰å³å¼•æ•°ã‚’è©•ä¾¡ã—ã€ãã®å€¤ã‚’è¿”ã—ã¾ã™ã€‚
-ã“ã‚Œã¯ã¡ã‚‡ã†ã©ã€C ã®ã‚³ãƒ³ãƒžæ¼”ç®—å­ã¨åŒã˜ã§ã™ã€‚
+“ì£“ú£“æÑ“ß©“í­“ªÎ "," “ªÏ“«³“«ó“«Þ“æÑ“ß©“í­“ªÇ“ª¹“¡£
+“«¹“««“«é“«³“«ó“«Æ“«­“«¹“«È“ªÇ“ªÏ“ª½“ªÎ“ñ§“ìÚ‘Êý“ªò“øÄ’²Á“ª·“¡¢“ª½“ªÎ“ö·“ªò“Þ×“ªÆ“ªÆ“¡¢
+“ª½“ªì“ª«“ªé“éÓ“ìÚ‘Êý“ªò“øÄ’²Á“ª·“¡¢“ª½“ªÎ“ö·“ªò“Ú÷“ª·“ªÞ“ª¹“¡£
+“ª³“ªì“ªÏ“ªÁ“ªç“ª¦“ªÉ“¡¢C “ªÎ“«³“«ó“«Þ“æÑ“ß©“í­“ªÈ“ÔÒ“ª¸“ªÇ“ª¹“¡£
 
 =begin original
 
@@ -1860,9 +1874,9 @@ from left to right.
 
 =end original
 
-ãƒªã‚¹ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã¯ã€ã“ã‚Œã¯å˜ã«ãƒªã‚¹ãƒˆå¼•æ•°ã®åŒºåˆ‡ã‚Šæ–‡å­—ã§ã€
-åŒæ–¹ã®å¼•æ•°ã‚’ãã®ãƒªã‚¹ãƒˆã«æŒ¿å…¥ã™ã‚‹åƒããŒã‚ã‚Šã¾ã™ã€‚
-ã“ã‚Œã‚‰ã®å¼•æ•°ã‚‚å³ã‹ã‚‰å·¦ã«è©•ä¾¡ã•ã‚Œã¾ã™ã€‚
+“«ê“«¹“«È“«³“«ó“«Æ“«­“«¹“«È“ªÇ“ªÏ“¡¢“ª³“ªì“ªÏ’Ã±“ªË“«ê“«¹“«È“ìÚ‘Êý“ªÎ‘Çø“ï·“ªê“Ùþ“í®“ªÇ“¡¢
+‘Ë«“Û°“ªÎ“ìÚ‘Êý“ªò“ª½“ªÎ“«ê“«¹“«È“ªË’ÁÞ“ìý“ª¹“ªë’Æ¯“ª­“ª¬“ª¢“ªê“ªÞ“ª¹“¡£
+“ª³“ªì“ªé“ªÎ“ìÚ‘Êý“ªâ“éÓ“ª«“ªé“ñ§“ªË“øÄ’²Á“ªµ“ªì“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -1873,9 +1887,9 @@ considered a constant or function call.
 
 =end original
 
-C<< => >> æ¼”ç®—å­ã¯ã‚³ãƒ³ãƒžæ¼”ç®—å­ã®åŒç¾©èªžã§ã™ãŒã€(5.001 ä»¥é™)å·¦è¾ºå€¤ã®å˜èªž
-(å˜èªžæ–‡å­—ã§æ§‹æˆã•ã‚Œã‚‹å…¨ä½“)ã‚’å¿…ãšæ–‡å­—åˆ—ã¨ã—ã¦æ‰±ã†ã¨ã„ã†åŠ¹æžœã‚‚ã‚ã‚Šã¾ã™ã€‚
-ã“ã‚Œã«ã¯ä»–ã®å ´æ‰€ã§ã¯å®šæ•°ã‚„é–¢æ•°å‘¼ã³å‡ºã—ã¨ã—ã¦æ‰±ã‚ã‚Œã‚‹å˜èªžã‚’å«ã¿ã¾ã™ã€‚
+C<< => >> “æÑ“ß©“í­“ªÏ“«³“«ó“«Þ“æÑ“ß©“í­“ªÎ“ÔÒ“ëù“åÞ“ªÇ“ª¹“ª¬“¡¢(5.001 “ì¤“Ë½)“ñ§’ÊÕ“ö·“ªÎ’Ã±“åÞ
+(’Ã±“åÞ“Ùþ“í®“ªÇ“Ï°“à÷“ªµ“ªì“ªë“îï‘Ìå)“ªò“ù±“ªº“Ùþ“í®“Öª“ªÈ“ª·“ªÆ“Ðâ“ª¦“ªÈ“ª¤“ª¦’¸ú“Íý“ªâ“ª¢“ªê“ªÞ“ª¹“¡£
+“ª³“ªì“ªË“ªÏ“öâ“ªÎ“íÞ“á¶“ªÇ“ªÏ“ïÒ‘Êý“ªä’´Ø‘Êý“û¼“ªÓ“õó“ª·“ªÈ“ª·“ªÆ“Ðâ“ªï“ªì“ªë’Ã±“åÞ“ªò“ùß“ªß“ªÞ“ª¹“¡£
 
     use constant FOO => "something";
 
@@ -1887,7 +1901,7 @@ is equivalent to:
 
 =end original
 
-ã¯ã€ä»¥ä¸‹ã¨ç­‰ä¾¡ã§ã™:
+“ªÏ“¡¢“ì¤“ù»“ªÈ“Ôõ’²Á“ªÇ“ª¹:
 
     my %h = ("FOO", 23);
 
@@ -1897,7 +1911,7 @@ It is I<NOT>:
 
 =end original
 
-ã“ã‚Œã¯ I<é•ã„ã¾ã™>:
+“ª³“ªì“ªÏ I<“êÞ“ª¤“ªÞ“ª¹>:
 
     my %h = ("something", 23);
 
@@ -1908,8 +1922,8 @@ an expression, and then the string value of that is used.
 
 =end original
 
-å·¦å´ã®å¼•æ•°ãŒå˜èªžã§ãªã‹ã£ãŸå ´åˆã€ã¾ãšã¯å¼ã¨ã—ã¦è§£é‡ˆã•ã‚Œã€ãã‚Œã‹ã‚‰
-ãã‚Œã‚’ä½¿ã£ãŸæ–‡å­—åˆ—å€¤ã¨ã—ã¦è§£é‡ˆã•ã‚Œã¾ã™ã€‚
+“ñ§“ö°“ªÎ“ìÚ‘Êý“ª¬’Ã±“åÞ“ªÇ“ªÊ“ª«“ªÃ“ª¿“íÞ“ùê“¡¢“ªÞ“ªº“ªÏ“ãÒ“ªÈ“ª·“ªÆ“ú°’¼á“ªµ“ªì“¡¢“ª½“ªì“ª«“ªé
+“ª½“ªì“ªò“ÞÅ“ªÃ“ª¿“Ùþ“í®“Öª“ö·“ªÈ“ª·“ªÆ“ú°’¼á“ªµ“ªì“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -1918,8 +1932,8 @@ between keys and values in hashes, and other paired elements in lists.
 
 =end original
 
-C<< => >> æ¼”ç®—å­ã¯ã€ãƒãƒƒã‚·ãƒ¥ã®ã‚­ãƒ¼ã¨å€¤ã‚„ã€ãã®ä»–ã®ãƒªã‚¹ãƒˆä¸­ã®çµ„ã¨ãªã‚‹
-è¦ç´ ã®é–¢ä¿‚ã‚’è¡¨ç¾ã™ã‚‹ã®ã«ä¾¿åˆ©ã§ã™ã€‚
+C<< => >> “æÑ“ß©“í­“ªÏ“¡¢“«Ï“«Ã“«·“«å“ªÎ“«­’¡¼“ªÈ“ö·“ªä“¡¢“ª½“ªÎ“öâ“ªÎ“«ê“«¹“«È“ñé“ªÎ“ðÚ“ªÈ“ªÊ“ªë
+“é©“áÈ“ªÎ’´Ø“Ìõ“ªò“øú“úÞ“ª¹“ªë“ªÎ“ªË“øµ“××“ªÇ“ª¹“¡£
 
         %hash = ( $key => $value );
         login( $username => $password );
@@ -1927,7 +1941,7 @@ C<< => >> æ¼”ç®—å­ã¯ã€ãƒãƒƒã‚·ãƒ¥ã®ã‚­ãƒ¼ã¨å€¤ã‚„ã€ãã®ä»–ã®ãƒªã‚¹ãƒˆä
 =head2 List Operators (Rightward)
 X<operator, list, rightward> X<list operator>
 
-(ãƒªã‚¹ãƒˆæ¼”ç®—å­ (å³æ–¹å‘))
+(“«ê“«¹“«È“æÑ“ß©“í­ (“éÓ“Û°“ú¾))
 
 =begin original
 
@@ -1939,11 +1953,11 @@ operators without the need for extra parentheses:
 
 =end original
 
-ãƒªã‚¹ãƒˆæ¼”ç®—å­ã®å³å´ã®ã‚‚ã®ã«ã¨ã£ã¦ã€ãƒªã‚¹ãƒˆæ¼”ç®—å­ã¯ã¨ã¦ã‚‚ä½Žã„å„ªå…ˆé †ä½ã«ãªã‚Šã¾ã™ã€‚
-ã“ã‚Œã«ã‚ˆã£ã¦ã‚³ãƒ³ãƒžã§åŒºåˆ‡ã£ãŸå¼ã‚’ãƒªã‚¹ãƒˆæ¼”ç®—å­ã®å¼•æ•°ã¨ã—ã¦
-ç½®ãã“ã¨ãŒã§ãã¾ã™ã€‚
-ã“ã‚Œã‚ˆã‚Šã‚‚å„ªå…ˆé †ä½ãŒä½Žã„ã‚‚ã®ã¯ã€è«–ç†æ¼”ç®—å­ã® "and", "or", "not" ã®ã¿ã§ã€
-ä½™åˆ†ãªæ‹¬å¼§ã‚’ä»˜ã‘ãªã„ãƒªã‚¹ãƒˆæ¼”ç®—å­ã®å‘¼ã³å‡ºã—ã‚’è©•ä¾¡ã™ã‚‹ãŸã‚ã«ä½¿ã†ã“ã¨ãŒã§ãã¾ã™:
+“«ê“«¹“«È“æÑ“ß©“í­“ªÎ“éÓ“ö°“ªÎ“ªâ“ªÎ“ªË“ªÈ“ªÃ“ªÆ“¡¢“«ê“«¹“«È“æÑ“ß©“í­“ªÏ“ªÈ“ªÆ“ªâ“î¸“ª¤“éÐ“à»“â÷“êÈ“ªË“ªÊ“ªê“ªÞ“ª¹“¡£
+“ª³“ªì“ªË“ªè“ªÃ“ªÆ“«³“«ó“«Þ“ªÇ‘Çø“ï·“ªÃ“ª¿“ãÒ“ªò“«ê“«¹“«È“æÑ“ß©“í­“ªÎ“ìÚ‘Êý“ªÈ“ª·“ªÆ
+“öÇ“ª¯“ª³“ªÈ“ª¬“ªÇ“ª­“ªÞ“ª¹“¡£
+“ª³“ªì“ªè“ªê“ªâ“éÐ“à»“â÷“êÈ“ª¬“î¸“ª¤“ªâ“ªÎ“ªÏ“¡¢“Öå“×â“æÑ“ß©“í­“ªÎ "and", "or", "not" “ªÎ“ªß“ªÇ“¡¢
+“åù“ÝÂ“ªÊ“ÎÀ“ûÁ“ªò“Üõ“ª±“ªÊ“ª¤“«ê“«¹“«È“æÑ“ß©“í­“ªÎ“û¼“ªÓ“õó“ª·“ªò“øÄ’²Á“ª¹“ªë“ª¿“ªá“ªË“ÞÅ“ª¦“ª³“ªÈ“ª¬“ªÇ“ª­“ªÞ“ª¹:
 
     open HANDLE, "filename"
 	or die "Can't open: $!\n";
@@ -1954,12 +1968,12 @@ See also discussion of list operators in L<Terms and List Operators (Leftward)>.
 
 =end original
 
-L<Terms and List Operators (Leftward)> ã®ãƒªã‚¹ãƒˆæ¼”ç®—å­ã®è­°è«–ã‚‚å‚ç…§ã—ã¦ä¸‹ã•ã„ã€‚
+L<Terms and List Operators (Leftward)> “ªÎ“«ê“«¹“«È“æÑ“ß©“í­“ªÎ“ì¡“Öå“ªâ‘²Î“ðÎ“ª·“ªÆ“ù»“ªµ“ª¤“¡£
 
 =head2 Logical Not
 X<operator, logical, not> X<not>
 
-(è«–ç†å¦å®š)
+(“Öå“×â“Üú“ïÒ)
 
 =begin original
 
@@ -1968,13 +1982,13 @@ It's the equivalent of "!" except for the very low precedence.
 
 =end original
 
-å˜é …æ¼”ç®—å­ã® "not" ã¯å³å´ã«æ¥ã‚‹å¼ã®å¦å®šã‚’è¿”ã—ã¾ã™ã€‚
-ã“ã‚Œã¯ã€å„ªå…ˆé †ä½ãŒãšã£ã¨ä½Žã„ã“ã¨ã‚’é™¤ã„ã¦ã¯ "!" ã¨ç­‰ä¾¡ã§ã™ã€‚
+’Ã±“ú£“æÑ“ß©“í­“ªÎ "not" “ªÏ“éÓ“ö°“ªË‘À´“ªë“ãÒ“ªÎ“Üú“ïÒ“ªò“Ú÷“ª·“ªÞ“ª¹“¡£
+“ª³“ªì“ªÏ“¡¢“éÐ“à»“â÷“êÈ“ª¬“ªº“ªÃ“ªÈ“î¸“ª¤“ª³“ªÈ“ªò“ð¶“ª¤“ªÆ“ªÏ "!" “ªÈ“Ôõ’²Á“ªÇ“ª¹“¡£
 
 =head2 Logical And
 X<operator, logical, and> X<and>
 
-(è«–ç†ç©)
+(“Öå“×â“îÝ)
 
 =begin original
 
@@ -1985,17 +1999,17 @@ expression is evaluated only if the left expression is true.
 
 =end original
 
-äºŒé …æ¼”ç®—å­ã® "and" ã¯ä¸¡å´ã®å¼ã®è«–ç†ç©ã‚’è¿”ã—ã¾ã™ã€‚
-ã“ã‚Œã¯ã€å„ªå…ˆé †ä½ãŒãšã£ã¨ä½Žã„ã“ã¨ã‚’é™¤ã‘ã° && ã¨ç­‰ä¾¡ã§ã™ã€‚
-ã¤ã¾ã‚Šã€ã“ã‚Œã‚‚çŸ­çµ¡æ¼”ç®—ã‚’è¡Œãªã„ã€å³å´ã®å¼ã¯å·¦å´ã®å¼ãŒ
-ã€ŒçœŸã€ã§ã‚ã£ãŸå ´åˆã«ã®ã¿è©•ä¾¡ã•ã‚Œã¾ã™ã€‚
+“ì£“ú£“æÑ“ß©“í­“ªÎ "and" “ªÏ’Î¾“ö°“ªÎ“ãÒ“ªÎ“Öå“×â“îÝ“ªò“Ú÷“ª·“ªÞ“ª¹“¡£
+“ª³“ªì“ªÏ“¡¢“éÐ“à»“â÷“êÈ“ª¬“ªº“ªÃ“ªÈ“î¸“ª¤“ª³“ªÈ“ªò“ð¶“ª±“ªÐ && “ªÈ“Ôõ’²Á“ªÇ“ª¹“¡£
+“ªÄ“ªÞ“ªê“¡¢“ª³“ªì“ªâ“Ó­“Õ©“æÑ“ß©“ªò“ú¼“ªÊ“ª¤“¡¢“éÓ“ö°“ªÎ“ãÒ“ªÏ“ñ§“ö°“ªÎ“ãÒ“ª¬
+“¡¸‘Õæ“¡¹“ªÇ“ª¢“ªÃ“ª¿“íÞ“ùê“ªË“ªÎ“ªß“øÄ’²Á“ªµ“ªì“ªÞ“ª¹“¡£
 
 =head2 Logical or, Defined or, and Exclusive Or
 X<operator, logical, or> X<operator, logical, xor>
 X<operator, logical, defined or> X<operator, logical, exclusive or>
 X<or> X<xor>
 
-(è«–ç†å’Œã¨å®šç¾©æ€§å’Œã¨æŽ’ä»–è«–ç†å’Œ)
+(“Öå“×â“ûú“ªÈ“ïÒ“ëù“àõ“ûú“ªÈ“ÛÉ“öâ“Öå“×â“ûú)
 
 =begin original
 
@@ -2005,9 +2019,9 @@ This makes it useful for control flow
 
 =end original
 
-äºŒé …æ¼”ç®—å­ã® "or" ã¯ä¸¡å´ã®å¼ã®è«–ç†å’Œã‚’è¿”ã—ã¾ã™ã€‚
-ã“ã‚Œã¯ã€å„ªå…ˆé †ä½ãŒãšã£ã¨ä½Žã„ã“ã¨ã‚’é™¤ã„ã¦ || ã¨ç­‰ä¾¡ã§ã™ã€‚
-ã“ã‚Œã¯ãƒ•ãƒ­ãƒ¼ã‚’åˆ¶å¾¡ã™ã‚‹ã®ã«æœ‰ç”¨ã§ã™:
+“ì£“ú£“æÑ“ß©“í­“ªÎ "or" “ªÏ’Î¾“ö°“ªÎ“ãÒ“ªÎ“Öå“×â“ûú“ªò“Ú÷“ª·“ªÞ“ª¹“¡£
+“ª³“ªì“ªÏ“¡¢“éÐ“à»“â÷“êÈ“ª¬“ªº“ªÃ“ªÈ“î¸“ª¤“ª³“ªÈ“ªò“ð¶“ª¤“ªÆ || “ªÈ“Ôõ’²Á“ªÇ“ª¹“¡£
+“ª³“ªì“ªÏ“«Õ“«í’¡¼“ªò“ð¤“åÙ“ª¹“ªë“ªÎ“ªË“êó“éÄ“ªÇ“ª¹:
 
     print FH $data		or die "Can't write to FH: $!";
 
@@ -2019,9 +2033,9 @@ probably avoid using this for assignment, only for control flow.
 
 =end original
 
-ã¤ã¾ã‚Šã€ã“ã‚Œã‚‚çŸ­çµ¡æ¼”ç®—ã‚’è¡Œãªã„ã€å³å´ã®å¼ã¯å·¦å´ã®å¼ãŒ
-ã€Œå½ã€ã§ã‚ã£ãŸå ´åˆã«ã®ã¿è©•ä¾¡ã•ã‚Œã¾ã™ã€‚
-å„ªå…ˆåº¦ã®é–¢ä¿‚ã§ã€ã“ã‚Œã¯ä»£å…¥ã«ã¯ä½¿ã‚ãšã€ãƒ•ãƒ­ãƒ¼ã®åˆ¶å¾¡ã®ã¿ã«ä½¿ã†ã¹ãã§ã™ã€‚
+“ªÄ“ªÞ“ªê“¡¢“ª³“ªì“ªâ“Ó­“Õ©“æÑ“ß©“ªò“ú¼“ªÊ“ª¤“¡¢“éÓ“ö°“ªÎ“ãÒ“ªÏ“ñ§“ö°“ªÎ“ãÒ“ª¬
+“¡¸˜ºô“¡¹“ªÇ“ª¢“ªÃ“ª¿“íÞ“ùê“ªË“ªÎ“ªß“øÄ’²Á“ªµ“ªì“ªÞ“ª¹“¡£
+“éÐ“à»“Óø“ªÎ’´Ø“Ìõ“ªÇ“¡¢“ª³“ªì“ªÏ“ÓÛ“ìý“ªË“ªÏ“ÞÅ“ªï“ªº“¡¢“«Õ“«í’¡¼“ªÎ“ð¤“åÙ“ªÎ“ªß“ªË“ÞÅ“ª¦“ªÙ“ª­“ªÇ“ª¹“¡£
 
     $a = $b or $c;		# bug: this is wrong
     ($a = $b) or $c;		# really means this
@@ -2035,8 +2049,8 @@ takes higher precedence.
 
 =end original
 
-ã—ã‹ã—ã€ä»£å…¥ãŒãƒªã‚¹ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®æ™‚ã« "||" ã‚’ãƒ•ãƒ­ãƒ¼åˆ¶å¾¡ã«ä½¿ãŠã†ã¨ã™ã‚‹å ´åˆã€
-ä»£å…¥ã«ã‚ˆã‚Šå¤§ããªå„ªå…ˆé †ä½ã‚’æŒãŸã›ã‚‹ãŸã‚ã« "or" ãŒå¿…è¦ã‹ã‚‚ã—ã‚Œã¾ã›ã‚“ã€‚
+“ª·“ª«“ª·“¡¢“ÓÛ“ìý“ª¬“«ê“«¹“«È“«³“«ó“«Æ“«­“«¹“«È“ªÎ“ãÁ“ªË "||" “ªò“«Õ“«í’¡¼“ð¤“åÙ“ªË“ÞÅ“ªª“ª¦“ªÈ“ª¹“ªë“íÞ“ùê“¡¢
+“ÓÛ“ìý“ªË“ªè“ªê“ÓÞ“ª­“ªÊ“éÐ“à»“â÷“êÈ“ªò“ò¥“ª¿“ª»“ªë“ª¿“ªá“ªË "or" “ª¬“ù±“é©“ª«“ªâ“ª·“ªì“ªÞ“ª»“ªó“¡£
 
     @info = stat($file) || die;     # oops, scalar sense of stat!
     @info = stat($file) or die;     # better, now @info gets its due
@@ -2047,7 +2061,7 @@ Then again, you could always use parentheses.
 
 =end original
 
-ã‚‚ã¡ã‚ã‚“ã€å¸¸ã«æ‹¬å¼§ã‚’ã¤ã‘ã¦ã‚‚ã‚ˆã„ã§ã™ã€‚
+“ªâ“ªÁ“ªí“ªó“¡¢“ßÈ“ªË“ÎÀ“ûÁ“ªò“ªÄ“ª±“ªÆ“ªâ“ªè“ª¤“ªÇ“ª¹“¡£
 
 =begin original
 
@@ -2056,14 +2070,14 @@ It cannot short circuit, of course.
 
 =end original
 
-äºŒé …æ¼”ç®—å­ã® "xor" ã¯ä¸¡å´ã®å¼ã®æŽ’ä»–è«–ç†å’Œã‚’è¿”ã—ã¾ã™ã€‚
-ã“ã‚Œã¯ã‚‚ã¡ã‚ã‚“ã€çŸ­çµ¡ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
+“ì£“ú£“æÑ“ß©“í­“ªÎ "xor" “ªÏ’Î¾“ö°“ªÎ“ãÒ“ªÎ“ÛÉ“öâ“Öå“×â“ûú“ªò“Ú÷“ª·“ªÞ“ª¹“¡£
+“ª³“ªì“ªÏ“ªâ“ªÁ“ªí“ªó“¡¢“Ó­“Õ©“ªÇ“ªÏ“ª¢“ªê“ªÞ“ª»“ªó“¡£
 
 =head2 C Operators Missing From Perl
 X<operator, missing from perl> X<&> X<*>
 X<typecasting> X<(TYPE)>
 
-(Perl ã«ãªã„ C ã®æ¼”ç®—å­)
+(Perl “ªË“ªÊ“ª¤ C “ªÎ“æÑ“ß©“í­)
 
 =begin original
 
@@ -2071,7 +2085,7 @@ Here is what C has that Perl doesn't:
 
 =end original
 
-C ã«ã‚ã£ã¦ Perl ã«ç„¡ã„ã‚‚ã®ã¯ä»¥ä¸‹ã®é€šã‚Šã§ã™:
+C “ªË“ª¢“ªÃ“ªÆ Perl “ªË“Ùí“ª¤“ªâ“ªÎ“ªÏ“ì¤“ù»“ªÎ“÷×“ªê“ªÇ“ª¹:
 
 =over 8
 
@@ -2083,8 +2097,8 @@ Address-of operator.  (But see the "\" operator for taking a reference.)
 
 =end original
 
-ã‚¢ãƒ‰ãƒ¬ã‚¹æ¼”ç®—å­ã€‚
-("\" æ¼”ç®—å­ãŒãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹ã®ãŸã‚ã«ç”¨ã„ã‚‰ã‚Œã¾ã™ã€‚)
+“«¢“«É“«ì“«¹“æÑ“ß©“í­“¡£
+("\" “æÑ“ß©“í­“ª¬“«ê“«Õ“«¡“«ì“«ó“«¹“ªÎ“ª¿“ªá“ªË“éÄ“ª¤“ªé“ªì“ªÞ“ª¹“¡£)
 
 =item unary *
 
@@ -2095,8 +2109,8 @@ operators are typed: $, @, %, and &.)
 
 =end original
 
-è¢«ã‚¢ãƒ‰ãƒ¬ã‚¹å‚ç…§æ¼”ç®—å­ã€‚
-(Perl ã®è¢«å‚ç…§ãƒ—ãƒªãƒ•ã‚£ã‚¯ã‚¹æ¼”ç®—å­ãŒåž‹ã¥ã‘ã‚’è¡Œãªã„ã¾ã™: $, @, %, &ã€‚)
+“ù¬“«¢“«É“«ì“«¹‘²Î“ðÎ“æÑ“ß©“í­“¡£
+(Perl “ªÎ“ù¬‘²Î“ðÎ“«×“«ê“«Õ“«£“«¯“«¹“æÑ“ß©“í­“ª¬“úþ“ªÅ“ª±“ªò“ú¼“ªÊ“ª¤“ªÞ“ª¹: $, @, %, &“¡£)
 
 =item (TYPE)
 
@@ -2106,7 +2120,7 @@ Type-casting operator.
 
 =end original
 
-åž‹ã®ã‚­ãƒ£ã‚¹ãƒˆæ¼”ç®—å­ã€‚
+“úþ“ªÎ“«­“«ã“«¹“«È“æÑ“ß©“í­“¡£
 
 =back
 
@@ -2115,7 +2129,7 @@ X<operator, quote> X<operator, quote-like> X<q> X<qq> X<qx> X<qw> X<m>
 X<qr> X<s> X<tr> X<'> X<''> X<"> X<""> X<//> X<`> X<``> X<<< << >>>
 X<escape sequence> X<escape>
 
-(ã‚¯ã‚©ãƒ¼ãƒˆã¨ã‚¯ã‚©ãƒ¼ãƒˆé¢¨ã®æ¼”ç®—å­)
+(“«¯“«©’¡¼“«È“ªÈ“«¯“«©’¡¼“«È“ù¦“ªÎ“æÑ“ß©“í­)
 
 =begin original
 
@@ -2128,12 +2142,12 @@ any pair of delimiters you choose.
 
 =end original
 
-ã‚¯ã‚©ãƒ¼ãƒˆã¯ãƒªãƒ†ãƒ©ãƒ«å€¤ã§ã‚ã‚‹ã¨è€ƒãˆã‚‹ã®ãŒæ™®é€šã§ã™ãŒã€Perl ã«ãŠã„ã¦ã€
-ã‚¯ã‚©ãƒ¼ãƒˆã¯æ¼”ç®—å­ã¨ã—ã¦åƒãã€ã•ã¾ã–ã¾ãªå±•é–‹ã‚„ãƒ‘ã‚¿ãƒ¼ãƒ³ãƒžãƒƒãƒã®æ©Ÿèƒ½ã‚’
-æŒã£ã¦ã„ã¾ã™ã€‚
-ãã®ã‚ˆã†ãªå‹•ä½œã‚’ã•ã›ã‚‹ã®ã«ã€Perl ã¯æ…£ç¿’çš„ã«ã‚¯ã‚©ãƒ¼ãƒˆæ–‡å­—ã‚’ä½¿ã£ã¦ã„ã¾ã™ãŒã€
-ã©ã®ç¨®é¡žã®ã‚¯ã‚©ãƒ¼ãƒˆã‚‚ã€è‡ªåˆ†ã§ã‚¯ã‚©ãƒ¼ãƒˆæ–‡å­—ã‚’é¸ã¹ã‚‹ã‚ˆã†ã«ãªã£ã¦ã„ã¾ã™ã€‚
-ä»¥ä¸‹ã®è¡¨ã§ã¯ã€{} ãŒãã®é¸ã‚“ã åŒºåˆ‡æ–‡å­—ã®ãƒšã‚¢ã‚’ç¤ºã—ã¦ã„ã¾ã™ã€‚
+“«¯“«©’¡¼“«È“ªÏ“«ê“«Æ“«é“«ë“ö·“ªÇ“ª¢“ªë“ªÈ“ÍÅ“ª¨“ªë“ªÎ“ª¬“ÜÅ“÷×“ªÇ“ª¹“ª¬“¡¢Perl “ªË“ªª“ª¤“ªÆ“¡¢
+“«¯“«©’¡¼“«È“ªÏ“æÑ“ß©“í­“ªÈ“ª·“ªÆ’Æ¯“ª­“¡¢“ªµ“ªÞ“ª¶“ªÞ“ªÊ“î÷“ËÒ“ªä“«Ñ“«¿’¡¼“«ó“«Þ“«Ã“«Á“ªÎ“Ñ¦“Òö“ªò
+“ò¥“ªÃ“ªÆ“ª¤“ªÞ“ª¹“¡£
+“ª½“ªÎ“ªè“ª¦“ªÊ“ÔÑ“íÂ“ªò“ªµ“ª»“ªë“ªÎ“ªË“¡¢Perl “ªÏ“Î±“ã§“îÜ“ªË“«¯“«©’¡¼“«È“Ùþ“í®“ªò“ÞÅ“ªÃ“ªÆ“ª¤“ªÞ“ª¹“ª¬“¡¢
+“ªÉ“ªÎ“ðú“×¾“ªÎ“«¯“«©’¡¼“«È“ªâ“¡¢“í»“ÝÂ“ªÇ“«¯“«©’¡¼“«È“Ùþ“í®“ªò“àÔ“ªÙ“ªë“ªè“ª¦“ªË“ªÊ“ªÃ“ªÆ“ª¤“ªÞ“ª¹“¡£
+“ì¤“ù»“ªÎ“øú“ªÇ“ªÏ“¡¢{} “ª¬“ª½“ªÎ“àÔ“ªó“ªÀ‘Çø“ï·“Ùþ“í®“ªÎ“«Ú“«¢“ªò“ãÆ“ª·“ªÆ“ª¤“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -2152,19 +2166,19 @@ any pair of delimiters you choose.
 
 =end original
 
-     é€šå¸¸è¨˜æ³•  æ±Žç”¨è¨˜æ³•        æ„å‘³             å±•é–‹
+     “÷×“ßÈ“ÑÀ“Ûö  “Ûñ“éÄ“ÑÀ“Ûö        “ëò“Ú«             “î÷“ËÒ
     =================================================
-	''	 q{}	     ãƒªãƒ†ãƒ©ãƒ«		ä¸å¯
-	""	qq{}	     ãƒªãƒ†ãƒ©ãƒ«		å¯
-	``	qx{}	     ã‚³ãƒžãƒ³ãƒ‰		å¯ *
-		qw{}	     å˜èªžãƒªã‚¹ãƒˆ		ä¸å¯
-	//	 m{}	  ãƒ‘ã‚¿ãƒ¼ãƒ³ãƒžãƒƒãƒ	å¯ *
-		qr{}	     ãƒ‘ã‚¿ãƒ¼ãƒ³		å¯ *
-		 s{}{}	       ç½®æ›		å¯ *
-		tr{}{}	       å¤‰æ›		ä¸å¯ (ä½†ã—ä»¥ä¸‹ã‚’å‚ç…§ã®ã“ã¨)
-        <<EOF            ãƒ’ã‚¢ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ       å¯ *
+	''	 q{}	     “«ê“«Æ“«é“«ë		“Üô“Ê¦
+	""	qq{}	     “«ê“«Æ“«é“«ë		“Ê¦
+	``	qx{}	     “«³“«Þ“«ó“«É		“Ê¦ *
+		qw{}	     ’Ã±“åÞ“«ê“«¹“«È		“Üô“Ê¦
+	//	 m{}	  “«Ñ“«¿’¡¼“«ó“«Þ“«Ã“«Á	“Ê¦ *
+		qr{}	     “«Ñ“«¿’¡¼“«ó		“Ê¦ *
+		 s{}{}	       “öÇ“üµ		“Ê¦ *
+		tr{}{}	       ’ÊÑ“üµ		“Üô“Ê¦ (“Ó£“ª·“ì¤“ù»“ªò‘²Î“ðÎ“ªÎ“ª³“ªÈ)
+        <<EOF            “«Ò“«¢“«É“«­“«å“«á“«ó“«È       “Ê¦ *
 
-	* '' ãŒãƒ‡ãƒªãƒŸã‚¿ã§ãªã„å ´åˆã®ã¿
+	* '' “ª¬“«Ç“«ê“«ß“«¿“ªÇ“ªÊ“ª¤“íÞ“ùê“ªÎ“ªß
 
 =begin original
 
@@ -2174,9 +2188,9 @@ that
 
 =end original
 
-é¸ã‚“ã åŒºåˆ‡æ–‡å­—ãŒæ‹¬å¼§ã®é¡žã§ãªã„å ´åˆã«ã¯ã€å‰å¾Œã®æ–‡å­—ã¨ã—ã¦åŒä¸€ã®ã‚‚ã®ã‚’
-ä½¿ã„ã¾ã™ãŒã€4 ã¤ã®æ‹¬å¼§ ((), <>, [], {}) ã®å ´åˆã«ã¯ãƒã‚¹ãƒˆã§ãã¾ã™ã€‚
-ã¤ã¾ã‚Šã€ä»¥ä¸‹ã®ã‚‚ã®ã¯ã€
+“àÔ“ªó“ªÀ‘Çø“ï·“Ùþ“í®“ª¬“ÎÀ“ûÁ“ªÎ“×¾“ªÇ“ªÊ“ª¤“íÞ“ùê“ªË“ªÏ“¡¢“îñ“ý­“ªÎ“Ùþ“í®“ªÈ“ª·“ªÆ“ÔÒ“ìé“ªÎ“ªâ“ªÎ“ªò
+“ÞÅ“ª¤“ªÞ“ª¹“ª¬“¡¢4 “ªÄ“ªÎ“ÎÀ“ûÁ ((), <>, [], {}) “ªÎ“íÞ“ùê“ªË“ªÏ“«Í“«¹“«È“ªÇ“ª­“ªÞ“ª¹“¡£
+“ªÄ“ªÞ“ªê“¡¢“ì¤“ù»“ªÎ“ªâ“ªÎ“ªÏ“¡¢
 
 	q{foo{bar}baz}
 
@@ -2186,7 +2200,7 @@ is the same as
 
 =end original
 
-ä»¥ä¸‹ã¨åŒã˜ã§ã™ã€‚
+“ì¤“ù»“ªÈ“ÔÒ“ª¸“ªÇ“ª¹“¡£
 
 	'foo{bar}baz'
 
@@ -2196,8 +2210,8 @@ Note, however, that this does not always work for quoting Perl code:
 
 =end original
 
-ã—ã‹ã—ã€ä»¥ä¸‹ã®ã‚³ãƒ¼ãƒ‰ã¯ã‚¯ã‚©ãƒ¼ãƒˆã•ã‚ŒãŸ Perl ã‚³ãƒ¼ãƒ‰ã§ã¯
-ã„ã¤ã‚‚æ­£ã—ãå‹•ãã‚ã‘ã§ã¯ãªã„ã“ã¨ã«æ³¨æ„ã—ã¦ãã ã•ã„:
+“ª·“ª«“ª·“¡¢“ì¤“ù»“ªÎ“«³’¡¼“«É“ªÏ“«¯“«©’¡¼“«È“ªµ“ªì“ª¿ Perl “«³’¡¼“«É“ªÇ“ªÏ
+“ª¤“ªÄ“ªâ“ïá“ª·“ª¯“ÔÑ“ª¯“ªï“ª±“ªÇ“ªÏ“ªÊ“ª¤“ª³“ªÈ“ªË“ñ¼“ëò“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤:
 
 	$s = q{ if($a eq "}") ... }; # WRONG
 
@@ -2209,9 +2223,9 @@ to do this properly.
 
 =end original
 
-ã“ã‚Œã¯æ–‡æ³•ã‚¨ãƒ©ãƒ¼ã¨ãªã‚Šã¾ã™ã€‚
-C<Text::Balanced> ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«(CPAN ã‹ã‚‰ã€ã¾ãŸã¯ Perl 5.8 ã‹ã‚‰ã¯æ¨™æº–é…å¸ƒ
-ã®ä¸€éƒ¨ã§ã™)ã¯ã“ã‚Œã‚’é©åˆ‡ã«è¡Œã„ã¾ã™ã€‚
+“ª³“ªì“ªÏ“Ùþ“Ûö“«¨“«é’¡¼“ªÈ“ªÊ“ªê“ªÞ“ª¹“¡£
+C<Text::Balanced> “«â“«¸“«å’¡¼“«ë(CPAN “ª«“ªé“¡¢“ªÞ“ª¿“ªÏ Perl 5.8 “ª«“ªé“ªÏ“øö“ñÞ“ÛÕ“øÖ
+“ªÎ“ìé“Ý»“ªÇ“ª¹)“ªÏ“ª³“ªì“ªò“îê“ï·“ªË“ú¼“ª¤“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -2223,11 +2237,11 @@ from the next line.  This allows you to write:
 
 =end original
 
-æ¼”ç®—å­ã¨ã‚¯ã‚©ãƒ¼ãƒˆæ–‡å­—ã®é–“ã«ç©ºç™½ã‚’ç½®ãã“ã¨ã‚‚å‡ºæ¥ã¾ã™ã€‚
-ãŸã ã—ã€C<#> ã‚’ã‚¯ã‚©ãƒ¼ãƒˆæ–‡å­—ã¨ã—ã¦ä½¿ã†å ´åˆã¯ä¾‹å¤–ã§ã™ã€‚
-C<q#foo#> ã¯æ–‡å­—åˆ— C<foo> ã¨ã—ã¦ãƒ‘ãƒ¼ã‚¹ã•ã‚Œã¾ã™ãŒã€
-C<q #foo#> ã¯ C<q> æ¼”ç®—å­ã®å¾Œã«ã‚³ãƒ¡ãƒ³ãƒˆãŒã‚ã‚‹ã¨ã¿ãªã•ã‚Œã¾ã™ã€‚
-ã“ã®å¼•æ•°ã¯æ¬¡ã®è¡Œã‹ã‚‰å–ã‚‰ã‚Œã¾ã™ã€‚ã¤ã¾ã‚Šã€ä»¥ä¸‹ã®ã‚ˆã†ã«æ›¸ã‘ã¾ã™:
+“æÑ“ß©“í­“ªÈ“«¯“«©’¡¼“«È“Ùþ“í®“ªÎ“Êà“ªË“Íö“ÛÜ“ªò“öÇ“ª¯“ª³“ªÈ“ªâ“õó‘À´“ªÞ“ª¹“¡£
+“ª¿“ªÀ“ª·“¡¢C<#> “ªò“«¯“«©’¡¼“«È“Ùþ“í®“ªÈ“ª·“ªÆ“ÞÅ“ª¦“íÞ“ùê“ªÏ“ÖÇ“èâ“ªÇ“ª¹“¡£
+C<q#foo#> “ªÏ“Ùþ“í®“Öª C<foo> “ªÈ“ª·“ªÆ“«Ñ’¡¼“«¹“ªµ“ªì“ªÞ“ª¹“ª¬“¡¢
+C<q #foo#> “ªÏ C<q> “æÑ“ß©“í­“ªÎ“ý­“ªË“«³“«á“«ó“«È“ª¬“ª¢“ªë“ªÈ“ªß“ªÊ“ªµ“ªì“ªÞ“ª¹“¡£
+“ª³“ªÎ“ìÚ‘Êý“ªÏ“ó­“ªÎ“ú¼“ª«“ªé“ö¢“ªé“ªì“ªÞ“ª¹“¡£“ªÄ“ªÞ“ªê“¡¢“ì¤“ù»“ªÎ“ªè“ª¦“ªË“ßö“ª±“ªÞ“ª¹:
 
     s {foo}  # Replace foo
       {bar}  # with bar.
@@ -2240,7 +2254,7 @@ X<\t> X<\n> X<\r> X<\f> X<\b> X<\a> X<\e> X<\x> X<\0> X<\c> X<\N>
 
 =end original
 
-ä»¥ä¸‹ã®ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ãŒå±•é–‹ã¨æ–‡å­—å¤‰æ›ã®æ§‹æ–‡ã§åˆ©ç”¨å¯èƒ½ã§ã™ã€‚
+“ì¤“ù»“ªÎ“«¨“«¹“«±’¡¼“«×“«·’¡¼“«±“«ó“«¹“ª¬“î÷“ËÒ“ªÈ“Ùþ“í®’ÊÑ“üµ“ªÎ“Ï°“Ùþ“ªÇ“××“éÄ“Ê¦“Òö“ªÇ“ª¹“¡£
 X<\t> X<\n> X<\r> X<\f> X<\b> X<\a> X<\e> X<\x> X<\0> X<\c> X<\N>
 
 =begin original
@@ -2260,18 +2274,18 @@ X<\t> X<\n> X<\r> X<\f> X<\b> X<\a> X<\e> X<\x> X<\0> X<\c> X<\N>
 
 =end original
 
-    \t          ã‚¿ãƒ–                      (HT, TAB)
-    \n          æ”¹è¡Œ                      (NL)
-    \r          å¾©å¸°                      (CR)
-    \f          æ”¹ãƒšãƒ¼ã‚¸                  (FF)
-    \b          ãƒãƒƒã‚¯ã‚¹ãƒšãƒ¼ã‚¹            (BS)
-    \a          ã‚¢ãƒ©ãƒ¼ãƒ                   (BEL)
-    \e          ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—                (ESC)
-    \033        8 é€²æ•°ã§è¡¨ã—ãŸæ–‡å­—        (ä¾‹: ESC)
-    \x1b        16 é€²æ•°ã§è¡¨ã—ãŸæ–‡å­—       (ä¾‹: ESC)
-    \x{263a}	16 é€²æ•°ã§è¡¨ã—ãŸãƒ¯ã‚¤ãƒ‰æ–‡å­— (ä¾‹: SMILEY)
-    \c[         ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«æ–‡å­—          (ä¾‹: ESC)
-    \N{name}	åå‰ã¤ã Unicode æ–‡å­—
+    \t          “«¿“«Ö                      (HT, TAB)
+    \n          “ËÇ“ú¼                      (NL)
+    \r          “ÜÖ’µ¢                      (CR)
+    \f          “ËÇ“«Ú’¡¼“«¸                  (FF)
+    \b          “«Ð“«Ã“«¯“«¹“«Ú’¡¼“«¹            (BS)
+    \a          “«¢“«é’¡¼“«à                  (BEL)
+    \e          “«¨“«¹“«±’¡¼“«×                (ESC)
+    \033        8 “òä‘Êý“ªÇ“øú“ª·“ª¿“Ùþ“í®        (“ÖÇ: ESC)
+    \x1b        16 “òä‘Êý“ªÇ“øú“ª·“ª¿“Ùþ“í®       (“ÖÇ: ESC)
+    \x{263a}	16 “òä‘Êý“ªÇ“øú“ª·“ª¿“«ï“«¤“«É“Ùþ“í® (“ÖÇ: SMILEY)
+    \c[         “«³“«ó“«È“«í’¡¼“«ë“Ùþ“í®          (“ÖÇ: ESC)
+    \N{name}	“Ù£“îñ“ªÄ“ª­ Unicode “Ùþ“í®
 
 =begin original
 
@@ -2301,8 +2315,8 @@ the vertical tab (VT - ASCII 11), but you may use C<\ck> or C<\x0b>.
 
 =end original
 
-B<æ³¨æ„>: C ã‚„ãã®ä»–ã®è¨€èªžã¨é•ã£ã¦ã€Perl ã¯åž‚ç›´ã‚¿ãƒ– (VT - ASCII 11) ã®ãŸã‚ã®
-\v ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã¯ã‚ã‚Šã¾ã›ã‚“ãŒã€C<\ck> ã¾ãŸã¯ C<\x0b> ãŒä½¿ãˆã¾ã™ã€‚
+B<“ñ¼“ëò>: C “ªä“ª½“ªÎ“öâ“ªÎ“åë“åÞ“ªÈ“êÞ“ªÃ“ªÆ“¡¢Perl “ªÏ“á÷“òÁ“«¿“«Ö (VT - ASCII 11) “ªÎ“ª¿“ªá“ªÎ
+\v “«¨“«¹“«±’¡¼“«×“«·’¡¼“«±“«ó“«¹“ªÏ“ª¢“ªê“ªÞ“ª»“ªó“ª¬“¡¢C<\ck> “ªÞ“ª¿“ªÏ C<\x0b> “ª¬“ÞÅ“ª¨“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -2312,7 +2326,7 @@ X<\l> X<\u> X<\L> X<\U> X<\E> X<\Q>
 
 =end original
 
-ä»¥ä¸‹ã®ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ãŒå±•é–‹ã¨æ–‡å­—å¤‰æ›ã®æ§‹æ–‡ã§åˆ©ç”¨å¯èƒ½ã§ã™ã€‚
+“ì¤“ù»“ªÎ“«¨“«¹“«±’¡¼“«×“«·’¡¼“«±“«ó“«¹“ª¬“î÷“ËÒ“ªÈ“Ùþ“í®’ÊÑ“üµ“ªÎ“Ï°“Ùþ“ªÇ“××“éÄ“Ê¦“Òö“ªÇ“ª¹“¡£
 X<\l> X<\u> X<\L> X<\U> X<\E> X<\Q>
 
 =begin original
@@ -2326,12 +2340,12 @@ X<\l> X<\u> X<\L> X<\U> X<\E> X<\Q>
 
 =end original
 
-    \l          æ¬¡ã®æ–‡å­—ã‚’å°æ–‡å­—ã«ã™ã‚‹
-    \u          æ¬¡ã®æ–‡å­—ã‚’å¤§æ–‡å­—ã«ã™ã‚‹
-    \L          \E ã¾ã§å°æ–‡å­—ã«ã™ã‚‹
-    \U          \E ã¾ã§å¤§æ–‡å­—ã«ã™ã‚‹
-    \E          å¤‰æ›´ã®çµ‚ã‚ã‚Š
-    \Q          \E ã¾ã§éžå˜èªžæ–‡å­—ã‚’ã‚¯ã‚©ãƒ¼ãƒˆã™ã‚‹
+    \l          “ó­“ªÎ“Ùþ“í®“ªò“á³“Ùþ“í®“ªË“ª¹“ªë
+    \u          “ó­“ªÎ“Ùþ“í®“ªò“ÓÞ“Ùþ“í®“ªË“ª¹“ªë
+    \L          \E “ªÞ“ªÇ“á³“Ùþ“í®“ªË“ª¹“ªë
+    \U          \E “ªÞ“ªÇ“ÓÞ“Ùþ“í®“ªË“ª¹“ªë
+    \E          ’ÊÑ“ÌÚ“ªÎ“ðû“ªï“ªê
+    \Q          \E “ªÞ“ªÇ“Þª’Ã±“åÞ“Ùþ“í®“ªò“«¯“«©’¡¼“«È“ª¹“ªë
 
 =begin original
 
@@ -2344,14 +2358,14 @@ see L<charnames>.
 
 =end original
 
-C<use locale> ãŒæœ‰åŠ¹ã®å ´åˆã€
-C<\l>, C<\L>, C<\u>, C<\U> ã§ä½¿ã‚ã‚Œã‚‹å¤§æ–‡å­—å°æ–‡å­—ãƒ†ãƒ¼ãƒ–ãƒ«ã¯
-ç¾åœ¨ã®ãƒ­ã‚±ãƒ¼ãƒ«ã®ã‚‚ã®ãŒä½¿ã‚ã‚Œã¾ã™ã€‚
-L<perllocale> ã‚’å‚ç…§ã—ã¦ä¸‹ã•ã„ã€‚
-(ä¾‹ãˆã°ã€C<\N{}> ã‚„ã€0x100 ä»¥ä¸Šã®ãƒ¯ã‚¤ãƒ‰ 16 é€²æ–‡å­—ã‚’ä½¿ã£ãŸ) Unicode ãŒ
-ä½¿ã‚ã‚Œã¦ã„ã‚‹å ´åˆã€C<\l>, C<\L>, C<\u>, C<\U> ã§ä½¿ã‚ã‚Œã‚‹å¤§æ–‡å­—å°æ–‡å­—
-ãƒ†ãƒ¼ãƒ–ãƒ«ã¯ Unicode ã§å®šç¾©ã•ã‚Œã¦ã„ã‚‹ã‚‚ã®ã«ãªã‚Šã¾ã™ã€‚
-C<\N{name}> ã®ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã«é–¢ã—ã¦ã¯ã€L<charnames> ã‚’å‚ç…§ã—ã¦ä¸‹ã•ã„ã€‚
+C<use locale> “ª¬“êó’¸ú“ªÎ“íÞ“ùê“¡¢
+C<\l>, C<\L>, C<\u>, C<\U> “ªÇ“ÞÅ“ªï“ªì“ªë“ÓÞ“Ùþ“í®“á³“Ùþ“í®“«Æ’¡¼“«Ö“«ë“ªÏ
+“úÞ“î¤“ªÎ“«í“«±’¡¼“«ë“ªÎ“ªâ“ªÎ“ª¬“ÞÅ“ªï“ªì“ªÞ“ª¹“¡£
+L<perllocale> “ªò‘²Î“ðÎ“ª·“ªÆ“ù»“ªµ“ª¤“¡£
+(“ÖÇ“ª¨“ªÐ“¡¢C<\N{}> “ªä“¡¢0x100 “ì¤“ß¾“ªÎ“«ï“«¤“«É 16 “òä“Ùþ“í®“ªò“ÞÅ“ªÃ“ª¿) Unicode “ª¬
+“ÞÅ“ªï“ªì“ªÆ“ª¤“ªë“íÞ“ùê“¡¢C<\l>, C<\L>, C<\u>, C<\U> “ªÇ“ÞÅ“ªï“ªì“ªë“ÓÞ“Ùþ“í®“á³“Ùþ“í®
+“«Æ’¡¼“«Ö“«ë“ªÏ Unicode “ªÇ“ïÒ“ëù“ªµ“ªì“ªÆ“ª¤“ªë“ªâ“ªÎ“ªË“ªÊ“ªê“ªÞ“ª¹“¡£
+C<\N{name}> “ªÎ“«É“«­“«å“«á“«ó“«È“ªË’´Ø“ª·“ªÆ“ªÏ“¡¢L<charnames> “ªò‘²Î“ðÎ“ª·“ªÆ“ù»“ªµ“ª¤“¡£
 
 =begin original
 
@@ -2373,22 +2387,22 @@ X<\n> X<\r> X<\r\n>
 
 =end original
 
-å…¨ã¦ã®ã‚·ã‚¹ãƒ†ãƒ ã§ã¯ "newline" ã¨å‘¼ã°ã‚Œã‚‹è¡Œç«¯æœ«å­ã‚’è¡¨ç¾ã™ã‚‹ãŸã‚ã«
-ä»®æƒ³çš„ãª C<"\n"> ãŒç”¨ã„ã‚‰ã‚Œã¾ã™ã€‚
-æ™®éã®ã€ç‰©ç†çš„ãª "newline" æ–‡å­—ã¨è¨€ã†ã‚‚ã®ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
-ã‚ªãƒšãƒ¬ãƒ¼ãƒ†ã‚£ãƒ³ã‚°ã‚·ã‚¹ãƒ†ãƒ ã€ãƒ‡ãƒã‚¤ã‚¹ãƒ‰ãƒ©ã‚¤ãƒã€C ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã€
-Perl ãŒå…¨ã¦å”åŠ›ã—ã¦ä¿å­˜ã—ã‚ˆã†ã¨ã™ã‚‹ã¨è¨€ã†ã®ã¯å˜ãªã‚‹å¹»æƒ³ã§ã™ã€‚
-å…¨ã¦ã®ã‚·ã‚¹ãƒ†ãƒ ã§ C<"\r"> ã‚’ ASCII CR ã¨ã—ã¦ã€ã¾ãŸ C<"\n"> ã‚’
-ASCII LF ã¨ã—ã¦èª­ã¿è¾¼ã‚€ã‚ã‘ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
-ä¾‹ãˆã° Mac ã§ã¯ã“ã‚Œã‚‰ã¯ä¿å­˜ã•ã‚Œã€è¡Œç«¯æœ«å­ã®ãªã„ã‚·ã‚¹ãƒ†ãƒ ã§ã¯ã€
-C<"\n"> ã‚’ print ã—ã¦ã‚‚å®Ÿéš›ã®ãƒ‡ãƒ¼ã‚¿ã¯ä½•ã‚‚å‡ºåŠ›ã—ã¾ã›ã‚“ã€‚
-ä¸€èˆ¬ã«ã€ã‚·ã‚¹ãƒ†ãƒ ã§ "newline" ã‚’æ„å‘³ã—ãŸã„ã¨ãã«ã¯ C<"\n"> ã‚’ä½¿ã„ã¾ã™ãŒã€
-æ­£ç¢ºãªæ–‡å­—ãŒå¿…è¦ãªå ´åˆã¯ãƒªãƒ†ãƒ©ãƒ«ãª ASCII ã‚’ä½¿ã„ã¾ã™ã€‚
-ä¾‹ãˆã°ã€ã»ã¨ã‚“ã©ã®ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ãƒ—ãƒ­ãƒˆã‚³ãƒ«ã§ã¯è¡Œç«¯æœ«å­ã¨ã—ã¦
-CR+LF (C<"\015\012"> ã¾ãŸã¯ C<"\cM\cJ">) ã‚’äºˆæƒ³ã—ã€ã¾ãŸå¥½ã¿ã¾ã™ãŒã€
-ã—ã°ã—ã° C<"\012"> ã ã‘ã§ã‚‚è¨±å®¹ã—ã€ã•ã‚‰ã«æ™‚ã€…ã¯ C<"\015"> ã ã‘ã§ã‚‚èªã‚ã¾ã™ã€‚
-ã‚‚ã—ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯é–¢ä¿‚ã§ C<"\n"> ã‚’ä½¿ã†ç¿’æ…£ãŒã¤ã„ã¦ã„ã‚‹ã¨ã€
-ã„ã¤ã‹ç—›ã„ç›®ã‚’è¦‹ã‚‹ã“ã¨ã«ãªã‚‹ã§ã—ã‚‡ã†ã€‚
+“îï“ªÆ“ªÎ“«·“«¹“«Æ“«à“ªÇ“ªÏ "newline" “ªÈ“û¼“ªÐ“ªì“ªë“ú¼“Ó®“ØÇ“í­“ªò“øú“úÞ“ª¹“ªë“ª¿“ªá“ªË
+’²¾“ßÌ“îÜ“ªÊ C<"\n"> “ª¬“éÄ“ª¤“ªé“ªì“ªÞ“ª¹“¡£
+“ÜÅ“ø¼“ªÎ“¡¢“Úª“×â“îÜ“ªÊ "newline" “Ùþ“í®“ªÈ“åë“ª¦“ªâ“ªÎ“ªÏ“ª¢“ªê“ªÞ“ª»“ªó“¡£
+“«ª“«Ú“«ì’¡¼“«Æ“«£“«ó“«°“«·“«¹“«Æ“«à“¡¢“«Ç“«Ð“«¤“«¹“«É“«é“«¤“«Ð“¡¢C “«é“«¤“«Ö“«é“«ê“¡¢
+Perl “ª¬“îï“ªÆ“úð“Õô“ª·“ªÆ“ÜÁ“ðí“ª·“ªè“ª¦“ªÈ“ª¹“ªë“ªÈ“åë“ª¦“ªÎ“ªÏ’Ã±“ªÊ“ªë“ü³“ßÌ“ªÇ“ª¹“¡£
+“îï“ªÆ“ªÎ“«·“«¹“«Æ“«à“ªÇ C<"\r"> “ªò ASCII CR “ªÈ“ª·“ªÆ“¡¢“ªÞ“ª¿ C<"\n"> “ªò
+ASCII LF “ªÈ“ª·“ªÆ’ÆÉ“ªß’¹þ“ªà“ªï“ª±“ªÇ“ªÏ“ª¢“ªê“ªÞ“ª»“ªó“¡£
+“ÖÇ“ª¨“ªÐ Mac “ªÇ“ªÏ“ª³“ªì“ªé“ªÏ“ÜÁ“ðí“ªµ“ªì“¡¢“ú¼“Ó®“ØÇ“í­“ªÎ“ªÊ“ª¤“«·“«¹“«Æ“«à“ªÇ“ªÏ“¡¢
+C<"\n"> “ªò print “ª·“ªÆ“ªâ’¼Â“ð·“ªÎ“«Ç’¡¼“«¿“ªÏ“ù¼“ªâ“õó“Õô“ª·“ªÞ“ª»“ªó“¡£
+“ìé“Úõ“ªË“¡¢“«·“«¹“«Æ“«à“ªÇ "newline" “ªò“ëò“Ú«“ª·“ª¿“ª¤“ªÈ“ª­“ªË“ªÏ C<"\n"> “ªò“ÞÅ“ª¤“ªÞ“ª¹“ª¬“¡¢
+“ïá“ü¬“ªÊ“Ùþ“í®“ª¬“ù±“é©“ªÊ“íÞ“ùê“ªÏ“«ê“«Æ“«é“«ë“ªÊ ASCII “ªò“ÞÅ“ª¤“ªÞ“ª¹“¡£
+“ÖÇ“ª¨“ªÐ“¡¢“ªÛ“ªÈ“ªó“ªÉ“ªÎ“«Í“«Ã“«È“«ï’¡¼“«¯“«×“«í“«È“«³“«ë“ªÇ“ªÏ“ú¼“Ó®“ØÇ“í­“ªÈ“ª·“ªÆ
+CR+LF (C<"\015\012"> “ªÞ“ª¿“ªÏ C<"\cM\cJ">) “ªò“åø“ßÌ“ª·“¡¢“ªÞ“ª¿“û¿“ªß“ªÞ“ª¹“ª¬“¡¢
+“ª·“ªÐ“ª·“ªÐ C<"\012"> “ªÀ“ª±“ªÇ“ªâ“úÉ“é»“ª·“¡¢“ªµ“ªé“ªË“ãÁ‘¡©“ªÏ C<"\015"> “ªÀ“ª±“ªÇ“ªâ“ìã“ªá“ªÞ“ª¹“¡£
+“ªâ“ª·“«Í“«Ã“«È“«ï’¡¼“«¯’´Ø“Ìõ“ªÇ C<"\n"> “ªò“ÞÅ“ª¦“ã§“Î±“ª¬“ªÄ“ª¤“ªÆ“ª¤“ªë“ªÈ“¡¢
+“ª¤“ªÄ“ª«“÷Ô“ª¤“ÙÍ“ªò“Ì¸“ªë“ª³“ªÈ“ªË“ªÊ“ªë“ªÇ“ª·“ªç“ª¦“¡£
 
 =begin original
 
@@ -2399,10 +2413,10 @@ But method calls such as C<< $obj->meth >> are not.
 
 =end original
 
-å±•é–‹ãŒè¡Œãªã‚ã‚Œã‚‹æ§‹æ–‡ã§ã¯ã€"C<$>" ã‚„ "C<@>" ã§å§‹ã¾ã‚‹å¤‰æ•°ãŒå±•é–‹ã•ã‚Œã¾ã™ã€‚
+“î÷“ËÒ“ª¬“ú¼“ªÊ“ªï“ªì“ªë“Ï°“Ùþ“ªÇ“ªÏ“¡¢"C<$>" “ªä "C<@>" “ªÇ“ã·“ªÞ“ªë’ÊÑ‘Êý“ª¬“î÷“ËÒ“ªµ“ªì“ªÞ“ª¹“¡£
 Subscripted variables such as C<$a[3]> or
-C<< $href->{key}[0] >> ã‚‚ã¾ãŸé…åˆ—ã‚„ãƒãƒƒã‚·ãƒ¥ã®ã‚¹ãƒ©ã‚¤ã‚¹ã®ã‚ˆã†ã«å±•é–‹ã•ã‚Œã¾ã™ã€‚
-ã—ã‹ã—ã€C<< $obj->meth >> ã®ã‚ˆã†ãªãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã¯å±•é–‹ã•ã‚Œã¾ã›ã‚“ã€‚
+C<< $href->{key}[0] >> “ªâ“ªÞ“ª¿“ÛÕ“Öª“ªä“«Ï“«Ã“«·“«å“ªÎ“«¹“«é“«¤“«¹“ªÎ“ªè“ª¦“ªË“î÷“ËÒ“ªµ“ªì“ªÞ“ª¹“¡£
+“ª·“ª«“ª·“¡¢C<< $obj->meth >> “ªÎ“ªè“ª¦“ªÊ“«á“«½“«Ã“«É“û¼“ªÓ“õó“ª·“ªÏ“î÷“ËÒ“ªµ“ªì“ªÞ“ª»“ªó“¡£
 
 =begin original
 
@@ -2414,11 +2428,11 @@ arrays C<@_>, C<@+>, and C<@-> are interpolated, even without braces.
 
 =end original
 
-é…åˆ—ã‚„ã‚¹ãƒ©ã‚¤ã‚¹ã®å±•é–‹ã¯ã€è¦ç´ ã‚’é †ç•ªã«ã€C<$"> ã®å€¤ã§åˆ†å‰²ã—ã¦å±•é–‹ã•ã‚Œã‚‹ã®ã§ã€
-C<join $", @array> ã®å±•é–‹ã¨ç­‰ä¾¡ã§ã™ã€‚
-C<@*> ã®ã‚ˆã†ãªã€Œå¥èª­ç‚¹ã€é…åˆ—ã¯åå‰ãŒ C<@{*}> ã®ã‚ˆã†ã«ä¸­ã‹ã£ã“ã§å›²ã‚ã‚Œã¦ã„ã‚‹
-å ´åˆã«ã®ã¿å±•é–‹ã•ã‚Œã¾ã™ãŒã€ç‰¹æ®Šé…åˆ— C<@_>, C<@+>, C<@-> ã¯ä¸­ã‹ã£ã“ãªã—ã§ã‚‚
-å±•é–‹ã•ã‚Œã¾ã™ã€‚
+“ÛÕ“Öª“ªä“«¹“«é“«¤“«¹“ªÎ“î÷“ËÒ“ªÏ“¡¢“é©“áÈ“ªò“â÷“Ûã“ªË“¡¢C<$"> “ªÎ“ö·“ªÇ“ÝÂ“ùÜ“ª·“ªÆ“î÷“ËÒ“ªµ“ªì“ªë“ªÎ“ªÇ“¡¢
+C<join $", @array> “ªÎ“î÷“ËÒ“ªÈ“Ôõ’²Á“ªÇ“ª¹“¡£
+C<@*> “ªÎ“ªè“ª¦“ªÊ“¡¸“Ï£’ÆÉ“ïÃ“¡¹“ÛÕ“Öª“ªÏ“Ù£“îñ“ª¬ C<@{*}> “ªÎ“ªè“ª¦“ªË“ñé“ª«“ªÃ“ª³“ªÇ’°Ï“ªï“ªì“ªÆ“ª¤“ªë
+“íÞ“ùê“ªË“ªÎ“ªß“î÷“ËÒ“ªµ“ªì“ªÞ“ª¹“ª¬“¡¢“÷å“â¨“ÛÕ“Öª C<@_>, C<@+>, C<@-> “ªÏ“ñé“ª«“ªÃ“ª³“ªÊ“ª·“ªÇ“ªâ
+“î÷“ËÒ“ªµ“ªì“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -2429,10 +2443,10 @@ You'll need to write something like C<m/\Quser\E\@\Qhost/>.
 
 =end original
 
-C<\Q> ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã®ä¸­ã«ãƒªãƒ†ãƒ©ãƒ«ãª C<$> ã‚„ C<@> ã‚’å…¥ã‚Œã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“ã€‚
-ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã•ã‚Œãªã„ C<$> ã‚„ C<@> ã¯å¯¾å¿œã™ã‚‹å¤‰æ•°ã«å¤‰æ›ã•ã‚Œã¾ã™ã€‚
-ä¸€æ–¹ã€ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ã¨ã€ãƒªãƒ†ãƒ©ãƒ«ãªæ–‡å­—åˆ— C<\$> ãŒæŒ¿å…¥ã•ã‚Œã¾ã™ã€‚
-C<m/\Quser\E\@\Qhost/> ãªã©ã¨ã„ã†é¢¨ã«æ›¸ãå¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
+C<\Q> “«·’¡¼“«±“«ó“«¹“ªÎ“ñé“ªË“«ê“«Æ“«é“«ë“ªÊ C<$> “ªä C<@> “ªò“ìý“ªì“ªë“ª³“ªÈ“ªÏ“ªÇ“ª­“ªÞ“ª»“ªó“¡£
+“«¨“«¹“«±’¡¼“«×“ªµ“ªì“ªÊ“ª¤ C<$> “ªä C<@> “ªÏ’ÂÐ’±þ“ª¹“ªë’ÊÑ‘Êý“ªË’ÊÑ“üµ“ªµ“ªì“ªÞ“ª¹“¡£
+“ìé“Û°“¡¢“«¨“«¹“«±’¡¼“«×“ª¹“ªë“ªÈ“¡¢“«ê“«Æ“«é“«ë“ªÊ“Ùþ“í®“Öª C<\$> “ª¬’ÁÞ“ìý“ªµ“ªì“ªÞ“ª¹“¡£
+C<m/\Quser\E\@\Qhost/> “ªÊ“ªÉ“ªÈ“ª¤“ª¦“ù¦“ªË“ßö“ª¯“ù±“é©“ª¬“ª¢“ªê“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -2444,11 +2458,11 @@ interpolate a variable literally.
 
 =end original
 
-ãƒ‘ã‚¿ãƒ¼ãƒ³ã¯ã•ã‚‰ã«ã€æ­£è¦è¡¨ç¾ã¨ã—ã¦å±•é–‹ãŒè¡Œãªã‚ã‚Œã¾ã™ã€‚
-ã“ã‚Œã¯ã€å¤‰æ•°ãŒå±•é–‹ã•ã‚ŒãŸå¾Œã® 2 å›žç›®ã®ãƒ‘ã‚¹ã§è¡Œãªã‚ã‚Œã‚‹ã®ã§ã€
-å¤‰æ•°ã«æ­£è¦è¡¨ç¾ã‚’å«ã‚ã¦ãŠãã€ãƒ‘ã‚¿ãƒ¼ãƒ³ã®ä¸­ã¸å±•é–‹ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
-ã‚‚ã—ã€ãã†ã—ãŸããªã„ã®ã§ã‚ã‚Œã°ã€C<\Q> ã‚’ä½¿ã†ã¨å¤‰æ•°ã®å†…å®¹ã‚’æ–‡å­—é€šã‚Šã«
-å±•é–‹ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
+“«Ñ“«¿’¡¼“«ó“ªÏ“ªµ“ªé“ªË“¡¢“ïá“Ð®“øú“úÞ“ªÈ“ª·“ªÆ“î÷“ËÒ“ª¬“ú¼“ªÊ“ªï“ªì“ªÞ“ª¹“¡£
+“ª³“ªì“ªÏ“¡¢’ÊÑ‘Êý“ª¬“î÷“ËÒ“ªµ“ªì“ª¿“ý­“ªÎ 2 “üÞ“ÙÍ“ªÎ“«Ñ“«¹“ªÇ“ú¼“ªÊ“ªï“ªì“ªë“ªÎ“ªÇ“¡¢
+’ÊÑ‘Êý“ªË“ïá“Ð®“øú“úÞ“ªò“ùß“ªá“ªÆ“ªª“ª­“¡¢“«Ñ“«¿’¡¼“«ó“ªÎ“ñé“ªØ“î÷“ËÒ“ª¹“ªë“ª³“ªÈ“ª¬“ªÇ“ª­“ªÞ“ª¹“¡£
+“ªâ“ª·“¡¢“ª½“ª¦“ª·“ª¿“ª¯“ªÊ“ª¤“ªÎ“ªÇ“ª¢“ªì“ªÐ“¡¢C<\Q> “ªò“ÞÅ“ª¦“ªÈ’ÊÑ‘Êý“ªÎ‘ÄÚ“é»“ªò“Ùþ“í®“÷×“ªê“ªË
+“î÷“ËÒ“ª¹“ªë“ª³“ªÈ“ª¬“ªÇ“ª­“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -2460,15 +2474,15 @@ variables when used within double quotes.
 
 =end original
 
-ä¸Šè¨˜ã®æŒ¯ã‚‹èˆžã„ã‚’é™¤ã‘ã°ã€Perl ã¯ è¤‡æ•°ã®æ®µéšŽã‚’è¸ã‚“ã§å±•é–‹ã‚’è¡Œãªã„ã¾ã›ã‚“ã€‚
-ç‰¹ã«ã€ã‚·ã‚§ãƒ«ã®ãƒ—ãƒ­ã‚°ãƒ©ãƒžã®æœŸå¾…ã¨ã¯è£è…¹ã«ã€
-ãƒãƒƒã‚¯ã‚¯ã‚©ãƒ¼ãƒˆã¯ãƒ€ãƒ–ãƒ«ã‚¯ã‚©ãƒ¼ãƒˆã®ä¸­ã§ã¯å±•é–‹ã•ã‚Œã¾ã›ã‚“ã—ã€ã‚·ãƒ³ã‚°ãƒ«ã‚¯ã‚©ãƒ¼ãƒˆãŒ
-ãƒ€ãƒ–ãƒ«ã‚¯ã‚©ãƒ¼ãƒˆã®ä¸­ã§ä½¿ã‚ã‚Œã¦ã‚‚ã€å¤‰æ•°ã®å±•é–‹ã‚’å¦¨ã’ã‚‹ã“ã¨ã¯ I<ã‚ã‚Šã¾ã›ã‚“>ã€‚
+“ß¾“ÑÀ“ªÎ“òÉ“ªë“Ùñ“ª¤“ªò“ð¶“ª±“ªÐ“¡¢Perl “ªÏ “ÜÜ‘Êý“ªÎ“Ó«“Í­“ªò“ÓÎ“ªó“ªÇ“î÷“ËÒ“ªò“ú¼“ªÊ“ª¤“ªÞ“ª»“ªó“¡£
+“÷å“ªË“¡¢“«·“«§“«ë“ªÎ“«×“«í“«°“«é“«Þ“ªÎ“Ñ¢“Óâ“ªÈ“ªÏ“×ê“ÜÙ“ªË“¡¢
+“«Ð“«Ã“«¯“«¯“«©’¡¼“«È“ªÏ“«À“«Ö“«ë“«¯“«©’¡¼“«È“ªÎ“ñé“ªÇ“ªÏ“î÷“ËÒ“ªµ“ªì“ªÞ“ª»“ªó“ª·“¡¢“«·“«ó“«°“«ë“«¯“«©’¡¼“«È“ª¬
+“«À“«Ö“«ë“«¯“«©’¡¼“«È“ªÎ“ñé“ªÇ“ÞÅ“ªï“ªì“ªÆ“ªâ“¡¢’ÊÑ‘Êý“ªÎ“î÷“ËÒ“ªò“Ûª“ª²“ªë“ª³“ªÈ“ªÏ I<“ª¢“ªê“ªÞ“ª»“ªó>“¡£
 
 =head2 Regexp Quote-Like Operators
 X<operator, regexp>
 
-(æ­£è¦è¡¨ç¾ã®ã‚¯ã‚©ãƒ¼ãƒˆé¢¨ã®æ¼”ç®—å­)
+(“ïá“Ð®“øú“úÞ“ªÎ“«¯“«©’¡¼“«È“ù¦“ªÎ“æÑ“ß©“í­)
 
 =begin original
 
@@ -2477,7 +2491,7 @@ matching and related activities.
 
 =end original
 
-ä»¥ä¸‹ã¯ãƒ‘ã‚¿ãƒ¼ãƒ³ãƒžãƒƒãƒãƒ³ã‚°ã¨é–¢é€£ã™ã‚‹è¡Œå‹•ã«é–¢ã™ã‚‹ã‚¯ã‚©ãƒ¼ãƒˆé¢¨ã®æ¼”ç®—å­ã§ã™ã€‚
+“ì¤“ù»“ªÏ“«Ñ“«¿’¡¼“«ó“«Þ“«Ã“«Á“«ó“«°“ªÈ’´Ø“Ö§“ª¹“ªë“ú¼“ÔÑ“ªË’´Ø“ª¹“ªë“«¯“«©’¡¼“«È“ù¦“ªÎ“æÑ“ß©“í­“ªÇ“ª¹“¡£
 
 =over 8
 
@@ -2497,15 +2511,15 @@ even though dereferencing the result returns undef.
 
 =end original
 
-ã“ã®æ¼”ç®—å­ã¯ I<STRING> ã‚’æ­£è¦è¡¨ç¾ã¨ã—ã¦ã‚¯ã‚©ãƒ¼ãƒˆã—ã¾ã™
-(ãã—ã¦å¯èƒ½ãªã‚‰ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã—ã¾ã™)ã€‚
-I<STRING> ã¯ C<m/PATTERN/> å†…ã® I<PATTERN> ã¨åŒæ§˜ã«æ–‡å­—å¤‰æ›ã•ã‚Œã¾ã™ã€‚
-"'" ãŒãƒ‡ãƒªãƒŸã‚¿ã¨ã—ã¦ä½¿ç”¨ã•ã‚ŒãŸå ´åˆã€æ–‡å­—å¤‰æ›ã¯è¡Œã‚ã‚Œã¾ã›ã‚“ã€‚
-å¯¾å¿œã™ã‚‹ C</STRING/msixpo> è¡¨ç¾ã®ä»£ã‚ã‚Šã«ä½¿ã‚ã‚ŒãŸ Perl ã®å€¤ã‚’è¿”ã—ã¾ã™ã€‚
-è¿”ã‚Šå€¤ã¯å…ƒã®ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’æ­£è¦åŒ–ã—ãŸã‚‚ã®ã§ã™ã€‚
-ã“ã‚Œã¯ä¸æ€è­°ãªã“ã¨ã«ã€åŒã˜æ–‡å­—ã‚’å«ã‚€æ–‡å­—åˆ—ã¨ã¯ç•°ãªã‚Šã¾ã™:
-C<ref(qr/x/)> ã¯ã€çµæžœã‚’ãƒ‡ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹ã™ã‚‹ã¨æœªå®šç¾©å€¤ã‚’è¿”ã™ã«ã‚‚é–¢ã‚ã‚‰ãšã€
-"Regexp" ã‚’è¿”ã—ã¾ã™ã€‚
+“ª³“ªÎ“æÑ“ß©“í­“ªÏ I<STRING> “ªò“ïá“Ð®“øú“úÞ“ªÈ“ª·“ªÆ“«¯“«©’¡¼“«È“ª·“ªÞ“ª¹
+(“ª½“ª·“ªÆ“Ê¦“Òö“ªÊ“ªé“«³“«ó“«Ñ“«¤“«ë“ª·“ªÞ“ª¹)“¡£
+I<STRING> “ªÏ C<m/PATTERN/> ‘ÄÚ“ªÎ I<PATTERN> “ªÈ“ÔÒ’ÍÍ“ªË“Ùþ“í®’ÊÑ“üµ“ªµ“ªì“ªÞ“ª¹“¡£
+"'" “ª¬“«Ç“«ê“«ß“«¿“ªÈ“ª·“ªÆ“ÞÅ“éÄ“ªµ“ªì“ª¿“íÞ“ùê“¡¢“Ùþ“í®’ÊÑ“üµ“ªÏ“ú¼“ªï“ªì“ªÞ“ª»“ªó“¡£
+’ÂÐ’±þ“ª¹“ªë C</STRING/msixpo> “øú“úÞ“ªÎ“ÓÛ“ªï“ªê“ªË“ÞÅ“ªï“ªì“ª¿ Perl “ªÎ“ö·“ªò“Ú÷“ª·“ªÞ“ª¹“¡£
+“Ú÷“ªê“ö·“ªÏ“êª“ªÎ“«Ñ“«¿’¡¼“«ó“ªò“ïá“Ð®“ûù“ª·“ª¿“ªâ“ªÎ“ªÇ“ª¹“¡£
+“ª³“ªì“ªÏ“Üô“ÞÖ“ì¡“ªÊ“ª³“ªÈ“ªË“¡¢“ÔÒ“ª¸“Ùþ“í®“ªò“ùß“ªà“Ùþ“í®“Öª“ªÈ“ªÏ“ì¶“ªÊ“ªê“ªÞ“ª¹:
+C<ref(qr/x/)> “ªÏ“¡¢“Ì¿“Íý“ªò“«Ç“«ê“«Õ“«¡“«ì“«ó“«¹“ª¹“ªë“ªÈ“Ú±“ïÒ“ëù“ö·“ªò“Ú÷“ª¹“ªË“ªâ’´Ø“ªï“ªé“ªº“¡¢
+"Regexp" “ªò“Ú÷“ª·“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -2513,7 +2527,7 @@ For example,
 
 =end original
 
-ä¾‹ãˆã°:
+“ÖÇ“ª¨“ªÐ:
 
     $rex = qr/my.STRING/is;
     print $rex;                 # prints (?si-xm:my.STRING)
@@ -2525,7 +2539,7 @@ is equivalent to
 
 =end original
 
-ã¯ä»¥ä¸‹ã¨ç­‰ä¾¡ã§ã™:
+“ªÏ“ì¤“ù»“ªÈ“Ôõ’²Á“ªÇ“ª¹:
 
     s/my.STRING/foo/is;
 
@@ -2535,7 +2549,7 @@ The result may be used as a subpattern in a match:
 
 =end original
 
-çµæžœã¯ãƒžãƒƒãƒã®ã‚µãƒ–ãƒ‘ã‚¿ãƒ¼ãƒ³ã¨ã—ã¦ä½¿ãˆã¾ã™:
+“Ì¿“Íý“ªÏ“«Þ“«Ã“«Á“ªÎ“«µ“«Ö“«Ñ“«¿’¡¼“«ó“ªÈ“ª·“ªÆ“ÞÅ“ª¨“ªÞ“ª¹:
 
     $re = qr/$pattern/;
     $string =~ /foo${re}bar/;	# can be interpolated in other patterns
@@ -2550,9 +2564,9 @@ notably if the result of qr() is used standalone:
 
 =end original
 
-Perl ã¯ qr() æ¼”ç®—å­ã‚’å®Ÿè¡Œã™ã‚‹çž¬é–“ã«ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã™ã‚‹ã®ã§ã€
-qr() ã‚’ä½¿ã†ã“ã¨ã§ã„ãã¤ã‹ã®å ´é¢ã§é€Ÿåº¦çš„ã«æœ‰åˆ©ã«ãªã‚Šã¾ã™ã€‚
-ç‰¹ã« qr() ã®çµæžœãŒç‹¬ç«‹ã—ã¦ä½¿ã‚ã‚Œã‚‹å ´åˆã«æœ‰åˆ©ã«ãªã‚Šã¾ã™ã€‚
+Perl “ªÏ qr() “æÑ“ß©“í­“ªò’¼Â“ú¼“ª¹“ªë“âë“Êà“ªË“«Ñ“«¿’¡¼“«ó“ªò“«³“«ó“«Ñ“«¤“«ë“ª¹“ªë“ªÎ“ªÇ“¡¢
+qr() “ªò“ÞÅ“ª¦“ª³“ªÈ“ªÇ“ª¤“ª¯“ªÄ“ª«“ªÎ“íÞ“Øü“ªÇ“áÜ“Óø“îÜ“ªË“êó“××“ªË“ªÊ“ªê“ªÞ“ª¹“¡£
+“÷å“ªË qr() “ªÎ“Ì¿“Íý“ª¬‘¶À“Ø¡“ª·“ªÆ“ÞÅ“ªï“ªì“ªë“íÞ“ùê“ªË“êó“××“ªË“ªÊ“ªê“ªÞ“ª¹“¡£
 
     sub match {
 	my $patterns = shift;
@@ -2576,10 +2590,10 @@ we did not use qr() operator.)
 
 =end original
 
-qr() ã®æ™‚ç‚¹ã§ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’å†…éƒ¨è¡¨ç¾ã«ãƒ—ãƒªã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã™ã‚‹ã“ã¨ã«ã‚ˆã‚Šã€
-C</$pat/> ã‚’è©¦ã¿ã‚‹æ¯Žã«æ¯Žå›žãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’å†ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã™ã‚‹ã®ã‚’é¿ã‘ã‚‹ã“ã¨ãŒã§ãã¾ã™
-(Perl ã¯ãã®ä»–ã«ã‚‚å¤šãã®å†…éƒ¨æœ€é©åŒ–ã‚’è¡Œã„ã¾ã™ãŒã€
-ä¸Šã®ä¾‹ã§ qr() æ¼”ç®—å­ã‚’ä½¿ã‚ãªã‹ã£ãŸå ´åˆã¯ã©ã®æœ€é©åŒ–ã‚‚è¡Œã‚ã‚Œã¾ã›ã‚“)ã€‚
+qr() “ªÎ“ãÁ“ïÃ“ªÇ“«Ñ“«¿’¡¼“«ó“ªò‘ÄÚ“Ý»“øú“úÞ“ªË“«×“«ê“«³“«ó“«Ñ“«¤“«ë“ª¹“ªë“ª³“ªÈ“ªË“ªè“ªê“¡¢
+C</$pat/> “ªò“ãË“ªß“ªë’Ëè“ªË’Ëè“üÞ“«Ñ“«¿’¡¼“«ó“ªò“î¢“«³“«ó“«Ñ“«¤“«ë“ª¹“ªë“ªÎ“ªò“ù­“ª±“ªë“ª³“ªÈ“ª¬“ªÇ“ª­“ªÞ“ª¹
+(Perl “ªÏ“ª½“ªÎ“öâ“ªË“ªâ“Òý“ª¯“ªÎ‘ÄÚ“Ý»“õÌ“îê“ûù“ªò“ú¼“ª¤“ªÞ“ª¹“ª¬“¡¢
+“ß¾“ªÎ“ÖÇ“ªÇ qr() “æÑ“ß©“í­“ªò“ÞÅ“ªï“ªÊ“ª«“ªÃ“ª¿“íÞ“ùê“ªÏ“ªÉ“ªÎ“õÌ“îê“ûù“ªâ“ú¼“ªï“ªì“ªÞ“ª»“ªó)“¡£
 
 =begin original
 
@@ -2587,7 +2601,7 @@ Options are:
 
 =end original
 
-ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã¯ä»¥ä¸‹ã®é€šã‚Šã§ã™:
+“«ª“«×“«·“«ç“«ó“ªÏ“ì¤“ù»“ªÎ“÷×“ªê“ªÇ“ª¹:
 
 =begin original
 
@@ -2601,13 +2615,13 @@ Options are:
 
 =end original
 
-    m	æ–‡å­—åˆ—ã‚’è¤‡æ•°è¡Œã¨ã—ã¦æ‰±ã†
-    s	æ–‡å­—åˆ—ã‚’ä¸€è¡Œã¨ã—ã¦æ‰±ã† (. ãŒ æ”¹è¡Œã«ãƒžãƒƒãƒãƒ³ã‚°ã™ã‚‹ã‚ˆã†ã«ã™ã‚‹)
-    i	ãƒ‘ã‚¿ãƒ¼ãƒ³ãƒžãƒƒãƒã«ãŠã„ã¦å¤§æ–‡å­—å°æ–‡å­—ã‚’åŒºåˆ¥ã—ãªã„
-    x	æ‹¡å¼µæ­£è¦è¡¨ç¾ã‚’ä½¿ã†
-    p	ãƒžãƒƒãƒãƒ³ã‚°æ™‚ã«ãƒžãƒƒãƒãƒ³ã‚°ã—ãŸæ–‡å­—åˆ—ã‚’ä¿å­˜ã™ã‚‹ã®ã§ã€
-        ${^PREMATCH}, ${^MATCH}, ${^POSTMATCH} ãŒå®šç¾©ã•ã‚Œã‚‹
-    o	ä¸€åº¦ã ã‘ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã™ã‚‹
+    m	“Ùþ“í®“Öª“ªò“ÜÜ‘Êý“ú¼“ªÈ“ª·“ªÆ“Ðâ“ª¦
+    s	“Ùþ“í®“Öª“ªò“ìé“ú¼“ªÈ“ª·“ªÆ“Ðâ“ª¦ (. “ª¬ “ËÇ“ú¼“ªË“«Þ“«Ã“«Á“«ó“«°“ª¹“ªë“ªè“ª¦“ªË“ª¹“ªë)
+    i	“«Ñ“«¿’¡¼“«ó“«Þ“«Ã“«Á“ªË“ªª“ª¤“ªÆ“ÓÞ“Ùþ“í®“á³“Ùþ“í®“ªò‘Çø“Ü¬“ª·“ªÊ“ª¤
+    x	’³È“íå“ïá“Ð®“øú“úÞ“ªò“ÞÅ“ª¦
+    p	“«Þ“«Ã“«Á“«ó“«°“ãÁ“ªË“«Þ“«Ã“«Á“«ó“«°“ª·“ª¿“Ùþ“í®“Öª“ªò“ÜÁ“ðí“ª¹“ªë“ªÎ“ªÇ“¡¢
+        ${^PREMATCH}, ${^MATCH}, ${^POSTMATCH} “ª¬“ïÒ“ëù“ªµ“ªì“ªë
+    o	“ìé“Óø“ªÀ“ª±“«³“«ó“«Ñ“«¤“«ë“ª¹“ªë
 
 =begin original
 
@@ -2652,15 +2666,15 @@ is in effect.
 
 =end original
 
-ãƒ‘ã‚¿ãƒ¼ãƒ³ãƒžãƒƒãƒã§æ–‡å­—åˆ—æ¤œç´¢ã‚’è¡Œãªã„ã€ã‚¹ã‚«ãƒ©ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã¯æˆåŠŸã—ãŸã¨ãã¯çœŸã€
-å¤±æ•—ã—ãŸã¨ãã¯å½ã‚’è¿”ã—ã¾ã™ã€‚
-C<=~> æ¼”ç®—å­ã‹ C<!~> æ¼”ç®—å­ã§æ¤œç´¢å¯¾è±¡ã®æ–‡å­—åˆ—ã‚’ç¤ºã•ãªã‹ã£ãŸã¨ãã«ã¯ã€
-C<$_> ã®æ–‡å­—åˆ—ãŒæ¤œç´¢å¯¾è±¡ã¨ãªã‚Šã¾ã™ã€‚
-(C<=~> ã§æŒ‡å®šã•ã‚Œã‚‹æ–‡å­—åˆ—ã¯ã€å·¦è¾ºå€¤ã§ã‚ã‚‹å¿…è¦ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
-å¼ã‚’è©•ä¾¡ã—ãŸçµæžœã§ã‚‚ã‹ã¾ã„ã¾ã›ã‚“ãŒã€C<=~> ã®å„ªå…ˆé †ä½ãŒã„ãã¶ã‚“é«˜ã„ã“ã¨ã«
-æ³¨æ„ã—ã¦ãã ã•ã„ã€‚)
-L<perlre> ã‚‚å‚ç…§ã—ã¦ãã ã•ã„ã€‚
-C<use locale> ãŒæœ‰åŠ¹ã®å ´åˆã®è­°è«–ã«ã¤ã„ã¦ã¯ L<perllocale> ã‚’å‚ç…§ã—ã¦ä¸‹ã•ã„ã€‚
+“«Ñ“«¿’¡¼“«ó“«Þ“«Ã“«Á“ªÇ“Ùþ“í®“Öª’¸¡“ßã“ªò“ú¼“ªÊ“ª¤“¡¢“«¹“««“«é“«³“«ó“«Æ“«­“«¹“«È“ªÇ“ªÏ“à÷“Íí“ª·“ª¿“ªÈ“ª­“ªÏ‘Õæ“¡¢
+“ã÷“ø¨“ª·“ª¿“ªÈ“ª­“ªÏ˜ºô“ªò“Ú÷“ª·“ªÞ“ª¹“¡£
+C<=~> “æÑ“ß©“í­“ª« C<!~> “æÑ“ß©“í­“ªÇ’¸¡“ßã’ÂÐ“ßÚ“ªÎ“Ùþ“í®“Öª“ªò“ãÆ“ªµ“ªÊ“ª«“ªÃ“ª¿“ªÈ“ª­“ªË“ªÏ“¡¢
+C<$_> “ªÎ“Ùþ“í®“Öª“ª¬’¸¡“ßã’ÂÐ“ßÚ“ªÈ“ªÊ“ªê“ªÞ“ª¹“¡£
+(C<=~> “ªÇ“ò¦“ïÒ“ªµ“ªì“ªë“Ùþ“í®“Öª“ªÏ“¡¢“ñ§’ÊÕ“ö·“ªÇ“ª¢“ªë“ù±“é©“ªÏ“ª¢“ªê“ªÞ“ª»“ªó“¡£
+“ãÒ“ªò“øÄ’²Á“ª·“ª¿“Ì¿“Íý“ªÇ“ªâ“ª«“ªÞ“ª¤“ªÞ“ª»“ªó“ª¬“¡¢C<=~> “ªÎ“éÐ“à»“â÷“êÈ“ª¬“ª¤“ª¯“ªÖ“ªó“ÍÔ“ª¤“ª³“ªÈ“ªË
+“ñ¼“ëò“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£)
+L<perlre> “ªâ‘²Î“ðÎ“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
+C<use locale> “ª¬“êó’¸ú“ªÎ“íÞ“ùê“ªÎ“ì¡“Öå“ªË“ªÄ“ª¤“ªÆ“ªÏ L<perllocale> “ªò‘²Î“ðÎ“ª·“ªÆ“ù»“ªµ“ª¤“¡£
 
 =begin original
 
@@ -2680,8 +2694,8 @@ process modifiers are available:
 
 =end original
 
-    g   ã‚°ãƒ­ãƒ¼ãƒãƒ«ã«ãƒžãƒƒãƒã€ã¤ã¾ã‚Šã€ã™ã¹ã¦ã‚’æŽ¢ã—å‡ºã™
-    c	/g ãŒæœ‰åŠ¹ãªã¨ãã€ãƒžãƒƒãƒãƒ³ã‚°ã«å¤±æ•—ã—ã¦ã‚‚æ¤œç´¢ä½ç½®ã‚’ãƒªã‚»ãƒƒãƒˆã—ãªã„
+    g   “«°“«í’¡¼“«Ð“«ë“ªË“«Þ“«Ã“«Á“¡¢“ªÄ“ªÞ“ªê“¡¢“ª¹“ªÙ“ªÆ“ªò“÷®“ª·“õó“ª¹
+    c	/g “ª¬“êó’¸ú“ªÊ“ªÈ“ª­“¡¢“«Þ“«Ã“«Á“«ó“«°“ªË“ã÷“ø¨“ª·“ªÆ“ªâ’¸¡“ßã“êÈ“öÇ“ªò“«ê“«»“«Ã“«È“ª·“ªÊ“ª¤
 
 =begin original
 
@@ -2694,12 +2708,12 @@ If "'" is the delimiter, no interpolation is performed on the PATTERN.
 
 =end original
 
-åŒºåˆ‡æ–‡å­—ãŒ "/" ã®ã¨ãã«ã¯ã€æœ€åˆã® C<m> ã¯ä»˜ã‘ã¦ã‚‚ä»˜ã‘ãªãã¦ã‚‚ã‹ã¾ã„ã¾ã›ã‚“ã€‚
-C<m> ã‚’ä»˜ã‘ã‚‹ã¨ãã«ã¯ã€è‹±æ•°å­—ã§ã‚‚ç©ºç™½ã§ã‚‚ãªã„ã€ä»»æ„ã®æ–‡å­—ã®ãƒšã‚¢ã‚’
-åŒºåˆ‡æ–‡å­—ã¨ã—ã¦ä½¿ã†ã“ã¨ãŒã§ãã¾ã™ã€‚
-ã“ã‚Œã¯ "/" ã‚’å«ã‚€ãƒ‘ã‚¹åã«ãƒ‘ã‚¿ãƒ¼ãƒ³ãƒ‘ãƒƒãƒã‚’è¡Œãªã†ã¨ãã«ä¾¿åˆ©ã§ã—ã‚‡ã†ã€‚
-LTS (æ¥ŠæžååŸ·ç—‡å€™ç¾¤) ã‚’é¿ã‘ã‚‹ãŸã‚ã«ã‚‚ã€‚
-"'" ãŒãƒ‡ãƒªãƒŸã‚¿ã®å ´åˆã€PATTERN ã«å¯¾ã™ã‚‹å±•é–‹ã¯è¡Œã‚ã‚Œã¾ã›ã‚“ã€‚
+‘Çø“ï·“Ùþ“í®“ª¬ "/" “ªÎ“ªÈ“ª­“ªË“ªÏ“¡¢“õÌ“ôø“ªÎ C<m> “ªÏ“Üõ“ª±“ªÆ“ªâ“Üõ“ª±“ªÊ“ª¯“ªÆ“ªâ“ª«“ªÞ“ª¤“ªÞ“ª»“ªó“¡£
+C<m> “ªò“Üõ“ª±“ªë“ªÈ“ª­“ªË“ªÏ“¡¢“çÈ‘Êý“í®“ªÇ“ªâ“Íö“ÛÜ“ªÇ“ªâ“ªÊ“ª¤“¡¢“ìò“ëò“ªÎ“Ùþ“í®“ªÎ“«Ú“«¢“ªò
+‘Çø“ï·“Ùþ“í®“ªÈ“ª·“ªÆ“ÞÅ“ª¦“ª³“ªÈ“ª¬“ªÇ“ª­“ªÞ“ª¹“¡£
+“ª³“ªì“ªÏ "/" “ªò“ùß“ªà“«Ñ“«¹“Ù£“ªË“«Ñ“«¿’¡¼“«ó“«Ñ“«Ã“«Á“ªò“ú¼“ªÊ“ª¦“ªÈ“ª­“ªË“øµ“××“ªÇ“ª·“ªç“ª¦“¡£
+LTS (“åÅ“ò«“ø¶“òû“ñø“ý¦“ÏØ) “ªò“ù­“ª±“ªë“ª¿“ªá“ªË“ªâ“¡£
+"'" “ª¬“«Ç“«ê“«ß“«¿“ªÎ“íÞ“ùê“¡¢PATTERN “ªË’ÂÐ“ª¹“ªë“î÷“ËÒ“ªÏ“ú¼“ªï“ªì“ªÞ“ª»“ªó“¡£
 
 =begin original
 
@@ -2716,19 +2730,19 @@ Perl won't even notice.  See also L<"qr/STRING/msixpo">.
 
 =end original
 
-PATTERN ã«ã¯ã€å¤‰æ•°ãŒå«ã¾ã‚Œã¦ã„ã¦ã‚‚ã‚ˆãã€ãƒ‘ã‚¿ãƒ¼ãƒ³ãŒè©•ä¾¡ã•ã‚Œã‚‹ã”ã¨ã«ã€
-(ãƒ‡ãƒªãƒŸã‚¿ãŒã‚·ãƒ³ã‚°ãƒ«ã‚¯ã‚©ãƒ¼ãƒˆã§ãªã„é™ã‚Š)
-å¤‰æ•°ã¯å±•é–‹ã•ã‚Œ (ãƒ‘ã‚¿ãƒ¼ãƒ³ãŒå†ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã•ã‚Œ) ã¾ã™ã€‚
-(å¤‰æ•° C<$(>, C<$)>, C<$|> ã¯æ–‡å­—åˆ—ã®çµ‚ã‚ã‚Šã‚’èª¿ã¹ã‚‹ãƒ‘ã‚¿ãƒ¼ãƒ³ã§ã‚ã‚‹ã¨
-è§£é‡ˆã•ã‚Œã‚‹ã®ã§ã€å±•é–‹ã•ã‚Œã¾ã›ã‚“ã€‚)
-ãƒ‘ã‚¿ãƒ¼ãƒ³ãŒã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã•ã‚Œã‚‹ã®ã‚’ 1 åº¦ã ã‘ã«ã—ãŸã„å ´åˆã«ã¯ã€
-çµ‚ã‚ã‚Šã®åŒºåˆ‡æ–‡å­—ã®å¾Œã« C</o> ä¿®é£¾å­ã‚’ä»˜ã‘ã¾ã™ã€‚
-ã“ã‚Œã«ã‚ˆã‚Šã€å®Ÿè¡Œæ™‚ã«å†ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ãŒé »ç¹ã«èµ·ã“ã‚‹ã“ã¨ãŒé¿ã‘ã‚‰ã‚Œã€
-å±•é–‹ã™ã‚‹å€¤ãŒã‚¹ã‚¯ãƒªãƒ—ãƒˆã®å®Ÿè¡Œä¸­ã«å¤‰åŒ–ã—ãªã„å ´åˆã«æœ‰åŠ¹ãªã‚‚ã®ã¨ãªã‚Šã¾ã™ã€‚
-ã—ã‹ã—ã€C</o> ã‚’ä»˜ã‘ã‚‹ã“ã¨ã¯ã€ãƒ‘ã‚¿ãƒ¼ãƒ³ã®ä¸­ã®å¤‰æ•°ã‚’å¤‰æ›´ã—ãªã„ã“ã¨ã‚’
-ç´„æŸã™ã‚‹ã‚‚ã®ã§ã™ã€‚
-å¤‰æ›´ã—ãŸã¨ã—ã¦ã‚‚ã€Perl ãŒãã‚Œã«æ°—ä»˜ãã“ã¨ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
-L<"qr/STRING/msixpo"> ã‚‚å‚ç…§ã—ã¦ä¸‹ã•ã„ã€‚
+PATTERN “ªË“ªÏ“¡¢’ÊÑ‘Êý“ª¬“ùß“ªÞ“ªì“ªÆ“ª¤“ªÆ“ªâ“ªè“ª¯“¡¢“«Ñ“«¿’¡¼“«ó“ª¬“øÄ’²Á“ªµ“ªì“ªë“ª´“ªÈ“ªË“¡¢
+(“«Ç“«ê“«ß“«¿“ª¬“«·“«ó“«°“«ë“«¯“«©’¡¼“«È“ªÇ“ªÊ“ª¤“ùÚ“ªê)
+’ÊÑ‘Êý“ªÏ“î÷“ËÒ“ªµ“ªì (“«Ñ“«¿’¡¼“«ó“ª¬“î¢“«³“«ó“«Ñ“«¤“«ë“ªµ“ªì) “ªÞ“ª¹“¡£
+(’ÊÑ‘Êý C<$(>, C<$)>, C<$|> “ªÏ“Ùþ“í®“Öª“ªÎ“ðû“ªï“ªê“ªò“ðà“ªÙ“ªë“«Ñ“«¿’¡¼“«ó“ªÇ“ª¢“ªë“ªÈ
+“ú°’¼á“ªµ“ªì“ªë“ªÎ“ªÇ“¡¢“î÷“ËÒ“ªµ“ªì“ªÞ“ª»“ªó“¡£)
+“«Ñ“«¿’¡¼“«ó“ª¬“«³“«ó“«Ñ“«¤“«ë“ªµ“ªì“ªë“ªÎ“ªò 1 “Óø“ªÀ“ª±“ªË“ª·“ª¿“ª¤“íÞ“ùê“ªË“ªÏ“¡¢
+“ðû“ªï“ªê“ªÎ‘Çø“ï·“Ùþ“í®“ªÎ“ý­“ªË C</o> “áó“ãÞ“í­“ªò“Üõ“ª±“ªÞ“ª¹“¡£
+“ª³“ªì“ªË“ªè“ªê“¡¢’¼Â“ú¼“ãÁ“ªË“î¢“«³“«ó“«Ñ“«¤“«ë“ª¬“Þº“Ûå“ªË“ÑÃ“ª³“ªë“ª³“ªÈ“ª¬“ù­“ª±“ªé“ªì“¡¢
+“î÷“ËÒ“ª¹“ªë“ö·“ª¬“«¹“«¯“«ê“«×“«È“ªÎ’¼Â“ú¼“ñé“ªË’ÊÑ“ûù“ª·“ªÊ“ª¤“íÞ“ùê“ªË“êó’¸ú“ªÊ“ªâ“ªÎ“ªÈ“ªÊ“ªê“ªÞ“ª¹“¡£
+“ª·“ª«“ª·“¡¢C</o> “ªò“Üõ“ª±“ªë“ª³“ªÈ“ªÏ“¡¢“«Ñ“«¿’¡¼“«ó“ªÎ“ñé“ªÎ’ÊÑ‘Êý“ªò’ÊÑ“ÌÚ“ª·“ªÊ“ª¤“ª³“ªÈ“ªò
+“å³“áÖ“ª¹“ªë“ªâ“ªÎ“ªÇ“ª¹“¡£
+’ÊÑ“ÌÚ“ª·“ª¿“ªÈ“ª·“ªÆ“ªâ“¡¢Perl “ª¬“ª½“ªì“ªË’µ¤“Üõ“ª¯“ª³“ªÈ“ªÏ“ª¢“ªê“ªÞ“ª»“ªó“¡£
+L<"qr/STRING/msixpo"> “ªâ‘²Î“ðÎ“ª·“ªÆ“ù»“ªµ“ª¤“¡£
 
 =begin original
 
@@ -2741,12 +2755,12 @@ empty pattern (which will always match).
 
 =end original
 
-PATTERN ã‚’è©•ä¾¡ã—ãŸçµæžœãŒç©ºæ–‡å­—åˆ—ã¨ãªã£ãŸå ´åˆã«ã¯ã€
-æœ€å¾Œã«ãƒžãƒƒãƒã« I<æˆåŠŸã—ãŸ> æ­£è¦è¡¨ç¾ãŒã€ä»£ã‚ã‚Šã«ä½¿ã‚ã‚Œã¾ã™ã€‚
-ã“ã®å ´åˆã€ç©ºãƒ‘ã‚¿ãƒ¼ãƒ³ã«å¯¾ã—ã¦ C<g> ã® C<c> ãƒ•ãƒ©ã‚°ã ã‘ãŒæœ‰åŠ¹ã§ã™ -
-ãã®ä»–ã®ãƒ•ãƒ©ã‚°ã¯å…ƒã®ãƒ‘ã‚¿ãƒ¼ãƒ³ã‹ã‚‰å–ã‚‰ã‚Œã¾ã™ã€‚
-ä»¥å‰ã«æˆåŠŸã—ãŸãƒžãƒƒãƒãƒ³ã‚°ãŒãªã„å ´åˆã€ã“ã‚Œã¯(æš—é»™ã«)çœŸã®ç©ºãƒ‘ã‚¿ãƒ¼ãƒ³ã¨ã—ã¦
-å‹•ä½œã—ã¾ã™(ã¤ã¾ã‚Šå¸¸ã«ãƒžãƒƒãƒãƒ³ã‚°ã—ã¾ã™)ã€‚
+PATTERN “ªò“øÄ’²Á“ª·“ª¿“Ì¿“Íý“ª¬“Íö“Ùþ“í®“Öª“ªÈ“ªÊ“ªÃ“ª¿“íÞ“ùê“ªË“ªÏ“¡¢
+“õÌ“ý­“ªË“«Þ“«Ã“«Á“ªË I<“à÷“Íí“ª·“ª¿> “ïá“Ð®“øú“úÞ“ª¬“¡¢“ÓÛ“ªï“ªê“ªË“ÞÅ“ªï“ªì“ªÞ“ª¹“¡£
+“ª³“ªÎ“íÞ“ùê“¡¢“Íö“«Ñ“«¿’¡¼“«ó“ªË’ÂÐ“ª·“ªÆ C<g> “ªÎ C<c> “«Õ“«é“«°“ªÀ“ª±“ª¬“êó’¸ú“ªÇ“ª¹ -
+“ª½“ªÎ“öâ“ªÎ“«Õ“«é“«°“ªÏ“êª“ªÎ“«Ñ“«¿’¡¼“«ó“ª«“ªé“ö¢“ªé“ªì“ªÞ“ª¹“¡£
+“ì¤“îñ“ªË“à÷“Íí“ª·“ª¿“«Þ“«Ã“«Á“«ó“«°“ª¬“ªÊ“ª¤“íÞ“ùê“¡¢“ª³“ªì“ªÏ(“äÞ’ÌÛ“ªË)‘Õæ“ªÎ“Íö“«Ñ“«¿’¡¼“«ó“ªÈ“ª·“ªÆ
+“ÔÑ“íÂ“ª·“ªÞ“ª¹(“ªÄ“ªÞ“ªê“ßÈ“ªË“«Þ“«Ã“«Á“«ó“«°“ª·“ªÞ“ª¹)“¡£
 
 =begin original
 
@@ -2783,14 +2797,14 @@ failure.
 
 =end original
 
-C</g>ã‚ªãƒ—ã‚·ãƒ§ãƒ³ãŒä½¿ã‚ã‚Œãªã‹ã£ãŸå ´åˆã€ãƒªã‚¹ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã®C<m//>ã¯
-ãƒ‘ã‚¿ãƒ¼ãƒ³ã®ä¸­ã®æ‹¬å¼§ã§æ‹¬ã‚‰ã‚ŒãŸéƒ¨åˆ†åˆ—ã«ãƒžãƒƒãƒã—ãŸã‚‚ã®ã§æ§‹æˆã•ã‚Œã‚‹ãƒªã‚¹ãƒˆã‚’
-è¿”ã—ã¾ã™ã€‚
-ã“ã‚Œã¯ã€(C<$1>, C<$2>, C<$3>, ...) ã¨ã„ã†ã“ã¨ã§ã™ã€‚
-(ã“ã®å ´åˆã€C<$1> ãªã©ã‚‚è¨­å®šã•ã‚Œã¾ã™ã€‚
-ã“ã®ç‚¹ã§ Perl 4 ã®å‹•ä½œã¨é•ã£ã¦ã„ã¾ã™ã€‚)
-ãƒ‘ã‚¿ãƒ¼ãƒ³ã«æ‹¬å¼§ãŒãªã„å ´åˆã¯ã€è¿”ã‚Šå€¤ã¯æˆåŠŸæ™‚ã¯ãƒªã‚¹ãƒˆ C<(1)> ã§ã™ã€‚
-æ‹¬å¼§ã®ã‚ã‚‹ãªã—ã«é–¢ã‚ã‚‰ãšã€å¤±æ•—æ™‚ã¯ç©ºãƒªã‚¹ãƒˆã‚’è¿”ã—ã¾ã™ã€‚
+C</g>“«ª“«×“«·“«ç“«ó“ª¬“ÞÅ“ªï“ªì“ªÊ“ª«“ªÃ“ª¿“íÞ“ùê“¡¢“«ê“«¹“«È“«³“«ó“«Æ“«­“«¹“«È“ªÇ“ªÎC<m//>“ªÏ
+“«Ñ“«¿’¡¼“«ó“ªÎ“ñé“ªÎ“ÎÀ“ûÁ“ªÇ“ÎÀ“ªé“ªì“ª¿“Ý»“ÝÂ“Öª“ªË“«Þ“«Ã“«Á“ª·“ª¿“ªâ“ªÎ“ªÇ“Ï°“à÷“ªµ“ªì“ªë“«ê“«¹“«È“ªò
+“Ú÷“ª·“ªÞ“ª¹“¡£
+“ª³“ªì“ªÏ“¡¢(C<$1>, C<$2>, C<$3>, ...) “ªÈ“ª¤“ª¦“ª³“ªÈ“ªÇ“ª¹“¡£
+(“ª³“ªÎ“íÞ“ùê“¡¢C<$1> “ªÊ“ªÉ“ªâ“àâ“ïÒ“ªµ“ªì“ªÞ“ª¹“¡£
+“ª³“ªÎ“ïÃ“ªÇ Perl 4 “ªÎ“ÔÑ“íÂ“ªÈ“êÞ“ªÃ“ªÆ“ª¤“ªÞ“ª¹“¡£)
+“«Ñ“«¿’¡¼“«ó“ªË“ÎÀ“ûÁ“ª¬“ªÊ“ª¤“íÞ“ùê“ªÏ“¡¢“Ú÷“ªê“ö·“ªÏ“à÷“Íí“ãÁ“ªÏ“«ê“«¹“«È C<(1)> “ªÇ“ª¹“¡£
+“ÎÀ“ûÁ“ªÎ“ª¢“ªë“ªÊ“ª·“ªË’´Ø“ªï“ªé“ªº“¡¢“ã÷“ø¨“ãÁ“ªÏ“Íö“«ê“«¹“«È“ªò“Ú÷“ª·“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -2798,7 +2812,7 @@ Examples:
 
 =end original
 
-ä¾‹ã‚’ç¤ºã—ã¾ã™:
+“ÖÇ“ªò“ãÆ“ª·“ªÞ“ª¹:
 
     open(TTY, '/dev/tty');
     <TTY> =~ /^y/i && foo();	# do foo if desired
@@ -2824,10 +2838,10 @@ the pattern matched.
 
 =end original
 
-æœ€å¾Œã®ä¾‹ã¯ã€$foo ã‚’æœ€åˆã® 2 ã¤ã®å˜èªžã¨è¡Œã®æ®‹ã‚Šã«åˆ†è§£ã—ã€
-$F1 ã¨ $F2 ã¨ $Etc ã«ä»£å…¥ã—ã¦ã„ã¾ã™ã€‚
-å¤‰æ•°ã«ä»£å…¥ã•ã‚Œã‚Œã°ã€ã™ãªã‚ã¡ãƒ‘ã‚¿ãƒ¼ãƒ³ãŒãƒžãƒƒãƒã™ã‚Œã°ã€
-if ã®æ¡ä»¶ãŒçœŸã¨ãªã‚Šã¾ã™ã€‚
+“õÌ“ý­“ªÎ“ÖÇ“ªÏ“¡¢$foo “ªò“õÌ“ôø“ªÎ 2 “ªÄ“ªÎ’Ã±“åÞ“ªÈ“ú¼“ªÎ‘²Ð“ªê“ªË“ÝÂ“ú°“ª·“¡¢
+$F1 “ªÈ $F2 “ªÈ $Etc “ªË“ÓÛ“ìý“ª·“ªÆ“ª¤“ªÞ“ª¹“¡£
+’ÊÑ‘Êý“ªË“ÓÛ“ìý“ªµ“ªì“ªì“ªÐ“¡¢“ª¹“ªÊ“ªï“ªÁ“«Ñ“«¿’¡¼“«ó“ª¬“«Þ“«Ã“«Á“ª¹“ªì“ªÐ“¡¢
+if “ªÎ‘Ìõ“Ëì“ª¬‘Õæ“ªÈ“ªÊ“ªê“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -2841,13 +2855,13 @@ pattern.
 
 =end original
 
-C</g> ä¿®é£¾å­ã¯ã€ã‚°ãƒ­ãƒ¼ãƒãƒ«ãªãƒ‘ã‚¿ãƒ¼ãƒ³ãƒžãƒƒãƒã‚’æŒ‡å®šã™ã‚‹ã‚‚ã®ã§ã€
-æ–‡å­—åˆ—ã®ä¸­ã§å¯èƒ½ãªé™ã‚ŠãŸãã•ã‚“ãƒžãƒƒãƒã‚’è¡Œãªã„ã¾ã™ã€‚
-ã“ã®å‹•ä½œã¯ã€ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«ä¾å­˜ã—ã¾ã™ã€‚
-ãƒªã‚¹ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã¯ã€æ­£è¦è¡¨ç¾å†…ã®æ‹¬å¼§ä»˜ã‘ã•ã‚ŒãŸã‚‚ã®ã«ãƒžãƒƒãƒã—ãŸ
-éƒ¨åˆ†æ–‡å­—åˆ—ã®ãƒªã‚¹ãƒˆãŒè¿”ã•ã‚Œã¾ã™ã€‚
-æ‹¬å¼§ãŒãªã‘ã‚Œã°ã€ãƒ‘ã‚¿ãƒ¼ãƒ³å…¨ä½“ã‚’æ‹¬å¼§ã§æ‹¬ã£ã¦ã„ãŸã‹ã®ã‚ˆã†ã«ã€
-ã™ã¹ã¦ã®ãƒžãƒƒãƒã—ãŸæ–‡å­—åˆ—ã®ãƒªã‚¹ãƒˆãŒè¿”ã•ã‚Œã¾ã™ã€‚
+C</g> “áó“ãÞ“í­“ªÏ“¡¢“«°“«í’¡¼“«Ð“«ë“ªÊ“«Ñ“«¿’¡¼“«ó“«Þ“«Ã“«Á“ªò“ò¦“ïÒ“ª¹“ªë“ªâ“ªÎ“ªÇ“¡¢
+“Ùþ“í®“Öª“ªÎ“ñé“ªÇ“Ê¦“Òö“ªÊ“ùÚ“ªê“ª¿“ª¯“ªµ“ªó“«Þ“«Ã“«Á“ªò“ú¼“ªÊ“ª¤“ªÞ“ª¹“¡£
+“ª³“ªÎ“ÔÑ“íÂ“ªÏ“¡¢“«³“«ó“«Æ“«­“«¹“«È“ªË“ëî“ðí“ª·“ªÞ“ª¹“¡£
+“«ê“«¹“«È“«³“«ó“«Æ“«­“«¹“«È“ªÇ“ªÏ“¡¢“ïá“Ð®“øú“úÞ‘ÄÚ“ªÎ“ÎÀ“ûÁ“Üõ“ª±“ªµ“ªì“ª¿“ªâ“ªÎ“ªË“«Þ“«Ã“«Á“ª·“ª¿
+“Ý»“ÝÂ“Ùþ“í®“Öª“ªÎ“«ê“«¹“«È“ª¬“Ú÷“ªµ“ªì“ªÞ“ª¹“¡£
+“ÎÀ“ûÁ“ª¬“ªÊ“ª±“ªì“ªÐ“¡¢“«Ñ“«¿’¡¼“«ó“îï‘Ìå“ªò“ÎÀ“ûÁ“ªÇ“ÎÀ“ªÃ“ªÆ“ª¤“ª¿“ª«“ªÎ“ªè“ª¦“ªË“¡¢
+“ª¹“ªÙ“ªÆ“ªÎ“«Þ“«Ã“«Á“ª·“ª¿“Ùþ“í®“Öª“ªÎ“«ê“«¹“«È“ª¬“Ú÷“ªµ“ªì“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -2861,13 +2875,13 @@ string also resets the search position.
 
 =end original
 
-ã‚¹ã‚«ãƒ©ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã¯ã€C<m//g> ã‚’å®Ÿè¡Œã™ã‚‹æ¯Žã«æ¬¡ã®ãƒžãƒƒãƒã‚’æŽ¢ã—ã¾ã™ã€‚
-ãƒžãƒƒãƒã—ãŸå ´åˆã¯çœŸã‚’è¿”ã—ã€ã‚‚ã†ãƒžãƒƒãƒã—ãªããªã£ãŸã‚‰å½ã‚’è¿”ã—ã¾ã™ã€‚
-æœ€å¾Œã®ãƒžãƒƒãƒã®ä½ç½®ã¯ pos() é–¢æ•°ã§èª­ã¿å‡ºã—ã‚„è¨­å®šãŒã§ãã¾ã™ã€‚
-L<perlfunc/pos> ã‚’å‚ç…§ã—ã¦ä¸‹ã•ã„ã€‚
-ãƒžãƒƒãƒã«å¤±æ•—ã™ã‚‹ã¨é€šå¸¸ã¯æ¤œç´¢ä½ç½®ã‚’æ–‡å­—åˆ—ã®å…ˆé ­ã«ãƒªã‚»ãƒƒãƒˆã—ã¾ã™ãŒã€
-C</c> ä¿®é£¾å­ã‚’ã¤ã‘ã‚‹(ã¤ã¾ã‚Š C<m//gc>)ã“ã¨ã§ã“ã‚Œã‚’é˜²ãã“ã¨ãŒã§ãã¾ã™ã€‚
-ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã¨ãªã‚‹æ–‡å­—åˆ—ãŒå¤‰æ›´ã•ã‚ŒãŸå ´åˆã‚‚æ¤œç´¢ä½ç½®ã¯ãƒªã‚»ãƒƒãƒˆã•ã‚Œã¾ã™ã€‚
+“«¹“««“«é“«³“«ó“«Æ“«­“«¹“«È“ªÇ“ªÏ“¡¢C<m//g> “ªò’¼Â“ú¼“ª¹“ªë’Ëè“ªË“ó­“ªÎ“«Þ“«Ã“«Á“ªò“÷®“ª·“ªÞ“ª¹“¡£
+“«Þ“«Ã“«Á“ª·“ª¿“íÞ“ùê“ªÏ‘Õæ“ªò“Ú÷“ª·“¡¢“ªâ“ª¦“«Þ“«Ã“«Á“ª·“ªÊ“ª¯“ªÊ“ªÃ“ª¿“ªé˜ºô“ªò“Ú÷“ª·“ªÞ“ª¹“¡£
+“õÌ“ý­“ªÎ“«Þ“«Ã“«Á“ªÎ“êÈ“öÇ“ªÏ pos() ’´Ø‘Êý“ªÇ’ÆÉ“ªß“õó“ª·“ªä“àâ“ïÒ“ª¬“ªÇ“ª­“ªÞ“ª¹“¡£
+L<perlfunc/pos> “ªò‘²Î“ðÎ“ª·“ªÆ“ù»“ªµ“ª¤“¡£
+“«Þ“«Ã“«Á“ªË“ã÷“ø¨“ª¹“ªë“ªÈ“÷×“ßÈ“ªÏ’¸¡“ßã“êÈ“öÇ“ªò“Ùþ“í®“Öª“ªÎ“à»“Ôé“ªË“«ê“«»“«Ã“«È“ª·“ªÞ“ª¹“ª¬“¡¢
+C</c> “áó“ãÞ“í­“ªò“ªÄ“ª±“ªë(“ªÄ“ªÞ“ªê C<m//gc>)“ª³“ªÈ“ªÇ“ª³“ªì“ªò“ÛÁ“ª°“ª³“ªÈ“ª¬“ªÇ“ª­“ªÞ“ª¹“¡£
+“«¿’¡¼“«²“«Ã“«È“ªÈ“ªÊ“ªë“Ùþ“í®“Öª“ª¬’ÊÑ“ÌÚ“ªµ“ªì“ª¿“íÞ“ùê“ªâ’¸¡“ßã“êÈ“öÇ“ªÏ“«ê“«»“«Ã“«È“ªµ“ªì“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -2882,16 +2896,16 @@ properly supported when anchored at the very beginning of the pattern.
 
 =end original
 
-C<m//g> ãƒžãƒƒãƒã‚’ C<m/\G.../g> ã¨æ··ãœã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚
-C<\G> ã¯å‰å›žã® C<m//g> ãŒã‚ã‚Œã°ãã®åŒã˜ä½ç½®ã§ãƒžãƒƒãƒã™ã‚‹
-ã‚¼ãƒ­æ–‡å­—å¹…ã®ã‚¢ã‚µãƒ¼ãƒˆã§ã™ã€‚
-C</g> ä¿®é£¾å­ãªã—ã®å ´åˆã€C<\G> ã‚¢ã‚µãƒ¼ãƒˆã¯ pos() ã«å›ºå®šã—ã¾ã™ãŒã€
-ãƒžãƒƒãƒã¯ã‚‚ã¡ã‚ã‚“ä¸€åº¦ã ã‘è©¦ã•ã‚Œã¾ã™ã€‚
-ä»¥å‰ã« C</g> ãƒžãƒƒãƒã‚’é©ç”¨ã—ã¦ã„ãªã„ã‚¿ãƒ¼ã‚²ãƒƒãƒˆæ–‡å­—åˆ—ã«å¯¾ã—ã¦
-C</g> ãªã—ã§ C<\G> ã‚’ä½¿ã†ã¨ã€æ–‡å­—åˆ—ã®å…ˆé ­ã«ãƒžãƒƒãƒã™ã‚‹ C<\A> ã‚¢ã‚µãƒ¼ãƒˆã‚’
-ä½¿ã†ã®ã¨åŒã˜ã“ã¨ã«ãªã‚Šã¾ã™ã€‚
-C<\G> ã¯ç¾åœ¨ã®ã¨ã“ã‚ã€ãƒ‘ã‚¿ãƒ¼ãƒ³ã®ã¾ã•ã«å…ˆé ­ã‚’ç¤ºã™å ´åˆã«ã®ã¿æ­£ã—ã
-å¯¾å¿œã™ã‚‹ã“ã¨ã«ã‚‚æ³¨æ„ã—ã¦ãã ã•ã„ã€‚
+C<m//g> “«Þ“«Ã“«Á“ªò C<m/\G.../g> “ªÈ“ûè“ª¼“ªë“ª³“ªÈ“ªâ“ªÇ“ª­“ªÞ“ª¹“¡£
+C<\G> “ªÏ“îñ“üÞ“ªÎ C<m//g> “ª¬“ª¢“ªì“ªÐ“ª½“ªÎ“ÔÒ“ª¸“êÈ“öÇ“ªÇ“«Þ“«Ã“«Á“ª¹“ªë
+“«¼“«í“Ùþ“í®“øë“ªÎ“«¢“«µ’¡¼“«È“ªÇ“ª¹“¡£
+C</g> “áó“ãÞ“í­“ªÊ“ª·“ªÎ“íÞ“ùê“¡¢C<\G> “«¢“«µ’¡¼“«È“ªÏ pos() “ªË“Í³“ïÒ“ª·“ªÞ“ª¹“ª¬“¡¢
+“«Þ“«Ã“«Á“ªÏ“ªâ“ªÁ“ªí“ªó“ìé“Óø“ªÀ“ª±“ãË“ªµ“ªì“ªÞ“ª¹“¡£
+“ì¤“îñ“ªË C</g> “«Þ“«Ã“«Á“ªò“îê“éÄ“ª·“ªÆ“ª¤“ªÊ“ª¤“«¿’¡¼“«²“«Ã“«È“Ùþ“í®“Öª“ªË’ÂÐ“ª·“ªÆ
+C</g> “ªÊ“ª·“ªÇ C<\G> “ªò“ÞÅ“ª¦“ªÈ“¡¢“Ùþ“í®“Öª“ªÎ“à»“Ôé“ªË“«Þ“«Ã“«Á“ª¹“ªë C<\A> “«¢“«µ’¡¼“«È“ªò
+“ÞÅ“ª¦“ªÎ“ªÈ“ÔÒ“ª¸“ª³“ªÈ“ªË“ªÊ“ªê“ªÞ“ª¹“¡£
+C<\G> “ªÏ“úÞ“î¤“ªÎ“ªÈ“ª³“ªí“¡¢“«Ñ“«¿’¡¼“«ó“ªÎ“ªÞ“ªµ“ªË“à»“Ôé“ªò“ãÆ“ª¹“íÞ“ùê“ªË“ªÎ“ªß“ïá“ª·“ª¯
+’ÂÐ’±þ“ª¹“ªë“ª³“ªÈ“ªË“ªâ“ñ¼“ëò“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
 
 =begin original
 
@@ -2899,7 +2913,7 @@ Examples:
 
 =end original
 
-ä¾‹:
+“ÖÇ:
 
     # list context
     ($one,$five,$fifteen) = (`uptime` =~ /(\d+\.\d+)/g);
@@ -2931,7 +2945,7 @@ The last example should print:
 
 =end original
 
-æœ€å¾Œã®ã‚‚ã®ã¯ä»¥ä¸‹ã®ã‚‚ã®ã‚’è¡¨ç¤ºã™ã‚‹ã¯ãšã§ã™:
+“õÌ“ý­“ªÎ“ªâ“ªÎ“ªÏ“ì¤“ù»“ªÎ“ªâ“ªÎ“ªò“øú“ãÆ“ª¹“ªë“ªÏ“ªº“ªÇ“ª¹:
 
     1: 'oo', pos=4
     2: 'q', pos=5
@@ -2951,12 +2965,12 @@ older (pre-5.6.0) Perl.
 
 =end original
 
-C<\G> ãªã—ã§ã®ãƒžãƒƒãƒãŒè¡Œã‚ã‚ŒãŸãŸã‚ã€æœ€å¾Œã®ãƒžãƒƒãƒã§ã¯ C<p> ã§ã¯ãªã
-C<q> ãŒãƒžãƒƒãƒã™ã‚‹ã“ã¨ã«æ³¨æ„ã—ã¦ãã ã•ã„ã€‚
-ã¾ãŸã€æœ€å¾Œã®ãƒžãƒƒãƒã¯ C<pos> ã‚’æ›´æ–°ã—ãªã„ã“ã¨ã«æ³¨æ„ã—ã¦ãã ã•ã„ã€‚
-C<pos> ã¯ C</g> ãƒžãƒƒãƒã§ã®ã¿æ›´æ–°ã•ã‚Œã¾ã™ã€‚
-ã‚‚ã—æœ€å¾Œã®ãƒžãƒƒãƒã§ C<p> ã«ãƒžãƒƒãƒã—ãŸå ´åˆã€ã‹ãªã‚Šã®ç¢ºçŽ‡ã§
-å¤ã„ (5.6.0 ä»¥å‰ã®) Perl ã§å®Ÿè¡Œã—ã¦ã„ã‚‹ã¯ãšã§ã™ã€‚
+C<\G> “ªÊ“ª·“ªÇ“ªÎ“«Þ“«Ã“«Á“ª¬“ú¼“ªï“ªì“ª¿“ª¿“ªá“¡¢“õÌ“ý­“ªÎ“«Þ“«Ã“«Á“ªÇ“ªÏ C<p> “ªÇ“ªÏ“ªÊ“ª¯
+C<q> “ª¬“«Þ“«Ã“«Á“ª¹“ªë“ª³“ªÈ“ªË“ñ¼“ëò“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
+“ªÞ“ª¿“¡¢“õÌ“ý­“ªÎ“«Þ“«Ã“«Á“ªÏ C<pos> “ªò“ÌÚ“ãæ“ª·“ªÊ“ª¤“ª³“ªÈ“ªË“ñ¼“ëò“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
+C<pos> “ªÏ C</g> “«Þ“«Ã“«Á“ªÇ“ªÎ“ªß“ÌÚ“ãæ“ªµ“ªì“ªÞ“ª¹“¡£
+“ªâ“ª·“õÌ“ý­“ªÎ“«Þ“«Ã“«Á“ªÇ C<p> “ªË“«Þ“«Ã“«Á“ª·“ª¿“íÞ“ùê“¡¢“ª«“ªÊ“ªê“ªÎ“ü¬“áã“ªÇ
+“Í¯“ª¤ (5.6.0 “ì¤“îñ“ªÎ) Perl “ªÇ’¼Â“ú¼“ª·“ªÆ“ª¤“ªë“ªÏ“ªº“ªÇ“ª¹“¡£
 
 =begin original
 
@@ -2967,11 +2981,11 @@ regexp tries to match where the previous one leaves off.
 
 =end original
 
-C<lex> é¢¨ã«ã‚¹ã‚­ãƒ£ãƒ³ã™ã‚‹ãŸã‚ã«ä¾¿åˆ©ãªæŒ‡å®šã¯ C</\G.../gc> ã§ã™ã€‚
-æ–‡å­—åˆ—ã‚’éƒ¨åˆ†ã”ã¨ã«å‡¦ç†ã™ã‚‹ãŸã‚ã«ã„ãã¤ã‹ã®æ­£è¦è¡¨ç¾ã‚’ã¤ãªã’ã¦ã€
-ã©ã®æ­£è¦è¡¨ç¾ã«ãƒžãƒƒãƒã—ãŸã‹ã«ã‚ˆã£ã¦ç•°ãªã‚‹å‡¦ç†ã‚’ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
-ãã‚Œãžã‚Œã®æ­£è¦è¡¨ç¾ã¯å‰ã®æ­£è¦è¡¨ç¾ãŒé£›ã°ã—ãŸéƒ¨åˆ†ã«å¯¾ã—ã¦
-ãƒžãƒƒãƒã‚’è©¦ã¿ã¾ã™ã€‚
+C<lex> “ù¦“ªË“«¹“«­“«ã“«ó“ª¹“ªë“ª¿“ªá“ªË“øµ“××“ªÊ“ò¦“ïÒ“ªÏ C</\G.../gc> “ªÇ“ª¹“¡£
+“Ùþ“í®“Öª“ªò“Ý»“ÝÂ“ª´“ªÈ“ªË’½è“×â“ª¹“ªë“ª¿“ªá“ªË“ª¤“ª¯“ªÄ“ª«“ªÎ“ïá“Ð®“øú“úÞ“ªò“ªÄ“ªÊ“ª²“ªÆ“¡¢
+“ªÉ“ªÎ“ïá“Ð®“øú“úÞ“ªË“«Þ“«Ã“«Á“ª·“ª¿“ª«“ªË“ªè“ªÃ“ªÆ“ì¶“ªÊ“ªë’½è“×â“ªò“ª¹“ªë“ª³“ªÈ“ª¬“ªÇ“ª­“ªÞ“ª¹“¡£
+“ª½“ªì“ª¾“ªì“ªÎ“ïá“Ð®“øú“úÞ“ªÏ“îñ“ªÎ“ïá“Ð®“øú“úÞ“ª¬“Þ«“ªÐ“ª·“ª¿“Ý»“ÝÂ“ªË’ÂÐ“ª·“ªÆ
+“«Þ“«Ã“«Á“ªò“ãË“ªß“ªÞ“ª¹“¡£
 
  $_ = <<'EOL';
       $url = URI::URL->new( "http://www/" );   die if $url eq "xXx";
@@ -2994,7 +3008,7 @@ Here is the output (split into several lines):
 
 =end original
 
-å‡ºåŠ›ã¯ä»¥ä¸‹ã®ã‚ˆã†ã«ãªã‚Šã¾ã™(ä½•è¡Œã‹ã«åˆ†å‰²ã—ã¦ã„ã¾ã™):
+“õó“Õô“ªÏ“ì¤“ù»“ªÎ“ªè“ª¦“ªË“ªÊ“ªê“ªÞ“ª¹(“ù¼“ú¼“ª«“ªË“ÝÂ“ùÜ“ª·“ªÆ“ª¤“ªÞ“ª¹):
 
  line-noise lowercase line-noise lowercase UPPERCASE line-noise
  UPPERCASE line-noise lowercase line-noise lowercase line-noise
@@ -3014,13 +3028,13 @@ patterns local to the current package are reset.
 
 =end original
 
-ã“ã‚Œã¯ã€reset() æ¼”ç®—å­ã‚’å‘¼ã³å‡ºã™ã”ã¨ã« 1 åº¦ã ã‘ã—ã‹
-ãƒžãƒƒãƒã—ãªã„ã“ã¨ã‚’é™¤ã„ã¦ã¯ C</pattern/> ã«ã‚ˆã‚‹æ¤œç´¢ã¨å…¨ãåŒã˜ã§ã™ã€‚
-ãŸã¨ãˆã°ã€ãƒ•ã‚¡ã‚¤ãƒ«ã®é›†ã¾ã‚Šã®ä¸­ã§å€‹ã€…ã®ãƒ•ã‚¡ã‚¤ãƒ«ã«ã¤ã„ã¦ã€
-ã‚ã‚‹ã‚‚ã®ã‚’æŽ¢ã™ã¨ãã€æœ€åˆã® 1 ã¤ã ã‘ã®å­˜åœ¨ãŒã‚ã‹ã‚Œã°è‰¯ã„ã®ã§ã‚ã‚Œã°ã€
-ã“ã®æ©Ÿèƒ½ã‚’ä½¿ã£ã¦æœ€é©åŒ–ã‚’ã¯ã‹ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
-ç¾åœ¨ã®ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã«ãƒ­ãƒ¼ã‚«ãƒ«ã¨ãªã£ã¦ã„ã‚‹ C<??> ã®ãƒ‘ã‚¿ãƒ¼ãƒ³ã ã‘ãŒ
-ãƒªã‚»ãƒƒãƒˆã•ã‚Œã¾ã™ã€‚
+“ª³“ªì“ªÏ“¡¢reset() “æÑ“ß©“í­“ªò“û¼“ªÓ“õó“ª¹“ª´“ªÈ“ªË 1 “Óø“ªÀ“ª±“ª·“ª«
+“«Þ“«Ã“«Á“ª·“ªÊ“ª¤“ª³“ªÈ“ªò“ð¶“ª¤“ªÆ“ªÏ C</pattern/> “ªË“ªè“ªë’¸¡“ßã“ªÈ“îï“ª¯“ÔÒ“ª¸“ªÇ“ª¹“¡£
+“ª¿“ªÈ“ª¨“ªÐ“¡¢“«Õ“«¡“«¤“«ë“ªÎ“ó¢“ªÞ“ªê“ªÎ“ñé“ªÇ“ËÁ‘¡©“ªÎ“«Õ“«¡“«¤“«ë“ªË“ªÄ“ª¤“ªÆ“¡¢
+“ª¢“ªë“ªâ“ªÎ“ªò“÷®“ª¹“ªÈ“ª­“¡¢“õÌ“ôø“ªÎ 1 “ªÄ“ªÀ“ª±“ªÎ“ðí“î¤“ª¬“ªï“ª«“ªì“ªÐ“ÕÞ“ª¤“ªÎ“ªÇ“ª¢“ªì“ªÐ“¡¢
+“ª³“ªÎ“Ñ¦“Òö“ªò“ÞÅ“ªÃ“ªÆ“õÌ“îê“ûù“ªò“ªÏ“ª«“ªë“ª³“ªÈ“ª¬“ªÇ“ª­“ªÞ“ª¹“¡£
+“úÞ“î¤“ªÎ“«Ñ“«Ã“«±’¡¼“«¸“ªË“«í’¡¼“««“«ë“ªÈ“ªÊ“ªÃ“ªÆ“ª¤“ªë C<??> “ªÎ“«Ñ“«¿’¡¼“«ó“ªÀ“ª±“ª¬
+“«ê“«»“«Ã“«È“ªµ“ªì“ªÞ“ª¹“¡£
 
     while (<>) {
 	if (?^$?) {
@@ -3038,8 +3052,8 @@ around the year 2168.
 
 =end original
 
-ã“ã®æ–¹æ³•ã¯ã€ã‚ã¾ã‚ŠãŠå‹§ã‚ã—ã¾ã›ã‚“ã€‚
-Perl ã®é ã„å°†æ¥ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³(ãŠãã‚‰ã 2168 å¹´é ƒ)ã§ã¯å‰Šé™¤ã•ã‚Œã‚‹ã‹ã‚‚ã—ã‚Œã¾ã›ã‚“ã€‚
+“ª³“ªÎ“Û°“Ûö“ªÏ“¡¢“ª¢“ªÞ“ªê“ªª’´«“ªá“ª·“ªÞ“ª»“ªó“¡£
+Perl “ªÎ“êÀ“ª¤‘½«‘À´“ªÎ“«Ð’¡¼“«¸“«ç“«ó(“ªª“ª½“ªé“ª¯ 2168 “Ò´“Ìñ)“ªÇ“ªÏ“Þû“ð¶“ªµ“ªì“ªë“ª«“ªâ“ª·“ªì“ªÞ“ª»“ªó“¡£
 
 =item s/PATTERN/REPLACEMENT/msixpogce
 X<substitute> X<substitution> X<replace> X<regexp, replace>
@@ -3053,9 +3067,9 @@ made.  Otherwise it returns false (specifically, the empty string).
 
 =end original
 
-æ–‡å­—åˆ—ä¸­ã§ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’æ¤œç´¢ã—ã€ã‚‚ã—è¦‹ã¤ã‹ã‚Œã°ã€ç½®æ›ãƒ†ã‚­ã‚¹ãƒˆã§ç½®ãæ›ãˆã€
-ç½®æ›ã—ãŸæ•°ã‚’è¿”ã—ã¾ã™ã€‚
-è¦‹ã¤ã‹ã‚‰ãªã‘ã‚Œã°ã€å½ (å…·ä½“çš„ã«ã¯ã€ç©ºæ–‡å­—åˆ—) ã‚’è¿”ã—ã¾ã™ã€‚
+“Ùþ“í®“Öª“ñé“ªÇ“«Ñ“«¿’¡¼“«ó“ªò’¸¡“ßã“ª·“¡¢“ªâ“ª·“Ì¸“ªÄ“ª«“ªì“ªÐ“¡¢“öÇ“üµ“«Æ“«­“«¹“«È“ªÇ“öÇ“ª­“üµ“ª¨“¡¢
+“öÇ“üµ“ª·“ª¿‘Êý“ªò“Ú÷“ª·“ªÞ“ª¹“¡£
+“Ì¸“ªÄ“ª«“ªé“ªÊ“ª±“ªì“ªÐ“¡¢˜ºô (“Îý‘Ìå“îÜ“ªË“ªÏ“¡¢“Íö“Ùþ“í®“Öª) “ªò“Ú÷“ª·“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -3066,10 +3080,10 @@ to one of those, i.e., an lvalue.)
 
 =end original
 
-C<=~> æ¼”ç®—å­ã‚„ C<!~> æ¼”ç®—å­ã«ã‚ˆã£ã¦æ–‡å­—åˆ—ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã‘ã‚Œã°ã€
-å¤‰æ•° C<$_> ãŒæ¤œç´¢ã•ã‚Œã€ä¿®æ­£ã•ã‚Œã¾ã™ã€‚
-(C<=~> ã§æŒ‡å®šã•ã‚Œã‚‹æ–‡å­—åˆ—ã¯ã€ã‚¹ã‚«ãƒ©å¤‰æ•°ã€é…åˆ—è¦ç´ ã€ãƒãƒƒã‚·ãƒ¥è¦ç´ ã€
-ã‚ã‚‹ã„ã¯ã€ã“ã‚Œã‚‰ã¸ã®ä»£å…¥å¼ã¨ã„ã£ãŸå·¦è¾ºå€¤ã§ãªã‘ã‚Œã°ãªã‚Šã¾ã›ã‚“ã€‚)
+C<=~> “æÑ“ß©“í­“ªä C<!~> “æÑ“ß©“í­“ªË“ªè“ªÃ“ªÆ“Ùþ“í®“Öª“ª¬“ò¦“ïÒ“ªµ“ªì“ªÆ“ª¤“ªÊ“ª±“ªì“ªÐ“¡¢
+’ÊÑ‘Êý C<$_> “ª¬’¸¡“ßã“ªµ“ªì“¡¢“áó“ïá“ªµ“ªì“ªÞ“ª¹“¡£
+(C<=~> “ªÇ“ò¦“ïÒ“ªµ“ªì“ªë“Ùþ“í®“Öª“ªÏ“¡¢“«¹“««“«é’ÊÑ‘Êý“¡¢“ÛÕ“Öª“é©“áÈ“¡¢“«Ï“«Ã“«·“«å“é©“áÈ“¡¢
+“ª¢“ªë“ª¤“ªÏ“¡¢“ª³“ªì“ªé“ªØ“ªÎ“ÓÛ“ìý“ãÒ“ªÈ“ª¤“ªÃ“ª¿“ñ§’ÊÕ“ö·“ªÇ“ªÊ“ª±“ªì“ªÐ“ªÊ“ªê“ªÞ“ª»“ªó“¡£)
 
 =begin original
 
@@ -3086,17 +3100,17 @@ when C<use locale> is in effect.
 
 =end original
 
-ã‚ã¨ã§è¿°ã¹ã¾ã™ãŒã€åŒºåˆ‡ã‚Šæ–‡å­—ã¯ã‚¹ãƒ©ãƒƒã‚·ãƒ¥ã¨ã¯é™ã‚Šã¾ã›ã‚“ã€‚
-ã‚·ãƒ³ã‚°ãƒ«ã‚¯ã‚©ãƒ¼ãƒˆã‚’åŒºåˆ‡ã‚Šæ–‡å­—ã¨ã—ã¦ä½¿ã£ãŸå ´åˆã«ã¯ã€
-PATTERN ã«ã‚‚ REPLACEMENT ã«ã‚‚å¤‰æ•°ã®å±•é–‹ã‚’è¡Œãªã„ã¾ã›ã‚“ã€‚
-ãã‚Œä»¥å¤–ã®å ´åˆã€æ–‡å­—åˆ—ã®æœ€å¾Œã‚’è¡¨ã‚ã™ã‚‚ã®ã«ã¯è¦‹ãˆãªã„ $ ãŒ
-PATTERN ã«å«ã¾ã‚Œã‚‹ã¨ã€å®Ÿè¡Œæ™‚ã«å¤‰æ•°ãŒãƒ‘ã‚¿ãƒ¼ãƒ³å†…ã«å±•é–‹ã•ã‚Œã¾ã™ã€‚
-æœ€åˆã«å¤‰æ•°ãŒå±•é–‹ã•ã‚Œã‚‹ã¨ãã«ã ã‘ãƒ‘ã‚¿ãƒ¼ãƒ³ã®ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã‚’è¡Œãªã„ãŸã„ã¨ãã«ã¯ã€
-C</o> ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’ä½¿ã£ã¦ãã ã•ã„ã€‚
-ãƒ‘ã‚¿ãƒ¼ãƒ³ã®è©•ä¾¡çµæžœãŒç©ºæ–‡å­—åˆ—ã«ãªã£ãŸå ´åˆã«ã¯ã€æœ€å¾Œã«æˆåŠŸã—ãŸæ­£è¦è¡¨ç¾ãŒ
-ä»£ã‚ã‚Šã«ä½¿ã‚ã‚Œã¾ã™ã€‚
-ã“ã‚Œã«ã¤ã„ã¦ã•ã‚‰ã«è©³ã—ãã¯ã€L<perlre> ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚
-C<use locale> ãŒæœ‰åŠ¹ã®å ´åˆã®è­°è«–ã«ã¤ã„ã¦ã¯ L<perllocale> ã‚’å‚ç…§ã—ã¦ä¸‹ã•ã„ã€‚
+“ª¢“ªÈ“ªÇ“âû“ªÙ“ªÞ“ª¹“ª¬“¡¢‘Çø“ï·“ªê“Ùþ“í®“ªÏ“«¹“«é“«Ã“«·“«å“ªÈ“ªÏ“ùÚ“ªê“ªÞ“ª»“ªó“¡£
+“«·“«ó“«°“«ë“«¯“«©’¡¼“«È“ªò‘Çø“ï·“ªê“Ùþ“í®“ªÈ“ª·“ªÆ“ÞÅ“ªÃ“ª¿“íÞ“ùê“ªË“ªÏ“¡¢
+PATTERN “ªË“ªâ REPLACEMENT “ªË“ªâ’ÊÑ‘Êý“ªÎ“î÷“ËÒ“ªò“ú¼“ªÊ“ª¤“ªÞ“ª»“ªó“¡£
+“ª½“ªì“ì¤“èâ“ªÎ“íÞ“ùê“¡¢“Ùþ“í®“Öª“ªÎ“õÌ“ý­“ªò“øú“ªï“ª¹“ªâ“ªÎ“ªË“ªÏ“Ì¸“ª¨“ªÊ“ª¤ $ “ª¬
+PATTERN “ªË“ùß“ªÞ“ªì“ªë“ªÈ“¡¢’¼Â“ú¼“ãÁ“ªË’ÊÑ‘Êý“ª¬“«Ñ“«¿’¡¼“«ó‘ÄÚ“ªË“î÷“ËÒ“ªµ“ªì“ªÞ“ª¹“¡£
+“õÌ“ôø“ªË’ÊÑ‘Êý“ª¬“î÷“ËÒ“ªµ“ªì“ªë“ªÈ“ª­“ªË“ªÀ“ª±“«Ñ“«¿’¡¼“«ó“ªÎ“«³“«ó“«Ñ“«¤“«ë“ªò“ú¼“ªÊ“ª¤“ª¿“ª¤“ªÈ“ª­“ªË“ªÏ“¡¢
+C</o> “«ª“«×“«·“«ç“«ó“ªò“ÞÅ“ªÃ“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
+“«Ñ“«¿’¡¼“«ó“ªÎ“øÄ’²Á“Ì¿“Íý“ª¬“Íö“Ùþ“í®“Öª“ªË“ªÊ“ªÃ“ª¿“íÞ“ùê“ªË“ªÏ“¡¢“õÌ“ý­“ªË“à÷“Íí“ª·“ª¿“ïá“Ð®“øú“úÞ“ª¬
+“ÓÛ“ªï“ªê“ªË“ÞÅ“ªï“ªì“ªÞ“ª¹“¡£
+“ª³“ªì“ªË“ªÄ“ª¤“ªÆ“ªµ“ªé“ªË“ßÙ“ª·“ª¯“ªÏ“¡¢L<perlre> “ªò‘²Î“ðÎ“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
+C<use locale> “ª¬“êó’¸ú“ªÎ“íÞ“ùê“ªÎ“ì¡“Öå“ªË“ªÄ“ª¤“ªÆ“ªÏ L<perllocale> “ªò‘²Î“ðÎ“ª·“ªÆ“ù»“ªµ“ª¤“¡£
 
 =begin original
 
@@ -3116,8 +3130,8 @@ specific options:
 
 =end original
 
-    e   å¼ã®å³å´ã®è©•ä¾¡ã‚’è¡Œãªã†
-    ee  å³å´ã‚’æ–‡å­—åˆ—ã¨ã—ã¦è©•ä¾¡ã—ã¦ã€ãã®çµæžœã‚’è©•ä¾¡ã™ã‚‹
+    e   “ãÒ“ªÎ“éÓ“ö°“ªÎ“øÄ’²Á“ªò“ú¼“ªÊ“ª¦
+    ee  “éÓ“ö°“ªò“Ùþ“í®“Öª“ªÈ“ª·“ªÆ“øÄ’²Á“ª·“ªÆ“¡¢“ª½“ªÎ“Ì¿“Íý“ªò“øÄ’²Á“ª¹“ªë
 
 =begin original
 
@@ -3136,20 +3150,20 @@ to be C<eval>ed before being run as a Perl expression.
 
 =end original
 
-è‹±æ•°å­—ã€ç©ºç™½ã§ã¯ãªã„ä»»æ„ã®åŒºåˆ‡ã‚Šæ–‡å­—ã§ã€ã‚¹ãƒ©ãƒƒã‚·ãƒ¥ã‚’
-ç½®ãæ›ãˆã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
-å…ˆã«è¿°ã¹ãŸã‚ˆã†ã«ã€ã‚·ãƒ³ã‚°ãƒ«ã‚¯ã‚©ãƒ¼ãƒˆã‚’ä½¿ã†ã¨
-ç½®æ›æ–‡å­—åˆ—ã§ã®å±•é–‹ã¯ã•ã‚Œã¾ã›ã‚“ (C</e>ä¿®é£¾å­ã‚’ä½¿ãˆã°å¯èƒ½ã§ã™)ã€‚
-Perl 4 ã¨é•ã£ã¦ã€ Perl 5 ã¯ãƒãƒƒã‚¯ã‚¯ã‚©ãƒ¼ãƒˆã‚’é€šå¸¸ã®ãƒ‡ãƒªãƒŸã‚¿ã¨ã—ã¦æ‰±ã„ã¾ã™ã€‚
-ç½®æ›ãƒ†ã‚­ã‚¹ãƒˆã¯ã‚³ãƒžãƒ³ãƒ‰ã¨ã—ã¦è©•ä¾¡ã•ã‚Œã¾ã›ã‚“ã€‚
-PATTERN ã‚’æ‹¬å¼§é¡žã§æ‹¬ã£ãŸå ´åˆã«ã¯ã€
-REPLACEMENT ç”¨ã«ã‚‚ã†ä¸€çµ„ã®åŒºåˆ‡ã‚Šæ–‡å­—ã‚’ç”¨æ„ã—ã¾ã™ã€‚
-ã“ã‚Œã¯ã€æ‹¬å¼§é¡žã§ã‚ã£ã¦ã‚‚ã€ãªãã¦ã‚‚ã‹ã¾ã„ã¾ã›ã‚“ã€‚
-ä¾‹: C<s(foo)(bar)> ã‚„ C<< s<foo>/bar/ >>ã€‚
-C</e> ã¯ç½®æ›æ–‡å­—åˆ—ã‚’å®Œå…¨ãª Perl ã®å¼ã¨ã—ã¦æ‰±ã„ã€ãã®å ´æ‰€ã§ç›´ã¡ã«è§£é‡ˆã—ã¾ã™ã€‚
-ã—ã‹ã—ã€ã“ã‚Œã¯ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«æ™‚ã«æ§‹æ–‡ãƒã‚§ãƒƒã‚¯ã•ã‚Œã¾ã™ã€‚
-äºŒç•ªç›®ã® C<e> ä¿®é£¾å­ã‚’æŒ‡å®šã™ã‚‹ã¨ã€ç½®æ›éƒ¨åˆ†ãŒã¾ãš Perl ã®å¼ã¨ã—ã¦
-C<eval> ã•ã‚Œã¾ã™ã€‚
+“çÈ‘Êý“í®“¡¢“Íö“ÛÜ“ªÇ“ªÏ“ªÊ“ª¤“ìò“ëò“ªÎ‘Çø“ï·“ªê“Ùþ“í®“ªÇ“¡¢“«¹“«é“«Ã“«·“«å“ªò
+“öÇ“ª­“üµ“ª¨“ªë“ª³“ªÈ“ª¬“ªÇ“ª­“ªÞ“ª¹“¡£
+“à»“ªË“âû“ªÙ“ª¿“ªè“ª¦“ªË“¡¢“«·“«ó“«°“«ë“«¯“«©’¡¼“«È“ªò“ÞÅ“ª¦“ªÈ
+“öÇ“üµ“Ùþ“í®“Öª“ªÇ“ªÎ“î÷“ËÒ“ªÏ“ªµ“ªì“ªÞ“ª»“ªó (C</e>“áó“ãÞ“í­“ªò“ÞÅ“ª¨“ªÐ“Ê¦“Òö“ªÇ“ª¹)“¡£
+Perl 4 “ªÈ“êÞ“ªÃ“ªÆ“¡¢ Perl 5 “ªÏ“«Ð“«Ã“«¯“«¯“«©’¡¼“«È“ªò“÷×“ßÈ“ªÎ“«Ç“«ê“«ß“«¿“ªÈ“ª·“ªÆ“Ðâ“ª¤“ªÞ“ª¹“¡£
+“öÇ“üµ“«Æ“«­“«¹“«È“ªÏ“«³“«Þ“«ó“«É“ªÈ“ª·“ªÆ“øÄ’²Á“ªµ“ªì“ªÞ“ª»“ªó“¡£
+PATTERN “ªò“ÎÀ“ûÁ“×¾“ªÇ“ÎÀ“ªÃ“ª¿“íÞ“ùê“ªË“ªÏ“¡¢
+REPLACEMENT “éÄ“ªË“ªâ“ª¦“ìé“ðÚ“ªÎ‘Çø“ï·“ªê“Ùþ“í®“ªò“éÄ“ëò“ª·“ªÞ“ª¹“¡£
+“ª³“ªì“ªÏ“¡¢“ÎÀ“ûÁ“×¾“ªÇ“ª¢“ªÃ“ªÆ“ªâ“¡¢“ªÊ“ª¯“ªÆ“ªâ“ª«“ªÞ“ª¤“ªÞ“ª»“ªó“¡£
+“ÖÇ: C<s(foo)(bar)> “ªä C<< s<foo>/bar/ >>“¡£
+C</e> “ªÏ“öÇ“üµ“Ùþ“í®“Öª“ªò“èÇ“îï“ªÊ Perl “ªÎ“ãÒ“ªÈ“ª·“ªÆ“Ðâ“ª¤“¡¢“ª½“ªÎ“íÞ“á¶“ªÇ“òÁ“ªÁ“ªË“ú°’¼á“ª·“ªÞ“ª¹“¡£
+“ª·“ª«“ª·“¡¢“ª³“ªì“ªÏ“«³“«ó“«Ñ“«¤“«ë“ãÁ“ªË“Ï°“Ùþ“«Á“«§“«Ã“«¯“ªµ“ªì“ªÞ“ª¹“¡£
+“ì£“Ûã“ÙÍ“ªÎ C<e> “áó“ãÞ“í­“ªò“ò¦“ïÒ“ª¹“ªë“ªÈ“¡¢“öÇ“üµ“Ý»“ÝÂ“ª¬“ªÞ“ªº Perl “ªÎ“ãÒ“ªÈ“ª·“ªÆ
+C<eval> “ªµ“ªì“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -3157,7 +3171,7 @@ Examples:
 
 =end original
 
-ä¾‹:
+“ÖÇ:
 
     s/\bgreen\b/mauve/g;		# don't change wintergreen
 
@@ -3214,9 +3228,9 @@ Anywhere else it's $<I<digit>>.
 
 =end original
 
-æœ€å¾Œã®ä¾‹ã§ \ ã®ä»£ã‚ã‚Šã« $ ã‚’ä½¿ã£ã¦ã„ã‚‹ã®ã«æ³¨æ„ã—ã¦ãã ã•ã„ã€‚
-B<sed> ã¨é•ã£ã¦ã€\<I<æ•°å­—>> ã®å½¢å¼ã¯ãƒ‘ã‚¿ãƒ¼ãƒ³ã®æ–¹ã§ã®ã¿ä½¿ç”¨ã§ãã¾ã™ã€‚
-ãã®ä»–ã®å ´æ‰€ã§ã¯ã€$<I<æ•°å­—>> ã‚’ä½¿ã„ã¾ã™ã€‚
+“õÌ“ý­“ªÎ“ÖÇ“ªÇ \ “ªÎ“ÓÛ“ªï“ªê“ªË $ “ªò“ÞÅ“ªÃ“ªÆ“ª¤“ªë“ªÎ“ªË“ñ¼“ëò“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
+B<sed> “ªÈ“êÞ“ªÃ“ªÆ“¡¢\<I<‘Êý“í®>> “ªÎ“û¡“ãÒ“ªÏ“«Ñ“«¿’¡¼“«ó“ªÎ“Û°“ªÇ“ªÎ“ªß“ÞÅ“éÄ“ªÇ“ª­“ªÞ“ª¹“¡£
+“ª½“ªÎ“öâ“ªÎ“íÞ“á¶“ªÇ“ªÏ“¡¢$<I<‘Êý“í®>> “ªò“ÞÅ“ª¤“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -3225,9 +3239,9 @@ to occur that you might want.  Here are two common cases:
 
 =end original
 
-ã¨ãã«ã¯ã€C</g> ã‚’ä»˜ã‘ã‚‹ã ã‘ã§ã¯ã€ã‚ãªãŸãŒæœ›ã‚“ã§ã„ã‚‹ã‚ˆã†ãªå½¢ã§
-ã™ã¹ã¦ã‚’å¤‰æ›´ã™ã‚‹ã“ã¨ãŒã§ããªã„ã“ã¨ãŒã‚ã‚Šã¾ã™ã€‚
-2 ã¤ä¾‹ã‚’ç¤ºã—ã¾ã™:
+“ªÈ“ª­“ªË“ªÏ“¡¢C</g> “ªò“Üõ“ª±“ªë“ªÀ“ª±“ªÇ“ªÏ“¡¢“ª¢“ªÊ“ª¿“ª¬“ØÐ“ªó“ªÇ“ª¤“ªë“ªè“ª¦“ªÊ“û¡“ªÇ
+“ª¹“ªÙ“ªÆ“ªò’ÊÑ“ÌÚ“ª¹“ªë“ª³“ªÈ“ª¬“ªÇ“ª­“ªÊ“ª¤“ª³“ªÈ“ª¬“ª¢“ªê“ªÞ“ª¹“¡£
+2 “ªÄ“ÖÇ“ªò“ãÆ“ª·“ªÞ“ª¹:
 
     # put commas in the right places in an integer
     1 while s/(\d)(\d\d\d)(?!\d)/$1,$2/g;
@@ -3240,7 +3254,7 @@ to occur that you might want.  Here are two common cases:
 =head2 Quote-Like Operators
 X<operator, quote-like>
 
-(ã‚¯ã‚©ãƒ¼ãƒˆé¢¨æ¼”ç®—å­)
+(“«¯“«©’¡¼“«È“ù¦“æÑ“ß©“í­)
 
 =over 4
 
@@ -3257,11 +3271,11 @@ the delimiter or backslash is interpolated.
 
 =end original
 
-ã‚·ãƒ³ã‚°ãƒ«ã‚¯ã‚©ãƒ¼ãƒˆã•ã‚ŒãŸã€ãƒªãƒ†ãƒ©ãƒ«æ–‡å­—åˆ—ã§ã™ã€‚
-ãƒãƒƒã‚¯ã‚¹ãƒ©ãƒƒã‚·ãƒ¥ã¯ã€å¾Œã‚ã«ç¶šãã‚‚ã®ãŒåŒºåˆ‡æ–‡å­—ã‹ã€åˆ¥ã®ãƒãƒƒã‚¯ã‚¹ãƒ©ãƒƒã‚·ãƒ¥ã§
-ã‚ã‚‹å ´åˆã‚’é™¤ã„ã¦å˜ãªã‚‹ãƒãƒƒã‚¯ã‚¹ãƒ©ãƒƒã‚·ãƒ¥ã§ã™ã€‚
-åŒºåˆ‡æ–‡å­—ã‚„ãƒãƒƒã‚¯ã‚¹ãƒ©ãƒƒã‚·ãƒ¥ãŒç¶šãå ´åˆã«ã¯ã€ãã®åŒºåˆ‡æ–‡å­—è‡ªèº«ã‚‚ã—ãã¯
-ãƒãƒƒã‚¯ã‚¹ãƒ©ãƒƒã‚·ãƒ¥ãã®ã‚‚ã®ãŒå±•é–‹ã•ã‚Œã¾ã™ã€‚
+“«·“«ó“«°“«ë“«¯“«©’¡¼“«È“ªµ“ªì“ª¿“¡¢“«ê“«Æ“«é“«ë“Ùþ“í®“Öª“ªÇ“ª¹“¡£
+“«Ð“«Ã“«¯“«¹“«é“«Ã“«·“«å“ªÏ“¡¢“ý­“ªí“ªË’Â³“ª¯“ªâ“ªÎ“ª¬‘Çø“ï·“Ùþ“í®“ª«“¡¢“Ü¬“ªÎ“«Ð“«Ã“«¯“«¹“«é“«Ã“«·“«å“ªÇ
+“ª¢“ªë“íÞ“ùê“ªò“ð¶“ª¤“ªÆ’Ã±“ªÊ“ªë“«Ð“«Ã“«¯“«¹“«é“«Ã“«·“«å“ªÇ“ª¹“¡£
+‘Çø“ï·“Ùþ“í®“ªä“«Ð“«Ã“«¯“«¹“«é“«Ã“«·“«å“ª¬’Â³“ª¯“íÞ“ùê“ªË“ªÏ“¡¢“ª½“ªÎ‘Çø“ï·“Ùþ“í®“í»“ãó“ªâ“ª·“ª¯“ªÏ
+“«Ð“«Ã“«¯“«¹“«é“«Ã“«·“«å“ª½“ªÎ“ªâ“ªÎ“ª¬“î÷“ËÒ“ªµ“ªì“ªÞ“ª¹“¡£
 
     $foo = q!I said, "You said, 'She said it.'"!;
     $bar = q('This is it.');
@@ -3278,7 +3292,7 @@ A double-quoted, interpolated string.
 
 =end original
 
-ãƒ€ãƒ–ãƒ«ã‚¯ã‚©ãƒ¼ãƒˆã•ã‚ŒãŸã€ãƒªãƒ†ãƒ©ãƒ«æ–‡å­—åˆ—ã§ã™ã€‚
+“«À“«Ö“«ë“«¯“«©’¡¼“«È“ªµ“ªì“ª¿“¡¢“«ê“«Æ“«é“«ë“Ùþ“í®“Öª“ªÇ“ª¹“¡£
 
     $_ .= qq
      (*** The previous line contains the naughty word "$1".\n)
@@ -3303,17 +3317,17 @@ $INPUT_RECORD_SEPARATOR), or an empty list if the command failed.
 
 =end original
 
-å±•é–‹ã•ã‚Œã€C</bin/sh> ã¾ãŸã¯ãã‚Œã¨ç­‰ä¾¡ãªã‚‚ã®ã§ã‚·ã‚¹ãƒ†ãƒ ã®ã‚³ãƒžãƒ³ãƒ‰ã¨ã—ã¦
-å®Ÿè¡Œã•ã‚Œã‚‹(ã§ã‚ã‚ã†)æ–‡å­—åˆ—ã§ã™ã€‚
-ã‚·ã‚§ãƒ«ã®ãƒ¯ã‚¤ãƒ«ãƒ‰ã‚«ãƒ¼ãƒ‰ã€ãƒ‘ã‚¤ãƒ—ã€ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆãŒæœ‰åŠ¹ã§ã™ã€‚
-ãã®ã‚³ãƒžãƒ³ãƒ‰ã®ã€æ¨™æº–å‡ºåŠ›ã‚’é›†ã‚ãŸã‚‚ã®ãŒè¿”ã•ã‚Œã¾ã™ã€‚
-æ¨™æº–ã‚¨ãƒ©ãƒ¼ã¯å½±éŸ¿ã‚’ä¸Žãˆã¾ã›ã‚“ã€‚
-ã‚¹ã‚«ãƒ©ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã¯ã€(è¤‡æ•°è¡Œã‚’å«ã‚€ã‹ã‚‚ã—ã‚Œãªã„)
-1 ã¤ã®æ–‡å­—åˆ—ãŒæˆ»ã£ã¦ãã¾ã™ã€‚
-ã‚³ãƒžãƒ³ãƒ‰ãŒå¤±æ•—ã—ãŸã¨ãã¯æœªå®šç¾©å€¤ã‚’è¿”ã—ã¾ã™ã€‚
-ãƒªã‚¹ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã¯ã€($/ ã‚‚ã—ãã¯ $INPUT_RECORD_SEPARATOR ã‚’
-ã©ã®ã‚ˆã†ã«è¨­å®šã—ã¦ã„ã¦ã‚‚) è¡Œã®ãƒªã‚¹ãƒˆã‚’è¿”ã—ã¾ã™ã€‚
-ã‚³ãƒžãƒ³ãƒ‰ãŒå¤±æ•—ã—ãŸã¨ãã¯ç©ºãƒªã‚¹ãƒˆã‚’è¿”ã—ã¾ã™ã€‚
+“î÷“ËÒ“ªµ“ªì“¡¢C</bin/sh> “ªÞ“ª¿“ªÏ“ª½“ªì“ªÈ“Ôõ’²Á“ªÊ“ªâ“ªÎ“ªÇ“«·“«¹“«Æ“«à“ªÎ“«³“«Þ“«ó“«É“ªÈ“ª·“ªÆ
+’¼Â“ú¼“ªµ“ªì“ªë(“ªÇ“ª¢“ªí“ª¦)“Ùþ“í®“Öª“ªÇ“ª¹“¡£
+“«·“«§“«ë“ªÎ“«ï“«¤“«ë“«É“««’¡¼“«É“¡¢“«Ñ“«¤“«×“¡¢“«ê“«À“«¤“«ì“«¯“«È“ª¬“êó’¸ú“ªÇ“ª¹“¡£
+“ª½“ªÎ“«³“«Þ“«ó“«É“ªÎ“¡¢“øö“ñÞ“õó“Õô“ªò“ó¢“ªá“ª¿“ªâ“ªÎ“ª¬“Ú÷“ªµ“ªì“ªÞ“ª¹“¡£
+“øö“ñÞ“«¨“«é’¡¼“ªÏ“ç¯“úÂ“ªò‘Óë“ª¨“ªÞ“ª»“ªó“¡£
+“«¹“««“«é“«³“«ó“«Æ“«­“«¹“«È“ªÇ“ªÏ“¡¢(“ÜÜ‘Êý“ú¼“ªò“ùß“ªà“ª«“ªâ“ª·“ªì“ªÊ“ª¤)
+1 “ªÄ“ªÎ“Ùþ“í®“Öª“ª¬’Ìá“ªÃ“ªÆ“ª­“ªÞ“ª¹“¡£
+“«³“«Þ“«ó“«É“ª¬“ã÷“ø¨“ª·“ª¿“ªÈ“ª­“ªÏ“Ú±“ïÒ“ëù“ö·“ªò“Ú÷“ª·“ªÞ“ª¹“¡£
+“«ê“«¹“«È“«³“«ó“«Æ“«­“«¹“«È“ªÇ“ªÏ“¡¢($/ “ªâ“ª·“ª¯“ªÏ $INPUT_RECORD_SEPARATOR “ªò
+“ªÉ“ªÎ“ªè“ª¦“ªË“àâ“ïÒ“ª·“ªÆ“ª¤“ªÆ“ªâ) “ú¼“ªÎ“«ê“«¹“«È“ªò“Ú÷“ª·“ªÞ“ª¹“¡£
+“«³“«Þ“«ó“«É“ª¬“ã÷“ø¨“ª·“ª¿“ªÈ“ª­“ªÏ“Íö“«ê“«¹“«È“ªò“Ú÷“ª·“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -3323,10 +3337,10 @@ To capture a command's STDERR and STDOUT together:
 
 =end original
 
-ãƒãƒƒã‚¯ã‚¯ã‚©ãƒ¼ãƒˆã¯æ¨™æº–ã‚¨ãƒ©ãƒ¼ã«ã¯å½±éŸ¿ã‚’ä¸Žãˆãªã„ã®ã§ã€
-æ¨™æº–ã‚¨ãƒ©ãƒ¼ã‚’ä½¿ã„ãŸã„å ´åˆã¯(ã‚·ã‚§ãƒ«ãŒå¯¾å¿œã—ã¦ã„ã‚‹ã‚‚ã®ã¨ã—ã¦)
-ã‚·ã‚§ãƒ«ã®ãƒ•ã‚¡ã‚¤ãƒ«è¨˜è¿°å­ã®æ–‡æ³•ã‚’ä½¿ã£ã¦ãã ã•ã„ã€‚
-ã‚³ãƒžãƒ³ãƒ‰ã® STDERR ã¨ STDOUT ã‚’å…±ã«å–å¾—ã—ãŸã„å ´åˆã¯:
+“«Ð“«Ã“«¯“«¯“«©’¡¼“«È“ªÏ“øö“ñÞ“«¨“«é’¡¼“ªË“ªÏ“ç¯“úÂ“ªò‘Óë“ª¨“ªÊ“ª¤“ªÎ“ªÇ“¡¢
+“øö“ñÞ“«¨“«é’¡¼“ªò“ÞÅ“ª¤“ª¿“ª¤“íÞ“ùê“ªÏ(“«·“«§“«ë“ª¬’ÂÐ’±þ“ª·“ªÆ“ª¤“ªë“ªâ“ªÎ“ªÈ“ª·“ªÆ)
+“«·“«§“«ë“ªÎ“«Õ“«¡“«¤“«ë“ÑÀ“âû“í­“ªÎ“Ùþ“Ûö“ªò“ÞÅ“ªÃ“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
+“«³“«Þ“«ó“«É“ªÎ STDERR “ªÈ STDOUT “ªò“Íì“ªË“ö¢“Ôð“ª·“ª¿“ª¤“íÞ“ùê“ªÏ:
 
     $output = `cmd 2>&1`;
 
@@ -3336,7 +3350,7 @@ To capture a command's STDOUT but discard its STDERR:
 
 =end original
 
-ã‚³ãƒžãƒ³ãƒ‰ã® STDOUT ã¯å–å¾—ã™ã‚‹ãŒ STDERR ã¯æ¨ã¦ã‚‹å ´åˆã¯:
+“«³“«Þ“«ó“«É“ªÎ STDOUT “ªÏ“ö¢“Ôð“ª¹“ªë“ª¬ STDERR “ªÏ“Þ×“ªÆ“ªë“íÞ“ùê“ªÏ:
 
     $output = `cmd 2>/dev/null`;
 
@@ -3347,8 +3361,8 @@ important here):
 
 =end original
 
-ã‚³ãƒžãƒ³ãƒ‰ã® STDERR ã¯å–å¾—ã™ã‚‹ãŒ STDOUT ã¯æ¨ã¦ã‚‹å ´åˆã¯
-(ã“ã“ã§ã¯é †åºãŒé‡è¦ã§ã™):
+“«³“«Þ“«ó“«É“ªÎ STDERR “ªÏ“ö¢“Ôð“ª¹“ªë“ª¬ STDOUT “ªÏ“Þ×“ªÆ“ªë“íÞ“ùê“ªÏ
+(“ª³“ª³“ªÇ“ªÏ“â÷“ßí“ª¬“ñì“é©“ªÇ“ª¹):
 
     $output = `cmd 2>&1 1>/dev/null`;
 
@@ -3359,8 +3373,8 @@ but leave its STDOUT to come out the old STDERR:
 
 =end original
 
-STDERR ã‚’å–å¾—ã™ã‚‹ãŒã€STDOUT ã¯å¤ã„ STDERR ã®ãŸã‚ã«æ®‹ã—ã¦ãŠããŸã‚ã«
-STDOUT ã¨ STDERR ã‚’äº¤æ›ã™ã‚‹ã«ã¯:
+STDERR “ªò“ö¢“Ôð“ª¹“ªë“ª¬“¡¢STDOUT “ªÏ“Í¯“ª¤ STDERR “ªÎ“ª¿“ªá“ªË‘²Ð“ª·“ªÆ“ªª“ª¯“ª¿“ªá“ªË
+STDOUT “ªÈ STDERR “ªò“Îß“üµ“ª¹“ªë“ªË“ªÏ:
 
     $output = `cmd 3>&1 1>&2 2>&3 3>&-`;
 
@@ -3372,9 +3386,9 @@ when the program is done:
 
 =end original
 
-ã‚³ãƒžãƒ³ãƒ‰ã® STDOUT ã¨ STDERR ã®ä¸¡æ–¹ã‚’åˆ¥ã€…ã«èª­ã¿è¾¼ã¿ãŸã„å ´åˆã€
-ä¸€ç•ªç°¡å˜ãªæ–¹æ³•ã¯åˆ¥ã€…ã®ãƒ•ã‚¡ã‚¤ãƒ«ã«ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆã—ã€
-ãƒ—ãƒ­ã‚°ãƒ©ãƒ ãŒçµ‚äº†ã—ã¦ã‹ã‚‰ãã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã‚€ã“ã¨ã§ã™:
+“«³“«Þ“«ó“«É“ªÎ STDOUT “ªÈ STDERR “ªÎ’Î¾“Û°“ªò“Ü¬‘¡©“ªË’ÆÉ“ªß’¹þ“ªß“ª¿“ª¤“íÞ“ùê“¡¢
+“ìé“Ûã“ÊÛ’Ã±“ªÊ“Û°“Ûö“ªÏ“Ü¬‘¡©“ªÎ“«Õ“«¡“«¤“«ë“ªË“«ê“«À“«¤“«ì“«¯“«È“ª·“¡¢
+“«×“«í“«°“«é“«à“ª¬“ðû“Öõ“ª·“ªÆ“ª«“ªé“ª½“ªÎ“«Õ“«¡“«¤“«ë“ªò’ÆÉ“ªà“ª³“ªÈ“ªÇ“ª¹:
 
     system("program args 1>program.stdout 2>program.stderr");
 
@@ -3385,9 +3399,9 @@ For example:
 
 =end original
 
-ã‚³ãƒžãƒ³ãƒ‰ã«ã‚ˆã£ã¦ä½¿ã‚ã‚Œã‚‹ STDIN ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã¯ Perl ã® STDIN ã‚’
-ç¶™æ‰¿ã—ã¾ã™ã€‚
-ä¾‹ãˆã°:
+“«³“«Þ“«ó“«É“ªË“ªè“ªÃ“ªÆ“ÞÅ“ªï“ªì“ªë STDIN “«Õ“«¡“«¤“«ë“«Ï“«ó“«É“«ë“ªÏ Perl “ªÎ STDIN “ªò
+’·Ñ“ã¯“ª·“ªÞ“ª¹“¡£
+“ÖÇ“ª¨“ªÐ:
 
     open BLAM, "blam" || die "Can't open: $!";
     open STDIN, "<&BLAM";
@@ -3399,7 +3413,7 @@ will print the sorted contents of the file "blam".
 
 =end original
 
-ã¯ãƒ•ã‚¡ã‚¤ãƒ« "blam" ã®å†…å®¹ã‚’ã‚½ãƒ¼ãƒˆã—ã¦è¡¨ç¤ºã—ã¾ã™ã€‚
+“ªÏ“«Õ“«¡“«¤“«ë "blam" “ªÎ‘ÄÚ“é»“ªò“«½’¡¼“«È“ª·“ªÆ“øú“ãÆ“ª·“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -3408,8 +3422,8 @@ double-quote interpolation, passing it on to the shell instead:
 
 =end original
 
-ã‚·ãƒ³ã‚°ãƒ«ã‚¯ã‚©ãƒ¼ãƒˆã‚’ãƒ‡ãƒªãƒŸã‚¿ã¨ã—ã¦ä½¿ã†ã¨ Perl ã®ãƒ€ãƒ–ãƒ«ã‚¯ã‚©ãƒ¼ãƒˆå±•é–‹ã‹ã‚‰
-ä¿è­·ã•ã‚Œã€ãã®ã¾ã¾ã‚·ã‚§ãƒ«ã«æ¸¡ã•ã‚Œã¾ã™:
+“«·“«ó“«°“«ë“«¯“«©’¡¼“«È“ªò“«Ç“«ê“«ß“«¿“ªÈ“ª·“ªÆ“ÞÅ“ª¦“ªÈ Perl “ªÎ“«À“«Ö“«ë“«¯“«©’¡¼“«È“î÷“ËÒ“ª«“ªé
+“ÜÁ“ûÞ“ªµ“ªì“¡¢“ª½“ªÎ“ªÞ“ªÞ“«·“«§“«ë“ªË“Ô¤“ªµ“ªì“ªÞ“ª¹:
 
     $perl_info  = qx(ps $$);            # that's Perl's $$
     $shell_info = qx'ps $$';            # that's the new shell's $$
@@ -3425,13 +3439,13 @@ to emulate backticks safely.
 
 =end original
 
-ã“ã®æ–‡å­—åˆ—ãŒã©ã®ã‚ˆã†ã«è©•ä¾¡ã•ã‚Œã‚‹ã‹ã¯å®Œå…¨ã«ã‚·ã‚¹ãƒ†ãƒ ã®
-ã‚³ãƒžãƒ³ãƒ‰ã‚¤ãƒ³ã‚¿ãƒ—ãƒªã‚¿ã«ä¾å­˜ã—ã¾ã™ã€‚
-ã»ã¨ã‚“ã©ã®ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã§ã¯ã€ã‚·ã‚§ãƒ«ã®ãƒ¡ã‚¿ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ã‚’
-ãƒªãƒ†ãƒ©ãƒ«ã«æ‰±ã£ã¦ã»ã—ã„å ´åˆã¯ãã‚Œã‚’å®ˆã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
-æ–‡å­—ã‚’ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹æ–¹æ³•ãŒæ˜Žç¢ºã§ã¯ãªã„ã®ã§ã€ã“ã‚Œã¯ç†è«–çš„ã«ã¯é›£ã—ã„ã“ã¨ã§ã™ã€‚
-é€†ã‚¯ã‚©ãƒ¼ãƒˆã‚’å®‰å…¨ã«ã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ãƒˆã™ã‚‹ãŸã‚ã«æ‰‹å‹•ã§ fork() ã¨ exec() ã‚’
-è¡Œã†ãŸã‚ã®ãã‚Œã„ã§å®‰å…¨ãªä¾‹ã«ã¤ã„ã¦ã¯ L<perlsec> ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚
+“ª³“ªÎ“Ùþ“í®“Öª“ª¬“ªÉ“ªÎ“ªè“ª¦“ªË“øÄ’²Á“ªµ“ªì“ªë“ª«“ªÏ“èÇ“îï“ªË“«·“«¹“«Æ“«à“ªÎ
+“«³“«Þ“«ó“«É“«¤“«ó“«¿“«×“«ê“«¿“ªË“ëî“ðí“ª·“ªÞ“ª¹“¡£
+“ªÛ“ªÈ“ªó“ªÉ“ªÎ“«×“«é“«Ã“«È“«Õ“«©’¡¼“«à“ªÇ“ªÏ“¡¢“«·“«§“«ë“ªÎ“«á“«¿“«­“«ã“«é“«¯“«¿“ªò
+“«ê“«Æ“«é“«ë“ªË“Ðâ“ªÃ“ªÆ“ªÛ“ª·“ª¤“íÞ“ùê“ªÏ“ª½“ªì“ªò“áú“ªë“ù±“é©“ª¬“ª¢“ªê“ªÞ“ª¹“¡£
+“Ùþ“í®“ªò“«¨“«¹“«±’¡¼“«×“ª¹“ªë“Û°“Ûö“ª¬“Ù¥“ü¬“ªÇ“ªÏ“ªÊ“ª¤“ªÎ“ªÇ“¡¢“ª³“ªì“ªÏ“×â“Öå“îÜ“ªË“ªÏ“Ññ“ª·“ª¤“ª³“ªÈ“ªÇ“ª¹“¡£
+“æ½“«¯“«©’¡¼“«È“ªò“äÌ“îï“ªË“«¨“«ß“«å“«ì’¡¼“«È“ª¹“ªë“ª¿“ªá“ªË“â¢“ÔÑ“ªÇ fork() “ªÈ exec() “ªò
+“ú¼“ª¦“ª¿“ªá“ªÎ“ª­“ªì“ª¤“ªÇ“äÌ“îï“ªÊ“ÖÇ“ªË“ªÄ“ª¤“ªÆ“ªÏ L<perlsec> “ªò‘²Î“ðÎ“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
 
 =begin original
 
@@ -3444,13 +3458,13 @@ shells; C<&> on the Windows NT C<cmd> shell).
 
 =end original
 
-(ç‰¹ã« DOS é¢¨ã®)ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã«ã¯ã€ã‚·ã‚§ãƒ«ãŒè¤‡æ•°è¡Œã®ã‚³ãƒžãƒ³ãƒ‰ã‚’
-æ‰±ã†ã“ã¨ãŒã§ããªã„ã‚‚ã®ãŒã‚ã‚‹ã®ã§ã€æ–‡å­—åˆ—ã«æ”¹è¡Œã‚’å…¥ã‚Œã‚‹ã¨
-ã‚ãªãŸã®æœ›ã¾ãªã„çµæžœã«ãªã‚‹å ´åˆãŒã‚ã‚Šã¾ã™ã€‚
-ã‚·ã‚§ãƒ«ãŒå¯¾å¿œã—ã¦ã„ã‚Œã°ã€ã‚³ãƒžãƒ³ãƒ‰åˆ†å‰²æ–‡å­—ã§åˆ†å‰²ã™ã‚‹ã“ã¨ã§
-1 è¡Œã«è¤‡æ•°ã®ã‚³ãƒžãƒ³ãƒ‰ã‚’å…¥ã‚Œã¦è§£é‡ˆã•ã›ã‚‹ã“ã¨ãŒã§ãã¾ã™
-(ã“ã®æ–‡å­—ã¯ã€å¤šãã® Unix ã‚·ã‚§ãƒ«ã§ã¯ C<;>ã€Windows NT C<cmd> ã‚·ã‚§ãƒ«ã§ã¯
-C<&> ã§ã™)ã€‚
+(“÷å“ªË DOS “ù¦“ªÎ)“«×“«é“«Ã“«È“«Õ“«©’¡¼“«à“ªË“ªÏ“¡¢“«·“«§“«ë“ª¬“ÜÜ‘Êý“ú¼“ªÎ“«³“«Þ“«ó“«É“ªò
+“Ðâ“ª¦“ª³“ªÈ“ª¬“ªÇ“ª­“ªÊ“ª¤“ªâ“ªÎ“ª¬“ª¢“ªë“ªÎ“ªÇ“¡¢“Ùþ“í®“Öª“ªË“ËÇ“ú¼“ªò“ìý“ªì“ªë“ªÈ
+“ª¢“ªÊ“ª¿“ªÎ“ØÐ“ªÞ“ªÊ“ª¤“Ì¿“Íý“ªË“ªÊ“ªë“íÞ“ùê“ª¬“ª¢“ªê“ªÞ“ª¹“¡£
+“«·“«§“«ë“ª¬’ÂÐ’±þ“ª·“ªÆ“ª¤“ªì“ªÐ“¡¢“«³“«Þ“«ó“«É“ÝÂ“ùÜ“Ùþ“í®“ªÇ“ÝÂ“ùÜ“ª¹“ªë“ª³“ªÈ“ªÇ
+1 “ú¼“ªË“ÜÜ‘Êý“ªÎ“«³“«Þ“«ó“«É“ªò“ìý“ªì“ªÆ“ú°’¼á“ªµ“ª»“ªë“ª³“ªÈ“ª¬“ªÇ“ª­“ªÞ“ª¹
+(“ª³“ªÎ“Ùþ“í®“ªÏ“¡¢“Òý“ª¯“ªÎ Unix “«·“«§“«ë“ªÇ“ªÏ C<;>“¡¢Windows NT C<cmd> “«·“«§“«ë“ªÇ“ªÏ
+C<&> “ªÇ“ª¹)“¡£
 
 =begin original
 
@@ -3462,12 +3476,12 @@ C<IO::Handle> on any open handles.
 
 =end original
 
-v5.6.0 ä»¥é™ã€Perl ã¯å­ãƒ—ãƒ­ã‚»ã‚¹ã®å®Ÿè¡Œå‰ã«æ›¸ãè¾¼ã¿ç”¨ã«é–‹ã„ã¦ã„ã‚‹å…¨ã¦ã®
-ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ã—ã‚ˆã†ã¨ã—ã¾ã™ãŒã€ã“ã‚Œã«å¯¾å¿œã—ã¦ã„ãªã„
-ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã‚‚ã‚ã‚Šã¾ã™(L<perlport> ã‚’å‚ç…§ã—ã¦ãã ã•ã„)ã€‚
-å®‰å…¨ã®ãŸã‚ã«ã¯ã€C<$|> (English ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã§ã¯ $AUTOFLUSH)ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ã‹ã€
-é–‹ã„ã¦ã„ã‚‹å…¨ã¦ã®ãƒãƒ³ãƒ‰ãƒ«ã«å¯¾ã—ã¦ C<IO::Handle> ã® C<autoflush()> ãƒ¡ã‚½ãƒƒãƒ‰ã‚’
-å‘¼ã³å‡ºã™å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
+v5.6.0 “ì¤“Ë½“¡¢Perl “ªÏ“í­“«×“«í“«»“«¹“ªÎ’¼Â“ú¼“îñ“ªË“ßö“ª­’¹þ“ªß“éÄ“ªË“ËÒ“ª¤“ªÆ“ª¤“ªë“îï“ªÆ“ªÎ
+“«Õ“«¡“«¤“«ë“ªò“«Õ“«é“«Ã“«·“«å“ª·“ªè“ª¦“ªÈ“ª·“ªÞ“ª¹“ª¬“¡¢“ª³“ªì“ªË’ÂÐ’±þ“ª·“ªÆ“ª¤“ªÊ“ª¤
+“«×“«é“«Ã“«È“«Õ“«©’¡¼“«à“ªâ“ª¢“ªê“ªÞ“ª¹(L<perlport> “ªò‘²Î“ðÎ“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤)“¡£
+“äÌ“îï“ªÎ“ª¿“ªá“ªË“ªÏ“¡¢C<$|> (English “«â“«¸“«å’¡¼“«ë“ªÇ“ªÏ $AUTOFLUSH)“ªò“«»“«Ã“«È“ª¹“ªë“ª«“¡¢
+“ËÒ“ª¤“ªÆ“ª¤“ªë“îï“ªÆ“ªÎ“«Ï“«ó“«É“«ë“ªË’ÂÐ“ª·“ªÆ C<IO::Handle> “ªÎ C<autoflush()> “«á“«½“«Ã“«É“ªò
+“û¼“ªÓ“õó“ª¹“ù±“é©“ª¬“ª¢“ªê“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -3478,11 +3492,11 @@ release notes for more details about your particular environment.
 
 =end original
 
-ã‚³ãƒžãƒ³ãƒ‰è¡Œã®é•·ã•ã«åˆ¶é™ãŒã‚ã‚‹ã‚³ãƒžãƒ³ãƒ‰ã‚·ã‚§ãƒ«ãŒã‚ã‚‹ã“ã¨ã«æ³¨æ„ã—ã¦ãã ã•ã„ã€‚
-å…¨ã¦ã®å¿…è¦ãªå¤‰æ›ãŒè¡Œã‚ã‚ŒãŸå¾Œã€ã‚³ãƒžãƒ³ãƒ‰æ–‡å­—åˆ—ãŒã“ã®åˆ¶é™ã‚’è¶Šãˆãªã„ã“ã¨ã‚’
-ä¿éšœã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
-ç‰¹å®šã®ç’°å¢ƒã«é–¢ã™ã‚‹ã•ã‚‰ãªã‚‹è©³ç´°ã«ã¤ã„ã¦ã¯ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ å›ºæœ‰ã®
-ãƒªãƒªãƒ¼ã‚¹ãƒŽãƒ¼ãƒˆã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚
+“«³“«Þ“«ó“«É“ú¼“ªÎ“íþ“ªµ“ªË“ð¤“ùÚ“ª¬“ª¢“ªë“«³“«Þ“«ó“«É“«·“«§“«ë“ª¬“ª¢“ªë“ª³“ªÈ“ªË“ñ¼“ëò“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
+“îï“ªÆ“ªÎ“ù±“é©“ªÊ’ÊÑ“üµ“ª¬“ú¼“ªï“ªì“ª¿“ý­“¡¢“«³“«Þ“«ó“«É“Ùþ“í®“Öª“ª¬“ª³“ªÎ“ð¤“ùÚ“ªò“êÆ“ª¨“ªÊ“ª¤“ª³“ªÈ“ªò
+“ÜÁ“î¡“ª¹“ªë“ù±“é©“ª¬“ª¢“ªê“ªÞ“ª¹“¡£
+“÷å“ïÒ“ªÎ“ü»“ÌÑ“ªË’´Ø“ª¹“ªë“ªµ“ªé“ªÊ“ªë“ßÙ“á¬“ªË“ªÄ“ª¤“ªÆ“ªÏ“«×“«é“«Ã“«È“«Õ“«©’¡¼“«à“Í³“êó“ªÎ
+“«ê“«ê’¡¼“«¹“«Î’¡¼“«È“ªò‘²Î“ðÎ“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
 
 =begin original
 
@@ -3497,16 +3511,16 @@ Just understand what you're getting yourself into.
 
 =end original
 
-ã“ã®æ¼”ç®—å­ã‚’ä½¿ã†ã¨ã€ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®ç§»æ®–ãŒå›°é›£ã«ãªã‚Šã¾ã™ã€‚
-å‘¼ã³å‡ºã•ã‚Œã‚‹ã‚·ã‚§ãƒ«ã‚³ãƒžãƒ³ãƒ‰ã¯ã‚·ã‚¹ãƒ†ãƒ ã«ã‚ˆã£ã¦ç•°ãªã‚Šã€
-å®Ÿéš›å…¨ãå­˜åœ¨ã—ãªã„ã“ã¨ã‚‚ã‚ã‚‹ã‹ã‚‰ã§ã™ã€‚
-ä¸€ã¤ã®ä¾‹ã¨ã—ã¦ã¯ã€POSIX ã‚·ã‚§ãƒ«ã® C<type> ã‚³ãƒžãƒ³ãƒ‰ã¯
-DOS ã® C<type> ã‚³ãƒžãƒ³ãƒ‰ã¨å¤§ããç•°ãªã£ã¦ã„ã¾ã™ã€‚
-ã“ã‚Œã¯ã€ä½•ã‹ã‚’ç‚ºã™ãŸã‚ã«æ­£ã—ã„æ–¹æ³•ã¨ã—ã¦é€†ã‚¯ã‚©ãƒ¼ãƒˆã‚’ä½¿ã†ã“ã¨ã‚’
-é¿ã‘ã‚‹ã¹ãã§ã‚ã‚‹ã“ã¨ã‚’æ„å‘³ã—ã¾ã›ã‚“ã€‚
-Perl ã¯æŽ¥ç€å‰¤ã®ã‚ˆã†ãªè¨€èªžã¨ã—ã¦ä½œã‚‰ã‚Œã€æŽ¥ç€ã•ã‚Œã‚‹ã¹ãã‚‚ã®ã®ä¸€ã¤ã¯
-ã‚³ãƒžãƒ³ãƒ‰ã§ã™ã€‚
-å˜ã«ã‚ãªãŸãŒä½•ã‚’ã—ã‚ˆã†ã¨ã—ã¦ã„ã‚‹ã‹ã‚’ç†è§£ã—ã¦ãŠã„ã¦ãã ã•ã„ã€‚
+“ª³“ªÎ“æÑ“ß©“í­“ªò“ÞÅ“ª¦“ªÈ“¡¢“«×“«í“«°“«é“«à“ªÎ“ì¹“ãÖ“ª¬“ÍÝ“Ññ“ªË“ªÊ“ªê“ªÞ“ª¹“¡£
+“û¼“ªÓ“õó“ªµ“ªì“ªë“«·“«§“«ë“«³“«Þ“«ó“«É“ªÏ“«·“«¹“«Æ“«à“ªË“ªè“ªÃ“ªÆ“ì¶“ªÊ“ªê“¡¢
+’¼Â“ð·“îï“ª¯“ðí“î¤“ª·“ªÊ“ª¤“ª³“ªÈ“ªâ“ª¢“ªë“ª«“ªé“ªÇ“ª¹“¡£
+“ìé“ªÄ“ªÎ“ÖÇ“ªÈ“ª·“ªÆ“ªÏ“¡¢POSIX “«·“«§“«ë“ªÎ C<type> “«³“«Þ“«ó“«É“ªÏ
+DOS “ªÎ C<type> “«³“«Þ“«ó“«É“ªÈ“ÓÞ“ª­“ª¯“ì¶“ªÊ“ªÃ“ªÆ“ª¤“ªÞ“ª¹“¡£
+“ª³“ªì“ªÏ“¡¢“ù¼“ª«“ªò˜´´“ª¹“ª¿“ªá“ªË“ïá“ª·“ª¤“Û°“Ûö“ªÈ“ª·“ªÆ“æ½“«¯“«©’¡¼“«È“ªò“ÞÅ“ª¦“ª³“ªÈ“ªò
+“ù­“ª±“ªë“ªÙ“ª­“ªÇ“ª¢“ªë“ª³“ªÈ“ªò“ëò“Ú«“ª·“ªÞ“ª»“ªó“¡£
+Perl “ªÏ“ïÈ“ó·’ºÞ“ªÎ“ªè“ª¦“ªÊ“åë“åÞ“ªÈ“ª·“ªÆ“íÂ“ªé“ªì“¡¢“ïÈ“ó·“ªµ“ªì“ªë“ªÙ“ª­“ªâ“ªÎ“ªÎ“ìé“ªÄ“ªÏ
+“«³“«Þ“«ó“«É“ªÇ“ª¹“¡£
+’Ã±“ªË“ª¢“ªÊ“ª¿“ª¬“ù¼“ªò“ª·“ªè“ª¦“ªÈ“ª·“ªÆ“ª¤“ªë“ª«“ªò“×â“ú°“ª·“ªÆ“ªª“ª¤“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
 
 =begin original
 
@@ -3514,7 +3528,7 @@ See L</"I/O Operators"> for more discussion.
 
 =end original
 
-ã•ã‚‰ãªã‚‹è­°è«–ã«ã¤ã„ã¦ã¯ L</"I/O Operators"> ã‚’å‚ç…§ã—ã¦ä¸‹ã•ã„ã€‚
+“ªµ“ªé“ªÊ“ªë“ì¡“Öå“ªË“ªÄ“ª¤“ªÆ“ªÏ L</"I/O Operators"> “ªò‘²Î“ðÎ“ª·“ªÆ“ù»“ªµ“ª¤“¡£
 
 =item qw/STRING/
 X<qw> X<quote, list> X<quote, words>
@@ -3527,9 +3541,9 @@ equivalent to:
 
 =end original
 
-åŸ‹ã‚è¾¼ã¾ã‚ŒãŸç©ºç™½ã‚’åŒºåˆ‡æ–‡å­—ã¨ã—ã¦ã€STRING ã‹ã‚‰æŠœãå‡ºã—ãŸ
-å˜èªžã®ãƒªã‚¹ãƒˆã‚’è©•ä¾¡ã—ã¾ã™ã€‚
-ã“ã‚Œã¯ã€ä»¥ä¸‹ã®å¼ã¨å¤§ä½“åŒã˜ã¨è€ƒãˆã‚‰ã‚Œã¾ã™:
+“ØØ“ªá’¹þ“ªÞ“ªì“ª¿“Íö“ÛÜ“ªò‘Çø“ï·“Ùþ“í®“ªÈ“ª·“ªÆ“¡¢STRING “ª«“ªé’È´“ª­“õó“ª·“ª¿
+’Ã±“åÞ“ªÎ“«ê“«¹“«È“ªò“øÄ’²Á“ª·“ªÞ“ª¹“¡£
+“ª³“ªì“ªÏ“¡¢“ì¤“ù»“ªÎ“ãÒ“ªÈ“ÓÞ‘Ìå“ÔÒ“ª¸“ªÈ“ÍÅ“ª¨“ªé“ªì“ªÞ“ª¹:
 
     split(' ', q/STRING/);
 
@@ -3541,9 +3555,9 @@ this expression:
 
 =end original
 
-é•ã„ã¯ã€å®Ÿéš›ã®ãƒªã‚¹ãƒˆã‚’ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«æ™‚ã«ç”Ÿæˆã—ã€ã‚¹ã‚«ãƒ©ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã¯ãƒªã‚¹ãƒˆã®
-æœ€å¾Œã®è¦ç´ ã‚’è¿”ã™ã“ã¨ã§ã™ã€‚
-å¾“ã£ã¦ã€ä»¥ä¸‹ã®è¡¨ç¾ã¯:
+“êÞ“ª¤“ªÏ“¡¢’¼Â“ð·“ªÎ“«ê“«¹“«È“ªò“«³“«ó“«Ñ“«¤“«ë“ãÁ“ªË“ßæ“à÷“ª·“¡¢“«¹“««“«é“«³“«ó“«Æ“«­“«¹“«È“ªÇ“ªÏ“«ê“«¹“«È“ªÎ
+“õÌ“ý­“ªÎ“é©“áÈ“ªò“Ú÷“ª¹“ª³“ªÈ“ªÇ“ª¹“¡£
+’½¾“ªÃ“ªÆ“¡¢“ì¤“ù»“ªÎ“øú“úÞ“ªÏ:
 
     qw(foo bar baz)
 
@@ -3553,7 +3567,7 @@ is semantically equivalent to the list:
 
 =end original
 
-ä»¥ä¸‹ã®ãƒªã‚¹ãƒˆã¨æ–‡æ³•çš„ã«ç­‰ä¾¡ã§ã™ã€‚
+“ì¤“ù»“ªÎ“«ê“«¹“«È“ªÈ“Ùþ“Ûö“îÜ“ªË“Ôõ’²Á“ªÇ“ª¹“¡£
 
     'foo', 'bar', 'baz'
 
@@ -3563,7 +3577,7 @@ Some frequently seen examples:
 
 =end original
 
-ã‚ˆãè¡Œãªã‚ã‚Œã‚‹ä¾‹ã¨ã—ã¦ã¯ä»¥ä¸‹ã®ã‚‚ã®ã§ã™:
+“ªè“ª¯“ú¼“ªÊ“ªï“ªì“ªë“ÖÇ“ªÈ“ª·“ªÆ“ªÏ“ì¤“ù»“ªÎ“ªâ“ªÎ“ªÇ“ª¹:
 
     use POSIX qw( setlocale localeconv )
     @EXPORT = qw( foo bar baz );
@@ -3577,11 +3591,11 @@ produces warnings if the STRING contains the "," or the "#" character.
 
 =end original
 
-ã‚ˆãã‚ã‚‹é–“é•ã„ã¯ã€å˜èªžã‚’ã‚«ãƒ³ãƒžã§åŒºåˆ‡ã£ãŸã‚Šã€è¤‡æ•°è¡Œã® C<qw> æ–‡å­—åˆ—ã®ä¸­ã«
-ã‚³ãƒ¡ãƒ³ãƒˆã‚’æ›¸ã„ãŸã‚Šã™ã‚‹ã“ã¨ã§ã™ã€‚
-ã“ã®ãŸã‚ã«ã€C<usr warnings> ãƒ—ãƒ©ã‚°ãƒžã¨ B<-w> ã‚¹ã‚¤ãƒƒãƒ
-(ã¤ã¾ã‚Šã€C<$^W> å¤‰æ•°) ã¯ STRING ã« "," ã‚„ "#" ã®æ–‡å­—ãŒå…¥ã£ã¦ã„ã‚‹ã¨
-è­¦å‘Šã‚’å‡ºã—ã¾ã™ã€‚
+“ªè“ª¯“ª¢“ªë“Êà“êÞ“ª¤“ªÏ“¡¢’Ã±“åÞ“ªò“««“«ó“«Þ“ªÇ‘Çø“ï·“ªÃ“ª¿“ªê“¡¢“ÜÜ‘Êý“ú¼“ªÎ C<qw> “Ùþ“í®“Öª“ªÎ“ñé“ªË
+“«³“«á“«ó“«È“ªò“ßö“ª¤“ª¿“ªê“ª¹“ªë“ª³“ªÈ“ªÇ“ª¹“¡£
+“ª³“ªÎ“ª¿“ªá“ªË“¡¢C<usr warnings> “«×“«é“«°“«Þ“ªÈ B<-w> “«¹“«¤“«Ã“«Á
+(“ªÄ“ªÞ“ªê“¡¢C<$^W> ’ÊÑ‘Êý) “ªÏ STRING “ªË "," “ªä "#" “ªÎ“Ùþ“í®“ª¬“ìý“ªÃ“ªÆ“ª¤“ªë“ªÈ
+“Ìí“Í±“ªò“õó“ª·“ªÞ“ª¹“¡£
 
 
 =item tr/SEARCHLIST/REPLACEMENTLIST/cds
@@ -3600,12 +3614,12 @@ hash element, or an assignment to one of those, i.e., an lvalue.)
 
 =end original
 
-æ¤œç´¢ãƒªã‚¹ãƒˆ (SEARCHLIST) ã«å«ã¾ã‚Œã‚‹æ–‡å­—ã‚’ã€å¯¾å¿œã™ã‚‹ç½®æ›ãƒªã‚¹ãƒˆ
-(REPLACEMENTLIST) ã®æ–‡å­—ã«å¤‰æ›ã—ã¾ã™ã€‚
-ç½®æ›ã¾ãŸã¯å‰Šé™¤ãŒè¡Œãªã‚ã‚ŒãŸã€æ–‡å­—æ•°ã‚’è¿”ã—ã¾ã™ã€‚
-=~ æ¼”ç®—å­ã‚„ =! æ¼”ç®—å­ã§æ–‡å­—åˆ—ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã‘ã‚Œã°ã€$_ ã®æ–‡å­—åˆ—ãŒå¤‰æ›ã•ã‚Œã¾ã™ã€‚
-(=~ ã§æŒ‡å®šã•ã‚Œã‚‹æ–‡å­—åˆ—ã¯ã€ã‚¹ã‚«ãƒ©å¤‰æ•°ã€é…åˆ—è¦ç´ ã€ãƒãƒƒã‚·ãƒ¥è¦ç´ ã€
-ã‚ã‚‹ã„ã¯ã“ã‚Œã‚‰ã¸ã®ä»£å…¥å¼ã¨ã„ã£ãŸå·¦è¾ºå€¤ã§ãªã‘ã‚Œã°ãªã‚Šã¾ã›ã‚“ã€‚)
+’¸¡“ßã“«ê“«¹“«È (SEARCHLIST) “ªË“ùß“ªÞ“ªì“ªë“Ùþ“í®“ªò“¡¢’ÂÐ’±þ“ª¹“ªë“öÇ“üµ“«ê“«¹“«È
+(REPLACEMENTLIST) “ªÎ“Ùþ“í®“ªË’ÊÑ“üµ“ª·“ªÞ“ª¹“¡£
+“öÇ“üµ“ªÞ“ª¿“ªÏ“Þû“ð¶“ª¬“ú¼“ªÊ“ªï“ªì“ª¿“¡¢“Ùþ“í®‘Êý“ªò“Ú÷“ª·“ªÞ“ª¹“¡£
+=~ “æÑ“ß©“í­“ªä =! “æÑ“ß©“í­“ªÇ“Ùþ“í®“Öª“ª¬“ò¦“ïÒ“ªµ“ªì“ªÆ“ª¤“ªÊ“ª±“ªì“ªÐ“¡¢$_ “ªÎ“Ùþ“í®“Öª“ª¬’ÊÑ“üµ“ªµ“ªì“ªÞ“ª¹“¡£
+(=~ “ªÇ“ò¦“ïÒ“ªµ“ªì“ªë“Ùþ“í®“Öª“ªÏ“¡¢“«¹“««“«é’ÊÑ‘Êý“¡¢“ÛÕ“Öª“é©“áÈ“¡¢“«Ï“«Ã“«·“«å“é©“áÈ“¡¢
+“ª¢“ªë“ª¤“ªÏ“ª³“ªì“ªé“ªØ“ªÎ“ÓÛ“ìý“ãÒ“ªÈ“ª¤“ªÃ“ª¿“ñ§’ÊÕ“ö·“ªÇ“ªÊ“ª±“ªì“ªÐ“ªÊ“ªê“ªÞ“ª»“ªó“¡£)
 
 =begin original
 
@@ -3618,13 +3632,13 @@ e.g., C<tr[A-Z][a-z]> or C<tr(+\-*/)/ABCD/>.
 
 =end original
 
-æ–‡å­—ã®ç¯„å›²ã¯ãƒã‚¤ãƒ•ãƒ³ã‚’ä½¿ã£ã¦æŒ‡å®šã§ãã¾ã™ã€‚
-C<tr/A-J/0-9/> ã¯ C<tr/ACEGIBDFHJ/0246813579/> ã¨åŒã˜ç½®æ›ã‚’è¡Œã„ã¾ã™ã€‚
-B<sed> ã®ä¿¡ä»°è€…ã®ãŸã‚ã« C<y> ãŒ C<tr> ã®åŒç¾©èªžã¨ã—ã¦æä¾›ã•ã‚Œã¦ã„ã¾ã™ã€‚
-SEARCHLIST ã‚’æ‹¬å¼§é¡žã§æ‹¬ã£ãŸå ´åˆã«ã¯ã€
-REPLACEMENTLIST ç”¨ã«ã€ã‚‚ã†ä¸€çµ„ã®åŒºåˆ‡ã‚Šæ–‡å­—ã‚’ç”¨æ„ã—ã¾ã™ã€‚
-ã“ã‚Œã¯ã€æ‹¬å¼§é¡žã§ã‚ã£ã¦ã‚‚ã€ãªãã¦ã‚‚ã‹ã¾ã„ã¾ã›ã‚“ã€‚
-ä¾‹: C<tr[A-Z][a-z]> ã‚„ C<tr(+\-*/)/ABCD/>ã€‚
+“Ùþ“í®“ªÎ“Ûô’°Ï“ªÏ“«Ï“«¤“«Õ“«ó“ªò“ÞÅ“ªÃ“ªÆ“ò¦“ïÒ“ªÇ“ª­“ªÞ“ª¹“¡£
+C<tr/A-J/0-9/> “ªÏ C<tr/ACEGIBDFHJ/0246813579/> “ªÈ“ÔÒ“ª¸“öÇ“üµ“ªò“ú¼“ª¤“ªÞ“ª¹“¡£
+B<sed> “ªÎ“ãá“äæ“íº“ªÎ“ª¿“ªá“ªË C<y> “ª¬ C<tr> “ªÎ“ÔÒ“ëù“åÞ“ªÈ“ª·“ªÆ“ð«“Íê“ªµ“ªì“ªÆ“ª¤“ªÞ“ª¹“¡£
+SEARCHLIST “ªò“ÎÀ“ûÁ“×¾“ªÇ“ÎÀ“ªÃ“ª¿“íÞ“ùê“ªË“ªÏ“¡¢
+REPLACEMENTLIST “éÄ“ªË“¡¢“ªâ“ª¦“ìé“ðÚ“ªÎ‘Çø“ï·“ªê“Ùþ“í®“ªò“éÄ“ëò“ª·“ªÞ“ª¹“¡£
+“ª³“ªì“ªÏ“¡¢“ÎÀ“ûÁ“×¾“ªÇ“ª¢“ªÃ“ªÆ“ªâ“¡¢“ªÊ“ª¯“ªÆ“ªâ“ª«“ªÞ“ª¤“ªÞ“ª»“ªó“¡£
+“ÖÇ: C<tr[A-Z][a-z]> “ªä C<tr(+\-*/)/ABCD/>“¡£
 
 =begin original
 
@@ -3636,13 +3650,13 @@ using the C<s> operator if you need regular expressions.
 
 =end original
 
-C<tr> ã¯ C<\d> ã‚„ C<[:lower:]> ã¨ã„ã£ãŸæ­£è¦è¡¨ç¾æ–‡å­—ã‚¯ãƒ©ã‚¹ã‚’
-B<ä½¿ã‚ãªã„> ã“ã¨ã«æ³¨æ„ã—ã¦ãã ã•ã„ã€‚
-C<tr> æ¼”ç®—å­ã¯ tr(1) ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ã¨ç­‰ä¾¡ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
-æ–‡å­—åˆ—ã®å¤§æ–‡å­—å°æ–‡å­—ã‚’ãƒžãƒƒãƒ—ã—ãŸã„å ´åˆã¯ã€
-L<perlfunc/lc> ã¨ L<perlfunc/uc> ã‚’å‚ç…§ã—ã¦ä¸‹ã•ã„ã€‚
-ã¾ãŸæ­£è¦è¡¨ç¾ãŒå¿…è¦ãªå ´åˆã«ã¯ä¸€èˆ¬çš„ã« C<s> æ¼”ç®—å­ã‚’ä½¿ã†ã“ã¨ã‚’
-è€ƒæ…®ã—ã¦ã¿ã¦ãã ã•ã„ã€‚
+C<tr> “ªÏ C<\d> “ªä C<[:lower:]> “ªÈ“ª¤“ªÃ“ª¿“ïá“Ð®“øú“úÞ“Ùþ“í®“«¯“«é“«¹“ªò
+B<“ÞÅ“ªï“ªÊ“ª¤> “ª³“ªÈ“ªË“ñ¼“ëò“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
+C<tr> “æÑ“ß©“í­“ªÏ tr(1) “«æ’¡¼“«Æ“«£“«ê“«Æ“«£“ªÈ“Ôõ’²Á“ªÇ“ªÏ“ª¢“ªê“ªÞ“ª»“ªó“¡£
+“Ùþ“í®“Öª“ªÎ“ÓÞ“Ùþ“í®“á³“Ùþ“í®“ªò“«Þ“«Ã“«×“ª·“ª¿“ª¤“íÞ“ùê“ªÏ“¡¢
+L<perlfunc/lc> “ªÈ L<perlfunc/uc> “ªò‘²Î“ðÎ“ª·“ªÆ“ù»“ªµ“ª¤“¡£
+“ªÞ“ª¿“ïá“Ð®“øú“úÞ“ª¬“ù±“é©“ªÊ“íÞ“ùê“ªË“ªÏ“ìé“Úõ“îÜ“ªË C<s> “æÑ“ß©“í­“ªò“ÞÅ“ª¦“ª³“ªÈ“ªò
+“ÍÅ“Õç“ª·“ªÆ“ªß“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
 
 =begin original
 
@@ -3655,13 +3669,13 @@ character sets in full.
 
 =end original
 
-ç¯„å›²æŒ‡å®šã¨ã„ã†è€ƒãˆæ–¹ã¯æ–‡å­—ã‚»ãƒƒãƒˆãŒç•°ãªã‚‹å ´åˆã¯ã‚„ã‚„ç§»æ¤æ€§ã«æ¬ ã‘ã‚‹ã“ã¨ã«ã‚‚
-æ³¨æ„ã—ã¦ãã ã•ã„ -- ãã—ã¦åŒã˜æ–‡å­—ã‚»ãƒƒãƒˆã§ã‚‚æã‚‰ãæœŸå¾…ã—ã¦ã„ã‚‹ã®ã¨ã¯é•ã†
-çµæžœã‚’å¼•ãèµ·ã“ã™ã“ã¨ã‚‚ã‚ã‚Šã¾ã™ã€‚
-å¥å…¨ãªåŽŸå‰‡ã¨ã—ã¦ã¯ã€ç¯„å›²ã®æœ€åˆã¨æœ€å¾Œã‚’ã©ã¡ã‚‰ã‚‚ã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆ
-(å¤§æ–‡å­—å°æ–‡å­—ã‚‚åŒã˜)(a-e, A-E)ã«ã™ã‚‹ã‹ã€ã©ã¡ã‚‰ã‚‚æ•°å­—ã«ã™ã‚‹(0-4)ã“ã¨ã§ã™ã€‚
-ãã‚Œä»¥å¤–ã¯å…¨ã¦å®‰å…¨ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
-ç–‘ã‚ã—ã„ã¨ãã¯ã€æ–‡å­—ã‚»ãƒƒãƒˆã‚’å®Œå…¨ã«æ›¸ãå‡ºã—ã¦ãã ã•ã„ã€‚
+“Ûô’°Ï“ò¦“ïÒ“ªÈ“ª¤“ª¦“ÍÅ“ª¨“Û°“ªÏ“Ùþ“í®“«»“«Ã“«È“ª¬“ì¶“ªÊ“ªë“íÞ“ùê“ªÏ“ªä“ªä“ì¹“ãÕ“àõ“ªË“ýâ“ª±“ªë“ª³“ªÈ“ªË“ªâ
+“ñ¼“ëò“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤ -- “ª½“ª·“ªÆ“ÔÒ“ª¸“Ùþ“í®“«»“«Ã“«È“ªÇ“ªâ“Íð“ªé“ª¯“Ñ¢“Óâ“ª·“ªÆ“ª¤“ªë“ªÎ“ªÈ“ªÏ“êÞ“ª¦
+“Ì¿“Íý“ªò“ìÚ“ª­“ÑÃ“ª³“ª¹“ª³“ªÈ“ªâ“ª¢“ªê“ªÞ“ª¹“¡£
+“Ëí“îï“ªÊ“ê«“öÎ“ªÈ“ª·“ªÆ“ªÏ“¡¢“Ûô’°Ï“ªÎ“õÌ“ôø“ªÈ“õÌ“ý­“ªò“ªÉ“ªÁ“ªé“ªâ“«¢“«ë“«Õ“«¡“«Ù“«Ã“«È
+(“ÓÞ“Ùþ“í®“á³“Ùþ“í®“ªâ“ÔÒ“ª¸)(a-e, A-E)“ªË“ª¹“ªë“ª«“¡¢“ªÉ“ªÁ“ªé“ªâ‘Êý“í®“ªË“ª¹“ªë(0-4)“ª³“ªÈ“ªÇ“ª¹“¡£
+“ª½“ªì“ì¤“èâ“ªÏ“îï“ªÆ“äÌ“îï“ªÇ“ªÏ“ª¢“ªê“ªÞ“ª»“ªó“¡£
+“ë÷“ªï“ª·“ª¤“ªÈ“ª­“ªÏ“¡¢“Ùþ“í®“«»“«Ã“«È“ªò“èÇ“îï“ªË“ßö“ª­“õó“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
 
 =begin original
 
@@ -3669,7 +3683,7 @@ Options:
 
 =end original
 
-ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã¯ä»¥ä¸‹ã®é€šã‚Šã§ã™:
+“«ª“«×“«·“«ç“«ó“ªÏ“ì¤“ù»“ªÎ“÷×“ªê“ªÇ“ª¹:
 
 =begin original
 
@@ -3679,9 +3693,9 @@ Options:
 
 =end original
 
-    c   SEARCHLIST ã‚’è£œé›†åˆã«ã™ã‚‹
-    d   è¦‹ã¤ã‹ã£ãŸãŒç½®æ›ã•ã‚Œãªã‹ã£ãŸæ–‡å­—ã‚’å‰Šé™¤ã™ã‚‹
-    s   ç½®æ›ã•ã‚ŒãŸæ–‡å­—ãŒé‡ãªã£ãŸã¨ãã«åœ§ç¸®ã™ã‚‹
+    c   SEARCHLIST “ªò“ÜÍ“ó¢“ùê“ªË“ª¹“ªë
+    d   “Ì¸“ªÄ“ª«“ªÃ“ª¿“ª¬“öÇ“üµ“ªµ“ªì“ªÊ“ª«“ªÃ“ª¿“Ùþ“í®“ªò“Þû“ð¶“ª¹“ªë
+    s   “öÇ“üµ“ªµ“ªì“ª¿“Ùþ“í®“ª¬“ñì“ªÊ“ªÃ“ª¿“ªÈ“ª­“ªË’°µ“õê“ª¹“ªë
 
 =begin original
 
@@ -3696,14 +3710,14 @@ to a single instance of the character.
 
 =end original
 
-C</c> ä¿®é£¾å­ãŒæŒ‡å®šã•ã‚Œã‚‹ã¨ã€SEARCHLIST ã«ã¯è£œé›†åˆãŒæŒ‡å®šã•ã‚ŒãŸã‚‚ã®ã¨
-è§£é‡ˆã•ã‚Œã¾ã™ã€‚
-C</d> ä¿®é£¾å­ãŒæŒ‡å®šã•ã‚Œã‚‹ã¨ã€SEARCHLIST ã«æŒ‡å®šã•ã‚Œã¦ã€
-REPLACEMENTLIST ã«å¯¾å¿œã™ã‚‹ã‚‚ã®ãŒãªã„æ–‡å­—ãŒå‰Šé™¤ã•ã‚Œã¾ã™ã€‚
-(ã“ã‚Œã¯ã€SEARCHLIST ã§è¦‹ã¤ã‹ã£ãŸã‚‚ã®ã‚’å‰Šé™¤ã™ã‚‹ã€ãŸã ãã‚Œã ã‘ã®ã€ã‚ã‚‹ç¨®ã®
-B<tr> ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®å‹•ä½œã‚ˆã‚Šã¨æ¯”ã¹ã‚Œã°ã€ã„ãåˆ†æŸ”è»Ÿãªã‚‚ã®ã«ãªã£ã¦ã„ã¾ã™ã€‚)
-C</s> ä¿®é£¾å­ãŒæŒ‡å®šã•ã‚Œã‚‹ã¨ã€åŒã˜æ–‡å­—ã«æ–‡å­—å¤‰æ›ã•ã‚ŒãŸæ–‡å­—ã®ä¸¦ã³ã‚’ã€
-ãã®æ–‡å­— 1 æ–‡å­—ã ã‘ã«åœ§ç¸®ã—ã¾ã™ã€‚ã€€
+C</c> “áó“ãÞ“í­“ª¬“ò¦“ïÒ“ªµ“ªì“ªë“ªÈ“¡¢SEARCHLIST “ªË“ªÏ“ÜÍ“ó¢“ùê“ª¬“ò¦“ïÒ“ªµ“ªì“ª¿“ªâ“ªÎ“ªÈ
+“ú°’¼á“ªµ“ªì“ªÞ“ª¹“¡£
+C</d> “áó“ãÞ“í­“ª¬“ò¦“ïÒ“ªµ“ªì“ªë“ªÈ“¡¢SEARCHLIST “ªË“ò¦“ïÒ“ªµ“ªì“ªÆ“¡¢
+REPLACEMENTLIST “ªË’ÂÐ’±þ“ª¹“ªë“ªâ“ªÎ“ª¬“ªÊ“ª¤“Ùþ“í®“ª¬“Þû“ð¶“ªµ“ªì“ªÞ“ª¹“¡£
+(“ª³“ªì“ªÏ“¡¢SEARCHLIST “ªÇ“Ì¸“ªÄ“ª«“ªÃ“ª¿“ªâ“ªÎ“ªò“Þû“ð¶“ª¹“ªë“¡¢“ª¿“ªÀ“ª½“ªì“ªÀ“ª±“ªÎ“¡¢“ª¢“ªë“ðú“ªÎ
+B<tr> “«×“«í“«°“«é“«à“ªÎ“ÔÑ“íÂ“ªè“ªê“ªÈ“Ýï“ªÙ“ªì“ªÐ“¡¢“ª¤“ª¯“ÝÂ“êõ“æã“ªÊ“ªâ“ªÎ“ªË“ªÊ“ªÃ“ªÆ“ª¤“ªÞ“ª¹“¡£)
+C</s> “áó“ãÞ“í­“ª¬“ò¦“ïÒ“ªµ“ªì“ªë“ªÈ“¡¢“ÔÒ“ª¸“Ùþ“í®“ªË“Ùþ“í®’ÊÑ“üµ“ªµ“ªì“ª¿“Ùþ“í®“ªÎ˜­å“ªÓ“ªò“¡¢
+“ª½“ªÎ“Ùþ“í® 1 “Ùþ“í®“ªÀ“ª±“ªË’°µ“õê“ª·“ªÞ“ª¹“¡£“¡¡
 
 =begin original
 
@@ -3716,14 +3730,14 @@ squashing character sequences in a class.
 
 =end original
 
-C</d> ä¿®é£¾å­ãŒä½¿ã‚ã‚Œã‚‹ã¨ã€REPLACEMENTLIST ã¯ã€å¸¸ã«æŒ‡å®šã•ã‚ŒãŸé€šã‚Šã«
-è§£é‡ˆã•ã‚Œã¾ã™ã€‚
-C</d> ãŒæŒ‡å®šã•ã‚Œãªã„å ´åˆã§ã€REPLACEMENTLIST ãŒ SEARCHLIST ã‚ˆã‚Šã‚‚çŸ­ã„ã¨ã€
-åŒã˜é•·ã•ã«ãªã‚‹ã¾ã§ã€REPLACEMENTLIST ã®æœ€å¾Œã®æ–‡å­—ãŒ
-ç¹°ã‚Šè¿”ã•ã‚Œã¦ã„ã‚‹ã‚‚ã®ã¨ã—ã¦æ‰±ã‚ã‚Œã¾ã™ã€‚
-REPLACEMENTLIST ãŒç©ºæ–‡å­—åˆ—ã§ã®ã¨ãã«ã¯ã€SEARCHLIST ã¨åŒã˜ã«ãªã‚Šã¾ã™ã€‚
-å¾Œè€…ã¯ã€ã‚ã‚‹æ–‡å­—ã‚¯ãƒ©ã‚¹ã«å«ã¾ã‚Œã‚‹æ–‡å­—æ•°ã‚’æ•°ãˆã‚‹ã¨ãã‚„ã€
-ã‚ã‚‹æ–‡å­—ã‚¯ãƒ©ã‚¹ã®æ–‡å­—ã®ä¸¦ã³ã‚’åœ§ç¸®ã™ã‚‹ã‚ˆã†ãªã¨ãã«ä¾¿åˆ©ã§ã™ã€‚
+C</d> “áó“ãÞ“í­“ª¬“ÞÅ“ªï“ªì“ªë“ªÈ“¡¢REPLACEMENTLIST “ªÏ“¡¢“ßÈ“ªË“ò¦“ïÒ“ªµ“ªì“ª¿“÷×“ªê“ªË
+“ú°’¼á“ªµ“ªì“ªÞ“ª¹“¡£
+C</d> “ª¬“ò¦“ïÒ“ªµ“ªì“ªÊ“ª¤“íÞ“ùê“ªÇ“¡¢REPLACEMENTLIST “ª¬ SEARCHLIST “ªè“ªê“ªâ“Ó­“ª¤“ªÈ“¡¢
+“ÔÒ“ª¸“íþ“ªµ“ªË“ªÊ“ªë“ªÞ“ªÇ“¡¢REPLACEMENTLIST “ªÎ“õÌ“ý­“ªÎ“Ùþ“í®“ª¬
+“ðÛ“ªê“Ú÷“ªµ“ªì“ªÆ“ª¤“ªë“ªâ“ªÎ“ªÈ“ª·“ªÆ“Ðâ“ªï“ªì“ªÞ“ª¹“¡£
+REPLACEMENTLIST “ª¬“Íö“Ùþ“í®“Öª“ªÇ“ªÎ“ªÈ“ª­“ªË“ªÏ“¡¢SEARCHLIST “ªÈ“ÔÒ“ª¸“ªË“ªÊ“ªê“ªÞ“ª¹“¡£
+“ý­“íº“ªÏ“¡¢“ª¢“ªë“Ùþ“í®“«¯“«é“«¹“ªË“ùß“ªÞ“ªì“ªë“Ùþ“í®‘Êý“ªò‘Êý“ª¨“ªë“ªÈ“ª­“ªä“¡¢
+“ª¢“ªë“Ùþ“í®“«¯“«é“«¹“ªÎ“Ùþ“í®“ªÎ˜­å“ªÓ“ªò’°µ“õê“ª¹“ªë“ªè“ª¦“ªÊ“ªÈ“ª­“ªË“øµ“××“ªÇ“ª¹“¡£
 
 =begin original
 
@@ -3731,7 +3745,7 @@ Examples:
 
 =end original
 
-ä¾‹:
+“ÖÇ:
 
     $ARGV[1] =~ tr/A-Z/a-z/;	# canonicalize to lower case
 
@@ -3757,7 +3771,7 @@ first one is used:
 
 =end original
 
-è¤‡æ•°ã®æ–‡å­—å¤‰æ›ãŒä¸€ã¤ã®æ–‡å­—ã«ã¤ã„ã¦æŒ‡å®šã•ã‚Œã‚‹ã¨ã€æœ€åˆã®ã‚‚ã®ã ã‘ãŒä½¿ã‚ã‚Œã¾ã™ã€‚
+“ÜÜ‘Êý“ªÎ“Ùþ“í®’ÊÑ“üµ“ª¬“ìé“ªÄ“ªÎ“Ùþ“í®“ªË“ªÄ“ª¤“ªÆ“ò¦“ïÒ“ªµ“ªì“ªë“ªÈ“¡¢“õÌ“ôø“ªÎ“ªâ“ªÎ“ªÀ“ª±“ª¬“ÞÅ“ªï“ªì“ªÞ“ª¹“¡£
 
     tr/AAA/XYZ/
 
@@ -3767,7 +3781,7 @@ will transliterate any A to X.
 
 =end original
 
-ã¯ A ã‚’ X ã«å¤‰æ›ã—ã¾ã™ã€‚
+“ªÏ A “ªò X “ªË’ÊÑ“üµ“ª·“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -3778,9 +3792,9 @@ must use an eval():
 
 =end original
 
-å¤‰æ›ãƒ†ãƒ¼ãƒ–ãƒ«ã¯ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«æ™‚ã«ä½œã‚‰ã‚Œã‚‹ã®ã§ã€SEARCHLIST ã‚‚
-REPLACEMENTLIST ã‚‚ãƒ€ãƒ–ãƒ«ã‚¯ã‚©ãƒ¼ãƒˆå±•é–‹ã®å¯¾è±¡ã¨ã¯ãªã‚Šã¾ã›ã‚“ã€‚
-å¤‰æ•°ã‚’ä½¿ã„ãŸã„å ´åˆã«ã¯ã€eval() ã‚’ä½¿ã‚ãªã‘ã‚Œã°ãªã‚‰ãªã„ã¨ã„ã†ã“ã¨ã§ã™:
+’ÊÑ“üµ“«Æ’¡¼“«Ö“«ë“ªÏ“«³“«ó“«Ñ“«¤“«ë“ãÁ“ªË“íÂ“ªé“ªì“ªë“ªÎ“ªÇ“¡¢SEARCHLIST “ªâ
+REPLACEMENTLIST “ªâ“«À“«Ö“«ë“«¯“«©’¡¼“«È“î÷“ËÒ“ªÎ’ÂÐ“ßÚ“ªÈ“ªÏ“ªÊ“ªê“ªÞ“ª»“ªó“¡£
+’ÊÑ‘Êý“ªò“ÞÅ“ª¤“ª¿“ª¤“íÞ“ùê“ªË“ªÏ“¡¢eval() “ªò“ÞÅ“ªï“ªÊ“ª±“ªì“ªÐ“ªÊ“ªé“ªÊ“ª¤“ªÈ“ª¤“ª¦“ª³“ªÈ“ªÇ“ª¹:
 
     eval "tr/$oldlist/$newlist/";
     die $@ if $@;
@@ -3799,9 +3813,9 @@ the terminating string are the value of the item.
 
 =end original
 
-ã‚¯ã‚©ãƒ¼ãƒˆã®è¡ŒæŒ‡å‘å½¢å¼ã¯ã€ã‚·ã‚§ãƒ«ã®ã€Œãƒ’ã‚¢ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã€æ§‹æ–‡ã‚’åŸºã«ã—ã¦ã„ã¾ã™ã€‚
-C<< << >> ã«å¼•ãç¶šã„ã¦ã€ã‚¯ã‚©ãƒ¼ãƒˆã•ã‚Œã‚‹ãƒ†ã‚­ã‚¹ãƒˆã‚’çµ‚äº†ã•ã›ã‚‹æ–‡å­—åˆ—ã‚’æŒ‡å®šã§ãã€
-ç¾åœ¨ã®è¡Œã®æ¬¡ã®è¡Œã‹ã‚‰çµ‚ç«¯æ–‡å­—åˆ—ã¾ã§ã®å…¨ã¦ã®è¡ŒãŒãã®é …ç›®ã®å€¤ã¨ãªã‚Šã¾ã™ã€‚
+“«¯“«©’¡¼“«È“ªÎ“ú¼“ò¦“ú¾“û¡“ãÒ“ªÏ“¡¢“«·“«§“«ë“ªÎ“¡¸“«Ò“«¢“«É“«­“«å“«á“«ó“«È“¡¹“Ï°“Ùþ“ªò“Ðñ“ªË“ª·“ªÆ“ª¤“ªÞ“ª¹“¡£
+C<< << >> “ªË“ìÚ“ª­’Â³“ª¤“ªÆ“¡¢“«¯“«©’¡¼“«È“ªµ“ªì“ªë“«Æ“«­“«¹“«È“ªò“ðû“Öõ“ªµ“ª»“ªë“Ùþ“í®“Öª“ªò“ò¦“ïÒ“ªÇ“ª­“¡¢
+“úÞ“î¤“ªÎ“ú¼“ªÎ“ó­“ªÎ“ú¼“ª«“ªé“ðû“Ó®“Ùþ“í®“Öª“ªÞ“ªÇ“ªÎ“îï“ªÆ“ªÎ“ú¼“ª¬“ª½“ªÎ“ú£“ÙÍ“ªÎ“ö·“ªÈ“ªÊ“ªê“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -3815,14 +3829,14 @@ first empty line.)  The terminating string must appear by itself
 
 =end original
 
-çµ‚ç«¯æ–‡å­—åˆ—ã«ã¯ã€è­˜åˆ¥å­(å˜èªž) ã‹ã‚¯ã‚©ãƒ¼ãƒˆã•ã‚ŒãŸãƒ†ã‚­ã‚¹ãƒˆãŒä½¿ãˆã¾ã™ã€‚
-ã‚¯ã‚©ãƒ¼ãƒˆã•ã‚Œã¦ã„ãªã„è­˜åˆ¥å­ã¯ã€ãƒ€ãƒ–ãƒ«ã‚¯ã‚©ãƒ¼ãƒˆã®ã‚ˆã†ã«æ‰±ã‚ã‚Œã¾ã™ã€‚
-è­˜åˆ¥å­ãŒã‚¯ã‚©ãƒ¼ãƒˆã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€C<< << >> ã¨è­˜åˆ¥å­ã®é–“ã«
-ç©ºç™½ã‚’å…¥ã‚Œã¦ã¯ã„ã‘ã¾ã›ã‚“ã€‚
-(ã‚‚ã—ç©ºç™½ã‚’å…¥ã‚Œã‚‹ã¨ã€ç©ºè­˜åˆ¥å­ã¨ã—ã¦æ‰±ã‚ã‚Œã¾ã™; ã“ã‚Œã¯æœ‰åŠ¹ã§ã€
-æœ€åˆã®ç©ºè¡Œã«ãƒžãƒƒãƒã™ã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚)
-çµ‚ç«¯æ–‡å­—åˆ—ã¯çµ‚ç«¯è¡Œã«å˜ä½“ã§(ã‚¯ã‚©ãƒ¼ãƒˆã•ã‚Œãšã€å‰å¾Œã«ã‚‚ç©ºç™½ãªã—ã§)
-ç¾ã‚Œãªã‘ã‚Œã°ãªã‚Šã¾ã›ã‚“ã€‚
+“ðû“Ó®“Ùþ“í®“Öª“ªË“ªÏ“¡¢“ãÛ“Ü¬“í­(’Ã±“åÞ) “ª«“«¯“«©’¡¼“«È“ªµ“ªì“ª¿“«Æ“«­“«¹“«È“ª¬“ÞÅ“ª¨“ªÞ“ª¹“¡£
+“«¯“«©’¡¼“«È“ªµ“ªì“ªÆ“ª¤“ªÊ“ª¤“ãÛ“Ü¬“í­“ªÏ“¡¢“«À“«Ö“«ë“«¯“«©’¡¼“«È“ªÎ“ªè“ª¦“ªË“Ðâ“ªï“ªì“ªÞ“ª¹“¡£
+“ãÛ“Ü¬“í­“ª¬“«¯“«©’¡¼“«È“ªµ“ªì“ªÆ“ª¤“ªÊ“ª¤“íÞ“ùê“ªÏ“¡¢C<< << >> “ªÈ“ãÛ“Ü¬“í­“ªÎ“Êà“ªË
+“Íö“ÛÜ“ªò“ìý“ªì“ªÆ“ªÏ“ª¤“ª±“ªÞ“ª»“ªó“¡£
+(“ªâ“ª·“Íö“ÛÜ“ªò“ìý“ªì“ªë“ªÈ“¡¢“Íö“ãÛ“Ü¬“í­“ªÈ“ª·“ªÆ“Ðâ“ªï“ªì“ªÞ“ª¹; “ª³“ªì“ªÏ“êó’¸ú“ªÇ“¡¢
+“õÌ“ôø“ªÎ“Íö“ú¼“ªË“«Þ“«Ã“«Á“ª¹“ªë“ªè“ª¦“ªË“ªÊ“ªê“ªÞ“ª¹“¡£)
+“ðû“Ó®“Ùþ“í®“Öª“ªÏ“ðû“Ó®“ú¼“ªË’Ã±‘Ìå“ªÇ(“«¯“«©’¡¼“«È“ªµ“ªì“ªº“¡¢“îñ“ý­“ªË“ªâ“Íö“ÛÜ“ªÊ“ª·“ªÇ)
+“úÞ“ªì“ªÊ“ª±“ªì“ªÐ“ªÊ“ªê“ªÞ“ª»“ªó“¡£
 
 =begin original
 
@@ -3831,8 +3845,8 @@ the treatment of the text.
 
 =end original
 
-çµ‚ç«¯æ–‡å­—åˆ—ãŒã‚¯ã‚©ãƒ¼ãƒˆã•ã‚Œã¦ã„ã‚‹å ´åˆã«ã¯ã€ãã®ã‚¯ã‚©ãƒ¼ãƒˆã®ç¨®é¡žã«ã‚ˆã£ã¦ã€
-ã‚¯ã‚©ãƒ¼ãƒˆã•ã‚Œã‚‹ãƒ†ã‚­ã‚¹ãƒˆã®æ‰±ã„æ±ºã‚ã‚‰ã‚Œã¾ã™ã€‚
+“ðû“Ó®“Ùþ“í®“Öª“ª¬“«¯“«©’¡¼“«È“ªµ“ªì“ªÆ“ª¤“ªë“íÞ“ùê“ªË“ªÏ“¡¢“ª½“ªÎ“«¯“«©’¡¼“«È“ªÎ“ðú“×¾“ªË“ªè“ªÃ“ªÆ“¡¢
+“«¯“«©’¡¼“«È“ªµ“ªì“ªë“«Æ“«­“«¹“«È“ªÎ“Ðâ“ª¤“Ì½“ªá“ªé“ªì“ªÞ“ª¹“¡£
 
 =over 4
 
@@ -3918,7 +3932,7 @@ It is possible to stack multiple here-docs in a row:
 
 =end original
 
-è¤‡æ•°ã®ãƒ’ãƒ¤ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’é€£ç¶šã—ã¦ã‚¹ã‚¿ãƒƒã‚¯ã™ã‚‹ã“ã¨ã‚‚å¯èƒ½ã§ã™:
+“ÜÜ‘Êý“ªÎ“«Ò“«ä“«É“«­“«å“«á“«ó“«È“ªò“Ö§’Â³“ª·“ªÆ“«¹“«¿“«Ã“«¯“ª¹“ªë“ª³“ªÈ“ªâ“Ê¦“Òö“ªÇ“ª¹:
 
        print <<"foo", <<"bar"; # you can stack them
     I said foo.
@@ -3941,9 +3955,9 @@ try to do this:
 
 =end original
 
-ä»¥ä¸‹ã®ã‚ˆã†ãªã“ã¨ã‚’ã—ãŸã„ã®ã§ã¯ãªã„ã¨ã„ã†ã“ã¨ãŒ Perl ã«ã¯ã‚ã‹ã‚‰ãªã„ã®ã§ã€
-æ–‡ã‚’çµ‚ã‚ã‚‰ã›ã‚‹ãŸã‚ã«ã¯æœ«å°¾ã«ã‚»ãƒŸã‚³ãƒ­ãƒ³ã‚’ã¤ã‘ãªã‘ã‚Œã°ãªã‚‰ãªã„ã“ã¨ã‚’
-å¿˜ã‚Œãªã„ã§ä¸‹ã•ã„:
+“ì¤“ù»“ªÎ“ªè“ª¦“ªÊ“ª³“ªÈ“ªò“ª·“ª¿“ª¤“ªÎ“ªÇ“ªÏ“ªÊ“ª¤“ªÈ“ª¤“ª¦“ª³“ªÈ“ª¬ Perl “ªË“ªÏ“ªï“ª«“ªé“ªÊ“ª¤“ªÎ“ªÇ“¡¢
+“Ùþ“ªò“ðû“ªï“ªé“ª»“ªë“ª¿“ªá“ªË“ªÏ“ØÇ“Ú­“ªË“«»“«ß“«³“«í“«ó“ªò“ªÄ“ª±“ªÊ“ª±“ªì“ªÐ“ªÊ“ªé“ªÊ“ª¤“ª³“ªÈ“ªò
+“ØÎ“ªì“ªÊ“ª¤“ªÇ“ù»“ªµ“ª¤:
 
        print <<ABC
     179231
@@ -3957,7 +3971,7 @@ use C<chomp()>.
 
 =end original
 
-ãƒ’ãƒ¤ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‹ã‚‰è¡Œçµ‚ç«¯å­ã‚’é™¤åŽ»ã—ãŸã„å ´åˆã¯ã€C<chomp()> ã‚’ä½¿ã£ã¦ãã ã•ã„ã€‚
+“«Ò“«ä“«É“«­“«å“«á“«ó“«È“ª«“ªé“ú¼“ðû“Ó®“í­“ªò“ð¶“ËÛ“ª·“ª¿“ª¤“íÞ“ùê“ªÏ“¡¢C<chomp()> “ªò“ÞÅ“ªÃ“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
 
     chomp($string = <<'END');
     This is a string.
@@ -3970,8 +3984,8 @@ you'll need to remove leading whitespace from each line manually:
 
 =end original
 
-ãƒ’ã‚¢ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’ã‚½ãƒ¼ã‚¹ã®ã»ã‹ã®éƒ¨åˆ†ã‹ã‚‰ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã—ãŸã„å ´åˆã€
-å„è¡Œã®å…ˆé ­ã®ç©ºç™½ã¯æ‰‹å‹•ã§å–ã‚Šé™¤ãå¿…è¦ãŒã‚ã‚Šã¾ã™:
+“«Ò“«¢“«É“«­“«å“«á“«ó“«È“ªò“«½’¡¼“«¹“ªÎ“ªÛ“ª«“ªÎ“Ý»“ÝÂ“ª«“ªé“«¤“«ó“«Ç“«ó“«È“ª·“ª¿“ª¤“íÞ“ùê“¡¢
+“ÊÀ“ú¼“ªÎ“à»“Ôé“ªÎ“Íö“ÛÜ“ªÏ“â¢“ÔÑ“ªÇ“ö¢“ªê“ð¶“ª¯“ù±“é©“ª¬“ª¢“ªê“ªÞ“ª¹:
 
     ($quote = <<'FINIS') =~ s/^\s+//gm;
        The Road goes ever on and on,
@@ -3986,9 +4000,9 @@ So instead of
 
 =end original
 
-C<s///eg> ã®ã‚ˆã†ãªãƒ‡ãƒªãƒŸã‚¿æ§‹é€ ã®ä¸­ã§ãƒ’ã‚¢ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’ä½¿ã†å ´åˆã€
-ã‚¯ã‚©ãƒ¼ãƒˆã•ã‚ŒãŸã‚‚ã®ã¯æœ€å¾Œã®ãƒ‡ãƒªãƒŸã‚¿ã«å¼•ãç¶šãã‚‚ã®ã¨ã—ã¦æ¥ãªã‘ã‚Œã°ãªã‚Šã¾ã›ã‚“ã€‚
-å¾“ã£ã¦ã€ä»¥ä¸‹ã®ã‚ˆã†ã§ã¯ãªã:
+C<s///eg> “ªÎ“ªè“ª¦“ªÊ“«Ç“«ê“«ß“«¿“Ï°“ðã“ªÎ“ñé“ªÇ“«Ò“«¢“«É“«­“«å“«á“«ó“«È“ªò“ÞÅ“ª¦“íÞ“ùê“¡¢
+“«¯“«©’¡¼“«È“ªµ“ªì“ª¿“ªâ“ªÎ“ªÏ“õÌ“ý­“ªÎ“«Ç“«ê“«ß“«¿“ªË“ìÚ“ª­’Â³“ª¯“ªâ“ªÎ“ªÈ“ª·“ªÆ‘À´“ªÊ“ª±“ªì“ªÐ“ªÊ“ªê“ªÞ“ª»“ªó“¡£
+’½¾“ªÃ“ªÆ“¡¢“ì¤“ù»“ªÎ“ªè“ª¦“ªÇ“ªÏ“ªÊ“ª¯:
 
     s/this/<<E . 'that'
     the other
@@ -4001,7 +4015,7 @@ you have to write
 
 =end original
 
-ä»¥ä¸‹ã®ã‚ˆã†ã«æ›¸ã‹ãªã‘ã‚Œã°ãªã‚Šã¾ã›ã‚“:
+“ì¤“ù»“ªÎ“ªè“ª¦“ªË“ßö“ª«“ªÊ“ª±“ªì“ªÐ“ªÊ“ªê“ªÞ“ª»“ªó:
 
     s/this/<<E . 'that'
      . 'more '/eg;
@@ -4016,10 +4030,10 @@ warning B<Can't find string terminator "END" anywhere before EOF...>.
 
 =end original
 
-ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®æœ€å¾Œã®è¡Œã«çµ‚ç«¯è­˜åˆ¥å­ãŒã‚ã‚‹å ´åˆã€ãã®å¾Œã«ã¯
-æ”¹è¡ŒãŒãªã‘ã‚Œã°ãªã‚Šã¾ã›ã‚“; ã•ã‚‚ãªã‘ã‚Œã°ã€Perl ã¯
-B<Can't find string terminator "END" anywhere before EOF...> ã¨ã„ã†
-è­¦å‘Šã‚’å‡ºã—ã¾ã™ã€‚
+“«×“«í“«°“«é“«à“ªÎ“õÌ“ý­“ªÎ“ú¼“ªË“ðû“Ó®“ãÛ“Ü¬“í­“ª¬“ª¢“ªë“íÞ“ùê“¡¢“ª½“ªÎ“ý­“ªË“ªÏ
+“ËÇ“ú¼“ª¬“ªÊ“ª±“ªì“ªÐ“ªÊ“ªê“ªÞ“ª»“ªó; “ªµ“ªâ“ªÊ“ª±“ªì“ªÐ“¡¢Perl “ªÏ
+B<Can't find string terminator "END" anywhere before EOF...> “ªÈ“ª¤“ª¦
+“Ìí“Í±“ªò“õó“ª·“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -4030,10 +4044,10 @@ backslashing the quoting character:
 
 =end original
 
-ã•ã‚‰ã«ã€æ–‡å­—åˆ—çµ‚ç«¯è­˜åˆ¥å­ã«å¯¾ã™ã‚‹ã‚¯ã‚©ãƒ¼ãƒˆãƒ«ãƒ¼ãƒ«ã¯ Perl ã®ã‚¯ã‚©ãƒ¼ãƒˆãƒ«ãƒ¼ãƒ«ã¨ã¯
-é–¢ä¿‚ãŒã‚ã‚Šã¾ã›ã‚“ -- C<q()>, C<qq()> ãŠã‚ˆã³åŒç¨®ã®ã‚‚ã®ã¯ C<''> ã‚„ C<""> ã®
-ä»£ã‚ã‚Šã®ãªã‚‹ã‚‚ã®ã«ã¯å¯¾å¿œã—ã¦ãŠã‚‰ãšã€æ–‡å­—ã‚’ã‚¯ã‚©ãƒ¼ãƒˆã™ã‚‹ãŸã‚ã®
-ãƒãƒƒã‚¯ã‚¹ãƒ©ãƒƒã‚·ãƒ¥ã ã‘ãŒå±•é–‹ã•ã‚Œã¾ã™:
+“ªµ“ªé“ªË“¡¢“Ùþ“í®“Öª“ðû“Ó®“ãÛ“Ü¬“í­“ªË’ÂÐ“ª¹“ªë“«¯“«©’¡¼“«È“«ë’¡¼“«ë“ªÏ Perl “ªÎ“«¯“«©’¡¼“«È“«ë’¡¼“«ë“ªÈ“ªÏ
+’´Ø“Ìõ“ª¬“ª¢“ªê“ªÞ“ª»“ªó -- C<q()>, C<qq()> “ªª“ªè“ªÓ“ÔÒ“ðú“ªÎ“ªâ“ªÎ“ªÏ C<''> “ªä C<""> “ªÎ
+“ÓÛ“ªï“ªê“ªÎ“ªÊ“ªë“ªâ“ªÎ“ªË“ªÏ’ÂÐ’±þ“ª·“ªÆ“ªª“ªé“ªº“¡¢“Ùþ“í®“ªò“«¯“«©’¡¼“«È“ª¹“ªë“ª¿“ªá“ªÎ
+“«Ð“«Ã“«¯“«¹“«é“«Ã“«·“«å“ªÀ“ª±“ª¬“î÷“ËÒ“ªµ“ªì“ªÞ“ª¹:
 
     print << "abc\"def";
     testing...
@@ -4047,16 +4061,16 @@ should be safe.
 
 =end original
 
-æœ€å¾Œã«ã€ã‚¯ã‚©ãƒ¼ãƒˆã•ã‚ŒãŸæ–‡å­—åˆ—ã¯è¤‡æ•°è¡Œã«ã‹ã‹ã‚‹ã“ã¨ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
-è­˜åˆ¥å­ã«é–¢ã™ã‚‹ä¸€èˆ¬çš„ãªãƒ«ãƒ¼ãƒ«ã¯ã€æ–‡å­—åˆ—ãƒªãƒ†ãƒ©ãƒ«ã§ãªã‘ã‚Œã°ãªã‚‰ã„ã“ã¨ã§ã™ã€‚
-ã“ã‚Œã«å¾“ã£ã¦ã„ã‚Œã°ã€å®‰å…¨ã®ã¯ãšã§ã™ã€‚
+“õÌ“ý­“ªË“¡¢“«¯“«©’¡¼“«È“ªµ“ªì“ª¿“Ùþ“í®“Öª“ªÏ“ÜÜ‘Êý“ú¼“ªË“ª«“ª«“ªë“ª³“ªÈ“ªÏ“ª¢“ªê“ªÞ“ª»“ªó“¡£
+“ãÛ“Ü¬“í­“ªË’´Ø“ª¹“ªë“ìé“Úõ“îÜ“ªÊ“«ë’¡¼“«ë“ªÏ“¡¢“Ùþ“í®“Öª“«ê“«Æ“«é“«ë“ªÇ“ªÊ“ª±“ªì“ªÐ“ªÊ“ªé“ª¤“ª³“ªÈ“ªÇ“ª¹“¡£
+“ª³“ªì“ªË’½¾“ªÃ“ªÆ“ª¤“ªì“ªÐ“¡¢“äÌ“îï“ªÎ“ªÏ“ªº“ªÇ“ª¹“¡£
 
 =back
 
 =head2 Gory details of parsing quoted constructs
 X<quote, gory details>
 
-(ã‚¯ã‚©ãƒ¼ãƒˆã•ã‚ŒãŸæ§‹é€ ã®ãƒ‘ãƒ¼ã‚¹ã«é–¢ã™ã‚‹è©³ç´°)
+(“«¯“«©’¡¼“«È“ªµ“ªì“ª¿“Ï°“ðã“ªÎ“«Ñ’¡¼“«¹“ªË’´Ø“ª¹“ªë“ßÙ“á¬)
 
 =begin original
 
@@ -4069,12 +4083,12 @@ notions differ substantially from what the author honestly meant.
 
 =end original
 
-ä½•ã‹è¤‡æ•°ã®è§£é‡ˆãŒå¯èƒ½ãªè¡¨ç¾ãŒã‚ã£ãŸå ´åˆã€Perl ã¯æœ€ã‚‚ç¢ºã‹ã‚‰ã—ã„è§£é‡ˆã‚’
-é¸æŠžã™ã‚‹ãŸã‚ã« B<DWIM> ("Do What I Mean")åŽŸå‰‡ã‚’ä½¿ã„ã¾ã™ã€‚
-ã“ã®æˆ¦ç•¥ã¯éžå¸¸ã«æˆåŠŸã—ãŸã®ã§ã€Perl ãƒ—ãƒ­ã‚°ãƒ©ãƒžã¯ã—ã°ã—ã°
-è‡ªåˆ†ãŒæ›¸ã„ãŸã‚‚ã®ã®çŸ›ç›¾ã‚’ç–‘ã„ã¾ã›ã‚“ã€‚
-ã—ã‹ã—æ™‚é–“ãŒãŸã¤ã«ã¤ã‚Œã¦ã€Perl ã®æ¦‚å¿µã¯ä½œè€…ãŒæœ¬å½“ã«æ„å‘³ã—ã¦ã„ãŸã‚‚ã®ã‹ã‚‰
-ã‹ãªã‚Šå¤‰ã‚ã‚Šã¾ã—ãŸã€‚
+“ù¼“ª«“ÜÜ‘Êý“ªÎ“ú°’¼á“ª¬“Ê¦“Òö“ªÊ“øú“úÞ“ª¬“ª¢“ªÃ“ª¿“íÞ“ùê“¡¢Perl “ªÏ“õÌ“ªâ“ü¬“ª«“ªé“ª·“ª¤“ú°’¼á“ªò
+“àÔ’Âò“ª¹“ªë“ª¿“ªá“ªË B<DWIM> ("Do What I Mean")“ê«“öÎ“ªò“ÞÅ“ª¤“ªÞ“ª¹“¡£
+“ª³“ªÎ’Àï“ÕÔ“ªÏ“Þª“ßÈ“ªË“à÷“Íí“ª·“ª¿“ªÎ“ªÇ“¡¢Perl “«×“«í“«°“«é“«Þ“ªÏ“ª·“ªÐ“ª·“ªÐ
+“í»“ÝÂ“ª¬“ßö“ª¤“ª¿“ªâ“ªÎ“ªÎ“ÙÃ“âê“ªò“ë÷“ª¤“ªÞ“ª»“ªó“¡£
+“ª·“ª«“ª·“ãÁ“Êà“ª¬“ª¿“ªÄ“ªË“ªÄ“ªì“ªÆ“¡¢Perl “ªÎ‘¸Å“Ò·“ªÏ“íÂ“íº“ª¬“Üâ‘µ±“ªË“ëò“Ú«“ª·“ªÆ“ª¤“ª¿“ªâ“ªÎ“ª«“ªé
+“ª«“ªÊ“ªê’ÊÑ“ªï“ªê“ªÞ“ª·“ª¿“¡£
 
 =begin original
 
@@ -4085,10 +4099,10 @@ same for all quoting operators, they are all discussed together.
 
 =end original
 
-ã“ã®ç« ã§ã¯ Perl ãŒã©ã®ã‚ˆã†ã«ã‚¯ã‚©ãƒ¼ãƒˆã•ã‚ŒãŸæ§‹é€ ã‚’æ‰±ã†ã‹ã‚’
-æ˜Žç¢ºã«ã—ã‚ˆã†ã¨æ€ã„ã¾ã™ã€‚
-ã“ã‚Œã‚’å­¦ã¼ã†ã¨ã™ã‚‹æœ€ã‚‚ã‚ˆãã‚ã‚‹ç†ç”±ã¯æ­£è¦è¡¨ç¾ã®è¿·å®®ã‚’ã»ãã™ãŸã‚ã§ã™ãŒã€
-ãƒ‘ãƒ¼ã‚¹ã®åˆæœŸã‚¹ãƒ†ãƒƒãƒ—ã¯å…¨ã¦ã®ã‚¯ã‚©ãƒ¼ãƒˆæ¼”ç®—å­ã§åŒã˜ãªã®ã§ã€å…¨ã¦åŒæ™‚ã«æ‰±ã„ã¾ã™ã€‚
+“ª³“ªÎ“íñ“ªÇ“ªÏ Perl “ª¬“ªÉ“ªÎ“ªè“ª¦“ªË“«¯“«©’¡¼“«È“ªµ“ªì“ª¿“Ï°“ðã“ªò“Ðâ“ª¦“ª«“ªò
+“Ù¥“ü¬“ªË“ª·“ªè“ª¦“ªÈ“ÞÖ“ª¤“ªÞ“ª¹“¡£
+“ª³“ªì“ªò‘Ñ§“ªÜ“ª¦“ªÈ“ª¹“ªë“õÌ“ªâ“ªè“ª¯“ª¢“ªë“×â“ë¦“ªÏ“ïá“Ð®“øú“úÞ“ªÎ“Ú»“Ïà“ªò“ªÛ“ª°“ª¹“ª¿“ªá“ªÇ“ª¹“ª¬“¡¢
+“«Ñ’¡¼“«¹“ªÎ“ôø“Ñ¢“«¹“«Æ“«Ã“«×“ªÏ“îï“ªÆ“ªÎ“«¯“«©’¡¼“«È“æÑ“ß©“í­“ªÇ“ÔÒ“ª¸“ªÊ“ªÎ“ªÇ“¡¢“îï“ªÆ“ÔÒ“ãÁ“ªË“Ðâ“ª¤“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -4101,13 +4115,13 @@ expectations much less frequently than this first one.
 
 =end original
 
-Perl ã®ãƒ‘ãƒ¼ã‚¹ã«é–¢ã™ã‚‹ãƒ«ãƒ¼ãƒ«ã§æœ€ã‚‚é‡è¦ãªã‚‚ã®ã¯ä»¥ä¸‹ã§è¿°ã¹ã¦ã„ã‚‹ã†ã¡
-æœ€åˆã®ã‚‚ã®ã§ã™ã€‚
-ã¤ã¾ã‚Šã€ã‚¯ã‚©ãƒ¼ãƒˆã•ã‚ŒãŸæ§‹é€ ã‚’å‡¦ç†ã™ã‚‹ã¨ãã¯ã€Perl ã¯ã¾ãšãã®æ§‹é€ ã®
-æœ€å¾Œã‚’æŽ¢ã—ã¦ã€ãã‚Œã‹ã‚‰ä¸­èº«ã‚’è§£é‡ˆã—ã¾ã™ã€‚
-ã“ã®ãƒ«ãƒ¼ãƒ«ãŒã‚ã‹ã‚Œã°ã€ã¨ã‚Šã‚ãˆãšã¯ã“ã®ç« ã®æ®‹ã‚Šã¯èª­ã¿é£›ã°ã—ã¦ã‚‚ã‹ã¾ã„ã¾ã›ã‚“ã€‚
-ãã®ä»–ã®ãƒ«ãƒ¼ãƒ«ã¯æœ€åˆã®ãƒ«ãƒ¼ãƒ«ã«æ¯”ã¹ã¦ãƒ¦ãƒ¼ã‚¶ãƒ¼ã®äºˆæƒ³ã«åã™ã‚‹é »åº¦ã¯
-ã¯ã‚‹ã‹ã«å°‘ãªã„ã§ã™ã€‚
+Perl “ªÎ“«Ñ’¡¼“«¹“ªË’´Ø“ª¹“ªë“«ë’¡¼“«ë“ªÇ“õÌ“ªâ“ñì“é©“ªÊ“ªâ“ªÎ“ªÏ“ì¤“ù»“ªÇ“âû“ªÙ“ªÆ“ª¤“ªë“ª¦“ªÁ
+“õÌ“ôø“ªÎ“ªâ“ªÎ“ªÇ“ª¹“¡£
+“ªÄ“ªÞ“ªê“¡¢“«¯“«©’¡¼“«È“ªµ“ªì“ª¿“Ï°“ðã“ªò’½è“×â“ª¹“ªë“ªÈ“ª­“ªÏ“¡¢Perl “ªÏ“ªÞ“ªº“ª½“ªÎ“Ï°“ðã“ªÎ
+“õÌ“ý­“ªò“÷®“ª·“ªÆ“¡¢“ª½“ªì“ª«“ªé“ñé“ãó“ªò“ú°’¼á“ª·“ªÞ“ª¹“¡£
+“ª³“ªÎ“«ë’¡¼“«ë“ª¬“ªï“ª«“ªì“ªÐ“¡¢“ªÈ“ªê“ª¢“ª¨“ªº“ªÏ“ª³“ªÎ“íñ“ªÎ‘²Ð“ªê“ªÏ’ÆÉ“ªß“Þ«“ªÐ“ª·“ªÆ“ªâ“ª«“ªÞ“ª¤“ªÞ“ª»“ªó“¡£
+“ª½“ªÎ“öâ“ªÎ“«ë’¡¼“«ë“ªÏ“õÌ“ôø“ªÎ“«ë’¡¼“«ë“ªË“Ýï“ªÙ“ªÆ“«æ’¡¼“«¶’¡¼“ªÎ“åø“ßÌ“ªË“Úã“ª¹“ªë“Þº“Óø“ªÏ
+“ªÏ“ªë“ª«“ªË“á´“ªÊ“ª¤“ªÇ“ª¹“¡£
 
 =begin original
 
@@ -4118,16 +4132,16 @@ one to four, but these passes are always performed in the same order.
 
 =end original
 
-ä»¥ä¸‹ã§è­°è«–ã™ã‚‹ãƒ‘ã‚¹ã«ã¯åŒæ™‚ã«å®Ÿè¡Œã•ã‚Œã‚‹ã‚‚ã®ã‚‚ã‚ã‚Šã¾ã™ãŒã€
-çµæžœã¯åŒã˜ã“ã¨ãªã®ã§ã€åˆ¥ã€…ã«è€ƒãˆã‚‹ã“ã¨ã«ã—ã¾ã™ã€‚
-ã‚¯ã‚©ãƒ¼ãƒˆæ§‹é€ ã®ç¨®é¡žã«ã‚ˆã£ã¦ã€Perl ãŒå®Ÿè¡Œã™ã‚‹ãƒ‘ã‚¹ã®æ•°ã¯
-1 ã‹ã‚‰ 4 ã¾ã§ç•°ãªã‚Šã¾ã™ãŒã€ã“ã‚Œã‚‰ã®ãƒ‘ã‚¹ã¯å¸¸ã«åŒã˜é †ç•ªã§å®Ÿè¡Œã•ã‚Œã¾ã™ã€‚
+“ì¤“ù»“ªÇ“ì¡“Öå“ª¹“ªë“«Ñ“«¹“ªË“ªÏ“ÔÒ“ãÁ“ªË’¼Â“ú¼“ªµ“ªì“ªë“ªâ“ªÎ“ªâ“ª¢“ªê“ªÞ“ª¹“ª¬“¡¢
+“Ì¿“Íý“ªÏ“ÔÒ“ª¸“ª³“ªÈ“ªÊ“ªÎ“ªÇ“¡¢“Ü¬‘¡©“ªË“ÍÅ“ª¨“ªë“ª³“ªÈ“ªË“ª·“ªÞ“ª¹“¡£
+“«¯“«©’¡¼“«È“Ï°“ðã“ªÎ“ðú“×¾“ªË“ªè“ªÃ“ªÆ“¡¢Perl “ª¬’¼Â“ú¼“ª¹“ªë“«Ñ“«¹“ªÎ‘Êý“ªÏ
+1 “ª«“ªé 4 “ªÞ“ªÇ“ì¶“ªÊ“ªê“ªÞ“ª¹“ª¬“¡¢“ª³“ªì“ªé“ªÎ“«Ñ“«¹“ªÏ“ßÈ“ªË“ÔÒ“ª¸“â÷“Ûã“ªÇ’¼Â“ú¼“ªµ“ªì“ªÞ“ª¹“¡£
 
 =over 4
 
 =item Finding the end
 
-(æœ€å¾Œã‚’æŽ¢ã™)
+(“õÌ“ý­“ªò“÷®“ª¹)
 
 =begin original
 
@@ -4203,18 +4217,18 @@ are removed (exactly speaking, they are not copied to the safe location).
 
 =end original
 
-1 æ–‡å­—ã®ãƒ‡ãƒªãƒŸã‚¿ã‚’æŽ¢ã™å ´åˆã€ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã•ã‚ŒãŸãƒ‡ãƒªãƒŸã‚¿ã¨ C<\\> ã¯
-èª­ã¿é£›ã°ã—ã¾ã™ã€‚
-ä¾‹ãˆã°ã€C</> ã‚’æŽ¢ã—ã¦ã„ã‚‹ã¨ãã«ã¯ã€C<\\> ã¨ C<\/> ã®çµ„ã¿åˆã‚ã›ã‚’
-èª­ã¿é£›ã°ã—ã¾ã™ã€‚
-ãƒ‡ãƒªãƒŸã‚¿ãŒã‹ã£ã“ã§ããã‚‰ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€ãƒã‚¹ãƒˆã—ãŸçµ„ã‚‚èª­ã¿é£›ã°ã•ã‚Œã¾ã™ã€‚
-ä¾‹ãˆã°ã€é–‹ãã® C<[> ã¨çµ„ã«ãªã‚‹é–‰ã˜ã® C<]> ã‚’æŽ¢ã—ã¦ã„ã‚‹ã¨ãã«ã¯ã€
-C<\\>, C<\]>, C<\[> ã®çµ„ã¿åˆã‚ã›ã‚’ã¯å…¨ã¦èª­ã¿é£›ã°ã—ã€
-ã•ã‚‰ã«ãƒã‚¹ãƒˆã—ãŸ C<[>, C<]> ã‚‚èª­ã¿é£›ã°ã—ã¾ã™ã€‚
-ã—ã‹ã—ã€(C<qq\\> ã‚„ C<tr\\\> ã®ã‚ˆã†ã«)ãƒãƒƒã‚¯ã‚¹ãƒ©ãƒƒã‚·ãƒ¥ãŒãƒ‡ãƒªãƒŸã‚¿ã¨ã—ã¦
-ä½¿ã‚ã‚ŒãŸå ´åˆã€ä½•ã‚‚èª­ã¿é£›ã°ã—ã¾ã›ã‚“ã€‚
-æœ«å°¾ã®æ¤œç´¢ä¸­ã€ãƒ‡ãƒªãƒŸã‚¿ã‚’ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ãƒãƒƒã‚¯ã‚¹ãƒ©ãƒƒã‚·ãƒ¥ã¯é™¤åŽ»ã•ã‚Œã¾ã™
-(è¿°ã¹ãŸã¨ãŠã‚Šã«æ­£ç¢ºã«ã€å®‰å…¨ãªå ´æ‰€ã«ã‚³ãƒ”ãƒ¼ã¯ã•ã‚Œã¾ã›ã‚“)ã€‚
+1 “Ùþ“í®“ªÎ“«Ç“«ê“«ß“«¿“ªò“÷®“ª¹“íÞ“ùê“¡¢“«¨“«¹“«±’¡¼“«×“ªµ“ªì“ª¿“«Ç“«ê“«ß“«¿“ªÈ C<\\> “ªÏ
+’ÆÉ“ªß“Þ«“ªÐ“ª·“ªÞ“ª¹“¡£
+“ÖÇ“ª¨“ªÐ“¡¢C</> “ªò“÷®“ª·“ªÆ“ª¤“ªë“ªÈ“ª­“ªË“ªÏ“¡¢C<\\> “ªÈ C<\/> “ªÎ“ðÚ“ªß“ùê“ªï“ª»“ªò
+’ÆÉ“ªß“Þ«“ªÐ“ª·“ªÞ“ª¹“¡£
+“«Ç“«ê“«ß“«¿“ª¬“ª«“ªÃ“ª³“ªÇ“ª¯“ª¯“ªé“ªì“ªÆ“ª¤“ªë“íÞ“ùê“ªÏ“¡¢“«Í“«¹“«È“ª·“ª¿“ðÚ“ªâ’ÆÉ“ªß“Þ«“ªÐ“ªµ“ªì“ªÞ“ª¹“¡£
+“ÖÇ“ª¨“ªÐ“¡¢“ËÒ“ª­“ªÎ C<[> “ªÈ“ðÚ“ªË“ªÊ“ªë“øÍ“ª¸“ªÎ C<]> “ªò“÷®“ª·“ªÆ“ª¤“ªë“ªÈ“ª­“ªË“ªÏ“¡¢
+C<\\>, C<\]>, C<\[> “ªÎ“ðÚ“ªß“ùê“ªï“ª»“ªò“ªÏ“îï“ªÆ’ÆÉ“ªß“Þ«“ªÐ“ª·“¡¢
+“ªµ“ªé“ªË“«Í“«¹“«È“ª·“ª¿ C<[>, C<]> “ªâ’ÆÉ“ªß“Þ«“ªÐ“ª·“ªÞ“ª¹“¡£
+“ª·“ª«“ª·“¡¢(C<qq\\> “ªä C<tr\\\> “ªÎ“ªè“ª¦“ªË)“«Ð“«Ã“«¯“«¹“«é“«Ã“«·“«å“ª¬“«Ç“«ê“«ß“«¿“ªÈ“ª·“ªÆ
+“ÞÅ“ªï“ªì“ª¿“íÞ“ùê“¡¢“ù¼“ªâ’ÆÉ“ªß“Þ«“ªÐ“ª·“ªÞ“ª»“ªó“¡£
+“ØÇ“Ú­“ªÎ’¸¡“ßã“ñé“¡¢“«Ç“«ê“«ß“«¿“ªò“«¨“«¹“«±’¡¼“«×“ª¹“ªë“«Ð“«Ã“«¯“«¹“«é“«Ã“«·“«å“ªÏ“ð¶“ËÛ“ªµ“ªì“ªÞ“ª¹
+(“âû“ªÙ“ª¿“ªÈ“ªª“ªê“ªË“ïá“ü¬“ªË“¡¢“äÌ“îï“ªÊ“íÞ“á¶“ªË“«³“«Ô’¡¼“ªÏ“ªµ“ªì“ªÞ“ª»“ªó)“¡£
 
 =begin original
 
@@ -4232,11 +4246,11 @@ the comment may be regarded as the starting delimiter of the right part.
 
 =end original
 
-3 ã¤ã®ãƒ‡ãƒªãƒŸã‚¿ã‹ã‚‰ãªã‚‹æ§‹é€  (C<s///>, C<y///>, C<tr///>) ã®å ´åˆã€
-æ¤œç´¢ã¯ã‚‚ã†ä¸€åº¦ç¹°ã‚Šè¿”ã•ã‚Œã¾ã™ã€‚
-æœ€åˆã®ãƒ‡ãƒªãƒŸã‚¿ãŒé–‹ãã‹ã£ã“ã§ãªã„å ´åˆã€C<s!!!> and C<tr)))> ã®ã‚ˆã†ã«
-3 ã¤ã®ãƒ‡ãƒªãƒŸã‚¿ã¯åŒã˜ã§ãªã‘ã‚Œã°ãªã‚Šã¾ã›ã‚“;
-ã“ã®å ´åˆã€2 ç•ªç›®ã®ãƒ‡ãƒªãƒŸã‚¿ãŒå·¦å´ã®çµ‚ç«¯ã¨å³å´ã®é–‹å§‹ã‚’åŒæ™‚ã«è¡Œã„ã¾ã™ã€‚
+3 “ªÄ“ªÎ“«Ç“«ê“«ß“«¿“ª«“ªé“ªÊ“ªë“Ï°“ðã (C<s///>, C<y///>, C<tr///>) “ªÎ“íÞ“ùê“¡¢
+’¸¡“ßã“ªÏ“ªâ“ª¦“ìé“Óø“ðÛ“ªê“Ú÷“ªµ“ªì“ªÞ“ª¹“¡£
+“õÌ“ôø“ªÎ“«Ç“«ê“«ß“«¿“ª¬“ËÒ“ª­“ª«“ªÃ“ª³“ªÇ“ªÊ“ª¤“íÞ“ùê“¡¢C<s!!!> and C<tr)))> “ªÎ“ªè“ª¦“ªË
+3 “ªÄ“ªÎ“«Ç“«ê“«ß“«¿“ªÏ“ÔÒ“ª¸“ªÇ“ªÊ“ª±“ªì“ªÐ“ªÊ“ªê“ªÞ“ª»“ªó;
+“ª³“ªÎ“íÞ“ùê“¡¢2 “Ûã“ÙÍ“ªÎ“«Ç“«ê“«ß“«¿“ª¬“ñ§“ö°“ªÎ“ðû“Ó®“ªÈ“éÓ“ö°“ªÎ“ËÒ“ã·“ªò“ÔÒ“ãÁ“ªË“ú¼“ª¤“ªÞ“ª¹“¡£
 If the left part is delimited by bracketing punctuations (that is C<()>,
 C<[]>, C<{}>, or C<< <> >>), the right part needs another pair of
 delimiters such as C<s(){}> and C<tr[]//>.  In these cases, whitespaces
@@ -4252,8 +4266,8 @@ Thus:
 
 =end original
 
-æ¤œç´¢ã™ã‚‹é–“ã€æ§‹é€ ã®æ–‡è„ˆã¯è€ƒæ…®ã—ã¾ã›ã‚“ã€‚
-å¾“ã£ã¦:
+’¸¡“ßã“ª¹“ªë“Êà“¡¢“Ï°“ðã“ªÎ“Ùþ“Øæ“ªÏ“ÍÅ“Õç“ª·“ªÞ“ª»“ªó“¡£
+’½¾“ªÃ“ªÆ:
 
     "$hash{"$foo/$bar"}"
 
@@ -4263,7 +4277,7 @@ or:
 
 =end original
 
-ã‚„:
+“ªä:
 
     m/
       bar	# NOT a comment, this slash / terminated m//!
@@ -4279,12 +4293,12 @@ modifier.  So the embedded C<#> is interpreted as a literal C<#>.
 
 =end original
 
-ã¯æ­£ã—ã„ã‚¯ã‚©ãƒ¼ãƒˆè¡¨ç¾ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
-ã‚¯ã‚©ãƒ¼ãƒˆã¯æœ€åˆã® C<"> ã‚„ C</> ã§çµ‚ã‚ã‚Šã¨ãªã‚Šã€
-æ®‹ã‚Šã®éƒ¨åˆ†ã¯æ–‡æ³•ã‚¨ãƒ©ãƒ¼ã¨ãªã‚Šã¾ã™ã€‚
-C<m//> ã‚’çµ‚ã‚ã‚‰ã›ã¦ã„ã‚‹ã‚¹ãƒ©ãƒƒã‚·ãƒ¥ã®æ¬¡ã«æ¥ã¦ã„ã‚‹ã®ãŒ C<ç©ºç™½> ãªã®ã§ã€
-ä¸Šã®ä¾‹ã§ã¯ C<m//x> ã§ã¯ãªãã€C</x> ãªã—ã® C<m//> ã¨ãªã‚Šã¾ã™ã€‚
-å¾“ã£ã¦ã€ä¸­ã«ã‚ã‚‹ C<#> ã¯ãƒªãƒ†ãƒ©ãƒ«ãª C<#> ã¨ã—ã¦æ‰±ã‚ã‚Œã¾ã™ã€‚
+“ªÏ“ïá“ª·“ª¤“«¯“«©’¡¼“«È“øú“úÞ“ªÇ“ªÏ“ª¢“ªê“ªÞ“ª»“ªó“¡£
+“«¯“«©’¡¼“«È“ªÏ“õÌ“ôø“ªÎ C<"> “ªä C</> “ªÇ“ðû“ªï“ªê“ªÈ“ªÊ“ªê“¡¢
+‘²Ð“ªê“ªÎ“Ý»“ÝÂ“ªÏ“Ùþ“Ûö“«¨“«é’¡¼“ªÈ“ªÊ“ªê“ªÞ“ª¹“¡£
+C<m//> “ªò“ðû“ªï“ªé“ª»“ªÆ“ª¤“ªë“«¹“«é“«Ã“«·“«å“ªÎ“ó­“ªË‘À´“ªÆ“ª¤“ªë“ªÎ“ª¬ C<“Íö“ÛÜ> “ªÊ“ªÎ“ªÇ“¡¢
+“ß¾“ªÎ“ÖÇ“ªÇ“ªÏ C<m//x> “ªÇ“ªÏ“ªÊ“ª¯“¡¢C</x> “ªÊ“ª·“ªÎ C<m//> “ªÈ“ªÊ“ªê“ªÞ“ª¹“¡£
+’½¾“ªÃ“ªÆ“¡¢“ñé“ªË“ª¢“ªë C<#> “ªÏ“«ê“«Æ“«é“«ë“ªÊ C<#> “ªÈ“ª·“ªÆ“Ðâ“ªï“ªì“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -4295,15 +4309,15 @@ Instead, use C<\034> or C<\x1c> at the end of quoted constructs.
 
 =end original
 
-ã“ã®æ¤œç´¢ã®é–“ã€C<\c\> (ãƒžãƒ«ãƒãƒã‚¤ãƒˆæ–‡å­—åˆ¶å¾¡æ–‡æ³•)ã«æ³¨æ„ã¯æ‰•ã‚ã‚Œã¾ã›ã‚“ã€‚
-å¾“ã£ã¦ã€C<qq/\c\/> ã® 2 ç•ªç›®ã® C<\> ã¯ C<\/> ã®ä¸€éƒ¨ã¨ã—ã¦æ‰±ã‚ã‚Œã€
-å¼•ãç¶šã C</> ã¯ãƒ‡ãƒªãƒŸã‚¿ã¨ã—ã¦èªè­˜ã•ã‚Œã¾ã›ã‚“ã€‚
-ä»£ã‚ã‚Šã«ã€ã‚¯ã‚©ãƒ¼ãƒˆæ§‹é€ ã®æœ«å°¾ã« C<\034> ã‹ C<\x1c> ã‚’ä½¿ã£ã¦ãã ã•ã„ã€‚
+“ª³“ªÎ’¸¡“ßã“ªÎ“Êà“¡¢C<\c\> (“«Þ“«ë“«Á“«Ð“«¤“«È“Ùþ“í®“ð¤“åÙ“Ùþ“Ûö)“ªË“ñ¼“ëò“ªÏ’Ê§“ªï“ªì“ªÞ“ª»“ªó“¡£
+’½¾“ªÃ“ªÆ“¡¢C<qq/\c\/> “ªÎ 2 “Ûã“ÙÍ“ªÎ C<\> “ªÏ C<\/> “ªÎ“ìé“Ý»“ªÈ“ª·“ªÆ“Ðâ“ªï“ªì“¡¢
+“ìÚ“ª­’Â³“ª¯ C</> “ªÏ“«Ç“«ê“«ß“«¿“ªÈ“ª·“ªÆ“ìã“ãÛ“ªµ“ªì“ªÞ“ª»“ªó“¡£
+“ÓÛ“ªï“ªê“ªË“¡¢“«¯“«©’¡¼“«È“Ï°“ðã“ªÎ“ØÇ“Ú­“ªË C<\034> “ª« C<\x1c> “ªò“ÞÅ“ªÃ“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
 
 =item Interpolation
 X<interpolation>
 
-(å±•é–‹)
+(“î÷“ËÒ)
 
 =begin original
 
@@ -4312,8 +4326,8 @@ delimiter-independent.  There are multiple cases.
 
 =end original
 
-æ¬¡ã®ã‚¹ãƒ†ãƒƒãƒ—ã¯ã€å¾—ã‚‰ã‚ŒãŸ(ãƒ‡ãƒªãƒŸã‚¿ã«ä¾å­˜ã—ãªã„)ãƒ†ã‚­ã‚¹ãƒˆã«å¯¾ã™ã‚‹å±•é–‹ã§ã™ã€‚
-è¤‡æ•°ã®ã‚±ãƒ¼ã‚¹ãŒã‚ã‚Šã¾ã™ã€‚
+“ó­“ªÎ“«¹“«Æ“«Ã“«×“ªÏ“¡¢“Ôð“ªé“ªì“ª¿(“«Ç“«ê“«ß“«¿“ªË“ëî“ðí“ª·“ªÊ“ª¤)“«Æ“«­“«¹“«È“ªË’ÂÐ“ª¹“ªë“î÷“ËÒ“ªÇ“ª¹“¡£
+“ÜÜ‘Êý“ªÎ“«±’¡¼“«¹“ª¬“ª¢“ªê“ªÞ“ª¹“¡£
 
 =over 4
 
@@ -4327,9 +4341,9 @@ are not available for here-docs.
 
 =end original
 
-å±•é–‹ã¯è¡Œã‚ã‚Œã¾ã›ã‚“ã€‚
-C<\\> ã®çµ„ã¿åˆã‚ã›ã¯ãã®ã¾ã¾ã§ã‚ã‚‹ã“ã¨ã«æ³¨æ„ã—ã¦ãã ã•ã„;
-ãƒ’ãƒ¤ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã§ã¯ãƒ‡ãƒªãƒŸã‚¿ã®ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã¯ã§ããªã„ã‹ã‚‰ã§ã™ã€‚
+“î÷“ËÒ“ªÏ“ú¼“ªï“ªì“ªÞ“ª»“ªó“¡£
+C<\\> “ªÎ“ðÚ“ªß“ùê“ªï“ª»“ªÏ“ª½“ªÎ“ªÞ“ªÞ“ªÇ“ª¢“ªë“ª³“ªÈ“ªË“ñ¼“ëò“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤;
+“«Ò“«ä“«É“«­“«å“«á“«ó“«È“ªÇ“ªÏ“«Ç“«ê“«ß“«¿“ªÎ“«¨“«¹“«±’¡¼“«×“ªÏ“ªÇ“ª­“ªÊ“ª¤“ª«“ªé“ªÇ“ª¹“¡£
 
 =item  C<m''>, the pattern of C<s'''>
 
@@ -4357,10 +4371,10 @@ C<\1> in the replacement of C<s'''> does not work as C<$1>.
 
 =end original
 
-C<\\> ã®çµ„ã«ãŠã‘ã‚‹ C<\> ã®å‰Šé™¤ã®ã¿ãŒè¡Œã‚ã‚Œã¾ã™ã€‚
-å¾“ã£ã¦ã€C<tr'''> ã‚„ C<y'''> ã®ä¸­ã«ã‚ã‚‹ C<-> ã¯æ–‡å­—é€šã‚Šãƒã‚¤ãƒ•ãƒ³ã¨ã—ã¦æ‰±ã‚ã‚Œã€
-æ–‡å­—ç¯„å›²ã¯ä½¿ãˆã¾ã›ã‚“ã€‚
-C<s'''> ã®ç½®æ›æ–‡å­—åˆ—ã§ã® C<\1> ã¯ C<$1> ã¨ã—ã¦ã¯å‹•ä½œã—ã¾ã›ã‚“ã€‚
+C<\\> “ªÎ“ðÚ“ªË“ªª“ª±“ªë C<\> “ªÎ“Þû“ð¶“ªÎ“ªß“ª¬“ú¼“ªï“ªì“ªÞ“ª¹“¡£
+’½¾“ªÃ“ªÆ“¡¢C<tr'''> “ªä C<y'''> “ªÎ“ñé“ªË“ª¢“ªë C<-> “ªÏ“Ùþ“í®“÷×“ªê“«Ï“«¤“«Õ“«ó“ªÈ“ª·“ªÆ“Ðâ“ªï“ªì“¡¢
+“Ùþ“í®“Ûô’°Ï“ªÏ“ÞÅ“ª¨“ªÞ“ª»“ªó“¡£
+C<s'''> “ªÎ“öÇ“üµ“Ùþ“í®“Öª“ªÇ“ªÎ C<\1> “ªÏ C<$1> “ªÈ“ª·“ªÆ“ªÏ“ÔÑ“íÂ“ª·“ªÞ“ª»“ªó“¡£
 
 =item C<tr///>, C<y///>
 
@@ -4396,13 +4410,13 @@ expansions.
 
 =end original
 
-C<\Q>, C<\U>, C<\u>, C<\L>, C<\l> (ãŠãã‚‰ãã¯ C<\E> ã¨ã®çµ„)ã¯
-å¯¾å¿œã™ã‚‹ Perl æ§‹é€ ã«å¤‰æ›ã•ã‚Œã¾ã™ã€‚
-å¾“ã£ã¦ã€C<"$foo\Qbaz$bar"> ã¯å†…éƒ¨çš„ã«
-C<$foo . (quotemeta("baz" . $bar))> ã«å¤‰æ›ã•ã‚Œã¾ã™ã€‚
-C<\200> ã‚„ C<\t> ã®ã‚ˆã†ãªã€ãã®ä»–ã®ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã‚„ã€C<\\> ã‚„
-C<\-> ã®ã‚ˆã†ãªã€ãƒãƒƒã‚¯ã‚¹ãƒ©ãƒƒã‚·ãƒ¥ãŒã¤ã‘ã‚‰ã‚ŒãŸæ–‡å­—ã¯é©åˆ‡ãªæ‹¡å¼µã«
-ç½®æ›ã•ã‚Œã¾ã™ã€‚
+C<\Q>, C<\U>, C<\u>, C<\L>, C<\l> (“ªª“ª½“ªé“ª¯“ªÏ C<\E> “ªÈ“ªÎ“ðÚ)“ªÏ
+’ÂÐ’±þ“ª¹“ªë Perl “Ï°“ðã“ªË’ÊÑ“üµ“ªµ“ªì“ªÞ“ª¹“¡£
+’½¾“ªÃ“ªÆ“¡¢C<"$foo\Qbaz$bar"> “ªÏ‘ÄÚ“Ý»“îÜ“ªË
+C<$foo . (quotemeta("baz" . $bar))> “ªË’ÊÑ“üµ“ªµ“ªì“ªÞ“ª¹“¡£
+C<\200> “ªä C<\t> “ªÎ“ªè“ª¦“ªÊ“¡¢“ª½“ªÎ“öâ“ªÎ“«¨“«¹“«±’¡¼“«×“«·’¡¼“«±“«ó“«¹“ªä“¡¢C<\\> “ªä
+C<\-> “ªÎ“ªè“ª¦“ªÊ“¡¢“«Ð“«Ã“«¯“«¹“«é“«Ã“«·“«å“ª¬“ªÄ“ª±“ªé“ªì“ª¿“Ùþ“í®“ªÏ“îê“ï·“ªÊ’³È“íå“ªË
+“öÇ“üµ“ªµ“ªì“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -4416,14 +4430,14 @@ as C<"\\\t"> (since TAB is not alphanumeric).  Note also that:
 
 =end original
 
-I<C<\Q> ã¨ C<\E> ã®é–“ã«ã‚ã‚‹å…¨ã¦ã®ã‚‚ã®> ãŒé€šå¸¸ã®æ–¹æ³•ã§å±•é–‹ã•ã‚Œã¾ã™ã€‚
-C<"\Q\\E"> ã®ã‚ˆã†ãªã‚‚ã®ã¯å†…éƒ¨ã«ã‚ã‚‹ã®ã¯ C<\E> ã§ã¯ãªãã€
-C<\Q>, C<\\>, C<E> ã§ã‚ã‚‹ã®ã§ã€çµæžœã¯ C<"\\\\E"> ã¨åŒã˜ã«ãªã‚Šã¾ã™ã€‚
-ä¸€èˆ¬çš„ãªãƒ«ãƒ¼ãƒ«ã¨ã—ã¦ã€C<\Q> ã¨ C<\E> ã®é–“ã«ã‚ã‚‹ãƒãƒƒã‚¯ã‚¹ãƒ©ãƒƒã‚·ãƒ¥ã¯
-ç›´æ„Ÿã«åã—ãŸçµæžœã«ãªã‚Šã¾ã™ã€‚
-ãã‚Œã§ã€C<"\Q\t\E"> ã¯ C<quotemeta("\t")> ã«å¤‰æ›ã•ã‚Œã€ã“ã‚Œã¯(TAB ã¯
-è‹±æ•°å­—ã§ã¯ãªã„ã®ã§ C<"\\\t"> ã¨åŒã˜ã§ã™ã€‚
-ä»¥ä¸‹ã®ã‚ˆã†ãªã“ã¨ã«ã‚‚æ³¨æ„ã—ã¦ãã ã•ã„:
+I<C<\Q> “ªÈ C<\E> “ªÎ“Êà“ªË“ª¢“ªë“îï“ªÆ“ªÎ“ªâ“ªÎ> “ª¬“÷×“ßÈ“ªÎ“Û°“Ûö“ªÇ“î÷“ËÒ“ªµ“ªì“ªÞ“ª¹“¡£
+C<"\Q\\E"> “ªÎ“ªè“ª¦“ªÊ“ªâ“ªÎ“ªÏ‘ÄÚ“Ý»“ªË“ª¢“ªë“ªÎ“ªÏ C<\E> “ªÇ“ªÏ“ªÊ“ª¯“¡¢
+C<\Q>, C<\\>, C<E> “ªÇ“ª¢“ªë“ªÎ“ªÇ“¡¢“Ì¿“Íý“ªÏ C<"\\\\E"> “ªÈ“ÔÒ“ª¸“ªË“ªÊ“ªê“ªÞ“ª¹“¡£
+“ìé“Úõ“îÜ“ªÊ“«ë’¡¼“«ë“ªÈ“ª·“ªÆ“¡¢C<\Q> “ªÈ C<\E> “ªÎ“Êà“ªË“ª¢“ªë“«Ð“«Ã“«¯“«¹“«é“«Ã“«·“«å“ªÏ
+“òÁ“Êï“ªË“Úã“ª·“ª¿“Ì¿“Íý“ªË“ªÊ“ªê“ªÞ“ª¹“¡£
+“ª½“ªì“ªÇ“¡¢C<"\Q\t\E"> “ªÏ C<quotemeta("\t")> “ªË’ÊÑ“üµ“ªµ“ªì“¡¢“ª³“ªì“ªÏ(TAB “ªÏ
+“çÈ‘Êý“í®“ªÇ“ªÏ“ªÊ“ª¤“ªÎ“ªÇ C<"\\\t"> “ªÈ“ÔÒ“ª¸“ªÇ“ª¹“¡£
+“ì¤“ù»“ªÎ“ªè“ª¦“ªÊ“ª³“ªÈ“ªË“ªâ“ñ¼“ëò“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤:
 
   $str = '\t';
   return "\Q$str";
@@ -4434,7 +4448,7 @@ may be closer to the conjectural I<intention> of the writer of C<"\Q\t\E">.
 
 =end original
 
-ã“ã‚Œã¯ C<"\Q\t\E"> ã‚’æ›¸ã„ãŸäººã®æ†¶æ¸¬ä¸Šã® I<æ„å›³> ã«ã‚ˆã‚Šè¿‘ã„ã§ã™ã€‚
+“ª³“ªì“ªÏ C<"\Q\t\E"> “ªò“ßö“ª¤“ª¿“ìÑ“ªÎ“åã“ö´“ß¾“ªÎ I<“ëò’¿Þ> “ªË“ªè“ªê“ÐÎ“ª¤“ªÇ“ª¹“¡£
 
 =begin original
 
@@ -4443,8 +4457,8 @@ C<.> catenation operations.  Thus, C<"$foo XXX '@arr'"> becomes:
 
 =end original
 
-å±•é–‹ã•ã‚ŒãŸã‚¹ã‚«ãƒ©ã¨é…åˆ—ã¯å†…éƒ¨ã§ C<join> ã¨ C<.> ã®çµåˆæ“ä½œã«å¤‰æ›ã•ã‚Œã¾ã™ã€‚
-å¾“ã£ã¦ã€C<"$foo XXX '@arr'"> ã¯ä»¥ä¸‹ã®ã‚ˆã†ã«ãªã‚Šã¾ã™:
+“î÷“ËÒ“ªµ“ªì“ª¿“«¹“««“«é“ªÈ“ÛÕ“Öª“ªÏ‘ÄÚ“Ý»“ªÇ C<join> “ªÈ C<.> “ªÎ“Ì¿“ùê“ðÃ“íÂ“ªË’ÊÑ“üµ“ªµ“ªì“ªÞ“ª¹“¡£
+’½¾“ªÃ“ªÆ“¡¢C<"$foo XXX '@arr'"> “ªÏ“ì¤“ù»“ªÎ“ªè“ª¦“ªË“ªÊ“ªê“ªÞ“ª¹:
 
   $foo . " XXX '" . (join $", @arr) . "'";
 
@@ -4454,7 +4468,7 @@ All operations above are performed simultaneously, left to right.
 
 =end original
 
-ä¸Šè¨˜ã®å…¨ã¦ã®æ“ä½œã¯ã€å·¦ã‹ã‚‰å³ã«åŒæ™‚ã«è¡Œã‚ã‚Œã¾ã™ã€‚
+“ß¾“ÑÀ“ªÎ“îï“ªÆ“ªÎ“ðÃ“íÂ“ªÏ“¡¢“ñ§“ª«“ªé“éÓ“ªË“ÔÒ“ãÁ“ªË“ú¼“ªï“ªì“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -4466,11 +4480,11 @@ scalar.
 
 =end original
 
-C<"\Q STRING \E"> ã®çµæžœã¯å…¨ã¦ã®ãƒ¡ã‚¿æ–‡å­—ãŒã‚¯ã‚©ãƒ¼ãƒˆã•ã‚Œã¦ã„ã‚‹ã®ã§ã€
-C<\Q\E> ã®çµ„ã®å†…å´ã«ãƒªãƒ†ãƒ©ãƒ«ã® C<$> ã‚„ C<@> ã‚’æŒ¿å…¥ã™ã‚‹æ–¹æ³•ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
-C<\> ã«ã‚ˆã£ã¦å®ˆã‚‰ã‚Œã¦ã„ã‚‹å ´åˆã€C<$> ã¯ã‚¯ã‚©ãƒ¼ãƒˆã•ã‚Œã¦ C<"\\\$"> ã¨
-ãªã‚Šã¾ã™ã€‚
-ãã†ã§ãªã„å ´åˆã€ã“ã‚Œã¯å±•é–‹ã•ã‚Œã‚‹ã‚¹ã‚«ãƒ©å¤‰æ•°ã®é–‹å§‹ã¨ã—ã¦è§£é‡ˆã•ã‚Œã¾ã™ã€‚
+C<"\Q STRING \E"> “ªÎ“Ì¿“Íý“ªÏ“îï“ªÆ“ªÎ“«á“«¿“Ùþ“í®“ª¬“«¯“«©’¡¼“«È“ªµ“ªì“ªÆ“ª¤“ªë“ªÎ“ªÇ“¡¢
+C<\Q\E> “ªÎ“ðÚ“ªÎ‘ÄÚ“ö°“ªË“«ê“«Æ“«é“«ë“ªÎ C<$> “ªä C<@> “ªò’ÁÞ“ìý“ª¹“ªë“Û°“Ûö“ªÏ“ª¢“ªê“ªÞ“ª»“ªó“¡£
+C<\> “ªË“ªè“ªÃ“ªÆ“áú“ªé“ªì“ªÆ“ª¤“ªë“íÞ“ùê“¡¢C<$> “ªÏ“«¯“«©’¡¼“«È“ªµ“ªì“ªÆ C<"\\\$"> “ªÈ
+“ªÊ“ªê“ªÞ“ª¹“¡£
+“ª½“ª¦“ªÇ“ªÊ“ª¤“íÞ“ùê“¡¢“ª³“ªì“ªÏ“î÷“ËÒ“ªµ“ªì“ªë“«¹“««“«é’ÊÑ‘Êý“ªÎ“ËÒ“ã·“ªÈ“ª·“ªÆ“ú°’¼á“ªµ“ªì“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -4480,9 +4494,9 @@ C<< "a $b -> {c}" >> really means:
 
 =end original
 
-å±•é–‹ã‚³ãƒ¼ãƒ‰ã¯ã€å±•é–‹ã™ã‚‹ã‚¹ã‚«ãƒ©å¤‰æ•°ãŒã©ã“ã§çµ‚ã‚ã‚‹ã‹ã‚’æ±ºå®šã™ã‚‹å¿…è¦ãŒ
-ã‚ã‚‹ã“ã¨ã«ã‚‚æ³¨æ„ã—ã¦ãã ã•ã„ã€‚
-ä¾‹ãˆã°ã€C<< "a $b -> {c}" >> ãŒå®Ÿéš›ã«ã¯ä»¥ä¸‹ã®ã‚ˆã†ã«ãªã‚‹ã‹:
+“î÷“ËÒ“«³’¡¼“«É“ªÏ“¡¢“î÷“ËÒ“ª¹“ªë“«¹“««“«é’ÊÑ‘Êý“ª¬“ªÉ“ª³“ªÇ“ðû“ªï“ªë“ª«“ªò“Ì½“ïÒ“ª¹“ªë“ù±“é©“ª¬
+“ª¢“ªë“ª³“ªÈ“ªË“ªâ“ñ¼“ëò“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
+“ÖÇ“ª¨“ªÐ“¡¢C<< "a $b -> {c}" >> “ª¬’¼Â“ð·“ªË“ªÏ“ì¤“ù»“ªÎ“ªè“ª¦“ªË“ªÊ“ªë“ª«:
 
   "a " . $b . " -> {c}";
 
@@ -4492,7 +4506,7 @@ or:
 
 =end original
 
-ä»¥ä¸‹ã®ã‚ˆã†ã«ãªã‚‹ã‹ã§ã™:
+“ì¤“ù»“ªÎ“ªè“ª¦“ªË“ªÊ“ªë“ª«“ªÇ“ª¹:
 
   "a " . $b -> {c};
 
@@ -4506,11 +4520,11 @@ Fortunately, it's usually correct for ambiguous cases.
 
 =end original
 
-ã»ã¨ã‚“ã©ã®å ´åˆã€è¦ç´ ã¨ã€ãƒžãƒƒãƒã™ã‚‹ä¸­ã‹ã£ã“ã‚„å¤§ã‹ã£ã“ã®é–“ã«ç©ºç™½ã‚’å«ã¾ãªã„ã€
-æœ€ã‚‚é•·ã„ãƒ†ã‚­ã‚¹ãƒˆã«ãªã‚Šã¾ã™ã€‚
-å‡ºåŠ›ã¯ç™ºè¦‹çš„ãªæŽ¨å®šå™¨ã‚’ã‚ˆã‚‹æŠ•ç¥¨ã«ã‚ˆã£ã¦æ±ºå®šã•ã‚Œã‚‹ã®ã§ã€çµæžœã¯åŽ³å¯†ã«ã¯
-äºˆæ¸¬ã§ãã¾ã›ã‚“ã€‚
-å¹¸ã„ã€ç´›ã‚‰ã‚ã—ã„å ´åˆã§ã‚‚æ™®é€šã¯æ­£ã—ã„ã§ã™ã€‚
+“ªÛ“ªÈ“ªó“ªÉ“ªÎ“íÞ“ùê“¡¢“é©“áÈ“ªÈ“¡¢“«Þ“«Ã“«Á“ª¹“ªë“ñé“ª«“ªÃ“ª³“ªä“ÓÞ“ª«“ªÃ“ª³“ªÎ“Êà“ªË“Íö“ÛÜ“ªò“ùß“ªÞ“ªÊ“ª¤“¡¢
+“õÌ“ªâ“íþ“ª¤“«Æ“«­“«¹“«È“ªË“ªÊ“ªê“ªÞ“ª¹“¡£
+“õó“Õô“ªÏ’È¯“Ì¸“îÜ“ªÊ“õÏ“ïÒ“Ðï“ªò“ªè“ªë“÷á“øù“ªË“ªè“ªÃ“ªÆ“Ì½“ïÒ“ªµ“ªì“ªë“ªÎ“ªÇ“¡¢“Ì¿“Íý“ªÏ’¸·“ÚË“ªË“ªÏ
+“åø“ö´“ªÇ“ª­“ªÞ“ª»“ªó“¡£
+“ú¹“ª¤“¡¢“ÝÑ“ªé“ªï“ª·“ª¤“íÞ“ùê“ªÇ“ªâ“ÜÅ“÷×“ªÏ“ïá“ª·“ª¤“ªÇ“ª¹“¡£
 
 =item the replacement of C<s///>
 
@@ -4521,8 +4535,8 @@ happens as with C<qq//> constructs.
 
 =end original
 
-C<\Q>, C<\U>, C<\u>, C<\L>, C<\l> ã®å‡¦ç†ã¨å±•é–‹ãŒ C<qq//> æ§‹é€ ã¨
-åŒã˜ã‚ˆã†ã«èµ·ã“ã‚Šã¾ã™ã€‚
+C<\Q>, C<\U>, C<\u>, C<\L>, C<\l> “ªÎ’½è“×â“ªÈ“î÷“ËÒ“ª¬ C<qq//> “Ï°“ðã“ªÈ
+“ÔÒ“ª¸“ªè“ª¦“ªË“ÑÃ“ª³“ªê“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -4534,11 +4548,11 @@ is emitted if the C<use warnings> pragma or the B<-w> command-line flag
 
 =end original
 
-ã“ã®ã‚¹ãƒ†ãƒƒãƒ—ã§ã¯ã€ã‚ˆã‚Šå¥å…¨ãªæ–‡æ³•ã‚’ã¾ã å°Žå…¥ã—ã¦ã„ãªã„ã€æ‰‹ã«è² ãˆãªã„ I<sed>
-ãƒãƒƒã‚«ãƒ¼ã®ãŸã‚ã«ã€C<s///> ã®ç½®æ›ãƒ†ã‚­ã‚¹ãƒˆã®ä¸­ã«ã‚ã‚‹ C<\1> ã‚’ã€ã—ã¶ã—ã¶ãªãŒã‚‰
-C<$1> ã«å¤‰æ›ã—ã¾ã™ã€‚
-C<use warnings> ãƒ—ãƒ©ã‚°ãƒžã‚„ã‚³ãƒžãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ã‚ªãƒ—ã‚·ãƒ§ãƒ³ B<-w> (ã“ã‚Œã¯ C<$^W>
-å¤‰æ•°ã§ã™) ãŒã‚»ãƒƒãƒˆã•ã‚Œã¦ã„ã‚‹ã¨è­¦å‘ŠãŒç”Ÿæˆã•ã‚Œã¾ã™ã€‚
+“ª³“ªÎ“«¹“«Æ“«Ã“«×“ªÇ“ªÏ“¡¢“ªè“ªê“Ëí“îï“ªÊ“Ùþ“Ûö“ªò“ªÞ“ªÀ“Óô“ìý“ª·“ªÆ“ª¤“ªÊ“ª¤“¡¢“â¢“ªË“Ý¶“ª¨“ªÊ“ª¤ I<sed>
+“«Ï“«Ã“««’¡¼“ªÎ“ª¿“ªá“ªË“¡¢C<s///> “ªÎ“öÇ“üµ“«Æ“«­“«¹“«È“ªÎ“ñé“ªË“ª¢“ªë C<\1> “ªò“¡¢“ª·“ªÖ“ª·“ªÖ“ªÊ“ª¬“ªé
+C<$1> “ªË’ÊÑ“üµ“ª·“ªÞ“ª¹“¡£
+C<use warnings> “«×“«é“«°“«Þ“ªä“«³“«Þ“«ó“«É“«é“«¤“«ó“«ª“«×“«·“«ç“«ó B<-w> (“ª³“ªì“ªÏ C<$^W>
+’ÊÑ‘Êý“ªÇ“ª¹) “ª¬“«»“«Ã“«È“ªµ“ªì“ªÆ“ª¤“ªë“ªÈ“Ìí“Í±“ª¬“ßæ“à÷“ªµ“ªì“ªÞ“ª¹“¡£
 
 =item C<RE> in C<?RE?>, C</RE/>, C<m/RE/>, C<s/RE/foo/>,
 
@@ -4549,8 +4563,8 @@ and interpolation happens (almost) as with C<qq//> constructs.
 
 =end original
 
-C<\Q>, C<\U>, C<\u>, C<\L>, C<\l> C<\E> ã®å‡¦ç†ã¨å±•é–‹ãŒ C<qq//> æ§‹é€ ã¨
-(ã»ã¨ã‚“ã©)åŒã˜ã‚ˆã†ã«èµ·ã“ã‚Šã¾ã™ã€‚
+C<\Q>, C<\U>, C<\u>, C<\L>, C<\l> C<\E> “ªÎ’½è“×â“ªÈ“î÷“ËÒ“ª¬ C<qq//> “Ï°“ðã“ªÈ
+(“ªÛ“ªÈ“ªó“ªÉ)“ÔÒ“ª¸“ªè“ª¦“ªË“ÑÃ“ª³“ªê“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -4580,9 +4594,9 @@ of the C<//x> modifier is relevant.
 
 =end original
 
-ã•ã‚‰ã«ã€C<(?{BLOCK})>, C<(?# comment )>, C<//x> æ­£è¦è¡¨ç¾ã§ã® C<#> ã®
-ã‚³ãƒ¡ãƒ³ãƒˆã®ä¸­ã§ã¯ã€ã©ã®ã‚ˆã†ãªå‡¦ç†ã‚‚è¡Œã‚ã‚Œã¾ã›ã‚“ã€‚
-ã“ã‚Œã¯ C<//x> ä¿®é£¾å­ãŒå½±éŸ¿ã‚’ä¸Žãˆã‚‹æœ€åˆã®ã‚¹ãƒ†ãƒƒãƒ—ã§ã™ã€‚
+“ªµ“ªé“ªË“¡¢C<(?{BLOCK})>, C<(?# comment )>, C<//x> “ïá“Ð®“øú“úÞ“ªÇ“ªÎ C<#> “ªÎ
+“«³“«á“«ó“«È“ªÎ“ñé“ªÇ“ªÏ“¡¢“ªÉ“ªÎ“ªè“ª¦“ªÊ’½è“×â“ªâ“ú¼“ªï“ªì“ªÞ“ª»“ªó“¡£
+“ª³“ªì“ªÏ C<//x> “áó“ãÞ“í­“ª¬“ç¯“úÂ“ªò‘Óë“ª¨“ªë“õÌ“ôø“ªÎ“«¹“«Æ“«Ã“«×“ªÇ“ª¹“¡£
 
 =begin original
 
@@ -4598,14 +4612,14 @@ the result is not predictable.
 
 =end original
 
-ãƒ‘ã‚¿ãƒ¼ãƒ³å†…ã®å±•é–‹ã§ã¯ã„ãã¤ã‹ç‰¹æ®Šãªå‹•ä½œã‚’ã—ã¾ã™:
-C<$|>, C<$(>, C<$)>, C<@+>, C<@-> ã¯å±•é–‹ã•ã‚Œãšã€
-C<$var[SOMETHING]> ã¯(ã„ãã¤ã‹ã®ç•°ãªã‚‹æŽ¨å®šå™¨ã«ã‚ˆã£ã¦)é…åˆ—ã®è¦ç´ ã‹
-C<$var> ã®å¾Œã«æ­£è¦è¡¨ç¾ãŒç¶šã„ã¦ã„ã‚‹ã®ã‹ãŒæŠ•ç¥¨ã•ã‚Œã¾ã™ã€‚
-ã“ã‚Œã¯ C<${arr[$bar]}> ãŒä¾¿åˆ©ã«ãªã‚‹ã¨ã“ã‚ã§ã™: C</${arr[0-9]}/> ã¯
-é…åˆ—è¦ç´  C<-9> ã¨ã—ã¦è§£é‡ˆã•ã‚Œã€C</$arr[0-9]/> ã®å ´åˆã®ã‚ˆã†ã« C<$arr> ã®å¾Œã«
-æ•°å€¤ãŒç¶šã„ã¦ã„ã‚‹ã‚ˆã†ãªæ­£è¦è¡¨ç¾ã¨ã—ã¦ã¯è§£é‡ˆã•ã‚Œã¾ã›ã‚“ã€‚
-ç•°ãªã£ãŸæŽ¨å®šå™¨ã«ã‚ˆã£ã¦æŠ•ç¥¨ã•ã‚Œã‚‹ã“ã¨ãŒã‚ã‚‹ã®ã§ã€çµæžœã¯äºˆæ¸¬ã§ãã¾ã›ã‚“ã€‚
+“«Ñ“«¿’¡¼“«ó‘ÄÚ“ªÎ“î÷“ËÒ“ªÇ“ªÏ“ª¤“ª¯“ªÄ“ª«“÷å“â¨“ªÊ“ÔÑ“íÂ“ªò“ª·“ªÞ“ª¹:
+C<$|>, C<$(>, C<$)>, C<@+>, C<@-> “ªÏ“î÷“ËÒ“ªµ“ªì“ªº“¡¢
+C<$var[SOMETHING]> “ªÏ(“ª¤“ª¯“ªÄ“ª«“ªÎ“ì¶“ªÊ“ªë“õÏ“ïÒ“Ðï“ªË“ªè“ªÃ“ªÆ)“ÛÕ“Öª“ªÎ“é©“áÈ“ª«
+C<$var> “ªÎ“ý­“ªË“ïá“Ð®“øú“úÞ“ª¬’Â³“ª¤“ªÆ“ª¤“ªë“ªÎ“ª«“ª¬“÷á“øù“ªµ“ªì“ªÞ“ª¹“¡£
+“ª³“ªì“ªÏ C<${arr[$bar]}> “ª¬“øµ“××“ªË“ªÊ“ªë“ªÈ“ª³“ªí“ªÇ“ª¹: C</${arr[0-9]}/> “ªÏ
+“ÛÕ“Öª“é©“áÈ C<-9> “ªÈ“ª·“ªÆ“ú°’¼á“ªµ“ªì“¡¢C</$arr[0-9]/> “ªÎ“íÞ“ùê“ªÎ“ªè“ª¦“ªË C<$arr> “ªÎ“ý­“ªË
+‘Êý“ö·“ª¬’Â³“ª¤“ªÆ“ª¤“ªë“ªè“ª¦“ªÊ“ïá“Ð®“øú“úÞ“ªÈ“ª·“ªÆ“ªÏ“ú°’¼á“ªµ“ªì“ªÞ“ª»“ªó“¡£
+“ì¶“ªÊ“ªÃ“ª¿“õÏ“ïÒ“Ðï“ªË“ªè“ªÃ“ªÆ“÷á“øù“ªµ“ªì“ªë“ª³“ªÈ“ª¬“ª¢“ªë“ªÎ“ªÇ“¡¢“Ì¿“Íý“ªÏ“åø“ö´“ªÇ“ª­“ªÞ“ª»“ªó“¡£
 
 =begin original
 
@@ -4621,15 +4635,15 @@ alphanumeric char, as in:
 
 =end original
 
-C<\\> ã‚’å‡¦ç†ã—ãªã„ã“ã¨ã«ã‚ˆã‚Šã€å¾Œå‡¦ç†ã—ãŸãƒ†ã‚­ã‚¹ãƒˆã«ç‰¹å®šã®åˆ¶é™ãŒã‚ã‚Šã¾ã™ã€‚
-ãƒ‡ãƒªãƒŸã‚¿ãŒ C</> ã®å ´åˆã€ã“ã®ã‚¹ãƒ†ãƒƒãƒ—ã®çµæžœã¨ã—ã¦ C<\/> ã‚’å¾—ã‚‹ã“ã¨ã¯
-ã§ãã¾ã›ã‚“ã€‚
-C</> ã¯æ­£è¦è¡¨ç¾ã‚’çµ‚ã‚ã‚‰ã›ã€C<\/> ã¯å‰ã®ã‚¹ãƒ†ãƒƒãƒ—ã§ C</> ã«å±•é–‹ã•ã‚Œã€
-C<\\/> ã¯ãã®ã¾ã¾æ®‹ã•ã‚Œã¾ã™ã€‚
-C</> ã¯æ­£è¦è¡¨ç¾ã®ä¸­ã§ã¯ C<\/> ã¨ç­‰ä¾¡ãªã®ã§ã€ã“ã‚Œã¯ãŸã¾ãŸã¾ãƒ‡ãƒªãƒŸã‚¿ãŒ
-æ­£è¦æ¤œç´¢ã‚¨ãƒ³ã‚¸ãƒ³ã«ã¨ã£ã¦ç‰¹åˆ¥ãªæ–‡å­—ã®å ´åˆã€ã¤ã¾ã‚Š C<s*foo*bar*>,
-C<m[foo]>, C<?foo?> ã®ã‚ˆã†ãªå ´åˆã€ã‚ã‚‹ã„ã¯ä»¥ä¸‹ã®ã‚ˆã†ã«è‹±æ•°å­—ã§ãªã‘ã‚Œã°ã€
-å•é¡Œã«ã¯ãªã‚Šã¾ã›ã‚“:
+C<\\> “ªò’½è“×â“ª·“ªÊ“ª¤“ª³“ªÈ“ªË“ªè“ªê“¡¢“ý­’½è“×â“ª·“ª¿“«Æ“«­“«¹“«È“ªË“÷å“ïÒ“ªÎ“ð¤“ùÚ“ª¬“ª¢“ªê“ªÞ“ª¹“¡£
+“«Ç“«ê“«ß“«¿“ª¬ C</> “ªÎ“íÞ“ùê“¡¢“ª³“ªÎ“«¹“«Æ“«Ã“«×“ªÎ“Ì¿“Íý“ªÈ“ª·“ªÆ C<\/> “ªò“Ôð“ªë“ª³“ªÈ“ªÏ
+“ªÇ“ª­“ªÞ“ª»“ªó“¡£
+C</> “ªÏ“ïá“Ð®“øú“úÞ“ªò“ðû“ªï“ªé“ª»“¡¢C<\/> “ªÏ“îñ“ªÎ“«¹“«Æ“«Ã“«×“ªÇ C</> “ªË“î÷“ËÒ“ªµ“ªì“¡¢
+C<\\/> “ªÏ“ª½“ªÎ“ªÞ“ªÞ‘²Ð“ªµ“ªì“ªÞ“ª¹“¡£
+C</> “ªÏ“ïá“Ð®“øú“úÞ“ªÎ“ñé“ªÇ“ªÏ C<\/> “ªÈ“Ôõ’²Á“ªÊ“ªÎ“ªÇ“¡¢“ª³“ªì“ªÏ“ª¿“ªÞ“ª¿“ªÞ“«Ç“«ê“«ß“«¿“ª¬
+“ïá“Ð®’¸¡“ßã“«¨“«ó“«¸“«ó“ªË“ªÈ“ªÃ“ªÆ“÷å“Ü¬“ªÊ“Ùþ“í®“ªÎ“íÞ“ùê“¡¢“ªÄ“ªÞ“ªê C<s*foo*bar*>,
+C<m[foo]>, C<?foo?> “ªÎ“ªè“ª¦“ªÊ“íÞ“ùê“¡¢“ª¢“ªë“ª¤“ªÏ“ì¤“ù»“ªÎ“ªè“ª¦“ªË“çÈ‘Êý“í®“ªÇ“ªÊ“ª±“ªì“ªÐ“¡¢
+“Ùý“ð¹“ªË“ªÏ“ªÊ“ªê“ªÞ“ª»“ªó:
 
   m m ^ a \s* b mmx;
 
@@ -4643,10 +4657,10 @@ non-whitespace choices.
 
 =end original
 
-ä¸Šè¨˜ã®æ­£è¦è¡¨ç¾ã§ã¯ã€èª¬æ˜Žã®ãŸã‚ã«æ„å›³çš„ã«ã‚ã‹ã‚Šã«ããã—ã¦ã„ã¾ã™ãŒã€
-ãƒ‡ãƒªãƒŸã‚¿ã¯ C<m> ã§ã€ä¿®é£¾å­ã¯ C<mx> ã§ã€ãƒ‡ãƒªãƒŸã‚¿ã‚’å–ã‚Šé™¤ã„ãŸå¾Œã®
-æ­£è¦è¡¨ç¾ã¯ C<m/ ^ a \s* b /mx> ã¨åŒã˜ã§ã™ã€‚
-ãƒ‡ãƒªãƒŸã‚¿ã‚’è‹±æ•°å­—ã‚„ç©ºç™½ã§ãªã„ã‚‚ã®ã«åˆ¶é™ã™ã‚‹ã¹ãã§ã‚ã‚‹ç†ç”±ã¯è¤‡æ•°ã‚ã‚Šã¾ã™ã€‚
+“ß¾“ÑÀ“ªÎ“ïá“Ð®“øú“úÞ“ªÇ“ªÏ“¡¢’Àâ“Ù¥“ªÎ“ª¿“ªá“ªË“ëò’¿Þ“îÜ“ªË“ªï“ª«“ªê“ªË“ª¯“ª¯“ª·“ªÆ“ª¤“ªÞ“ª¹“ª¬“¡¢
+“«Ç“«ê“«ß“«¿“ªÏ C<m> “ªÇ“¡¢“áó“ãÞ“í­“ªÏ C<mx> “ªÇ“¡¢“«Ç“«ê“«ß“«¿“ªò“ö¢“ªê“ð¶“ª¤“ª¿“ý­“ªÎ
+“ïá“Ð®“øú“úÞ“ªÏ C<m/ ^ a \s* b /mx> “ªÈ“ÔÒ“ª¸“ªÇ“ª¹“¡£
+“«Ç“«ê“«ß“«¿“ªò“çÈ‘Êý“í®“ªä“Íö“ÛÜ“ªÇ“ªÊ“ª¤“ªâ“ªÎ“ªË“ð¤“ùÚ“ª¹“ªë“ªÙ“ª­“ªÇ“ª¢“ªë“×â“ë¦“ªÏ“ÜÜ‘Êý“ª¢“ªê“ªÞ“ª¹“¡£
 
 =back
 
@@ -4657,13 +4671,13 @@ which are processed further.
 
 =end original
 
-ã“ã‚Œã¯æ­£è¦è¡¨ç¾ä»¥å¤–ã®å…¨ã¦ã®æ§‹é€ ã«ã¨ã£ã¦æœ€å¾Œã®ã‚¹ãƒ†ãƒƒãƒ—ã§ã™ã€‚
-æ­£è¦è¡¨ç¾ã¯ã•ã‚‰ã«å‡¦ç†ãŒç¶šãã¾ã™ã€‚
+“ª³“ªì“ªÏ“ïá“Ð®“øú“úÞ“ì¤“èâ“ªÎ“îï“ªÆ“ªÎ“Ï°“ðã“ªË“ªÈ“ªÃ“ªÆ“õÌ“ý­“ªÎ“«¹“«Æ“«Ã“«×“ªÇ“ª¹“¡£
+“ïá“Ð®“øú“úÞ“ªÏ“ªµ“ªé“ªË’½è“×â“ª¬’Â³“ª­“ªÞ“ª¹“¡£
 
 =item parsing regular expressions
 X<regexp, parse>
 
-(æ­£è¦è¡¨ç¾ã®ãƒ‘ãƒ¼ã‚¹)
+(“ïá“Ð®“øú“úÞ“ªÎ“«Ñ’¡¼“«¹)
 
 =begin original
 
@@ -4676,12 +4690,12 @@ resulting I<string> is passed to the RE engine for compilation.
 
 =end original
 
-ä»¥å‰ã®ã‚¹ãƒ†ãƒƒãƒ—ã¯ Perl ã‚³ãƒ¼ãƒ‰ã®ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ä¸­ã«å®Ÿè¡Œã•ã‚Œã¾ã™ãŒã€
-ã“ã‚Œã¯å®Ÿè¡Œæ™‚ã«èµ·ã“ã‚Šã¾ã™ -- ã—ã‹ã—ã€ã‚‚ã—é©åˆ‡ãªã‚‰ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«æ™‚ã«
-è¨ˆç®—ã§ãã‚‹ã‚ˆã†ã«æœ€é©åŒ–ã•ã‚Œã‚‹ã“ã¨ã‚‚ã‚ã‚Šã¾ã™ã€‚
-ä¸Šè¨˜ã®å‰å‡¦ç†ã®å¾Œã€ãã—ã¦å¿…è¦ãªã‚‰é€£çµã€çµåˆã€å¤§æ–‡å­—å°æ–‡å­—å¤‰æ›ã€
-ãƒ¡ã‚¿ã‚¯ã‚©ãƒ¼ãƒˆåŒ–ãŒè¡Œã‚ã‚ŒãŸå¾Œã€çµæžœã® I<æ–‡å­—åˆ—> ãŒã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã®ãŸã‚ã«
-æ­£è¦è¡¨ç¾ã‚¨ãƒ³ã‚¸ãƒ³ã«æ¸¡ã•ã‚Œã¾ã™ã€‚
+“ì¤“îñ“ªÎ“«¹“«Æ“«Ã“«×“ªÏ Perl “«³’¡¼“«É“ªÎ“«³“«ó“«Ñ“«¤“«ë“ñé“ªË’¼Â“ú¼“ªµ“ªì“ªÞ“ª¹“ª¬“¡¢
+“ª³“ªì“ªÏ’¼Â“ú¼“ãÁ“ªË“ÑÃ“ª³“ªê“ªÞ“ª¹ -- “ª·“ª«“ª·“¡¢“ªâ“ª·“îê“ï·“ªÊ“ªé“«³“«ó“«Ñ“«¤“«ë“ãÁ“ªË
+“Íª“ß©“ªÇ“ª­“ªë“ªè“ª¦“ªË“õÌ“îê“ûù“ªµ“ªì“ªë“ª³“ªÈ“ªâ“ª¢“ªê“ªÞ“ª¹“¡£
+“ß¾“ÑÀ“ªÎ“îñ’½è“×â“ªÎ“ý­“¡¢“ª½“ª·“ªÆ“ù±“é©“ªÊ“ªé“Ö§“Ì¿“¡¢“Ì¿“ùê“¡¢“ÓÞ“Ùþ“í®“á³“Ùþ“í®’ÊÑ“üµ“¡¢
+“«á“«¿“«¯“«©’¡¼“«È“ûù“ª¬“ú¼“ªï“ªì“ª¿“ý­“¡¢“Ì¿“Íý“ªÎ I<“Ùþ“í®“Öª> “ª¬“«³“«ó“«Ñ“«¤“«ë“ªÎ“ª¿“ªá“ªË
+“ïá“Ð®“øú“úÞ“«¨“«ó“«¸“«ó“ªË“Ô¤“ªµ“ªì“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -4690,8 +4704,8 @@ but for the sake of continuity, we shall do so here.
 
 =end original
 
-æ­£è¦è¡¨ç¾ã‚¨ãƒ³ã‚¸ãƒ³ã§èµ·ã“ã‚‹ã“ã¨ã«ã¤ã„ã¦ã¯ L<perlre> ã§è­°è«–ã—ãŸæ–¹ãŒ
-ã‚ˆã„ã§ã—ã‚‡ã†ãŒã€ç¶™ç¶šæ€§ã®ãŸã‚ã«ã€ã“ã“ã§ãã‚Œã‚’è¡Œã„ã¾ã™ã€‚
+“ïá“Ð®“øú“úÞ“«¨“«ó“«¸“«ó“ªÇ“ÑÃ“ª³“ªë“ª³“ªÈ“ªË“ªÄ“ª¤“ªÆ“ªÏ L<perlre> “ªÇ“ì¡“Öå“ª·“ª¿“Û°“ª¬
+“ªè“ª¤“ªÇ“ª·“ªç“ª¦“ª¬“¡¢’·Ñ’Â³“àõ“ªÎ“ª¿“ªá“ªË“¡¢“ª³“ª³“ªÇ“ª½“ªì“ªò“ú¼“ª¤“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -4701,9 +4715,9 @@ converts it to a finite automaton.
 
 =end original
 
-ã“ã‚Œã‚‚ C<//x> ä¿®é£¾å­ã®å­˜åœ¨ãŒé–¢é€£ã™ã‚‹ã‚¹ãƒ†ãƒƒãƒ—ã®ä¸€ã¤ã§ã™ã€‚
-æ­£è¦è¡¨ç¾ã‚¨ãƒ³ã‚¸ãƒ³ã¯æ–‡å­—åˆ—ã‚’å·¦ã‹ã‚‰å³ã«ã‚¹ã‚­ãƒ£ãƒ³ã—ã¦ã€æœ‰é™çŠ¶æ…‹ã‚ªãƒ¼ãƒˆãƒžãƒˆãƒ³ã«
-å¤‰æ›ã—ã¾ã™ã€‚
+“ª³“ªì“ªâ C<//x> “áó“ãÞ“í­“ªÎ“ðí“î¤“ª¬’´Ø“Ö§“ª¹“ªë“«¹“«Æ“«Ã“«×“ªÎ“ìé“ªÄ“ªÇ“ª¹“¡£
+“ïá“Ð®“øú“úÞ“«¨“«ó“«¸“«ó“ªÏ“Ùþ“í®“Öª“ªò“ñ§“ª«“ªé“éÓ“ªË“«¹“«­“«ã“«ó“ª·“ªÆ“¡¢“êó“ùÚ‘×´“÷¾“«ª’¡¼“«È“«Þ“«È“«ó“ªË
+’ÊÑ“üµ“ª·“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -4717,14 +4731,14 @@ whitespace and C<#>-style comments if C<//x> is present).
 
 =end original
 
-ãƒãƒƒã‚¯ã‚¹ãƒ©ãƒƒã‚·ãƒ¥ä»˜ãã®æ–‡å­—ã¯(C<\{> ã®ã‚ˆã†ã«)å¯¾å¿œã™ã‚‹ãƒªãƒ†ãƒ©ãƒ«æ–‡å­—åˆ—ã«
-ç½®æ›ã•ã‚Œã‚‹ã‹ã€ã‚ã‚‹ã„ã¯(C<\b> ã®ã‚ˆã†ã«)æœ‰é™çŠ¶æ…‹ã‚ªãƒ¼ãƒˆãƒžãƒˆãƒ³ã®ç‰¹åˆ¥ãª
-ãƒŽãƒ¼ãƒ‰ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
-(C<|> ã®ã‚ˆã†ãª)æ­£è¦è¡¨ç¾ã‚¨ãƒ³ã‚¸ãƒ³ã«ã¨ã£ã¦ç‰¹åˆ¥ãªæ–‡å­—ã¯å¯¾å¿œã™ã‚‹ãƒŽãƒ¼ãƒ‰ã‹
-ãƒŽãƒ¼ãƒ‰ã®ã‚°ãƒ«ãƒ¼ãƒ—ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
-æ®‹ã‚Šã®å…¨ã¦ã¯ãƒžãƒƒãƒã™ã‚‹ãƒªãƒ†ãƒ©ãƒ«æ–‡å­—åˆ—ã«å¤‰æ›ã•ã‚Œã‚‹ã‹ã€ãã†ã§ãªã‘ã‚Œã°
-(C<//x> ãŒæŒ‡å®šã•ã‚ŒãŸæ™‚ã®ç©ºç™½ã¨ C<#> ã‚¹ã‚¿ã‚¤ãƒ«ã®ã‚³ãƒ¡ãƒ³ãƒˆã¨åŒæ§˜ã«)
-ç„¡è¦–ã•ã‚Œã¾ã™ã€‚
+“«Ð“«Ã“«¯“«¹“«é“«Ã“«·“«å“Üõ“ª­“ªÎ“Ùþ“í®“ªÏ(C<\{> “ªÎ“ªè“ª¦“ªË)’ÂÐ’±þ“ª¹“ªë“«ê“«Æ“«é“«ë“Ùþ“í®“Öª“ªË
+“öÇ“üµ“ªµ“ªì“ªë“ª«“¡¢“ª¢“ªë“ª¤“ªÏ(C<\b> “ªÎ“ªè“ª¦“ªË)“êó“ùÚ‘×´“÷¾“«ª’¡¼“«È“«Þ“«È“«ó“ªÎ“÷å“Ü¬“ªÊ
+“«Î’¡¼“«É“ªò“ßæ“à÷“ª·“ªÞ“ª¹“¡£
+(C<|> “ªÎ“ªè“ª¦“ªÊ)“ïá“Ð®“øú“úÞ“«¨“«ó“«¸“«ó“ªË“ªÈ“ªÃ“ªÆ“÷å“Ü¬“ªÊ“Ùþ“í®“ªÏ’ÂÐ’±þ“ª¹“ªë“«Î’¡¼“«É“ª«
+“«Î’¡¼“«É“ªÎ“«°“«ë’¡¼“«×“ªò“ßæ“à÷“ª·“ªÞ“ª¹“¡£
+‘²Ð“ªê“ªÎ“îï“ªÆ“ªÏ“«Þ“«Ã“«Á“ª¹“ªë“«ê“«Æ“«é“«ë“Ùþ“í®“Öª“ªË’ÊÑ“üµ“ªµ“ªì“ªë“ª«“¡¢“ª½“ª¦“ªÇ“ªÊ“ª±“ªì“ªÐ
+(C<//x> “ª¬“ò¦“ïÒ“ªµ“ªì“ª¿“ãÁ“ªÎ“Íö“ÛÜ“ªÈ C<#> “«¹“«¿“«¤“«ë“ªÎ“«³“«á“«ó“«È“ªÈ“ÔÒ’ÍÍ“ªË)
+“Ùí“ãÊ“ªµ“ªì“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -4739,12 +4753,12 @@ terminator of a C<{}>-delimited construct.
 
 =end original
 
-æ–‡å­—ã‚¯ãƒ©ã‚¹æ§‹é€  C<[...]> ã®ãƒ‘ãƒ¼ã‚¹ã¯ä»–ã®ãƒ‘ã‚¿ãƒ¼ãƒ³ã¨ã¯ãƒ«ãƒ¼ãƒ«ãŒç•°ãªã‚Šã¾ã™ã€‚
-ã“ã®æ§‹é€ ã®çµ‚ç«¯ã¯ C<{}> ã§ãƒ‡ãƒªãƒŸã‚¿ã•ã‚ŒãŸæ§‹é€ ã®çµ‚ç«¯ã‚’æ¤œç´¢ã™ã‚‹ã®ã¨åŒã˜ãƒ«ãƒ¼ãƒ«ã§
-æ¤œç´¢ã•ã‚Œã¾ã™; å”¯ä¸€ã®ä¾‹å¤–ã¯ã€C<[> ã®ç›´å¾Œã® C<]> ã¯ãƒãƒƒã‚¯ã‚¹ãƒ©ãƒƒã‚·ãƒ¥ãŒ
-å…ˆè¡Œã—ã¦ã„ã‚‹ã‚‚ã®ã¨ã—ã¦æ‰±ã‚ã‚Œã¾ã™ã€‚
-åŒæ§˜ã«ã€C<(?{...})> ã®çµ‚ç«¯ã¯ C<{}> ã§ãƒ‡ãƒªãƒŸã‚¿ã•ã‚ŒãŸæ§‹é€ ã®çµ‚ç«¯ã‚’
-æ¤œç´¢ã•ã‚Œã‚‹ã®ã¨åŒã˜ãƒ«ãƒ¼ãƒ«ã§æ¤œç´¢ã•ã‚Œã¾ã™ã€‚
+“Ùþ“í®“«¯“«é“«¹“Ï°“ðã C<[...]> “ªÎ“«Ñ’¡¼“«¹“ªÏ“öâ“ªÎ“«Ñ“«¿’¡¼“«ó“ªÈ“ªÏ“«ë’¡¼“«ë“ª¬“ì¶“ªÊ“ªê“ªÞ“ª¹“¡£
+“ª³“ªÎ“Ï°“ðã“ªÎ“ðû“Ó®“ªÏ C<{}> “ªÇ“«Ç“«ê“«ß“«¿“ªµ“ªì“ª¿“Ï°“ðã“ªÎ“ðû“Ó®“ªò’¸¡“ßã“ª¹“ªë“ªÎ“ªÈ“ÔÒ“ª¸“«ë’¡¼“«ë“ªÇ
+’¸¡“ßã“ªµ“ªì“ªÞ“ª¹; “êæ“ìé“ªÎ“ÖÇ“èâ“ªÏ“¡¢C<[> “ªÎ“òÁ“ý­“ªÎ C<]> “ªÏ“«Ð“«Ã“«¯“«¹“«é“«Ã“«·“«å“ª¬
+“à»“ú¼“ª·“ªÆ“ª¤“ªë“ªâ“ªÎ“ªÈ“ª·“ªÆ“Ðâ“ªï“ªì“ªÞ“ª¹“¡£
+“ÔÒ’ÍÍ“ªË“¡¢C<(?{...})> “ªÎ“ðû“Ó®“ªÏ C<{}> “ªÇ“«Ç“«ê“«ß“«¿“ªµ“ªì“ª¿“Ï°“ðã“ªÎ“ðû“Ó®“ªò
+’¸¡“ßã“ªµ“ªì“ªë“ªÎ“ªÈ“ÔÒ“ª¸“«ë’¡¼“«ë“ªÇ’¸¡“ßã“ªµ“ªì“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -4755,11 +4769,11 @@ switch documented in L<perlrun/"Command Switches">.
 
 =end original
 
-æ­£è¦è¡¨ç¾ã«ä¸Žãˆã‚‰ã‚Œã‚‹æ–‡å­—åˆ—ã¨ã€çµæžœã¨ã—ã¦ã®æœ‰é™çŠ¶æ…‹ã‚ªãƒ¼ãƒˆãƒžãƒˆãƒ³ã®ä¸¡æ–¹ã‚’
-æ¤œæŸ»ã§ãã¾ã™ã€‚
-C<use L<re>> ãƒ—ãƒ©ã‚°ãƒžã® C<debug>/C<debugcolor> å¼•æ•°ã¨ã€
-L<perlrun/"Command Switches"> ã«è¨˜è¿°ã•ã‚Œã¦ã„ã‚‹ B<-Dr> ã‚³ãƒžãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³
-ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚
+“ïá“Ð®“øú“úÞ“ªË‘Óë“ª¨“ªé“ªì“ªë“Ùþ“í®“Öª“ªÈ“¡¢“Ì¿“Íý“ªÈ“ª·“ªÆ“ªÎ“êó“ùÚ‘×´“÷¾“«ª’¡¼“«È“«Þ“«È“«ó“ªÎ’Î¾“Û°“ªò
+’¸¡“ÞÛ“ªÇ“ª­“ªÞ“ª¹“¡£
+C<use L<re>> “«×“«é“«°“«Þ“ªÎ C<debug>/C<debugcolor> “ìÚ‘Êý“ªÈ“¡¢
+L<perlrun/"Command Switches"> “ªË“ÑÀ“âû“ªµ“ªì“ªÆ“ª¤“ªë B<-Dr> “«³“«Þ“«ó“«É“«é“«¤“«ó
+“«ª“«×“«·“«ç“«ó“ªò‘²Î“ðÎ“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
 
 =item Optimization of regular expressions
 X<regexp, optimization>
@@ -4773,11 +4787,11 @@ automaton that was generated during the previous pass.
 
 =end original
 
-ã“ã®ã‚¹ãƒ†ãƒƒãƒ—ã¯å®Œå…¨æ€§ã®ãŸã‚ã ã‘ã«ãƒªã‚¹ãƒˆã•ã‚Œã¦ã„ã¾ã™ã€‚
-ã“ã‚Œã¯æ„å‘³è«–çš„ã«ã¯å¤‰åŒ–ãŒãªã„ã®ã§ã€ã“ã®ã‚¹ãƒ†ãƒƒãƒ—ã®è©³ç´°ã¯æ–‡æ›¸åŒ–ã•ã‚Œã¦ãŠã‚‰ãšã€
-å°†æ¥äºˆå‘Šãªã—ã«å¤‰æ›´ã•ã‚Œã‚‹ã“ã¨ãŒã‚ã‚Šã¾ã™ã€‚
-ã“ã®ã‚¹ãƒ†ãƒƒãƒ—ã¯ã“ã“ã¾ã§ã®å‡¦ç†ã§ç”Ÿæˆã•ã‚ŒãŸæœ‰é™ã‚ªãƒ¼ãƒˆãƒžãƒˆãƒ³ã«å¯¾ã—ã¦
-é©ç”¨ã•ã‚Œã¾ã™ã€‚
+“ª³“ªÎ“«¹“«Æ“«Ã“«×“ªÏ“èÇ“îï“àõ“ªÎ“ª¿“ªá“ªÀ“ª±“ªË“«ê“«¹“«È“ªµ“ªì“ªÆ“ª¤“ªÞ“ª¹“¡£
+“ª³“ªì“ªÏ“ëò“Ú«“Öå“îÜ“ªË“ªÏ’ÊÑ“ûù“ª¬“ªÊ“ª¤“ªÎ“ªÇ“¡¢“ª³“ªÎ“«¹“«Æ“«Ã“«×“ªÎ“ßÙ“á¬“ªÏ“Ùþ“ßö“ûù“ªµ“ªì“ªÆ“ªª“ªé“ªº“¡¢
+‘½«‘À´“åø“Í±“ªÊ“ª·“ªË’ÊÑ“ÌÚ“ªµ“ªì“ªë“ª³“ªÈ“ª¬“ª¢“ªê“ªÞ“ª¹“¡£
+“ª³“ªÎ“«¹“«Æ“«Ã“«×“ªÏ“ª³“ª³“ªÞ“ªÇ“ªÎ’½è“×â“ªÇ“ßæ“à÷“ªµ“ªì“ª¿“êó“ùÚ“«ª’¡¼“«È“«Þ“«È“«ó“ªË’ÂÐ“ª·“ªÆ
+“îê“éÄ“ªµ“ªì“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -4786,7 +4800,7 @@ mean C</^/m>.
 
 =end original
 
-C<split()> ã§ C</^/> ã‚’æš—é»™ã« C</^/m> ã«æœ€é©åŒ–ã™ã‚‹ã®ã‚‚ã“ã®ã‚¹ãƒ†ãƒƒãƒ—ã§ã™ã€‚
+C<split()> “ªÇ C</^/> “ªò“äÞ’ÌÛ“ªË C</^/m> “ªË“õÌ“îê“ûù“ª¹“ªë“ªÎ“ªâ“ª³“ªÎ“«¹“«Æ“«Ã“«×“ªÇ“ª¹“¡£
 
 =back
 
@@ -4794,7 +4808,7 @@ C<split()> ã§ C</^/> ã‚’æš—é»™ã« C</^/m> ã«æœ€é©åŒ–ã™ã‚‹ã®ã‚‚ã“ã®ã‚¹ãƒ†ã
 X<operator, i/o> X<operator, io> X<io> X<while> X<filehandle>
 X<< <> >> X<@ARGV>
 
-(I/O æ¼”ç®—å­)
+(I/O “æÑ“ß©“í­)
 
 =begin original
 
@@ -4802,7 +4816,7 @@ There are several I/O operators you should know about.
 
 =end original
 
-çŸ¥ã£ã¦ãŠã„ãŸæ–¹ãŒã‚ˆã„ I/O æ¼”ç®—å­ã‚‚ã„ãã¤ã‹ã‚ã‚Šã¾ã™ã€‚
+“ò±“ªÃ“ªÆ“ªª“ª¤“ª¿“Û°“ª¬“ªè“ª¤ I/O “æÑ“ß©“í­“ªâ“ª¤“ª¯“ªÄ“ª«“ª¢“ªê“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -4826,25 +4840,25 @@ X<qx> X<`> X<``> X<backtick> X<glob>
 
 =end original
 
-ãƒãƒƒã‚¯ã‚¯ã‚©ãƒ¼ãƒˆã§æ‹¬ã‚‰ã‚ŒãŸæ–‡å­—åˆ—ã¯ã€ã¾ãšã€ãƒ€ãƒ–ãƒ«ã‚¯ã‚©ãƒ¼ãƒˆè£œå®Œã®ã‚ˆã†ã«
-å¤‰æ•°ã®å±•é–‹ãŒè¡Œãªã‚ã‚Œã¾ã™ã€‚
-ãã®å¾Œã€ã‚·ã‚§ãƒ«ã§ã®å ´åˆã¨åŒã˜ã‚ˆã†ã«ã€å¤–éƒ¨ã‚³ãƒžãƒ³ãƒ‰ã¨ã—ã¦è§£é‡ˆã•ã‚Œã€
-ãã®ã‚³ãƒžãƒ³ãƒ‰ã®å‡ºåŠ›ãŒã“ã®ãƒãƒƒã‚¯ã‚¯ã‚©ãƒ¼ãƒˆæ–‡å­—åˆ—ã®å€¤ã¨ãªã‚Šã¾ã™ã€‚
-ã‚¹ã‚«ãƒ©ãƒ¼ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã¯ã€å‡ºåŠ›ã™ã¹ã¦ã‚’å«ã‚€ä¸€å€‹ã®æ–‡å­—åˆ—ãŒè¿”ã•ã‚Œã¾ã™ã€‚
-ãƒªã‚¹ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã¯ã€å‡ºåŠ›ã® 1 è¡Œ 1 è¡ŒãŒå€‹ã€…ã®è¦ç´ ã¨ãªã‚‹ãƒªã‚¹ãƒˆãŒè¿”ã•ã‚Œã¾ã™ã€‚
-(C<$/> ã‚’è¨­å®šã™ã‚Œã°ã€è¡Œã®çµ‚ã‚ã‚Šã‚’ç¤ºã™æ–‡å­—ã‚’å¤‰ãˆã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚)
-ã‚³ãƒžãƒ³ãƒ‰ã¯ã€ã“ã®æ“¬ä¼¼ãƒªãƒ†ãƒ©ãƒ«ãŒè©•ä¾¡ã•ã‚Œã‚‹ã”ã¨ã«å®Ÿè¡Œã•ã‚Œã¾ã™ã€‚
-ã‚³ãƒžãƒ³ãƒ‰ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤ã¯ C<$?> ã«è¿”ã•ã‚Œã¾ã™ (C<$?> ã®è§£é‡ˆã«ã¤ã„ã¦ã¯ã€
-L<perlvar> ã‚’å‚ç…§ã—ã¦ãã ã•ã„)ã€‚
-B<csh> ã§ã®å ´åˆã¨ã¯é•ã£ã¦ã€çµæžœã®ãƒ‡ãƒ¼ã‚¿ã«å¯¾ã™ã‚‹å¤‰æ›ã¯è¡Œãªã‚ã‚Œãšã€
-æ”¹è¡Œã¯æ”¹è¡Œã®ã¾ã¾ã§ã™ã€‚
-ã©ã®ã‚·ã‚§ãƒ«ã¨ã‚‚é•ã£ã¦ã€ã‚·ãƒ³ã‚°ãƒ«ã‚¯ã‚©ãƒ¼ãƒˆãŒã‚³ãƒžãƒ³ãƒ‰ä¸­ã®å¤‰æ•°åã‚’
-è§£é‡ˆã•ã›ãªã„ã‚ˆã†ã«ã™ã‚‹ã“ã¨ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
-ã‚·ã‚§ãƒ«ã«ãƒªãƒ†ãƒ©ãƒ«ãªãƒ‰ãƒ«è¨˜å·ã‚’æ¸¡ã™ã«ã¯ã€ãƒãƒƒã‚¯ã‚¹ãƒ©ãƒƒã‚·ãƒ¥ã§
-ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã—ãªã‘ã‚Œã°ãªã‚Šã¾ã›ã‚“ã€‚
-ãƒãƒƒã‚¯ã‚¯ã‚©ãƒ¼ãƒˆã®ä¸€èˆ¬å½¢ã¯ã€C<qx//> ã§ã™ã€‚
-(ãƒãƒƒã‚¯ã‚¯ã‚©ãƒ¼ãƒˆã¯å¸¸ã«ã‚·ã‚§ãƒ«å±•é–‹ã•ã‚Œã¾ã™ã€‚
-ã‚»ã‚­ãƒ¥ãƒªãƒ†ã‚£ã«é–¢ã—ã¦ã¯ L<perlsec> ã‚’å‚ç…§ã—ã¦ä¸‹ã•ã„)
+“«Ð“«Ã“«¯“«¯“«©’¡¼“«È“ªÇ“ÎÀ“ªé“ªì“ª¿“Ùþ“í®“Öª“ªÏ“¡¢“ªÞ“ªº“¡¢“«À“«Ö“«ë“«¯“«©’¡¼“«È“ÜÍ“èÇ“ªÎ“ªè“ª¦“ªË
+’ÊÑ‘Êý“ªÎ“î÷“ËÒ“ª¬“ú¼“ªÊ“ªï“ªì“ªÞ“ª¹“¡£
+“ª½“ªÎ“ý­“¡¢“«·“«§“«ë“ªÇ“ªÎ“íÞ“ùê“ªÈ“ÔÒ“ª¸“ªè“ª¦“ªË“¡¢“èâ“Ý»“«³“«Þ“«ó“«É“ªÈ“ª·“ªÆ“ú°’¼á“ªµ“ªì“¡¢
+“ª½“ªÎ“«³“«Þ“«ó“«É“ªÎ“õó“Õô“ª¬“ª³“ªÎ“«Ð“«Ã“«¯“«¯“«©’¡¼“«È“Ùþ“í®“Öª“ªÎ“ö·“ªÈ“ªÊ“ªê“ªÞ“ª¹“¡£
+“«¹“««“«é’¡¼“«³“«ó“«Æ“«­“«¹“«È“ªÇ“ªÏ“¡¢“õó“Õô“ª¹“ªÙ“ªÆ“ªò“ùß“ªà“ìé“ËÁ“ªÎ“Ùþ“í®“Öª“ª¬“Ú÷“ªµ“ªì“ªÞ“ª¹“¡£
+“«ê“«¹“«È“«³“«ó“«Æ“«­“«¹“«È“ªÇ“ªÏ“¡¢“õó“Õô“ªÎ 1 “ú¼ 1 “ú¼“ª¬“ËÁ‘¡©“ªÎ“é©“áÈ“ªÈ“ªÊ“ªë“«ê“«¹“«È“ª¬“Ú÷“ªµ“ªì“ªÞ“ª¹“¡£
+(C<$/> “ªò“àâ“ïÒ“ª¹“ªì“ªÐ“¡¢“ú¼“ªÎ“ðû“ªï“ªê“ªò“ãÆ“ª¹“Ùþ“í®“ªò’ÊÑ“ª¨“ªë“ª³“ªÈ“ª¬“ªÇ“ª­“ªÞ“ª¹“¡£)
+“«³“«Þ“«ó“«É“ªÏ“¡¢“ª³“ªÎ“ëô“ÞÄ“«ê“«Æ“«é“«ë“ª¬“øÄ’²Á“ªµ“ªì“ªë“ª´“ªÈ“ªË’¼Â“ú¼“ªµ“ªì“ªÞ“ª¹“¡£
+“«³“«Þ“«ó“«É“ªÎ“«¹“«Æ’¡¼“«¿“«¹“ö·“ªÏ C<$?> “ªË“Ú÷“ªµ“ªì“ªÞ“ª¹ (C<$?> “ªÎ“ú°’¼á“ªË“ªÄ“ª¤“ªÆ“ªÏ“¡¢
+L<perlvar> “ªò‘²Î“ðÎ“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤)“¡£
+B<csh> “ªÇ“ªÎ“íÞ“ùê“ªÈ“ªÏ“êÞ“ªÃ“ªÆ“¡¢“Ì¿“Íý“ªÎ“«Ç’¡¼“«¿“ªË’ÂÐ“ª¹“ªë’ÊÑ“üµ“ªÏ“ú¼“ªÊ“ªï“ªì“ªº“¡¢
+“ËÇ“ú¼“ªÏ“ËÇ“ú¼“ªÎ“ªÞ“ªÞ“ªÇ“ª¹“¡£
+“ªÉ“ªÎ“«·“«§“«ë“ªÈ“ªâ“êÞ“ªÃ“ªÆ“¡¢“«·“«ó“«°“«ë“«¯“«©’¡¼“«È“ª¬“«³“«Þ“«ó“«É“ñé“ªÎ’ÊÑ‘Êý“Ù£“ªò
+“ú°’¼á“ªµ“ª»“ªÊ“ª¤“ªè“ª¦“ªË“ª¹“ªë“ª³“ªÈ“ªÏ“ª¢“ªê“ªÞ“ª»“ªó“¡£
+“«·“«§“«ë“ªË“«ê“«Æ“«é“«ë“ªÊ“«É“«ë“ÑÀ‘ºÅ“ªò“Ô¤“ª¹“ªË“ªÏ“¡¢“«Ð“«Ã“«¯“«¹“«é“«Ã“«·“«å“ªÇ
+“«¨“«¹“«±’¡¼“«×“ª·“ªÊ“ª±“ªì“ªÐ“ªÊ“ªê“ªÞ“ª»“ªó“¡£
+“«Ð“«Ã“«¯“«¯“«©’¡¼“«È“ªÎ“ìé“Úõ“û¡“ªÏ“¡¢C<qx//> “ªÇ“ª¹“¡£
+(“«Ð“«Ã“«¯“«¯“«©’¡¼“«È“ªÏ“ßÈ“ªË“«·“«§“«ë“î÷“ËÒ“ªµ“ªì“ªÞ“ª¹“¡£
+“«»“«­“«å“«ê“«Æ“«£“ªË’´Ø“ª·“ªÆ“ªÏ L<perlsec> “ªò‘²Î“ðÎ“ª·“ªÆ“ù»“ªµ“ª¤)
 
 =begin original
 
@@ -4856,13 +4870,13 @@ returns C<''> the first time, followed by C<undef> subsequently.
 
 =end original
 
-ã‚¹ã‚«ãƒ©ãƒ¼ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§å±±æ‹¬å¼§ã®ä¸­ã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã‚’è©•ä¾¡ã™ã‚‹ã¨ã€
-ãã®ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ã€æ¬¡ã®è¡Œã‚’èª­ã¿è¾¼ã‚€ã“ã¨ã«ãªã‚Šã¾ã™
-(æ”¹è¡ŒãŒã‚ã‚Œã°ãã‚Œã‚‚å«ã¾ã‚Œã¾ã™)ã€‚
-ãƒ•ã‚¡ã‚¤ãƒ«ã®æœ€å¾Œã¾ãŸã¯ã‚¨ãƒ©ãƒ¼ã®å ´åˆã¯ C<undef> ã‚’è¿”ã—ã¾ã™ã€‚
-C<$/> ãŒ C<undef> ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆ(ãƒ•ã‚¡ã‚¤ãƒ«å¸ã„è¾¼ã¿ãƒ¢ãƒ¼ãƒ‰ã¨å‘¼ã°ã‚Œã¾ã™)
-ã§ãƒ•ã‚¡ã‚¤ãƒ«ãŒç©ºã®å ´åˆã€
-æœ€åˆã¯ C<''> ã‚’è¿”ã—ã€æ¬¡ã¯ C<undef> ã‚’è¿”ã—ã¾ã™ã€‚
+“«¹“««“«é’¡¼“«³“«ó“«Æ“«­“«¹“«È“ªÇ“ß£“ÎÀ“ûÁ“ªÎ“ñé“ªÎ“«Õ“«¡“«¤“«ë“«Ï“«ó“«É“«ë“ªò“øÄ’²Á“ª¹“ªë“ªÈ“¡¢
+“ª½“ªÎ“«Õ“«¡“«¤“«ë“ª«“ªé“¡¢“ó­“ªÎ“ú¼“ªò’ÆÉ“ªß’¹þ“ªà“ª³“ªÈ“ªË“ªÊ“ªê“ªÞ“ª¹
+(“ËÇ“ú¼“ª¬“ª¢“ªì“ªÐ“ª½“ªì“ªâ“ùß“ªÞ“ªì“ªÞ“ª¹)“¡£
+“«Õ“«¡“«¤“«ë“ªÎ“õÌ“ý­“ªÞ“ª¿“ªÏ“«¨“«é’¡¼“ªÎ“íÞ“ùê“ªÏ C<undef> “ªò“Ú÷“ª·“ªÞ“ª¹“¡£
+C<$/> “ª¬ C<undef> “ªË“àâ“ïÒ“ªµ“ªì“ªÆ“ª¤“ªë“íÞ“ùê(“«Õ“«¡“«¤“«ë“ýå“ª¤’¹þ“ªß“«â’¡¼“«É“ªÈ“û¼“ªÐ“ªì“ªÞ“ª¹)
+“ªÇ“«Õ“«¡“«¤“«ë“ª¬“Íö“ªÎ“íÞ“ùê“¡¢
+“õÌ“ôø“ªÏ C<''> “ªò“Ú÷“ª·“¡¢“ó­“ªÏ C<undef> “ªò“Ú÷“ª·“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -4879,15 +4893,15 @@ to happen.
 
 =end original
 
-é€šå¸¸ã¯ã€è¿”ã•ã‚ŒãŸå€¤ã‚’å¤‰æ•°ã«ä»£å…¥ã—ãªã‘ã‚Œã°ãªã‚Šã¾ã›ã‚“ãŒã€è‡ªå‹•çš„ã«
-ä»£å…¥ã•ã‚Œã‚‹å ´åˆãŒ 1 ã¤ã ã‘ã‚ã‚Šã¾ã™ã€‚
-ã“ã®å…¥åŠ›ã‚·ãƒ³ãƒœãƒ«ãŒã€while æ–‡(C<for(;;)> ã®å½¢ã«ãªã£ã¦ã„ãŸã¨ã—ã¦ã‚‚)ã®æ¡ä»¶å¼ä¸­ã«
-å˜ç‹¬ã§ç¾ã‚ŒãŸå ´åˆã ã‘ã¯ã€ãã®å€¤ãŒè‡ªå‹•çš„ã«ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•° $_ ã«ä»£å…¥ã•ã‚Œã¾ã™ã€‚
-ä»¥å‰ã®å€¤ã¯ç ´å£Šã•ã‚Œã¾ã™ã€‚
-(ã“ã‚Œã¯ã€å¥‡å¦™ã«æ€ãˆã‚‹ã‹ã‚‚ã—ã‚Œã¾ã›ã‚“ãŒã€ã»ã¨ã‚“ã©ã™ã¹ã¦ã® Perl ã‚¹ã‚¯ãƒªãƒ—ãƒˆã§
-ã“ã‚ŒãŒå¿…è¦ã«ãªã‚‹ã“ã¨ã§ã—ã‚‡ã†ã€‚)
-$_ å¤‰æ•°ã¯æš—é»™ã«ã¯ãƒ­ãƒ¼ã‚«ãƒ«åŒ–ã•ã‚Œã¾ã›ã‚“ã€‚
-ãã†ã—ãŸã„å ´åˆã¯ãƒ«ãƒ¼ãƒ—ã®å‰ã« C<local $_;> ã¨æ›¸ãå¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
+“÷×“ßÈ“ªÏ“¡¢“Ú÷“ªµ“ªì“ª¿“ö·“ªò’ÊÑ‘Êý“ªË“ÓÛ“ìý“ª·“ªÊ“ª±“ªì“ªÐ“ªÊ“ªê“ªÞ“ª»“ªó“ª¬“¡¢“í»“ÔÑ“îÜ“ªË
+“ÓÛ“ìý“ªµ“ªì“ªë“íÞ“ùê“ª¬ 1 “ªÄ“ªÀ“ª±“ª¢“ªê“ªÞ“ª¹“¡£
+“ª³“ªÎ“ìý“Õô“«·“«ó“«Ü“«ë“ª¬“¡¢while “Ùþ(C<for(;;)> “ªÎ“û¡“ªË“ªÊ“ªÃ“ªÆ“ª¤“ª¿“ªÈ“ª·“ªÆ“ªâ)“ªÎ‘Ìõ“Ëì“ãÒ“ñé“ªË
+’Ã±‘¶À“ªÇ“úÞ“ªì“ª¿“íÞ“ùê“ªÀ“ª±“ªÏ“¡¢“ª½“ªÎ“ö·“ª¬“í»“ÔÑ“îÜ“ªË“«°“«í’¡¼“«Ð“«ë’ÊÑ‘Êý $_ “ªË“ÓÛ“ìý“ªµ“ªì“ªÞ“ª¹“¡£
+“ì¤“îñ“ªÎ“ö·“ªÏ“÷ò’²õ“ªµ“ªì“ªÞ“ª¹“¡£
+(“ª³“ªì“ªÏ“¡¢“Ðô“ÙØ“ªË“ÞÖ“ª¨“ªë“ª«“ªâ“ª·“ªì“ªÞ“ª»“ªó“ª¬“¡¢“ªÛ“ªÈ“ªó“ªÉ“ª¹“ªÙ“ªÆ“ªÎ Perl “«¹“«¯“«ê“«×“«È“ªÇ
+“ª³“ªì“ª¬“ù±“é©“ªË“ªÊ“ªë“ª³“ªÈ“ªÇ“ª·“ªç“ª¦“¡£)
+$_ ’ÊÑ‘Êý“ªÏ“äÞ’ÌÛ“ªË“ªÏ“«í’¡¼“««“«ë“ûù“ªµ“ªì“ªÞ“ª»“ªó“¡£
+“ª½“ª¦“ª·“ª¿“ª¤“íÞ“ùê“ªÏ“«ë’¡¼“«×“ªÎ“îñ“ªË C<local $_;> “ªÈ“ßö“ª¯“ù±“é©“ª¬“ª¢“ªê“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -4895,7 +4909,7 @@ The following lines are equivalent:
 
 =end original
 
-ä»¥ä¸‹ã®ã‚‚ã®ã¯ã€ãŠäº’ã„ã«åŒå€¤ãªã‚‚ã®ã§ã™:
+“ì¤“ù»“ªÎ“ªâ“ªÎ“ªÏ“¡¢“ªª“û»“ª¤“ªË“ÔÒ“ö·“ªÊ“ªâ“ªÎ“ªÇ“ª¹:
 
     while (defined($_ = <STDIN>)) { print; }
     while ($_ = <STDIN>) { print; }
@@ -4911,7 +4925,7 @@ This also behaves similarly, but avoids $_ :
 
 =end original
 
-ä»¥ä¸‹ã¯åŒæ§˜ã®æŒ¯ã‚‹èˆžã„ã‚’ã—ã¾ã™ãŒã€$_ ã‚’ä½¿ã„ã¾ã›ã‚“:
+“ì¤“ù»“ªÏ“ÔÒ’ÍÍ“ªÎ“òÉ“ªë“Ùñ“ª¤“ªò“ª·“ªÞ“ª¹“ª¬“¡¢$_ “ªò“ÞÅ“ª¤“ªÞ“ª»“ªó:
 
     while (my $line = <STDIN>) { print $line }
 
@@ -4926,12 +4940,12 @@ to terminate the loop, they should be tested for explicitly:
 
 =end original
 
-ã“ã‚Œã‚‰ã®ãƒ«ãƒ¼ãƒ—æ§‹é€ ã®ä¸­ã§ã€ä»£å…¥ã•ã‚ŒãŸå€¤ã¯ (ä»£å…¥ãŒè‡ªå‹•ã‹æ˜Žç¤ºçš„ã‹ã«é–¢ã‚ã‚Šãªã)
-å®šç¾©ã•ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’è¦‹ã‚‹ãŸã‚ã«ãƒ†ã‚¹ãƒˆã•ã‚Œã¾ã™ã€‚
-å®šç¾©ãƒ†ã‚¹ãƒˆã¯ã€è¡ŒãŒ Perl ã«ã¨ã£ã¦å½ã¨ãªã‚‹æ–‡å­—åˆ—å€¤ã‚’æŒã£ã¦ã„ã‚‹ã‹ã©ã†ã‹ã®
-å•é¡Œã‚’é¿ã‘ã¾ã™ã€‚ä¾‹ãˆã° newline ã®ã¤ã„ã¦ã„ãªã„  "" ã‚„ "0" ã§ã™ã€‚
-ã‚‚ã—æœ¬å½“ã«ã“ã®ã‚ˆã†ãªå€¤ã§ãƒ«ãƒ¼ãƒ—ã‚’çµ‚äº†ã•ã›ãŸã„ã¨ãã¯ã€
-ä»¥ä¸‹ã®ã‚ˆã†ã«æ˜Žç¤ºçš„ã«ãƒ†ã‚¹ãƒˆã™ã‚‹ã¹ãã§ã™:
+“ª³“ªì“ªé“ªÎ“«ë’¡¼“«×“Ï°“ðã“ªÎ“ñé“ªÇ“¡¢“ÓÛ“ìý“ªµ“ªì“ª¿“ö·“ªÏ (“ÓÛ“ìý“ª¬“í»“ÔÑ“ª«“Ù¥“ãÆ“îÜ“ª«“ªË’´Ø“ªï“ªê“ªÊ“ª¯)
+“ïÒ“ëù“ªµ“ªì“ªÆ“ª¤“ªë“ª«“ªÉ“ª¦“ª«“ªò“Ì¸“ªë“ª¿“ªá“ªË“«Æ“«¹“«È“ªµ“ªì“ªÞ“ª¹“¡£
+“ïÒ“ëù“«Æ“«¹“«È“ªÏ“¡¢“ú¼“ª¬ Perl “ªË“ªÈ“ªÃ“ªÆ˜ºô“ªÈ“ªÊ“ªë“Ùþ“í®“Öª“ö·“ªò“ò¥“ªÃ“ªÆ“ª¤“ªë“ª«“ªÉ“ª¦“ª«“ªÎ
+“Ùý“ð¹“ªò“ù­“ª±“ªÞ“ª¹“¡£“ÖÇ“ª¨“ªÐ newline “ªÎ“ªÄ“ª¤“ªÆ“ª¤“ªÊ“ª¤  "" “ªä "0" “ªÇ“ª¹“¡£
+“ªâ“ª·“Üâ‘µ±“ªË“ª³“ªÎ“ªè“ª¦“ªÊ“ö·“ªÇ“«ë’¡¼“«×“ªò“ðû“Öõ“ªµ“ª»“ª¿“ª¤“ªÈ“ª­“ªÏ“¡¢
+“ì¤“ù»“ªÎ“ªè“ª¦“ªË“Ù¥“ãÆ“îÜ“ªË“«Æ“«¹“«È“ª¹“ªë“ªÙ“ª­“ªÇ“ª¹:
 
     while (($_ = <STDIN>) ne '0') { ... }
     while (<STDIN>) { last unless $_; ... }
@@ -4945,10 +4959,10 @@ command-line switch (the C<$^W> variable) is in effect.
 
 =end original
 
-ãã®ä»–ã®ãƒ–ãƒ¼ãƒ«å€¤ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã¯ã€æ˜Žç¤ºçš„ãª C<defined> ã‚„æ¯”è¼ƒãªã—ã«
-C<< <I<filehandle>> >> ã‚’ä½¿ã†ã¨ã€C<use warnings> ãƒ—ãƒ©ã‚°ãƒžã‚„
-B<-w> ã‚³ãƒžãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ã‚¹ã‚¤ãƒƒãƒ (C<$^W> å¤‰æ•°) ãŒæœ‰åŠ¹ãªã¨ãã«ã¯ã€
-è­¦å‘Šã‚’ç™ºç”Ÿã•ã›ã¾ã™ã€‚
+“ª½“ªÎ“öâ“ªÎ“«Ö’¡¼“«ë“ö·“«³“«ó“«Æ“«­“«¹“«È“ªÇ“ªÏ“¡¢“Ù¥“ãÆ“îÜ“ªÊ C<defined> “ªä“Ýï“Îò“ªÊ“ª·“ªË
+C<< <I<filehandle>> >> “ªò“ÞÅ“ª¦“ªÈ“¡¢C<use warnings> “«×“«é“«°“«Þ“ªä
+B<-w> “«³“«Þ“«ó“«É“«é“«¤“«ó“«¹“«¤“«Ã“«Á (C<$^W> ’ÊÑ‘Êý) “ª¬“êó’¸ú“ªÊ“ªÈ“ª­“ªË“ªÏ“¡¢
+“Ìí“Í±“ªò’È¯“ßæ“ªµ“ª»“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -4962,13 +4976,13 @@ X<stdin> X<stdout> X<sterr>
 
 =end original
 
-STDINã€STDOUTã€STDERR ã¨ã„ã†ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã¯ã€ã‚ã‚‰ã‹ã˜ã‚å®šç¾©ã•ã‚Œã¦ã„ã¾ã™ã€‚
-(C<stdin>ã€C<stdout>ã€C<stderr> ã¨ã„ã†ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã‚‚ã€
-ãƒ­ãƒ¼ã‚«ãƒ«ãªåå‰ã§ã“ã‚Œã‚‰ã®ã‚°ãƒ­ãƒ¼ãƒãƒ«ãªåå‰ãŒè¦‹ãˆãªããªã£ã¦ã„ã‚‹
-ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã‚’é™¤ã‘ã°ã€ä½¿ç”¨ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚)
-ãã®ä»–ã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã¯ã€open() é–¢æ•°ãªã©ã§ä½œã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
-ã“ã‚Œã«é–¢ã™ã‚‹è©³ç´°ã«ã¤ã„ã¦ã¯ L<perlopentut> ã¨ L<perlfunc/open> ã‚’
-å‚ç…§ã—ã¦ä¸‹ã•ã„ã€‚
+STDIN“¡¢STDOUT“¡¢STDERR “ªÈ“ª¤“ª¦“«Õ“«¡“«¤“«ë“«Ï“«ó“«É“«ë“ªÏ“¡¢“ª¢“ªé“ª«“ª¸“ªá“ïÒ“ëù“ªµ“ªì“ªÆ“ª¤“ªÞ“ª¹“¡£
+(C<stdin>“¡¢C<stdout>“¡¢C<stderr> “ªÈ“ª¤“ª¦“«Õ“«¡“«¤“«ë“«Ï“«ó“«É“«ë“ªâ“¡¢
+“«í’¡¼“««“«ë“ªÊ“Ù£“îñ“ªÇ“ª³“ªì“ªé“ªÎ“«°“«í’¡¼“«Ð“«ë“ªÊ“Ù£“îñ“ª¬“Ì¸“ª¨“ªÊ“ª¯“ªÊ“ªÃ“ªÆ“ª¤“ªë
+“«Ñ“«Ã“«±’¡¼“«¸“ªò“ð¶“ª±“ªÐ“¡¢“ÞÅ“éÄ“ª¹“ªë“ª³“ªÈ“ª¬“ªÇ“ª­“ªÞ“ª¹“¡£)
+“ª½“ªÎ“öâ“ªÎ“«Õ“«¡“«¤“«ë“«Ï“«ó“«É“«ë“ªÏ“¡¢open() ’´Ø‘Êý“ªÊ“ªÉ“ªÇ“íÂ“ªë“ª³“ªÈ“ª¬“ªÇ“ª­“ªÞ“ª¹“¡£
+“ª³“ªì“ªË’´Ø“ª¹“ªë“ßÙ“á¬“ªË“ªÄ“ª¤“ªÆ“ªÏ L<perlopentut> “ªÈ L<perlfunc/open> “ªò
+‘²Î“ðÎ“ª·“ªÆ“ù»“ªµ“ª¤“¡£
 X<stdin> X<stdout> X<sterr>
 
 =begin original
@@ -4980,10 +4994,10 @@ way, so use with care.
 
 =end original
 
-<FILEHANDLE> ãŒãƒªã‚¹ãƒˆã‚’å¿…è¦ã¨ã™ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ç”¨ã„ã‚‰ã‚Œã‚‹ã¨ã€
-1 è¦ç´ ã« 1 è¡Œã®å…¥åŠ›è¡Œã™ã¹ã¦ã‹ã‚‰ãªã‚‹ãƒªã‚¹ãƒˆãŒè¿”ã•ã‚Œã¾ã™ã€‚
-ã“ã‚Œã‚’ä½¿ã†ã¨ç°¡å˜ã«ã‹ãªã‚Šå¤§ããªãƒ‡ãƒ¼ã‚¿ã«ãªã£ã¦ã—ã¾ã„ã¾ã™ã®ã§ã€
-æ³¨æ„ã‚’è¦ã—ã¾ã™ã€‚
+<FILEHANDLE> “ª¬“«ê“«¹“«È“ªò“ù±“é©“ªÈ“ª¹“ªë“«³“«ó“«Æ“«­“«¹“«È“ªÇ“éÄ“ª¤“ªé“ªì“ªë“ªÈ“¡¢
+1 “é©“áÈ“ªË 1 “ú¼“ªÎ“ìý“Õô“ú¼“ª¹“ªÙ“ªÆ“ª«“ªé“ªÊ“ªë“«ê“«¹“«È“ª¬“Ú÷“ªµ“ªì“ªÞ“ª¹“¡£
+“ª³“ªì“ªò“ÞÅ“ª¦“ªÈ“ÊÛ’Ã±“ªË“ª«“ªÊ“ªê“ÓÞ“ª­“ªÊ“«Ç’¡¼“«¿“ªË“ªÊ“ªÃ“ªÆ“ª·“ªÞ“ª¤“ªÞ“ª¹“ªÎ“ªÇ“¡¢
+“ñ¼“ëò“ªò“é©“ª·“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -4992,8 +5006,8 @@ See L<perlfunc/readline>.
 
 =end original
 
-<FILEHANDLE> ã¯ C<readline(*FILEHANDLE)> ã¨ã‚‚æ›¸ã‘ã¾ã™ã€‚
-L<perlfunc/readline> ã‚’å‚ç…§ã—ã¦ä¸‹ã•ã„ã€‚
+<FILEHANDLE> “ªÏ C<readline(*FILEHANDLE)> “ªÈ“ªâ“ßö“ª±“ªÞ“ª¹“¡£
+L<perlfunc/readline> “ªò‘²Î“ðÎ“ª·“ªÆ“ù»“ªµ“ª¤“¡£
 
 =begin original
 
@@ -5007,15 +5021,15 @@ of filenames.  The loop
 
 =end original
 
-ãƒŒãƒ«ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ« <> ã¯ç‰¹åˆ¥ã§ã€B<sed> ã‚„ B<awk> ã®å‹•ä½œã‚’
-ã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ãƒˆã™ã‚‹ãŸã‚ã«ä½¿ã‚ã‚Œã¾ã™ã€‚
-<> ã‹ã‚‰ã®å…¥åŠ›ã¯ã€æ¨™æº–å…¥åŠ›ã‹ã‚‰ã‹ã€ã‚³ãƒžãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ä¸Šã«ä¸¦ã¹ã‚‰ã‚ŒãŸå€‹ã€…ã®
-ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰è¡Œãªã‚ã‚Œã¾ã™ã€‚
-å‹•ä½œã®æ¦‚è¦ã¯ã€ä»¥ä¸‹ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚
-æœ€åˆã« <> ãŒè©•ä¾¡ã•ã‚Œã‚‹ã¨ã€é…åˆ— @ARGV ãŒèª¿ã¹ã‚‰ã‚Œã€ç©ºã§ã‚ã‚Œã°ã€
-C<$ARGV[0]> ã« "-"ã‚’è¨­å®šã—ã¾ã™ã€‚
-ã“ã‚Œã¯ã€open ã•ã‚Œã‚‹ã¨ãæ¨™æº–å…¥åŠ›ã¨ãªã‚Šã¾ã™ã€‚
-ãã®å¾Œã€é…åˆ— @ARGV ãŒãƒ•ã‚¡ã‚¤ãƒ«åã®ãƒªã‚¹ãƒˆã¨ã—ã¦å‡¦ç†ã•ã‚Œã¾ã™ã€‚
+“«Ì“«ë“«Õ“«¡“«¤“«ë“«Ï“«ó“«É“«ë <> “ªÏ“÷å“Ü¬“ªÇ“¡¢B<sed> “ªä B<awk> “ªÎ“ÔÑ“íÂ“ªò
+“«¨“«ß“«å“«ì’¡¼“«È“ª¹“ªë“ª¿“ªá“ªË“ÞÅ“ªï“ªì“ªÞ“ª¹“¡£
+<> “ª«“ªé“ªÎ“ìý“Õô“ªÏ“¡¢“øö“ñÞ“ìý“Õô“ª«“ªé“ª«“¡¢“«³“«Þ“«ó“«É“«é“«¤“«ó“ß¾“ªË˜­å“ªÙ“ªé“ªì“ª¿“ËÁ‘¡©“ªÎ
+“«Õ“«¡“«¤“«ë“ª«“ªé“ú¼“ªÊ“ªï“ªì“ªÞ“ª¹“¡£
+“ÔÑ“íÂ“ªÎ‘¸Å“é©“ªÏ“¡¢“ì¤“ù»“ªÎ“ªè“ª¦“ªË“ªÊ“ªê“ªÞ“ª¹“¡£
+“õÌ“ôø“ªË <> “ª¬“øÄ’²Á“ªµ“ªì“ªë“ªÈ“¡¢“ÛÕ“Öª @ARGV “ª¬“ðà“ªÙ“ªé“ªì“¡¢“Íö“ªÇ“ª¢“ªì“ªÐ“¡¢
+C<$ARGV[0]> “ªË "-"“ªò“àâ“ïÒ“ª·“ªÞ“ª¹“¡£
+“ª³“ªì“ªÏ“¡¢open “ªµ“ªì“ªë“ªÈ“ª­“øö“ñÞ“ìý“Õô“ªÈ“ªÊ“ªê“ªÞ“ª¹“¡£
+“ª½“ªÎ“ý­“¡¢“ÛÕ“Öª @ARGV “ª¬“«Õ“«¡“«¤“«ë“Ù£“ªÎ“«ê“«¹“«È“ªÈ“ª·“ªÆ’½è“×â“ªµ“ªì“ªÞ“ª¹“¡£
 
     while (<>) {
 	...			# code for each line
@@ -5027,7 +5041,7 @@ is equivalent to the following Perl-like pseudo code:
 
 =end original
 
-ã¯ä»¥ä¸‹ã®ã®ã‚ˆã†ãª Perl ã®æ“¬ä¼¼ã‚³ãƒ¼ãƒ‰ã¨ç­‰ä¾¡ã§ã™:
+“ªÏ“ì¤“ù»“ªÎ“ªÎ“ªè“ª¦“ªÊ Perl “ªÎ“ëô“ÞÄ“«³’¡¼“«É“ªÈ“Ôõ’²Á“ªÇ“ª¹:
 
     unshift(@ARGV, '-') unless @ARGV;
     while ($ARGV = shift) {
@@ -5048,13 +5062,13 @@ is magical.  (The pseudo code above doesn't work because it treats
 
 =end original
 
-ä½†ã—ã€ã‚ãšã‚‰ã‚ã—ãæ›¸ã‹ãªãã¦ã‚‚ã€å‹•ä½œã—ã¾ã™ã€‚
-å®Ÿéš›ã« @ARGV ã‚’ shift ã—ã¾ã™ã—ã€ãã®æ™‚ç‚¹ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’å¤‰æ•° $ARGV ã«
-å…¥ã‚Œã¦ã„ã¾ã™ã€‚
-ã¾ãŸã€å†…éƒ¨çš„ã«ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ« ARGV ã‚’ä½¿ã£ã¦ã„ã¦ã€<> ã¯ãƒžã‚¸ã‚«ãƒ«ãª
-<ARGV> ã®åŒç¾©èªžã¨ãªã£ã¦ã„ã¾ã™ã€‚
-(ä¸Šè¨˜ã®æ“¬ä¼¼ã‚³ãƒ¼ãƒ‰ã¯ã€<ARGV> ã‚’é€šå¸¸ã®ã‚‚ã®ã¨ã—ã¦æ‰±ã£ã¦ã„ã‚‹ã®ã§ã€
-ã†ã¾ãå‹•ä½œã—ã¾ã›ã‚“ã€‚)
+“Ó£“ª·“¡¢“ªï“ªº“ªé“ªï“ª·“ª¯“ßö“ª«“ªÊ“ª¯“ªÆ“ªâ“¡¢“ÔÑ“íÂ“ª·“ªÞ“ª¹“¡£
+’¼Â“ð·“ªË @ARGV “ªò shift “ª·“ªÞ“ª¹“ª·“¡¢“ª½“ªÎ“ãÁ“ïÃ“ªÎ“«Õ“«¡“«¤“«ë“Ù£“ªò’ÊÑ‘Êý $ARGV “ªË
+“ìý“ªì“ªÆ“ª¤“ªÞ“ª¹“¡£
+“ªÞ“ª¿“¡¢‘ÄÚ“Ý»“îÜ“ªË“«Õ“«¡“«¤“«ë“«Ï“«ó“«É“«ë ARGV “ªò“ÞÅ“ªÃ“ªÆ“ª¤“ªÆ“¡¢<> “ªÏ“«Þ“«¸“««“«ë“ªÊ
+<ARGV> “ªÎ“ÔÒ“ëù“åÞ“ªÈ“ªÊ“ªÃ“ªÆ“ª¤“ªÞ“ª¹“¡£
+(“ß¾“ÑÀ“ªÎ“ëô“ÞÄ“«³’¡¼“«É“ªÏ“¡¢<ARGV> “ªò“÷×“ßÈ“ªÎ“ªâ“ªÎ“ªÈ“ª·“ªÆ“Ðâ“ªÃ“ªÆ“ª¤“ªë“ªÎ“ªÇ“¡¢
+“ª¦“ªÞ“ª¯“ÔÑ“íÂ“ª·“ªÞ“ª»“ªó“¡£)
 
 =begin original
 
@@ -5065,12 +5079,12 @@ in L<perlfunc/eof> for how to reset line numbers on each file.
 
 =end original
 
-æœ€çµ‚çš„ã«ã€@ARGV ã«æ‰±ã„ãŸã„ã¨æ€ã£ã¦ã„ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«åãŒå«ã¾ã‚Œã‚‹ã®ã§ã‚ã‚Œã°ã€
-æœ€åˆã« <> ã‚’è©•ä¾¡ã™ã‚‹å‰ã« @ARGV ã‚’å¤‰æ›´ã™ã‚‹ã“ã¨ã‚‚å¯èƒ½ã§ã™ã€‚
-è¡Œç•ªå· (C<$.>) ã¯ã€å…¥åŠ›ãƒ•ã‚¡ã‚¤ãƒ«ãŒã‚ãŸã‹ã‚‚ 1 ã¤ã®å¤§ããªãƒ•ã‚¡ã‚¤ãƒ«ã§
-ã‚ã‚‹ã‹ã®ã‚ˆã†ã«ã€ç¶šã‘ã¦ã‚«ã‚¦ãƒ³ãƒˆã•ã‚Œã¾ã™ã€‚
-å€‹ã€…ã®ãƒ•ã‚¡ã‚¤ãƒ«ã”ã¨ã«ãƒªã‚»ãƒƒãƒˆã™ã‚‹æ–¹æ³•ã¯ã€L<perlfunc/eof> ã®ä¾‹ã‚’
-å‚ç…§ã—ã¦ãã ã•ã„ã€‚
+“õÌ“ðû“îÜ“ªË“¡¢@ARGV “ªË“Ðâ“ª¤“ª¿“ª¤“ªÈ“ÞÖ“ªÃ“ªÆ“ª¤“ªë“«Õ“«¡“«¤“«ë“Ù£“ª¬“ùß“ªÞ“ªì“ªë“ªÎ“ªÇ“ª¢“ªì“ªÐ“¡¢
+“õÌ“ôø“ªË <> “ªò“øÄ’²Á“ª¹“ªë“îñ“ªË @ARGV “ªò’ÊÑ“ÌÚ“ª¹“ªë“ª³“ªÈ“ªâ“Ê¦“Òö“ªÇ“ª¹“¡£
+“ú¼“Ûã‘ºÅ (C<$.>) “ªÏ“¡¢“ìý“Õô“«Õ“«¡“«¤“«ë“ª¬“ª¢“ª¿“ª«“ªâ 1 “ªÄ“ªÎ“ÓÞ“ª­“ªÊ“«Õ“«¡“«¤“«ë“ªÇ
+“ª¢“ªë“ª«“ªÎ“ªè“ª¦“ªË“¡¢’Â³“ª±“ªÆ“««“«¦“«ó“«È“ªµ“ªì“ªÞ“ª¹“¡£
+“ËÁ‘¡©“ªÎ“«Õ“«¡“«¤“«ë“ª´“ªÈ“ªË“«ê“«»“«Ã“«È“ª¹“ªë“Û°“Ûö“ªÏ“¡¢L<perlfunc/eof> “ªÎ“ÖÇ“ªò
+‘²Î“ðÎ“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
 
 =begin original
 
@@ -5079,9 +5093,9 @@ This sets @ARGV to all plain text files if no @ARGV was given:
 
 =end original
 
-æœ€åˆã‹ã‚‰ @ARGV ã«è‡ªåˆ†ã§ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒªã‚¹ãƒˆã‚’è¨­å®šã—ã¦ã‚‚ã‹ã¾ã„ã¾ã›ã‚“ã€‚
-ä»¥ä¸‹ã¯ @ARGV ãŒä¸Žãˆã‚‰ã‚Œãªã‹ã£ãŸã¨ãã«å…¨ã¦ã®ãƒ†ã‚­ã‚¹ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã‚’
-@ARGV ã«è¨­å®šã—ã¾ã™ã€‚
+“õÌ“ôø“ª«“ªé @ARGV “ªË“í»“ÝÂ“ªÇ“«Õ“«¡“«¤“«ë“ªÎ“«ê“«¹“«È“ªò“àâ“ïÒ“ª·“ªÆ“ªâ“ª«“ªÞ“ª¤“ªÞ“ª»“ªó“¡£
+“ì¤“ù»“ªÏ @ARGV “ª¬‘Óë“ª¨“ªé“ªì“ªÊ“ª«“ªÃ“ª¿“ªÈ“ª­“ªË“îï“ªÆ“ªÎ“«Æ“«­“«¹“«È“«Õ“«¡“«¤“«ë“ªò
+@ARGV “ªË“àâ“ïÒ“ª·“ªÞ“ª¹“¡£
 
     @ARGV = grep { -f && -T } glob('*') unless @ARGV;
 
@@ -5092,8 +5106,8 @@ filters compressed arguments through B<gzip>:
 
 =end original
 
-ã“ã“ã«ãƒ‘ã‚¤ãƒ—ã‚³ãƒžãƒ³ãƒ‰ã‚’ç½®ãã“ã¨ã‚‚å‡ºæ¥ã¾ã™ã€‚
-ä¾‹ãˆã°ã€ä»¥ä¸‹ã¯åœ§ç¸®ã•ã‚ŒãŸå¼•æ•°ã‚’è‡ªå‹•çš„ã« B<gzip> ã®ãƒ•ã‚£ãƒ«ã‚¿ã«é€šã—ã¾ã™:
+“ª³“ª³“ªË“«Ñ“«¤“«×“«³“«Þ“«ó“«É“ªò“öÇ“ª¯“ª³“ªÈ“ªâ“õó‘À´“ªÞ“ª¹“¡£
+“ÖÇ“ª¨“ªÐ“¡¢“ì¤“ù»“ªÏ’°µ“õê“ªµ“ªì“ª¿“ìÚ‘Êý“ªò“í»“ÔÑ“îÜ“ªË B<gzip> “ªÎ“«Õ“«£“«ë“«¿“ªË“÷×“ª·“ªÞ“ª¹:
 
     @ARGV = map { /\.(gz|Z)$/ ? "gzip -dc < $_ |" : $_ } @ARGV;
 
@@ -5104,8 +5118,8 @@ Getopts modules or put a loop on the front like this:
 
 =end original
 
-ã‚¹ã‚¯ãƒªãƒ—ãƒˆã«ã‚¹ã‚¤ãƒƒãƒã‚’æ¸¡ã—ãŸã„ã®ã§ã‚ã‚Œã°ã€Getopts ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’
-ä½¿ã†ã“ã¨ã‚‚ã§ãã¾ã™ã—ã€å®Ÿéš›ã®å‡¦ç†ã®å‰ã«ã®ã‚ˆã†ãªãƒ«ãƒ¼ãƒ—ã‚’ç½®ãã“ã¨ã‚‚ã§ãã¾ã™ã€‚
+“«¹“«¯“«ê“«×“«È“ªË“«¹“«¤“«Ã“«Á“ªò“Ô¤“ª·“ª¿“ª¤“ªÎ“ªÇ“ª¢“ªì“ªÐ“¡¢Getopts “«â“«¸“«å’¡¼“«ë“ªò
+“ÞÅ“ª¦“ª³“ªÈ“ªâ“ªÇ“ª­“ªÞ“ª¹“ª·“¡¢’¼Â“ð·“ªÎ’½è“×â“ªÎ“îñ“ªË“ªÎ“ªè“ª¦“ªÊ“«ë’¡¼“«×“ªò“öÇ“ª¯“ª³“ªÈ“ªâ“ªÇ“ª­“ªÞ“ª¹“¡£
 
     while ($_ = $ARGV[0], /^-/) {
 	shift;
@@ -5127,10 +5141,10 @@ If you call it again after this, it will assume you are processing another
 
 =end original
 
-ã‚·ãƒ³ãƒœãƒ« <> ãŒãƒ•ã‚¡ã‚¤ãƒ«ã®æœ€å¾Œã§ C<undef> ã‚’è¿”ã™ã®ã¯ä¸€åº¦ãã‚Šã§ã™ã€‚
-ãã®ã‚ã¨ã§ã‚‚ã†ä¸€åº¦å‘¼ã³å‡ºã™ã¨ã€æ–°ãŸã«åˆ¥ã® @ARGV ã‚’å‡¦ç†ã™ã‚‹ã‚‚ã®ã¨ã¿ãªã•ã‚Œã€
-ãã®æ™‚ã« @ARGV ã‚’è¨­å®šã—ãªãŠã—ã¦ã„ãªã„ã¨ã€STDIN ã‹ã‚‰ã®å…¥åŠ›ã‚’
-èª­ã¿è¾¼ã‚€ã“ã¨ã«ãªã‚Šã¾ã™ã€‚
+“«·“«ó“«Ü“«ë <> “ª¬“«Õ“«¡“«¤“«ë“ªÎ“õÌ“ý­“ªÇ C<undef> “ªò“Ú÷“ª¹“ªÎ“ªÏ“ìé“Óø“ª­“ªê“ªÇ“ª¹“¡£
+“ª½“ªÎ“ª¢“ªÈ“ªÇ“ªâ“ª¦“ìé“Óø“û¼“ªÓ“õó“ª¹“ªÈ“¡¢“ãæ“ª¿“ªË“Ü¬“ªÎ @ARGV “ªò’½è“×â“ª¹“ªë“ªâ“ªÎ“ªÈ“ªß“ªÊ“ªµ“ªì“¡¢
+“ª½“ªÎ“ãÁ“ªË @ARGV “ªò“àâ“ïÒ“ª·“ªÊ“ªª“ª·“ªÆ“ª¤“ªÊ“ª¤“ªÈ“¡¢STDIN “ª«“ªé“ªÎ“ìý“Õô“ªò
+’ÆÉ“ªß’¹þ“ªà“ª³“ªÈ“ªË“ªÊ“ªê“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -5141,9 +5155,9 @@ same.  For example:
 
 =end original
 
-å±±æ‹¬å¼§ã®ä¸­ã®æ–‡å­—åˆ—ãŒ (<$foo> ã®ã‚ˆã†ãª) å˜ç´”ã‚¹ã‚«ãƒ©å¤‰æ•°ã§ã‚ã‚Œã°ã€
-ãã®å¤‰æ•°ãŒå…¥åŠ›ã‚’è¡Œãªã†ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã®åå‰ãã®ã‚‚ã®ã€åå‰ã¸ã®åž‹ã‚°ãƒ­ãƒ–ã€
-åå‰ã¸ã®ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹ã®ã„ãšã‚Œã‹ã‚’ç¤ºã—ã¦ã„ã‚‹ã¨ã¿ãªã•ã‚Œã¾ã™ã€‚
+“ß£“ÎÀ“ûÁ“ªÎ“ñé“ªÎ“Ùþ“í®“Öª“ª¬ (<$foo> “ªÎ“ªè“ª¦“ªÊ) ’Ã±“âí“«¹“««“«é’ÊÑ‘Êý“ªÇ“ª¢“ªì“ªÐ“¡¢
+“ª½“ªÎ’ÊÑ‘Êý“ª¬“ìý“Õô“ªò“ú¼“ªÊ“ª¦“«Õ“«¡“«¤“«ë“«Ï“«ó“«É“«ë“ªÎ“Ù£“îñ“ª½“ªÎ“ªâ“ªÎ“¡¢“Ù£“îñ“ªØ“ªÎ“úþ“«°“«í“«Ö“¡¢
+“Ù£“îñ“ªØ“ªÎ“«ê“«Õ“«¡“«ì“«ó“«¹“ªÎ“ª¤“ªº“ªì“ª«“ªò“ãÆ“ª·“ªÆ“ª¤“ªë“ªÈ“ªß“ªÊ“ªµ“ªì“ªÞ“ª¹“¡£
 
     $fh = \*STDIN;
     $line = <$fh>;
@@ -5163,16 +5177,16 @@ is treated as C<glob("$x ")>, not C<readline($x)>.
 
 =end original
 
-å±±æ‹¬å¼§ã®ä¸­ã®æ–‡å­—åˆ—ãŒãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã§ã‚‚ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«åã€åž‹ã‚°ãƒ­ãƒ–ã€
-åž‹ã‚°ãƒ­ãƒ–ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹ã®ã„ãšã‚Œã‹ãŒå…¥ã£ãŸå˜ç´”ã‚¹ã‚«ãƒ©å¤‰æ•°ã§ã‚‚ãªã‘ã‚Œã°ã€
-ã‚°ãƒ­ãƒ–ã‚’è¡Œãªã†ãƒ•ã‚¡ã‚¤ãƒ«åã®ãƒ‘ã‚¿ãƒ¼ãƒ³ã¨è§£é‡ˆã•ã‚Œã€ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«ã‚ˆã£ã¦
-ãƒ•ã‚¡ã‚¤ãƒ«åã®ãƒªã‚¹ãƒˆã‹ã€ãã®ãƒªã‚¹ãƒˆã®æ¬¡ã®ãƒ•ã‚¡ã‚¤ãƒ«åãŒè¿”ã•ã‚Œã¾ã™ã€‚
-ã“ã®åŒºåˆ¥ã¯å˜ã«æ§‹æ–‡çš„ã«è¡Œã‚ã‚Œã¾ã™ã€‚
-C<< <$x> >> ã¯å¸¸ã«é–“æŽ¥ãƒãƒ³ãƒ‰ãƒ«ã‹ã‚‰ readline() ã—ã¾ã™ãŒã€
-C<< <$hash{key}> >> ã¯å¸¸ã« glob() ã—ã¾ã™ã€‚
-$x ã¯å˜ç´”ã‚¹ã‚«ãƒ©ãƒ¼å¤‰æ•°ã§ã™ãŒã€C<$hash{key}> ã¯é•ã†(ãƒãƒƒã‚·ãƒ¥è¦ç´ )ã‹ã‚‰ã§ã™ã€‚
-C<< <$x > >> (ä½™åˆ†ãªç©ºç™½ã«æ³¨æ„) ã§ã™ã‚‰ C<readline($x)> ã§ã¯ãªã
-C<glob("$x ")> ã¨ã—ã¦æ‰±ã‚ã‚Œã¾ã™ã€‚
+“ß£“ÎÀ“ûÁ“ªÎ“ñé“ªÎ“Ùþ“í®“Öª“ª¬“«Õ“«¡“«¤“«ë“«Ï“«ó“«É“«ë“ªÇ“ªâ“«Õ“«¡“«¤“«ë“«Ï“«ó“«É“«ë“Ù£“¡¢“úþ“«°“«í“«Ö“¡¢
+“úþ“«°“«í“«Ö“«ê“«Õ“«¡“«ì“«ó“«¹“ªÎ“ª¤“ªº“ªì“ª«“ª¬“ìý“ªÃ“ª¿’Ã±“âí“«¹“««“«é’ÊÑ‘Êý“ªÇ“ªâ“ªÊ“ª±“ªì“ªÐ“¡¢
+“«°“«í“«Ö“ªò“ú¼“ªÊ“ª¦“«Õ“«¡“«¤“«ë“Ù£“ªÎ“«Ñ“«¿’¡¼“«ó“ªÈ“ú°’¼á“ªµ“ªì“¡¢“«³“«ó“«Æ“«­“«¹“«È“ªË“ªè“ªÃ“ªÆ
+“«Õ“«¡“«¤“«ë“Ù£“ªÎ“«ê“«¹“«È“ª«“¡¢“ª½“ªÎ“«ê“«¹“«È“ªÎ“ó­“ªÎ“«Õ“«¡“«¤“«ë“Ù£“ª¬“Ú÷“ªµ“ªì“ªÞ“ª¹“¡£
+“ª³“ªÎ‘Çø“Ü¬“ªÏ’Ã±“ªË“Ï°“Ùþ“îÜ“ªË“ú¼“ªï“ªì“ªÞ“ª¹“¡£
+C<< <$x> >> “ªÏ“ßÈ“ªË“Êà“ïÈ“«Ï“«ó“«É“«ë“ª«“ªé readline() “ª·“ªÞ“ª¹“ª¬“¡¢
+C<< <$hash{key}> >> “ªÏ“ßÈ“ªË glob() “ª·“ªÞ“ª¹“¡£
+$x “ªÏ’Ã±“âí“«¹“««“«é’¡¼’ÊÑ‘Êý“ªÇ“ª¹“ª¬“¡¢C<$hash{key}> “ªÏ“êÞ“ª¦(“«Ï“«Ã“«·“«å“é©“áÈ)“ª«“ªé“ªÇ“ª¹“¡£
+C<< <$x > >> (“åù“ÝÂ“ªÊ“Íö“ÛÜ“ªË“ñ¼“ëò) “ªÇ“ª¹“ªé C<readline($x)> “ªÇ“ªÏ“ªÊ“ª¯
+C<glob("$x ")> “ªÈ“ª·“ªÆ“Ðâ“ªï“ªì“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -5186,14 +5200,14 @@ way to have done it in the first place.)  For example:
 
 =end original
 
-ã¾ãšã€1 æ®µéšŽã ã‘ãƒ€ãƒ–ãƒ«ã‚¯ã‚©ãƒ¼ãƒˆå±•é–‹ãŒè¡Œãªã‚ã‚Œã¾ã™ãŒã€å‰ã®æ®µè½ã«æ›¸ã„ãŸ
-é–“æŽ¥ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã¨åŒã˜ã«ãªã‚‹ã€C<< <$foo> >> ã®ã‚ˆã†ã«ã¯æ›¸ã‘ã¾ã›ã‚“ã€‚
-(Perl ã®å¤ã„ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã§ã¯ã€ãƒ•ã‚¡ã‚¤ãƒ«åã‚°ãƒ­ãƒ–ã¨è§£é‡ˆã•ã›ã‚‹ãŸã‚ã«
-C<< <${foo}> >> ã®ã‚ˆã†ã«ä¸­æ‹¬å¼§ã‚’å…¥ã‚Œã¦ã„ã¾ã—ãŸã€‚
-æœ€è¿‘ã§ã¯ã‚ˆã‚Šæ˜Žç¢ºã«ã™ã‚‹ãŸã‚ã«ã€C<glob($foo)> ã¨å†…éƒ¨é–¢æ•°ã‚’
-å‘¼ã¶ã“ã¨ã‚‚ã§ãã¾ã™ã€‚
-ãŠãã‚‰ãã€ã¾ãšã€ã“ã¡ã‚‰ã®æ–¹ã§è©¦ã™ã®ãŒæ­£è§£ã§ã—ã‚‡ã†ã€‚)
-ä¾‹:
+“ªÞ“ªº“¡¢1 “Ó«“Í­“ªÀ“ª±“«À“«Ö“«ë“«¯“«©’¡¼“«È“î÷“ËÒ“ª¬“ú¼“ªÊ“ªï“ªì“ªÞ“ª¹“ª¬“¡¢“îñ“ªÎ“Ó«“Õª“ªË“ßö“ª¤“ª¿
+“Êà“ïÈ“«Õ“«¡“«¤“«ë“«Ï“«ó“«É“«ë“ªÈ“ÔÒ“ª¸“ªË“ªÊ“ªë“¡¢C<< <$foo> >> “ªÎ“ªè“ª¦“ªË“ªÏ“ßö“ª±“ªÞ“ª»“ªó“¡£
+(Perl “ªÎ“Í¯“ª¤“«Ð’¡¼“«¸“«ç“«ó“ªÇ“ªÏ“¡¢“«Õ“«¡“«¤“«ë“Ù£“«°“«í“«Ö“ªÈ“ú°’¼á“ªµ“ª»“ªë“ª¿“ªá“ªË
+C<< <${foo}> >> “ªÎ“ªè“ª¦“ªË“ñé“ÎÀ“ûÁ“ªò“ìý“ªì“ªÆ“ª¤“ªÞ“ª·“ª¿“¡£
+“õÌ“ÐÎ“ªÇ“ªÏ“ªè“ªê“Ù¥“ü¬“ªË“ª¹“ªë“ª¿“ªá“ªË“¡¢C<glob($foo)> “ªÈ‘ÄÚ“Ý»’´Ø‘Êý“ªò
+“û¼“ªÖ“ª³“ªÈ“ªâ“ªÇ“ª­“ªÞ“ª¹“¡£
+“ªª“ª½“ªé“ª¯“¡¢“ªÞ“ªº“¡¢“ª³“ªÁ“ªé“ªÎ“Û°“ªÇ“ãË“ª¹“ªÎ“ª¬“ïá“ú°“ªÇ“ª·“ªç“ª¦“¡£)
+“ÖÇ:
 
     while (<*.c>) {
 	chmod 0644, $_;
@@ -5205,7 +5219,7 @@ is roughly equivalent to:
 
 =end original
 
-ã¯ã ã„ãŸã„ä»¥ä¸‹ã¨ç­‰ä¾¡ã§ã™:
+“ªÏ“ªÀ“ª¤“ª¿“ª¤“ì¤“ù»“ªÈ“Ôõ’²Á“ªÇ“ª¹:
 
     open(FOO, "echo *.c | tr -s ' \t\r\f' '\\012\\012\\012\\012'|");
     while (<FOO>) {
@@ -5220,8 +5234,8 @@ C<File::Glob> extension.  Of course, the shortest way to do the above is:
 
 =end original
 
-ä½†ã—å®Ÿéš›ã®ã‚°ãƒ­ãƒ–ã¯å†…éƒ¨çš„ã«æ¨™æº–ã® C<File::Glob> ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ä½¿ã„ã¾ã™ã€‚
-ã‚‚ã¡ã‚ã‚“ã€ã‚‚ã£ã¨ç°¡å˜ã«ä»¥ä¸‹ã®ã‚ˆã†ã«æ›¸ã‘ã¾ã™:
+“Ó£“ª·’¼Â“ð·“ªÎ“«°“«í“«Ö“ªÏ‘ÄÚ“Ý»“îÜ“ªË“øö“ñÞ“ªÎ C<File::Glob> “«â“«¸“«å’¡¼“«ë“ªò“ÞÅ“ª¤“ªÞ“ª¹“¡£
+“ªâ“ªÁ“ªí“ªó“¡¢“ªâ“ªÃ“ªÈ“ÊÛ’Ã±“ªË“ì¤“ù»“ªÎ“ªè“ª¦“ªË“ßö“ª±“ªÞ“ª¹:
 
     chmod 0644, <*.c>;
 
@@ -5241,20 +5255,20 @@ say
 
 =end original
 
-(ãƒ•ã‚¡ã‚¤ãƒ«)ã‚°ãƒ­ãƒ–ã¯æ–°ã—ã„ãƒªã‚¹ãƒˆã‚’é–‹å§‹ã™ã‚‹ã¨ãã«ã ã‘(çµ„ã¿è¾¼ã¿ã®)å¼•æ•°ã‚’
-è©•ä¾¡ã—ã¾ã™ã€‚
-å…¨ã¦ã®å€¤ã¯é–‹å§‹ã™ã‚‹å‰ã«èª­ã¿è¾¼ã‚“ã§ã„ãªã‘ã‚Œã°ãªã‚Šã¾ã›ã‚“ã€‚
-ã“ã‚Œã¯ãƒªã‚¹ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã¯ã€ã¨ã«ã‹ãè‡ªå‹•çš„ã«å…¨ã¦ã‚’å–ã‚Šè¾¼ã‚€ã®ã§
-é‡è¦ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
-ã—ã‹ã—ã€ã‚¹ã‚«ãƒ©ãƒ¼ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã¯ã“ã®æ¼”ç®—å­ã¯å‘¼ã³å‡ºã•ã‚ŒãŸæ™‚ã®
-æ¬¡ã®å€¤ã‹ã€ãƒªã‚¹ãƒˆãŒãªããªã£ãŸã¨ãã«ã¯ C<undef> ã‚’è¿”ã—ã¾ã™ã€‚
-ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã‚’èª­ã¿è¾¼ã‚€å ´åˆã¯ã€ã‚°ãƒ­ãƒ–ãŒ C<while> ã®æ¡ä»¶éƒ¨ã«ã‚ã‚‹å ´åˆã¯
-è‡ªå‹•çš„ãª C<defined> ãŒç”Ÿæˆã•ã‚Œã¾ã™ã€‚
-ãªãœãªã‚‰ãã†ã—ãªã„ã¨ã€æœ¬æ¥ã® glob ã®è¿”ã‚Šå€¤ (F<0> ã¨ã„ã†ãƒ•ã‚¡ã‚¤ãƒ«) ãŒ
-ãƒ«ãƒ¼ãƒ—ã‚’çµ‚äº†ã•ã›ã‚‹ã‹ã‚‰ã§ã™ã€‚
-ã“ã“ã§ã‚‚ã€C<undef> ã¯ä¸€åº¦ã ã‘è¿”ã•ã‚Œã¾ã™ã€‚
-å¾“ã£ã¦ã€ã‚‚ã—ã‚°ãƒ­ãƒ–ã‹ã‚‰ä¸€ã¤ã®å€¤ã ã‘ã‚’æƒ³å®šã—ã¦ã„ã‚‹å ´åˆã€
-ä»¥ä¸‹ã®ã‚ˆã†ã«æ›¸ãã“ã¨ãŒ:
+(“«Õ“«¡“«¤“«ë)“«°“«í“«Ö“ªÏ“ãæ“ª·“ª¤“«ê“«¹“«È“ªò“ËÒ“ã·“ª¹“ªë“ªÈ“ª­“ªË“ªÀ“ª±(“ðÚ“ªß’¹þ“ªß“ªÎ)“ìÚ‘Êý“ªò
+“øÄ’²Á“ª·“ªÞ“ª¹“¡£
+“îï“ªÆ“ªÎ“ö·“ªÏ“ËÒ“ã·“ª¹“ªë“îñ“ªË’ÆÉ“ªß’¹þ“ªó“ªÇ“ª¤“ªÊ“ª±“ªì“ªÐ“ªÊ“ªê“ªÞ“ª»“ªó“¡£
+“ª³“ªì“ªÏ“«ê“«¹“«È“«³“«ó“«Æ“«­“«¹“«È“ªÇ“ªÏ“¡¢“ªÈ“ªË“ª«“ª¯“í»“ÔÑ“îÜ“ªË“îï“ªÆ“ªò“ö¢“ªê’¹þ“ªà“ªÎ“ªÇ
+“ñì“é©“ªÇ“ªÏ“ª¢“ªê“ªÞ“ª»“ªó“¡£
+“ª·“ª«“ª·“¡¢“«¹“««“«é’¡¼“«³“«ó“«Æ“«­“«¹“«È“ªÇ“ªÏ“ª³“ªÎ“æÑ“ß©“í­“ªÏ“û¼“ªÓ“õó“ªµ“ªì“ª¿“ãÁ“ªÎ
+“ó­“ªÎ“ö·“ª«“¡¢“«ê“«¹“«È“ª¬“ªÊ“ª¯“ªÊ“ªÃ“ª¿“ªÈ“ª­“ªË“ªÏ C<undef> “ªò“Ú÷“ª·“ªÞ“ª¹“¡£
+“«Õ“«¡“«¤“«ë“«Ï“«ó“«É“«ë“ªò’ÆÉ“ªß’¹þ“ªà“íÞ“ùê“ªÏ“¡¢“«°“«í“«Ö“ª¬ C<while> “ªÎ‘Ìõ“Ëì“Ý»“ªË“ª¢“ªë“íÞ“ùê“ªÏ
+“í»“ÔÑ“îÜ“ªÊ C<defined> “ª¬“ßæ“à÷“ªµ“ªì“ªÞ“ª¹“¡£
+“ªÊ“ª¼“ªÊ“ªé“ª½“ª¦“ª·“ªÊ“ª¤“ªÈ“¡¢“Üâ‘À´“ªÎ glob “ªÎ“Ú÷“ªê“ö· (F<0> “ªÈ“ª¤“ª¦“«Õ“«¡“«¤“«ë) “ª¬
+“«ë’¡¼“«×“ªò“ðû“Öõ“ªµ“ª»“ªë“ª«“ªé“ªÇ“ª¹“¡£
+“ª³“ª³“ªÇ“ªâ“¡¢C<undef> “ªÏ“ìé“Óø“ªÀ“ª±“Ú÷“ªµ“ªì“ªÞ“ª¹“¡£
+’½¾“ªÃ“ªÆ“¡¢“ªâ“ª·“«°“«í“«Ö“ª«“ªé“ìé“ªÄ“ªÎ“ö·“ªÀ“ª±“ªò“ßÌ“ïÒ“ª·“ªÆ“ª¤“ªë“íÞ“ùê“¡¢
+“ì¤“ù»“ªÎ“ªè“ª¦“ªË“ßö“ª¯“ª³“ªÈ“ª¬:
 
     ($file) = <blurch*>;
 
@@ -5264,7 +5278,7 @@ than
 
 =end original
 
-ä»¥ä¸‹ã®ã‚ˆã†ã«æ›¸ãã‚ˆã‚Šã¯ã‚‹ã‹ã«è‰¯ã„ã§ã™:
+“ì¤“ù»“ªÎ“ªè“ª¦“ªË“ßö“ª¯“ªè“ªê“ªÏ“ªë“ª«“ªË“ÕÞ“ª¤“ªÇ“ª¹:
 
     $file = <blurch*>;
 
@@ -5275,7 +5289,7 @@ returning false.
 
 =end original
 
-ãªãœãªã‚‰å¾Œè€…ã¯ãƒ•ã‚¡ã‚¤ãƒ«åã‚’è¿”ã™å ´åˆã¨å½ã‚’è¿”ã™å ´åˆãŒã‚ã‚‹ã‹ã‚‰ã§ã™ã€‚
+“ªÊ“ª¼“ªÊ“ªé“ý­“íº“ªÏ“«Õ“«¡“«¤“«ë“Ù£“ªò“Ú÷“ª¹“íÞ“ùê“ªÈ˜ºô“ªò“Ú÷“ª¹“íÞ“ùê“ª¬“ª¢“ªë“ª«“ªé“ªÇ“ª¹“¡£
 
 =begin original
 
@@ -5285,8 +5299,8 @@ to become confused with the indirect filehandle notation.
 
 =end original
 
-å¤‰æ•°å¤‰æ›ã«æŒ‘æˆ¦ã™ã‚‹å ´åˆã€æ˜Žã‚‰ã‹ã« glob() é–¢æ•°ã‚’ä½¿ã†æ–¹ãŒè‰¯ã„ã§ã™ã€‚
-ãªãœãªã‚‰å¤ã„è¡¨è¨˜ã¯é–“æŽ¥ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«è¡¨è¨˜ã¨æ··ä¹±ã™ã‚‹ã‹ã‚‚çŸ¥ã‚Œãªã„ã‹ã‚‰ã§ã™ã€‚
+’ÊÑ‘Êý’ÊÑ“üµ“ªË“Óû’Àï“ª¹“ªë“íÞ“ùê“¡¢“Ù¥“ªé“ª«“ªË glob() ’´Ø‘Êý“ªò“ÞÅ“ª¦“Û°“ª¬“ÕÞ“ª¤“ªÇ“ª¹“¡£
+“ªÊ“ª¼“ªÊ“ªé“Í¯“ª¤“øú“ÑÀ“ªÏ“Êà“ïÈ“«Õ“«¡“«¤“«ë“«Ï“«ó“«É“«ë“øú“ÑÀ“ªÈ“ûè‘ÂÒ“ª¹“ªë“ª«“ªâ“ò±“ªì“ªÊ“ª¤“ª«“ªé“ªÇ“ª¹“¡£
 
     @files = glob("$dir/*.[ch]");
     @files = glob($files[$i]);
@@ -5294,7 +5308,7 @@ to become confused with the indirect filehandle notation.
 =head2 Constant Folding
 X<constant folding> X<folding>
 
-(å®šæ•°ã®ç•³ã¿è¾¼ã¿)
+(“ïÒ‘Êý“ªÎ’¾ö“ªß’¹þ“ªß)
 
 =begin original
 
@@ -5307,10 +5321,10 @@ compile time.  You can say
 
 =end original
 
-C ã¨åŒã˜ã‚ˆã†ã« Perl ã§ã‚‚ã€æ¼”ç®—å­ã«å¯¾ã™ã‚‹ã™ã¹ã¦ã®å¼•æ•°ãŒã‚¹ã‚¿ãƒ†ã‚£ãƒƒã‚¯ã§ã€
-å‰¯ä½œç”¨ãŒãªã„ã¨åˆ¤æ–­ã§ãã‚Œã°ã€ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«æ™‚ã«å¼ã®è©•ä¾¡ã‚’è¡Œãªã£ã¦ã—ã¾ã„ã¾ã™ã€‚
-ç‰¹ã«ã€å¤‰æ•°ç½®æ›ã®ç„¡ã„ãƒªãƒ†ãƒ©ãƒ«ã©ã†ã—ã®æ–‡å­—åˆ—é€£çµã¯ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«æ™‚ã«è¡Œãªã‚ã‚Œã¾ã™ã€‚
-ãƒãƒƒã‚¯ã‚¹ãƒ©ãƒƒã‚·ãƒ¥ã®è§£é‡ˆã‚‚ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«æ™‚ã«è¡Œãªã‚ã‚Œã¾ã™ã€‚
+C “ªÈ“ÔÒ“ª¸“ªè“ª¦“ªË Perl “ªÇ“ªâ“¡¢“æÑ“ß©“í­“ªË’ÂÐ“ª¹“ªë“ª¹“ªÙ“ªÆ“ªÎ“ìÚ‘Êý“ª¬“«¹“«¿“«Æ“«£“«Ã“«¯“ªÇ“¡¢
+“Üù“íÂ“éÄ“ª¬“ªÊ“ª¤“ªÈ“÷÷‘¶Ï“ªÇ“ª­“ªì“ªÐ“¡¢“«³“«ó“«Ñ“«¤“«ë“ãÁ“ªË“ãÒ“ªÎ“øÄ’²Á“ªò“ú¼“ªÊ“ªÃ“ªÆ“ª·“ªÞ“ª¤“ªÞ“ª¹“¡£
+“÷å“ªË“¡¢’ÊÑ‘Êý“öÇ“üµ“ªÎ“Ùí“ª¤“«ê“«Æ“«é“«ë“ªÉ“ª¦“ª·“ªÎ“Ùþ“í®“Öª“Ö§“Ì¿“ªÏ“«³“«ó“«Ñ“«¤“«ë“ãÁ“ªË“ú¼“ªÊ“ªï“ªì“ªÞ“ª¹“¡£
+“«Ð“«Ã“«¯“«¹“«é“«Ã“«·“«å“ªÎ“ú°’¼á“ªâ“«³“«ó“«Ñ“«¤“«ë“ãÁ“ªË“ú¼“ªÊ“ªï“ªì“ªÞ“ª¹“¡£
 
     'Now is the time for all' . "\n" .
 	'good men to come to.'
@@ -5322,7 +5336,7 @@ you say
 
 =end original
 
-ã¨æ›¸ã„ã¦ã‚‚ã€å†…éƒ¨çš„ã« 1 ã¤ã®æ–‡å­—åˆ—ã«ãªã‚Šã¾ã™ã€‚åŒæ§˜ã«
+“ªÈ“ßö“ª¤“ªÆ“ªâ“¡¢‘ÄÚ“Ý»“îÜ“ªË 1 “ªÄ“ªÎ“Ùþ“í®“Öª“ªË“ªÊ“ªê“ªÞ“ª¹“¡£“ÔÒ’ÍÍ“ªË
 
     foreach $file (@filenames) {
 	if (-s $file > 5 + 100 * 2**16) {  }
@@ -5335,13 +5349,13 @@ represents so that the interpreter won't have to.
 
 =end original
 
-ã¨æ›¸ãã¨ã‚³ãƒ³ãƒ‘ã‚¤ãƒ©ã¯ã€å¼ãŒè¡¨ã‚ã™æ•°å€¤ã‚’ã‚ã‚‰ã‹ã˜ã‚è¨ˆç®—ã—ã¾ã™ã®ã§ã€
-ã‚¤ãƒ³ã‚¿ãƒ—ãƒªã‚¿ã§è¨ˆç®—ã™ã‚‹å¿…è¦ãŒãªããªã£ã¦ã„ã¾ã™ã€‚
+“ªÈ“ßö“ª¯“ªÈ“«³“«ó“«Ñ“«¤“«é“ªÏ“¡¢“ãÒ“ª¬“øú“ªï“ª¹‘Êý“ö·“ªò“ª¢“ªé“ª«“ª¸“ªá“Íª“ß©“ª·“ªÞ“ª¹“ªÎ“ªÇ“¡¢
+“«¤“«ó“«¿“«×“«ê“«¿“ªÇ“Íª“ß©“ª¹“ªë“ù±“é©“ª¬“ªÊ“ª¯“ªÊ“ªÃ“ªÆ“ª¤“ªÞ“ª¹“¡£
 
 =head2 No-ops
 X<no-op> X<nop>
 
-(ç„¡å®Ÿè¡Œ)
+(“Ùí’¼Â“ú¼)
 
 =begin original
 
@@ -5351,16 +5365,16 @@ context, so you can for example safely do
 
 =end original
 
-Perl ã¯å…¬å¼ã«ã¯ç„¡å®Ÿè¡Œæ¼”ç®—å­ã¯ã‚ã‚Šã¾ã›ã‚“ãŒã€è£¸ã®å®šæ•° C<0> ã¨ C<1> ã¯
-ç‰¹åˆ¥ã«ç„¡åŠ¹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã‚‚è­¦å‘Šã‚’å‡ºã•ãªã„ã“ã¨ã«ãªã£ã¦ã„ã‚‹ã®ã§ã€
-ä¾‹ãˆã°å®‰å…¨ã«ä»¥ä¸‹ã®ã‚ˆã†ã«æ›¸ã‘ã¾ã™:
+Perl “ªÏ“Íë“ãÒ“ªË“ªÏ“Ùí’¼Â“ú¼“æÑ“ß©“í­“ªÏ“ª¢“ªê“ªÞ“ª»“ªó“ª¬“¡¢“Õ£“ªÎ“ïÒ‘Êý C<0> “ªÈ C<1> “ªÏ
+“÷å“Ü¬“ªË“Ùí’¸ú“«³“«ó“«Æ“«­“«¹“«È“ªÇ“ªâ“Ìí“Í±“ªò“õó“ªµ“ªÊ“ª¤“ª³“ªÈ“ªË“ªÊ“ªÃ“ªÆ“ª¤“ªë“ªÎ“ªÇ“¡¢
+“ÖÇ“ª¨“ªÐ“äÌ“îï“ªË“ì¤“ù»“ªÎ“ªè“ª¦“ªË“ßö“ª±“ªÞ“ª¹:
 
     1 while foo();
 
 =head2 Bitwise String Operators
 X<operator, bitwise, string>
 
-(ãƒ“ãƒƒãƒˆåˆ—æ¼”ç®—å­)
+(“«Ó“«Ã“«È“Öª“æÑ“ß©“í­)
 
 =begin original
 
@@ -5369,7 +5383,7 @@ Bitstrings of any size may be manipulated by the bitwise operators
 
 =end original
 
-ä»»æ„ã®ã‚µã‚¤ã‚ºã®ãƒ“ãƒƒãƒˆåˆ—ã¯ãƒ“ãƒƒãƒˆå˜ä½æ¼”ç®—å­(C<~ | & ^>)ã§æ“ä½œã§ãã¾ã™ã€‚
+“ìò“ëò“ªÎ“«µ“«¤“«º“ªÎ“«Ó“«Ã“«È“Öª“ªÏ“«Ó“«Ã“«È’Ã±“êÈ“æÑ“ß©“í­(C<~ | & ^>)“ªÇ“ðÃ“íÂ“ªÇ“ª­“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -5382,11 +5396,11 @@ bytes.
 
 =end original
 
-äºŒé …ãƒ“ãƒƒãƒˆå˜ä½æ¼”ç®—å­ã®ã‚ªãƒšãƒ©ãƒ³ãƒ‰ãŒç•°ãªã£ãŸé•·ã•ã®æ–‡å­—åˆ—ã ã£ãŸå ´åˆã€
-B<|> ã¨ B<^> ã®æ¼”ç®—å­ã¯çŸ­ã„å´ã®ã‚ªãƒšãƒ©ãƒ³ãƒ‰ã®å³å´ã«è¿½åŠ ã®ã‚¼ãƒ­ãŒ
-ã¤ã„ã¦ã„ã‚‹ã¨ã¿ãªã—ã¾ã™ã€‚
-ä¸€æ–¹ B<&> æ¼”ç®—å­ã¯é•·ã„æ–¹ã®ã‚ªãƒšãƒ©ãƒ³ãƒ‰ãŒçŸ­ã„æ–¹ã«åˆ‡ã‚Šè©°ã‚ã‚‰ã‚Œã¾ã™ã€‚
-ã“ã®æ‹¡å¼µã‚„çŸ­ç¸®ã®ç²’åº¦ã¯ãƒã‚¤ãƒˆå˜ä½ã§ã™ã€‚
+“ì£“ú£“«Ó“«Ã“«È’Ã±“êÈ“æÑ“ß©“í­“ªÎ“«ª“«Ú“«é“«ó“«É“ª¬“ì¶“ªÊ“ªÃ“ª¿“íþ“ªµ“ªÎ“Ùþ“í®“Öª“ªÀ“ªÃ“ª¿“íÞ“ùê“¡¢
+B<|> “ªÈ B<^> “ªÎ“æÑ“ß©“í­“ªÏ“Ó­“ª¤“ö°“ªÎ“«ª“«Ú“«é“«ó“«É“ªÎ“éÓ“ö°“ªË“õÚ“Ê¥“ªÎ“«¼“«í“ª¬
+“ªÄ“ª¤“ªÆ“ª¤“ªë“ªÈ“ªß“ªÊ“ª·“ªÞ“ª¹“¡£
+“ìé“Û° B<&> “æÑ“ß©“í­“ªÏ“íþ“ª¤“Û°“ªÎ“«ª“«Ú“«é“«ó“«É“ª¬“Ó­“ª¤“Û°“ªË“ï·“ªê“ýþ“ªá“ªé“ªì“ªÞ“ª¹“¡£
+“ª³“ªÎ’³È“íå“ªä“Ó­“õê“ªÎ“Ø£“Óø“ªÏ“«Ð“«¤“«È’Ã±“êÈ“ªÇ“ª¹“¡£
 
     # ASCII-based examples
     print "j p \n" ^ " a h";        	# prints "JAPH\n"
@@ -5403,10 +5417,10 @@ operation you intend by using C<""> or C<0+>, as in the examples below.
 
 =end original
 
-ãƒ“ãƒƒãƒˆåˆ—ã‚’æ“ä½œã—ãŸã„å ´åˆã¯ã€ç¢ºå®Ÿã«ãƒ“ãƒƒãƒˆåˆ—ãŒæ¸¡ã•ã‚Œã‚‹ã‚ˆã†ã«ã—ã¦ãã ã•ã„:
-ã‚ªãƒšãƒ©ãƒ³ãƒ‰ãŒæ•°å­—ã®å ´åˆã€B<æ•°å€¤> ãƒ“ãƒƒãƒˆå˜ä½æ¼”ç®—ã‚’ä»®å®šã—ã¾ã™ã€‚
-æ˜Žç¤ºçš„ã«æ¼”ç®—ã®åž‹ã‚’æŒ‡å®šã™ã‚‹ã¨ãã«ã¯ã€ä»¥ä¸‹ã®ä¾‹ã®ã‚ˆã†ã«
-C<""> ã‹ C<0+> ã‚’ä½¿ã£ã¦ãã ã•ã„ã€‚
+“«Ó“«Ã“«È“Öª“ªò“ðÃ“íÂ“ª·“ª¿“ª¤“íÞ“ùê“ªÏ“¡¢“ü¬’¼Â“ªË“«Ó“«Ã“«È“Öª“ª¬“Ô¤“ªµ“ªì“ªë“ªè“ª¦“ªË“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤:
+“«ª“«Ú“«é“«ó“«É“ª¬‘Êý“í®“ªÎ“íÞ“ùê“¡¢B<‘Êý“ö·> “«Ó“«Ã“«È’Ã±“êÈ“æÑ“ß©“ªò’²¾“ïÒ“ª·“ªÞ“ª¹“¡£
+“Ù¥“ãÆ“îÜ“ªË“æÑ“ß©“ªÎ“úþ“ªò“ò¦“ïÒ“ª¹“ªë“ªÈ“ª­“ªË“ªÏ“¡¢“ì¤“ù»“ªÎ“ÖÇ“ªÎ“ªè“ª¦“ªË
+C<""> “ª« C<0+> “ªò“ÞÅ“ªÃ“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
 
     $foo =  150  |  105;	# yields 255  (0x96 | 0x69 is 0xFF)
     $foo = '150' |  105;	# yields 255
@@ -5423,13 +5437,13 @@ in a bit vector.
 
 =end original
 
-ãƒ“ãƒƒãƒˆãƒ™ã‚¯ã‚¿ã®å€‹ã€…ã®ãƒ“ãƒƒãƒˆã‚’ã©ã®ã‚ˆã†ã«æ“ä½œã™ã‚‹ã‹ã®æƒ…å ±ã«ã¤ã„ã¦ã¯
-L<perlfunc/vec> ã‚’å‚ç…§ã—ã¦ä¸‹ã•ã„ã€‚
+“«Ó“«Ã“«È“«Ù“«¯“«¿“ªÎ“ËÁ‘¡©“ªÎ“«Ó“«Ã“«È“ªò“ªÉ“ªÎ“ªè“ª¦“ªË“ðÃ“íÂ“ª¹“ªë“ª«“ªÎ“ï×“ÜÃ“ªË“ªÄ“ª¤“ªÆ“ªÏ
+L<perlfunc/vec> “ªò‘²Î“ðÎ“ª·“ªÆ“ù»“ªµ“ª¤“¡£
 
 =head2 Integer Arithmetic
 X<integer>
 
-(æ•´æ•°æ¼”ç®—)
+(“ïÚ‘Êý“æÑ“ß©)
 
 =begin original
 
@@ -5438,9 +5452,9 @@ floating point.  But by saying
 
 =end original
 
-ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€Perl ã¯æ¼”ç®—ã‚’æµ®å‹•å°æ•°ã§è¡Œãªã‚ãªã‘ã‚Œã°ãªã‚‰ãªã„ã‚‚ã®ã¨
-ã—ã¦ã„ã¾ã™ã€‚
-ã—ã‹ã—ã€(ã‚‚ã—ãã†ã—ãŸã„ãªã‚‰)
+“«Ç“«Õ“«©“«ë“«È“ªÇ“ªÏ“¡¢Perl “ªÏ“æÑ“ß©“ªò“Ý©“ÔÑ“á³‘Êý“ªÇ“ú¼“ªÊ“ªï“ªÊ“ª±“ªì“ªÐ“ªÊ“ªé“ªÊ“ª¤“ªâ“ªÎ“ªÈ
+“ª·“ªÆ“ª¤“ªÞ“ª¹“¡£
+“ª·“ª«“ª·“¡¢(“ªâ“ª·“ª½“ª¦“ª·“ª¿“ª¤“ªÊ“ªé)
 
     use integer;
 
@@ -5452,9 +5466,9 @@ An inner BLOCK may countermand this by saying
 
 =end original
 
-ã¨æ›¸ã‘ã°ã€ãã®å ´æ‰€ã‹ã‚‰ç¾åœ¨ã® BLOCK ã®çµ‚ã‚ã‚Šã¾ã§ã¯ã€æ•´æ•°æ¼”ç®—ã‚’
-è¡Œãªã£ã¦ã‚ˆã„ã¨ã€ã‚³ãƒ³ãƒ‘ã‚¤ãƒ©ã«æŒ‡ç¤ºã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
-å†…éƒ¨ã® BLOCK ã§ã€
+“ªÈ“ßö“ª±“ªÐ“¡¢“ª½“ªÎ“íÞ“á¶“ª«“ªé“úÞ“î¤“ªÎ BLOCK “ªÎ“ðû“ªï“ªê“ªÞ“ªÇ“ªÏ“¡¢“ïÚ‘Êý“æÑ“ß©“ªò
+“ú¼“ªÊ“ªÃ“ªÆ“ªè“ª¤“ªÈ“¡¢“«³“«ó“«Ñ“«¤“«é“ªË“ò¦“ãÆ“ª¹“ªë“ª³“ªÈ“ª¬“ªÇ“ª­“ªÞ“ª¹“¡£
+‘ÄÚ“Ý»“ªÎ BLOCK “ªÇ“¡¢
 
     no integer;
 
@@ -5468,13 +5482,13 @@ or so.
 
 =end original
 
-ã¨æ›¸ã‘ã°ã€ãã® BLOCK ã®çµ‚ã‚ã‚Šã¾ã§ã¯ã€æŒ‡ç¤ºã‚’å–ã‚Šæ¶ˆã™ã“ã¨ã«ãªã‚Šã¾ã™ã€‚
-ã“ã‚Œã¯å…¨ã¦ã‚’æ•´æ•°ã ã‘ã‚’ä½¿ã£ã¦å‡¦ç†ã™ã‚‹ã“ã¨ã‚’æ„å‘³ã™ã‚‹ã‚ã‘ã§ã¯ãªã„ã“ã¨ã«
-æ³¨æ„ã—ã¦ãã ã•ã„ã€‚
-ã“ã‚Œã¯å˜ã« Perl ãŒæ•´æ•°ã‚’ä½¿ã„ãŸã„ã¨æ€ã£ãŸã¨ãã«ä½¿ã†ã‹ã‚‚ã—ã‚Œãªã„ã€
-ã¨ã„ã†ã ã‘ã§ã™ã€‚
-ä¾‹ãˆã°ã€C<use integer> ã®æŒ‡å®šãŒã‚ã£ã¦ã‚‚ã€C<sqrt(2)> ã¨ã™ã‚‹ã¨ã€
-C<1.4142135623731> ã¨ã„ã£ãŸçµæžœãŒè¿”ã£ã¦ãã¾ã™ã€‚
+“ªÈ“ßö“ª±“ªÐ“¡¢“ª½“ªÎ BLOCK “ªÎ“ðû“ªï“ªê“ªÞ“ªÇ“ªÏ“¡¢“ò¦“ãÆ“ªò“ö¢“ªê“á¼“ª¹“ª³“ªÈ“ªË“ªÊ“ªê“ªÞ“ª¹“¡£
+“ª³“ªì“ªÏ“îï“ªÆ“ªò“ïÚ‘Êý“ªÀ“ª±“ªò“ÞÅ“ªÃ“ªÆ’½è“×â“ª¹“ªë“ª³“ªÈ“ªò“ëò“Ú«“ª¹“ªë“ªï“ª±“ªÇ“ªÏ“ªÊ“ª¤“ª³“ªÈ“ªË
+“ñ¼“ëò“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
+“ª³“ªì“ªÏ’Ã±“ªË Perl “ª¬“ïÚ‘Êý“ªò“ÞÅ“ª¤“ª¿“ª¤“ªÈ“ÞÖ“ªÃ“ª¿“ªÈ“ª­“ªË“ÞÅ“ª¦“ª«“ªâ“ª·“ªì“ªÊ“ª¤“¡¢
+“ªÈ“ª¤“ª¦“ªÀ“ª±“ªÇ“ª¹“¡£
+“ÖÇ“ª¨“ªÐ“¡¢C<use integer> “ªÎ“ò¦“ïÒ“ª¬“ª¢“ªÃ“ªÆ“ªâ“¡¢C<sqrt(2)> “ªÈ“ª¹“ªë“ªÈ“¡¢
+C<1.4142135623731> “ªÈ“ª¤“ªÃ“ª¿“Ì¿“Íý“ª¬“Ú÷“ªÃ“ªÆ“ª­“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -5489,19 +5503,19 @@ machines.
 
 =end original
 
-æ•°å€¤ã‚’ä½¿ã†å ´åˆã€ãƒ“ãƒƒãƒˆå˜ä½æ¼”ç®—å­ ("&", "|", "^", "~", "<<", ">>") ã¯
-å¸¸ã«æ•´æ•°ã®çµæžœã‚’ç”Ÿæˆã—ã¾ã™(ä½†ã— L<Bitwise String Operators> ã‚‚
-å‚ç…§ã—ã¦ä¸‹ã•ã„)ã€‚
-ã—ã‹ã—ã€ãã‚Œã§ã‚‚ C<use integer> ã¯æ„å‘³ãŒã‚ã‚Šã¾ã™ã€‚
-ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€ã“ã‚Œã‚‰ã®çµæžœã¯ç¬¦å·ãªã—æ•´æ•°ã¨ã—ã¦è§£é‡ˆã•ã‚Œã¾ã™ãŒã€
-C<use integer> ãŒæœ‰åŠ¹ã®å ´åˆã¯ã€ç¬¦å·ä»˜ãæ•´æ•°ã¨ã—ã¦è§£é‡ˆã•ã‚Œã¾ã™ã€‚
-ä¾‹ãˆã°ã€C<~0> ã¯é€šå¸¸å¤§ããªæ•´æ•°ã®å€¤ã¨ã—ã¦è©•ä¾¡ã•ã‚Œã¾ã™ã€‚
-ã—ã‹ã—ã€C<use integer; ~0> ã¯ 2 ã®è£œæ•°ã®ãƒžã‚·ãƒ³ã§ã¯ C<-1> ã«ãªã‚Šã¾ã™ã€‚
+‘Êý“ö·“ªò“ÞÅ“ª¦“íÞ“ùê“¡¢“«Ó“«Ã“«È’Ã±“êÈ“æÑ“ß©“í­ ("&", "|", "^", "~", "<<", ">>") “ªÏ
+“ßÈ“ªË“ïÚ‘Êý“ªÎ“Ì¿“Íý“ªò“ßæ“à÷“ª·“ªÞ“ª¹(“Ó£“ª· L<Bitwise String Operators> “ªâ
+‘²Î“ðÎ“ª·“ªÆ“ù»“ªµ“ª¤)“¡£
+“ª·“ª«“ª·“¡¢“ª½“ªì“ªÇ“ªâ C<use integer> “ªÏ“ëò“Ú«“ª¬“ª¢“ªê“ªÞ“ª¹“¡£
+“«Ç“«Õ“«©“«ë“«È“ªÇ“ªÏ“¡¢“ª³“ªì“ªé“ªÎ“Ì¿“Íý“ªÏ“Ý¬‘ºÅ“ªÊ“ª·“ïÚ‘Êý“ªÈ“ª·“ªÆ“ú°’¼á“ªµ“ªì“ªÞ“ª¹“ª¬“¡¢
+C<use integer> “ª¬“êó’¸ú“ªÎ“íÞ“ùê“ªÏ“¡¢“Ý¬‘ºÅ“Üõ“ª­“ïÚ‘Êý“ªÈ“ª·“ªÆ“ú°’¼á“ªµ“ªì“ªÞ“ª¹“¡£
+“ÖÇ“ª¨“ªÐ“¡¢C<~0> “ªÏ“÷×“ßÈ“ÓÞ“ª­“ªÊ“ïÚ‘Êý“ªÎ“ö·“ªÈ“ª·“ªÆ“øÄ’²Á“ªµ“ªì“ªÞ“ª¹“¡£
+“ª·“ª«“ª·“¡¢C<use integer; ~0> “ªÏ 2 “ªÎ“ÜÍ‘Êý“ªÎ“«Þ“«·“«ó“ªÇ“ªÏ C<-1> “ªË“ªÊ“ªê“ªÞ“ª¹“¡£
 
 =head2 Floating-point Arithmetic
 X<floating-point> X<floating point> X<float> X<real>
 
-(æµ®å‹•å°æ•°ç‚¹æ¼”ç®—)
+(“Ý©“ÔÑ“á³‘Êý“ïÃ“æÑ“ß©)
 
 =begin original
 
@@ -5513,10 +5527,10 @@ See L<perlfaq4>.
 
 =end original
 
-C<use integer> ãŒæ•´æ•°æ¼”ç®—ã‚’æä¾›ã™ã‚‹ä¸€æ–¹ã€æ•°ã‚’ç‰¹å®šã®æ¡ã§è‡ªå‹•çš„ã«ä¸¸ã‚ãŸã‚Š
-åˆ‡ã‚Šæ¨ã¦ãŸã‚Šã™ã‚‹æ©Ÿæ§‹ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
-æ•°ã‚’ä¸¸ã‚ã‚‹ã«ã¯ã€sprintf() ã‚„ printf() ã‚’ä½¿ã†ã®ãŒä¸€ç•ªç°¡å˜ãªæ–¹æ³•ã§ã™ã€‚
-L<perlfaq4> ã‚’å‚ç…§ã—ã¦ä¸‹ã•ã„ã€‚
+C<use integer> “ª¬“ïÚ‘Êý“æÑ“ß©“ªò“ð«“Íê“ª¹“ªë“ìé“Û°“¡¢‘Êý“ªò“÷å“ïÒ“ªÎ“ùù“ªÇ“í»“ÔÑ“îÜ“ªË“ü¯“ªá“ª¿“ªê
+“ï·“ªê“Þ×“ªÆ“ª¿“ªê“ª¹“ªë“Ñ¦“Ï°“ªÏ“ª¢“ªê“ªÞ“ª»“ªó“¡£
+‘Êý“ªò“ü¯“ªá“ªë“ªË“ªÏ“¡¢sprintf() “ªä printf() “ªò“ÞÅ“ª¦“ªÎ“ª¬“ìé“Ûã“ÊÛ’Ã±“ªÊ“Û°“Ûö“ªÇ“ª¹“¡£
+L<perlfaq4> “ªò‘²Î“ðÎ“ª·“ªÆ“ù»“ªµ“ª¤“¡£
 
 =begin original
 
@@ -5526,9 +5540,9 @@ so some corners must be cut.  For example:
 
 =end original
 
-æµ®å‹•å°æ•°ç‚¹æ•°ã¯æ•°å­¦è€…ãŒå®Ÿæ•°ã¨å‘¼ã¶ã‚‚ã®ã®è¿‘ä¼¼ã§ã—ã‹ã‚ã‚Šã¾ã›ã‚“ã€‚
-å®Ÿæ•°ã¯æµ®å‹•å°æ•°ç‚¹ã‚ˆã‚Šç„¡é™ã«ç¶šãã®ã§ã€å¤šå°‘è§’ãŒä¸¸ã‚ã‚‰ã‚Œã¾ã™ã€‚
-ä¾‹:
+“Ý©“ÔÑ“á³‘Êý“ïÃ‘Êý“ªÏ‘Êý‘Ñ§“íº“ª¬’¼Â‘Êý“ªÈ“û¼“ªÖ“ªâ“ªÎ“ªÎ“ÐÎ“ÞÄ“ªÇ“ª·“ª«“ª¢“ªê“ªÞ“ª»“ªó“¡£
+’¼Â‘Êý“ªÏ“Ý©“ÔÑ“á³‘Êý“ïÃ“ªè“ªê“Ùí“ùÚ“ªË’Â³“ª¯“ªÎ“ªÇ“¡¢“Òý“á´“ÊÇ“ª¬“ü¯“ªá“ªé“ªì“ªÞ“ª¹“¡£
+“ÖÇ:
 
     printf "%.20g\n", 123456789123456789;
     #        produces 123456789123456784
@@ -5543,11 +5557,11 @@ this topic.
 
 =end original
 
-æµ®å‹•å°æ•°ç‚¹æ•°ãŒç­‰ã—ã„ã‹ã©ã†ã‹ã‚’ã¡ã‚‡ã†ã©åŒã˜ã‹ã©ã†ã‹ã§æ¯”è¼ƒã™ã‚‹ã®ã¯
-ã„ã„ã‚¢ã‚¤ãƒ‡ã‚¢ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
-ä»¥ä¸‹ã«ã€äºŒã¤ã®æµ®å‹•å°æ•°ç‚¹æ•°ãŒæŒ‡å®šã•ã‚ŒãŸæ¡ã¾ã§ç­‰ã—ã„ã‹ã©ã†ã‹ã‚’
-æ¯”è¼ƒã™ã‚‹(æ¯”è¼ƒçš„é‡ã„)æ¬¡å–„ã®ç­–ã‚’ç¤ºã—ã¾ã™ã€‚
-ã“ã®å•é¡Œã«é–¢ã™ã‚‹ã‚ˆã‚ŠåŽ³å¯†ãªæ‰±ã„ã«ã¤ã„ã¦ã¯ Knuth, volume II ã‚’å‚ç…§ã—ã¦ä¸‹ã•ã„ã€‚
+“Ý©“ÔÑ“á³‘Êý“ïÃ‘Êý“ª¬“Ôõ“ª·“ª¤“ª«“ªÉ“ª¦“ª«“ªò“ªÁ“ªç“ª¦“ªÉ“ÔÒ“ª¸“ª«“ªÉ“ª¦“ª«“ªÇ“Ýï“Îò“ª¹“ªë“ªÎ“ªÏ
+“ª¤“ª¤“«¢“«¤“«Ç“«¢“ªÇ“ªÏ“ª¢“ªê“ªÞ“ª»“ªó“¡£
+“ì¤“ù»“ªË“¡¢“ì£“ªÄ“ªÎ“Ý©“ÔÑ“á³‘Êý“ïÃ‘Êý“ª¬“ò¦“ïÒ“ªµ“ªì“ª¿“ùù“ªÞ“ªÇ“Ôõ“ª·“ª¤“ª«“ªÉ“ª¦“ª«“ªò
+“Ýï“Îò“ª¹“ªë(“Ýï“Îò“îÜ“ñì“ª¤)“ó­“à¼“ªÎ“óþ“ªò“ãÆ“ª·“ªÞ“ª¹“¡£
+“ª³“ªÎ“Ùý“ð¹“ªË’´Ø“ª¹“ªë“ªè“ªê’¸·“ÚË“ªÊ“Ðâ“ª¤“ªË“ªÄ“ª¤“ªÆ“ªÏ Knuth, volume II “ªò‘²Î“ðÎ“ª·“ªÆ“ù»“ªµ“ª¤“¡£
 
     sub fp_equal {
 	my ($X, $Y, $POINTS) = @_;
@@ -5568,12 +5582,12 @@ POSIX can't work with complex numbers.
 
 =end original
 
-POSIX ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«(Perl æ¨™æº–é…å¸ƒãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã®ä¸€éƒ¨) ã¯ ceil(), floor() åŠã³
-ãã®ä»–ã®æ•°å­¦é–¢æ•°ã‚„ä¸‰è§’é–¢æ•°ã‚’å®Ÿè£…ã—ã¦ã„ã¾ã™ã€‚
-Math::Complex ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«(Perl æ¨™æº–é…å¸ƒãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã®ä¸€éƒ¨)ã¯
-å®Ÿæ•°ã¨è™šæ•°ã®ä¸¡æ–¹ã§å‹•ä½œã™ã‚‹æ•°å­¦é–¢æ•°ã‚’å®šç¾©ã—ã¦ã„ã¾ã™ã€‚
-Math::Complex ã¯ POSIX ã»ã©åŠ¹çŽ‡çš„ã§ã¯ã‚ã‚Šã¾ã›ã‚“ãŒã€
-POSIX ã¯è¤‡ç´ æ•°ã¯æ‰±ãˆã¾ã›ã‚“ã€‚
+POSIX “«â“«¸“«å’¡¼“«ë(Perl “øö“ñÞ“ÛÕ“øÖ“«Ñ“«Ã“«±’¡¼“«¸“ªÎ“ìé“Ý») “ªÏ ceil(), floor() “Ðà“ªÓ
+“ª½“ªÎ“öâ“ªÎ‘Êý‘Ñ§’´Ø‘Êý“ªä“ß²“ÊÇ’´Ø‘Êý“ªò’¼Â‘×°“ª·“ªÆ“ª¤“ªÞ“ª¹“¡£
+Math::Complex “«â“«¸“«å’¡¼“«ë(Perl “øö“ñÞ“ÛÕ“øÖ“«Ñ“«Ã“«±’¡¼“«¸“ªÎ“ìé“Ý»)“ªÏ
+’¼Â‘Êý“ªÈ‘Ðé‘Êý“ªÎ’Î¾“Û°“ªÇ“ÔÑ“íÂ“ª¹“ªë‘Êý‘Ñ§’´Ø‘Êý“ªò“ïÒ“ëù“ª·“ªÆ“ª¤“ªÞ“ª¹“¡£
+Math::Complex “ªÏ POSIX “ªÛ“ªÉ’¸ú“áã“îÜ“ªÇ“ªÏ“ª¢“ªê“ªÞ“ª»“ªó“ª¬“¡¢
+POSIX “ªÏ“ÜÜ“áÈ‘Êý“ªÏ“Ðâ“ª¨“ªÞ“ª»“ªó“¡£
 
 =begin original
 
@@ -5585,15 +5599,15 @@ need yourself.
 
 =end original
 
-é‡‘èžã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã«ãŠã‘ã‚‹ä¸¸ã‚ã¯æ·±åˆ»ãªå½±éŸ¿ã‚’ä¸Žãˆã‚‹å¯èƒ½æ€§ãŒã‚ã‚Šã€
-ä½¿ç”¨ã™ã‚‹ä¸¸ã‚ãƒ¡ã‚½ãƒƒãƒ‰ã¯æŒ‡å®šã•ã‚ŒãŸç²¾åº¦ã§è¡Œã‚ã‚Œã‚‹ã¹ãã§ã™ã€‚
-ã“ã®ã‚ˆã†ãªå ´åˆã€Perl ãŒä½¿ç”¨ã™ã‚‹ã‚·ã‚¹ãƒ†ãƒ ä¸¸ã‚ã‚’ä¿¡ç”¨ã›ãšã€
-ä»£ã‚ã‚Šã«è‡ªåˆ†è‡ªèº«ã§ä¸¸ã‚é–¢æ•°ã‚’å®Ÿè£…ã™ã‚‹ã¹ãã§ã™ã€‚
+“ÑÑ“ë×“«¢“«×“«ê“«±’¡¼“«·“«ç“«ó“ªË“ªª“ª±“ªë“ü¯“ªá“ªÏ“ä¢“Ê¾“ªÊ“ç¯“úÂ“ªò‘Óë“ª¨“ªë“Ê¦“Òö“àõ“ª¬“ª¢“ªê“¡¢
+“ÞÅ“éÄ“ª¹“ªë“ü¯“ªá“«á“«½“«Ã“«É“ªÏ“ò¦“ïÒ“ªµ“ªì“ª¿“ïñ“Óø“ªÇ“ú¼“ªï“ªì“ªë“ªÙ“ª­“ªÇ“ª¹“¡£
+“ª³“ªÎ“ªè“ª¦“ªÊ“íÞ“ùê“¡¢Perl “ª¬“ÞÅ“éÄ“ª¹“ªë“«·“«¹“«Æ“«à“ü¯“ªá“ªò“ãá“éÄ“ª»“ªº“¡¢
+“ÓÛ“ªï“ªê“ªË“í»“ÝÂ“í»“ãó“ªÇ“ü¯“ªá’´Ø‘Êý“ªò’¼Â‘×°“ª¹“ªë“ªÙ“ª­“ªÇ“ª¹“¡£
 
 =head2 Bigger Numbers
 X<number, arbitrary precision>
 
-(ã‚ˆã‚Šå¤§ããªæ•°)
+(“ªè“ªê“ÓÞ“ª­“ªÊ‘Êý)
 
 =begin original
 
@@ -5605,10 +5619,10 @@ limited-precision representations.
 
 =end original
 
-æ¨™æº–ã® Math::BigInt ã¨ Math::BigFloat ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¯å¤šå€é•·æ¼”ç®—ã‚’æä¾›ã—ã€
-æ¼”ç®—å­ã‚’ã‚ªãƒ¼ãƒãƒ¼ãƒ­ãƒ¼ãƒ‰ã—ã¾ã™ãŒã€ã“ã‚Œã‚‰ã¯ç¾åœ¨ã®ã¨ã“ã‚ã‹ãªã‚Šé…ã„ã§ã™ã€‚
-å¤šå°‘ã®é ˜åŸŸã¨ã‹ãªã‚Šã®é€Ÿåº¦ã‚’çŠ ç‰²ã«ã—ã¦ã€æ¡æ•°ãŒåˆ¶é™ã•ã‚Œã¦ã„ã‚‹ã“ã¨ã«ã‚ˆã‚‹
-ã‚ã‚ŠãŒã¡ãªè½ã¨ã—ç©´ã‚’é¿ã‘ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
+“øö“ñÞ“ªÎ Math::BigInt “ªÈ Math::BigFloat “«â“«¸“«å’¡¼“«ë“ªÏ“Òý“ÛÃ“íþ“æÑ“ß©“ªò“ð«“Íê“ª·“¡¢
+“æÑ“ß©“í­“ªò“«ª’¡¼“«Ð’¡¼“«í’¡¼“«É“ª·“ªÞ“ª¹“ª¬“¡¢“ª³“ªì“ªé“ªÏ“úÞ“î¤“ªÎ“ªÈ“ª³“ªí“ª«“ªÊ“ªê’ÃÙ“ª¤“ªÇ“ª¹“¡£
+“Òý“á´“ªÎ“ÖÅ“æ´“ªÈ“ª«“ªÊ“ªê“ªÎ“áÜ“Óø“ªò’µ¾“ßå“ªË“ª·“ªÆ“¡¢“ùù‘Êý“ª¬“ð¤“ùÚ“ªµ“ªì“ªÆ“ª¤“ªë“ª³“ªÈ“ªË“ªè“ªë
+“ª¢“ªê“ª¬“ªÁ“ªÊ“Õª“ªÈ“ª·“úë“ªò“ù­“ª±“ªë“ª³“ªÈ“ª¬“ªÇ“ª­“ªÞ“ª¹“¡£
 
     use Math::BigInt;
     $x = Math::BigInt->new('123456789123456789');
@@ -5625,10 +5639,10 @@ external C libraries.
 
 =end original
 
-(ãƒ¡ãƒ¢ãƒªã¨ CPU æ™‚é–“ã®ã¿ã«ä¾å­˜ã™ã‚‹)ç„¡åˆ¶é™ã‹å›ºå®šã®ç²¾åº¦ã§ã®è¨ˆç®—ãŒã§ãã‚‹
-ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒã„ãã¤ã‹ã‚ã‚Šã¾ã™ã€‚
-ã•ã‚‰ã«å¤–éƒ¨ C ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ä½¿ã£ã¦ã‚ˆã‚Šé€Ÿã„å®Ÿè£…ã‚’æä¾›ã™ã‚‹
-éžæ¨™æº–ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚‚ã‚ã‚Šã¾ã™ã€‚
+(“«á“«â“«ê“ªÈ CPU “ãÁ“Êà“ªÎ“ªß“ªË“ëî“ðí“ª¹“ªë)“Ùí“ð¤“ùÚ“ª«“Í³“ïÒ“ªÎ“ïñ“Óø“ªÇ“ªÎ“Íª“ß©“ª¬“ªÇ“ª­“ªë
+“«â“«¸“«å’¡¼“«ë“ª¬“ª¤“ª¯“ªÄ“ª«“ª¢“ªê“ªÞ“ª¹“¡£
+“ªµ“ªé“ªË“èâ“Ý» C “«é“«¤“«Ö“«é“«ê“ªò“ÞÅ“ªÃ“ªÆ“ªè“ªê“áÜ“ª¤’¼Â‘×°“ªò“ð«“Íê“ª¹“ªë
+“Þª“øö“ñÞ“ªÎ“«â“«¸“«å’¡¼“«ë“ªâ“ª¢“ªê“ªÞ“ª¹“¡£
 
 =begin original
 
@@ -5636,7 +5650,7 @@ Here is a short, but incomplete summary:
 
 =end original
 
-ä»¥ä¸‹ã¯çŸ­ã„ã§ã™ãŒä¸å®Œå…¨ãªãƒªã‚¹ãƒˆã§ã™ã€‚
+“ì¤“ù»“ªÏ“Ó­“ª¤“ªÇ“ª¹“ª¬“Üô“èÇ“îï“ªÊ“«ê“«¹“«È“ªÇ“ª¹“¡£
 
 =begin original
 
@@ -5654,17 +5668,17 @@ Here is a short, but incomplete summary:
 
 =end original
 
-	Math::Fraction		9973 / 12967 ã®ã‚ˆã†ãªã€å¤§ããã¦ç„¡åˆ¶é™ã®åˆ†æ•°
-	Math::String		æ–‡å­—åˆ—ã‚’æ•°å€¤ã®ã‚ˆã†ã«æ‰±ã†
-	Math::FixedPrecision	å›ºå®šç²¾åº¦ã§è¨ˆç®—ã™ã‚‹
-	Math::Currency		é€šè²¨ã®è¨ˆç®—ç”¨
-	Bit::Vector		(C ã‚’ä½¿ã£ã¦)ãƒ“ãƒƒãƒˆãƒ™ã‚¯ã‚¿ã‚’é€Ÿãæ“ä½œã™ã‚‹
-	Math::BigIntFast	å¤§ããªæ•°ã®ãŸã‚ã® Bit::Vector ã®ãƒ©ãƒƒãƒ‘ãƒ¼
-	Math::Pari		Pari C ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã¸ã®ã‚¢ã‚¯ã‚»ã‚¹ã‚’æä¾›ã™ã‚‹
-	Math::BigInteger	å¤–éƒ¨ C ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ä½¿ã†
-	Math::Cephes		å¤–éƒ¨ã® Cephes C ã‚’ä½¿ã†(å¤§ããªæ•°ã¯ãªã—)
-	Math::Cephes::Fraction	Cephes ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ä½¿ã£ãŸåˆ†æ•°
-	Math::GMP		ã“ã‚Œã‚‚å¤–éƒ¨ C ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ä½¿ã†
+	Math::Fraction		9973 / 12967 “ªÎ“ªè“ª¦“ªÊ“¡¢“ÓÞ“ª­“ª¯“ªÆ“Ùí“ð¤“ùÚ“ªÎ“ÝÂ‘Êý
+	Math::String		“Ùþ“í®“Öª“ªò‘Êý“ö·“ªÎ“ªè“ª¦“ªË“Ðâ“ª¦
+	Math::FixedPrecision	“Í³“ïÒ“ïñ“Óø“ªÇ“Íª“ß©“ª¹“ªë
+	Math::Currency		“÷×“ü§“ªÎ“Íª“ß©“éÄ
+	Bit::Vector		(C “ªò“ÞÅ“ªÃ“ªÆ)“«Ó“«Ã“«È“«Ù“«¯“«¿“ªò“áÜ“ª¯“ðÃ“íÂ“ª¹“ªë
+	Math::BigIntFast	“ÓÞ“ª­“ªÊ‘Êý“ªÎ“ª¿“ªá“ªÎ Bit::Vector “ªÎ“«é“«Ã“«Ñ’¡¼
+	Math::Pari		Pari C “«é“«¤“«Ö“«é“«ê“ªØ“ªÎ“«¢“«¯“«»“«¹“ªò“ð«“Íê“ª¹“ªë
+	Math::BigInteger	“èâ“Ý» C “«é“«¤“«Ö“«é“«ê“ªò“ÞÅ“ª¦
+	Math::Cephes		“èâ“Ý»“ªÎ Cephes C “ªò“ÞÅ“ª¦(“ÓÞ“ª­“ªÊ‘Êý“ªÏ“ªÊ“ª·)
+	Math::Cephes::Fraction	Cephes “«é“«¤“«Ö“«é“«ê“ªò“ÞÅ“ªÃ“ª¿“ÝÂ‘Êý
+	Math::GMP		“ª³“ªì“ªâ“èâ“Ý» C “«é“«¤“«Ö“«é“«ê“ªò“ÞÅ“ª¦
 
 =begin original
 
@@ -5672,7 +5686,7 @@ Choose wisely.
 
 =end original
 
-ã†ã¾ãé¸ã‚“ã§ãã ã•ã„ã€‚
+“ª¦“ªÞ“ª¯“àÔ“ªó“ªÇ“ª¯“ªÀ“ªµ“ª¤“¡£
 
 =cut
 
