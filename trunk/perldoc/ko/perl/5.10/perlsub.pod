@@ -587,7 +587,7 @@ carrying a magic value, you should use C<local *_> instead of C<local $_>.
 As of perl 5.9.1, you can also use the lexical form of C<$_> (declaring it
 with C<my $_>), which avoids completely this problem.
 
-=head3 Localization of elements of composite types
+=head3 결합타입의 요소들의 지역화(Localization of elements of composite types)
 X<local, composite type element> X<local, array element> X<local, hash element>
 
 It's also worth taking a moment to explain what happens when you
@@ -619,7 +619,7 @@ skipped elements with C<undef>.  For instance, if you say
     print "The array has ",scalar(@ary)," elements: ",
           join(', ', map { defined $_ ? $_ : 'undef' } @ary),"\n";
 
-Perl will print
+펄은 다음과 같이 출력한다.
 
     6 . . .
     4 . . .
