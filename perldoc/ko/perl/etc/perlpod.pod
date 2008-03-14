@@ -18,8 +18,8 @@ for Perl, Perl programs, and Perl modules.
 
 =end original
 
-Pod は、 Perl、 Perl プログラム、Perl モジュールのための
-ドキュメントを書くための簡単に使えるマークアップ言語です。
+Pod 는  Perl, Perl 프로그램, Perl 모듈을 위한 도큐멘트를 쓰기위해
+간단히 쓸 수 있는 마크업 언어입니다.
 
 =begin original
 
@@ -28,8 +28,8 @@ like plain text, HTML, man pages, and more.
 
 =end original
 
-Pod からプレーンテキスト、HTML、man ページなどのさまざまなフォーマットに
-変換するためのトランスレータがあります。
+Pod 에서 평문(plain text), HTML, man 페이지 등 여러가지 포맷으로
+바꾸기 위한 변환기가 있습니다.
 
 =begin original
 
@@ -40,15 +40,15 @@ L<command|/"Command Paragraph">.
 
 =end original
 
-Pod マークアップは 3 種類の段落から構成されます:
+Pod 마크업은 3종류의 단락으로 구성됩니다. 
 L<ordinary|/"Ordinary Paragraph">,
 L<verbatim|/"Verbatim Paragraph">,
-L<command|/"Command Paragraph"> です。
+L<command|/"Command Paragraph"> 입니다.
 
 
 =head2 Ordinary Paragraph
 
-(普通の段落)
+(보통의 단락)
 
 =begin original
 
@@ -61,13 +61,10 @@ font, and maybe even justified.
 
 =end original
 
-あなたのドキュメントの段落のほとんどは(これと同じように)
-普通のテキストのブロックです。
-単に何のマークアップも使わずにテキストを書き、前後に空行を
-置きます。
-フォーマッティングされるとき、最小限のフォーマッティングが行われます。
-再ラッピングや、プロポーショナルフォントでの表示や、
-均等割り付けといったことです。
+아마 대부분의 문서의 단락은 일반적으로 텍스트의 블록입니다.
+단순히 어떤 마크업도 사용하지 않고 텍스트를 쓰고, 앞뒤의 빈 줄을 놔둡니다.
+포맷팅될때, 최소한의 포맷팅이 수행됩니다.
+재래핑이나, 어울리는 폰트에서의 표시나 균등분할 같은 것 말이죠.
 
 =begin original
 
@@ -78,14 +75,14 @@ section, below.
 
 =end original
 
-普通の段落に B<強調> I<イタリック> C<コードスタイル> L<ハイパーリンク|perlfaq>
-などのフォーマッティングコードを使うことも出来ます。
-これらのコードは以下の "L<Formatting Codes|/"Formatting Codes">" の
-項目で説明します。
+일반적인 단락에 B<강조> I<이탤릭> C<코드스타일> L<하이퍼링크|perlfaq>
+등의 포맷팅코드를 사용할 수도 있습니다.
+이런 코드는 아래의 "L<Formatting Codes|/"Formatting Codes">" 의
+항목에서 설명하겠습니다.
 
 =head2 Verbatim Paragraph
 
-(そのままの段落)
+(말그대로의 단락)
 
 =begin original
 
@@ -95,8 +92,8 @@ and which shouldn't be wrapped.
 
 =end original
 
-そのままの段落は、コードブロックや、特別なパースやフォーマッティングが
-不要で、ラッピングするべきではないテキストを表現するために用いられます。
+그대로의 단락은 코드블록이나 특별한 패스나 포맷팅이 필요없고,
+래핑하지 않아도 되는 텍스트를 표현하기 위해 사용됩니다.
 
 =begin original
 
@@ -109,16 +106,15 @@ nothing else.
 
 =end original
 
-そのままの段落は空白かタブで始まっているということによって認識されます。
-(簡単に言うと、この全ての行は空白かタブで始まっています。)
-タブは8カラムごとと仮定されてそのまま出力されます。
-特殊なフォーマットコードは
-ありませんから、イタリックにするといったことはできません。\は\で、
-その他の意味はありません。
+공백 혹은 탭에서 시작하는 것으로 인식됩니다.
+(간단히 말하면, 이 모든 줄은 공백 혹은 탭으로 시작됩니다)
+탭은 8칼럼간격으로 가정되어 그대로 출력됩니다.
+특별한 포맷코드는 없으므로, 이탤릭으로 한다거나 하는 것은 없습니다.
+\ 은 \으로, 그 외의 의미는 없습니다.
 
 =head2 Command Paragraph
 
-(コマンド段落)
+(커맨드 단락)
 
 =begin original
 
@@ -127,8 +123,8 @@ of text, usually as headings or parts of lists.
 
 =end original
 
-コマンド段落はテキストの塊全体を特別な扱いをするために用いられます。
-普通は見出しやリストとして用いられます。
+커맨드 단락은 텍스트의 덩어리 전체를 특별한 취급을 하기 위해 사용됩니다.
+보통은 표제나 리스트로써 이용됩니다.
 
 =begin original
 
@@ -139,10 +135,9 @@ are
 
 =end original
 
-すべてのコマンド段落(典型的には一行だけからなります)は“=”で始まって
-その後に識別子が続き、
-さらにコマンドをが必要とするテキストが続きます。
-現在使えるコマンドは以下の通りです。
+모든 커맨드단락(전형적으로는 첫줄부터)은 "="로 시작되며,
+그 뒤는 식별자가 붙고,  거기에 커맨드를 필요로하는 텍스트가 붙습니다.
+현재 사용할수 있는 커맨드는 아래와 같습니다.
 
     =head1 Heading Text
     =head2 Heading Text
@@ -163,7 +158,7 @@ To explain them each in detail:
 
 =end original
 
-以下に詳細を説明します:
+아래는 자세한 내용을 설명하고 있습니다.
 
 =over
 
@@ -183,8 +178,8 @@ heading.  For example:
 
 =end original
 
-head1 から head4 は見出しを生成します。head1 が最上位です。
-この段落の残りのテキストは見出しの内容です。例:
+head1 에서 head4 는 표제를 생성합니다. head1 이 최상위입니다.
+이 단락의 남은 텍스트는 표제의 내용입니다. 예제:
 
   =head2 Object Attributes
 
@@ -197,11 +192,9 @@ formatting codes, as seen here:
 
 =end original
 
-"Object Attributes"というテキストがここでの見出しとなります。
-(head3 と head4 は最近追加されたので、古い Pod トランスレータは
-対応していません。)
-これらの見出しコマンドのテキストでは以下のようにフォーマッティング
-コードを使えます:
+"Object Attributes"라고 하는 텍스트가 여기에서의 표제가 됩니다.
+head4는 최근 추가되어서, 옛 Pod 번역기는 안됩니다.
+이런 표제 커맨드의 텍스트에서는 아래와 같은 포맷팅코드를 쓸 수 있습니다.
 
   =head2 Possible Values for C<$/>
 
@@ -212,8 +205,8 @@ Such commands are explained in the
 
 =end original
 
-これらのコマンドは以下の "L<Formatting Codes|/"Formatting Codes">" の
-項目で説明しています。
+이런 커맨드는 아래의 "L<Formatting Codes|/"Formatting Codes">" 의
+항목에서 설명하고 있습니다.
 
 =item C<=over I<indentlevel>>
 
@@ -236,17 +229,17 @@ use formatting codes, as seen here:
 
 =end original
 
-item, over, back はもう少し説明が必要です:
-"=over" は "=item" を使ったリスト生成や、普通のパラグラフ(の組)を
-インデントするためのリージョンを開始します。
-リストの最後では、それを示すために "=back" を使います。
-"=over" の I<indentlevel> オプションはどれくらいインデントするかを
-示し、一般的には単位は ems (1 em はドキュメントのベースフォントでの"M"の
-幅です) か、だいたい同じぐらいの単位です; I<indentlevel> オプションが
-ない場合、デフォルトは 4 です。
-(何を I<indentlevel> に指定しても無視するフォーマッタもあります。)
-C<=item I<stuff...>> の I<stuff> の中では、
-以下のようにフォーマッティングコードを使うことができます:
+item, over, back 은 조금 더 설명이 필요합니다:
+"=over" 는 "=item" 을 사용한 리스트 생성이나 보통 단락을 인덴트하기 위한
+범위지정를 시작합니다.
+리스트의 끝에서는 그것을 나타내기 위해 "=back" 를 사용합니다.
+"=over"의 I<인덴트레벨> 옵션은 어느 정도 인덴트 할 것인가를 나타내고,
+일반적으로 단위는 ems (1 em은 도큐멘트의 기본폰트에서의 "M"의 폭입니다)
+나, 혹은 대개 같은 정도의 단위입니다; I<인덴트레벨> 옵션이
+없는 경우, 기본값은 4입니다.
+(무엇을 I<인덴트레벨> 에 지덩해도 무시하는 서식기도 있습니다)
+C<=item I<stuff...>> 의 I<stuff>  안에서는,
+아래와 같이 포맷팅코드를 사용할 수 있습니다.
 
   =item Using C<$|> to Control Buffering
 
@@ -257,8 +250,8 @@ Such commands are explained in the
 
 =end original
 
-これらのコマンドは以下の "L<Formatting Codes|/"Formatting Codes">" で
-説明されています。
+이런 커맨드는 아래의 "L<Formatting Codes|/"Formatting Codes">" 에서
+설명하고 있습니다.
 
 =begin original
 
@@ -267,8 +260,8 @@ Note also that there are some basic rules to using "=over" ...
 
 =end original
 
-"=over" ... "=back" リージョンを使うためのいくつかの
-基本的なルールがあることに注意して下さい。
+"=over" ... "=back" 영역을 사용하기 위한 몇가지의 
+기본적인 룰이 있는 것에 주의해 주세요.
 
 =over
 
@@ -280,7 +273,7 @@ Don't use "=item"s outside of an "=over" ... "=back" region.
 
 =end original
 
-"=over" ... "=back" リージョンの外では "=item" は使えません。
+"=over" ... "=back" 영역 밖에서는 "=item" 은 사용할 수 없습니다.
 
 =item *
 
@@ -292,8 +285,8 @@ region.
 
 =end original
 
-"=over" ... "=back" リージョン内に "=item" が全く現れないのでない限り、
-"=over" コマンドの後、最初に書かれるのは "=item" であるべきです。
+"=over" ... "=back" 영역 안에 "=item" 이 전혀 나타나지 않은 것이 아닌 한,
+"=over" 커맨드의 뒤, 맨처음에 써진 것은 "=item"이어야 합니다.
 
 =item *
 
