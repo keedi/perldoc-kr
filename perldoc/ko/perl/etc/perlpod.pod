@@ -1,5 +1,5 @@
 
-=encoding euc-jp
+=encoding utf-8
 
 =for comment
 This document is in Pod format.  To read this, use a Pod formatter,
@@ -1209,7 +1209,7 @@ Pod::Parser 1.093 이후, Pod::Tree 1.02 이후를 사용하고 있는
 
 =head2 The Intent
 
-(目的)
+(목적)
 
 =begin original
 
@@ -1224,14 +1224,13 @@ verbatim.  And presumably in a monospace font.
 
 =end original
 
-表現力ではなく簡単に使えるものを目指しています。
-段落は段落らしく(矩形に)見えて欲しいので、見た目に目立ち、
-C<fmt> で簡単に再整形できるようになっています (私の B<vi> では
-F7 に、B<emacs> では Esc Q になっています)。
-私が求めていたのは、verbatim モードでは C<'> や C<`> や C<"> のクォートを
-そのままにしておいて欲しかったのです。そうすれば、作りかけの
-プログラムを放り込んで、4 カラムずらして、
-それをそのまま印刷すればいいのです。たぶん、固定幅のフォントで。
+표현력이 아닌 간단히 사용할 수 있는 것을 목표로 하고 있습니다.
+단락은 단락답게(블록형태로) 보이길 원하고, 보기에 눈에 띄고,
+C<fmt> 로 간단히 다시 고칠 수 있게 되어있습니다. (저자의 경우는 B<vi>에서
+F7에, B<emacs>에서는 Esc Q로 되어있습니다).
+저자가 원하는 것은 verbatim 모드에서는 C<'> 나 C<`> 나 C<"> 의 따옴표를
+그대로 두고싶은 것ㅣ었습니다. 그렇게 하면, 만들어 낸 프로그램을 읽어들여
+4칼럼늘려서, 그것을 그대로 인쇄하면 되기 때문이죠. 아마도 고정폭의 폰트로
 
 =begin original
 
@@ -1244,16 +1243,16 @@ B<pod2fm>.  Various others are available in CPAN.
 
 =end original
 
-Pod フォーマットは本を作るのに十分である必要はありません。
-Pod はただ、オンラインドキュメントに使うnroff やTeXといったマークアップ言語の
-ための、誰にでも使える共通のソースを提供しています。
-現在あるトランスレータには B<pod2text>, B<pod2html>, 
-B<pod2man>  (nroff(1) や troff(1)用), B<pod2latex>, B<pod2fm>があります。
-他にもさまざまなものが CPAN にあります。
+Pod 포맷은 책을 만드는 데 충분할 필요가 없습니다. 
+Pod 는 단지, 온라인문서에 사용하는 nroff 나 TeX등의 마크업언어를 위해
+누구라도 사용할 수 있는 공통의 소스를 제공하고 있습니다.
+현재 있는 번역기로는 B<pod2text>, B<pod2html>, B<pod2man>  
+(nroff(1) 나 troff(1)용), B<pod2latex>, B<pod2fm> 이 있습니다. 
+그 외에도 여러가지가 CPAN에 있습니다.
 
 =head2 Embedding Pods in Perl Modules
 
-(Perlモジュールへのpodの埋め込み)
+(Perl모듈로 pod의 삽입) 
 
 =begin original
 
@@ -1267,13 +1266,12 @@ empty line there before the first Pod command.
 
 =end original
 
-Perl モジュールとスクリプトに Pod ドキュメントを埋め込むことができます。
-ドキュメントを空行および“=head1”コマンドで始め、“=cut”と空行で終えます。
-Perl はこのような Pod テキストを無視します。
-実例はあなたの使っているライブラリモジュールにあります。
-もし Pod テキストをファイルの末尾に置きたいというのであれば、
-__END__ や __DATA__ というカットマークを置き、
-さらに最初に現れる Pod コマンドの前に空行を置くことで行うことができます。
+Perl 모듈과 스크립트에 Pod 문서를 삽입할 수 있습니다. 
+문서를 빈줄 및 "=head1" 커맨드로 시작하고, "=cut"로 빈줄로 끝냅니다.
+실제로는 사용하고 있는 라이브러리 모듈에 있습니다.
+만약 Pod 텍스트를 파일의 맨 끝에 넣고 싶다면,
+__END__ 나 __DATA__ 등의 컷 마크를 쓰고,
+거기에 맨처음에 나타날 Pod 커맨드의 앞에 빈줄을 놓는 것으로 가능합니다.
 
   __END__
 
@@ -1288,12 +1286,12 @@ have recognized the "=head1" as starting a Pod block.
 
 =end original
 
-"=head1" の前に空行がない場合、多くのトランスレータは"=head1"が
-Pod ブロックの開始と認識しません。
+"=head1" 의 앞에 빈 줄이 없는 경우, 많은 번역기들은 "=head1"이 
+Pod 블록의 시작으로 인식하지 않습니다.
 
 =head2 Hints for Writing Pod
 
-(Pod を書くためのヒント)
+(Pod 를 쓰기위한 힌트) 
 
 =over
 
@@ -1311,14 +1309,13 @@ wish to work around.
 
 =end original
 
-B<podchecker> コマンドは Pod の文法に関するエラーと警告を
-チェックするために提供されています。
-例えば、Pod の分割に完全な空行が使われているかや、
-不明なコマンドやフォーマットコードなどをチェックします。
-それでも一つまたは複数のトランスレータに通して結果をチェックするか、
-結果を印刷してそれをチェックすることをお勧めします。
-発見した問題の中には、回避しようと思ったり思わなかったりするような
-トランスレータのバグもあるでしょう。
+B<podchecker> 커맨드는 Pod 의 문법에 관한 에러와 경고를 체크하기 위해
+제공되었습니다.
+예를 들어, Pod 분할에 완전한 빈줄이 사용되거나, 명확하지 않은 커맨드나
+포맷코드등을 체크합니다.
+그래도 하나 이상의 번역기를 통과해서 결과를 체크하거나,
+결과를 인쇄해서 그것을 체크하는 것을 추천합니다.
+발견한 문제 중에는, 회피하려고 했다가 안했다가 하는 번역기의 버그도 있을겁니다.
 
 =item *
 
@@ -1332,10 +1329,10 @@ L<Pod::PXML|Pod::PXML> module in CPAN might also be useful.
 
 =end original
 
-もしあなたが Pod を書くことより HTML を書くことに慣れているなら、
-単純な HTML でドキュメントを書き、実験的な L<Pod::HTML2Pod|Pod::HTML2Pod>
-モジュール (CPAN にあります)を使って Pod に変換することを試すこともできます。
-CPAN にある 実験的な L<Pod::PXML|Pod::PXML> も有用です。
+만약에 Pod를 쓴다거나 HTML을 쓴다는 것에 익숙해 있다면,
+단순한 HTML로 몬서를 써서, 실험적인 L<Pod::HTML2Pod|Pod::HTML2Pod>
+모듈(CPAN에 있습니다)을 사용해서 Pod로 변환하는 것을 시험삼아 해볼 수 있습니다.
+CPAN 에 있는 실험적인 L<Pod::PXML|Pod::PXML> 도 유용합니다.
 
 =item *
 
@@ -1347,8 +1344,8 @@ line.  Having something like this:
 
 =end original
 
-多くの古い Pod トランスレータは全ての Pod コマンド("=cut" を含みます!)の
-前後に空行が必要です。以下のように書くと:
+많은 수의 낡은 Pod 번역기는 모든 Pod 커맨드("=cut"을 포함합니다)의
+앞뒤에 빈줄이 필요합니다. 아래처럼 쓰면:
 
  # - - - - - - - - - - - -
  =item $firecracker->boom()
@@ -1365,8 +1362,7 @@ at all.
 
 =end original
 
-そのような Pod トランスレータは Pod ブロックの発見に完全に
-失敗するでしょう。
+ Pod 번역기는 Pod 블록을 찾는 데 완전히 실패하겠죠.
 
 =begin original
 
@@ -1374,7 +1370,7 @@ Instead, have it like this:
 
 =end original
 
-代わりに、以下のように書いてください:
+대신에 이렇게 써보세요.
 
  # - - - - - - - - - - - -
 
@@ -1399,10 +1395,10 @@ that could cause odd formatting.
 
 =end original
 
-古い Pod トランスレータには、段落("=head2 Functions" のような
-コマンド段落も含みます)の分割にI<完全な>空行を必要とするものもあります。
-空白の入った見た目空行のようなものを入れると、
-セパレータとして扱われずに出力がおかしくなるかもしれません。
+낡은 Pod 번역기에는 단락("=head Functions"처럼 커맨드 단락도 포함합니다)
+의 분할에 I<완전한> 빈 줄을 필요로하는 것도 있습니다.
+공백이 들어간 보기에 빈줄같은 것을 넣으면,
+분할기로써 취급되지 않고 출력이 이상하게 될지도 모르겠습니다.
 
 =item *
 
@@ -1418,14 +1414,14 @@ link comes out.
 
 =end original
 
-古いトランスレータは LE<lt>E<gt> リンクに語の追加を行う場合があります。
-このため、たとえば C<LE<lt>Foo::BarE<gt>> は“the Foo::Bar manpage”と
-なります(詳しくはB<pod2man>を参照)。
-したがって、あなたは変換されたドキュメントを読みやすいものにするために、
-C<the LE<lt>fooE<gt> documentation>という書き方はすべきではありません
--- 代わりに C<the LE<lt>Foo::Bar|Foo::BarE<gt> documentation> と
-書くか、どのようにリンクが出来るかを制御するために 
-C<LE<lt>the Foo::Bar documentation|Foo::BarE<gt>> としてください。
+낡은 번역기는 LE<lt>E<gt> 링크에 글 추가하는 경우가 있습니다. 
+이 때문에, 예를 들면 C<LE<lt>Foo::BarE<gt>> 는"the Foo::Bar manpage"이
+됩니다(자세한 내용은 B<pod2man>를 참조). 
+따라서, 변환된 문서를 읽기쉽게 하기 위해서는, 
+C<the LE<lt>fooE<gt> documentation> 라고 쓰는 것은 좀 아닙니다. 
+-- 대신에 C<the LE<lt>Foo::Bar|Foo::BarE<gt> documentation> 로
+쓰거나, 어떤 링크가 생기는 가를 제어하기 위해
+C<LE<lt>the Foo::Bar documentation|Foo::BarE<gt>> 로 해주세요.
 
 =item *
 
@@ -1436,8 +1432,8 @@ wrapped by some formatters.
 
 =end original
 
-そのままのブロックで 70 文字を越えると、フォーマッタによっては
-見苦しいラッピングが行われるかもしれません。
+그 개로의 블록으로 70문자를 넘으면, 서식기에 따라서는
+보기어려운 래핑이 수행될지도 모르겠습니다.
 
 =back
 
@@ -1452,9 +1448,8 @@ Larry Wall, Sean M. Burke
 
 =begin meta
 
-Translate: 吉村 寿人 <JAE00534@niftyserve.or.jp>
-Update: Kentaro Shirakata <argrath@ub32.org>
-License: GPL or Artistic
+Translated By JEEN<aiatejin@gmail.com>
+License : BPL
 
 =end meta
 
