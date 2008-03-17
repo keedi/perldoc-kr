@@ -575,10 +575,10 @@ line after it, to end its paragraph.
 
 =end original
 
-そして忘れないで欲しいことは、これらのコマンドを使った場合、その
-コマンドが影響するのはコマンドが置かれた行ではなく、
-コマンドがあるI<段落>の終端までだということです。ですから先の例には、
-各コマンドの後ろに段落を終了させるために空行があるのです。
+그리고 잊지 말아주었으면 하는 것은, 이런 커맨드를 사용한 경우, 
+그 커맨드가 영향을 주는 것은 커맨드가 놓은 줄이 아닌,
+커맨드가 있는 I<단락>의 마지막까지라는 것입니다. 그러므로, 앞의 예에서
+각 커맨드의 뒤에 단락을 끝내기 위해 빈 줄이 있는 것입니다.
 
 =begin original
 
@@ -586,7 +586,7 @@ Some examples of lists include:
 
 =end original
 
-幾つか例を挙げましょう:
+몇 개의 예를 들어보도록 하죠:
 
   =over
 
@@ -615,7 +615,7 @@ Some examples of lists include:
 
 =head2 Formatting Codes
 
-(フォーマッティングコード)
+(포맷팅 코드)
 
 =begin original
 
@@ -624,8 +624,8 @@ formatting codes (a.k.a. "interior sequences") can be used:
 
 =end original
 
-普通の段落と、いくつかのコマンド段落では、さまざまな
-フォーマッティングコード(またの名を"内部シーケンス")を使うことができます:
+보통의 단락과 몇 개의 커맨드단락에서는 여러가지의 포맷팅코드
+(다른 이름은 "내부 시퀀스")를 사용할 수 있습니다.
 
 =for comment
  "interior sequences" is such an opaque term.
@@ -642,8 +642,8 @@ Used for emphasis ("C<be IE<lt>careful!E<gt>>") and parameters
 
 =end original
 
-強調 ("C<be IE<lt>careful!E<gt>>") とパラメータ
-("C<redo IE<lt>LABELE<gt>>") のために使います。
+강조 ("C<be IE<lt>careful!E<gt>>") 와 파라메터
+("C<redo IE<lt>LABELE<gt>>") 를 위해 사용합니다.
 
 =item C<BE<lt>textE<gt>> -- bold text
 
@@ -656,11 +656,11 @@ emphasis ("C<be BE<lt>careful!E<gt>>"), and so on
 
 =end original
 
-スイッチ("C<perl's BE<lt>-nE<gt> switch>"),
-プログラム("C<some systems provide a BE<lt>chfnE<gt> for that>"),
-強調 ("C<be BE<lt>careful!E<gt>>"), その他
-("C<and that feature is known as BE<lt>autovivificationE<gt>>")の
-ために使います。
+스윗치("C<perl's BE<lt>-nE<gt> switch>"), 
+프로그램("C<some systems provide a BE<lt>chfnE<gt> for that>"),
+강조("C<be BE<lt>careful!E<gt>>"), 그외
+("C<and that feature is known as BE<lt>autovivificationE<gt>>")의
+경우에 사용합니다.
 
 =item C<CE<lt>codeE<gt>> -- code text
 
@@ -672,10 +672,9 @@ form of computerese ("C<CE<lt>drwxr-xr-xE<gt>>").
 
 =end original
 
-コードをタイプライタフォントや、
-あるいはプログラムテキスト("C<CE<lt>gmtime($^T)E<gt>>")や
-その他のコンピュータ用語("C<CE<lt>drwxr-xr-xE<gt>>") を
-表現していることを示すその他の形でレンダリングされます。
+코드를 타자기 폰트나, 혹은 프로그램텍스트("C<CE<lt>gmtime($^T)E<gt>>")나
+그 외의 컴퓨터 용어 ("C<CE<lt>drwxr-xr-xE<gt>>") 를 표현하고 있다는 것을
+나타내는 그 외의 형태로 렌더링됩니다.
 
 =item C<LE<lt>nameE<gt>> -- a hyperlink
 
@@ -687,9 +686,9 @@ C<text>, C<name>, and C<section> cannot contain the characters
 
 =end original
 
-以下のようにさまざまな文法があります。
-文法の中で、C<text>, C<name>, C<section> に '/' と '|' を含むことはできません。
-また、'<' や '>' は対応しなければなりません。
+아래와 같이 여러가지 문법이 있습니다.
+문법의 안에, C<text>, C<name>, C<section> 에 '/' 와 '|' 를 
+넣을 수는 없습니다. 그리고 '<' 나 '>' 은 매치하지 않으면 안됩니다.
 
 =over
 
@@ -712,10 +711,10 @@ C<LE<lt>crontab(5)E<gt>>.
 
 =end original
 
-Perl マニュアルページへのリンクを設定します(e.g., C<LE<lt>Net::PingE<gt>>)。
-C<name> に空白を含むことができないことに注意してください。
-この文法は C<LE<lt>crontab(5)E<gt>> の形で UNIX man ページへの
-リファレンスのために使われることもあります。
+Perl 매뉴얼 페이지로의 링크를 설정합니다.(e.g., C<LE<lt>Net::PingE<gt>>).
+C<name> 에 공백을 넣는 것은 안된다는 것에 주의하세요.
+이 문법은 C<LE<lt>crontab(5)E<gt>> 의 형태로 UNIX man 페이지로의
+리퍼런스를위해 사용하는 것도 가능합니다.
 
 =item *
 
@@ -725,7 +724,7 @@ C<LE<lt>name/"sec"E<gt>> or C<LE<lt>name/secE<gt>>
 
 =end original
 
-C<LE<lt>name/"sec"E<gt>> または C<LE<lt>name/secE<gt>>
+C<LE<lt>name/"sec"E<gt>> 또는 C<LE<lt>name/secE<gt>>
 
 =begin original
 
@@ -734,8 +733,8 @@ C<LE<lt>perlsyn/"For Loops"E<gt>>
 
 =end original
 
-他のマニュアルページへのある項目へのリンクを設定します。
-例: C<LE<lt>perlsyn/"For Loops"E<gt>>
+다른 매뉴얼페이지의 어느 항목으로의 링크를 설정합니다.
+예제: C<LE<lt>perlsyn/"For Loops"E<gt>>
 
 =item *
 
@@ -745,7 +744,7 @@ C<LE<lt>/"sec"E<gt>> or C<LE<lt>/secE<gt>> or C<LE<lt>"sec"E<gt>>
 
 =end original
 
-C<LE<lt>/"sec"E<gt>> または C<LE<lt>/secE<gt>> または C<LE<lt>"sec"E<gt>>
+C<LE<lt>/"sec"E<gt>> 또는 C<LE<lt>/secE<gt>> 또는 C<LE<lt>"sec"E<gt>>
 
 =begin original
 
@@ -754,8 +753,8 @@ C<LE<lt>/"Object Methods"E<gt>>
 
 =end original
 
-このマニュアルページへのある項目へのリンクを設定します。
-例: C<LE<lt>/"Object Methods"E<gt>>
+이 매뉴얼페이지의 어느 항목으로의 링크를 설정합니다.
+예제: C<LE<lt>/"Object Methods"E<gt>>
 
 =back
 
@@ -770,11 +769,11 @@ in perlsyn.
 
 =end original
 
-セクションは名前付きの見出しか item で始まります。
-たとえば、C<LE<lt>perlvar/$.E<gt>> と C<LE<lt>perlvar/"$."E<gt>> は
-両方とも perlvar の "C<=item $.>" で始まるセクションへリンクします。
-C<LE<lt>perlsyn/For LoopsE<gt>> と C<LE<lt>perlsyn/"For Loops"E<gt>> は
-両方とも perlsyn の "C<=head2 For Loops>" で始まるセクションにリンクします。
+섹션은 이름붙은 표제 혹은 item 으로 시작합니다.
+예를 들면, C<LE<lt>perlvar/$.E<gt>> 와 C<LE<lt>perlvar/"$."E<gt>> 은
+양쪽모두 perlvar 의 "C<=item $.>" 로 시작하는 섹션으로 링크합니다.
+C<LE<lt>perlsyn/For LoopsE<gt>> 와 C<LE<lt>perlsyn/"For Loops"E<gt>> 은
+양쪽 모두 perlsyn의 "C<=head2 For Loops>" 로 시작하는 섹션에 링크합니다.
 
 =begin original
 
@@ -783,8 +782,8 @@ use "C<LE<lt>text|...E<gt>>", as in:
 
 =end original
 
-どんなテキストが表示に用いられるかを制御するためには、
-"C<LE<lt>text|...E<gt>>" を使ってください。つまり:
+어떤 텍스트가 표시에 사용되는 가를 제어하기 위해,
+"C<LE<lt>text|...E<gt>>" 를 사용해주세요. 즉: 
 
 =over
 
@@ -805,8 +804,8 @@ C<LE<lt>Perl Error Messages|perldiagE<gt>>
 
 =end original
 
-このテキストに指定したマニュアルページへのリンクを設定します。
-例: C<LE<lt>Perl Error Messages|perldiagE<gt>>
+이 텍스트에 설정한 매뉴얼 페이지로의 링크를 설정합니다.
+예제: C<LE<lt>Perl Error Messages|perldiagE<gt>>
 
 =item *
 
@@ -826,8 +825,8 @@ Statements"E<gt>>
 
 =end original
 
-このテキストに指定したマニュアルページのある項目へのリンクを設定します。
-例: C<LE<lt>SWITCH statements|perlsyn/"Basic BLOCKs and Switch
+이 텍스트에 지정한 매뉴얼페이지의 어느 항목으로의 링크를 설정합니다.
+예제 :  C<LE<lt>SWITCH statements|perlsyn/"Basic BLOCKs and Switch
 Statements"E<gt>>
 
 =item *
@@ -839,8 +838,8 @@ or C<LE<lt>text|"sec"E<gt>>
 
 =end original
 
-C<LE<lt>text|/"sec"E<gt>> または C<LE<lt>text|/secE<gt>>
-または C<LE<lt>text|"sec"E<gt>>
+C<LE<lt>text|/"sec"E<gt>> 또는 C<LE<lt>text|/secE<gt>>
+또는 C<LE<lt>text|"sec"E<gt>>
 
 =begin original
 
@@ -849,8 +848,8 @@ C<LE<lt>the various attributes|/"Member Data"E<gt>>
 
 =end original
 
-このテキストにこのマニュアルページのある項目へのリンクを設定します。
-例: C<LE<lt>the various attributes|/"Member Data"E<gt>>
+이 텍스트에다가 이 매뉴얼 페이지의 어느 항목으로 링크를 설정합니다.
+예제: C<LE<lt>the various attributes|/"Member Data"E<gt>>
 
 =back
 
@@ -860,7 +859,7 @@ Or you can link to a web page:
 
 =end original
 
-web ページにリンクを設定することもできます。
+web 페이지에 링크를 설정할 수도 있습니다.
 
 =over
 
@@ -883,9 +882,9 @@ various reasons.
 
 =end original
 
-絶対 URL へのリンクです。例: C<LE<lt>http://www.perl.org/E<gt>>。
-しかし、さまざまな理由により、対応する C<LE<lt>text|scheme:...E<gt>> という
-文法はないことに注意してください。
+절대 URL 으로의 링크입니다. 예: C<LE<lt>http://www.perl.org/E<gt>>。
+그러나, 여러가지 이유로, 대응하는 C<LE<lt>text|scheme:...E<gt>> 라는
+문법은 없다는 것에 주의해주세요.
 
 =back
 
@@ -897,7 +896,7 @@ Very similar to HTML/XML C<&I<foo>;> "entity references":
 
 =end original
 
-HTML/XML C<&I<foo>;> "実体参照"ととても似ています。
+HTML/XML C<&I<foo>;> "엔티티 리퍼런스"와 매우 흡사합니다. 
 
 =over
 
@@ -909,7 +908,7 @@ C<EE<lt>ltE<gt>> -- a literal E<lt> (less than)
 
 =end original
 
-C<EE<lt>ltE<gt>> -- リテラルの E<lt> (less than)
+C<EE<lt>ltE<gt>> -- 리터럴의 E<lt> (less than)
 
 =item *
 
@@ -919,7 +918,7 @@ C<EE<lt>gtE<gt>> -- a literal E<gt> (greater than)
 
 =end original
 
-C<EE<lt>gtE<gt>> -- リテラルの E<gt> (greater than)
+C<EE<lt>gtE<gt>> -- 리터럴의 E<gt> (greater than)
 
 =item *
 
@@ -929,7 +928,7 @@ C<EE<lt>verbarE<gt>> -- a literal | (I<ver>tical I<bar>)
 
 =end original
 
-C<EE<lt>verbarE<gt>> -- リテラルの | (I<ver>tical I<bar>)
+C<EE<lt>verbarE<gt>> -- 리터럴의 | (I<ver>tical I<bar>)
 
 =item *
 
@@ -939,7 +938,7 @@ C<EE<lt>solE<gt>> = a literal / (I<sol>idus)
 
 =end original
 
-C<EE<lt>solE<gt>> = リテラルの / (I<sol>idus)
+C<EE<lt>solE<gt>> = 리터럴의 / (I<sol>idus)
 
 =begin original
 
@@ -949,9 +948,8 @@ capital letter.
 
 =end original
 
-上記の 4 つは他のフォーマッティングコードの中
-(特に C<LE<lt>...E<gt>>)と、大文字が前につけられた場合を除いて
-オプションです。
+위의 네 개는 다른 포맷팅코드 안(특히 C<LE<lt>...E<gt>>)과,
+대문자가 엎에 붙는 경우를 제외한 옵션입니다.
 
 =item *
 
