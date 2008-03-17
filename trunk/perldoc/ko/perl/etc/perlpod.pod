@@ -969,9 +969,9 @@ e with an acute (/-shaped) accent.
 
 =end original
 
-いくつかの数値でない HTML エンティティ名(C<EE<lt>eacuteE<gt>> のようなもの)は
-HTML での C<&eacute;> と同じ意味です -- つまり、
-acute (/-の形の) アクサン付きの小文字の e です。
+몇 개의 숫자값이 아닌 HTML 엔티티이름(C<EE<lt>eacuteE<gt>> のようなもの)은
+HTML 에서의 C<&eacute;> 와 같은 의미입니다. - 즉, 
+acute(/-의 형태의) 액센트가 붙은 소문자 e입니다.
 
 =item *
 
@@ -993,10 +993,10 @@ in decimal, as in C<EE<lt>181E<gt>>.
 
 =end original
 
-この番号の ASCII/Latin-1/Unicode 文字です。
-C<EE<lt>0x201EE<gt>> のように先頭に "0x" があると I<number> は 16 進数です。
-C<EE<lt>075E<gt>> のように先頭に "0" があると I<number> は 8 進数です。
-C<EE<lt>181E<gt>> のようにそれ以外では I<number> は 10 進数と解釈されます。
+이 번호는 ASCII/Latin-1/Unicode 문자입니다.
+C<EE<lt>0x201EE<gt>> 같이 앞에 "0x" 가 있으면 I<number>는 16진수입니다. 
+C<EE<lt>075E<gt>> 같이 앞에 "0"가 있으면 I<number>는 8진수입니다. 
+C<EE<lt>181E<gt>> 같이 그 외에는 I<number>는 10진수로 해석됩니다.
 
 =begin original
 
@@ -1008,11 +1008,11 @@ rendering C<EE<lt>eacuteE<gt>> as just a plain "e".)
 
 =end original
 
-古い Pod フォーマッタは 8 進数や 16 進数のエスケープを認識しない
-可能性があり、また多くのフォーマッタは 255 以上の文字を
-正しくレンダリングできるかわからないことに注意してください。
-(Latin-1 文字ですら正しくレンダリングできないフォーマッタもあります。
-例えば C<EE<lt>eacuteE<gt>> を普通の "e" にレンダリングします。)
+옛날 Pod 서식기는 8진수나 16진수의 이스케이프를 인식하지 않을
+가능성이 있고, 또 많은 서식기는 255 이상의 문자를 
+정확하게 렌더링할 수 있을 지 모른다는 것에 주의하세요.
+(Latin-1 문자에서도 정확히 렌더링되지 않는 서식기가 있습니다.
+예를 들면 C<EE<lt>eacuteE<gt>> 을 그냥 "e"로 렌더링합니다)
 
 =back
 
@@ -1024,7 +1024,7 @@ Typically displayed in italics.  Example: "C<FE<lt>.cshrcE<gt>>"
 
 =end original
 
-典型的にはイタリックで表示されます。例: "C<FE<lt>.cshrcE<gt>>"
+전형적으로는 이탤릭으로 표시됩니다. 예: "C<FE<lt>.cshrcE<gt>>"
 
 =item C<SE<lt>textE<gt>> -- text contains non-breaking spaces
 
@@ -1035,8 +1035,8 @@ across lines.  Example: S<C<SE<lt>$x ? $y : $zE<gt>>>.
 
 =end original
 
-これは I<text> の内容が行をまたがないことを意味します。
-例: <C<SE<lt>$x ? $y : $zE<gt>>>
+이것은 I<text> 의 내용이 줄가름이 없다는 것을 의미합니다.
+예: <C<SE<lt>$x ? $y : $zE<gt>>>
 
 =item C<XE<lt>topic nameE<gt>> -- an index entry
 
@@ -1048,10 +1048,10 @@ Example: C<XE<lt>absolutizing relative URLsE<gt>>
 
 =end original
 
-これは多くのフォーマッタでは無視されますが、
-インデックスを作成するのに使われることもあります。
-常に空文字列としてレンダリングされます。
-例: C<XE<lt>absolutizing relative URLsE<gt>>
+이것은 많은 서식기에서는 무시됩니다만,
+인덱스를 만드는 것에 사용하는 경우도 있습니다.
+보통은 빈 문자열로써 렌더링됩니다.
+예제: C<XE<lt>absolutizing relative URLsE<gt>>
 
 =item C<ZE<lt>E<gt>> -- a null (zero-effect) formatting code
 
@@ -1066,12 +1066,12 @@ the part of a (fictitious) "NE<lt>...E<gt>" code.
 
 =end original
 
-これはまれに用いられます。
-ときどき EE<lt>...E<gt> コードを使う方法の一つです。
-例えば、("NE<lt>3" のために) "C<NEE<lt>ltE<gt>3>" の代わりに
-"C<NZE<lt>E<gt>E<lt>3>" と書けます。
-(the "ZE<lt>E<gt>" は "N" と "E<lt>" を分解するので
-"NE<lt>...E<gt>" の一部と(間違って)解釈されることはありません。)
+이것은 자주 사용됩니다.
+때때로 EE<lt>...E<gt> 코드를 사용하는 방법 중 하나입니다. 
+예를 들면, ("NE<lt>3" のために) "C<NEE<lt>ltE<gt>3>" 대신에
+"C<NZE<lt>E<gt>E<lt>3>" 로 쓸 수 있습니다.
+(the "ZE<lt>E<gt>" は "N" と "E<lt>" 를 분해하기 때문에,
+"NE<lt>...E<gt>" 의 일부와(달리) 해석되는 경우는 없습니다)
 
 =for comment
  This was formerly explained as a "zero-width character".  But it in
@@ -1094,14 +1094,12 @@ using an C<E> code:
 
 =end original
 
-たいていの場合、コードフォーマッティングの最初と最後のデリミタとして
-1 組の山括弧のみが必要です。
-しかし、時々フォーマッティングコードの中に右山括弧(または大なり記号'>')を
-入れたい場合があります。これはコードの断片の中で違うフォントタイプを
-使いたいときによくあります。
-Perl に関する他のことと同様に、やりかたはひとつではありません。
-ひとつの方法は単純に閉じ括弧を C<E> コードを使って
-エスケープする方法です:
+대체로, 코드포맷팅의 초음과 끝의 구분자로써 한쌍의 꺾은 괄호만이 쓰입니다.
+그러나, 때때로 포맷팅코드의 안에 왼쪽 꺾은 괄호(혹은 보다 큰 기호 '>')를
+넣고 싶을 경우가 있습니다. 이것은 코드의 일부분 중에서 다른 폰트 타입을
+사용하고 싶은 때가 종종 있습니다.
+Perl 에 관한 다른 것과 같이, 하는 방법은 하나만 있는 것이 아닙니다.
+단순히 닫는 괄호를 C<E> 코드를 사용해서 이스케이프하는 방법도 있습니다.
 
     C<$a E<lt>=E<gt> $b>
 
@@ -1111,7 +1109,7 @@ This will produce: "C<$a E<lt>=E<gt> $b>"
 
 =end original
 
-これは "C<$a E<lt>=E<gt> $b>" となります。
+이것은 "C<$a E<lt>=E<gt> $b>" 이 됩니다.
 
 =begin original
 
@@ -1125,11 +1123,11 @@ do the trick:
 
 =end original
 
-より読みやすく、そしておそらくより"明白な"方法は、別のデリミタを
-使って、単独の">"をエスケープしなくてもいいようにする方法です。
-Perl5.5.660 以降の Pod フォーマッタでは、2 個の山括弧 ("<<" and ">>")が使えます。
-但し、I<開始デリミタの直後と終了デリミタの直前に空白があるときだけ>です!
-例えば、以下はそのトリックを使っています:
+보다 일기 쉽게, 그리고 아마 보다"명백한" 방법은, 다른 구분자를
+사용해서, 단독의 ">"를 이스케이프하지않아도 되도록 하는 방법입니다.
+Perl 5.5.660 이후의 Pod 서식기에서는, 2개의 꺾은괄호를 사용할 수 있습니다.
+다만 I<시작 구분자의 바로 다음과 끝 구분자의 바로 앞에 공백이 있을 때만>입니다.
+아래는 그 트릭을 사용하고 있습니다.
 
     C<< $a <=> $b >>
 
@@ -1144,12 +1142,11 @@ following will also work:
 
 =end original
 
-実際のところ、開始デリミタと終了デリミタの数さえ合っており、
-開始デリミタの最後の '<' の直後と 終了デリミタの最初の '>' の
-直前に空白が入っていれば、
-山括弧の数はいくつでもかまいません。
-(空白は無視されます。)
-従って、以下のものも正しく動作します:
+사실은, 시작 구분자와 종료 구분자의 수와 맞고,
+시작 구분자의 마지막의 '<'의 바로 다음과 종료구분자의 맨 처음의 '>'의
+바로 앞에 공백이 들어 있으면, 꺾은 괄호의 수는 몇 개라도 상관없습니다.
+(공백은 무시됩니다)
+따라서, 아래도 잘 동작합니다.
 
     C<<< $a <=> $b >>>
     C<<<<  $a <=> $b     >>>>
@@ -1160,7 +1157,7 @@ And they all mean exactly the same as this:
 
 =end original
 
-そしてこれらは全て以下と全く同じ意味です:
+그리고 이런것들은 모두 아래와 완전히 같은 의미입니다.
 
     C<$a E<lt>=E<gt> $b>
 
@@ -1171,7 +1168,7 @@ code in C<C> (code) style:
 
 =end original
 
-さらなる例として、C<C> (コード) スタイルのコードの断片を書きたいとすると:
+더 자세한 예로써, C<C> (코드) 스타일의 코드의 일부분을 쓰고싶다면:
 
     open(X, ">>thing.dat") || die $!
     $foo->bar();
@@ -1182,7 +1179,7 @@ you could do it like so:
 
 =end original
 
-以下のように書くことができます:
+아래처럼 쓸 수 있습니다.
 
     C<<< open(X, ">>thing.dat") || die $! >>>
     C<< $foo->bar(); >>
@@ -1193,7 +1190,7 @@ which is presumably easier to read than the old way:
 
 =end original
 
-これはおそらく以下のような古い書き方より読みやすいです:
+이것은 아마도 아래처럼 낡은 쓰기 방법 보다는 훨씬 읽기 편하겠죠.
 
     C<open(X, "E<gt>E<gt>thing.dat") || die $!>
     C<$foo-E<gt>bar();>
@@ -1206,9 +1203,9 @@ Pod::Parser 1.093 or later, or Pod::Tree 1.02 or later.
 
 =end original
 
-これは現在のところ pod2text (Pod::Text), pod2man (Pod::Man), および
-Pod::Parser 1.093 以降、Pod::Tree 1.02 以降を使用しているその他の
-pod2xxx と Pod::Xxxx が対応しています。
+이것은 근래에 pod2text (Pod::Text), pod2man (Pod::Man), 및
+Pod::Parser 1.093 이후, Pod::Tree 1.02 이후를 사용하고 있는 
+그 밖의 pod2xxx 와 Pod::Xxxx 가 대응하고 있습니다.
 
 =head2 The Intent
 
