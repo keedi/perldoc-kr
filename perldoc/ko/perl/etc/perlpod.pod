@@ -296,7 +296,7 @@ Don't put "=headI<n>" commands inside an "=over" ... "=back" region.
 
 =end original
 
-"=over" ... "=back" リージョンの中で "=headI<n>" は使えません。
+"=over" ... "=back"　영역 안에서 "=headI<n>" 은 사용할 수 없습니다.
 
 =item *
 
@@ -310,10 +310,10 @@ numbers.
 
 =end original
 
-そしておそらくもっとも重要なこととして、item の一貫性を維持してください:
-点を出力するためには全ての item に "=item *" を使ってください;
-番号付きリストを出力するためには "=item 1.", "=item 2." などを使ってください。
-点も番号も付けない場合は "=item foo", "=item bar" などを使ってください。
+그리고, 아마도 제일 중요한 것으로써, item 의 일관성을 유지해 주세요:
+점을 출력하기위해서는 모든 item 에 "=item *"를 사용해 주세요;
+번호붙은 리스트를 출력하기 위해서는 "=item 1.", "=item 2." 등을 사용해주세요.
+점도 번호도 붙지 않는 경우는 "=item foo", "=item bar" 등을 사용해주세요.
 
 =begin original
 
@@ -323,9 +323,8 @@ list.
 
 =end original
 
-点か番号で始めたなら、ずっとそれを使ってください。
-フォーマッタは最初の "=item" のタイプを見てリストのフォーマット
-方法を決定します。
+점 혹은 번호로 시작했다면, 계속 그것을 사용해 주세요.
+서식기는 맨 처음의 "=item" 의 타입을 보고 리스트의 포맷방법을 결정합니다.
 
 =back
 
@@ -341,11 +340,11 @@ is not technically necessary, but many older Pod processors require it.)
 
 =end original
 
-Pod ブロックを終了するためには、空行、"=cut"で始まる行、空行を書きます。
-これにより Perl (と Pod フォーマッタ) はここから Perl コードが
-再開することがわかります。
-("=cut" の前の空行は技術的には不要ですが、多くの古い Pod
-プロセッサはこれが必要です。)
+Pod 블록을 종료하기 위해서는, 빈 줄, "=cut"로 시작하는 줄, 빈줄을 씁니다.
+이것에 의해 Perl (과 Pod 서식기) 는 여기에서 Perl 코드가 다시 시작하는 것을
+알게됩니다.
+("=cut" 의 앞의 빈 줄은 기술적으로는 필요없지만, 많은 낡은 Pod 프로세서는
+이것이 필요합니다)
 
 =item C<=pod>
 
@@ -359,11 +358,11 @@ paragraph or a verbatim paragraph.  For example:
 
 =end original
 
-"=pod" コマンドはそれ自身ではほとんど何もしませんが、
-Perl (と Pod フォーマッタ)に Pod ブロックがここから始まることを示します。
-Pod ブロックは I<いずれかの> コマンド段落で開始するので、
-"=pod" コマンドは普通 Pod ブロックを普通の段落かそのままの段落から
-始めたいときに使います。例:
+"=pod" 커맨드는 스스로는 거의 아무것도 하지 않지만,
+Perl (과 Pod 서식기)에 Pod 블록이 여기에서 시작한다는 것을 나타냅니다.
+Pod 블록은 I<어떤> 커맨트 단락에서 시작하므로, 
+"=pod" 커맨드는 보ㅇ Pod 블록을 보통의 단락 혹은 그대로의 단락에서
+시작하고 싶을 때에 사용합니다. 예제:
 
   =item stuff()
 
@@ -399,11 +398,10 @@ will be completely ignored.
 
 =end original
 
-for, begin, end は、通常の Pod テキストとして解釈されるのではなく、
-直接特定のフォーマッタに渡されるべきテキスト/コード/データ、
-あるいはその他の特別なものの領域を定義できます。
-このフォーマットを使うフォーマットはこの領域を使い、
-さもなければ完全に無視します。
+for, begin, end 는 일반적인 Pod 텍스트로써 해석되는 것이 아니라,
+직접 특정의 서식기에 전달해야하는 텍스트/코드/데이터, 혹은
+그 외의 특별한 것의 영역을 정의할 수 있습니다.
+이 포맷을 사용하는 포맷은 이 영역을 사용해, 없다면 완전히 무시합니다.
 
 =begin original
 
@@ -414,10 +412,10 @@ called I<formatname>.  For example,
 
 =end original
 
-"=begin I<formatname>" コマンド, いくつかの段落,
-"=end I<formatname>" コマンドは、はさまれたテキスト/データが
-I<formatname> と呼ばれる特別なフォーマットを理解するフォーマッタ用で
-あることを意味します。例:
+"=begin I<formatname>" 커맨드, 몇 개정도의 단락 
+"=end I<formatname>" 커맨드는 포함된 텍스트/데이터가 
+I<formatname> 이라고 불리는 특별한 포맷을 이해하는 서식기용인 것을 의미합니다.
+예제:
 
   =begin html
 
@@ -434,9 +432,9 @@ right after I<formatname>) is in that special format.
 
 =end original
 
-"=for I<formatname> I<text...>" コマンドは、
-この段落の残り(I<formatname> の直後から)が特別なフォーマットであることを
-指定します。
+"=for I<formatname> I<text...>" 커맨드는 
+이 단락의 남은 부분(I<formatname> 의 바로 다음부터)이 특별한 포맷인 것을
+정의합니다.
 
   =for html <hr> <img src="thang.png">
   <p> This is a raw HTML paragraph </p>
@@ -448,7 +446,7 @@ region.
 
 =end original
 
-これは上記の "=begin html" ... "=end html" リージョンと同じ意味です。
+이것은 위의 "=begin html" ... "=end html" 영역과 같은 의미입니다. 
 
 =begin original
 
@@ -461,12 +459,12 @@ command.
 
 =end original
 
-これは、"=for" では 1 段落のテキストのみを指定できます
-(つまり "=foo targetname text...")が、
-"=begin targetname" ... "=end targetname" ではその間に好きな量のテキストを
-指定できます。
-("=begin" コマンドの直後と "=end" コマンドの直前に空行が必要であることに
-注意してください。)
+이것은, "=for" 에서는 한 단락의 텍스트만을 정의할 수 있습니다만,
+(즉 "=foo targetname text...")
+"=begin targetname" ... "=end targetname" 에서는 그 사이의 적당량을 
+정의합니다.
+("=begin" 커맨드의 바로 다음과 "=end" 커맨드의 바로 앞에 빈 줄이 필요하다는
+것에 주의해주세요)
 
 =begin original
 
@@ -474,7 +472,7 @@ Here are some examples of how to use these:
 
 =end original
 
-これを使った例を幾つか挙げましょう。
+이것을 사용한 예제를 몇 개 정도 들어보도록 합시다.
 
   =begin html
 
@@ -501,9 +499,8 @@ formatters will treat some of these as synonyms.)
 
 =end original
 
-現在使うことのできるフォーマット名は"roff", "man", "latex", 
-"tex", "text", "html"です(一部のフォーマッタは他のものの別名と
-して扱われます)。
+현재 사용하는 것의 가능한 포맷이름은 "roff", "man", "latex", "tex",
+"text", "html"입니다(일부의 서식기는 다른 것의 별명으로 취급합니다)
 
 =begin original
 
@@ -513,9 +510,9 @@ document:
 
 =end original
 
-フォーマット名"comment" は(おそらくはあなた自身のための)単なるメモで、
-フォーマッティングした Pod ドキュメントには現れるべきでない場合に
-用いられる一般的な名称です。
+포맷이름 "comment"는(아마 작성자를 위한) 간단한 메모로,
+포맷팅한 Pod 문서에는 나타나지않아야 할 경우에 사용되는
+일반적인 명칭입니다.
 
   =for comment
   Make sure that all the available options are documented!
@@ -532,12 +529,11 @@ be for formatting as a footnote).
 
 =end original
 
-フォーマッタの中には、
-テキストが生のデータでないけれども、Pod テキストではある
-(つまりフォマッティングコードを含むことがある)ことを知らせるために
-C<"=for :formatname"> や C<"=begin :formatname" ... "=end :formatname">) の
-ように I<formatnames> の先頭にコロンが必要な場合もあります
-(通常の段落ではなく、脚注としてフォーマットするものなどです)。
+서식기 중에는 텍스트가 수정되지 않은 데이터가 아닐지라도, Pod 텍스트인
+것(즉 포맷팅 코드를 포함하는 것이 있는)을 알리기 위해
+C<"=for :formatname"> 나 C<"=begin :formatname" ... "=end :formatname">) 처럼
+I<formatnames> 의 앞에 콜론이 필요한 경우도 있습니다. 
+(일반적인 단락이 아닌, 각주로써 포맷되는 것 따위입니다) 
 
 =item C<=encoding I<encodingname>>
 
@@ -552,14 +548,13 @@ module.  Examples:
 
 =end original
 
-このコマンドはドキュメントのエンコーディングを決定するのに使われます。
-ほとんどのユーザーには不要なものです; しかしもしエンコーディングが
-US-ASCII か Latin-1 でない場合、
-C<=encoding I<encodingname>> コマンドをドキュメントの始めの方に
-置いておくことで、pod フォーマッタがドキュメントをどのように
-デコードすればよいかを知ることができます。
-I<encodingname> に関しては、L<Encode::Supported> で認識される
-名前を使ってください。例:
+이 커맨드는 문서의 인코딩을 결정하는 것에 사용됩니다.
+대부분의 유저에게는 불필요한 것입니다; 거기다가 만약 인코딩이 
+US-ASCII 나 Latin-1 이 아닌 경우,
+C<=encoding I<encodingname>> 커맨드를 문서의 시작부분에 놓는 것으로
+Pod 서식기가 문서를 어떻게 디코드하면 좋을 지를 알 수 있습니다.
+I<encodingname> 에 관해서는 L<Encode::Supported> 에서 인식되는 
+이름을 사용해 주세요. 예제:
 
   =encoding utf8
 
