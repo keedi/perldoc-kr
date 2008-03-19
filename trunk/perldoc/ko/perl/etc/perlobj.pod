@@ -7,7 +7,7 @@ perlobj - Perl objects
 
 =end original
 
-perlobj - Perl のオブジェクト
+perlobj - Perl 의 오브젝트
 
 =head1 DESCRIPTION
 
@@ -20,12 +20,11 @@ in Perl can be found in L<perltoot> and L<perltooc>.
 
 =end original
 
-まず最初に、あなたが Perl におけるリファレンスがなんであるかを理解している
-必要があります。
-L<perlref> を参照してください。
-第二に、これから説明するリファレンスの動作が複雑すぎると思うようなら、
-Perl におけるオブジェクト指向プログラミングのチュートリアルが
-L<perltoot> と L<perltooc> にあります。
+우선 처음으로 Perl에서의 리퍼런스가 무엇인지를 이해하고 있어야합니다.
+이에 대해서는 L<perlref> 를 참조해 주세요.
+두번째로는, 이제부터 설명하는 리퍼런스의 동작이 너무 복잡하다고 생각하신다면,
+Perl 에서의 오브젝트지향 프로그래밍의 튜토리얼이 
+L<perltoot> 와 L<perltooc> 에 있으니 참고하세요.
 
 =begin original
 
@@ -34,8 +33,8 @@ here are three very simple definitions that you should find reassuring.
 
 =end original
 
-ここまででまだ読み進める気があるのなら、あなたを安心させるだろう
-三つの非常に単純な定義があります。
+여기까지로 아직 읽어나갈 기운이 있다면, 당신을 안심시키기 위한 것입니다.
+세개의 꽤 단순한 정의가 있습니다.
 
 =over 4
 
@@ -48,8 +47,7 @@ belongs to.
 
 =end original
 
-オブジェクトとは、単に自分がどのクラスに属しているのかを
-知っているようなリファレンスです。
+오브젝트란, 단순히 자신이 어느 클래스에 속해있는 가를 알고 있는 리퍼런스입니다.
 
 =item 2.
 
@@ -60,8 +58,7 @@ with object references.
 
 =end original
 
-クラスとは、単にオブジェクトのリファレンスを取り扱うメソッドを
-提供するパッケージです。
+클래스란, 단순히 오브젝트의 리퍼런스를 취급하는 메소드를 제공하는 패키지입니다.
 
 =item 3.
 
@@ -72,9 +69,8 @@ a package name, for class methods) as the first argument.
 
 =end original
 
-メソッドとは、単にその第一引数にオブジェクトのリファレンス
-(もしくはクラスのメソッドに対するパッケージ名)を取るような
-サブルーチンです。
+메소드란, 단순히 첫번째 인수에 오브젝트의 리퍼런스(혹은 클래스의 메소드에 대한
+패키지명)을 얻을 수 있는 서브루틴입니다.
 
 =back
 
@@ -84,12 +80,12 @@ We'll cover these points now in more depth.
 
 =end original
 
-これらのポイントを、より深く掘り下げて行きます。
+이런 것들에 대해서 더 깊게 파고 들어 가겠습니다.
 
 =head2 An Object is Simply a Reference
 X<object> X<bless> X<constructor> X<new>
 
-(オブジェクトは単なるリファレンス)
+(오브젝트는 단순한 레퍼런스)
 
 =begin original
 
@@ -101,10 +97,10 @@ constructor:
 
 =end original
 
-C++ とは違って、Perl はコンストラクタに対して特別な構文を用意していません。
-コンストラクタは単に、クラスに "bless" したなにかのリファレンスを
-返すようなサブルーチンで、一般的にはサブルーチンが定義されているクラスです。
-以下に典型的なコンストラクタを示します。
+C++ 과는 달리 Perl은 컨스트럭터에 대해 특별한 구문을 준비하지 않습니다.
+컨스트럭터는 단순히, 클래스에 "bless" 한 무엇인가의 리퍼런스를
+반환하는 서브루틴으로, 일반적으로는 서브틴이 정의되어 있는 클래스입니다.
+아래는 전형적인 컨스트럭터를 나타냅니다.
 
     package Critter;
     sub new { bless {} }
@@ -116,8 +112,8 @@ a construct this way, too:
 
 =end original
 
-C<new> という語は特別なものではありません。
-コンストラクタを以下のように記述することもできます:
+C<new> 라고 하는 단어는 특별한 것이 아닙니다.
+컨스트럭터를 아래와 같이 쓰는 것도 가능합니다.
 
     package Critter;
     sub spawn { bless {} }
@@ -133,13 +129,11 @@ they create.
 
 =end original
 
-実際のところ、これは C++ プログラマーが C++ と同じように
-Perl の C<new> が動くと考えて落とし穴にはまることがないという点で
-好ましいものではあります。
-あなたには、あなたが解決しようとしている問題に関するコンテキスト
-でわかりやすいコンストラクタにすることをお奨めします。
-例を挙げると、Perl の Tk エクステンションのコンストラクタでは、
-作成するウィジェットから名前を取っています。
+실제로는, 이건 C++ 프로그래머가 C++ 처럼 Perl 의 C<new> 가 동작한다고
+생각해서 함정에 빠질 일이 없다 는 점에서 선택할 만한 것입니다.
+해결하고 픈 문제에 관한 컨텍스트에서 알기쉬운 컨스트럭터로 하는 것을
+추천합니다. 예를 들면, Perl 의 Tk 익스텐션의 컨스트럭터에서는
+작성하는 위젯에서 이름을 얻고 있습니다.
 
 =begin original
 
@@ -155,13 +149,13 @@ have been returned directly, like this:
 
 =end original
 
-Perl のコンストラクタに関して C++ と違うことは、
-C++ では自分でメモリを割り当てる必要があるということです。
-C<{}> は空の無名ハッシュを割り当てます。
-bless() は引数にリファレンスを取り、そのオブジェクトにオブジェクトが
-Critter のリファレンスであることを教え、リファレンスを返します。
-参照されているオブジェクトはそれ自身自分が bless されていることを知っていて、
-リファレンスは以下の例のように直接返すことができます。
+Perl 의 컨스트럭터에 관해서 C++ 과 다른 것은,
+C++ 에서는 자신이 메모리를 할당할 필요가 있다는 것입니다.
+C<{}> 는 빈 이름없는 해쉬를 할당합니.
+bless() 는 인수에 리퍼런스를 얻고, 그 오브젝트에 오브젝트가
+Critter 의 리퍼런스인 것을 알리고, 리퍼런스를 반환합니다.
+참조된 오브젝트는 그 자신이 bless 되어 있는 것을 아고 있고,
+리퍼런스는 아래의 예처럼 직접 반환할 수 있습니다.
 
     sub new {
 	my $self = {};
@@ -176,8 +170,8 @@ that wish to call methods in the class as part of the construction:
 
 =end original
 
-実際のところ、構築の一部としてクラスのメソッドを呼び出すようなもっと
-複雑なコンストラクタを良く見かけることでしょう。
+실제로는, 구축의 일부로써 클래스의 메소드를 호출하는 것처럼 더욱
+복잡한 컨스트럭터를 잘 보이도록 하는 것이겠죠.
 
     sub new {
 	my $self = {};
@@ -195,10 +189,10 @@ so that your constructors may be inherited:
 
 =end original
 
-継承について心配していて(そうあるべきなのですが。
-L<perlmodlib/"Modules: Creation, Use, and Abuse">を参照してください)、
-継承されているかもしれないコンストラクタで引数二つを取る形式の bless を
-使いたいのであれば:
+상속에 대해서 신경쓰고 있으면(혹 그러고 계시다면,
+L<perlmodlib/"Modules: Creation, Use, and Abuse">를 참조해주세요)
+계승될지도 모르는 컨스트럭터에서 인수 두개를 얻는 형식의 bless 를
+사용하고 싶다면 :
 
     sub new {
 	my $class = shift;
@@ -219,14 +213,11 @@ whatever $class we blessed the object into:
 
 =end original
 
-あるいは、ユーザーが C<< CLASS->new() >> ではなく C<< $obj->new() >>
-を使うことを期待しているのであれば、以下のような形式を使います。
-(Note that using
-this to call new() on an instance does not automatically perform any
-copying.  If you want a shallow or deep copy of an object, you'll have to
-specifically allow for that.)
-initialize() というメソッドは $class を私たちがオブジェクトに bless しているか
-どうかに関らず使われます。
+혹은, 유저가 C<< CLASS->new() >> 가 아닌 C<< $obj->new() >> 를 사용하는 것을
+기대하고 있다면, 아래와 같은 형식을 사용합니다.
+initialize() 라 하는 메소드는 $class를 자신들이 오브젝트에 bless 하고 있는 
+지 어떤 지에 상관없이 사용됩니다.
+
 (TBT)
 
     sub new {
@@ -247,11 +238,10 @@ be accessed only through the class's methods.
 
 =end original
 
-クラスパッケージの中では、メソッドはリファレンスを普通のリファレンスとして
-扱うでしょう。
-クラスパッケージの外側では、リファレンスは一般的にクラスメソッドを
-通してのみアクセスすることのできる不透明な値(opaque value)であるかのように
-扱われます。
+클래스 패키지 안에서는, 메소드는 리퍼런스를 보통의 리퍼런스로써 취급됩니다.
+클래스 패키지의 바깥쪽에서는 리퍼런스는 일반적으로 클래스 메소드를
+통해서만 접근하는 것이 가능한 불투명한 값(opaque value)인 것처럼
+취급됩니다.
 
 =begin original
 
@@ -265,16 +255,14 @@ having to do this, the parent class is probably misbehaving, though.
 
 =end original
 
-コンストラクタは現在参照されているオブジェクトを別のクラスに
-属させるために、再 bless するかもしれません。
-this is almost certainly going
-to get you into trouble.
-しかし、その新しいクラスは、後で掃除する原因となります。
-オブジェクトは一度に一つのクラスにしか属することができないかのように
-以前のblessは忘れ去られます(多くのクラスからメソッドを継承することが
-自由にできるとしても、です)。
-もし再ブレスしなければならないというのなら、その親クラスは不正な
-振る舞いをしています。
+컨스트럭터는 현재 참조된 오브젝트를 별도의 클래스에 소속시키기 위해
+다시 bless 할지도 모릅니다.
+하지만, 새로운 클래스는 나중에 없어지는 원인이 됩니다.
+오브젝트는 한번에 하나의 클래스에만 속할 수 없는 것처럼 
+이전의 bless는 잊혀져버립니다(많은 클래스에서 메소드를 상속하는 것이
+자유롭게 된다고 해도, 마찬가지입니다)
+만약 다시 bless 하지않으면 안되는 것이라면, 부모 클래스는 잘못된
+행동을 하고 있는 것입니다.
 
 =begin original
 
@@ -285,12 +273,12 @@ the following example:
 
 =end original
 
-解説: Perl のオブジェクトは bless されています。
-リファレンスはそうではありません。
-オブジェクトは自分が属しているパッケージがなんであるか知っていますが、
-リファレンスは知りません。
-関数 bless() はリファレンスをオブジェクトとみなすために使われます。
-以下の例を見てください。
+해설 : Perl 의 오브젝트는 bless 되어 있습니다.
+리퍼런스는 그렇지 않습니다.
+오브젝트는 자신이 속해 있는 패키지가 무엇인지를 알고 있지만,
+리퍼런스는 모릅니다.
+함수 bless() 는 리퍼런스를 오브젝트로 간주하기 위해 사용됩니다.
+아래의 예를 봐 주세요.
 
     $a = {};
     $b = $a;
@@ -304,14 +292,14 @@ operated on the object and not on the reference.
 
 =end original
 
-これは "$b as being a BLAH" と表示されます;
-これで明らかなように、 bless() はリファレンスに対してではなく
-オブジェクトに作用します。
+이것은 "$b as being a BLAH" 라고 표시됩니다. 
+이것은 명확하게 bless() 는 리퍼런스에 대해서 가 아닌
+오브젝트에 작용하는 것을 말합니다.
 
 =head2 A Class is Simply a Package
 X<class> X<package> X<@ISA> X<inheritance>
 
-(クラスは単なるパッケージ)
+(클래스는 단순히 패키지)
 
 =begin original
 
