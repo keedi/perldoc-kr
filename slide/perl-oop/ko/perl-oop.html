@@ -73,7 +73,7 @@
 <p>To get objects in Perl, we need to store the data somewhere,
 and associate that data with methods.</p>
 펄의 객체를 위해 데이터를 어딘가 저장하고 
-메소드와 데이터를 결합(?)할 필요가 있다.
+메소드와 데이터를 결합할 필요가 있다.
 
 </div>
 
@@ -141,7 +141,7 @@ $obj-&gt;{method1}-&gt;();
 <p>This is UGLY.</p>
 <p>이것은 <b>흉하다</b>.</p>
 <p>(although it has an advantage of not needing an OO language)</p>
-<p>(비록 이것이 OO 언어에 꼭 필요하지 않은 장점을 가지고 있지만)</p>
+<p>(비록 이것이 OO 언어에 꼭 필요하지 않은 장점을 가지고 있지만)??</p>
 <p>One can write such objects in C, if one wants.</p>
 <p>원한다면 C언어로도 이런 객체를 만들수 있다.</p>
 <p>(yes, people are known to do just that)</p>
@@ -219,14 +219,14 @@ The result is a blessed reference;  an object.
 <p>Methods are just ordinary subs defined in the class'es package.</p>
 <p>메소드는 단지 클래스 패키지안에 선언된 일반적인 서브루틴이다.</p>
 <p>Call them using dereferencing arrow:</p>
-<p>디레퍼런스(?) 화살표를 이용해서 메소드를 호출한다.</p>
+<p>디레퍼런스 화살표를 이용해서 메소드를 호출한다.</p>
 
 <pre><code>
 $obj-&gt;method($param1, $param2);
 </code></pre>
 
 <p>The very first parameter passed will be an object reference.</p>
-<p>첫번째 인자는 오브젝트 레퍼런스가 될것이다.</p>
+<p>첫번째 인자는 객체 레퍼런스가 될것이다.</p>
 </div>
 
 <div class="slide">
@@ -309,7 +309,7 @@ representation.</p>
 어설프게 데이터를 만질수 있다.</p>
 
 <p>This is considered bad.</p>
-
+<p>잘 생각해보면 이건 나쁜 것이다..<p>
 </div>
 
 <div class="slide">
@@ -318,9 +318,8 @@ representation.</p>
 <p>The same syntax
 <code>$o-&gt;methodname</code>
 can be used to call class methods.</p>
-<p>같은 구문
-<code>$o-&gt;methodname</code>
-가 클래스 메소드 호출에 사용될 수 있다. </p>
+<p><code>$o-&gt;methodname</code> 같은 구문이 
+클래스 메소드 호출에 사용될 수 있다. </p>
 
 <p>The only difference is that the package
 name is used instead of the object reference</p>
@@ -453,14 +452,16 @@ class.</p>
 <p>모든 클래스는 암묵적으로 최상위 클래스인 "UNIVERSAL"로부터 상속된다. </p>
 
 <p>Which has some handy methods, mainly for introspection.</p>
-<p></p>
+<p>주로 자기관찰에 유용한 매소드 들을 가지고 있는.</p>
+
 
 </div>
 
 <div class="slide">
-<h1>Shortcut for inheriting</h1>
+<h1>간단하게 상속하는 방법 (shortcut for inheriting)</h1>
 
 <p>It is a little bit tedious to write</p>
+<p>이렇게 쓰는건 좀 지루하다</p>
 
 <pre><code>
 use vars qw(@ISA);
@@ -468,6 +469,7 @@ use vars qw(@ISA);
 </code></pre>
 
 <p>so there is a shortcut:</p>
+<p>그래서 더 간단한 방법이 있다.</p>
 
 <pre><code>
 use base 'MyClass';
@@ -502,7 +504,7 @@ some other class.</p>
 </div>
 
 <div class="slide">
-<h1>Super 수도-클래스 SUPER pseudo-class</h1>
+<h1>Super 가짜-클래스 SUPER pseudo-class</h1>
 
 <p>이렇게 하는것이 맞다. The right thing to do would be</p>
 
@@ -520,7 +522,7 @@ sub method1
 <p>SUPER은 오직 이런 구문에서만 사용된다. SUPER can only be used with this syntax.</p>
 
 <p>SUPER refers to the <b>current</b> package ancestor.<p>
-<p>SUPER은 <b>현재</b> 패키지 anceestor(?)을 가리킨다.</p>
+<p>SUPER은 <b>현재</b> 패키지의 부모 을 가리킨다.</p>
 
 <p>So don't use it outside of object methods.</p>
 <p>따라서, 객체 메소드의 밖에서는 사용할 수 없다.</p>
@@ -533,7 +535,9 @@ sub method1
 <p>A properly written base class constructor 
 will bless the reference into the right class,
 so we just need to do some initializing:</p>
-<p>?</p>
+<p>잘 쓰여진 기초클래스 생성자는 레퍼런스를
+옳은 클래스로 블래스할 것 이기 때문에
+우리는 그저 적당한 초기화만 해주면 된다.</p>
 
 <pre><code>
 package MyInheritedClass;
@@ -571,7 +575,7 @@ sub DESTROY {
 </div>
 
 <div class="slide">
-<h1>Introspection?</h1>
+<h1>자기관찰 Introspection?</h1>
 
 <pre><code>
 my $h = { a =&gt; 1 };
@@ -585,7 +589,7 @@ my $o = bless {}, "MyClass";
 </div>
 
 <div class="slide">
-<h1>Introspection?</h1>
+<h1>자기관찰 Introspection?</h1>
 
 <pre><code>
 print "$h\n";   # HASH(0x840016c)
@@ -599,7 +603,7 @@ print "$o\n";   # MyClass=HASH(0x8400d24)
 </div>
 
 <div class="slide">
-<h1>Introspection?</h1>
+<h1>자기관찰 Introspection?</h1>
 
 <pre><code>
 print ref $h, "\n";   # HASH
@@ -705,7 +709,7 @@ has a certain method.</p>
 <p>쉽다. Easy.</p>
 
 <p>Just put more stuff into the <code>@ISA</code>.</p>
-<p>단지 <code>@ISA</code>에 더 넣으면 된다.</p>
+<p>단지 <code>@ISA</code>에 재료를 더 넣으면 된다.</p>
 
 <pre><code>
 @ISA = qw(Class1 Class2);
@@ -729,7 +733,7 @@ use base qw(Class1 Class2);
 <p>깊이 우선 검색이다.</p>
 
 <p>But can be overriddent by CPAN modules (<code>Class::C3</code>).</p>
-<p>하지마 CPAN 모듈 (<code>Class::C3</code>)로 바꿀 수 있다.</p>
+<p>CPAN 모듈 (<code>Class::C3</code>)로 바꿀 수도 있다.</p>
 
 </div>
 
@@ -740,10 +744,10 @@ use base qw(Class1 Class2);
 <p>전통적인 펄 객체지향 : 조금 흉하다.</p>
 
 <p>Looks like bolted on.</p>
-<p>?</p>
+<p>나중에 추가된 것것처럼 보인다.</p>
 
 <p>IS bolted on.</p>
-<p>?</p>
+<p>추가된 거 맞다.</p>
 
 <p>Easy to understand.</p>
 <p>이해하기 쉽다.</p>
@@ -839,10 +843,10 @@ $o-&gt;[hest] = 42;
 <p>스칼라 레퍼런스 데이터 저장소 - 왜?</p>
 
 <p>Typically for really simple stuff.</p>
-<p>전형적으로, 진짜 간단한 suff?를 위해</p>
+<p>전형적으로, 진짜 간단한 용도를 위해</p>
 
 <p>Like counter class.</p>
-<p>카운터 클래스</p>
+<p>카운터 클래스같은 </p>
 
 <p>But also has other uses;  more on that later.</p>
 <p>하지만 다른 용도도 있다; 나중에 나온다.</p>
@@ -935,7 +939,7 @@ print $c-&gt;get, "\n";
 
 <p>펄 객체를 과용하지 말라. Do not over-do OO Perl.</p>
 
-<p>적당한?곳에 사용해야한다. Use objects where it makes sense.</p>
+<p>이치에 맞는 곳에 사용해야한다. Use objects where it makes sense.</p>
 
 </div>
 
@@ -1196,7 +1200,7 @@ through a complex hierarchy of classes
 and returns a list of all classes that will
 be searched by the method dispatcher in the
 order they will be searched.</p>
-<p><code>Class::ISA</code>는 복잡한 클래스 하이라키? </p>
+<p>??</p>
 
 <p>plus variants of the above</p>
 <p>더하기 다양한 추가기능</p>
@@ -1270,7 +1274,7 @@ objects as its attributes.</p>
 
 <p>Sometimes one wishes to delegate calls to certain methods
 of the object to one of the other objects it holds.</p>
-<p>때론, ?</p>
+<p>때론, ??</p>
 
 </div>
 
