@@ -1,0 +1,1388 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>Object-Oriented Perl</title>
+<!-- metadata -->
+<meta name="generator" content="S5" />
+<meta name="version" content="S5 1.1" />
+<meta name="presdate" content="20070212" />
+<meta name="author" content="Anton Berezin" />
+<meta name="company" content="Out of Band Consulting" />
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
+<!-- S5 JS -->
+<script src="ui/default/slides.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="layout">
+<div id="controls"><!-- DO NOT EDIT --></div>
+<div id="currentSlide"><!-- DO NOT EDIT --></div>
+<div id="header"></div>
+<div id="footer">
+<h1>Aarhus, February 2007 - Copenhagen, February &amp; April 2007</h1>
+<h2>Object-Oriented Perl</h2>
+</div>
+
+</div>
+
+
+<div class="presentation">
+
+<div class="slide">
+<h1>Object-Oriented Perl</h1>
+<h3>Anton Berezin</h3>
+<h4>tobez@tobez.org</h4>
+</div>
+
+<div class="slide">
+<h1>Object-oriented programming</h1>
+
+<p>&nbsp;</p>
+
+A language mechanism for binding data with methods that operate on that data.
+
+Method invocation is often referred to as "sending a message to the object".
+</div>
+
+<div class="slide">
+<h1>Classic OOP Perl</h1>
+
+<p>&nbsp;</p>
+To get objects in Perl, we need to store the data somewhere,
+and associate that data with methods.
+
+</div>
+
+<div class="slide">
+<h1>References</h1>
+
+<p>&nbsp;</p>
+Perl already has references to arbitrary data structures.
+
+<pre><code>
+my $hashref = {
+	a  =&gt;  1,
+	b  =&gt;  2,
+};
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Code references</h1>
+
+<p>Perl already has references to arbitrary data structures.</p>
+<p>Including references to functions.</p>
+
+<pre><code>
+sub x { return 42; }
+
+my $funcref = \&amp;x;
+print $funcref-&gt;();
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Objects by hand</h1>
+
+<p>So we can do a poor man OO like this:</p>
+
+<pre><code>
+sub method1 {
+	my ($obj) = @_;
+	print "Attr1 is $obj-&gt;{attr1}\n";
+}
+sub method2 { ... }
+
+my $obj = {
+	attr1 =&gt; 1,
+	attr2 =&gt; 2,
+	method1 =&gt; \&amp;method1,
+	method2 =&gt; \&amp;method2,
+};
+
+$obj-&gt;{method1}-&gt;();
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Objects by hand</h1>
+
+<p>This is UGLY.</p>
+<p>(although it has an advantage of not needing an OO language)</p>
+<p>One can write such objects in C, if one wants.</p>
+<p>(yes, people are known to do just that)</p>
+<p>(I've done that myself)</p>
+
+</div>
+
+<div class="slide">
+<h1>Syntactic help from the language</h1>
+
+<p>&nbsp;</p>
+<p>We need a special syntax for method calls.</p>
+
+</div>
+
+<div class="slide">
+<h1>But not much</h1>
+
+<p>&nbsp;</p>
+<p>But beyond the method calls syntax, we need surprizingly little.</p>
+
+</div>
+
+<div class="slide">
+<h1>Object representation</h1>
+
+<p>The "real" objects in Perl are still references.</p>
+<p>A reference to pretty much anything can be made into an object.</p>
+<ul>
+<li/>hash ref
+<li/>array ref
+<li/>scalar ref
+<li/>function ref (yeah, this can be useful)
+<li/>filehandle (glob) ref
+</ul>
+
+</div>
+
+<div class="slide">
+<h1>How to associate an object with a class</h1>
+
+<p>Perl has namespaces (packages)</p>
+<p>That's what normally used to create modules</p>
+<p>But it can work for classes, too.</p>
+
+</div>
+
+<div class="slide">
+<h1>Blessing a reference</h1>
+
+<p>Special builtin called <code>bless</code></p>
+
+<pre><code>
+bless $reference, Classname;
+</code></pre>
+
+<code>$reference</code> is any reference.
+<code>Classname</code> is any package name.
+<p>
+The result is a blessed reference;  an object.
+</p>
+
+</div>
+
+<div class="slide">
+<h1>Methods of an object</h1>
+
+<p>Methods are just ordinary subs defined in the class'es package.</p>
+<p>Call them using dereferencing arrow:</p>
+
+<pre><code>
+$obj-&gt;method($param1, $param2);
+</code></pre>
+
+The very first parameter passed will be an object reference.
+
+</div>
+
+<div class="slide">
+<h1>Put it together</h1>
+
+<pre><code>
+package MyClass;
+
+sub my_method
+{
+	my ($self, $param) = @_;
+	if ($self-&gt;{attr1} &gt; $param) {
+		print "I am the greatest\n";
+	} else {
+		print "I am the leanest\n";
+	}
+}
+
+my $o = bless { attr1 =&gt; 42 }, 'MyClass';
+$o-&gt;my_method(17);     # I am the greatest
+$o-&gt;my_method(137);    # I am the leanest
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>That's it</h1>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<center><font size="+5">That's it</font></center>
+
+</div>
+
+<div class="slide">
+<h1>Thank you.</h1>
+<img class="leader" src="Perl-oop/bowing.gif"/>
+
+<p>&nbsp;</p>
+<p>Thank you!</p>
+<p>&nbsp;</p>
+<p>Any questions?</p>
+
+</div>
+
+<div class="slide">
+<h1>Thank you.</h1>
+<img class="leader" src="Perl-oop/bowing.gif"/>
+
+<p>&nbsp;</p>
+<p>Thank you!</p>
+<p>&nbsp;</p>
+<p>Any questions?</p>
+<p>&nbsp;</p>
+<center><font size="+5">Just kidding.</font></center>
+
+</div>
+
+<div class="slide">
+<h1>Accessing the data</h1>
+
+<p>Since an object is still a reference,
+the underlying data are easily accessible.</p>
+
+<pre><code>
+$o-&gt;{attr1} = 42;
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>No protection</h1>
+
+<p>Any code outside of the class
+can easily tinker with internal object
+representation.</p>
+
+<p>This is considered bad.</p>
+
+</div>
+
+<div class="slide">
+<h1>Class methods</h1>
+
+<p>The same syntax
+<code>$o-&gt;methodname</code>
+can be used to call class methods.</p>
+
+<p>The only difference is that the package
+name is used instead of the object reference</p>
+
+<pre><code>
+MyClass-&gt;method(...);
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Method calls sidenote</h1>
+
+<p>Actually, anything that resolves to either a blessed
+reference or to a package name can be used with the method
+call syntax:</p>
+
+<pre><code>
+my $pkg = "Some::Package";
+$pkg-&gt;method(...);   # OK
+
+funcall()-&gt;{hashkey}-&gt;method(...);  # OK
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Constructors</h1>
+
+<p>Constructors are simply class methods that return an object.</p>
+<p>Constructors' names can be arbitrary, although
+<code>new()</code> and <code>create()</code> are prevalent.
+</p>
+
+<pre><code>
+package MyClass;
+
+sub new {
+	bless { attr1 =&gt; 42 }, 'MyClass';
+}
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Better constructors</h1>
+
+<p>Since constructor is typically called
+with a method call syntax, its first parameter
+will be class name.</p>
+
+<pre><code>
+package MyClass;
+
+sub new {
+	my ($class) = @_;
+	bless { attr1 =&gt; 42 }, $class;
+}
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Inheritance</h1>
+
+<p>&nbsp;</p>
+<p>What about inheritance?</p>
+
+<p>Luckily, the method call syntax in combination
+with a little extra feature takes care of that.</p>
+
+</div>
+
+<div class="slide">
+<h1>@ISA</h1>
+
+<p>Enter <code>@ISA</code> array.</p>
+
+<p>It is a package global.</p>
+
+<pre><code>
+package MyInheritedClass;
+use vars qw(@ISA);
+@ISA = qw(MyClass);
+
+sub my_method2 { ... }
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>@ISA cont.</h1>
+
+<p>When an object or class method is called,
+Perl gets the package name and tries to find
+a sub in that package with the same name as the
+method.</p>
+
+<p>If found, it calls that.</p>
+
+<p>If not, it looks up the @ISA array for
+other packages, and tries to find the method
+in it.</p>
+
+</div>
+
+<div class="slide">
+<h1>UNIVERSAL</h1>
+
+<p>All classes implicitly inherit from class "UNIVERSAL" as their last base
+class.</p>
+
+<p>Which has some handy methods, mainly for introspection.</p>
+
+</div>
+
+<div class="slide">
+<h1>Shortcut for inheriting</h1>
+
+<p>It is a little bit tedious to write</p>
+
+<pre><code>
+use vars qw(@ISA);
+@ISA = qw(MyClass);
+</code></pre>
+
+<p>so there is a shortcut:</p>
+
+<pre><code>
+use base 'MyClass';
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Calling inherited methods</h1>
+
+<p>We can of course do</p>
+
+<pre><code>
+package MyInheritedClass;
+sub method1
+{
+	my ($self) = @_;
+	# do something
+	MyClass::method1($self);
+	# do something else
+}
+</code></pre>
+
+<p>But this is not OOish.</p>
+
+<p>Besides, it won't work if MyClass does
+not have sub method1 {}, inheriting it from
+some other class.</p>
+
+</div>
+
+<div class="slide">
+<h1>SUPER pseudo-class</h1>
+
+<p>The right thing to do would be</p>
+
+<pre><code>
+package MyInheritedClass;
+sub method1
+{
+	my ($self) = @_;
+	# do something
+	$self-&gt;SUPER::method1();
+	# do something else
+}
+</code></pre>
+
+<p>SUPER can only be used with this syntax.</p>
+
+<p>SUPER refers to the <b>current</b> package ancestor.<p>
+
+<p>So don't use it outside of object methods.</p>
+
+</div>
+
+<div class="slide">
+<h1>Inheriting constructors</h1>
+
+<p>A properly written base class constructor 
+will bless the reference into the right class,
+so we just need to do some initializing:</p>
+
+<pre><code>
+package MyInheritedClass;
+sub new {
+	my ($class, %params) = @_;
+	my $self = $class-&gt;SUPER::new(%params);
+	# do something else with params...
+	return $self;
+}
+</code></pre>
+
+<p>In many cases such constructors are not needed.</p>
+
+</div>
+
+<div class="slide">
+<h1>Destructors</h1>
+
+<p>Perl has automatic garbage collection, so
+in many cases destructors are not needed.</p>
+
+<p>When they are, create a sub called <code>DESTROY</code><p>.
+
+<pre><code>
+sub DESTROY {
+	my ($self) = @_;
+	# free some resources
+}
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Introspection</h1>
+
+<pre><code>
+my $h = { a =&gt; 1 };
+my $a = [1,2,3];
+my $s = \3;
+my $f = \&amp;somesub;
+my $g = \*STDOUT;
+my $o = bless {}, "MyClass";
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Introspection</h1>
+
+<pre><code>
+print "$h\n";   # HASH(0x840016c)
+print "$a\n";   # ARRAY(0x8400afc)
+print "$s\n";   # SCALAR(0x8400be0)
+print "$f\n";   # CODE(0x8400d30)
+print "$g\n";   # GLOB(0x8400820)
+print "$o\n";   # MyClass=HASH(0x8400d24)
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Introspection</h1>
+
+<pre><code>
+print ref $h, "\n";   # HASH
+print ref $a, "\n";   # ARRAY
+print ref $s, "\n";   # SCALAR
+print ref $f, "\n";   # CODE
+print ref $g, "\n";   # GLOB
+print ref $o, "\n";   # MyClass
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>is_a</h1>
+
+<pre><code>
+sub is_a {
+	my ($o, $isaclass) = @_;
+	my $class = ref $o || $o;
+	return 1 if $class eq $isaclass;
+	for my $inhc (eval "\@$class\::ISA") {
+		return 1 if is_a($inhc, $isaclass);
+	}
+	return 0;
+}
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>UNIVERSAL::isa</h1>
+
+<p>Luckily, the UNIVERSAL package already provides <code>isa</code> for us.</p>
+
+<pre><code>
+	if ($some_object-&gt;isa("AnyClass")) {
+		...
+	}
+
+	if (SomeClass-&gt;isa("AnyClass")) {
+		...
+	}
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>UNIVERSAL::can</h1>
+
+<p>Sometimes we need to know whether a particular object
+has a certain method.</p>
+
+<pre><code>
+	if ($some_object-&gt;can("drink")) {
+		...
+	}
+
+	if (SomeClass-&gt;can("dance")) {
+		...
+	}
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Indirect method call syntax</h1>
+
+<pre><code>
+	print STDERR "A horrible error\n";
+
+	<del>print STDERR, "Yes indeed\n";</del>
+</code></pre>
+
+<p>The same syntax got hijacked for objects</p>
+
+</div>
+
+<div class="slide">
+<h1>Indirect method call syntax</h1>
+
+<pre><code>
+	my $o = MyClass-&gt;new(...);
+
+	my $o = new MyClass ...;
+</code></pre>
+
+<p>Means the same thing.</p>
+
+<p>TIMTOWTDI.</p>
+
+</div>
+
+<div class="slide">
+<h1>Multiple inheritance</h1>
+
+<p>What about multiple inheritance?</p>
+
+<p>Easy.</p>
+
+<p>Just put more stuff into the <code>@ISA</code>.</p>
+
+<pre><code>
+@ISA = qw(Class1 Class2);
+</code></pre>
+
+<p>or</p>
+
+<pre><code>
+use base qw(Class1 Class2);
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Multiple inheritance</h1>
+
+<p>Conflicts resolution?</p>
+
+<p>Deep-first tree search.</p>
+
+<p>But can be overriddent by CPAN modules (<code>Class::C3</code>).</p>
+
+</div>
+
+<div class="slide">
+<h1>Conclusions for "classical" OO Perl</h1>
+
+<p>Classical OO in Perl: a bit ugly.</p>
+
+<p>Looks like bolted on.</p>
+
+<p>IS bolted on.</p>
+
+<p>Easy to understand.</p>
+
+<p>Almost no magic - just reference blessing.</p>
+
+<p>Surprizingly flexible.</p>
+
+</div>
+
+<div class="slide">
+<h1>Data storage for objects</h1>
+
+<p>Most objects use hashrefs.</p>
+
+<p>Convenient - any amount of data can be
+associated with an object.</p>
+
+<p>But no protection.</p>
+</div>
+
+<div class="slide">
+<h1>Data storage for objects</h1>
+
+<p>But can be any ref.</p>
+</div>
+
+<div class="slide">
+<h1>Data storage as arrays</h1>
+
+<p>Array references are used sometimes.</p>
+
+<p>One reason - efficiency, since
+array access is much faster than hash access.</p>
+
+<p>Another reason - memory use, arrays typically
+are much smaller.</p>
+
+<p>Not very convenient:</p>
+
+<pre><code>
+my $o = bless [1,2,3], MyClass;
+
+$o-&gt;[0] = 42;   # what's that?
+$o-&gt;[1] = 137;  # and this?
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Data storage as arrays</h1>
+
+<p>One can use <code>Class::ArrayObjects</code> (and
+no doubt ten other CPAN modules) to somewhat alleviate
+the problem.</p>
+
+<pre><code>
+package MyClass;
+
+use Class::ArrayObjects define =&gt; {
+	fields =&gt; [qw(hest foo bar)],
+};
+
+my $o = ...;
+
+$o-&gt;[hest] = 42;
+</code></pre>
+</div>
+
+<div class="slide">
+<h1>Data storage as arrays</h1>
+
+<p>&nbsp;</p>
+<p>Still not protected.  But harder to tinker with.</p>
+</div>
+
+<div class="slide">
+<h1>Data storage as scalar ref</h1>
+
+<p>Data storage as scalar ref - why?</p>
+
+<p>Typically for really simple stuff.</p>
+
+<p>Like counter class.</p>
+
+<p>But also has other uses;  more on that later.</p>
+
+</div>
+
+<div class="slide">
+<h1>Counter class</h1>
+
+<p>Counter class</p>
+
+<pre><code>
+package Counter;
+
+sub new {
+	my ($class, $initial) = @_;
+	bless \$initial, $class;
+}
+sub get { my $self = shift;  $$self }
+sub inc { my $self = shift;  $$self++ }
+sub dec { my $self = shift;  $$self-- }
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Data storage as filehandle</h1>
+
+<p>Data storage as filehandle.</p>
+
+<p>Used in special cases.</p>
+
+<p>Example: <code>Net::Telnet</code> module.</p>
+
+</div>
+
+<div class="slide">
+<h1>Data storage as sub ref</h1>
+
+<p>Data storage as sub ref.</p>
+
+<p>This one can be used to protect data.</p>
+
+<p>But the method is quite ugly.</p>
+
+<p>The idea is to call the sub to get to the data.</p>
+
+</div>
+
+<div class="slide">
+<h1>ProtectedCounter</h1>
+
+<pre><code>
+package SubCounter;
+sub new
+{
+	my ($class, $init) = @_;
+	bless sub {
+		die "We exist to protect.\n"
+			unless (caller)[0] eq "SubCounter";
+		return \$init;
+	}, $class;
+}
+sub get { ${$_[0]-&gt;()} }
+sub inc { ${$_[0]-&gt;()}++ }
+sub dec { ${$_[0]-&gt;()}-- }
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>ProtectedCounter example</h1>
+
+<pre><code>
+my $c = new SubCounter 42;
+print $c-&gt;get, "\n";
+$c-&gt;inc;
+print $c-&gt;get, "\n";
+my $ref = $c-&gt;();  # dies here
+$$ref++;
+print $c-&gt;get, "\n";
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>A note of caution</h1>
+
+<p>A note of caution.</p>
+
+<p>Do not over-do OO Perl.</p>
+
+<p>Use objects where it makes sense.</p>
+
+</div>
+
+<div class="slide">
+<h1>String::Koremutake</h1>
+
+<code><pre>
+NAME
+    String::Koremutake -
+    Convert to/from Koremutake Memorable Random Strings
+SYNOPSIS
+    use String::Koremutake;
+    my $k = String::Koremutake-&gt;new;
+
+    my $s = $k-&gt;integer_to_koremutake(65535);
+    # botretre
+    my $i = $k-&gt;koremutake_to_integer('koremutake');
+    # 10610353957
+</pre></code>
+
+<p>What's the point of that??</p>
+
+</div>
+
+<div class="slide">
+<h1>Accessors</h1>
+
+<p>Good OO modules provide accessors where needed.<p>
+
+<pre><code>
+package MyClass;
+sub new { ... }
+sub hest { $_[0]-&gt;{hest} }
+sub set_hest { $_[0]-&gt;{hest} = $_[1] }
+sub foo { $_[0]-&gt;{foo} }
+sub set_foo { $_[0]-&gt;{foo} = $_[1] }
+</code></pre>
+
+<p>Gets boring, FAST.</p>
+
+</div>
+
+<div class="slide">
+<h1>Accessors, improved</h1>
+
+<pre><code>
+package MyClass;
+sub new { ... }
+sub hest { defined $_[1] ? $_[0]-&gt;{hest} = $_[1] : $_[0]-&gt;{hest} }
+sub foo { defined $_[1] ? $_[0]-&gt;{foo} = $_[1] : $_[0]-&gt;{foo} }
+</code></pre>
+
+<p>Still boring.</p>
+
+</div>
+
+<div class="slide">
+<h1>Accessors, improved++</h1>
+
+<pre><code>
+sub _gen_accessor {
+	my $aname = shift;
+	eval "sub $aname { defined \$_[1] ?
+		\$_[0]-&gt;{$aname} = \$_[1] :
+		\$_[0]-&gt;{$aname} }";
+}
+_gen_accessor($_) for qw(hest foo bar baz);
+</code></pre>
+
+<p>Now we have something.</p>
+
+</div>
+
+<div class="slide">
+<h1>Accessors, via CPAN</h1>
+
+<p>Accessors, via CPAN.</p>
+
+<p>There's of course a brazillion of CPAN modules
+that will do that for you.</p>
+
+<ul>
+<li/>Class::Accessor
+<li/>Class::Data::Inheritable
+<li/>Class::Data::Accessor
+<li/>Class::Accessor::Chained
+<li/>Class::Accessor::Lvalue
+</ul>
+
+<p>Sometimes I hate TIMTOWTDI.</p>
+
+</div>
+
+<div class="slide">
+<h1>Class::Accessor</h1>
+
+<p>Class::Accessor</p>
+
+<pre><code>
+package MyClass;
+use base qw(Class::Accessors);
+MyClass-&gt;mk_accessors(qw(hest foo));
+
+my $o = MyClass-&gt;new({ hest =&gt; 42,
+	foo =&gt; 137});
+print $o-&gt;hest;
+$o-&gt;foo("foom");
+</code></pre>
+
+<p>It also provides <code>new</code> for you.</p>
+
+</div>
+
+<div class="slide">
+<h1>Singleton classes</h1>
+
+<p>Sometimes what you want is that no more than one
+instance of the object exists in a program.</p>
+
+<p>Example: print spooler.</p>
+
+</div>
+
+<div class="slide">
+<h1>Singleton classes, by hand</h1>
+
+<pre><code>
+package MySingleton;
+
+my $obj;
+
+sub new { $obj ||= bless {}, $_[0] }
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Singleton classes, CPAN</h1>
+
+<p>Or use <code>Class::Singleton</code></p>
+
+<p>Just derive from it.</p>
+
+<pre><code>
+package MySingleton;
+use base 'Class::Singleton';
+
+sub method1 { ... }
+
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Default objects</h1>
+
+<p>Sometimes you wish to provide
+both procedural and OO interface.</p>
+
+<p>In this case it is quite natural
+for the procedural interface to use
+a "default" object and then just call OO interface.</p>
+
+<p>Or at least do something to the same effect.</p>
+</div>
+
+<div class="slide">
+<h1>Default objects: CGI.pm</h1>
+
+<p>The classic example would be <code>CGI.pm</code>:</p>
+
+<pre><code>
+use CGI qw/:std/;
+
+my $q = new CGI;
+print $q-&gt;header, $q-&gt;start_html;
+</code></pre>
+
+or
+
+<pre><code>
+use CGI qw/:std/;
+
+print header, start_html;
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Default objects, by hand</h1>
+
+<pre><code>
+package MyDefault;
+
+my $def;
+
+sub new { ... }
+
+sub do_something
+{
+	my $self = shift if ref($_[0]) &amp;&amp; $_[0]-&gt;isa("MyDefault");
+	$self ||= $def ||= new MyDefault;
+
+	# now do something
+}
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Default objects, by hand</h1>
+
+<p>So either</p>
+
+<pre><code>
+my $o = new MyDefault;
+
+$o-&gt;do_something;
+</code></pre>
+
+<p>or</p>
+
+<pre><code>
+MyDefault::do_something();
+</code></pre>
+
+<p>will work.</p>
+
+</div>
+
+<div class="slide">
+<h1>Default objects, CPAN</h1>
+
+<p>But of course there is (ARE) CPAN modules to do that.</p>
+
+<p>For example, <code>Class::Default</code>.</p>
+
+</div>
+
+<div class="slide">
+<h1>More introspection</h1>
+
+<p><code>Class::ISA</code> provides a function that goes
+through a complex hierarchy of classes
+and returns a list of all classes that will
+be searched by the method dispatcher in the
+order they will be searched.</p>
+
+<p>plus variants of the above</p>
+
+</div>
+
+<div class="slide">
+<h1>More introspection</h1>
+
+<p><code>Class::Inspector</code> provides
+a bunch of functions to extract useful information about
+a class:</p>
+
+<ul>
+<li/>installed?
+<li/>loaded?
+<li/>what's the filename it is defined in?
+<li/>full filename?
+<li/>function list
+<li/>all methods list (including inherited)
+<li/>loaded subclasses list
+<li/>etc.
+</ul>
+
+</div>
+
+<div class="slide">
+<h1>More introspection</h1>
+
+<p><code>Class::Handle</code> is a mix
+of UNIVERSAL, Class::ISA, and Class::Inspector.
+</p>
+
+</div>
+
+<div class="slide">
+<h1>Base classes</h1>
+
+<p><code>Class::Base</code> provides a number
+of useful predefined subs:
+</p>
+
+<ul>
+<li/>new
+<li/>init
+<li/>params
+<li/>clone
+<li/>error
+<li/>debug
+</ul>
+
+<p>Use it if you need those</p>
+
+</div>
+
+<div class="slide">
+<h1>Delegation</h1>
+
+Sometimes an object holds instances of other
+objects as its attributes.
+
+Sometimes one wishes to delegate calls to certain methods
+of the object to one of the other objects it holds.
+
+</div>
+
+<div class="slide">
+<h1>Delegation by hand</h1>
+
+Delegation by hand is easy to do:
+
+<pre><code>
+sub meth1 {
+    my $self = shift;
+    $self-&gt;{obj1}-&gt;some_meth(@_);
+}
+
+sub meth2 {
+    my $self = shift;
+    $self-&gt;{obj2}-&gt;some_other_meth(@_);
+}
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Class::Delegation</h1>
+
+Class::Delegation does it for us:
+
+<pre><code>
+use Class::Delegation
+   send =&gt; 'meth1',
+   to   =&gt; 'obj1',
+   as   =&gt; 'some_meth',
+
+   send =&gt; -OTHER,
+   to   =&gt; 'fallbackobj';
+</code></pre>
+
+Very useful.
+
+</div>
+
+<div class="slide">
+<h1>Frameworks</h1>
+
+<p>Have a look at <code>Class::Spiffy</code> and
+at <code>Moose</code></p>.
+
+</div>
+
+<div class="slide">
+<h1>Inside-out objects</h1>
+
+<p>Inside-out objects is another
+way to do the protection of the internal
+object state.</p>
+
+<p>Instead of using a hashref per object,
+which is indexed by attribute names to access
+object attributes, inside-out objects use
+a private hash per attribute which
+is indexed by object reference.</p>
+</div>
+
+<div class="slide">
+<h1>Inside-out objects</h1>
+
+<p>Traditional:</p>
+
+<pre><code>
+$o1-&gt;{hest} = 42;
+$o1-&gt;{foo} = "moof";
+$o2-&gt;{hest} = 137;
+$o2-&gt;{foo} = "foom";
+</code></pre>
+
+<p>Inside-out:</p>
+
+<pre><code>
+my (%hest, %foo);
+$hest{"$o1"} = 42;
+$foo{"$o1"} = "moof";
+$hest{"$o2"} = 137;
+$foo{"$o2"} = "foom";
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Inside-out objects</h1>
+
+<p>
+Since <code>%hest</code> and <code>%foo</code>
+are private, this approach
+provides a pretty good protection mechanism
+in comparison with the traditional Perl OO.
+</p>
+
+<p>Even derived classes cannot tinker with our attributes.</p>
+
+<p>It is also practically as efficient as the
+"normal way".</p>
+
+<p>Since the reference is only used as the unique
+key, we can use a scalar reference (it's cheap)</p>
+
+</div>
+
+<div class="slide">
+<h1>Inside-out objects</h1>
+
+<pre><code>
+package MyInsideOut;
+
+{
+my %hest;
+my %foo;
+
+sub new { bless \(my $dummy), $_[0] }
+sub set_hest { $hest{"$_[0]"} = $_[1] }
+sub hest { $hest{"$_[0]"} }
+...
+}
+
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Inside-out objects</h1>
+
+<p>We <b>need</b> <code>DESTROY</code> to cleanup.</p>
+
+<pre><code>
+sub DESTROY {
+	delete $hest{"$_[0]"};
+	delete $foo{"$_[0]"};
+}
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Inside-out objects</h1>
+
+<p>Another advantage of inside-out objects
+is that we get compile-time checking of typos:</p>
+
+<pre><code>
+use strict;
+$normal_obj-&gt;{tpyo_count}++;   # OK
+</code></pre>
+
+<pre><code>
+use strict;
+$tpyo_count{$inside_out_obj}++;   # %tpyo_count is unknown
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Inside-out objects, CPAN</h1>
+
+<p>Use one of:</p>
+
+<ul>
+<li/><code>Class::Std</code>
+<li/><code>Object::InsideOut</code>
+<li/><code>Class::InsideOut</code>
+<li/>...or roll your own.
+</ul>
+
+</div>
+
+<div class="slide">
+<h1>Class::Closure</h1>
+
+<p>Another way to use a closure to
+get decent data protection.</p>
+
+<p>It does not represent the class
+as the closure.</p>
+
+<p>But the methods <b>are</b> closures.</p>
+
+<p>All in all, pretty nifty.</p>
+
+</div>
+
+<div class="slide">
+<h1>Class::Closure</h1>
+
+<pre><code>
+package FurryAnimal;
+use Class::Closure;
+
+sub CLASS {
+	extends HairlessAnimal;
+
+	has my $hair;
+
+	method shave =&gt; sub {
+		$hair = undef;
+	};
+}
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Objects with dynamic methods</h1>
+
+<p>Using <code>Class::Prototyped</code>, one can
+dynamically add methods and attributes to an existing,
+instantiated object.</p>
+
+<p>One can also have objects inherit their behavior
+and state from another object.</p>
+
+<p>So one can clone, then modify the behavior.</p>
+
+</div>
+
+<div class="slide">
+<h1>Thank you.</h1>
+<img class="leader" src="Perl-oop/bowing.gif"/>
+
+<p>&nbsp;</p>
+<p>Thank you!</p>
+<p>&nbsp;</p>
+<p>Any questions?</p>
+
+</div>
+
+</div>
+</body>
+</html>

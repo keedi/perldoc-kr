@@ -1,0 +1,24 @@
+package SubCounter;
+
+sub new
+{
+	my ($class, $init) = @_;
+	bless sub {
+		die "We exist to protect.\n"
+			unless (caller)[0] eq "SubCounter";
+		return \$init;
+	}, $class;
+}
+
+sub get { ${$_[0]->()} }
+sub inc { ${$_[0]->()}++ }
+sub dec { ${$_[0]->()}-- }
+
+package main;
+my $c = new SubCounter 42;
+print $c->get, "\n";
+$c->inc;
+print $c->get, "\n";
+my $ref = $c->();  # dies here
+$$ref++;
+print $c->get, "\n";

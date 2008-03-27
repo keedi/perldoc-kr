@@ -1,0 +1,26 @@
+
+my $h = { a => 1 };  print "$h\n";
+my $a = [1,2,3];  print "$a\n";
+my $s = \3;  print "$s\n";
+my $f = \&somesub;  print "$f\n";
+my $g = \*STDOUT;  print "$g\n";
+my $o = bless {}, "MyClass";  print "$o\n";
+
+print ref $h, "\n";   # HASH(0x840016c)
+print ref $a, "\n";   # ARRAY(0x8400afc)
+print ref $s, "\n";   # SCALAR(0x8400be0)
+print ref $f, "\n";   # CODE(0x8400d30)
+print ref $g, "\n";   # GLOB(0x8400820)
+print ref $o, "\n";   # MyClass=HASH(0x8400d24)
+
+
+sub is_a {
+    my ($o, $isaclass) = @_;
+    my $class = ref $o || $o;
+    return 1 if $class eq $isaclass;
+    for my $inhc (@{$class::ISA}) {
+        return 1 if is_a($inhc, $isaclass);
+    }
+    return 0;
+}
+

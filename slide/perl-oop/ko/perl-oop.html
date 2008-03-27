@@ -1,0 +1,1539 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>Object-Oriented Perl</title>
+<!-- metadata -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="S5" />
+<meta name="version" content="S5 1.1" />
+<meta name="presdate" content="20070212" />
+<meta name="author" content="Anton Berezin" />
+<meta name="company" content="Out of Band Consulting" />
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
+<!-- S5 JS -->
+<script src="ui/default/slides.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="layout">
+<div id="controls"><!-- DO NOT EDIT --></div>
+<div id="currentSlide"><!-- DO NOT EDIT --></div>
+<div id="header"></div>
+<div id="footer">
+<div style="float:right;margin-top:-1em;"><h1>Aarhus, February 2007 - Copenhagen, February &amp; April 2007</h1></div>
+<h1>객체지향 펄 (Object-Oriented Perl)</h1> 
+<h1><a href="//www.tobez.org/presentations/perl-oop">
+원문 : http://www.tobez.org/presentations/perl-oop</a></h1>
+</div>
+
+</div>
+
+
+<div class="presentation">
+
+<div class="slide">
+	<h1>객체지향 펄(Object-Oriented Perl)</h1>
+	<br/>
+	<br/>
+	<br/>
+<h4>원문 : Anton Berezin (tobez@tobez.org)</h4>
+	<br/>
+<h4>번역 : 장범수 (pung96@gmail.com)<h4>
+	<br/>
+	<br/>
+<div style="float:right;">Download : <a href="../../perl-oop.tgz">perl-oop.tgz</a></div>
+</div>
+
+<div class="slide">
+<h1>객체지향 프로그래밍 (Object-oriented programming)</h1>
+
+<p>&nbsp;</p>
+
+<p>데이터에 작용하는 메소드들에 의해 결합된 데이터를 위한 언어 메커니즘</p>
+<p>A language mechanism for binding data with methods that operate on that data.</p>
+<p>메소드 호출은 때때로 "객체에 메시지를 보내는것"으로 표현된다</p>
+<p>Method invocation is often referred to as "sending a message to the object".</p>
+</div>
+
+<div class="slide">
+<h1>고전적인 OOP 펄 (Classic OOP Perl)</h1>
+
+<p>&nbsp;</p>
+<p>To get objects in Perl, we need to store the data somewhere,
+and associate that data with methods.</p>
+펄의 객체를 위해 데이터를 어딘가 저장하고 
+메소드와 데이터를 결합(?)할 필요가 있다.
+
+</div>
+
+<div class="slide">
+<h1>레퍼런스 (References)</h1>
+
+<p>&nbsp;</p>
+<p>Perl already has references to arbitrary data structures.</p>
+이미 펄은 임의의 데이터 구조를 위해 레퍼런스를 가지고 있다.
+
+<pre><code>
+my $hashref = {
+	a  =&gt;  1,
+	b  =&gt;  2,
+};
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>코드 레퍼런스 (Code references)</h1>
+
+<p>Perl already has references to arbitrary data structures.</p>
+<p>이미 펄은 임의의 데이터 구조를 위해 레퍼런스를 가지고 있다.</p>
+<p>Including references to functions.</p>
+<p>함수를 위한 레퍼런스를 포함해서</p>
+
+<pre><code>
+sub x { return 42; }
+
+my $funcref = \&amp;x;
+print $funcref-&gt;();
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>손으로 만든 객체 (Objects by hand)</h1>
+
+<p>So we can do a poor man OO like this:</p>
+<p>따라서 빈약하지만 다음처럼 객체를 만들 수 있다.</p>
+
+<pre><code>
+sub method1 {
+	my ($obj) = @_;
+	print "Attr1 is $obj-&gt;{attr1}\n";
+}
+sub method2 { ... }
+
+my $obj = {
+	attr1 =&gt; 1,
+	attr2 =&gt; 2,
+	method1 =&gt; \&amp;method1,
+	method2 =&gt; \&amp;method2,
+};
+
+$obj-&gt;{method1}-&gt;();
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>손으로 만든 객체(Objects by hand)</h1>
+
+<p>This is UGLY.</p>
+<p>이것은 <b>흉하다</b>.</p>
+<p>(although it has an advantage of not needing an OO language)</p>
+<p>(비록 이것이 OO 언어에 꼭 필요하지 않은 장점을 가지고 있지만)</p>
+<p>One can write such objects in C, if one wants.</p>
+<p>원한다면 C언어로도 이런 객체를 만들수 있다.</p>
+<p>(yes, people are known to do just that)</p>
+<p>(맞다, 그렇게 하는 것으로 알려져 있고)</p>
+<p>(I've done that myself)</p>
+<p>(나 역시 그렇게 했었다.)</p>
+
+</div>
+
+<div class="slide">
+<h1>언어의 구문상의 도움 (Syntactic help from the language)</h1>
+
+<p>&nbsp;</p>
+<p>We need a special syntax for method calls.</p>
+<p>메소드를 호출하기 위한 특별한 구문이 필요하다</p>
+
+</div>
+
+<div class="slide">
+<h1>하지만 많아서는 안된다(But not much)</h1>
+
+<p>&nbsp;</p>
+<p>But beyond the method calls syntax, we need surprizingly little.</p>
+<p>하지만 메소호출 구문이 필요하지만, 아주 조금만 원한다. </p>
+
+</div>
+
+<div class="slide">
+<h1>객체의 표현(Object representation)</h1>
+
+<p>The "real" objects in Perl are still references.</p>
+<p>펄의 "진짜" 객체는 여전히 레퍼런스다.</p>
+<p>A reference to pretty much anything can be made into an object.</p>
+<p>레퍼런스가 무엇을 참조하든 대부분 객체로 만들수 있다.</p>
+<ul>
+<li/>해쉬 레퍼런스 (hash ref)
+<li/>배열 레퍼런스 (array ref)
+<li/>스칼라 레퍼런스 (scalar ref)
+<li/>함수 레퍼런스 (function ref)  (쓸모가 많다.: yeah, this can be useful)
+<li/>파일핸들(glob) 레퍼런스 filehandle (glob) ref
+</ul>
+
+</div>
+
+<div class="slide">
+	<h1>어떻게 클래스와 객체를 연결하는가 How to associate an object with a class</h1>
+
+<p>펄에는 네임스페이스(패키지)가 있다. Perl has namespaces (packages)</p>
+<p>보통은 모듈을 만드는데 쓰이지만, That's what normally used to create modules</p>
+<p>클래스를 만드는 일도 할수 있다. But it can work for classes, too.</p>
+
+</div>
+
+<div class="slide">
+<h1>레퍼런스 블레싱 Blessing a reference</h1>
+
+<p>특별한 내부명령어 <code>bless</code> Special builtin called <code>bless</code></p>
+
+<pre><code>
+bless $reference, Classname;
+</code></pre>
+
+<code>$reference</code> is any reference.
+<code>Classname</code> is any package name.
+<p>
+결과는 블레스된 레퍼런스, 객체다.
+The result is a blessed reference;  an object.
+</p>
+
+</div>
+
+<div class="slide">
+<h1>객체의 메소드 (Methods of an object)</h1>
+
+<p>Methods are just ordinary subs defined in the class'es package.</p>
+<p>메소드는 단지 클래스 패키지안에 선언된 일반적인 서브루틴이다.</p>
+<p>Call them using dereferencing arrow:</p>
+<p>디레퍼런스(?) 화살표를 이용해서 메소드를 호출한다.</p>
+
+<pre><code>
+$obj-&gt;method($param1, $param2);
+</code></pre>
+
+<p>The very first parameter passed will be an object reference.</p>
+<p>첫번째 인자는 오브젝트 레퍼런스가 될것이다.</p>
+</div>
+
+<div class="slide">
+<h1>모아보자 (Put it together)</h1>
+
+<pre><code>
+package MyClass;
+
+sub my_method
+{
+	my ($self, $param) = @_;
+	if ($self-&gt;{attr1} &gt; $param) {
+		print "I am the greatest\n";
+	} else {
+		print "I am the leanest\n";
+	}
+}
+
+my $o = bless { attr1 =&gt; 42 }, 'MyClass';
+$o-&gt;my_method(17);     # I am the greatest
+$o-&gt;my_method(137);    # I am the leanest
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>이것이 전부다. (That's it)</h1>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<center><font size="+5">이것이 전부다.</font></center>
+
+</div>
+
+<div class="slide">
+<h1>감사합니다.</h1>
+<img class="leader" src="Perl-oop/bowing.gif"/>
+
+<p>&nbsp;</p>
+<p>감사합니다.</p>
+<p>&nbsp;</p>
+<p>질문 있으십니까?</p>
+
+</div>
+
+<div class="slide">
+<h1>감사합니다.</h1>
+<img class="leader" src="Perl-oop/bowing.gif"/>
+
+<p>&nbsp;</p>
+<p>감사합니다.</p>
+<p>&nbsp;</p>
+<p>질문 있으십니까?</p>
+<p>&nbsp;</p>
+<center><font size="+5">농담이었습니다.</font></center>
+
+</div>
+
+<div class="slide">
+<h1>데이터 액세스 (Accessing the data)</h1>
+
+<p>Since an object is still a reference,
+the underlying data are easily accessible.</p>
+<p>객체는 여전히 레퍼런스이기 때문에 
+쉽게 데이터를 억세스할 수 있다.</p>
+
+<pre><code>
+$o-&gt;{attr1} = 42;
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>비보호 (No protection)</h1>
+
+<p>Any code outside of the class
+can easily tinker with internal object
+representation.</p>
+<p>클래스 밖의 어떤 코드도 쉽게 내부 객체 표현으로 
+어설프게 데이터를 만질수 있다.</p>
+
+<p>This is considered bad.</p>
+
+</div>
+
+<div class="slide">
+<h1>클래스 메소드 (Class methods)</h1>
+
+<p>The same syntax
+<code>$o-&gt;methodname</code>
+can be used to call class methods.</p>
+<p>같은 구문
+<code>$o-&gt;methodname</code>
+가 클래스 메소드 호출에 사용될 수 있다. </p>
+
+<p>The only difference is that the package
+name is used instead of the object reference</p>
+<p>유일하게 다른점은 객체 레퍼런스 대신
+패키지 이름이 사용된다는 것이다.</p>
+
+<pre><code>
+MyClass-&gt;method(...);
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>메소드 호출에 대한 참고 (Method calls sidenote)</h1>
+
+<p>Actually, anything that resolves to either a blessed
+reference or to a package name can be used with the method
+call syntax:</p>
+<p>사실, 블레스된 레퍼런스나 패키지 이름으로 해석되는
+어떤것이라도 클래스 메소드 구문에 사용될 수 있다.</p>
+
+<pre><code>
+my $pkg = "Some::Package";
+$pkg-&gt;method(...);   # OK
+
+funcall()-&gt;{hashkey}-&gt;method(...);  # OK
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>생성자 (Constructors)</h1>
+
+<p>Constructors are simply class methods that return an object.</p>
+<p>생성자는 객체를 반환하는 간단한 클래스 메소드이다.</p>
+<p>Constructors' names can be arbitrary, although
+<code>new()</code> and <code>create()</code> are prevalent.
+</p>
+<p>생성자의 이름은 정해저 있지 않지만 일반적으로 
+<code>new()</code> 과 <code>create()</code> 가 쓰인다.
+</p>
+
+<pre><code>
+package MyClass;
+
+sub new {
+	bless { attr1 =&gt; 42 }, 'MyClass';
+}
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>보다 나은 생성자 (Better constructors)</h1>
+
+<p>Since constructor is typically called
+with a method call syntax, its first parameter
+will be class name.</p>
+<p>생성자는 전형적으로 (클래스?) 메소드 호출 구문으로 호출되기 때문에
+첫번째 인자는 클래스 이름일 것이다.</p>
+
+<pre><code>
+package MyClass;
+
+sub new {
+	my ($class) = @_;
+	bless { attr1 =&gt; 42 }, $class;
+}
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>상속 (Inheritance)</h1>
+
+<p>&nbsp;</p>
+<p>상속은 어떻게? What about inheritance?</p>
+
+<p>Luckily, the method call syntax in combination
+with a little extra feature takes care of that.</p>
+<p>다행히, 약간의 부가 기능의 조합을 통해  메소드 호출 구문은 
+상속을 처리할 수 있다.</p>
+
+</div>
+
+<div class="slide">
+<h1>@ISA</h1>
+
+<p>Enter <code>@ISA</code> array.</p>
+<p><code>@ISA</code> 배열에 넣어라.</p>
+
+<p>It is a package global.</p>
+<p><code>@ISA</code> 는 패키지 (전역?) 변수이다.</p>
+
+<pre><code>
+package MyInheritedClass;
+use vars qw(@ISA);
+@ISA = qw(MyClass);
+
+sub my_method2 { ... }
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>@ISA cont.</h1>
+
+<p>When an object or class method is called,
+Perl gets the package name and tries to find
+a sub in that package with the same name as the
+method.</p>
+<p>객체나 클래스 메소드가 호출될때
+펄은 패키지 이름으로 그 패키지 안에서 메소드와 같은 이름의 
+서브루친을 찾는다.</p>
+
+<p>찾으면 호출한다.If found, it calls that.</p>
+
+<p>If not, it looks up the @ISA array for
+other packages, and tries to find the method
+in it.</p>
+<p>못찾으면 @ISA 배열의 다른 패키지를 검색하여 메소드를 찾는다.</p>
+
+</div>
+
+<div class="slide">
+<h1>UNIVERSAL</h1>
+
+<p>All classes implicitly inherit from class "UNIVERSAL" as their last base
+class.</p>
+<p>모든 클래스는 암묵적으로 최상위 클래스인 "UNIVERSAL"로부터 상속된다. </p>
+
+<p>Which has some handy methods, mainly for introspection.</p>
+<p></p>
+
+</div>
+
+<div class="slide">
+<h1>Shortcut for inheriting</h1>
+
+<p>It is a little bit tedious to write</p>
+
+<pre><code>
+use vars qw(@ISA);
+@ISA = qw(MyClass);
+</code></pre>
+
+<p>so there is a shortcut:</p>
+
+<pre><code>
+use base 'MyClass';
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>상속된 메소드 호출 Calling inherited methods</h1>
+
+<p>물론 이렇게 할수 있다. We can of course do</p>
+
+<pre><code>
+package MyInheritedClass;
+sub method1
+{
+	my ($self) = @_;
+	# do something
+	MyClass::method1($self);
+	# do something else
+}
+</code></pre>
+
+<p>하지만 객체지향스럽지 않다. But this is not OOish.</p>
+
+<p>Besides, it won't work if MyClass does
+not have sub method1 {}, inheriting it from
+some other class.</p>
+<p>게다가 MyClass가 method1함수를 가지고 있지 않고
+다른 클래스로 부터 상속받았다면, 동작하지 않는다.</p>
+
+</div>
+
+<div class="slide">
+<h1>Super 수도-클래스 SUPER pseudo-class</h1>
+
+<p>이렇게 하는것이 맞다. The right thing to do would be</p>
+
+<pre><code>
+package MyInheritedClass;
+sub method1
+{
+	my ($self) = @_;
+	# do something
+	$self-&gt;SUPER::method1();
+	# do something else
+}
+</code></pre>
+
+<p>SUPER은 오직 이런 구문에서만 사용된다. SUPER can only be used with this syntax.</p>
+
+<p>SUPER refers to the <b>current</b> package ancestor.<p>
+<p>SUPER은 <b>현재</b> 패키지 anceestor(?)을 가리킨다.</p>
+
+<p>So don't use it outside of object methods.</p>
+<p>따라서, 객체 메소드의 밖에서는 사용할 수 없다.</p>
+
+</div>
+
+<div class="slide">
+<h1>상속을 위한 생성자 Inheriting constructors</h1>
+
+<p>A properly written base class constructor 
+will bless the reference into the right class,
+so we just need to do some initializing:</p>
+<p>?</p>
+
+<pre><code>
+package MyInheritedClass;
+sub new {
+	my ($class, %params) = @_;
+	my $self = $class-&gt;SUPER::new(%params);
+	# do something else with params...
+	return $self;
+}
+</code></pre>
+
+<p>In many cases such constructors are not needed.</p>
+<p>많은 경우 이런 생성자가 필요하지 않다.</p>
+
+</div>
+
+<div class="slide">
+<h1>소멸자 Destructors</h1>
+
+<p>Perl has automatic garbage collection, so
+in many cases destructors are not needed.</p>
+<p>펄은 자동으로 쓰레기 수집을 하기 때문에
+많은 경우 소멸자가 필요없다.</p>
+
+<p>When they are, create a sub called <code>DESTROY</code><p>.
+<p>소멸자가 필요하면 <code>DESTORY</code> 서브루틴을 만들면 된다.</p>
+
+<pre><code>
+sub DESTROY {
+	my ($self) = @_;
+	# free some resources
+}
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Introspection?</h1>
+
+<pre><code>
+my $h = { a =&gt; 1 };
+my $a = [1,2,3];
+my $s = \3;
+my $f = \&amp;somesub;
+my $g = \*STDOUT;
+my $o = bless {}, "MyClass";
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Introspection?</h1>
+
+<pre><code>
+print "$h\n";   # HASH(0x840016c)
+print "$a\n";   # ARRAY(0x8400afc)
+print "$s\n";   # SCALAR(0x8400be0)
+print "$f\n";   # CODE(0x8400d30)
+print "$g\n";   # GLOB(0x8400820)
+print "$o\n";   # MyClass=HASH(0x8400d24)
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Introspection?</h1>
+
+<pre><code>
+print ref $h, "\n";   # HASH
+print ref $a, "\n";   # ARRAY
+print ref $s, "\n";   # SCALAR
+print ref $f, "\n";   # CODE
+print ref $g, "\n";   # GLOB
+print ref $o, "\n";   # MyClass
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>is_a</h1>
+
+<pre><code>
+sub is_a {
+	my ($o, $isaclass) = @_;
+	my $class = ref $o || $o;
+	return 1 if $class eq $isaclass;
+	for my $inhc (eval "\@$class\::ISA") {
+		return 1 if is_a($inhc, $isaclass);
+	}
+	return 0;
+}
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>UNIVERSAL::isa</h1>
+
+<p>Luckily, the UNIVERSAL package already provides <code>isa</code> for us.</p>
+<p>다행히, UNIVERSAL 패키지가 <code>isa</code>를 제공한다.</p>
+
+<pre><code>
+	if ($some_object-&gt;isa("AnyClass")) {
+		...
+	}
+
+	if (SomeClass-&gt;isa("AnyClass")) {
+		...
+	}
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>UNIVERSAL::can</h1>
+
+<p>Sometimes we need to know whether a particular object
+has a certain method.</p>
+<p>가끔 특정 객체가 어떤 메쏘드를 가지고 있는지를 확인할 필요가 있다.</p>
+
+<pre><code>
+	if ($some_object-&gt;can("drink")) {
+		...
+	}
+
+	if (SomeClass-&gt;can("dance")) {
+		...
+	}
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>간접 메소드 호출 구문 Indirect method call syntax</h1>
+
+<pre><code>
+	print STDERR "A horrible error\n";
+
+	<del>print STDERR, "Yes indeed\n";</del>
+</code></pre>
+
+<p>The same syntax got hijacked for objects</p>
+<p>객체에 같은 구문을 사용할 수 있다.</p>
+
+</div>
+
+<div class="slide">
+<h1>간접 메소드 호출 구문 Indirect method call syntax</h1>
+
+<pre><code>
+	my $o = MyClass-&gt;new(...);
+
+	my $o = new MyClass ...;
+</code></pre>
+
+<p>Means the same thing.</p>
+<p>같은 의미다.</p>
+
+<p>TIMTOWTDI.</p>
+
+</div>
+
+<div class="slide">
+<h1>다중 상속 Multiple inheritance</h1>
+
+<p>What about multiple inheritance?</p>
+<p>다중상속은 어떻게?</p>
+
+<p>쉽다. Easy.</p>
+
+<p>Just put more stuff into the <code>@ISA</code>.</p>
+<p>단지 <code>@ISA</code>에 더 넣으면 된다.</p>
+
+<pre><code>
+@ISA = qw(Class1 Class2);
+</code></pre>
+
+<p>또는</p>
+
+<pre><code>
+use base qw(Class1 Class2);
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>다중 상속 Multiple inheritance</h1>
+
+<p>Conflicts resolution?</p>
+<p>충돌은? 어떻게 해결되는가?</p>
+
+<p>Deep-first tree search.</p>
+<p>깊이 우선 검색이다.</p>
+
+<p>But can be overriddent by CPAN modules (<code>Class::C3</code>).</p>
+<p>하지마 CPAN 모듈 (<code>Class::C3</code>)로 바꿀 수 있다.</p>
+
+</div>
+
+<div class="slide">
+<h1>전통적인 펄 객체지향의 결론 Conclusions for "classical" OO Perl</h1>
+
+<p>Classical OO in Perl: a bit ugly.</p>
+<p>전통적인 펄 객체지향 : 조금 흉하다.</p>
+
+<p>Looks like bolted on.</p>
+<p>?</p>
+
+<p>IS bolted on.</p>
+<p>?</p>
+
+<p>Easy to understand.</p>
+<p>이해하기 쉽다.</p>
+
+<p>Almost no magic - just reference blessing.</p>
+<p>마술은 거의 없다. - 단지 레퍼런스를 블레싱하는 것.</p>
+
+<p>놀라울 정도로 유연하다. Surprizingly flexible.</p>
+<p></p>
+
+</div>
+
+<div class="slide">
+<h1>객체를 위한 데이터 저장소 Data storage for objects</h1>
+
+<p>Most objects use hashrefs.</p>
+<p>대부분의 객체는 해쉬 레퍼런스를 사용한다.</p>
+
+<p>Convenient - any amount of data can be
+associated with an object.</p>
+<p>편리하게 모든 데이터가 오브젝트와 연관될수 있다. </p>
+
+<p>하지만 보호되지는 않는다. But no protection.</p>
+<p></p>
+</div>
+
+<div class="slide">
+<h1>객체를 위한 데이터 저장소 Data storage for objects</h1>
+
+<p>하지만 어떤 레퍼런스라도 가능하다. But can be any ref.</p>
+</div>
+
+<div class="slide">
+<h1>배열 데이터 저장소 Data storage as arrays</h1>
+
+<p>Array references are used sometimes.</p>
+<p>배열 레퍼런스가 가끔 사용된다.</p>
+
+<p>One reason - efficiency, since
+array access is much faster than hash access.</p>
+<p>한가지 이유 - 배열 액세스가 해쉬보다 
+매우 빠르기 때문에 효율적이다.</p>
+
+<p>Another reason - memory use, arrays typically
+are much smaller.</p>
+<p>다른 이유 - 전형적으로 배열이 더 작은 메모리를 사용한다.</p>
+
+<p>Not very convenient:</p>
+<p>하지만 아주 편리하지는 않다.</p>
+
+<pre><code>
+my $o = bless [1,2,3], MyClass;
+
+$o-&gt;[0] = 42;   # what's that?
+$o-&gt;[1] = 137;  # and this?
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>배열 데이터 저장소 Data storage as arrays</h1>
+
+<p>One can use <code>Class::ArrayObjects</code> (and
+no doubt ten other CPAN modules) to somewhat alleviate
+the problem.</p>
+<p> <code>Class::ArrayObjects</code> 를 사용하여 ?</p>
+
+<pre><code>
+package MyClass;
+
+use Class::ArrayObjects define =&gt; {
+	fields =&gt; [qw(hest foo bar)],
+};
+
+my $o = ...;
+
+$o-&gt;[hest] = 42;
+</code></pre>
+</div>
+
+<div class="slide">
+<h1>배열 데이터 저장소 Data storage as arrays</h1>
+
+<p>&nbsp;</p>
+<p>Still not protected.  But harder to tinker with.</p>
+<p>여전히 보호되지는 않지만 어설프게 접근하기는 좀더 힘들다.</p>
+</div>
+
+<div class="slide">
+<h1>스칼라 레퍼런스 데이터 저장소 Data storage as scalar ref</h1>
+
+<p>Data storage as scalar ref - why?</p>
+<p>스칼라 레퍼런스 데이터 저장소 - 왜?</p>
+
+<p>Typically for really simple stuff.</p>
+<p>전형적으로, 진짜 간단한 suff?를 위해</p>
+
+<p>Like counter class.</p>
+<p>카운터 클래스</p>
+
+<p>But also has other uses;  more on that later.</p>
+<p>하지만 다른 용도도 있다; 나중에 나온다.</p>
+
+</div>
+
+<div class="slide">
+<h1>카운터 클래스 Counter class</h1>
+
+<p>카운터 클래스 Counter class</p>
+
+<pre><code>
+package Counter;
+
+sub new {
+	my ($class, $initial) = @_;
+	bless \$initial, $class;
+}
+sub get { my $self = shift;  $$self }
+sub inc { my $self = shift;  $$self++ }
+sub dec { my $self = shift;  $$self-- }
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>파일핸들 데이터 저장소 Data storage as filehandle</h1>
+
+<p>파일핸들 데이터 저장소 Data storage as filehandle.</p>
+
+<p>특별한 경우에 사용. Used in special cases.</p>
+
+<p>예: <code>Net::Telnet</code> 모듈 Example: <code>Net::Telnet</code> module.</p>
+
+</div>
+
+<div class="slide">
+<h1>함수 레퍼런스 데이터 저장소 Data storage as sub ref</h1>
+
+<p>함수 레퍼런스 데이터 저장소 Data storage as sub ref.</p>
+
+<p>데이터를 보호할 수 있다.This one can be used to protect data.</p>
+
+<p>하지만 방법이 좀 흉하다. But the method is quite ugly.</p>
+
+<p>아이디어는 데이터를 얻기위해 함수를 호출하는 것.The idea is to call the sub to get to the data.</p>
+
+</div>
+
+<div class="slide">
+<h1>보호된 카운터 ProtectedCounter</h1>
+
+<pre><code>
+package SubCounter;
+sub new
+{
+	my ($class, $init) = @_;
+	bless sub {
+		die "We exist to protect.\n"
+			unless (caller)[0] eq "SubCounter";
+		return \$init;
+	}, $class;
+}
+sub get { ${$_[0]-&gt;()} }
+sub inc { ${$_[0]-&gt;()}++ }
+sub dec { ${$_[0]-&gt;()}-- }
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>보호된 카운터의 예 ProtectedCounter example</h1>
+
+<pre><code>
+my $c = new SubCounter 42;
+print $c-&gt;get, "\n";
+$c-&gt;inc;
+print $c-&gt;get, "\n";
+my $ref = $c-&gt;();  # dies here
+$$ref++;
+print $c-&gt;get, "\n";
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>주의사항 A note of caution</h1>
+
+<p>주의사항 A note of caution.</p>
+
+<p>펄 객체를 과용하지 말라. Do not over-do OO Perl.</p>
+
+<p>적당한?곳에 사용해야한다. Use objects where it makes sense.</p>
+
+</div>
+
+<div class="slide">
+<h1>String::Koremutake</h1>
+
+<code><pre>
+NAME
+    String::Koremutake -
+	Convert to/from Koremutake Memorable Random Strings
+SYNOPSIS
+    use String::Koremutake;
+    my $k = String::Koremutake-&gt;new;
+
+    my $s = $k-&gt;integer_to_koremutake(65535);
+    # botretre
+    my $i = $k-&gt;koremutake_to_integer('koremutake');
+    # 10610353957
+</pre></code>
+
+<p>요점이 뭘까? What's the point of that??</p>
+
+</div>
+
+<div class="slide">
+<h1>Accessors</h1>
+
+<p>좋은 객체 모듈은 필요한 곳에 접근자를 제공한다. Good OO modules provide accessors where needed.<p>
+
+<pre><code>
+package MyClass;
+sub new { ... }
+sub hest { $_[0]-&gt;{hest} }
+sub set_hest { $_[0]-&gt;{hest} = $_[1] }
+sub foo { $_[0]-&gt;{foo} }
+sub set_foo { $_[0]-&gt;{foo} = $_[1] }
+</code></pre>
+
+<p>?Gets boring, FAST.</p>
+
+</div>
+
+<div class="slide">
+<h1>개선된 액세서 Accessors, improved</h1>
+
+<pre><code>
+package MyClass;
+sub new { ... }
+sub hest { defined $_[1] ? $_[0]-&gt;{hest} = $_[1] : $_[0]-&gt;{hest} }
+sub foo { defined $_[1] ? $_[0]-&gt;{foo} = $_[1] : $_[0]-&gt;{foo} }
+</code></pre>
+
+<p>여전히 지루하다. Still boring.</p>
+
+</div>
+
+<div class="slide">
+<h1>보다 접근된 액세서 Accessors, improved++</h1>
+
+<pre><code>
+sub _gen_accessor {
+	my $aname = shift;
+	eval "sub $aname { defined \$_[1] ?
+		\$_[0]-&gt;{$aname} = \$_[1] :
+		\$_[0]-&gt;{$aname} }";
+}
+_gen_accessor($_) for qw(hest foo bar baz);
+</code></pre>
+
+<p>Now we have something.</p>
+<p>이제 쓸만하다</p>
+</div>
+
+<div class="slide">
+<h1>CPAN의 액세서 Accessors, via CPAN</h1>
+
+<p>CPAN의 액세서 Accessors, via CPAN.</p>
+
+<p>There's of course a brazillion of CPAN modules
+that will do that for you.</p>
+<p>물론 당신을 대신해 줄 찬란한 CPAN 모듈들이 있다.</p>
+
+<ul>
+<li/>Class::Accessor
+<li/>Class::Data::Inheritable
+<li/>Class::Data::Accessor
+<li/>Class::Accessor::Chained
+<li/>Class::Accessor::Lvalue
+</ul>
+
+<p>Sometimes I hate TIMTOWTDI.</p>
+<p>가끔 TIMTOWTDI가 밉다.</p>
+
+</div>
+
+<div class="slide">
+<h1>Class::Accessor</h1>
+
+<p>Class::Accessor</p>
+
+<pre><code>
+package MyClass;
+use base qw(Class::Accessors);
+MyClass-&gt;mk_accessors(qw(hest foo));
+
+my $o = MyClass-&gt;new({ hest =&gt; 42,
+	foo =&gt; 137});
+print $o-&gt;hest;
+$o-&gt;foo("foom");
+</code></pre>
+
+<p>It also provides <code>new</code> for you.</p>
+<p>당신을 위해서 <code>new</code>도 제공한다.</p>
+
+</div>
+
+<div class="slide">
+<h1>?Singleton classes</h1>
+
+<p>Sometimes what you want is that no more than one
+instance of the object exists in a program.</p>
+<p>가끔 프로그램에서 단하나의 객체 인스턴스만 존재하기를
+바랄 수 있다. </p>
+
+<p>예: 프린터 스풀러</p>
+
+</div>
+
+<div class="slide">
+<h1>?Singleton classes, by hand</h1>
+
+<pre><code>
+package MySingleton;
+
+my $obj;
+
+sub new { $obj ||= bless {}, $_[0] }
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Singleton classes, CPAN</h1>
+
+<p>Or use <code>Class::Singleton</code></p>
+<p>또는 <code>Class::Singleton</code>를 사용하</p>
+
+<p>그저 이것에서 상속받으면 된다. Just derive from it.</p>
+
+<pre><code>
+package MySingleton;
+use base 'Class::Singleton';
+
+sub method1 { ... }
+
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>기본 객체 Default objects</h1>
+
+<p>Sometimes you wish to provide
+both procedural and OO interface.</p>
+<p>때때로 객체와 함수형 인터페이스 모두를
+제공하고 싶을때 </p>
+
+<p>In this case it is quite natural
+for the procedural interface to use
+a "default" object and then just call OO interface.</p>
+<p>함수형 인터페이스를 위해서 "기본" 객체를 사용하고 
+그 다음 객체 인터페이스를 호출하는 것이 가장 자연스럽다. </p>
+
+<p>Or at least do something to the same effect.</p>
+<p>또는 같은 효과를 위해서 최소한 무엇을 해야한다.</p>
+</div>
+
+<div class="slide">
+<h1>기본객체 : CGI.pm Default objects: CGI.pm</h1>
+
+<p>The classic example would be <code>CGI.pm</code>:</p>
+<p>전통적인 예는 <code>CGI.pm</code>이다. </p>
+
+<pre><code>
+use CGI qw/:std/;
+
+my $q = new CGI;
+print $q-&gt;header, $q-&gt;start_html;
+</code></pre>
+
+또는
+
+<pre><code>
+use CGI qw/:std/;
+
+print header, start_html;
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>손으로 쓰는 기본 객체 Default objects, by hand</h1>
+
+<pre><code>
+package MyDefault;
+
+my $def;
+
+sub new { ... }
+
+sub do_something
+{
+	my $self = shift if ref($_[0]) &amp;&amp; $_[0]-&gt;isa("MyDefault");
+	$self ||= $def ||= new MyDefault;
+
+	# now do something
+}
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>손으로 쓰는 기본 객체 Default objects, by hand</h1>
+
+<p>이렇게도 한다. So either</p>
+
+<pre><code>
+my $o = new MyDefault;
+
+$o-&gt;do_something;
+</code></pre>
+
+<p>or</p>
+
+<pre><code>
+MyDefault::do_something();
+</code></pre>
+
+<p>작동할 것이다. will work.</p>
+
+</div>
+
+<div class="slide">
+<h1>기본객체, CPAN (DefauLT objects, CPAN)</h1>
+
+<p>But of course there is (ARE) CPAN modules to do that.</p>
+<p>물론 CPAN 모듈(들)이 있다. </p>
+
+<p>예를들어, <code>Class::Default</code>.</p>
+
+</div>
+
+<div class="slide">
+<h1>More introspection?</h1>
+
+<p><code>Class::ISA</code> provides a function that goes
+through a complex hierarchy of classes
+and returns a list of all classes that will
+be searched by the method dispatcher in the
+order they will be searched.</p>
+<p><code>Class::ISA</code>는 복잡한 클래스 하이라키? </p>
+
+<p>plus variants of the above</p>
+<p>더하기 다양한 추가기능</p>
+
+</div>
+
+<div class="slide">
+<h1>More introspection</h1>
+
+<p><code>Class::Inspector</code> provides
+a bunch of functions to extract useful information about
+a class:</p>
+<p><code>Class::Inspector</code>는 추가적인 유용한 클래스
+정보를 제공하는 함수들을 제공한다.</p>
+
+<ul>
+<li/>설치되었나? installed?
+<li/>로드되었나? loaded?
+<li/>정의된 파일 이름은? what's the filename it is defined in?
+<li/>전체 파일 이름은? full filename?
+<li/>함수 목록 function list
+<li/>모든 메소드 목록 (상속을 포함하여) all methods list (including inherited)
+<li/>로드된 서브클래스 목록 loaded subclasses list
+<li/>기타등등 etc.
+</ul>
+
+</div>
+
+<div class="slide">
+<h1>More introspection</h1>
+
+<p><code>Class::Handle</code> is a mix
+of UNIVERSAL, Class::ISA, and Class::Inspector.
+</p>
+<p><code>Class::Handle</code> 는 
+UNIVERSAL, Class::ISA, Class::Inspector 의 짬뽕이다
+</p>
+
+</div>
+
+<div class="slide">
+<h1>Base classes</h1>
+
+<p><code>Class::Base</code> provides a number
+of useful predefined subs:
+</p>
+<p><code>Class::Base</code>는
+유용한 함수들을 제공한다.
+</p>
+
+<ul>
+<li/>new
+<li/>init
+<li/>params
+<li/>clone
+<li/>error
+<li/>debug
+</ul>
+
+<p>Use it if you need those</p>
+<p>필요한 것이 있으면 사용하라</p>
+
+</div>
+
+<div class="slide">
+<h1>Delegation?</h1>
+
+<p>Sometimes an object holds instances of other
+objects as its attributes.</p>
+<p>때로, 한 객체가 다른 객체의 인스턴스를 어트리뷰트?로 가질 수 있다.</p>
+
+<p>Sometimes one wishes to delegate calls to certain methods
+of the object to one of the other objects it holds.</p>
+<p>때론, ?</p>
+
+</div>
+
+<div class="slide">
+<h1>?Delegation by hand</h1>
+
+Delegation by hand is easy to do:
+
+<pre><code>
+sub meth1 {
+    my $self = shift;
+    $self-&gt;{obj1}-&gt;some_meth(@_);
+}
+
+sub meth2 {
+    my $self = shift;
+    $self-&gt;{obj2}-&gt;some_other_meth(@_);
+}
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>Class::Delegation</h1>
+
+<p>Class::Delegation does it for us:</p>
+<p>Class::Delegation가 해준다.</p>
+
+<pre><code>
+use Class::Delegation
+   send =&gt; 'meth1',
+   to   =&gt; 'obj1',
+   as   =&gt; 'some_meth',
+
+   send =&gt; -OTHER,
+   to   =&gt; 'fallbackobj';
+</code></pre>
+
+매우 유용하다.
+
+</div>
+
+<div class="slide">
+<h1>프레임웤 Frameworks</h1>
+
+<p>Have a look at <code>Class::Spiffy</code> and
+at <code>Moose</code></p>.
+<p><code>Class::Spiffy</code> 과
+ <code>Moose</code>를 보라</p>.
+
+</div>
+
+<div class="slide">
+<h1>인사이드-아웃 객체 Inside-out objects</h1>
+
+<p>Inside-out objects is another
+way to do the protection of the internal
+object state.</p>
+<p>인사이드 아웃 객체는 객체 내부 상태를 보호하는
+다른 방법이다. </p>
+
+<p>Instead of using a hashref per object,
+which is indexed by attribute names to access
+object attributes, inside-out objects use
+a private hash per attribute which
+is indexed by object reference.</p>
+<p>객체마다 객체 어트리뷰트?에 접근하기 위해
+어트리뷰트? 이름으로 인덱스?된 해쉬 레퍼런스를 대신에 
+인사이드-아웃 객체는 
+어트리뷰트?마다 객체 레퍼런스로 인덱스된 프라이빗? 해쉬를
+사용한다.</p>
+</div>
+
+<div class="slide">
+<h1>인사이드-아웃 객체 Inside-out objects</h1>
+
+<p>전통적인 방법: Traditional:</p>
+
+<pre><code>
+$o1-&gt;{hest} = 42;
+$o1-&gt;{foo} = "moof";
+$o2-&gt;{hest} = 137;
+$o2-&gt;{foo} = "foom";
+</code></pre>
+
+<p>인사이드 아웃: </p>
+
+<pre><code>
+my (%hest, %foo);
+$hest{"$o1"} = 42;
+$foo{"$o1"} = "moof";
+$hest{"$o2"} = 137;
+$foo{"$o2"} = "foom";
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>인사이드-아웃 객체 Inside-out objects</h1>
+
+<p>
+Since <code>%hest</code> and <code>%foo</code>
+are private, this approach
+provides a pretty good protection mechanism
+in comparison with the traditional Perl OO.
+</p>
+<p> <code>%hest</code>과 <code>%foo</code>가
+프라이빗?이기 때문에 이 접근방법은 전통적인 펄 객체에 비해
+매우 훌륭한 보호 메커니즘?을 제공한다.</p>
+
+
+<p>Even derived classes cannot tinker with our attributes.</p>
+<p>심자어 상속된 클래스도 부모 클래스의 어트리뷰트?로 장난칠 수 없다.</p>
+
+<p>It is also practically as efficient as the
+"normal way".</p>
+<p>?</p>
+
+<p>Since the reference is only used as the unique
+key, we can use a scalar reference (it's cheap)</p>
+<p>레퍼런스가 고유 키로 사용되기 때문에 
+스칼라 레퍼런스도 사용할 수 있다.(싸다)</p>
+
+</div>
+
+<div class="slide">
+<h1>인사이드-아웃 객체 Inside-out objects</h1>
+
+<pre><code>
+package MyInsideOut;
+
+{
+my %hest;
+my %foo;
+
+sub new { bless \(my $dummy), $_[0] }
+sub set_hest { $hest{"$_[0]"} = $_[1] }
+sub hest { $hest{"$_[0]"} }
+...
+}
+
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>인사이드-아웃 객체 Inside-out objects</h1>
+
+<p>We <b>need</b> <code>DESTROY</code> to cleanup.</p>
+<p>메모리 청소를 위해  <code>DESTROY</code>를 사용해야 한다.</p>
+
+<pre><code>
+sub DESTROY {
+	delete $hest{"$_[0]"};
+	delete $foo{"$_[0]"};
+}
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>인사이드-아웃 객체 Inside-out objects</h1>
+
+<p>Another advantage of inside-out objects
+is that we get compile-time checking of typos:</p>
+<p>인사이드-아웃 객체의 다른 장점은 컴파일 시간에 
+오타를 찾을 수 있다는 것이다.</p>
+
+<pre><code>
+use strict;
+$normal_obj-&gt;{tpyo_count}++;   # OK
+</code></pre>
+
+<pre><code>
+use strict;
+$tpyo_count{$inside_out_obj}++;   # %tpyo_count is unknown
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>인사이드-아웃 객체, CPAN </h1>
+
+<p>이 중에 하나를 사용:</p>
+
+<ul>
+<li/><code>Class::Std</code>
+<li/><code>Object::InsideOut</code>
+<li/><code>Class::InsideOut</code>
+<li/>또는 직접 만들어서... ...or roll your own.
+</ul>
+
+</div>
+
+<div class="slide">
+<h1>Class::Closure</h1>
+
+<p>Another way to use a closure to
+get decent? data protection.</p>
+<p>데이터를 보호하는방법은 클로져를 사용하는 것이다.</p>
+
+<p>It does not represent the class
+as the closure.</p>
+<p>클로져로 클래스를 표현하는 것은 아니다.</p>
+
+<p>But the methods <b>are</b> closures.</p>
+<p>다만 메소드<b>가</b> 클로져인 것이다.</p>
+
+<p>All in all, pretty nifty.</p>
+<p>?</p>
+
+</div>
+
+<div class="slide">
+<h1>Class::Closure</h1>
+
+<pre><code>
+package FurryAnimal;
+use Class::Closure;
+
+sub CLASS {
+	extends HairlessAnimal;
+
+	has my $hair;
+
+	method shave =&gt; sub {
+		$hair = undef;
+	};
+}
+</code></pre>
+
+</div>
+
+<div class="slide">
+<h1>객체의 동적 메소드 Objects with dynamic methods</h1>
+
+<p>Using <code>Class::Prototyped</code>, one can
+dynamically add methods and attributes to an existing,
+instantiated object.</p>
+<p><code>Class::Prototyped</code>를 사용하면
+메소드와 어트리뷰트?를 존재하는 객체 인스턴스에
+동적으로 추가할 수 있다. </p>
+
+<p>One can also have objects inherit their behavior
+and state from another object.</p>
+<p>또는 다른 객체에서 상태와 동작을 상속하는 객체를 만들 수 있다.?</p>
+
+<p>So one can clone, then modify the behavior.</p>
+<p>따라서 클론을 만들고 동작을 수정할 수 있다.</p>
+
+</div>
+
+<div class="slide">
+<h1>감사합니다.</h1>
+<img class="leader" src="Perl-oop/bowing.gif"/>
+
+<p>&nbsp;</p>
+<p>감사합니다!</p>
+<p>&nbsp;</p>
+<p>질문 있나요?</p>
+
+</div>
+
+</div>
+</body>
+</html>
