@@ -1,0 +1,132 @@
+Object-oriented programming:
+
+Closure with state.
+Something with data that can receive messages.
+
+Classic OOP Perl
+Perl already has references
+	$hashref = { a => 1, b => 2};
+	including references to functions
+	sub x { return 42 };
+	$fref = \&x;
+	print $fref->();
+
+So it would be possible to write something like this:
+
+	sub method1 {
+		my ($obj) = @_;
+		print "Attr1 is $obj->{attr1}\n";
+	}
+	sub method2 { ... }
+
+	my $obj = {
+		attr1 => 1,
+		attr2 => 2,
+		method1 => \&method1,
+		method2 => \&method2,
+	};
+
+But we need a special syntax for method calls
+
+An object = a reference to something
+        with the ability to call methods
+A reference to a hash, to an array, to a scalar, to a sub, to a filehandle
+
+	Because the manual method surely is ugly!
+	No classes, no constructors, ugly, ugly.
+
+But *blessed* to a namespace
+my $o = bless {}, Classname;
+$o->method1(1,2,3);
+$o->{attr} = 1;  # attribute access
+# not protected in any way
+Bad style to rely on object representation
+What about constructors and other class methods?
+The dereferencing arrow is hijacked to apply to package names
+Classname->classmethod();
+my $o = Classname->new(1,2,3);
+new implementation
+What about inheritance?
+First we need a way to say "I inherit from Class".
+Enter @ISA package array.
+use base
+Then we need to be able to call inherited methods.
+A dumb and ugly way.
+Will it work if we "skip" the inheritance by one level?
+Don't do that!
+Use SUPER pseudo-package
+What about introspection?
+Do it by hand approach to introspection - isa
+Do it by hand approach to introspection - can
+introspection: UNIVERSAL package
+UNIVERSAL::isa
+UNIVERSAL::can
+Indirect method calls syntax
+What about multiple inheritance?  Easy!
+All in all, classic OO in perl is ugly, but surprizingly flexible
+Most objects use %hash
+Examples of other things:
+  - array
+  - scalar
+  - filehandle (glob)
+  - subref
+Why would anyone use those?
+Examples...
+	array - for speed
+		Class::ArrayObjects (maybe)
+Do not overdo OO in Perl
+
+CPAN modules which make OO easier
+
+Automatic accessors - by hand
+by hand using autoload
+Automatic accessors - CPAN
+Class::Accessor
+Class-Data-Inheritable
+Class-Data-Accessor
+Class::Accessor::Chained
+Class::Accessor::Lvalue
+
+Singleton classes
+	By hand
+	CPAN
+
+Default objects
+	why bother?
+	classic: CGI.pm
+	easy to do by hand
+	but of course there is a module: Class-Default
+
+Class factories
+	why bother?
+	Class-Factory
+
+More introspection:
+	Class::ISA
+	Class::Inspector
+	Class::Handle
+
+Various base classes
+	Class::Base
+	Class::Std
+
+Various frameworks...
+	Spiffy
+
+Other ways of doing OO - and why?
+
+Object as closures with state
+	By hand
+	CPAN
+
+Inside-out objects
+	By hand
+	Class::InsideOut
+
+Objects with dynamic methods
+	Class::Prototyped
+
+Metaclass programming?
+Class::MOP - metaclass system
+Moose - object system extension
+

@@ -1,0 +1,35 @@
+package A;
+
+sub new {
+	my ($class) = @_;
+	bless {}, $class;
+}
+
+sub DESTROY
+{
+	print "from A: $_[0]\n";
+}
+
+package B;
+@ISA = ('A');
+
+sub DESTROY
+{
+	print "from B: $_[0]\n";
+	$_[0]->SUPER::DESTROY;
+}
+
+$o = new B;
+
+sub is_a {
+    my ($o, $isaclass) = @_;
+    my $class = ref $o || $o;
+    return 1 if $class eq $isaclass;
+    for my $inhc (eval "\@$class\::ISA") {
+        return 1 if is_a($inhc, $isaclass);
+    }
+    return 0;
+}
+
+print "is B\n" if is_a($o, "B");
+print "is A\n" if is_a($o, "A");
