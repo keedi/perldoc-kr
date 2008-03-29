@@ -555,6 +555,7 @@ haven't even begun to cover.
 
 =head2 A horse is a horse, of course of course -- or is it?
 
+C<Animal> 클래스와 C<Horse> 클래스의 코드부터 시작하자.
 Let's start with the code for the C<Animal> class
 and the C<Horse> class:
 
@@ -569,18 +570,33 @@ and the C<Horse> class:
     sub sound { "neigh" }
   }
 
+이제 말의 소리를 얻을 수 있는 C<Horse::sound> 를 호출하는 
+<Animal::Speak>를 사용하기 위해서 C<< Horse->Speak >>를 호출할 수 있다.
+결과는 다음과 같다.
+
 This lets us invoke C<< Horse->speak >> to ripple upward to
 C<Animal::speak>, calling back to C<Horse::sound> to get the specific
 sound, and the output of:
 
   a Horse goes neigh!
 
+그러나 만들어진 모든 Horse 객체는 완전히 똑같을 것이다.
+Horse에 함수를 추가하면 자동으로 모든 말들이 그 함수를 공유한다.
+이것은 말들을 똑같이 만드는데는 적합하지만 각각의 말들의 구분은 어떻게 해야하는가?
+예를 들어 첫번째 말에게 이름을 주고 싶다면?
+서로 다른 말들의 이름들을 따로 보관하는 방법이 있어야한다(?)
 But all of our Horse objects would have to be absolutely identical.
 If I add a subroutine, all horses automatically share it.  That's
 great for making horses the same, but how do we capture the
 distinctions about an individual horse?  For example, suppose I want
 to give my first horse a name.  There's got to be a way to keep its
 name separate from the other horses.
+
+우리는 "인스턴스"라고 불리는 새로운 구분자를 만들어서 이것을 해결할 수 있다.(?)
+인스턴스는 보통 클래스에 의해 만들진다.
+펄에서 모든 레퍼런스는 인스턴스가 될 수 있다. 
+말의 이름을 저장할 수 있는 가장 간단한 레퍼런스로 시작해보자
+바로 스칼라 레퍼런스다.
 
 We can do that by drawing a new distinction, called an "instance".
 An "instance" is generally created by a class.  In Perl, any reference
@@ -590,31 +606,51 @@ that can hold a horse's name: a scalar reference.
   my $name = "Mr. Ed";
   my $talking = \$name;
 
+C<$talking> 이 인스턴스 마다의 데이터(이름)을 저장할 레퍼런스이다.
+이 레퍼런스를 진짜 인스턴스로 만드는 마지막 단계는 C<bless>라는 특별한 
+연산자를 사용하는 것이다.
 So now C<$talking> is a reference to what will be the instance-specific
 data (the name).  The final step in turning this into a real instance
 is with a special operator called C<bless>:
 
   bless $talking, Horse;
 
+이 연산자는 C<Horse> 패키지의 정보를 레퍼런스가 가리키는 곳에 저장하는 것이다.
+(역주:오오.. 레퍼런스에 저장하는 것이 아니다!!)
+이제 C<$talking>은 C<Horse>의 인스턴스이다.
+됐다, 이것은 특별한 말이 되었다.
+다른 관점에서 레퍼런스는 바뀌지 않았고 
+여전히 전통적인 디레퍼런스 연산자를 사용할 수 있다.
 This operator stores information about the package named C<Horse> into
 the thing pointed at by the reference.  At this point, we say
 C<$talking> is an instance of C<Horse>.  That is, it's a specific
 horse.  The reference is otherwise unchanged, and can still be used
 with traditional dereferencing operators.
 
-=head2 Invoking an instance method
+=head2 인스턴스 메소드 호출 Invoking an instance method
 
+메소드 화살표는 패키지 이름(클래스)에 쓰는 것처럼 인스턴스에도 쓸 수 있다. 
+이제 C<$takling> 이 만드는 소리를 들어보자.
 The method arrow can be used on instances, as well as names of
 packages (classes).  So, let's get the sound that C<$talking> makes:
 
   my $noise = $talking->sound;
 
+C<sound>를 호출하기 위해서, 펄은 우선 C<$talking> 이 블레스된
+레퍼런스인지(인스턴스인지)를 확인한다. 
+그리고 인자 목록을 만든다. 이경우에는 그냥 C<$talking>이다.
+(나중에 인자들이 클래스에서 처럼 인스턴스 변수뒤에 위치한다는 것을 배울것이다.)
 To invoke C<sound>, Perl first notes that C<$talking> is a blessed
 reference (and thus an instance).  It then constructs an argument
 list, in this case from just C<($talking)>.  (Later we'll see that
 arguments will take their place following the instance variable,
 just like with classes.)
 
+여기가 재밌는 부분이다: 펄은 인스턴스가 무엇으로 블레스되었는지를 보고
+클래스를 얻어낸다. 이경우에는 C<Horse>이다. 
+그리고 메소드를 호출할때 이 클래스에 있는 함수를 사용한다.
+이 경우에는 C<Horse::sound>가 바로 발견되고 (상속을 사용하지 않고),
+최종적으로 다음의 함수가 실행된다.
 Now for the fun part: Perl takes the class in which the instance was
 blessed, in this case C<Horse>, and uses that to locate the subroutine
 to invoke the method.  In this case, C<Horse::sound> is found directly
@@ -622,18 +658,26 @@ to invoke the method.  In this case, C<Horse::sound> is found directly
 
   Horse::sound($talking)
 
+여기서 첫번째 인자는 전처럼 클래스 이름이 아니라 여전히 인스턴스라는 것에 주목하자.
+우리는 리턴값으로 C<neigh>를 얻을 것이고 C<$nose> 변수에 저장된다. 
 Note that the first parameter here is still the instance, not the name
 of the class as before.  We'll get C<neigh> as the return value, and
 that'll end up as the C<$noise> variable above.
 
+만약 Hoise::sound가 발견되지 않으면, 펄은 클래스메소드에서 그랬던 것 처럼
+슈퍼클래스에서 해당 메소드를 찾기위해 C<@Horse::ISA>를 찾을 것이다.
+클래스 메소드와 인스턴스 메소드의 유일한 차이점은 첫번째 인자가 
+인스턴스(블레스된 레퍼런스)냐 클래스이름(문자열)이냐 뿐이다.
 If Horse::sound had not been found, we'd be wandering up the
 C<@Horse::ISA> list to try to find the method in one of the
 superclasses, just as for a class method.  The only difference between
 a class method and an instance method is whether the first parameter
 is an instance (a blessed reference) or a class name (a string).
 
-=head2 Accessing the instance data
+=head2 인스턴스 데이터에 접근하기 Accessing the instance data
 
+첫번째 인자로 인스턴스를 얻기 때문에 인스턴스 마다의 데이터에 접근할 수 있다.
+이경우, 이름을 얻는 방법을 추가해 보자.
 Because we get the instance as the first parameter, we can now access
 the instance-specific data.  In this case, let's add a way to get at
 the name:
@@ -647,10 +691,17 @@ the name:
     }
   }
 
+이제 name을 호출하 수 있다.
 Now we call for the name:
 
   print $talking->name, " says ", $talking->sound, "\n";
 
+C<Horse::name> 안에 C<@_> 배열이 C<$talking>을 포함하고 있고 
+C<shift>가 이것을 C<$self>에 저장한다.
+(첫번째 인자를 C<shift>로 꺼내서 C<$self>에 저장하는 것이 
+전형적이기 때문에 특별한 이유가 없다면 이렇게 하는 것이 좋다.)
+다음에 C<$self> 를 스칼라 레퍼런스로서 디레퍼런스해서 C<Er. Ed>를 얻는다.
+해보면 다음처럼 나온다.
 Inside C<Horse::name>, the C<@_> array contains just C<$talking>,
 which the C<shift> stores into C<$self>.  (It's traditional to shift
 the first parameter off into a variable named C<$self> for instance
@@ -660,8 +711,13 @@ and we're done with that.  The result is:
 
   Mr. Ed says neigh.
 
-=head2 How to build a horse
+=head2 어떻게 말을 만드는가. How to build a horse
 
+물론, 수작업으로 모든 말들을 만든다면, 때때로 실수하기 쉽다.
+또한 말의 내장을 보이게 해서 객체지향 프로그래밍의 성질중의 하나를
+어길 수도 있다. 
+당신이 수의사라면 상관없지만, 그냥 말을 좋아하는 사람이라면 문제가 된다.
+따라서 Horse 클래스가 새로운 말을 만들수 있도록 해보자.
 Of course, if we constructed all of our horses by hand, we'd most
 likely make mistakes from time to time.  We're also violating one of
 the properties of object-oriented programming, in that the "inside
@@ -683,15 +739,32 @@ build a new horse:
     }
   }
 
+이제 새로운 C<named> 메소드로 말을 만들 수 있다.
 Now with the new C<named> method, we can build a horse:
 
   my $talking = Horse->named("Mr. Ed");
 
+다시 클래스 메소드를 사용하고 있다는 것을 주목하자.
+C<Horse::named>의 두 인자는 C<Horse>와 C<Mr. Ed>이다. 
+C<bless> 연산자는 C<$name>을 블래스할 뿐 아니라 
+C<$name>의 레퍼런스를 반환하기도 하기 때문에
+리턴 값으로 사용할 수 있다.
+이것이 말을 만드는 방법이다.
 Notice we're back to a class method, so the two arguments to
 C<Horse::named> are C<Horse> and C<Mr. Ed>.  The C<bless> operator
 not only blesses C<$name>, it also returns the reference to C<$name>,
 so that's fine as a return value.  And that's how to build a horse.
 
+여기서 C<named> 메소드를 생성자라고 부르고 특정한 말의 이름이
+생성자의 인자가 된다.
+당신은 다른 방식으로 객체를 만들기 위해 
+다른 이름의 생성자들 만들 수 있다.
+(형통이나 생일을 기록할 수 있다?)
+그러나 다른 엄격한 언어에서 펄로 온 대부분의 사람들은 
+다양한 방법으로 인자들을 해석하여 C<new>라는 이름의
+하나의 생성자를 사용한다..
+객체를 만드는 방법에 대해서 문서화 하기만 한다면, 두가지 방법 모두 좋다. 
+(그렇게 하려고 했었죠?) 
 We've called the constructor C<named> here, so that it quickly denotes
 the constructor's argument as the name for this particular C<Horse>.
 You can use different constructors with different names for different
@@ -703,8 +776,11 @@ C<new>.  Either style is fine, as long as you document your particular
 way of giving birth to an object.  (And you I<were> going to do that,
 right?)
 
-=head2 Inheriting the constructor
+=head2 상속에서의 생성자 Inheriting the constructor
 
+C<Horse>에서 생성자 메소드에 어떤 특별한 점이 있었는가?
+아니다, 따라서 마찬가지로 C<Animal>에서 상속될수 있다.
+구현해보자.
 But was there anything specific to C<Horse> in that method?  No.  Therefore,
 it's also the same recipe for building anything else that inherited from
 C<Animal>, so let's put it there:
@@ -729,22 +805,34 @@ C<Animal>, so let's put it there:
     sub sound { "neigh" }
   }
 
+아, C<speak>를 호출하면, 무슨 일이 일어나는가?
 Ahh, but what happens if we invoke C<speak> on an instance?
 
   my $talking = Horse->named("Mr. Ed");
   $talking->speak;
 
+디버깅 값을 얻는다.
 We get a debugging value:
 
   a Horse=SCALAR(0xaca42ac) goes neigh!
 
+왜일까? C<Animal::speak>는 첫번째 매개 변수로 인스턴스가 아니라 
+클래스 이름을 기대하기 때문이다.
+인스턴스가 넘어가면, 블레스된 스칼라 레퍼런스가 스트링으로 사용될 것이고
+위와 같은 결과가 보이게 된다. 
 Why?  Because the C<Animal::speak> routine is expecting a classname as
 its first parameter, not an instance.  When the instance is passed in,
 we'll end up using a blessed scalar reference as a string, and that
 shows up as we saw it just now.
 
-=head2 Making a method work with either classes or instances
+=head2 클래스와 인스턴스에서 모두 쓸 수 있는 메소드 만들기 Making a method work with either classes or instances
 
+메소드에 필요한 모든 것은 그저 메소드가 클래스 상에서 호출되었는지
+인스턴스 위에서 호출 되었는지를 알아내는 것이다.
+가장 간단한 방법은 C<ref> 연산자를 사용하는 것이다.
+이 연산자는 블레스된 레퍼런스에 대해서 클래스 이름 문자열을 반환하고
+문자열(클래스 이름 같은)에 대해서는 빈 문자열을 반환한다.
+우선 C<name>메소드가 변화?를 출력할 수 있도록 수정해 보자.
 All we need is for a method to detect if it is being called on a class
 or called on an instance.  The most straightforward way is with the
 C<ref> operator.  This returns a string (the classname) when used on a
@@ -758,6 +846,10 @@ classname).  Let's modify the C<name> method first to notice the change:
       : "an unnamed $either"; # it's a class, return generic
   }
 
+여기서 C<?:> 오퍼레이터는 디레퍼런스와 파생된 문자열(?)을 선택하는 데 유용하다.
+이제 인스턴스와 클래스 모두에서 이 메소드를 사용할 수 있다.
+이것이 의도적이라는 것을 보이기 위해 
+첫번째 매개변수를 C<$either>에 저장했다는 점을 기억하자.
 Here, the C<?:> operator comes in handy to select either the
 dereference or a derived string.  Now we can use this with either an
 instance or a class.  Note that I've changed the first parameter
@@ -767,6 +859,7 @@ holder to C<$either> to show that this is intended:
   print Horse->name, "\n"; # prints "an unnamed Horse\n"
   print $talking->name, "\n"; # prints "Mr Ed.\n"
 
+그리고 C<speak>가 이것을 사용할 수 있도록 고칠 것이다.
 and now we'll fix C<speak> to use this:
 
   sub speak {
@@ -774,11 +867,14 @@ and now we'll fix C<speak> to use this:
     print $either->name, " goes ", $either->sound, "\n";
   }
 
+C<sound>는 이미 클래스와 인스턴스에서 동작하고 있었기 때문에,
+다 했다!
 And since C<sound> already worked with either a class or an instance,
 we're done!
 
-=head2 Adding parameters to a method
+=head2 메소드에 파라미터 추가하기 Adding parameters to a method
 
+우리의 동물들이 먹을수 있도록 훈련시켜보자.
 Let's train our animals to eat:
 
   { package Animal;
@@ -812,24 +908,35 @@ Let's train our animals to eat:
     sub sound { "baaaah" }
   }
 
+실행해 보자.
 And now try it out:
 
   my $talking = Horse->named("Mr. Ed");
   $talking->eat("hay");
   Sheep->eat("grass");
 
+다음이 출력된다.
 which prints:
 
   Mr. Ed eats hay.
   an unnamed Sheep eats grass.
 
+매게변수를 가진 인스턴스 메소드는 인스턴스와 매개변수 리스트와 함께
+호출된다. 따라서 첫번째 호출은 다음과 같다.
 An instance method with parameters gets invoked with the instance,
 and then the list of parameters.  So that first invocation is like:
 
   Animal::eat($talking, "hay");
 
-=head2 More interesting instances
+=head2 더 흥미로운 인스턴스 More interesting instances
 
+인스턴스에 더 많은 데이터가 필요하다면 어떻게 할 것인가?
+대부분의 흥미로운 인스턴스들은 각각이 레퍼런스나 다른 객체가 될수 있는 
+여러개의 아이템으로 구성된다.
+이것들을 저장하는 가장 쉬운 방법은 대게 해쉬에 저장하는 것이다.
+해쉬의 키가 객체의 부분들의 이름 역할을 한다.
+(종종, 인스턴스 변수나 멤버변수로 불린다.)
+그리고 값들은 뭐, 값들에 대응한다.
 What if an instance needs more data?  Most interesting instances are
 made of many items, each of which can in turn be a reference or even
 another object.  The easiest way to store these is often in a hash.
@@ -837,15 +944,24 @@ The keys of the hash serve as the names of parts of the object (often
 called "instance variables" or "member variables"), and the
 corresponding values are, well, the values.
 
+말을 어떻게 해쉬로 바꿀수 있을까?
+객체가 블래스된 레퍼런스라는 것을 떠올려보자.
+레퍼런스를 사용하는 코드들을 적절리 바꾸기만 하면
+말을 블레스된 스칼라 레퍼런스처럼 쉽게 스칼라 해쉬 레퍼런스로 만들 수 있다
 But how do we turn the horse into a hash?  Recall that an object was
 any blessed reference.  We can just as easily make it a blessed hash
 reference as a blessed scalar reference, as long as everything that
 looks at the reference is changed accordingly.
 
+이름과 색깔을 가지는 양을 만들어보자.
 Let's make a sheep that has a name and a color:
 
   my $bad = bless { Name => "Evil", Color => "black" }, Sheep;
 
+C<< $bad->{Name} >> 이 C<Evil>을 가지고 C<< $bad->{Color} >>이 
+C<black>을 가진다. 우리는 C<< bad->name >>으로 name에 접근하기를 원하지만
+그것이 스칼라 레퍼런스를 기대하기 때문에 좀 난감한 상황이다.
+걱정할 필요 없다, 아주 쉽게 바꿀 수 있다.
 so C<< $bad->{Name} >> has C<Evil>, and C<< $bad->{Color} >> has
 C<black>.  But we want to make C<< $bad->name >> access the name, and
 that's now messed up because it's expecting a scalar reference.  Not
@@ -859,6 +975,7 @@ to worry, because that's pretty easy to fix up:
       "an unnamed $either";
   }
 
+당연히 C<named>은 여전히 스칼라 양을 만들기 때문에 이것도 바꿔보자.
 And of course C<named> still builds a scalar sheep, so let's fix that
 as well:
 
@@ -870,6 +987,9 @@ as well:
     bless $self, $class;
   }
 
+C<default_color>은 뭘까?
+C<named>가 단순한 이름이라면 우리는 여전히 color를 지정할 필요가 있기 때문에
+클래스에 해당하는 초기 색깔을 가지고 있을 것이다.
 What's this C<default_color>?  Well, if C<named> has only the name,
 we still need to set a color, so we'll have a class-specific initial color.
 For a sheep, we might define it as white:
@@ -877,6 +997,8 @@ For a sheep, we might define it as white:
   ## in Sheep
   sub default_color { "white" }
 
+각각의 추가된 클래스 마다 이 메소드를 추가하는 것을 피하기 위해서
+C<Animal> 클래스에 "기초값의 기초값"을 제공하는 "후방지원" 메소드를 만들 수 있다.
 And then to keep from having to define one for each additional class,
 we'll define a "backstop" method that serves as the "default default",
 directly in C<Animal>:
@@ -884,12 +1006,16 @@ directly in C<Animal>:
   ## in Animal
   sub default_color { "brown" }
 
+C<name>과 C<named>는 객체의 "구조"를 가리키는 단순한 메소드이기 때문에?
+메소드의 나머지 부분은 전과 동일하고  C<speak>는 이전과 똑같이 작동한다.
 Now, because C<name> and C<named> were the only methods that
 referenced the "structure" of the object, the rest of the methods can
 remain the same, so C<speak> still works as before.
 
-=head2 A horse of a different color
+=head2 다른 색깔의 말 A horse of a different color
 
+하지만 모든 말이 갈색인 것은 좀 지루하다.
+색깔을 정하고(set) 얻는(get) 두 개의 메소드를 추가하자.
 But having all our horses be brown would be boring.  So let's add a
 method or two to get and set the color.
 
@@ -901,6 +1027,10 @@ method or two to get and set the color.
     $_[0]->{Color} = $_[1];
   }
 
+매개변수 인자에 접근하기 위해서 C<shift>를 사용하지 않고
+다른 방법으로 C<$_[0]을 직접 사용한 것에 주목하라.
+(이것은 자주 호출되는 경우 실행 시간을 조금 줄여준다.)
+이제 Mr. Ed 의 색깔을 바꿀 수 있다.
 Note the alternate way of accessing the arguments: C<$_[0]> is used
 in-place, rather than with a C<shift>.  (This saves us a bit of time
 for something that may be invoked frequently.)  And now we can fix
@@ -910,12 +1040,22 @@ that color for Mr. Ed:
   $talking->set_color("black-and-white");
   print $talking->name, " is colored ", $talking->color, "\n";
 
+결과는 : 
 which results in:
 
   Mr. Ed is colored black-and-white
 
-=head2 Summary
+=head2 요약   Summary
 
+우리는 클래스 메소드, 생성자, 인스턴스 메소드, 인스턴스 데이터,
+그리고 액세서 까지 만들었다.
+하지만 여전히 펄이 지원하는  객체의 초기 단계이다.
+우리는 아직 게터와 세터를 합친 액세서, 소멸자, 간접 객체 표시법, 
+서브클래스에 인스턴스 데이터 추가하기, 
+클래스 데이터, 오버로딩, "isa"나 "can" 테스트, C<UNIVERSAL> 클래스
+등에 대해서는 언급하지도 않았다.
+나머지는 펄문서에서  커버하도록 남겨두자.
+바라건데, 이문서가 출발신호가 되었으면 한다.
 So, now we have class methods, constructors, instance methods,
 instance data, and even accessors.  But that's still just the
 beginning of what Perl has to offer.  We haven't even begun to talk
