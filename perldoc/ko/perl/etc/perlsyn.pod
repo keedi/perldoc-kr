@@ -1016,13 +1016,12 @@ block is optional.
 
 =end original
 
-ブロックそれ自身は(ラベルが付いていようがついてなかろうが)一度だけ
-実行されるループと、文法的には等価なものです。
-このため、ブロックから脱出するためやブロックの再スタートのために
-任意のループ制御文を使うことができます(これは C<eval{}>、C<sub{}>、
-さらに一般的な認識とは異なり I<ループではない> C<do{}> ブロックに対しては
-I<真ではない> ということに注意してください)。
-C<continue> ブロックは省略することができます。
+블록 그 자신은 (라벨이 붙어있든 말든) 한번만
+힐행되는 루프와 문법적으로는 같은 것입니다.
+이 때문에, 블록에서 탈출하기위해서나 블록의 재 시작을 위해
+임의의 루프제어문을 사용할 수 있습니다(이것은 C<eval{}>, C<sub {}>,
+거기에 일반적인 인식과는 달리 I<루프가 아닌> C<do{}> 블록에 대해서는
+C<continue> 블록은 생략할 수 있습니다.
 
 =begin original
 
@@ -1030,7 +1029,7 @@ The BLOCK construct can be used to emulate case structures.
 
 =end original
 
-BLOCK 構造は case 構造を行うのにも使えます。
+블록 구조는 case 구조를 수행할 때에도 사용할 수 있습니다.
 
     SWITCH: {
 	if (/^abc/) { $abc = 1; last SWITCH; }
@@ -1046,13 +1045,13 @@ of Perl had no official C<switch> statement.
 
 =end original
 
-古いバージョンの Perl には公式の C<switch> 文がなかったので、このような
-構文はとてもよく使われています。
+옛 버젼의 Perl 에는 공식적인 C<switch> 문이 없었기때문에, 이런
+구문은 자주 사용되고 있습니다.
 
 =head2 Switch statements
 X<switch> X<case> X<given> X<when> X<default>
 
-(switch 文)
+(swtich 문)
 
 =begin original
 
@@ -1060,7 +1059,7 @@ Starting from Perl 5.10, you can say
 
 =end original
 
-Perl 5.10 から、以下のように書くと:
+Perl 5.10 부터 아래처럼 쓰면 : 
 
     use feature "switch";
 
@@ -1071,7 +1070,7 @@ Perl 6 proposal.
 
 =end original
 
-Perl 6 で提案されているものを基礎とした switch 機能が有効になります。
+Perl 6 에서 제안된 것을 기초로한 switch 기능을 쓸 수 있습니다.
 
 =begin original
 
@@ -1081,8 +1080,8 @@ above could be written as
 
 =end original
 
-キーワード C<given> と C<when> は他の言語での C<switch> および C<case> と
-同様のものなので、上記のコードは以下のように書けます:
+키워드 C<given> 과 C<when> 은 다른 언어에서는 C<switch> 및 C<case> 와
+같은 것이어서, 위의 코드는 아래처럼 쓸 수 있습니다 : 
 
     given($_) {
 	when (/^abc/) { $abc = 1; }
@@ -1097,8 +1096,8 @@ This construct is very flexible and powerful. For example:
 
 =end original
 
-この構造はとても柔軟で、強力です。
-例えば:
+이 구조는 매우 유연하고 강력합니다.
+예를 들면:
 
     use feature ":5.10";
     given($foo) {
@@ -1135,8 +1134,8 @@ within the lexical scope of the block, so it's similar to
 
 =end original
 
-C<given(EXPR)> はブロックのレキシカルスコープ内で EXPR を C<$_> に
-代入するので、これは以下と似ています:
+C<given(EXPR)> 은 블록의 렉시컬스코프안에서 EXPR 을 C<$_>에
+대입하기때문에, 이것인 아래와 비슷합니다.
 
 	do { my $_ = EXPR; ... }
 
@@ -1147,8 +1146,8 @@ successful C<when> or an explicit C<break>.
 
 =end original
 
-しかし、ブロックは C<when> が成功するか、明示的な C<break> によって
-自動的に破壊されるところが違います。
+그러나, 블록은 C<when> 이 성공하든 가, 명시적인 C<break> 에 의해서
+자동적으로 파괴된 것이 다릅니다.
 
 =begin original
 
@@ -1156,7 +1155,7 @@ Most of the power comes from implicit smart matching:
 
 =end original
 
-強力さのほとんどは暗黙のスマートマッチングによるものです:
+진정한 강력함은 암묵적인 스마트매칭에 의한 것입니다.
 
 	when($foo)
 
@@ -1166,7 +1165,7 @@ is exactly equivalent to
 
 =end original
 
-は正確に以下と等価です:
+은 정확하게 아래와 같습니다.
 
 	when($_ ~~ $foo)
 
@@ -1177,9 +1176,9 @@ time. The exceptions are that when EXPR is:
 
 =end original
 
-実際のところ、C<when(EXPR)> はほとんどの場合で暗黙のスマートマッチングとして
-扱われます。
-例外は EXPR が以下の場合です:
+실제로, C<when(EXPR)> 은 대부분의 경우에서 암묵적인 스마트매칭으로써
+취급됩니다.
+예외는 EXPR 이 아래의 경우입니다.
 
 =over 4
 
@@ -1191,7 +1190,7 @@ a subroutine or method call
 
 =end original
 
-サブルーチンかメソッド呼び出し
+서브루틴 또는 메소드 호출
 
 =item o
 
@@ -1202,8 +1201,8 @@ or a negated regular expression match C<$foo !~ /REGEX/>.
 
 =end original
 
-正規表現マッチング: つまり、C</REGEX/> や C<$foo =~ /REGEX/> や
-正規表現マッチングの否定 C<$foo !~ /REGEX/>。
+정규표현매칭: 즉, C</REGEX/> 나 C<$foo =~ /REGEX/> 나
+정규표현매칭의 부정 C<$foo !~ /REGEX/>.
 
 =item o
 
@@ -1214,7 +1213,7 @@ a comparison such as C<$_ E<lt> 10> or C<$x eq "abc">
 
 =end original
 
-C<$_ E<lt> 10> や C<$x eq "abc"> (や、もちろん C<$_ ~~ $c>) のような比較
+C<$_ E<lt> 10> 나 C<$x eq "abc"> (라든가 물론 C<$_ ~~ $c>) 같은 비교 
 
 =item o
 
@@ -1224,7 +1223,7 @@ C<defined(...)>, C<exists(...)>, or C<eof(...)>
 
 =end original
 
-C<defined(...)>, C<exists(...)>, C<eof(...)> のいずれか
+C<defined(...)>, C<exists(...)>, C<eof(...)> 중 어느 것
 
 =item o
 
@@ -1235,7 +1234,7 @@ exclusive-or C<(...) xor (...)>.
 
 =end original
 
-否定表現 C<!(...)>, C<not (...)>, 排他的論理和 C<(...) xor (...)>
+부정표현 C<!(...)>, C<not (...)>, 배타적 논리합 C<(...) xor (...)>
 
 =back
 
@@ -1246,8 +1245,7 @@ Furthermore:
 
 =end original
 
-このような場合、EXPR の値は直接真偽値として使われます。
-更に:
+이런 경우, EXPR 의 값ㅡㄴ 직접 참/거짓값으로써 사용됩니다.
 
 =over 4
 
@@ -1262,9 +1260,9 @@ as boolean.
 
 =end original
 
-EXPR が C<... && ...> または C<... and ...> の場合、テストは両方の
-引数に対して再帰的に適用されます。
-I<両方の> 引数がテストに成功した場合、この引数は真偽値として扱われます。
+EXPR 이 C<... && ...> 또는 C<... and ...> 의 경우, 테스트는 양쪽의 
+인수에 대해서 재귀적으로 적용됩니다.
+I<양쪽의> 인수가 테스트에 성공한 경우, 이 인수는 참/거짓값으로써 취급됩니다.
 
 =item o
 
@@ -1275,8 +1273,8 @@ is applied recursively to the first argument.
 
 =end original
 
-EXPR が C<... || ...> または C<... or ...> の場合、テストは最初の引数に
-対して再帰的に適用されます。
+EXPR 이 C<... || ...> 또는 C<... or ...> 의 경우 테스트는 맨처음의 인수에
+대해서 재귀적으로 적용됩니다. 
 
 =back
 
@@ -1287,8 +1285,8 @@ you want. For example you could write:
 
 =end original
 
-これらの規則は複雑に見えますが、普通はあなたが実行したい通りに実行します。
-例えば、以下のように書けます:
+이런 규칙은 복잡하게 모이지만, 보통은 실행하고픈 대로 실행됩니다.
+예를 들면, 아래처럼 쓸 수 있습니다.
 
     when (/^\d+$/ && $_ < 75) { ... }
 
@@ -1301,9 +1299,9 @@ for example.
 
 =end original
 
-その他の便利な省略記法としては、C<when> の引数としてリテラルな配列や
-ハッシュを書くと、これはリファレンスに変化します。
-それで、例えば C<given(@foo)> は C<given(\@foo)> と同じです。
+그 외의 편리한 생략기법으로써는 C<when> 의 인수로써 리터럴한 배열이나
+해쉬를 쓰면, 이것은 리퍼런스로 변화합니다.
+그리고, 예를들면 C<given(@foo)> 은 C<given(\@foo)>와 같습니다.
 
 =begin original
 
@@ -1312,8 +1310,8 @@ to say that it always matches.
 
 =end original
 
-C<default> は正確に C<when(1 == 1)> のように振る舞い、常に
-マッチングします。
+C<default> 는 정확하게 C<when(1 == 1)> 처럼 행동하고, 항상
+매칭합니다.
 
 =begin original
 
@@ -1322,12 +1320,12 @@ on smart matching.
 
 =end original
 
-スマートマッチングに関するさらなる情報については
-L</"Smart matching in detail"> を参照してください。
+스마트매칭에 관해 더 자세한 정보는
+L</"Smart matching in detail"> 를 참조해주세요.
 
 =head3 Breaking out
 
-(脱出)
+(탈출)
 
 =begin original
 
@@ -1337,13 +1335,13 @@ a C<break>.
 
 =end original
 
-囲まれている C<given> ブロックから脱出するために、C<break> キーワードが
-使えます。
-全ての C<when> ブロックの末尾には暗黙に C<break> があります。
+둘러싸인 C<given> 블록에서 탈출하기위해서는 C<break> 키워드를 
+사용할 수 있습니다.
+모든 C<when> 블록의 끝단에는 암묵적으로 C<break> 가 있습니다.
 
 =head3 Fall-through
 
-(次の条件への移動(Fall-through))
+(다음 조건으로의 이동(Fall-through))
 
 =begin original
 
@@ -1352,7 +1350,7 @@ case to the next:
 
 =end original
 
-一つの条件から次へ移動するためには、C<continue> キーワードが使えます:
+하나의 조건에서 다음으로 이동하기위해 C<continue> 키워드를 쓸 수 있습니다.
 
     given($foo) {
 	when (/x/) { say '$foo contains an x'; continue }
@@ -1362,7 +1360,7 @@ case to the next:
 
 =head3 Switching in a loop
 
-(ループ内の switch)
+(루프안의 switch)
 
 =begin original
 
@@ -1372,9 +1370,9 @@ string occurs in an array:
 
 =end original
 
-C<given()> を使う代わりに、C<foreach()> ループを使えます。
-たとえば、以下は配列内に特定の文字列が何回現れるかを数えるための
-ひとつの方法です:
+C<given()> 을 사용하는 대신에, C<foreach()> 루프를 사용할 수 있습니다.
+예를 들면, 아래는 배열안에 특정 문자열이 몇번 나타나는 가를 세기위한
+하나의 방법입니다.
 
     my $count = 0;
     for (@array) {
@@ -1390,9 +1388,9 @@ interested in the first match.
 
 =end original
 
-C<when> ブロックからの終了時に、暗黙の C<next> があります。
-もし最初のマッチングだけに興味があるなら、明示的な C<last> でこれを
-上書きできます。
+C<when> 블록에서의 종료 시에, 암묵적인 C<next> 가 있습니다.
+만약 맨처음의 매칭에만 흥미가 있다면, 명시적인 C<last> 로
+이것을 덮어쓸 수 있습니다.
 
 =begin original
 
@@ -1402,14 +1400,14 @@ variable C<$_>. (You can use C<for my $_ (@array)>.)
 
 =end original
 
-これは、C<for $item (@array)> のように明示的にループ変数を指定した場合は
-動作しません。
-デフォルト変数 C<$_> を使う必要があります。
-(C<for my $_ (@array)> は使えます。)
+이것은, C<for $item (@array)> 같이 명시적인 루프 변수를 지정한 경우는
+동작하지 않습니다.
+기본변수 C<$_> 를 사용할 필요가 있습니다.
+(C<for my $_ (@array)> 는 사용할 수 있습니다.)
 
 =head3 Smart matching in detail
 
-(スマートマッチングの詳細)
+(스마트매칭의 상세내용)
 
 =begin original
 
@@ -1421,11 +1419,11 @@ order, determines the match behaviour.
 
 =end original
 
-スマートマッチングの振る舞いは引数にどのような型が使われたかに依存します。
-これは常に可換性があります; つまり、C<$a ~~ $b> は C<$b ~~ $a> と同様に
-振る舞います。
-振る舞いは以下の表によって決定されます: 
-適用される最初の行(どのような順序でも)がマッチングの振る舞いを決定します。
+스마트매칭의 행동은 인수에 어떤 형태가 사용되는 가에 의존합니다.
+이것은 항상 가변성이 있습니다; 즉, C<$a ~~ $b> 는 C<$b ~~ $a> 처럼
+행동합니다.
+행동은 다음의 표에 의해 결정됩니다.
+적용된 최초의 줄(어떤 순서라도)이 매칭을 결정합니다.
 
 =begin original
 
@@ -1435,9 +1433,9 @@ order, determines the match behaviour.
 
 =end original
 
-    $a      $b        暗黙に行われるマッチング マッチングコード
+    $a      $b        암묵적으로 수행되는 매칭  매칭코드
     ======  =====     ======================== =============
-    (全てはオーバーロード可能です)
+    (모든것은 오버로드가능합니다.)
 
     Code[+] Code[+]   referential equality     $a == $b
     Any     Code[+]   scalar sub truth         $b->($a)
@@ -1466,7 +1464,7 @@ order, determines the match behaviour.
 
 =end original
 
-    Any     Any       文字列比較               $a eq $b
+    Any     Any       문자열비교               $a eq $b
 
 =begin original
 
@@ -1479,12 +1477,11 @@ order, determines the match behaviour.
 
 =end original
 
- + - これは、プロトタイプが(あれば) "" でないコードリファレンスでなければ
-     なりません(プロトタイプが "" のサブルーチンはさらに下に書いている
-     'Code()' で扱われます)
- * - 各要素をもう一つの配列の同じインデックスの要素とマッチングします。
-     循環リファレンスが発見されると、参照の等価性にフォールバックします。
- ! - 実数か、数値のように見える文字列
+ + - 이것은 프로토타입이(있다면) ""가 아닌 코드리퍼런스가 아니면 안됩니다.
+    (프로토타입이 ""의 서브루틴은 더욱 아래에 써있는 'Code()'로 취급됩니다)
+ * -  각 요소를 다른 하나의 배열의 같은 인덱스의 요소와 매칭합니다.
+    순환리퍼런스가 발견되면, 참조의 등가성에 폴백입니다.
+ ! - 실수나 숫자값처럼 보이는 문자열 
 
 =begin original
 
@@ -1494,13 +1491,13 @@ C<grep>, the smart match operator will short-circuit whenever it can.
 
 =end original
 
-「マッチングコード」は、もちろん I<実際の> マッチングコードを
-表現していません: これは単に意図を説明しているだけです。
-C<grep> と違って、スマートマッチング演算子は何かの省略形です。
+"매칭코드"는 사실 I<실제의> 매칭코드를 표현하지 않습니다.
+이것은 단순히 의도를 설명하고 있을 뿐입니다.
+C<grep> 과는 달리, 스마트매칭 연산자는 뭔가의 생략형태입니다.
 
 =head3 Custom matching via overloading
 
-(オーバーロードを使ったマッチングのカスタマイズ)
+(오버로드를 사용한 매칭의 커스터마이즈)
 
 =begin original
 
