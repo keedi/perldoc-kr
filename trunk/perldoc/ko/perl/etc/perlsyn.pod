@@ -1507,14 +1507,13 @@ See L<overload>.
 
 =end original
 
-C<~~> 演算子をオーバーロードすることで、オブジェクトのマッチングする方法を
-変更できます。
-これは通常のスマートマッチングの意味論に打ち勝ちます。
-L<overload> を参照してください。
+C<~~> 연산자를 오버로드하는 것으로 오브젝트가 매칭하는 방법을 바꿀 수 있습니다.
+이것은 일반적인 스마트매칭의 <PASS>
+L<overload> 를 참조해주세요.
 
 =head3 Differences from Perl 6
 
-(Perl 6 からの違い)
+(Perl 6 와의 차이)
 
 =begin original
 
@@ -1529,14 +1528,14 @@ would parse the expression
 
 =end original
 
-Perl 5 のスマートマッチングと C<given>/C<when> 構文は Perl 6 のものと
-完全に同一ではありません。
-もっとも目に見える違いは、Perl 5 では、C<given()> と C<when()> の
-引数はかっこでくくる必要があります。
-Perl 6 では、C<if()>, C<while()>, C<when()> のような制御構造での
-かっこは常に省略可能です;
-Perl 5 では、潜在的な大混乱と引き換えにしなければこれを省略できません;
-なぜなら Perl 5 は以下のような表現において:
+Perl 5 의 스마트매칭과 C<given>/C<when> 구문은 Perl 6의 것과는 
+완전히 같은 것이 아닙니다.
+가장 눈에 보이는 차이는 Perl 5에서는 C<given()> 과 C<when()> 의
+인수는 괄호로 강쌀 필요가 있습니다.
+Perl 6 에서는, C<if()>, C<while()>, C<when()> 같은 제어구문에서의
+괄호는 항상 생략가능합니다.
+Perl 5에서는 잠재적인 대혼란과 바꾸지 않으면 이것을 생략할 수 없습니다.
+왜냐면 Perl 5는 아래와 같은 표현에서는
 
   given $foo {
     ...
@@ -1549,8 +1548,8 @@ C<%foo>, interpreting the braces as hash-element syntax.
 
 =end original
 
-C<given> の引数はハッシュ C<%foo> の要素であるかのようにパースして、
-中かっこをハッシュ要素文法として解釈するからです。
+C<given> 의 인수는 해쉬 C<%foo> 의 요소인것 처럼 패스해서,
+중괄호를 해쉬요소문법으로써 해석하기때문입니다.
 
 =begin original
 
@@ -1560,8 +1559,8 @@ and Perl 5's data models.
 
 =end original
 
-スマートマッチングの表は Perl 6 仕様で提案されれているものと
-同一ではありません; 主に Perl 6 と Perl 5 のデータモデルの違いによります。
+스마트매칭의 표는 Perl 6 스펙에서 제안된 것과
+동일한 것이 아닙니다; 주로 Perl 6 와 Perl 5 의 데이터모델의 차이입니.
 
 =begin original
 
@@ -1573,15 +1572,15 @@ does not, even internally, have a boolean type.)
 
 =end original
 
-Perl 6 では、C<when()> は常にその引数に対する暗黙のスマートマッチングを
-行いますが、Perl 5 では上述の通り、状況によっては暗黙のスマートマッチングを
-抑制したほうが便利です。
-(主な違いは、Perl 5 は内部的にさえ真偽値型を持たないことによります。)
+Perl 6 에서는 C<when()> 은 항상 그 인수에 대한 암묵적인 스마트매칭을
+행하지만, Perl 5 dㅔ서는 위에 기술한 대로, 상황에 따라서는 암묵적인
+스마트매칭을 <PASS> 하는편이 편리합니다.
+(주요한 차이는 Perl 5 는 내부적으로만 참/거짓형태를 가지지 않는 것입니다)
 
 =head2 Goto
 X<goto>
 
-(goto 文)
+(goto 문)
 
 =begin original
 
@@ -1592,10 +1591,11 @@ a C<goto>; it's just the name of the loop.
 
 =end original
 
-気弱な人のためでないにも関らず、Perl は C<goto> 文をサポートしています。
-C<goto>-LABEL、C<goto>-EXPR、C<goto>-&NAME の三つの形式があります。
-ループのラベルは実際には C<goto> の正当なターゲットではなく、
-ループの名前にすぎません。
+허약한 사람을 위해서가 아닌 것에도 상관없이, Perl 은 C<goto> 문을 
+지원하고 있습니다.
+C<goto>-LABEL, C<goto>-EXPR, C<goto>-&NAME 의 세가지 형태가 있습니다.
+루프의 라벨은 실제로는 C<goto> 의 정당한 타겟이 아닌,
+루프의 이름에 지나지 않습니다.
 
 =begin original
 
@@ -1610,17 +1610,17 @@ need to use this form of C<goto> (in Perl, that is--C is another matter).
 
 =end original
 
-C<goto>-LABEL 形式は LABEL でラベル付けされた文を見つけだし、そこから
-実行を再開します。
-これはサブルーチンであるとか C<foreach> ループのような
-初期化を必要とするような構造へ飛び込むために使うことはできません。
-また、最適化されて無くなってしまうような構造へ飛び込むこともできません。
-動的スコープの中以外のほとんどの場所へは、サブルーチンの
-外も含めて移動することができます。
-しかし、通常は C<last> や C<die> のような別のやり方を使ったほうが
-良いでしょう。
-Perl の作者は、未だかつてこの形式の C<goto> を使うことが
-必要だと感じたことはありません(Perl の場合です。C の場合はまた別の話です)。
+C<goto>-LABEL 형식은 LABEL 에서 라벨이 붙어있는 구문을 발견해내,
+거기에서 실행을 다시 시작합니다.
+이것은 서브루틴이거나 C<foreach> 루프처럼 초기화를 필요로 하는 구조로
+날아가기위해 사용할 수는 없습니다.
+또, 최적화 되어 있지 않은 구조로 이동할 수 도 없습니다.
+동적 스코프의 안쪽 이외의 대부분의 장소로는, 서브루틴의 밖도 포함해서
+이동할 수 있습니다.
+하지만, 일반적으로는 C<last> 나 C<die> 처럼 별도의 방법을 사용하는 편이
+좋습니다.
+Perl 의 저자는 이런 형식의 C<goto> 를 사용할 필요가 있다라고
+생각하지는 않습니다(Perl 의 경우에 한정합니다, C는 별개)
 
 =begin original
 
@@ -1630,10 +1630,10 @@ necessarily recommended if you're optimizing for maintainability:
 
 =end original
 
-C<goto>-EXPR 形式は動的に解決されるスコープを持っているラベル名を
-期待しています。
-これによって FORTRAN の計算型 C<goto> が実現できますが、
-これは保守性に重きを置くのであれば使うことは止めた方が良いでしょう。
+C<goto>-EXPR 형식은 동적으로 해결되는 스코프를 가지고 있는 라벨이름을
+기대하고 있습니다.
+이것에 의해 FORTRAN 의 계산형 C<goto> 가 실현될 수 있지만,
+이것은 보수성에 무게를 둔것이라면 사용하지 않는 것이 좋습니다.
 
     goto(("FOO", "BAR", "GLARCH")[$i]);
 
@@ -1649,15 +1649,17 @@ will be able to tell that this routine was called first.
 
 =end original
 
-C<goto>-&NAME は高度にマジカルで、名前付きサブルーチンの呼び出しを
-カレントで実行されているサブルーチンに置き換えます。
-これは別のサブルーチンをロードして、最初の場所で呼び出された
-別のサブルーチンを要求することをしようとする
-C<AUTOLOAD()> サブルーチンで使われていてます
+C<goto>-&NAME 은 매우 매지컬하며, 이름붙은 서브루틴의 호출을
+최근 실행된 서브루틴으로 바꿉니다.
+이것은 별도의 서브루틴을 로드해서 최초의 장소로 호출된
+별도의 서브루튼을 요구하는 것을 하려고 하는 C<AUTOLOAD()> 서브루틴에서
+사용됩니다.
+(최근 서브루틴에 C<@_> 에 대한 것 이외의 변경은,
+별도의 서브루틴으로 <PASS>)
+C<goto> 의 뒤에서, C<caller()> 가 아니라도 이 서브루틴이
+최초에 호출된 것이라는 것을 전달해주는 것도 가능할 것입니다.
 (カレントのサブルーチンにおける C<@_> に対するもの以外の変更は、
 別のサブルーチンへ伝播します)。
-C<goto> の後で、C<caller()> でなくてもこのサブルーチンが
-最初に呼ばれたのだということを伝えることすらできるでしょう。
 
 =begin original
 
@@ -1668,12 +1670,12 @@ C<eval{}> and die() for exception processing can also be a prudent approach.
 
 =end original
 
-このようなケースのほとんどすべての場合、C<goto> に頼るのではなくて
-C<next>、C<last>、C<redo> といった制御フロー機構を使うことが、
-ずっとずっと良いアイデアでしょう。
-一部のアプリケーションに対しては、C<eval{}> と die() を
-catch と throw のペアとして例外処理を行うための賢明なアプローチとして
-使うことができるでしょう。
+이런 케이스의 거의 모든 경우, C<goto> 에 의존하는 것이 아닌
+C<next>, C<last>, C<redo> 같은 제어흐름 을 사용하는 것이
+더더욱 좋은 생각일 겁니다.
+일부의 어플리케이션에 대해서는 C<eval{}>과 die()를
+catch 와 throw의 쌍으로써 예외처리를 행하기위해 현명한 어프로치로써
+사용할 수 있을 겁니다.
 
 =head2 PODs: Embedded Documentation
 X<POD> X<documentation>
