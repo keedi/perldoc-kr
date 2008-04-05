@@ -1573,7 +1573,7 @@ does not, even internally, have a boolean type.)
 =end original
 
 Perl 6 에서는 C<when()> 은 항상 그 인수에 대한 암묵적인 스마트매칭을
-행하지만, Perl 5 dㅔ서는 위에 기술한 대로, 상황에 따라서는 암묵적인
+행하지만, Perl 5 에서는 위에 기술한 대로, 상황에 따라서는 암묵적인
 스마트매칭을 <PASS> 하는편이 편리합니다.
 (주요한 차이는 Perl 5 는 내부적으로만 참/거짓형태를 가지지 않는 것입니다)
 
@@ -1655,11 +1655,9 @@ C<goto>-&NAME 은 매우 매지컬하며, 이름붙은 서브루틴의 호출을
 별도의 서브루튼을 요구하는 것을 하려고 하는 C<AUTOLOAD()> 서브루틴에서
 사용됩니다.
 (최근 서브루틴에 C<@_> 에 대한 것 이외의 변경은,
-별도의 서브루틴으로 <PASS>)
+별도의 서브루틴으로 전달합니다)
 C<goto> 의 뒤에서, C<caller()> 가 아니라도 이 서브루틴이
 최초에 호출된 것이라는 것을 전달해주는 것도 가능할 것입니다.
-(カレントのサブルーチンにおける C<@_> に対するもの以外の変更は、
-別のサブルーチンへ伝播します)。
 
 =begin original
 
@@ -1680,7 +1678,7 @@ catch 와 throw의 쌍으로써 예외처리를 행하기위해 현명한 어프
 =head2 PODs: Embedded Documentation
 X<POD> X<documentation>
 
-(POD: 組み込みドキュメント)
+(POD: 내장 도큐멘트)
 
 =begin original
 
@@ -1690,10 +1688,9 @@ encounters a line that begins with an equal sign and a word, like this
 
 =end original
 
-Perl は、ソースコードとドキュメントとを混ぜ書きするための仕掛けを
-持っています。
-新しい文の始まりが期待されているときに、コンパイラは
-以下の例のような = 記号で始まっている語を見つけると:
+Perl 은, 소스코드와 도큐멘트을 섞어쓰기 위한 방법을 가지고 있습니다.
+새로운 구문의 시작이 기대될 때는, 컴파일러는 
+아래의 예제처럼 = 기호로 시작된 언어를 발견하면:
 
     =head1 Here There Be Pods!
 
@@ -1705,8 +1702,8 @@ text is described in L<perlpod>.
 
 =end original
 
-そのテキストと、C<=cut> で始まる行までの内容を無視します。
-間に入るテキストの書式は L<perlpod> で説明されています。
+그 텍스트와, C<=cut> 으로 시작된 줄까지의 내용을 무시합니다.
+사이에 들어가는 텍스트의 서식은 L<perlpod>에서 설명하고 있습니다.
 
 =begin original
 
@@ -1715,8 +1712,8 @@ and your documentation text freely, as in
 
 =end original
 
-これによって、ソースコードとドキュメントとを以下に示す例のように
-自由に混ぜることができるようになります。
+이에 의해, 소스코드와 도큐멘트를 아래에 나타나는 예제처럼
+자유롭게 섞는 것는 가능하게 됩니다.
 
     =item snazzle($)
 
@@ -1741,12 +1738,11 @@ ignored by both the compiler and the translators.
 
 =end original
 
-コンパイラはパラグラフの途中に pod エスケープがあったとしてもそれを
-認識できるのに、pod トランスレータは pod 指示子で始まっている
-パラグラフのみに注目すべき(これは構文解析を簡単にするためです)で
-あるということに注意して下さい。
-つまり、以下の例にある "secret stuff" はコンパイラからも、
-トランスレータからも無視されるということです。
+컴파일러는 파라그래프의 도중에 pod 이스케이프가 있다고 해도 그것을
+인식할 수 있는 것에, pod 번역기는 pod 지시자로 시작되는 파라그래프만
+주의(이것은 구문해석을 간단히 하기위해서 입니다)하시면 됩니다.
+즉, 아래의 예에 있는 "secret stuff"는 컴파일러에서도,
+번역기에서도 무시되는 겁니다.
 
     $a=3;
     =secret stuff
@@ -1762,10 +1758,10 @@ the compiler will become pickier.
 
 =end original
 
-この例の C<warn()> のようなものが、将来に渡って無視されるということに
-依存すべきではありません。
-すべての pod トランスレータがそのように振る舞うわけではありませんし、
-コンパイラは将来これを無視しないようになるかもしれません。
+이 예제의 C<warn()> 같은 것이, 장래에 넘겨져 무시되는 것에
+의존해야한다는 것은 아닙니다.
+모든 pod 번역기가 그런 행동을 하는 것은 아니지만,
+컴파일러는 나중에 이것을 무시하지 않을지도 모릅니다.
 
 =begin original
 
@@ -1774,7 +1770,8 @@ of code.
 
 =end original
 
-pod 指示子を、コードの一部を手っ取り早くコメントアウトするために
+pod 지시자를 코드의 일부를 가지고 빨리 주석처리하기 위해
+사용할 수도 있습니다.
 使うこともできます。
 
 =head2 Plain Old Comments (Not!)
@@ -1790,11 +1787,11 @@ C preprocessors: it matches the regular expression
 
 =end original
 
-C のプリプロセッサと同じように、Perl は行指示子を処理できます。
-これを使うことによって、エラーメッセージや警告メッセージにある
-ファイル名や行番号を制御することができます
-(特に、C<eval()> で処理される文字列のために)。
-この仕組みの構文は C のプリプロセッサとほとんど同じで、正規表現:
+C 전처리기처럼, Perl 은 행지시자를 처리할 수 있습니다.
+이것을 사용하는 것에 의해, 에러메시지나 경고메시지에 있는
+파일명이나 행번호를 제어할 수 있습니다.
+(특히, C<eval()> 로 처리되는 문자열을 위해)
+이런 내용의 구문은 C 의 전처리기와 거의 같아서, 정규표현:
 
     # example: '# line 42 "new_filename.plx"'
     /^\#   \s*
@@ -1809,8 +1806,8 @@ the optional filename (specified with or without quotes).
 
 =end original
 
-にマッチしたものの C<$1> が次の行の行番号となり、省略することもできる
-C<$3> は(クォートありかなしで指定された)ファイル名となります。
+에 매치한 C<$1> 이 다음 줄의 행번호가 되고, 생략할 수 있는
+C<$3> 는 (따옴표유무로 지정된) 파일명이 됩니다.
 
 =begin original
 
@@ -1821,10 +1818,11 @@ to cause line number collisions in code you'd like to debug later.
 
 =end original
 
-行指示子にはかなり明らかな技があります。
-デバッガとプロファイラは、与えられたファイルの特定の行番号に対して現れた
-最新のソース行のみを表示します。
-あとでデバッグしたいコードでは行番号の衝突が起きないように注意するべきです。
+행지시자에는 꽤 명확한 기술이 있습니다.
+디버거나 프로파일러는 주어진 파일의 특정 행번호에 대해서 나타난
+최신의 소스 줄만을 표시합니다.
+나중에 디버그하고 싶은 코드로는 행번호의 충돌이 일어나지 않도록 
+주의해야 합니다.
 
 =begin original
 
@@ -1833,7 +1831,7 @@ shell:
 
 =end original
 
-コマンドシェルでタイプすることのできる例をいくつか挙げます:
+커맨드셸에서 타이프하는 것이 가능한 예를 몇개 들어보겠습니다.
 
     % perl
     # line 200 "bzzzt"
@@ -1864,7 +1862,7 @@ shell:
 
 Created: KIMURA Koichi
 Updated: Kentaro Shirakata <argrath@ub32.org>
-
+Translated JP2KR : JEEN <aiatejin@gmail.com>
 =end meta
 
 =cut
