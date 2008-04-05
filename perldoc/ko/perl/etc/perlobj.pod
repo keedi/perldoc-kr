@@ -408,8 +408,7 @@ and the call will die using the name of the sub being called.
 
 =end original
 
-and the call will die using the name of the sub being called.
-(TBT)
+그리고는 호출은 호출된 서브루틴의 이름을 사용해 죽습니다.
 
 =begin original
 
@@ -547,6 +546,7 @@ dereferencing.
 
 =end original
 
+이미 C<< -> >> 연산자를 리퍼런스로 쓰는 것에 익숙해 졌겠죠?
 You should already be familiar with the use of the C<< -> >> operator with
 references.  In fact, since C<$fred> above is a reference to an object,
 you could think of the method call as just another form of
@@ -1191,7 +1191,7 @@ Almost.
 
 =end original
 
-もう一息。
+거의...
 
 =begin original
 
@@ -1204,15 +1204,13 @@ two-phased garbage collection:
 
 =end original
 
-インタプリタのスレッドが最終的にシャットダウンするとき(通常は
-プログラムを終了するとき)、コストが掛かりますが、完全な
-mark-and-sweep 形式のガベージコレクションが実行されます。
-そして、(シャットダウンされる)スレッドによって割り当てられたすべての
-ものは破棄されます。
-これはPerlを組み込みに使えるようにしたり、マルチスレッドに対応できる言語と
-するために重要なことです。
-たとえば以下のプログラムは Perl の 2 フェーズガベージコレクションを
-デモンストレーションします。
+인터프리터의 스레드가 최종적으로 종료할 때(일반적으로는
+프로그램을 종료할 때), Cost가 어느 정도 걸리지만, 완전한
+mark-and-sweep 형식의 가비지 컬렉션이 실행됩니다.
+그리고, (종료된) 스레드에 의해 할당된 모든 것은 파괴됩니다.
+이는 Perl 을 임베디드로 사용할 수 있도록 하거나, 멀티스레트에
+대응할 수 있는 언어로 하기위해 중요한 것입니다.
+예를 들면, 아래의 프로그램은 Perl 의 2 phase 가비지컬렉션 데모입니다.
 
     #!/usr/bin/perl
     package Subtle;
@@ -1249,7 +1247,7 @@ When run as F</foo/test>, the following output is produced:
 
 =end original
 
-F</foo/test> として実行したとき、以下のような出力をします。
+F<foo/test> 로써 실행했을 때, 아래처럼 출력합니다.
 
     starting program at /foo/test line 18.
     CREATING SCALAR(0x8e5b8) at /foo/test line 7.
@@ -1267,8 +1265,8 @@ garbage collector reaching the unreachable.
 
 =end original
 
-"global destruction" がどこにあるかわかりますか? これは、スレッド
-ガベージコレクタがアクセスできないオブジェクトに到達したということです。
+"global destruction" 이 어디에 있는 알고 있나요? 이것은, 
+스레드 가비지 컬렉터가 접근할 수 없는 오브젝트로 도달한 것입니다.
 
 =begin original
 
@@ -1283,17 +1281,17 @@ See L<perlhack/PERL_DESTRUCT_LEVEL> for more information.
 
 =end original
 
-オブジェクトは常に破棄されます。
-一般のリファレンス(regulaer refs)が破棄されなかった場合でもそうですし、
-一般のリファレンスが分割されたパスで破棄された場合でさえ、
-通常のリファレンス(ordinary refs)がオブジェクトデストラクターが自分自身を
-破棄してしまったリファレンスを使うのを防ごうとする前に破棄されます。
-plain なリファレンスは、そのデストラクトレベルが 0 以上であるときには
-ガベージコレクションのみ行なわれます。
-Perl をビルドするときに C<-DDEBUGGING> が有効になっていれば、
-PERL_DESTRUCT_LEVEL という環境変数に対する設定をすることによって、
-グローバルデストラクションのレベルを検査することができます。
-さらなる情報については L<perlhack/PERL_DESTRUCT_LEVEL> を参照してください。
+오브젝트는 항상 파괴됩니다.
+일반적인 리퍼런스(regular refs)가 파괴되지 않은 경우에서도 그렇고,
+일반적인 리퍼런스가 분할된 패스에서 파괴된 경우에만,
+보통의 오브젝트(ordinary refs)가 오브젝트 파괴자가 자기자신을
+파괴해버린 리퍼런스를 사용하는 것을 막으려고 하기 전에 파괴됩니다.
+평범한 리퍼런스는, 그 파괴레벨이 0이상일 때에는 
+가비지 컬렉션만 수행됩니다.
+Perl 을 빌드할 때에 C<-DDEBUGGInG> 이 유효가 되어 있다면,
+PERL_DESTRUCT_LEVEL 이라는 환경변수에 대한 설정을 해서,
+Global Destruction Level 을 검사할 수 있습니다.
+더 많은 정보에 대해서는 L<perlhack/PERL_DESTRUCT_LEVEL> 을 참조해주세요.
 
 =begin original
 
@@ -1302,7 +1300,7 @@ at a future date.
 
 =end original
 
-より完璧なガーベッジコレクションの戦略は将来実装されるでしょう。
+보다 완벽한 가비지 컬렉션의 전략은 이후에 만들어질 겁니다.
 
 =begin original
 
@@ -1313,10 +1311,10 @@ breaks the circularities in the self-referential structure.
 
 =end original
 
-方法として最善なものは、自己再帰的なデータ構造に対するポインタを
-保持するような非再帰的なコンテナークラスを作成することです。
-そういったオブジェクトのクラスでの DESTORY メソッドの定義は
-自己参照構造中の循環を手作業で断ち切るようなものになります。
+최선의 방법은, 자기재귀적인 데이터 구조에 대해 포인터를
+가지는 비재귀적인 콘테이너클래스를 작성하는 것입니다.
+그런 오브젝트의 클래스에서의 DESTROY 메소드의 정의는
+자기 참조구조 중의 순환을 수작업으로 중단할 수 있습니다.
 
 =head1 SEE ALSO
 
@@ -1330,11 +1328,11 @@ modules and classes.
 
 =end original
 
-Perl におけるオブジェクト指向プログラムに関するより親切で丁寧な
-チュートリアルは L<perltoot>, L<perlboot>, L<perltooc> にあります。
-また、その他のオブジェクトの罠や小技については L<perlbot> を、
-モジュールとクラスの作成に関するスタイルガイドについては L<perlmodlib> を
-参照してください。
+Perl 에서의 오브젝트 지향 프로그램에 관한 것 보다 친절한
+튜토리얼은 L<perltoot>, L<perlboot>, L<perltooc>에 있습니다.
+또, 그 외의 오브젝트 트릭에 대해서는 L<perlbot> 을,
+모듈과 클래스의 작성에 관한 스타일가이드에 대해서는 L<perlmodlib> 를
+참조해주세요.
 
 =begin meta
 
