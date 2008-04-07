@@ -594,7 +594,7 @@ If you need to, you I<can> force Perl to start looking in some other package:
 
 =end original
 
-もし必要なら、Perl に他のパッケージを見るように強制することも I<可能です>。
+만약 필요하다면, Perl 에게 다른 패키지를 강제로 보게 I<할 수 있습니다>.
 
     my $barney = MyCritter->Critter::find("Barney");
     $barney->Critter::display("Height", "Weight");
@@ -681,7 +681,8 @@ and so is the following:
 
 =end original
 
-そして以下のようにします:
+
+그리고 아래처럼 합니다.
 
     my $fred = (reverse "rettirC")->find(reverse "derF");
 
@@ -701,7 +702,7 @@ reference can also be used.
 =head2 Indirect Object Syntax
 X<indirect object syntax> X<invocation, indirect> X<indirect>
 
-(間接オブジェクト構文)
+(간접 오브젝트 구문)
 
 =begin original
 
@@ -724,8 +725,8 @@ The same syntax can be used to call either object or class methods.
 
 =end original
 
-これと同じ構文を、クラスメソッドやインスタンスメソッドを呼び出すときに
-使うことができます。
+이것과 같은 구문을, 클래스메소드나 인스턴스메소드를 호출할 때에
+사용할 수가 있습니다.
 
    my $fred = find Critter "Fred";
    display $fred "Height", "Weight";
@@ -753,12 +754,12 @@ that are hard to detect.
 
 =end original
 
-しかし、引数がなかったら?
-この場合、Perl は求められているものを推測しなければなりません。
-さらに悪いことに、この推測は B<コンパイル時> に行わなければなりません。
-Perl は通常正しい答を得るのですが、そうでなかった場合、あなたはメソッドとして
-関数呼び出しがコンパイルされたものを受け取ります。
-これは検出が非常に困難なバグとなり得るものです。
+하지만 인수가 없다면?
+이 경우, Perl 은 원하는 것을 추측하지 않으면 안됩니다.
+거기에 나쁜 것에, 이 추측은 B<컴파일시>에 이루어져야만 합니다.
+Perl은 보통 정확한 답을 얻지만, 그렇지 않은 경우, 당신은 메소드로써
+함수호출이 컴파일된 것을 얻게 됩니다.
+이것은 검출이 꽤나 곤란한 버그로 얻는 것입니다.
 
 =begin original
 
@@ -772,14 +773,14 @@ years of debugging it will take you to track down such subtle bugs.
 
 =end original
 
-例を挙げると、(C++ プログラマーがそうしたくなるような)C<new> という
-メソッドの間接表記での呼び出しは、カレントのスコープですでに C<new> 関数が
-あった場合には間違ったサブルーチン呼び出しにコンパイルされてしまいます。
-結果として、望んでいたクラスメソッドではなく、カレントパッケージの
-C<new> がサブルーチンとして呼び出されることになるのです。
-コンパイラはこの問題を裸の単語の C<require> を覚えておくことによって
-避けようと試みますが、それが失敗してしまった場合にはデバッグするのが
-とても面倒な結果となってしまうことになるでしょう。
+예를 들면, (C++ 프로그래머가 으레 할듯한)C<new> 라는
+메소드의 간접표기로 호출은, 최근의 스코프에서 이미 C<new> 함수가
+있었던 경우에는 틀린 서브루틴호출에 컴파일되어버립니다.
+결과로써, 바라고 있던 클래스 메소드가 아닌, 최근 패키지의
+C<new>가 서브루틴으로써 호출된 것이 되는 겁니다.
+컴파일러는 이 문제를 C<require> 를 기억해두는 것에 의해
+파하도록 시험하지만, 그것이 실패했을 경우에는 디버그하는 것이
+상당히 귀찮은 결과가 되어버릴 겁니다.
 
 =begin original
 
@@ -793,13 +794,12 @@ next two lines:
 
 =end original
 
-この文法にも問題があります: 間接オブジェクトは名前、スカラ変数、
-ブロックに限定されます; なぜなら、他の言語における
-postfix dereference と同様に、多すぎる先読みをする必要があるからです
-(これらは C<print> や C<printf> のような関数におけるファイルハンドルスロットと
-同様な奇妙なルールです)。
-これは次に挙げる例のように、混乱した優先順位問題を
-導くことになります。
+이 문법에도 문제가 있습니다: 간접오브젝트는 이름, 스칼라변수,
+블록에 한정됩니다; 왜냐면, 다른 언어에서의 postfix dereference 처럼
+미리 많은 읽어낼 필요가 있기때문입니다.
+(이것들은 C<print> 나 C<printf> 처럼 함수에서의 파일핸들슬롯처럼
+기묘한 룰입니다)
+이것은 다음에 들 예처럼, 혼란스러운 우선순위문제를 해결하게 됩니다.
 
     move $obj->{FIELD};                 # probably wrong!
     move $ary[$i];                      # probably wrong!
@@ -810,7 +810,7 @@ Those actually parse as the very surprising:
 
 =end original
 
-これらはなんと以下のように解釈されるのです:
+이것들은 아래처럼 해석되게 됩니다.
 
     $obj->move->{FIELD};                # Well, lookee here
     $ary->move([$i]);                   # Didn't expect this one, eh?
@@ -821,7 +821,7 @@ Rather than what you might have expected:
 
 =end original
 
-あなたが期待したのはこうでしょう:
+이런 것을 기대하셨을 수 있겠습니다.
 
     $obj->{FIELD}->move();              # You should be so lucky.
     $ary[$i]->move;                     # Yeah, sure.
@@ -862,7 +862,7 @@ familiar with it.
 =head2 Default UNIVERSAL methods
 X<UNIVERSAL>
 
-(デフォルトの UNIVERSAL メソッド)
+(Default 의 UNIVERSAL 메소드)
 
 =begin original
 
@@ -871,8 +871,8 @@ are inherited by all other classes:
 
 =end original
 
-C<UNIVERSAL> パッケージには、他の全てのクラスが自動的に継承する
-以下のようなメソッドがあります。
+C<UNIVERSAL> 패키지에는 다른 모든 클래스가 자동적으로 계승하는
+아래와 같은 메소드가 있습니다.
 
 =over 4
 
@@ -885,8 +885,8 @@ C<isa> returns I<true> if its object is blessed into a subclass of C<CLASS>
 
 =end original
 
-C<isa> は、オブジェクトが C<CLASS> のサブクラスに bless されていれば
-I<true> を返します。
+C<isa> 는, 오브젝트가 C<CLASS> 의 서브클래스에 bless 되어있다면
+I<true> 를 반환합니다.
 
 =begin original
 
@@ -925,8 +925,8 @@ blessed into, or C<undef>.
 
 =end original
 
-C<blessed> は、引数が bless されているパッケージ名か、あるいはC<undef> を
-返します。
+C<blessed> 는, 인수가 bless 되어있는 패키지이름이나, C<undef>를
+반환합니다.
 
 =item can(METHOD)
 X<can>
@@ -939,9 +939,9 @@ I<undef> is returned.
 
 =end original
 
-C<can> はオブジェクトが C<METHOD> というメソッドを持っているかどうかを検査し、
-持っていればそのサブルーチンに対するリファレンスを返し、持っていなければ
-I<undef> を返します。
+C<can> 은 오브젝트가 C<METHOD> 라는 메소드를 가지고 있는지 어떤지를 검사해,
+가지고 있다면, 그 서브루틴에 대한 리퍼런스를 돌리고, 가지고 있지 않으면,
+I<undef>를 반환합니다.
 
 =begin original
 
