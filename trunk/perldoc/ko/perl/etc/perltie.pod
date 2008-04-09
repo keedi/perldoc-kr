@@ -7,7 +7,8 @@ perltie - how to hide an object class in a simple variable
 
 =end original
 
-perltie - オブジェクトクラスを単純な変数に隠す方法
+perltie - 오브젝트 클래스를 단순한 변수에 숨기는 방법
+
 
 =head1 SYNOPSIS
 
@@ -29,13 +30,12 @@ you couldn't extend this mechanism to other packages or types of variables.
 
 =end original
 
-5.0 より前の Perl では、プログラマは dbmopen() を使ってディスクにある
-標準 UNIX dbm(3x) フォーマットのデータベースをプログラム中の %HASH と
-結び付けることができました。
-しかしながら、Perl は特定の dbm ライブラリか別のものを使って
-ビルドすることができたものの、両方一度にはできませんでした。
-そして、この仕組みを他のパッケージや変数の型に拡張することは
-できなかったのです。
+5.0 이전의 Perl 에서는, 프로그래머는 dbmopen() 을 사용해 디스크에 있는
+표준 UNIX dbm(3x) 포맷의 데이터베이스를 프로그램 안의 %HASH 와
+묶을 수 있었습니다.
+그러나 Perl 은 특정의 dbm 라이브러리나 별도의 것을 사용해 빌드할 수 있는
+것, 둘다 한번에는 할 수 없었습니다.
+그리고 이 구조를 다른 패키지나 변수의 형태에 확장할 수는 없었습니다.
 
 =begin original
 
@@ -43,7 +43,7 @@ Now you can.
 
 =end original
 
-今はできます。
+하지만 지금은 할 수 있습니다.
 
 =begin original
 
@@ -58,13 +58,13 @@ functions.
 
 =end original
 
-tie() 関数は変数と、その変数に対するアクセスメソッドの実装を提供する
-クラス(パッケージ)とを結び付けます。
-この魔法が一度働けば、tie された変数は自動的に適切なクラスにある
-メソッド呼び出しを実行します。
-クラスのすべての複雑性はメソッド呼び出しに隠されます。
-それらのメソッドの名前は、BEGIN() や END() と同様に(そのメソッドを) Perl が
-こっそりと呼び出すことを示すための規約に従って全て大文字です。
+tie() 함수는 변수와, 그 변ㅜ에 대한 접근 메소드의 구성을 제공하는
+클래스(패키지)로 묶습니다.
+이 마법이 한번 움직이면, tie 된 변수는 자동적으로 적절한 클래스에 있는
+메소드호출을 실행합니다.
+클래스의 모든 복잡성은 메소드호출에 숨겨집니다.
+그것들의 메소드의 이름은, BEGIN() 이나 END() 처럼(그 메소드를) Perl 이
+제대로 호출하는 것을 나타내기 위한 규약에 따라 모두 대문자입니다.
 
 =begin original
 
@@ -83,20 +83,17 @@ using the tied() function.
 
 =end original
 
-tie() コールの中で、C<VARIABLE> は魔法を掛けられる変数の名前です。
-C<CLASSNAME> は正しい型のオブジェクトを実装するクラスの名前です。
-C<LIST> にあるその他の引数はクラスの適切なコンストラクタメソッド
-TIESCALAR()、TIEARRAY()、TIEHASH()、TIEHANDLE() のいずれかに
-渡されます(典型的にはこれらの引数は C の dbminit() 関数に渡すのと
-同じものです)。
-"new" メソッドから返されたオブジェクトは同様に関数 tie() からも
-返されます。
-これはあなたが C<CLASSNAME> の中の別のメソッドでアクセスしたいというときに
-便利でしょう(あなたは実際には正しい「型」(HASH か C<CLASSNAME>) の
-参照を、それが適切な bless されたオブジェクトであるということから
-返す必要はありません)。
-また、関数 tied() を使って、基礎となるオブジェクトへのリファレンスを
-取得することができます。
+tie() 호출 중에, C<VARIABLE> 은 마법을 걸 변수의 이름입니다.
+C<CLASSNAME> 은 바른 형태의 오브젝트를 구성하는 클래스의 이름입니다.
+C<LIST> 에 있는 그 외의 인수는 클래스의 적절한 생성자 메소드
+TIESCALAR(), TIEARRAY(), TIEHASH(), TIEHANDLE() 중 어느것에
+넘겨집니다(전형적으로는 이 인수들은 C 의 dbminit() 함수에 넘겨지는 것과
+같은 것입니다).
+"new" 메소드에서 반환된 오브젝트는 같은 함수 tie() 에서도 건네집니다.
+이것은 당신이 C<CLASSNAME> 안의 별도의 메소드로 접근하고 싶을 때에
+편리할 겁니다(실제로는 바른 "형"(HASH 나 C<CLASSNAME>) 의
+참조를, 그것이 적절한 bless 된 오브젝트인 것에서 반환할 필요는 없습니다)
+또, 함수 tied() 를 사용해, 기초가 되는 오브젝트에 리퍼런스를 얻을 수 있습니다.
 
 =begin original
 
@@ -105,14 +102,14 @@ for you--you need to do that explicitly yourself.
 
 =end original
 
-dbmopen() とは異なり、tie() はモジュールを C<use> したり C<require> したり
-することはありません。
-あなたが、自分自身でそれを明示的に行わなければなりません。
+dbmopen() 과는 달리, tie() 는 모듈을 C<use> 하거나 C<require> 하거나
+하지 않습니다.
+자기자신이 그것을 명시적으로 수행하지 않으면 안됩니다.
 
 =head2 Tying Scalars
 X<scalar, tying>
 
-(スカラを tie する)
+(스칼라를 Tie하기)
 
 =begin original
 
@@ -121,8 +118,8 @@ TIESCALAR, FETCH, STORE, and possibly UNTIE and/or DESTROY.
 
 =end original
 
-tie されたスカラを実装するクラスは、TIESCALAR, FETCH, STORE, 
-そして可能であれば UNTIE や DESTROY といったメソッドを定義しておくべきです。
+tie 된 스칼라를 구성하는 클래스는 TIESCALAR, FETCH, STORE, 그리고
+가능하면 UNTIE 나 DESTROY 같은 메소드를 정의해둬야 합니다.
 
 =begin original
 
@@ -131,8 +128,8 @@ scalars that allows the user to do something like:
 
 =end original
 
-以下のような操作を、ユーザーに許しているスカラに対してクラスを
-tie する例を使って順に見て行きましょう。
+아래와 같은 조작을, 유저에 허락하는 스칼라에 대한 클래스를
+tie 하는 예를 사용해 순서대로 보도록 하죠.
 
     tie $his_speed, 'Nice', getppid();
     tie $my_speed,  'Nice', $$;
@@ -145,9 +142,9 @@ then the process's priority is changed!
 
 =end original
 
-こうした後ではこれらの変数のいずれかがアクセスされたときには、カレントの
-システム優先順位が取得されたり返されたりします。
-もし変数に代入が行われれば、プロセスの優先順位は変更されます!
+이렇게 한 뒤에는 이런 변수중 하나가 접근되었을 때에는, 최근의
+시스템우선순위가 얻어지거나 반환되거나 합니다.
+만약 변수에 대입이 되었으면, 프로세스의 우선순위는 변경됩니다.
 
 =begin original
 
@@ -158,10 +155,9 @@ calls.  Here's the preamble of the class.
 
 =end original
 
-システムの PRIO_PROCESS, PRIO_MIN, PRIO_MAX といった定数に
-アクセスするために Jarkko Hietaniemi <F<jhi@iki.fi>> の
-BSD::Resource クラスを使います。
-以下はこのクラスの前置きです。
+시스템의 PRIO_PROCESS, PRIO_MIN, PRIO_MAX 라는 정수에
+전근하기 위해 Jarkko Hietaniemi <F<jhi@iki.fi>> 의
+BSD::Resource 클래스를 사용합니다. 아래는 이 클래스의 앞에 둡니다.
 
     package Nice;
     use Carp;
@@ -182,10 +178,9 @@ expected to return a blessed reference to a new scalar
 
 =end original
 
-これはクラスのためのコンストラクタです。
-その役割は作成された新たな(おそらくは無名の)スカラへの bless された
-参照を返すことです。
-たとえば、
+이것은 클래스를 위한 생성자입니다.
+역할은 작성된 새로운(아마 이름없는) 스칼라에 bless된 참조를 반환하는 것입니다.
+예를 들면,
 
     sub TIESCALAR {
         my $class = shift;
@@ -213,11 +208,11 @@ variable C<$^W> to see whether to emit a bit of noise anyway.
 
 =end original
 
-このtie クラスでは、コンストラクタが失敗したときに例外を起こすのではなく
-エラーを返すことを選択しました。
-dbmopen() が動作している間に、他のクラスは例外が起きることを
-好まないかもしれないからです。
-グローバル変数 C<$^W> でエラーメッセージを出すかどうかを検査しています。
+이 tie 클래스에서는, 생성자가 실패했을 때에 예외를 일으키는 것이 아닌
+에러를 반환하는 것을 선택합니다.
+dbmopen() 이 동작하고 있는 사이에, 다른 클래스는 예외가 일어나는 것을
+원하지 않을 지도 모르기 때문입니다.
+글로벌 변수 C<$^W> 에서 에러메시지를 낼것인가 어떻게 할것인가를 검사합니다.
 
 =item FETCH this
 X<FETCH>
@@ -233,13 +228,13 @@ below, that real value is the process ID to which we've tied our variable.
 
 =end original
 
-このメソッドは tie された変数がアクセス(読み出し)される度に起動されます。
-これは自分のリファレンス、つまり私たちが扱おうとしている
-スカラを表現するオブジェクトの他に引数は取りません。
-この場合、単に SCALAR の参照をtieされたスカラオブジェクトとして
-使うので、単純な $$self がそこに格納されている実際の値を取得する
-メソッドとなります。
-以下に示した例では、実際の値は変数に tie されたプロセス ID です。
+이 메소드는 tie 된 변수가 접근(읽음)했을 때에 기동합니다.
+이것은 자신의 리퍼런스, 즉 취급하려고 한 스칼라를 표현하는 오브젝트 외의
+인수는 얻지 못합니다.
+이 경우, 간단히 SCALAR 의 참조를 tie된 스칼라오브젝트로써
+사용하기에, 단순한 $$self 가 거기에 담겨져 있는 실제의 값을 얻는
+메소드가 됩니다.
+아래에 나타낸 예에서, 실제의 값은 변수에 tie된 프로세스 ID 입니다.
 
     sub FETCH {
         my $self = shift;
@@ -260,8 +255,8 @@ probably the right thing to do.
 
 =end original
 
-ここでは、renice に失敗した場合には例外を引き起こすようにしました。
-エラーを返すための場所がなく、例外を引き起こすことがおそらく妥当です。
+여기에서는, renice 에 실패한 경우에는 예외를 일으키도록 했습니다.
+에러를 반환하기 위한 장소가 없어서, 예외를 불러일으키는 것이 습니다.
 
 =item STORE this, value
 X<STORE>
@@ -276,10 +271,10 @@ assigned value is implemented with FETCH.
 
 =end original
 
-このメソッドは tie された変数に代入される度毎に起動されます。
-自分の参照のほか、ただ一つの引数としてユーザーが代入しようとする
-新しい値を取ります。
-STORE から返される値は気にしないで下さい --
+이 메소드는 tie된 변수에 대입될 때마다 움직입니다.
+자신의 참조 이외, 단 하나의 인수로써 유저가 대입하려고 한
+새로운 값을 얻습니다.
+STORE에서 반환된 값은 신경쓰지 말아주세요 --
 the semantic of assignment returning the
 assigned value is implemented with FETCH.
 (TBT)
@@ -337,14 +332,11 @@ C++, you know.  We'll use a DESTROY method here for debugging purposes only.
 
 =end original
 
-このメソッドは tie された変数を破棄する必要があるときに起動されます。
-他のオブジェクトクラスと同じように、このようなメソッドは
-ほとんど必要ありません。
-それは、Perl は消滅しかかったオブジェクトのメモリを自動的に
-解放するからです。
-これは C++ ではないのです。
-いいですね?。
-私たちはここでは DESTROY メソッドをデバッグのためだけに使います。
+이 메소드는 tie 된 변수를 파괴할 필요가 있을때에 움직입니다.
+다른 오브젝트 클래스처럼, 이런 메소드는 거의 필요하지 않습니다.
+그것은, Perl 은 서멸한 오브젝트의 메모리를 자동적으 해방하기 때문입니다.
+이것은 C++에는 없습니다. 좋죠?
+우리는 여기에서는 DESTROY 메소드를 디버그하기 위해 사용합니다.
 
     sub DESTROY {
         my $self = shift;
@@ -363,16 +355,16 @@ TIESCALAR classes are certainly possible.
 
 =end original
 
-これがすべきことの全てです。
-実際のところ、それよりも多くのことがあります。
-ですから、私たちはここでちょっとした完全性、堅牢性、一般的な美しさと
-いうものを込めました。
-もっと簡単な TIESCALAR クラスを作ることも可能です。
+이것이 해야할 모든 것입니다.
+실제로, 그것보다도 많은 것이 있습니다.
+그러므로, 우리는 여기에서 잠깐 완전성, 견고성, 일반적인 미라고 하는
+것을 넣었습니다.
+더욱 간단한 TIESCALAR 클래스를 만들 수도 있습니다.
 
 =head2 Tying Arrays
 X<array, tying>
 
-(配列を tie する)
+(배열을 Tie하기)
 
 =begin original
 
@@ -381,9 +373,8 @@ methods: TIEARRAY, FETCH, STORE, FETCHSIZE, STORESIZE and perhaps UNTIE and/or D
 
 =end original
 
-tie された配列を実装するクラスは TIEARRAY, FETCH, STORE, FETCHSIZE, 
-STORESIZE、そしておそらく UNTIE や DESTROY といったメソッドを
-実装すべきでしょう。
+tie 된 배열을 구성하는 클래스는 TIEARRAY, FETCH, STORE, FETCHSIZE, STORESIZE,
+그리고 아마도 UNTIE 랑 DESTROY 같은 메소드를 구성해줘야 될겁니다.
 
 =begin original
 
@@ -392,8 +383,8 @@ equivalent C<scalar(@array)> access.
 
 =end original
 
-FETCHSIZE と STORESIZE は C<$#array> と
-C<scalar(@array)> アクセスに等価なものを提供します。
+FETCHSIZE 와 STORESIZE 는 C<$#array> 와
+C<scalar(@array)> 접근에 같은 값을 제공합니다. 
 
 =begin original
 
@@ -406,13 +397,13 @@ B<Tie::Array> simply C<croak>.
 
 =end original
 
-POP, PUSH, SHIFT, UNSHIFT, SPLICE, DELETE, EXIST といったメソッドは
-同名の perl の演算子(ただし小文字)が tie された配列に対して
-操作を行うときに必要となります。
-B<Tie::Array> クラスは、これらのうち、最初の 5 つの基本的なメソッドを
-実装するためのベースクラスとして使用できます。
-B<Tie::Array> での DELETE と EXISTS のデフォルトの実装は
-単なる C<croak> です。
+POP, PUSH, SHIFT, UNSHIFT, SPLICE, DELETE, EXIST 같은 메소드는
+같은 이름의 perl 연산자(소문자)가 tie된 배열에 대해
+조작을 행하는 것에 필요로 합니다.
+B<Tie::Array> 클래스는, 이것들 중, 최초의 5개의 기본적인 메소드를
+구성하기 위한 베이스클래스로 사용할 수 있습니다.
+B<Tie::Array> 에서의 DELETE 와 EXISTS 의 기본 구성은 
+단순한 C<croak>입니다.
 
 =begin original
 
@@ -421,8 +412,8 @@ allocation in a real array.
 
 =end original
 
-それに加え、EXTEND は perl が実際の配列中であらかじめ
-拡張するようなときに呼び出されます。
+거기에 더해서, EXTEND 는 perl 이 실제로 배열안에 새로이 확장하려는 때에
+호출됩니다.
 
 =begin original
 
@@ -432,9 +423,9 @@ size, you'll take an exception.  For example:
 
 =end original
 
-ここでの説明のため、要素数が生成時に固定されたサイズである配列を実装します。
-固定サイズを越えた要素を作ろうとすると、例外が発生します。
-例えば:
+여기에서의 설명을 위해 요소수가 생성시에 고정된 사이즈인 배열을 구성합니다.
+고정 사이즈를 넘은 요소를 만들려고 하면, 예외가 발생합니다.
+예를 들면:
 
     use FixedElem_Array;
     tie @array, 'FixedElem_Array', 3;
@@ -447,7 +438,7 @@ The preamble code for the class is as follows:
 
 =end original
 
-このクラスに対する 前置きコードは以下の通りです。
+이 클래스에 대해 앞에 둘 코드는 아래와 가습니다.
 
     package FixedElem_Array;
     use Carp;
@@ -466,9 +457,9 @@ anonymous ARRAY ref) will be accessed.
 
 =end original
 
-これはクラスのためのコンストラクタです。
-その役割は作成された新たな(おそらくは無名の配列の参照)配列への
-bless された参照を返すことです。
+이것은 클래스를 위한 생성자입니다.
+역할은 작성된 새로운(아마도 이름없는 배열의 참조) 배열로 bless 된
+참조를 반환하는 것 입니다.
 
 =begin original
 
@@ -482,16 +473,15 @@ This just goes to show you that you should respect an object's privacy.
 
 =end original
 
-私たちの例では、あなたにあなたが I<実際には> ARRAY のリファレンスを
-返さなくてもよいということを示すためだけに、使用するオブジェクトを
-表わす HASH の参照を選びました。
-HASH は汎用的なレコード型と同じように働きます。
-C<{ELEMSIZE}> フィールドは許される最大の要素の数を格納し、
-C<{ARRAY}> フィールドは本物の ARRAY のリファレンスを保持します。
-誰かがクラスの外側で返されたオブジェクトのデリファレンスを試みた場合
-(それが ARRAY のリファレンスであると疑いなく考えて)、それは失敗します。
-これはあなたがオブジェクトのプライバシーを尊重すべきであるという
-ことなのです。
+여기서의 예제에서는, I<실제로는> ARRAY 리퍼런스를
+반환하지 않아도 된다는 것을 나타내기위해서만, 사용하는 오브젝트를
+나타내는 HASH의 참조를 선택했습니다.
+HASH 는 범용적인 레코드형처럼 움직입니다.
+C<{ELEMSIZE}> 필드는 허락된 최대의 요소의 수를 격납해,
+C<{ARRAY}> 필드는 진짜 ARRAY 리퍼런스를 가집니다.
+누군가가 클래스 바깥쪽에서 반환된 오브젝트의 디리퍼런스를 시험할 경우
+(그것이 ARRAY 의 리퍼런스인 것에 의문을 가지지 않아도), 그것은 실패합니다.
+이것은 오브젝트의 프라이버시를 존중해야 하기 때문입니다.
 
     sub TIEARRAY {
       my $class    = shift;
@@ -516,10 +506,8 @@ index whose value we're trying to fetch.
 
 =end original
 
-このメソッドは tie された配列の個々の要素がアクセス(読み出し)される毎に
-起動されます。
-これは自分の参照のほかに、一つの引数、フェッチしようとする値の
-インデックスをとります。
+이 메소드는 tie 된 배열의 개개의 요소가 접근(읽음)될 때애 움직입니다.
+이것은 자신의 참조이외에 하나의 인수, 펫치하려고 하는 값의 인덱스가 됩니다.
 
     sub FETCH {
       my $self  = shift;
@@ -554,12 +542,12 @@ to keep them at simply one tie type per class.
 
 =end original
 
-すでに気がついたかもしれませんが、FETCH メソッド(など)の名前は全ての
-アクセスについて、たとえコンストラクタが別の名前であった
-(TIESCALAR と TIEARRAY)としても同じ名前になっています。
-理論的には、幾つかの tie されたクラスをサービスする同じクラスを
-持つこともできるでしょうが、実際にはこれは厄介なものになり、
-単にクラスあたり一つの状態にするのが最も簡単です。
+이미 눈치채셨을지도 모르지만, FETCH 메소드(따위)의 이름은 모든
+접근에 대해, 설령 생성자가 다른 이름인(TIESCALAR 와 TIEARRAY) 경우라도
+같은 이름이 됩니다.
+이론적으로는, 몇 개인가의 tie 된 클래스를 서비스하는 같은 클래스를
+가지는 것도 가능하겠지만, 실제로는 이것은 위험하니, 그냥 클래스마다
+하나의 상태로 해두는 것이 제일 간단합니다.
 
 =item STORE this, index, value
 X<STORE>
@@ -573,10 +561,9 @@ there.
 
 =end original
 
-このメソッドは、tie された配列にある要素に対する書き込みがある度毎に
-起動されます。
-これは自分の参照のほかに、何かを格納しようとする場所の添え字と、
-格納しようとしている値という二つの引数を取ります。
+이 메소드는 tie 된 배열에 있는 요소에 대한 쓰기가 있을 때마다 움직입니.
+이것은 자신의 참조 이외에 뭔가를 넣으려고 하는 곳의 첨자와
+넣으려고하는 값 두가지 인수를 얻습니다.
 
 =begin original
 
@@ -607,7 +594,7 @@ Negative indexes are treated the same as with FETCH.
 
 =end original
 
-インデックスの値が負数の場合、FETCH と同様に扱われます。
+인덱스 값이 음수일 경우, FETCH 처럼 취급됩니다.
 
 =item FETCHSIZE this
 X<FETCHSIZE>
@@ -621,8 +608,8 @@ object I<this>. (Equivalent to C<scalar(@array)>).  For example:
 
 Returns the total number of items in the tied array associated with
 object I<this>.
-(C<scalar(@array)> と等価です)。
-例えば:
+(C<scalar(@array)> 와 같은 값입니다)
+예를 들면:
 (TBT)
 
     sub FETCHSIZE {
@@ -749,7 +736,7 @@ Delete the element at index I<key> from the tied array I<this>.
 
 =end original
 
-インデックス I<key> の要素を tie された配列 I<this> から削除します。
+인덱스 I<key> 의 요소를 tie된 배열 I<this> 부터 삭제합니다.
 
 =begin original
 
@@ -757,7 +744,7 @@ In our example, a deleted item is C<$self-E<gt>{ELEMSIZE}> spaces:
 
 =end original
 
-この例では、削除された要素は C<$self-E<gt>{ELEMSIZE}> スペースです:
+이 예제에서는, 삭제된 요소는 C<$self-E<gt>{ELEMSIZE}> 스페이스입니다:
 
     sub DELETE {
       my $self  = shift;
@@ -777,7 +764,7 @@ object I<this>.  For example:
 
 Clear (remove, delete, ...) all values from the tied array associated with
 object I<this>.
-例えば:
+예를들면:
 (TBT)
 
     sub CLEAR {
@@ -794,8 +781,8 @@ Append elements of I<LIST> to the array.  For example:
 
 =end original
 
-I<LIST> の要素を配列に追加します。
-例えば:
+I<LIST> 의 요소를 배열에 추가합니다.
+예를 들면:
 
     sub PUSH {  
       my $self = shift;
@@ -814,8 +801,8 @@ Remove last element of the array and return it.  For example:
 
 =end original
 
-配列の最後の要素を取り除いてそれを返します。
-例えば:
+배열의 마지막의 요소를 빼고 그것을 반환합니다.
+예를 들면:
 
     sub POP {
       my $self = shift;
@@ -854,7 +841,7 @@ up to make room.  For example:
 
 Insert LIST elements at the beginning of the array, moving existing elements
 up to make room.
-例えば:
+예를 들면:
 (TBT)
 
     sub UNSHIFT {
@@ -876,7 +863,7 @@ Perform the equivalent of C<splice> on the array.
 
 =end original
 
-配列に対する C<splice> と等価に振る舞います。
+배열에 대한 C<splice> 와 같은 값이됩니다.
 
 =begin original
 
@@ -904,7 +891,7 @@ I<LIST> may be empty.
 
 =end original
 
-I<LIST> は空かもしれません。
+I<LIST> 는 비어있을 지도 모릅니다.
 
 =begin original
 
