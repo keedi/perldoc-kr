@@ -1,25 +1,22 @@
 =head1 NAME
 
-perldebtut - Perl debugging tutorial
+perldebtut - Perl 디버깅 튜토리얼
 
 =head1 DESCRIPTION
 
-A (very) lightweight introduction in the use of the perl debugger, and a
-pointer to existing, deeper sources of information on the subject of debugging
-perl programs.  
+펄 디버거를 사용하는 방법을 다루는 가벼운 소개서이자,
+펄 프로그램 디버깅의 주제를 담은 기존의 자세한 정보 출처 소개서
 
-There's an extraordinary number of people out there who don't appear to know
-anything about using the perl debugger, though they use the language every
-day.  
-This is for them.  
+펄을 매일 사용함에도 불구하고 펄 디버거를 사용하는 방법을
+전혀 알려고 하지 않는 사람이 놀랄만큼 많다.
+이 문서는 그들을 위한 것이다.
 
 
 =head1 use strict
 
-First of all, there's a few things you can do to make your life a lot more
-straightforward when it comes to debugging perl programs, without using the
-debugger at all.  To demonstrate, here's a simple script, named "hello", with
-a problem:
+무엇보다 펄 프로그램을 디버깅해야 할 때 디버거를 전혀 사용하지 않고서도
+훨씬 더 편한 인생을 보낼 수 있는 몇 가지 방법이 있다.
+문제가 있는 간단한 "hello" 스크립트를 이용해서 설명하겠다:
 
 	#!/usr/bin/perl
 
@@ -29,23 +26,23 @@ a problem:
 	print $var2; 
 	exit;
 
-While this compiles and runs happily, it probably won't do what's expected,
-namely it doesn't print "Hello World\n" at all;  It will on the other hand do
-exactly what it was told to do, computers being a bit that way inclined.  That
-is, it will print out a newline character, and you'll get what looks like a
-blank line.  It looks like there's 2 variables when (because of the typo)
-there's really 3:
+이 스크립트는 컴파일과 실행에 성공하지만 아마도 원한것 처럼 동작하지 않을 것이다.
+즉, 이름처럼 "Hello World\n"을 전혀 출력하지 않는다;
+It will on the other hand do exactly what it was told to do,
+computers being a bit that way inclined.
+That is, it will print out a newline character,
+and you'll get what looks like a blank line.
+It looks like there's 2 variables when (because of the typo) there's really 3:
 
 	$var1 = 'Hello World';
 	$varl = undef;
 	$var2 = "\n";
 
-To catch this kind of problem, we can force each variable to be declared
-before use by pulling in the strict module, by putting 'use strict;' after the
-first line of the script.
+이런 문제를 해결하기 위해, 스크립트의 처음 줄 다음에 'use strict;'를 넣어
+strict 모듈을 사용해서 각각의 변수를 사용하기 전에 선언해야하도록 강제할 수 있다.
 
-Now when you run it, perl complains about the 3 undeclared variables and we
-get four error messages because one variable is referenced twice:
+이제 스크립트를 실행시키면, 펄은 선언하지 않은 3 개의 변수에대해 불평한다.
+그리고 하나의 변수를 두번 참조했기 때문에 4 개의 에러 메시지가 발생한다:
 
  Global symbol "$var1" requires explicit package name at ./t1 line 4.
  Global symbol "$var2" requires explicit package name at ./t1 line 5.
@@ -53,8 +50,8 @@ get four error messages because one variable is referenced twice:
  Global symbol "$var2" requires explicit package name at ./t1 line 7.
  Execution of ./hello aborted due to compilation errors.     
 
-Luvverly! and to fix this we declare all variables explicitly and now our
-script looks like this:	
+멋지다! 그리고 이것을 고치기 위해 모든 변수를 명시적으로 선언하자.
+그러면 이제 스크립트는 다음과 같을 것이다:
 
 	#!/usr/bin/perl
 	use strict;
@@ -66,20 +63,20 @@ script looks like this:
 	print $var2; 
 	exit;
 
-We then do (always a good idea) a syntax check before we try to run it again:
+이제 다시 실행하기 전에 문법 점검을 먼저하자(대부분의 경우 훌륭한 생각이다):
 
 	> perl -c hello
 	hello syntax OK 
 
-And now when we run it, we get "\n" still, but at least we know why.  Just
-getting this script to compile has exposed the '$varl' (with the letter 'l')
-variable, and simply changing $varl to $var1 solves the problem.
+이제 실행하면, 여전히 "\n" 을 출력하지만, 적어도 이유는 알고 있다.
+컴파일을 하기 위해 수정한 스크립트에는 '$varl' (문자 'l'을 가진) 변수가 있고,
+간단히 $varl 을 $var1 로 바꿈으로써 문제를 해결할 수 있다.
 
 
 =head1 Looking at data and -w and v
 
-Ok, but how about when you want to really see your data, what's in that
-dynamic variable, just before using it?
+좋다. 하지만 데이터를 정말로 보고 싶을 때는 어떨까?
+사용하기 직전에 동적 변수 안에 무엇이 있을까?
 
 	#!/usr/bin/perl 
 	use strict;
@@ -96,28 +93,26 @@ dynamic variable, just before using it?
 	print "$data{$key}\n";
 	exit;                               
 
-Looks OK, after it's been through the syntax check (perl -c scriptname), we
-run it and all we get is a blank line again!  Hmmmm.
+perl -c scriptname 을 이용한 문법체크도 성공했고, 괜찮아 보인다.
+하지만, 실행한 후 우리가 얻는 것은 또다시 빈 줄이다! 흠.
 
-One common debugging approach here, would be to liberally sprinkle a few print
-statements, to add a check just before we print out our data, and another just
-after:
+이런 경우 종종 사용하는 디버깅 방법은, 대충 print 명령문을 좀 삽입해서
+점검하려는 데이터의 직전과, 직후의 값을 출력하는 것이다:
 
 	print "All OK\n" if grep($key, keys %data);
 	print "$data{$key}\n";
 	print "done: '$data{$key}'\n";
 
-And try again:
+그리고 다시 시도해보자:
 
 	> perl data
 	All OK     
 
 	done: ''
 
-After much staring at the same piece of code and not seeing the wood for the
-trees for some time, we get a cup of coffee and try another approach.  That
-is, we bring in the cavalry by giving perl the 'B<-d>' switch on the command
-line:
+어떤 경우는 이런 류의 코드 조각을 한참은 노려본 후에도,
+나무를 보고 숲을 보지 못하겠다면, 커피 한 잔 마시고 다른 방법을 시도해보자.
+커맨드 라인에서 펄에게 'B<-d>' 스위치를 주면, 기병대를 들여올 수 있다:
 
 	> perl -d data 
 	Default die handler restored.
@@ -129,28 +124,29 @@ line:
 
 	main::(./data:4):     my $key = 'welcome';   
 
-Now, what we've done here is to launch the built-in perl debugger on our
-script.  It's stopped at the first line of executable code and is waiting for
-input.
+지금까지 우리의 스크립트를 빌트인 디버거를 이용해서 구동했다.
+이제 실행 가능한 코드의 첫 번째 줄에서 멈추고 입력을 기다릴 것이다.
 
-Before we go any further, you'll want to know how to quit the debugger: use
-just the letter 'B<q>', not the words 'quit' or 'exit':
+여기서 더 나가기전에, 디버거를 종료하는 법을 알고 싶을 것이다:
+'quit' 나 'exit' 가 아닌 문자 'B<q>' 를 사용해야 한다:
 
 	DB<1> q
 	>
 
-That's it, you're back on home turf again.
+바로 그것이다. 여러분은 이제 집앞 잔디밭으로 되돌아왔다.
 
 
 =head1 help
 
-Fire the debugger up again on your script and we'll look at the help menu. 
-There's a couple of ways of calling help: a simple 'B<h>' will get the summary 
-help list, 'B<|h>' (pipe-h) will pipe the help through your pager (which is 
-(probably 'more' or 'less'), and finally, 'B<h h>' (h-space-h) will give you 
-the entire help screen.  Here is the summary page:
+스크립트를 디버거를 이용해 실행하고, 도움말 메뉴를 살펴보자.
+도움말을 호출하는 몇 가지 방법은 다음과 같다:
+간단하게 'B<h>' 는 도움말 목록의 요약 정보를 보여준다.
+'B<|h>' (파이프-h) 는 파이프로 여러분 시스템의 페이저
+(대부분 'more' 또는 'less' 인)에 보내서 화면에 보여준다.
+그리고 마지막으로 'B<h h>' (h-공백-h) 는 도움말 화면 전체를 보여준다.
+요약 페이지는 다음과 같다:
 
-DB<1>h
+ DB<1> h
 
  List/search source lines:               Control script execution:
   l [ln|sub]  List source code            T           Stack trace
@@ -178,26 +174,27 @@ DB<1>h
   y [n [Vars]]   List lexicals in higher scope <n>.  Vars same as V.
  For more help, type h cmd_letter, or run man perldebug for all docs. 
 
-More confusing options than you can shake a big stick at!  It's not as bad as
-it looks and it's very useful to know more about all of it, and fun too!
+셀 수 없이 매우 많은 혼란스러운 옵션이지만, 그래도 보기보단 그렇게 나쁘진 않다.
+게다가, 그것을 다 아는 것은 매우 유용하고, 매우 재미있기도 하다!
 
-There's a couple of useful ones to know about straight away.  You wouldn't
-think we're using any libraries at all at the moment, but 'B<M>' will show
-which modules are currently loaded, and their version number, while 'B<m>' 
-will show the methods, and 'B<S>' shows all subroutines (by pattern) as 
-shown below.  'B<V>' and 'B<X>' show variables in the program by package 
-scope and can be constrained by pattern. 
+There's a couple of useful ones to know about straight away.
+You wouldn't think we're using any libraries at all at the moment,
+but 'B<M>' will show which modules are currently loaded,
+and their version number, while 'B<m>' will show the methods,
+and 'B<S>' shows all subroutines (by pattern) as shown below.
+'B<V>' 와 'B<X>' 는 패키지 범위에서 프로그램의 변수를 보여주고
+패턴을 이용해서 검색 결과를 추려낼 수 있다.
 
-	DB<2>S str 
+	DB<2> S str 
 	dumpvar::stringify
 	strict::bits
 	strict::import
 	strict::unimport  
 
-Using 'X' and cousins requires you not to use the type identifiers ($@%), just
-the 'name':
+'X' 와 같은 종류의 명령을 사용할 때는
+타입 식별자($@%)를 사용하지 말고 '이름' 만을 사용해야 한다:
 
-	DM<3>X ~err
+	DM<3> X ~err
 	FileHandle(stderr) => fileno(2)    
 
 Remember we're in our tiny program with a problem, we should have a look at
