@@ -17,6 +17,18 @@ perlop.pod 작업 중에 번역이 아리송한 것들에 대해서 이렇게 �
 * delimiter ( In the following table, a C<{}> represents any pair of delimiters you choose.  ) // 뭔가 안떠오릅니다
 * escape ( The following escape sequences are available in constructs that interpolate  and in transliterations. ) // 쿨럭쿨럭.. 그대로 이스케이프 씁니다 ㅠ_ㅠ
 
+    이미 많이 사용하고 있는 표준의 전산 용어를 사용하는 것은 어떨까요? :-)
+
+    * quote and quote-like operator 는 따옴표와 따옴표 같은 연산자
+    * return value: 반환 값은 많이 사용하는 전산 용어입니다.
+    * context: 문맥 역시 많이 사용하는 전산 용어입니다.
+    * literal: 상수 (constant와 함께 많이 사용하는 것으로 기억합니다만...)
+    * escape sequence: 확장열 또는 확장 문자열
+
+    -keedi
+
+
+
 흠.. 현재는 이정도 입니다.
 
 그외에 개행문자 -> 줄바꿈 문자, 참고해주세요(참조해주세요와 헷갈)...
