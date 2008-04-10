@@ -359,9 +359,9 @@ paragraph or a verbatim paragraph.  For example:
 =end original
 
 "=pod" 커맨드는 스스로는 거의 아무것도 하지 않지만,
-Perl (과 Pod 서식기)에 Pod 블록이 여기에서 시작한다는 것을 나타냅니다.
+Perl (Pod 서식기)에 Pod 블록이 여기에서 시작한다는 것을 나타냅니다.
 Pod 블록은 I<어떤> 커맨트 단락에서 시작하므로, 
-"=pod" 커맨드는 보ㅇ Pod 블록을 보통의 단락 혹은 그대로의 단락에서
+"=pod" 커맨드는 Pod 블록을 보통의 단락 혹은 그대로의 단락에서
 시작하고 싶을 때에 사용합니다. 예제:
 
   =item stuff()
@@ -1068,7 +1068,7 @@ the part of a (fictitious) "NE<lt>...E<gt>" code.
 
 이것은 자주 사용됩니다.
 때때로 EE<lt>...E<gt> 코드를 사용하는 방법 중 하나입니다. 
-예를 들면, ("NE<lt>3" のために) "C<NEE<lt>ltE<gt>3>" 대신에
+예를 들면, ("NE<lt>3" 때문에) "C<NEE<lt>ltE<gt>3>" 대신에
 "C<NZE<lt>E<gt>E<lt>3>" 로 쓸 수 있습니다.
 (the "ZE<lt>E<gt>" は "N" と "E<lt>" 를 분해하기 때문에,
 "NE<lt>...E<gt>" 의 일부와(달리) 해석되는 경우는 없습니다)
