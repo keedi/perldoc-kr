@@ -7,20 +7,20 @@ perltooc - Tom's OO Tutorial for Class Data in Perl
 When designing an object class, you are sometimes faced with the situation
 of wanting common state shared by all objects of that class.
 
-¿ÀºêÁ§Æ® Å¬·¡½º¸¦ µğÀÚÀÎ ÇÒ¶§ ´ç½ÅÀº °¡²û ±× Å¬·¡½ºÀÇ ¿ÀºêÁ§Æ®µéÀÌ °øÅëÀ¸·Î °øÀ¯
-ÇÒ¼ö ÀÖ´Â »óÅÂ°ªÀ» ¿øÇÒ¶§¿Í ºÎµúÈ÷°Ô µÉ°ÍÀÌ´Ù.
+ì˜¤ë¸Œì íŠ¸ í´ë˜ìŠ¤ë¥¼ ë””ìì¸ í• ë•Œ ë‹¹ì‹ ì€ ê°€ë” ê·¸ í´ë˜ìŠ¤ì˜ ì˜¤ë¸Œì íŠ¸ë“¤ì´ ê³µí†µìœ¼ë¡œ ê³µìœ 
+í• ìˆ˜ ìˆëŠ” ìƒíƒœê°’ì„ ì›í• ë•Œì™€ ë¶€ë”ªíˆê²Œ ë ê²ƒì´ë‹¤.
 
 Such I<class attributes> act somewhat like global variables for the entire
 class, but unlike program-wide globals, class attributes have meaning only to
 the class itself.
 
-±×·¯ÇÑ I<Å¬·¡½º ¼Ó¼ºµé>Àº Å¬·¡½º ÀüÃ¼¿¡ ´ëÇØ Àü¿ªº¯¼ö¿Í °°ÀÌ Çàµ¿ÇÏ´Âµ¥
-ÇÁ·Î±×·¥»óÀÇ Àü¿ªÀÌ¶ó°í º¸±âº¸´Ù´Â Å¬·¡½º ¼Ó¼ºµéÀº Å¬·¡½º ÀÚÃ¼¿¡¼­¸¸ *È¿°ú*°¡
-ÀÖ´Ù.
+ê·¸ëŸ¬í•œ I<í´ë˜ìŠ¤ ì†ì„±ë“¤>ì€ í´ë˜ìŠ¤ ì „ì²´ì— ëŒ€í•´ ì „ì—­ë³€ìˆ˜ì™€ ê°™ì´ í–‰ë™í•˜ëŠ”ë°
+í”„ë¡œê·¸ë¨ìƒì˜ ì „ì—­ì´ë¼ê³  ë³´ê¸°ë³´ë‹¤ëŠ” í´ë˜ìŠ¤ ì†ì„±ë“¤ì€ í´ë˜ìŠ¤ ìì²´ì—ì„œë§Œ *íš¨ê³¼*ê°€
+ìˆë‹¤.
 
 Here are a few examples where class attributes might come in handy:
 
-Å¬·¡½º ¼Ó¼ºµéÀÌ À¯¿ë ÇÒ¶§ÀÇ ¿¹¸¦ ¸î°¡Áö µé¾î º¸µµ·Ï ÇÏ°Ú´Ù.
+í´ë˜ìŠ¤ ì†ì„±ë“¤ì´ ìœ ìš© í• ë•Œì˜ ì˜ˆë¥¼ ëª‡ê°€ì§€ ë“¤ì–´ ë³´ë„ë¡ í•˜ê² ë‹¤.
 
 =over 4
 
@@ -29,37 +29,37 @@ Here are a few examples where class attributes might come in handy:
 to keep a count of the objects you've created, or how many are
 still extant.
 
-´ç½ÅÀÌ ¸î°³ÀÇ °¹¼öÀÇ ¿ÀºêÁ§Æ®¸¦ »ı¼ºÇß´ÂÁö, ¾Æ´Ï¸é ¸î°³°¡ ÇöÁ¸ÇÏ°í ÀÖ´ÂÁö ¾Ë±â À§ÇØ
+ë‹¹ì‹ ì´ ëª‡ê°œì˜ ê°¯ìˆ˜ì˜ ì˜¤ë¸Œì íŠ¸ë¥¼ ìƒì„±í–ˆëŠ”ì§€, ì•„ë‹ˆë©´ ëª‡ê°œê°€ í˜„ì¡´í•˜ê³  ìˆëŠ”ì§€ ì•Œê¸° ìœ„í•´
 
 =item *
 
 to extract the name or file descriptor for a logfile used by a debugging
 method.
 
-µğ¹ö±ë¿¡ »ç¿ëµÉ ·Î±× ÆÄÀÏÀÇ ÀÌ¸§ÀÌ³ª ÆÄÀÏ µğ½ºÅ©¸³ÅÍ¸¦ ÃßÃâÇÒ¶§.
+ë””ë²„ê¹…ì— ì‚¬ìš©ë  ë¡œê·¸ íŒŒì¼ì˜ ì´ë¦„ì´ë‚˜ íŒŒì¼ ë””ìŠ¤í¬ë¦½í„°ë¥¼ ì¶”ì¶œí• ë•Œ.
 
 =item *
 
 to access collective data, like the total amount of cash dispensed by
 all ATMs in a network in a given day.
 
-ÇÑ ³×Æ®¿öÅ© ³»¿¡ Á¸ÀçÇÏ´Â ¸ğµç ATM ±â°èµéÀÇ ÀüÃ¼ ÁöÃâµÈ Çö±İ ±İ¾×À» ¾Ë±â À§ÇÑ
-ÃÑÃ¼ÀûÀÎ µ¥ÀÌÅÍ¸¦ Á¢±ÙÇÒ¶§.
+í•œ ë„¤íŠ¸ì›Œí¬ ë‚´ì— ì¡´ì¬í•˜ëŠ” ëª¨ë“  ATM ê¸°ê³„ë“¤ì˜ ì „ì²´ ì§€ì¶œëœ í˜„ê¸ˆ ê¸ˆì•¡ì„ ì•Œê¸° ìœ„í•œ
+ì´ì²´ì ì¸ ë°ì´í„°ë¥¼ ì ‘ê·¼í• ë•Œ.
 
 =item *
 
 to access the last object created by a class, or the most accessed object,
 or to retrieve a list of all objects.
 
-Å¬·¡½º¸¦ ÀÌ¿ëÇØ ¸¶Áö¸·À¸·Î »ı¼ºµÈ ¿ÀºêÁ§Æ®¸¦ Á¢±ÙÇÏ±â À§ÇØ, ¾Æ´Ï¸é °¡Àå ¸¹ÀÌ
-Á¢±ÙµÈ ¿ÀºêÁ§Æ®³ª, ¸ğµç ¿ÀºêÁ§Æ®¿¡ ´ëÇÑ ¸®½ºÆ®¸¦ °¡Á®¿À±â À§ÇØ.
+í´ë˜ìŠ¤ë¥¼ ì´ìš©í•´ ë§ˆì§€ë§‰ìœ¼ë¡œ ìƒì„±ëœ ì˜¤ë¸Œì íŠ¸ë¥¼ ì ‘ê·¼í•˜ê¸° ìœ„í•´, ì•„ë‹ˆë©´ ê°€ì¥ ë§ì´
+ì ‘ê·¼ëœ ì˜¤ë¸Œì íŠ¸ë‚˜, ëª¨ë“  ì˜¤ë¸Œì íŠ¸ì— ëŒ€í•œ ë¦¬ìŠ¤íŠ¸ë¥¼ ê°€ì ¸ì˜¤ê¸° ìœ„í•´.
 
 
 =back
 
 Unlike a true global, class attributes should not be accessed directly.
 
-º»·¡ÀÇ Àü¿ªº¯¼ö¿Í´Â ´Ş¸®, Å¬·¡½º ¼Ó¼ºµé Á÷Á¢ÀûÀ¸·Î Á¢±ÙµÇ¾î¼± ¾ÈµÈ´Ù.
+ë³¸ë˜ì˜ ì „ì—­ë³€ìˆ˜ì™€ëŠ” ë‹¬ë¦¬, í´ë˜ìŠ¤ ì†ì„±ë“¤ ì§ì ‘ì ìœ¼ë¡œ ì ‘ê·¼ë˜ì–´ì„  ì•ˆëœë‹¤.
 
 Instead, their state should be inspected, and perhaps altered, only
 through the mediated access of I<class methods>.  These class attributes
@@ -67,11 +67,11 @@ accessor methods are similar in spirit and function to accessors used
 to manipulate the state of instance attributes on an object.  They provide a
 clear firewall between interface and implementation.
 
-±×·¸Áö ¾ÊÀ¸¸é Å¬·¡½º ¼Ó¼ºµéÀÇ »óÅÂ¸¦ °Ë»ç¸¦ ÇÏ°Å³ª, È¤Àº ¹Ù²Ù°Å³ª, I<Å¬·¡½º
-¸Ş¼Òµå>ÀÇ Áß°³¸¦ ÅëÇØ ÀÌ·ç¾î Á®¾ß ÇÑ´Ù. Å¬·¡½º ¼Ó¼º Á¢±ÙÀÚµéÀº º»ÁúÀûÀ¸·Î³ª
-±â´ÉÀûÀ¸·Î ¿ÀºêÁ§Æ®ÀÇ ÀÎ½ºÅº½º ¼Ó¼ºµéÀÇ »óÅÂ¸¦ ¹Ù²Ü¶§ »ç¿ëÇÏ´Â Á¢±ÙÀÚ¿Í
-°°´Ù. Å¬·¡½º ¼Ó¼ºÀÚµéÀº ÀÎÅ×ÆäÀÌ½º (interface) ¿Í ±¸Çö (implementation) »çÀÌ¿¡
-¸í¹éÇÑ *¹æÈ­º®*À» Á¦°øÇÑ´Ù.
+ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ í´ë˜ìŠ¤ ì†ì„±ë“¤ì˜ ìƒíƒœë¥¼ ê²€ì‚¬ë¥¼ í•˜ê±°ë‚˜, í˜¹ì€ ë°”ê¾¸ê±°ë‚˜, I<í´ë˜ìŠ¤
+ë©”ì†Œë“œ>ì˜ ì¤‘ê°œë¥¼ í†µí•´ ì´ë£¨ì–´ ì ¸ì•¼ í•œë‹¤. í´ë˜ìŠ¤ ì†ì„± ì ‘ê·¼ìë“¤ì€ ë³¸ì§ˆì ìœ¼ë¡œë‚˜
+ê¸°ëŠ¥ì ìœ¼ë¡œ ì˜¤ë¸Œì íŠ¸ì˜ ì¸ìŠ¤íƒ„ìŠ¤ ì†ì„±ë“¤ì˜ ìƒíƒœë¥¼ ë°”ê¿€ë•Œ ì‚¬ìš©í•˜ëŠ” ì ‘ê·¼ìì™€
+ê°™ë‹¤. í´ë˜ìŠ¤ ì†ì„±ìë“¤ì€ ì¸í…Œí˜ì´ìŠ¤ (interface) ì™€ êµ¬í˜„ (implementation) ì‚¬ì´ì—
+ëª…ë°±í•œ *ë°©í™”ë²½*ì„ ì œê³µí•œë‹¤.
 
 You should allow access to class attributes through either the class
 name or any object of that class.  If we assume that $an_object is of
@@ -79,10 +79,10 @@ type Some_Class, and the &Some_Class::population_count method accesses
 class attributes, then these two invocations should both be possible,
 and almost certainly equivalent.
 
-´ç½ÅÀº Å¬·¡½º ¼Ó¼ºµéÀÇ Á¢±ÙÀ» Å¬·¡½º ÀÌ¸§ÀÌ³ª ÇØ´ç Å¬·¡½ºÀÇ ¿ÀºêÁ§Æ®µéÀ» ÅëÇØ¼­
-Çã¿ëÇØ¾ß ÇÑ´Ù. ¸¸¾à¿¡ ¿ì¸®°¡ $as_object°¡ Some_Class¶ó´Â Å¸ÀÔÀÌ¶ó°í °¡Á¤ÇÏ°í
-&Some_Class::population_count°¡ Å¬·¡½º ¼Ó¼ºÀ» Á¢±ÙÇÏ´Â ¸Ş¼Òµå¶ó¸é ±×·¯¸é ÀÌ
-µÎ°³ÀÇ ÇÔ¼ö È£ÃâÀº °¡´ÉÇØ¾ß ÇÏ¸ç °ÅÀÇ °°¾Æ¾ß¸¸ ÇÑ´Ù.
+ë‹¹ì‹ ì€ í´ë˜ìŠ¤ ì†ì„±ë“¤ì˜ ì ‘ê·¼ì„ í´ë˜ìŠ¤ ì´ë¦„ì´ë‚˜ í•´ë‹¹ í´ë˜ìŠ¤ì˜ ì˜¤ë¸Œì íŠ¸ë“¤ì„ í†µí•´ì„œ
+í—ˆìš©í•´ì•¼ í•œë‹¤. ë§Œì•½ì— ìš°ë¦¬ê°€ $as_objectê°€ Some_Classë¼ëŠ” íƒ€ì…ì´ë¼ê³  ê°€ì •í•˜ê³ 
+&Some_Class::population_countê°€ í´ë˜ìŠ¤ ì†ì„±ì„ ì ‘ê·¼í•˜ëŠ” ë©”ì†Œë“œë¼ë©´ ê·¸ëŸ¬ë©´ ì´
+ë‘ê°œì˜ í•¨ìˆ˜ í˜¸ì¶œì€ ê°€ëŠ¥í•´ì•¼ í•˜ë©° ê±°ì˜ ê°™ì•„ì•¼ë§Œ í•œë‹¤.
 
     Some_Class->population_count()
     $an_object->population_count()
@@ -95,12 +95,12 @@ declare instance attributes.  Perl provides the developer with a broad
 set of powerful but flexible features that can be uniquely crafted to
 the particular demands of the situation.
 
-Áú¹®ÀÌ ÀÖ´Ù¸é, ´ç½ÅÀº ¾îµğ¿¡ »óÅÂ°ªÀ» ÀúÀåÇÒ°ÍÀÌ¸é ¾î¶² ¸Ş¼Òµå¸¦ ÀÌ¿ëÇØ ±×
-°ªµéÀ» Á¢±ÙÇÒ °ÍÀÎ°¡? ÀÌ·¯ÇÑ°ÍµéÀ» Á¤ÀûÀÎ µ¥ÀÌÅ¸ ¸â¹ö¶ó°í ºÎ¸£´Â Á»´õ Á¦¾àÀûÀÎ
-C++ ¾ğ¾î¿Í´Â ´Ù¸£°Ô, ÆŞÀº Å¬·¡½º ¼Ó¼ºÀ» ¼±¾ğÇÏ±â À§ÇØ ÀÎ½ºÅº½º ¼Ó¼ºÀ» Á¤ÀÇÇÏ´Â
-¹®¹ı ÀÌ»óÀÇ ±â´ÉÀ» Áö¿øÇÏÁö ¾Ê´Â´Ù. °³¹ßÀÚ¿¡°Ô ÆŞÀº °­·ÂÇÏ¸é¼­µµ ±×·¸Áö¸¸
-À¯¿¬¼ºÀÖ´Â Æø ³ĞÀº ±â´ÉµéÀ» Á¦°øÇÏ´Âµ¥ ÀÌ °¢ ±â´ÉµéÀº Æ¯Á¤ »óÈ²¿¡ ¿ä±¸µÇ´Â °÷¿¡
-µ¶Æ¯ÇÏ¸é¼­ Á¤¼ºµé¿© ¸¸µé¾îÁ³´Ù.
+ì§ˆë¬¸ì´ ìˆë‹¤ë©´, ë‹¹ì‹ ì€ ì–´ë””ì— ìƒíƒœê°’ì„ ì €ì¥í• ê²ƒì´ë©´ ì–´ë–¤ ë©”ì†Œë“œë¥¼ ì´ìš©í•´ ê·¸
+ê°’ë“¤ì„ ì ‘ê·¼í•  ê²ƒì¸ê°€? ì´ëŸ¬í•œê²ƒë“¤ì„ ì •ì ì¸ ë°ì´íƒ€ ë©¤ë²„ë¼ê³  ë¶€ë¥´ëŠ” ì¢€ë” ì œì•½ì ì¸
+C++ ì–¸ì–´ì™€ëŠ” ë‹¤ë¥´ê²Œ, í„ì€ í´ë˜ìŠ¤ ì†ì„±ì„ ì„ ì–¸í•˜ê¸° ìœ„í•´ ì¸ìŠ¤íƒ„ìŠ¤ ì†ì„±ì„ ì •ì˜í•˜ëŠ”
+ë¬¸ë²• ì´ìƒì˜ ê¸°ëŠ¥ì„ ì§€ì›í•˜ì§€ ì•ŠëŠ”ë‹¤. ê°œë°œìì—ê²Œ í„ì€ ê°•ë ¥í•˜ë©´ì„œë„ ê·¸ë ‡ì§€ë§Œ
+ìœ ì—°ì„±ìˆëŠ” í­ ë„“ì€ ê¸°ëŠ¥ë“¤ì„ ì œê³µí•˜ëŠ”ë° ì´ ê° ê¸°ëŠ¥ë“¤ì€ íŠ¹ì • ìƒí™©ì— ìš”êµ¬ë˜ëŠ” ê³³ì—
+ë…íŠ¹í•˜ë©´ì„œ ì •ì„±ë“¤ì—¬ ë§Œë“¤ì–´ì¡Œë‹¤.
 
 A class in Perl is typically implemented in a module.  A module consists
 of two complementary feature sets: a package for interfacing with the
@@ -109,11 +109,11 @@ two mechanisms can be used to implement class attributes.  That means you
 get to decide whether to put your class attributes in package variables
 or to put them in lexical variables.
 
-ÆŞ¿¡°Ô ÀÖ¾î Å¬·¡½º´Â º¸Åë ¸ğµâ°ú °°ÀÌ ±¸ÇöµÉ¼ö ÀÖ´Ù. ¸ğµâÀº ¼­·Î º¸¿ÏÀ» ÇØÁÖ´Â
-µÎ°³ÀÇ ±â´ÉÀ¸·Î ³ª´­¼ö°¡ ÀÖ°Ú´Âµ¥: ¹Ù±ù¼¼»ó°úÀÇ ÀÎÅÍÆäÀÌ½ÌÀ» À§ÇÑ ÆĞÅ°Áö¿Í
-ÇÁ¶óÀÌ¹ö½Ã¸¦ À§ÇÑ ÆÄÀÏ³»ÀÇ ·º½ÃÄ® ¿µ¿ª. ÀÌ µÎ°³ÀÇ ¸ŞÄ«´ÏÁòÀ» ÀÌ¿ëÇÏ¿© Å¬·¡½º
-¼Ó¼ºµéÀÌ ±¸ÇöµÉ¼ö ÀÖ°Ú´Ù. ÀÌ·Î ÀÎÇØ ´ç½ÅÀº Å¬·¡½º ¼Ó¼ºµéÀ» ÆĞÅ°Áö º¯¼ö·Î ³Ö´øÁö
-·º½ÃÄ® º¯¼ö·Î ³ÖÀ»Áö °áÁ¤ÇÒ¼ö ÀÖ°Ú´Ù.
+í„ì—ê²Œ ìˆì–´ í´ë˜ìŠ¤ëŠ” ë³´í†µ ëª¨ë“ˆê³¼ ê°™ì´ êµ¬í˜„ë ìˆ˜ ìˆë‹¤. ëª¨ë“ˆì€ ì„œë¡œ ë³´ì™„ì„ í•´ì£¼ëŠ”
+ë‘ê°œì˜ ê¸°ëŠ¥ìœ¼ë¡œ ë‚˜ëˆŒìˆ˜ê°€ ìˆê² ëŠ”ë°: ë°”ê¹¥ì„¸ìƒê³¼ì˜ ì¸í„°í˜ì´ì‹±ì„ ìœ„í•œ íŒ¨í‚¤ì§€ì™€
+í”„ë¼ì´ë²„ì‹œë¥¼ ìœ„í•œ íŒŒì¼ë‚´ì˜ ë ‰ì‹œì¹¼ ì˜ì—­. ì´ ë‘ê°œì˜ ë©”ì¹´ë‹ˆì¦˜ì„ ì´ìš©í•˜ì—¬ í´ë˜ìŠ¤
+ì†ì„±ë“¤ì´ êµ¬í˜„ë ìˆ˜ ìˆê² ë‹¤. ì´ë¡œ ì¸í•´ ë‹¹ì‹ ì€ í´ë˜ìŠ¤ ì†ì„±ë“¤ì„ íŒ¨í‚¤ì§€ ë³€ìˆ˜ë¡œ ë„£ë˜ì§€
+ë ‰ì‹œì¹¼ ë³€ìˆ˜ë¡œ ë„£ì„ì§€ ê²°ì •í• ìˆ˜ ìˆê² ë‹¤.
 
 
 And those aren't the only decisions to make.  If you choose to use package
