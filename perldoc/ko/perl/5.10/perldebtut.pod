@@ -630,23 +630,22 @@ etc. above), see L<perldebguts>.
 
 =head1 OUTPUT TIPS
 
-To get all the output from your error log, and not miss any messages via
-helpful operating system buffering, insert a line like this, at the start of
-your script:
+에러 로그의 모든 출력물을 보고 싶고, 유용한 운영체제의 버퍼링으로 인해
+어떠한 메시지도 잃고 싶지 않다면, 스크립트의 시작 부분에 다음 줄을 넣어라:
 
 	$|=1;	
 
-To watch the tail of a dynamically growing logfile, (from the command line):
+명령줄에서 계속해서 증가하는 로그 파일의 마지막 부분을 보고 싶다면:
 
 	tail -f $error_log
 
-Wrapping all die calls in a handler routine can be useful to see how, and from
-where, they're being called, L<perlvar> has more information:
+모든 die 호출을 감싸는 것은 이것을 어떻게 호출한 것인지, 어디서 호출한
+것인지 알고 싶을 경우 유용하다. 자세한 내용은 L<perlvar>을 참조하라:
 
 	BEGIN { $SIG{__DIE__} = sub { require Carp; Carp::confess(@_) } }
 
-Various useful techniques for the redirection of STDOUT and STDERR filehandles
-are explained in L<perlopentut> and L<perlfaq8>.
+STDOUT 과 STDERR 파일핸들을 재지향(redirection) 하는 다양하면서 유용한
+기법은 L<perlopentut>과 L<perlfaq8>을 참조하라.
 
 
 =head1 CGI
