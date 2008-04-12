@@ -6,11 +6,21 @@ perltooc - Tom's OO Tutorial for Class Data in Perl
 
 When designing an object class, you are sometimes faced with the situation
 of wanting common state shared by all objects of that class.
+
+오브젝트 클래스를 디자인 할때 당신은 가끔 그 클래스의 오브젝트들이 공통으로 공유
+할수 있는 상태값을 원할때와 부딪히게 될것이다.
+
 Such I<class attributes> act somewhat like global variables for the entire
 class, but unlike program-wide globals, class attributes have meaning only to
 the class itself.
 
+그러한 I<클래스 속성들>은 클래스 전체에 대해 전역변수와 같이 행동하는데
+프로그램상의 전역이라고 보기보다는 클래스 속성들은 클래스 자체에서만 *효과*가
+있다.
+
 Here are a few examples where class attributes might come in handy:
+
+클래스 속성들이 유용 할때의 예를 몇가지 들어 보도록 하겠다.
 
 =over 4
 
@@ -19,35 +29,60 @@ Here are a few examples where class attributes might come in handy:
 to keep a count of the objects you've created, or how many are
 still extant.
 
+당신이 몇개의 갯수의 오브젝트를 생성했는지, 아니면 몇개가 현존하고 있는지 알기 위해
+
 =item *
 
 to extract the name or file descriptor for a logfile used by a debugging
 method.
+
+디버깅에 사용될 로그 파일의 이름이나 파일 디스크립터를 추출할때.
 
 =item *
 
 to access collective data, like the total amount of cash dispensed by
 all ATMs in a network in a given day.
 
+한 네트워크 내에 존재하는 모든 ATM 기계들의 전체 지출된 현금 금액을 알기 위한
+총체적인 데이터를 접근할때.
+
 =item *
 
 to access the last object created by a class, or the most accessed object,
 or to retrieve a list of all objects.
 
+클래스를 이용해 마지막으로 생성된 오브젝트를 접근하기 위해, 아니면 가장 많이
+접근된 오브젝트나, 모든 오브젝트에 대한 리스트를 가져오기 위해.
+
+
 =back
 
 Unlike a true global, class attributes should not be accessed directly.
+
+본래의 전역변수와는 달리, 클래스 속성들 직접적으로 접근되어선 안된다.
+
 Instead, their state should be inspected, and perhaps altered, only
 through the mediated access of I<class methods>.  These class attributes
 accessor methods are similar in spirit and function to accessors used
 to manipulate the state of instance attributes on an object.  They provide a
 clear firewall between interface and implementation.
 
+그렇지 않으면 클래스 속성들의 상태를 검사를 하거나, 혹은 바꾸거나, I<클래스
+메소드>의 중개를 통해 이루어 져야 한다. 클래스 속성 접근자들은 본질적으로나
+기능적으로 오브젝트의 인스탄스 속성들의 상태를 바꿀때 사용하는 접근자와
+같다. 클래스 속성자들은 인테페이스 (interface) 와 구현 (implementation) 사이에
+명백한 *방화벽*을 제공한다.
+
 You should allow access to class attributes through either the class
 name or any object of that class.  If we assume that $an_object is of
 type Some_Class, and the &Some_Class::population_count method accesses
 class attributes, then these two invocations should both be possible,
 and almost certainly equivalent.
+
+당신은 클래스 속성들의 접근을 클래스 이름이나 해당 클래스의 오브젝트들을 통해서
+허용해야 한다. 만약에 우리가 $as_object가 Some_Class라는 타입이라고 가정하고
+&Some_Class::population_count가 클래스 속성을 접근하는 메소드라면 그러면 이
+두개의 함수 호출은 가능해야 하며 거의 같아야만 한다.
 
     Some_Class->population_count()
     $an_object->population_count()
@@ -60,12 +95,26 @@ declare instance attributes.  Perl provides the developer with a broad
 set of powerful but flexible features that can be uniquely crafted to
 the particular demands of the situation.
 
+질문이 있다면, 당신은 어디에 상태값을 저장할것이면 어떤 메소드를 이용해 그
+값들을 접근할 것인가? 이러한것들을 정적인 데이타 멤버라고 부르는 좀더 제약적인
+C++ 언어와는 다르게, 펄은 클래스 속성을 선언하기 위해 인스탄스 속성을 정의하는
+문법 이상의 기능을 지원하지 않는다. 개발자에게 펄은 강력하면서도 그렇지만
+유연성있는 폭 넓은 기능들을 제공하는데 이 각 기능들은 특정 상황에 요구되는 곳에
+독특하면서 정성들여 만들어졌다.
+
 A class in Perl is typically implemented in a module.  A module consists
 of two complementary feature sets: a package for interfacing with the
 outside world, and a lexical file scope for privacy.  Either of these
 two mechanisms can be used to implement class attributes.  That means you
 get to decide whether to put your class attributes in package variables
 or to put them in lexical variables.
+
+펄에게 있어 클래스는 보통 모듈과 같이 구현될수 있다. 모듈은 서로 보완을 해주는
+두개의 기능으로 나눌수가 있겠는데: 바깥세상과의 인터페이싱을 위한 패키지와
+프라이버시를 위한 파일내의 렉시칼 영역. 이 두개의 메카니즘을 이용하여 클래스
+속성들이 구현될수 있겠다. 이로 인해 당신은 클래스 속성들을 패키지 변수로 넣던지
+렉시칼 변수로 넣을지 결정할수 있겠다.
+
 
 And those aren't the only decisions to make.  If you choose to use package
 variables, you can make your class attribute accessor methods either ignorant
