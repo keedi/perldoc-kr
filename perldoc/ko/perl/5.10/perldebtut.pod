@@ -653,10 +653,13 @@ STDOUT 과 STDERR 파일핸들을 재지향(redirection) 하는 다양하면서 
 Just a quick hint here for all those CGI programmers who can't figure out how
 on earth to get past that 'waiting for input' prompt, when running their CGI
 script from the command-line, try something like this:
+CGI 스크립트를 명령줄에서 실행시켰을 때 입력을 기다리는 프롬프트를
+어떻게 해야할지 모르는 CGI 프로그래머를 위한 간단한 힌트를 알려주겠다.
+이 경우 다음과 같이 실행해보라:
 
 	> perl -d my_cgi.pl -nodebug 
 
-Of course L<CGI> and L<perlfaq9> will tell you more.
+물론 L<CGI>와 L<perlfaq9>는 더 많은 정보를 알려줄 것이다.
 
 
 =head1 GUIs
@@ -682,17 +685,20 @@ NB. (more info on these and others would be appreciated).
 
 =head1 SUMMARY
 
-We've seen how to encourage good coding practices with B<use strict> and
-B<-w>.  We can run the perl debugger B<perl -d scriptname> to inspect your
-data from within the perl debugger with the B<p> and B<x> commands.  You can
-walk through your code, set breakpoints with B<b> and step through that code
-with B<s> or B<n>, continue with B<c> and return from a sub with B<r>.  Fairly
-intuitive stuff when you get down to it.  
+우리는 B<use strict>와 B<-w>를 이용할 경우
+어떻게 좋은 코딩 습관을 장려할 수 있을지 보았다.
+B<perl -d scriptname>으로 펄 디버거를 실행하고, 디버거 안에서
+데이터를 점검하기 위해 B<p> 와 B<x> 명령을 이용했다.
+여러분은 코드를 돌아다닐 수 있었다.  B<b>를 이용해 정지점을 설정하고,
+B<s>나 B<n> 을 이용해서 단계별로 따라갈 수도 있고,
+B<c> 를 이용해서 계속 진행할 수 있고, B<r>을 이용해서 함수에서 리턴할 수도 있다.
+여러분이 본격적으로 사용할 때, 매우 직관적인 기능이다.
 
-There is of course lots more to find out about, this has just scratched the
-surface.  The best way to learn more is to use perldoc to find out more about
-the language, to read the on-line help (L<perldebug> is probably the next
-place to go), and of course, experiment.  
+물론 이것은 단지 표면을 훑어본 것일 뿐이고, 더 많은 것들이 남아 있다.
+더 배우기 위한 가장 좋은 방법은 언어에 대해 더 발견하고,
+온라인 도움말을 (L<perldebug> 는 아마도 다음으로 봐야할 문서일 것이다.)
+읽기위해 perldoc 을 사용하는 것이다.
+그리고 물론 실습도 필요할 것이다.
 
 
 =head1 SEE ALSO
