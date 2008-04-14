@@ -8,5 +8,26 @@
 
 = Details =
 
+== C ==
+ * context :
+ * construct :
+ * closure : 
+
+== D ==
+ * destroyer : 
+ * dereference :
+
+== G ==
  * global : 전역
+
+== L ==
  * lexical : [http://code.google.com/p/perldoc-kr/issues/detail?id=2 issue]
+
+== P ==
+ * pragma :
+
+== R ==
+ * reference : 참조?
+
+== S ==
+ * scope :
