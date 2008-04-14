@@ -1,0 +1,19 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+변역 소개와 가이드
+
+
+= 저장소 구조 =
+
+현재 svn 저장소 구조는 다음과 같습니다.
+ * trunk
+  * perldoc
+   * ko 
+    * modules
+    * perl : perl core 문서를 위한 디렉토리
+     * 5.10 : 5.10 문서를 위한 디렉토리
+     * etc : 버전이 명확하지 않은 문서를 위한 디렉토리
+   * jp
+   * en
+  * slide : 프리젠테이션 문서를 위한 디렉토리
