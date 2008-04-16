@@ -177,11 +177,20 @@ variables, they stand out clearly when reading the code.  Unfortunately,
 if you misspell one of these, you've introduced an error that's hard
 to catch.  It's also somewhat disconcerting to see the class name itself
 hard-coded in so many places.
+이 테크닉은 가장 명료하고도 초심자 펄 프로그래머 한테도 매우 무난한 방법이
+되겠다. 패키지 변수 이름 전체를 명시해줌으로써 코드를 읽는데 있어 명료하게 눈에
+뛰일것이다. 안타깝게도 만약 이변수들중에 오타를 내면 매우 잡기 힘든 에러를
+초래하게 될것이다.  그리고 하드코드된 클래스 이름들을 보고 꽤 당황하게 될것이다.
 
 Both these problems can be easily fixed.  Just add the C<use strict>
 pragma, then pre-declare your package variables.  (The C<our> operator
 will be new in 5.6, and will work for package globals just like C<my>
 works for scoped lexicals.)
+이 두문제들은 손쉽게 고쳐질수 있겠다. 간단히 use strict pragma를 더해주고
+미리(선행으로?) 패키지 변수들을 선언해 줌으로써 말이다. ( 5.6에서 새롭게 our
+연산자가 제공 되며, 렉시칼 영역에서 사용되는 my 연산자와 같이 패키지 전역에서
+사용할수 있겠다.)
+
 
     package Some_Class;
     use strict;
@@ -203,6 +212,12 @@ package variables with capital letters.  This helps clarity somewhat, but
 by no longer fully qualifying the package variables, their significance
 can be lost when reading the code.  You can fix this easily enough by
 choosing better names than were used here.
+다른 전역 변수들과 마찬가지로, 프로그래머중에는 패키지변수 이름의 시작을
+대문자로 주는것을 선호한다. 어느정도는 명료함을 주지만, 더이상 패키지 변수
+이름으로서 적절하지 않아 코드를 읽을시 의미를 잃어 버릴수도 있겠다. 이런
+문제들은 여기서 사용된 것들보다 더 적절한 이름들을 선택함으로 쉽게 해결할수
+있겠다.
+
 
 =head2 Putting All Your Eggs in One Basket
 
