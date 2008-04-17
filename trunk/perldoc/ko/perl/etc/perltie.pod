@@ -646,7 +646,7 @@ C<$self-E<gt>{ELEMSIZE}> number of spaces.  Observe:
 
 In our example, 'undef' is really an element containing
 C<$self-E<gt>{ELEMSIZE}> number of spaces.
-これを見てください:
+이것을 보세요.
 (TBT)
 
     sub STORESIZE {
@@ -821,7 +821,7 @@ and return it.  For example:
 
 Remove the first element of the array (shifting other elements down)
 and return it.
-例えば:
+예를 들어:
 (TBT)
 
     sub SHIFT {
@@ -947,17 +947,17 @@ just leave it out.
 
 =end original
 
-このメソッドは tie された変数を破棄する必要があるときに呼び出されます。
-スカラを tie したクラスと同様、このメソッドはガベージコレクションを
-言語自体が行っているのでほとんど必要ありません。
-ですから、今回はこのまま放っておきます。
+이 메소드는 tie 된 변수를 파괴할 필요가 있을 때에 호출합니다.
+스칼라를 tie 한 클래스처럼, 이 메소드는 가비지 컬렉션을
+언어자체가 행하고 있기때문에 거의 필요로 하지 않습니다.
+그러니 지금은 이대로 놔두겠습니다.
 
 =back
 
 =head2 Tying Hashes
 X<hash, tying>
 
-(ハッシュを tie する)
+(해쉬를 Tie하기)
 
 =begin original
 
@@ -973,17 +973,17 @@ the tied variable is garbage collected.
 
 =end original
 
-ハッシュは tie される最初の Perl データ型(dbmopen() を参照)でした。
-tie されたハッシュを実装するクラスは、以下のメソッドを定義すべきです。
-コンストラクタである TIEHASH、キーと値のペアにアクセスする FETCH と STORE、
-キーがハッシュにあるかどうかを報告する EXISTS、キーを削除するための DELETE、
-すべてのキーと値のペアを削除することによりハッシュを空にする CLEAR、
-すべてのキーを反復するための関数 keys() と each() を実装する
+해쉬는 tie 된 최초의 Perl 데이터형(dbmopen() 을 참조)이었습니다.
+tie 된 해쉬를 구성하는 클래스는, 아래의 메소드를 정의해야합니다.
+생성자인 TIEHASH, 키와 값의 쌍에 접근하는 FETCH와 STORE,
+키가 해쉬에 있는가 어떤가를 보고하는 EXISTS, 키를 삭제하기 위한 DELETE,
+모든 키와 값의 쌍을 삭제하는 것에 의해 해쉬를 비게 하는 CLEAR,
+모든 키를 반복하기 위한 함수 keys() 와 each() 로 구성됩니다.
+FIRSTKEY 와 NEXTKEY,
 FIRSTKEY と NEXTKEY、
 SCALAR is triggered when the tied hash is evaluated in scalar 
 context. UNTIE is called when C<untie> happens, and
-tieされた変数がガーベッジコレクトされるときに
-呼び出される DESTROY。
+tie 된 변수가 가비지 컬럭트 될 때에 호출되는 DESTROY
 (TBT)
 
 =begin original
@@ -994,10 +994,9 @@ interesting ones.  See L<Tie::Hash> for details.
 
 =end original
 
-もしこれがたくさんありすぎると感じられるのなら、標準の Tie::StdHash
-モジュールを単純に継承し、再定義を必要とするものだけを自分で
-実装することもできます。
-詳しくは L<Tie::Hash> を参照してください。
+만약 이것이 너무 많이 있다고 느낀다면, 표준의 Tie::StdHash 모듈을
+단순하게 계승해, 재정의할 필요가 있는 것만을 자신이 만들 수도 있습니다.
+자세한 내용은 L<Tie::Hash> 를 참조해 주세요. 
 
 =begin original
 
@@ -1008,11 +1007,10 @@ C<defined()> functions.
 
 =end original
 
-Perl がハッシュに存在していないキーと、ハッシュに存在しているけれども
-C<undef> という値を持っているキーとを明確に区別しているということを
-忘れないでください。
-これら二つの可能性は、C<exists()> と
-C<defined()> という関数を使って検査できます。
+Perl 이 해쉬에 보존되어 있지 않은 키와, 해쉬에 보존되어있지만,
+C<undef> 값을 가지고 있는 키를 명확하게 구별하는 것을 잊지 말아주세요.
+이 두개의 가능성은, C<exists()> 와 C<defined()> 라는 함수를 사용해서
+검사할 수 있습니다.
 
 =begin original
 
@@ -1023,11 +1021,11 @@ contents.  For example:
 
 =end original
 
-次の例は tie されたハッシュクラスを使ったものです。
-この例では特定のユーザーのドットファイルを表わすハッシュを提供します。
-あなたはハッシュをファイルの名前(からドットを取り除いたもの)によって
-添え字付けを行い、そのドットファイルの内容を取得します。
-例えば:
+다음 예제는 tie 된 해쉬 클래스를 사용한 것입니다.
+이 예제에서는 특정한 유저의 DotFiles 를 나타내는 해쉬를 제공하비다.
+해쉬를 파일의 이름(부터 DotFiles를 제외한 것)에 의해
+첨자를 붙이고, 그 DotFiles의 내용을 얻습니다.
+예를 들면:
 
     use DotFiles;
     tie %dot, 'DotFiles';
@@ -1044,7 +1042,7 @@ Or here's another sample of using our tied class:
 
 =end original
 
-tie されたクラスを使ったもう一つの例です。
+tie 된 클래스를 사용한 또 다른 예입니다.
 
     tie %him, 'DotFiles', 'daemon';
     foreach $f ( keys %him ) {
@@ -1061,10 +1059,9 @@ user thinks of as the real hash.
 
 =end original
 
-この DotFiles という tie されたハッシュでは、私たちは C<{LIST}>
-フィールドのみをユーザーが本当のハッシュであると考えるであろう幾つかの
-重要なフィールドを持ったオブジェクトのために、通常のハッシュを
-使いました。
+이 DotFiles 라는 tie 된 패키지에서는, C<{LIST}> 필드만을
+유저가 진짜 해쉬라고 생각할 몇개의 중요한 필드를 가진 오브젝트를 위해
+일반적인 해쉬를 사용하였습니다.
 
 =over 5
 
@@ -1076,7 +1073,7 @@ whose dot files this object represents
 
 =end original
 
-このオブジェクトが表わしているドットファイルの所有者
+이 오브젝트가 나타내는 DotFiles의 소유자
 
 =item HOME
 
@@ -1086,7 +1083,7 @@ where those dot files live
 
 =end original
 
-ドットファイルがある場所
+DotFiles 가 있는 장소
 
 =item CLOBBER
 
@@ -1096,8 +1093,7 @@ whether we should try to change or remove those dot files
 
 =end original
 
-これらのドットファイルを変更したり削除することをしようとすべきか
-を表わすフラグ
+이 Dot Files를 변경하거나 삭제해야하는 가를 나타내는 플래그
 
 =item LIST
 
@@ -1107,7 +1103,7 @@ the hash of dot file names and content mappings
 
 =end original
 
-ドットファイルの名前と内容のマッピングをしたハッシュ
+dot file 의 이름과 내용의 매핑을 한 해쉬
 
 =back
 
@@ -1117,7 +1113,7 @@ Here's the start of F<Dotfiles.pm>:
 
 =end original
 
-次は F<Dotfiles.pm> の先頭です:
+다음은 F<Dotfiles.pm> 의 첫부분입니다.
 
     package DotFiles;
     use Carp;
@@ -1134,10 +1130,10 @@ that calls it.
 
 =end original
 
-この例では、私たちは開発の間トレースがしやすいようにデバッグ情報を
-出力できるようにしたいと考えました。
-同様に、警告を出力するのを助ける一つの便利な内部関数を残しました。
-whowasi() は呼び出した関数の名前を返します。
+이 예제에서는, 개발 중의 추적이나 쉽게 디버그 정보를 출력할 수 있도록
+하고 싶었습니다. 그리고 경고를 출력하는 것을 도와주는 하나의 편리한 
+내부 함수를 남겼습니다.
+whowasi() 는 호출한 함수의 이름을 반환합니다. 
 
 =begin original
 
@@ -1979,7 +1975,7 @@ Here is an example that makes use of this tie:
 
 =end original
 
-次に挙げるのは、この tie を使った例です。
+다음의 예는 tie를 사용한 것입니다.
 
     use strict;
     use Remember;
@@ -1998,7 +1994,7 @@ This is the output when it is executed:
 
 =end original
 
-これを実行したときの出力は次のようになります。
+이것을 실행한 때의 결과는 다음과 같습니다.
 
     The Start
     1
@@ -2015,11 +2011,11 @@ the file -- say, something like this:
 
 =end original
 
-まずまずですね。
-注意深い人は tie されたオブジェクトがここでは使われていないことを
-指摘するでしょう。
-そこで、Remember クラスにファイルがコメントを含むことを
-できるようにするメソッドを追加しましょう -- そう、このような:
+여기까지는 좋스니다.
+주의깊은 사람은 tie된 오브젝트가 여기에서는 사용되지 않는 다는 것을
+지적할 것입니다.
+거기서, Remember 클래스 파일이 코멘트를 포함할 수 있도록 하는
+메소드를 다음과 같이 추가해보도록 하겠습니다 :
 
     sub comment {
         my $self = shift;
@@ -2035,8 +2031,8 @@ And here is the previous example modified to use the C<comment> method
 
 =end original
 
-次の例は、前の例を C<comment> メソッド(tie されたオブジェクトを
-必要とします)を使うために変更したものです。
+다음의 예제는 앞의 예제를 C<comment> 메소드(tie 된 오브젝트를
+필요로 합니다)를 사용하기 위해 변경한 것입니다.
 
     use strict;
     use Remember;
@@ -2056,8 +2052,8 @@ When this code is executed there is no output.  Here's why:
 
 =end original
 
-このコードを実行したとき、なにも出力されません。
-その理由はこうです。
+이 코드를 실행했을 때, 아무것도 출력되지 않습니다.
+이유는 이렇습니다:
 
 =begin original
 
@@ -2071,14 +2067,14 @@ no more valid references; and thus the file is closed.
 
 =end original
 
-変数が tie されたとき、それは TIESCALAR, TIEARRAY, TIEHASH といった
-関数のいずれかの返した値であるオブジェクトに結び付けられます。
-このオブジェクトは、通常はただ一つのリファレンス、すなわち tie され
-た変数からの暗黙のリファレンスだけを持っています。
-untile() が呼ばれたとき、このリファレンスは破棄されます。
-したがって、最初の例にあったように、オブジェクトのデストラクタ (DESTROY) が
-呼び出されてオブジェクトはもはや正当なリファレンスを持たないようになり、
-さらにファイルがクローズされます。
+변수가 tie 된때, 그것은 TIESCALAR, TIEARRAY, TIEHASH 같은
+함수중 어느 것을 반환한 값인 오브젝트에 묶여집니다.
+이 오브젝트는 일반적으로는 단 하나의 리퍼런스, 즉, tie된
+변수에서 암묵적인 리퍼런스만을 가지고 있습니다.
+untie() 가 호출외었을 때, 이 리퍼런스는 파괴됩니다.
+따라서, 맨 처음의 예제에 있는 것처럼, 오브젝트의 파괴자(DESTROY)가
+호출된 오브젝트는 정덩한 리퍼런스를 가지지 않게 되고,
+거기에 파일이 닫히게 됩니다.
 
 =begin original
 
@@ -2091,14 +2087,12 @@ have not been flushed to disk.
 
 =end original
 
-しかしながら二番目の例においては、私たちはもう一つの tie された
-オブジェクトへのリファレンスを $x の中に格納しました。
-これは untie() されたときに、存在するオブジェクトに対する正当な
-リファレンスがまだ存在しているということです。
-このためデストラクタはその時には呼び出されません。
-そしてファイルはクローズされないのです。
-何の出力も無かった理由は、ファイルバッファがディスクに
-フラッシュされていなかったからです。
+그렇지만 2번째의 예제에 대해서는, 또 다른 tie 된 오브젝트로의 리퍼런스를
+$x 의 안에 넣습니다. 이것은 untie() 된 때에, 존재하는 오브젝트에 대한 정당한
+리퍼런스가 아직 존재하고 있는 것입니다.
+이 때문에 파괴자는 그때에는 호출되지 않습니다.
+그리고 파일은 닫히지 않습니다.
+어떤 출력도 없는 이유는, 파일버퍼가 디스크에 플러쉬되지 않았기 때문입니다.
 
 =begin original
 
@@ -2112,16 +2106,16 @@ warning message:
 
 =end original
 
-さて、あなたはもうこれが問題であることがわかったでしょう。
-では、これを避けるにはどうすればいいでしょうか?
-省略可能な UNTIE メソッドが導入される前は、唯一の方法は
-古き良き C<-w> オプションだけです。
-これははあなたが untie() を呼んだそのときに、(untie() の対象となっている)
-tie されたオブジェクトに対する正当なリファレンスがまだ存在している場合には
-それを指摘してくれます。
-もし二番目のスクリプトを先頭の方に C<use warnings 'untie'> を付けるか、
-C<-w> オプションをつけた状態で実行していれば、
-Perl は次のような警告メッセージを出力します。
+그러면 이제 이것이 문제가 있다는 것을 알았을 겁니다.
+그러면, 이 문제를 피하기위해서는 어떻게 하면 될까요?
+생략가능한 UNTIE 메소드가 도입되기 전, 유일한 방법은
+오래되고 좋은 C<-w> 옵션 뿐입니다.
+이것은 untie() 를 호출한 그때에, (untie() 대상이 되어 있는)
+tie 된 오브젝트에 대한 정당한 리퍼런스가 아직 존재하고 있는 경우에는
+그것을 지적해줍니다.
+만약 2번째의 스크립트를 맨 처음에 C<use warnings 'untie'> 를 붙이거나,
+C<-w> 옵션을 붙인 상태에서 실행하고 있다면,
+Perl 은 다음처럼 경고메시지를 출력합니다.
 
     untie attempted while 1 inner references still exist
 
@@ -2133,8 +2127,8 @@ called:
 
 =end original
 
-スクリプトを正しく動作させ、警告を黙らせるには tie されたオブジェクトが
-untie() を呼び出すより I<前に> 正当なリファレンスをなくすようにします。
+스크립트를 바로 동작시키고, 경고를 내지 않기위해서는 tie된 오브젝트가
+untie() 를 호출하기 I<전에> 정당한 리퍼런스를 없애도록 합니다.
 
     undef $x;
     untie $fred;
@@ -2191,10 +2185,10 @@ modules L<Tie::Scalar>, L<Tie::Array>, L<Tie::Hash>, or L<Tie::Handle>.
 
 =end original
 
-興味深い幾つかの tie() の実装については L<DB_File> や L<Config> を
-参照してください。
-多くの tie() 実装のためのよい開始点は、モジュール L<Tie::Scalar>,
-L<Tie::Array>, L<Tie::Hash>, L<Tie::Handle> のいずれかです。
+흥미깊은 몇가지 tie 의 구조에 대해서는 L<DB_File> 이나 L<Config> 를
+참조해주세요.
+많은 tie() 구성을 위한 좋은 시작 포인트는 모듈 L<Tie::Scalar>,
+L<Tie::Array>, L<Tie::Hash>, L<Tie::Handle> 중의 어느 것입니다.
 
 =head1 BUGS
 
@@ -2220,8 +2214,8 @@ scope the arrays or the hashes are not restored.
 
 =end original
 
-配列やハッシュのローカル化は動作しません。
-スコープの終了後、配列やハッシュの値は元に戻りません。
+배열이나 해쉬의 로컬화는 동작하지 않습니다.
+스코프의 종류 뒤, 배열이나 해쉬의 값은 원래대로 돌아가지 않습니다.
 
 =begin original
 
@@ -2261,18 +2255,15 @@ which has some fairly serious limitations.
 
 =end original
 
-(ハッシュのハッシュのような)複数レベルのデータ構造を dbm ファイルに
-tie することは簡単にはできません。
-問題は、GDBM と Berkeley DB はサイズに制限があり、それを超えることが
-できないということで、また、ディスク上にあるものを参照する方法についても
-問題があります。
-これを解決しようとしている実験的なモジュールの一つに、
-DBM::Deep というものがあります。
-ソースコードは L<perlmodlib> にあるように、
-あなたのお近くの CPAN サイトを確かめてください。
-その名前にも関わらず、DBM::Deep は DBM を使わないことに注意してください。
-問題を解決するためのもう一つの初期の試みは MLDBM で、これも CPAN から
-利用可能ですが、かなり重大な制限があります。
+(해쉬의 해쉬처럼) 복수 레벨의 데이터 구조를 dbm 파일에
+tie 하는 것은 간단히 되지 않습니다.
+문제는 GDBM과 Berkeley DB 는 사이즈에 제한이 있고, 제한을 넘을 수가
+없으며, 디스크상에 있는 것을 참조하는 방법에 대해서도 문제가 있습니다.
+이것을 해결하려고 하는 실험적인 모듈 중 하나로 DBM::Deep라는 것이 있습니다.
+소스코드는 L<perlmodlib> 에 있는 것처럼, CPAN 사이트를 확인해 주세요.
+이름에 상관없이, DBM::Deep 는 DBM을 사용하지 않는 것에 주의해주세요.
+문제를 해결하기 위한 하나의 초기의 시험은 MLDBM으로, 이것도 CPAN에서
+이용가능하지만, 꽤 큰 제한이 있습니다.
 
 =begin original
 
@@ -2281,9 +2272,9 @@ flock(), fcntl(), stat() and -X can't currently be trapped.
 
 =end original
 
-ファイルハンドルの tie はまだ不完全です。
-現在のところ、sysopen(), truncate(), flock(), fcntl(), stat(), -X は
-トラップできません。
+파일핸들의 tie 는 아직 불완전합니다.
+현재, sysopen(), truncate(), flock(), fcntl(), stat(), -X 는
+트랩되지 않습니다.
 
 =head1 AUTHOR
 
