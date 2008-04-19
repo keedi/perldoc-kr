@@ -6,15 +6,14 @@ perltooc - Tom's OO Tutorial for Class Data in Perl
 
 When designing an object class, you are sometimes faced with the situation
 of wanting common state shared by all objects of that class.
-오브젝트 클래스를 디자인 할때 당신은 가끔 그 클래스의 오브젝트들이 공통으로 공유
-할수 있는 상태값을 원할때와 부딪히게 될것이다.
+오브젝트 클래스를 디자인 할때 당신은 가끔 그 클래스의 오브젝트들이 공통으로
+공유되는 값을 원할때와 대면하게 될것이다.
 
 Such I<class attributes> act somewhat like global variables for the entire
 class, but unlike program-wide globals, class attributes have meaning only to
 the class itself.
 그러한 I<클래스 속성들>은 클래스 전체에 대해 전역변수와 같이 행동하는데
-프로그램상의 전역이라고 보기보다는 클래스 속성들은 클래스 자체에서만 *효과*가
-있다.
+프로그램상의 전역이라고 보기보다는 클래스에 한해서라고 볼수 있겠다.
 
 Here are a few examples where class attributes might come in handy:
 클래스 속성들이 유용 할때의 예를 몇가지 들어 보도록 하겠다.
@@ -38,7 +37,7 @@ method.
 to access collective data, like the total amount of cash dispensed by
 all ATMs in a network in a given day.
 한 네트워크 내에 존재하는 모든 ATM 기계들의 전체 지출된 현금 금액을 알기 위한
-총체적인 데이터를 접근할때.
+총괄적인 데이터를 접근할때.
 
 =item *
 
@@ -58,11 +57,11 @@ through the mediated access of I<class methods>.  These class attributes
 accessor methods are similar in spirit and function to accessors used
 to manipulate the state of instance attributes on an object.  They provide a
 clear firewall between interface and implementation.
-그렇지 않으면 클래스 속성들의 상태를 검사를 하거나, 혹은 바꾸거나, I<클래스
-메소드>의 중개를 통해 이루어 져야 한다. 클래스 속성 접근자들은 본질적으로나
+대신에 클래스 속성들의 상태를 검사를 하거나, 혹은 변경하기 위해선 I<클래스
+메소드>의 중개를 통해서만 이루어 져야 한다. 클래스 속성 접근자들은 본질적으로나
 기능적으로 오브젝트의 인스탄스 속성들의 상태를 바꿀때 사용하는 접근자와
 같다. 클래스 속성자들은 인테페이스 (interface) 와 구현 (implementation) 사이에
-명백한 *방화벽*을 제공한다.
+명백한 방화벽을 제공한다.
 
 You should allow access to class attributes through either the class
 name or any object of that class.  If we assume that $an_object is of
@@ -84,12 +83,13 @@ class attributes, any more than it provides a syntactic mechanism to
 declare instance attributes.  Perl provides the developer with a broad
 set of powerful but flexible features that can be uniquely crafted to
 the particular demands of the situation.
+
 질문이 있다면, 당신은 어디에 상태값을 저장할것이면 어떤 메소드를 이용해 그
 값들을 접근할 것인가? 이러한것들을 정적인 데이타 멤버라고 부르는 좀더 제약적인
-C++ 언어와는 다르게, 펄은 클래스 속성을 선언하기 위해 인스탄스 속성을 정의하는
-문법 이상의 기능을 지원하지 않는다. 개발자에게 펄은 강력하면서도 그렇지만
-유연성있는 폭 넓은 기능들을 제공하는데 이 각 기능들은 특정 상황에 요구되는 곳에
-독특하면서 정성들여 만들어졌다.
+C++ 언어와는 다르게, 펄은 클래스 속성을 선언하기 위해 따로 문법을 제공하지
+않으며 인스탄스 속성을 정의할때 사용하는 문법 이상은 지원하지 않는다. 개발자에게
+펄은 강력하면서도 유연성있는 폭 넓은 기능들을 제공하는데 이 각 기능들은 특정
+상황에 요구되는 곳에 세심하게 만들어졌다.
 
 A class in Perl is typically implemented in a module.  A module consists
 of two complementary feature sets: a package for interfacing with the
@@ -126,10 +126,11 @@ do it for you!  In this case, Class::Data::Inheritable (available on a
 CPAN near you) offers a canned solution to the class data problem
 using closures.  So before you wade into this document, consider
 having a look at that module.
+
 어려운 문제를 푸는데에 있어 가장 쉬운 방법이 있다면 그건 다른 사람에게 그 문제를
-풀도록 나둘수 있겠다. 이경우, Class::Data::Inheritance (당신에게 가까운
-CPAN에 있습니다)는 클래스 데이타 문제를 클로져를 이용하여 바로 따서 사용할수
-있는 해결법을 제공한다.
+풀게끔 나둘수 있겠다. 이경우, Class::Data::Inheritance (당신에게 가까운 CPAN에
+있습니다)는 클래스 데이타에 관한 문제를 클로우저(Closure)를 이용하여 바로 따서
+사용할수 있는 해결법을 제공한다.
 
 =head1 Class Data as Package Variables
 =head1 패키지 변수로 사용하는 클래스 데이타
@@ -148,16 +149,18 @@ to mediate access.
 자기들만의 클래스 속성을 가질수 있는거 같다. Some_Class라는 클래스를 가지고
 있다고 가정하자 이 클래스는 파일 전체 내에서 전역변수로 사용할수 있는 여러
 속성들을 필요로 한다. 가장 쉬운 방법으로 할수 있는 방법은 $Some_Class::CData1나
-$Some_Class::CData2같은 패키지 변수들을 이용해 속성값들을 줄수 있겠다. 확실한게
-있다면 우린 이 데이타를 외부에서 직접 에세스 하는 것을 원치 않을 것이다, 그래서
-데이타 에세스를 중간에서 대신 담당하는 메소드들을 제공한다.
+$Some_Class::CData2같은 패키지 변수들을 이용해 속성값들을 줄수 있겠다. 
+우리는 외부에서 이러한 데이타들을 직접적으로 접근하는 것을 별로 원치 않을 것이다,
+그래서 데이타 접급을 중계해주는 메소드들을 제공해 주도록 한다.
+
 
 In the accessor methods below, we'll for now just ignore the first
 argument--that part to the left of the arrow on method invocation, which 
 is either a class name or an object reference.
-# TODO: context가 확실치 않아 오역으로 남겨짐
-아래에 있는 접근자 메소드들을 보면, 우선 첫번째 인자는 무시하도록 하자--메소드
-실행시 거시서부터 왼쪽방향의 화살표 즉 클래스 이름이거나 오브젝트 참조값인.
+
+아래에 있는 접근자 메소드(accessor methods)들을 보면, 우선 첫번째 인자는
+무시하도록 하자--메소드 실행시 화살표의 왼쪽 부분에 위치하는 클래스 이름이나
+오브젝트 참조값(object reference)들을 말이다.
 
     package Some_Class;
     sub CData1 {
@@ -178,15 +181,15 @@ if you misspell one of these, you've introduced an error that's hard
 to catch.  It's also somewhat disconcerting to see the class name itself
 hard-coded in so many places.
 이 테크닉은 가장 명료하고도 초심자 펄 프로그래머 한테도 매우 무난한 방법이
-되겠다. 패키지 변수 이름 전체를 명시해줌으로써 코드를 읽는데 있어 명료하게 눈에
-뛰일것이다. 안타깝게도 만약 이변수들중에 오타를 내면 매우 잡기 힘든 에러를
-초래하게 될것이다.  그리고 하드코드된 클래스 이름들을 보고 꽤 당황하게 될것이다.
+되겠다. 패키지 변수 이름 전체를 명시해줌으로써 코드를 읽는데 있어 바로 눈에
+띄일것이다. 안타깝게도 만약 변수들중에 오타를 내면 매우 잡기 힘든 에러를
+초래하게 될것이며 하드코드된 클래스 이름들을 보고 꽤 당황하게 될것이다.
 
 Both these problems can be easily fixed.  Just add the C<use strict>
 pragma, then pre-declare your package variables.  (The C<our> operator
 will be new in 5.6, and will work for package globals just like C<my>
 works for scoped lexicals.)
-이 두문제들은 손쉽게 고쳐질수 있겠다. 간단히 use strict pragma를 더해주고
+이 문제들은 쉽게 고쳐질수 문제들이 되겠다. 간단히 use strict pragma를 더해주고
 미리(선행으로?) 패키지 변수들을 선언해 줌으로써 말이다. ( 5.6에서 새롭게 our
 연산자가 제공 되며, 렉시칼 영역에서 사용되는 my 연산자와 같이 패키지 전역에서
 사용할수 있겠다.)
@@ -212,10 +215,10 @@ package variables with capital letters.  This helps clarity somewhat, but
 by no longer fully qualifying the package variables, their significance
 can be lost when reading the code.  You can fix this easily enough by
 choosing better names than were used here.
-다른 전역 변수들과 마찬가지로, 프로그래머중에는 패키지변수 이름의 시작을
-대문자로 주는것을 선호한다. 어느정도는 명료함을 주지만, 더이상 패키지 변수
-이름으로서 적절하지 않아 코드를 읽을시 의미를 잃어 버릴수도 있겠다. 이런
-문제들은 여기서 사용된 것들보다 더 적절한 이름들을 선택함으로 쉽게 해결할수
+다른 전역 변수들과 마찬가지로, 여러 프로그래머중에는 패키지변수 이름의 시작을
+대문자로 주는것을 선호하기도 한다. 이를 통해 어느정도의 명료함을 주지만, 더이상
+패키지 변수 로서의 자격을 상실해 코드를 읽을시 의미를 잃어 버릴수도 있겠다. 이런
+문제들은 예제에 사용된 것들보다 더 적절한 이름들을 선택함으로 쉽게 해결할수
 있겠다.
 
 
@@ -227,8 +230,16 @@ repetition begin to grate when listing out accessor methods for class
 data.  Repetition runs counter to the primary virtue of a programmer:
 Laziness, here manifesting as that innate urge every programmer feels
 to factor out duplicate code whenever possible.
+얼마 안있어 아무생각없이 열거된 인스탄스(intance)속성들의
+접근자(accessor) 메소드들은 짜증을 키울것이며 또한 클래스 데이타의 접근자
+메소드들에 대한 리스팅을 할때 그런 반복성으로 인해 성질이 나기
+시작할것이다. 이런식의 되풀이는 프로그래머로써의 주된 장점에 반대되는
+것이다: 즉 게으름인데, 모든 프로그래머들은 선천적으로 가능하면 중복된 코드를
+피하는것을 볼수 있겠다.
+
 
 Here's what to do.  First, make just one hash to hold all class attributes.
+여기에 해결방법이 있다.  첫번째로 해쉬 하나를 생성하여 모든 클래스 속성들을 담는다.
 
     package Some_Class;
     use strict;
@@ -241,6 +252,10 @@ Using closures (see L<perlref>) and direct access to the package symbol
 table (see L<perlmod>), now clone an accessor method for each key in
 the %ClassData hash.  Each of these methods is used to fetch or store
 values to the specific, named class attribute.
+여러 클로우저(closure)의 사용과 패키지 심볼 테이블에 직접 접근(direct access)을
+통해, 각 %ClassData해쉬에 있는 키를 위해 접근자 메소드들을 클론을 한다. 이 각
+메소드들을 통해 특정 클래수 속성 값을 가져오거나 저장할수 있겠다.
+
 
     for my $datum (keys %ClassData) {
 	no strict "refs";	# to register new methods in package
@@ -257,6 +272,12 @@ function would have to distinguish between class attributes and object
 attributes; it could interfere with inheritance; and it would have to
 careful about DESTROY.  Such complexity is uncalled for in most cases,
 and certainly in this one.
+사실 &AUTOLOAD를 도입하여 해답을 구사할수 있겠지만, 이 방식으로는
+만족성을 충당할수 없는듯하다. 작성된 함수는 값이 클래수 속성인지 오브젝트
+속성인지 구별해야 하며; 상속을 방해 할수있으며; 섬멸자(DESTROY)를 조심히
+다루어야 한다. 주로 이정도 어려운 구현방식은 요구되지않으며 여기에선 특히
+더욱 그렇다.
+
 
 You may wonder why we're rescinding strict refs for the loop.  We're
 manipulating the package's symbol table to introduce new function names
@@ -270,6 +291,9 @@ But there's nothing wrong with using symbolic references to manipulate
 something that is meaningful only from the perspective of the package
 symbol table, like method names or package variables.  In other
 words, when you want to refer to the symbol table, use symbol references.
+여기서 왜 루프 안에는 strict ref를 무효화 했는지 궁금해 할껏이다. 우리는
+여기서 심볼 테이블인 
+
 
 Clustering all the class attributes in one place has several advantages.
 They're easy to spot, initialize, and change.  The aggregation also
