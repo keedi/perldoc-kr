@@ -1558,8 +1558,8 @@ referenced by C<$self-E<gt>{LIST}>:
 
 =end original
 
-この例では、C<$self-E<gt>{LIST}> でリファレンスされている、元となる
-ハッシュで C<scalar> を呼び出しています:
+이 예제에서는 C<$self-E<gt>{LIST}> 로 리퍼런스된 본래의 해쉬에서
+C<scalar> 로 호출하고 있습니다.
 
     sub SCALAR {
 	carp &whowasi if $DEBUG;
@@ -1576,8 +1576,8 @@ This is called when C<untie> occurs.  See L<The C<untie> Gotcha> below.
 
 =end original
 
-これは C<untie> が発生した時に呼び出されます。
-以下の L<The C<untie> Gotcha> を参照してください。
+이것은 C<untie> 가 발생한 때에 호출됩니다.
+아래의 L<The C<untie> Gotcha> 를 참조해주세요.
 
 =item DESTROY this
 X<DESTROY>
@@ -1590,10 +1590,9 @@ or have auxiliary state to clean up.  Here's a very simple function:
 
 =end original
 
-このメソッドは tie されたハッシュがスコープの外に出るときに
-呼び出されます。
-実際には、デバッグ情報を足そうとするとか、後始末のための
-補助的な情報を持っていなければ、必要になりません。
+이 메소드는 tie 된 해쉬가 스코프의 밖에 나올 때에 호출됩니다.
+실제로는 디버그정보를 채우거나 정리를 위해
+보조적인 정보를 가지지 않는다면, 필요하지 않습니다.
 
     sub DESTROY  {
 	carp &whowasi if $DEBUG;
@@ -1609,12 +1608,9 @@ each() function to iterate over such.  Example:
 
 =end original
 
-keys() や values() といった関数は、DBM ファイルのような大きなオブジェクトに
-対して使ったときに大きなリストを返す可能性があるということに
-注意してください。
-そういったものに対して繰り返しの処理を行うには、each() を使うのが
-良いでしょう。
-例:
+keys() 나 values() 같은 함수는, DBM 파일같은 큰 오브젝트에 주의해주세요.
+그런 것에 대해 반복처리를 수행하면, each(를 사용하는 것이 좋습니다.
+예제:
 
     # print out history file offsets
     use NDBM_File;
@@ -1627,7 +1623,7 @@ keys() や values() といった関数は、DBM ファイルのような大き�
 =head2 Tying FileHandles
 X<filehandle, tying>
 
-(ファイルハンドルを tie する)
+(파일 핸들을 tie하기)
 
 =begin original
 
@@ -1635,7 +1631,7 @@ This is partially implemented now.
 
 =end original
 
-これは現時点ではまだ部分的にしか実装されていません。
+이것은 현시점에서는 아직 부분적으로만 완성되었습니다.
 
 =begin original
 
@@ -1647,12 +1643,12 @@ used on the handle.
 
 =end original
 
-tie されたファイルハンドルを実装するクラスは以下のメソッドを定義すべきです。
-TIEHANDLE と、PRINT, PRINTF, WRITE, READLINE, GETC, READ の
-中の少なくともいずれか一つ、そして可能であればCLOSE, UNTIE, DESTROY。
-また、クラスは以下のものも提供できます: BINMODE,
-OPEN, EOF, FILENO, SEEK, TELL - もし対応する perl の演算子がハンドルで
-つかわれるならです。
+tie 된 파일핸들을 구성하는 클래스는 아래의 메소드를 정의해야합니다.
+TIEHANDLE と、PRINT, PRINTF, WRITE, READLINE, GETC, READ  중에
+어느 하나, 그리고 가능하다면 CLOSE, UNTIE, DESTROY.
+또는 클래스는 이런 것들도 제공할 수 있습니다. : BINMODE
+OPEN, EOF, FILENO, SEEK, TELL - 만약 대응하는 perl 의 연산자가 핸들로
+사용될 수 있다면 말이죠.
 
 =begin original
 
@@ -1681,10 +1677,10 @@ in some special way.  See nvi and the Apache module for examples.
 
 =end original
 
-これら全ては perl が他のプログラムに埋め込まれていて、
-STDOUT や STDERR で出力する場所はなんらかの特殊なやり方でリダイレクトする
-必要があるときに特に便利です。
-実際の例は nvi や Apache モジュールを参照してください。
+이런 모든 것은 perl 이 다른 프로그램에 내장되어,
+STDOUT 나 STDERR 로 출력하는 장소는 뭔가 특수한 방법으로 리다이렉트할
+필요가 있을 때에 특히 편리합니다.
+실제의 예제는 nvi 나 Apache 모듈을 참조해주세요.
 
 =begin original
 
@@ -1692,7 +1688,7 @@ In our example we're going to create a shouting handle.
 
 =end original
 
-私たちの例では、叫ぶハンドルを生成します。
+예제에서는, 외치는 핸들을 생성합니다.
 
     package Shout;
 
@@ -1709,9 +1705,9 @@ hold some internal information.
 
 =end original
 
-これはこのクラスのコンストラクタです。
-その働きはなにかの bless されたリファレンスを返すことです。
-そのリファレンスは内部情報を保持するために使うことができます。
+이것은 이 클래스의 생성자입니다.
+뭔가의 bless 된 리퍼런스를 반환하는 일을 합니다.
+리퍼런스는 내부정보를 보존하기 위해 사용할 수 있습니다.
 
     sub TIEHANDLE { print "<shout>\n"; my $i; bless \$i, shift }
 
@@ -1725,8 +1721,7 @@ C<syswrite> function.
 
 =end original
 
-このメソッドは C<syswrite> 関数を通じてハンドルが書き出されるときに
-呼び出されます。
+이 메소드는 C<syswrite> 함수를 통해 핸들이 쓰여질 때에 호출됩니다.
 
     sub WRITE {
 	$r = shift;
@@ -1746,9 +1741,8 @@ the print function.
 
 =end original
 
-このメソッドは tie されたハンドルに C<print> 関数を使って出力される
-度に呼び出されます。
-このメソッドは自分の参照のほか、print 関数に渡すリストを受け取ります。
+이 메소드는 tie 된 핸들에 C<print> 함수를 사용해 출력될 때마다 호출됩니다.
+이 메소드는 자신의 참조 이외에, printf ㅊ함수에 넘길 리스트를 받습니다.
 
     sub PRINT { $r = shift; $$r++; print join($,,map(uc($_),@_)),$\ }
 
@@ -1764,9 +1758,8 @@ passed to the printf function.
 
 =end original
 
-このメソッドは tie されたハンドルに C<printf> 関数を使って
-出力される度に呼び出されます。
-このメソッドは自分の参照のほか、printf 関数に渡すリストを受け取ります。
+이 메소드는 tie 된 핸들에 C<printf> 함수를 사용해서 출력될 때마다 호출됩니다.
+이 메소드는 자신의 참조 이외에 prinf 함수에 넘길 리스트를 받습니다.
 
     sub PRINTF {
         shift;
@@ -1784,8 +1777,8 @@ or C<sysread> functions.
 
 =end original
 
-このメソッドはハンドルが C<read> や C<sysread> といった関数を通じて
-読まれたときに呼び出されます。
+이 메소드는 핸들이 C<read> 나 C<sysread> 같은 함수를 통해서
+읽혀졌을 때에 호출됩니다.
 
     sub READ {
 	my $self = shift;
@@ -1806,8 +1799,8 @@ The method should return undef when there is no more data.
 
 =end original
 
-このメソッドは <HANDLE> を通してハンドルが読まれたときに呼び出されます。
-このメソッドはもうデータがない場合には undef を返します。
+이 메소드는 <HANDLE> 을 통해서 핸들이 읽어졌을 때에 호출됩니다.
+이 메소드는 더 이상의 데이터가 없는 경우에는 undef를 반환합니다.
 
     sub READLINE { $r = shift; "READLINE called $$r times\n"; }
 
@@ -1820,7 +1813,7 @@ This method will be called when the C<getc> function is called.
 
 =end original
 
-このメソッドは関数 C<getc> が呼ばれたときに呼び出されます。
+이 메소드는 함수 C<getc> 가 호출된 때에 호출됩니다.
 
     sub GETC { print "Don't GETC, Get Perl"; return "a"; }
 
@@ -1834,8 +1827,7 @@ function.
 
 =end original
 
-このメソッドは、C<close> 関数を通してハンドルがクローズされるときに
-呼び出されます。
+이 메소드는, C<close> 함수를 통해 핸들이 닫힐 때에 호출됩니다.
 
     sub CLOSE { print "CLOSE called.\n" }
 
@@ -1866,9 +1858,9 @@ possibly cleaning up.
 
 =end original
 
-他の型に対する tie と同様に、このメソッドは tie されたハンドルが
-破棄されるときに呼び出されます。
-これはデバッグや後始末をするのに便利です。
+다른 형태에 대해 tie처럼, 이 메소드는 tie 된 핸들이
+파괴될 때에 호출됩니다.
+이것은 디버그나 나중에 정리를 하는 것에 편리합니다.
 
     sub DESTROY { print "</shout>\n" }
 
@@ -1880,7 +1872,7 @@ Here's how to use our little example:
 
 =end original
 
-以下は私たちのサンプルをどのように使うかの例です。
+아래는 샘플을 어떻게 사용하는 가의 예제입니다.
 
     tie(*FOO,'Shout');
     print FOO "hello\n";
@@ -1898,14 +1890,14 @@ at untie().  See L<The C<untie> Gotcha> below.
 
 =end original
 
-全ての型に対する tie について、untie() で呼び出される UNTIE メソッドを
-定義できます。
-以下の L<The C<untie> Gotcha> を参照してください。
+모든 형태에 한  tie에 대해서, untie() 로 호출된 UNTIE 메소드를
+정의할 수 있습니다.
+아래의 L<The C<untie> Gotcha> 를 참조해주세요
 
 =head2 The C<untie> Gotcha
 X<untie>
 
-(C<untie> のコツ)
+(C<untie> Gotcha)
 
 =begin original
 
@@ -1915,10 +1907,9 @@ subtle gotcha you I<must> guard against.
 
 =end original
 
-tie() や tied() が返したオブジェクトを使おうとするならば、また、
-その tie されているターゲットクラスがデストラクタを
-定義しているのであれば、あなたが I<しなければならない>
-微妙なコツがあります。
+tie() 나 tied() 가 반환한 오브젝트를 사용하려면,
+그 tie 된 타겟클래스가가 파괴자를 정의하고 있다면, 
+<해야할> 미묘한 것이 있습니다.
 
 =begin original
 
@@ -1928,8 +1919,8 @@ a scalar.
 
 =end original
 
-セットアップとして、以下の tie の例を考えてみましょう。
-これはファイルを使って、スカラに代入された値を記録し続けるというものです。
+셋업으로써 아래의 tie의 예를 생각해봅시다.
+이것은 파일을 사용해, 스칼라에 대입된 값을 기록해나가는 것입니다.
 
     package Remember;
 
