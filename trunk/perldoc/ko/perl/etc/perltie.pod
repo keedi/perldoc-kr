@@ -9,7 +9,6 @@ perltie - how to hide an object class in a simple variable
 
 perltie - 오브젝트 클래스를 단순한 변수에 숨기는 방법
 
-
 =head1 SYNOPSIS
 
  tie VARIABLE, CLASSNAME, LIST
@@ -1141,7 +1140,7 @@ Here are the methods for the DotFiles tied hash.
 
 =end original
 
-以下は、DotoFiles に tie されたハッシュのためのメソッドです。
+아래는 DotFiles 에 tei 된 해쉬를 위한 메소드입니다.
 
 =over 4
 
@@ -1156,9 +1155,9 @@ necessarily an anonymous hash) will be accessed.
 
 =end original
 
-これはクラスに対するコンストラクタです。
-その役割は、アクセスされる(おそらくは無名のハッシュ、
-ただしそうする必要はない)オブジェクトへの bless された参照を返すことです。
+이것은 클래스에 대한 생성자입니다.
+접근되는(아마도 이름없는 해쉬, 하지만 그럴 필요는 없음) 오브젝트로
+bless 된 참조를 반환하는 역할을 합니다.
 
 =begin original
 
@@ -1166,7 +1165,7 @@ Here's the constructor:
 
 =end original
 
-コンストラクタの例です。
+생성자의 예입니다.
 
     sub TIEHASH {
 	my $self = shift;
@@ -1204,10 +1203,10 @@ have been testing the wrong file.
 
 =end original
 
-readdir が返した値をつかってファイルテストをしようという場合、
-問い合わせにディレクトリを付加すべきでしょう。
-そうしなければ、chdir() をしていないので間違ったファイルを
-テストしてしまうこととなります。
+readdir 이 반환한 값을 사용해 파일테스트를 하려고 할 경우,
+아마도 디렉토리 물어보는 게 좋을 겁니다.
+그렇지 않으면, chdir() 을 하고 있지 않으므로, 다른 파일을
+테스트해 버리기 때문입니다.
 
 =item FETCH this, key
 X<FETCH>
@@ -1220,10 +1219,9 @@ whose value we're trying to fetch.
 
 =end original
 
-このメソッドは tie されたハッシュがアクセス(読み出し)される度毎に
-呼び出されます。
-これは自分の参照のほかに、フェッチしようとしている値に対するキーを、
-ただ一つの引数としてとります。
+이 메소드는 tie 된 해쉬가 접근(읽기)될 때마다 호출됩니다.
+이것은 자신의 참조 이외에, 펫치하려고하는 값에 대한 키를
+단 하나의 인수로 얻습니다.
 
 =begin original
 
@@ -1231,7 +1229,7 @@ Here's the fetch for our DotFiles example.
 
 =end original
 
-以下に示すのは、私たちの DotFiles サンプルのためのフェッチです。
+아래에 나타내는 것은 DotFiles 샘플을 위한 펫치입니다.
 
     sub FETCH {
 	carp &whowasi if $DEBUG;
@@ -1261,11 +1259,9 @@ not that concerned.
 
 =end original
 
-UNIX の cat(1) コマンドを呼んでいるので記述するのは簡単でしたが、
-ファイルを自分でオープンすることによってよりポータブル(かつ、より高効率)に
-できます。
-もちろん、ドットファイルは UNIX 的なコンセプトですから、
-私たちは気にしませんでした。
+UNIX 의 cat(1) 커맨드를 불러오기때문에 기술하는 것은 간단했지만,
+파일을 스스로 오픈하는 것에 의해 보다 포터블(및 더 높은 효율)하게 됩니다.
+물론, DotFiles 는 UNIX같은 컨셉트이기에, 여기서는 신경쓰지 않았습니다.
 
 =item STORE this, key, value
 X<STORE>
@@ -1279,10 +1275,9 @@ there.
 
 =end original
 
-このメソッドは tie されたハッシュの要素がセット(書き込み)される度に
-呼び出されます。
-これは自分の参照の他に二つの引数、何かを格納しようとする場所の添え字と、
-格納しようとする値をとります。
+이 메소드는 tie 된 해쉬의 요소가 정의(쓰기)될 때에 호출됩니다.
+이것은 자신의 참조 이외에 두개의 인수, 무엇인가를 넣으려고 하는 장소의
+첨자와, 넣으려고 하는 값을 얻습니다.
 
 =begin original
 
@@ -1292,9 +1287,9 @@ method on the original object reference returned by tie().
 
 =end original
 
-以下は DotFiles のサンプルです。
-tie() で返されたオブジェクトのリファレンス上で clobber() メソッドが
-呼び出されない限り、ファイルを上書きしないようにしています。
+아래는 DotFiles 의 샘플입니다.
+tie() 로 반환된 오브젝트의 리퍼런스 상에서 clobber() 메소드가
+호출되지않는 한, 파일을 덮어쓰지 않도록 하고 있습니다.
 
     sub STORE {
 	carp &whowasi if $DEBUG;
@@ -1318,7 +1313,7 @@ If they wanted to clobber something, they might say:
 
 =end original
 
-もし何かを変更したいというのであれば、このようにします。
+만약 뭔가를 변경하고 싶다면, 이렇게 합니다.
 
     $ob = tie %daemon_dots, 'daemon';
     $ob->clobber(1);
@@ -1332,8 +1327,8 @@ using:
 
 =end original
 
-基礎をなすオブジェクトへの参照を扱うもう一つの方法は tied() 関数を
-使うことで、これによって clobber を以下の様に使ってセットできます。
+기초가 되는 오브젝트로의 참조를 취급하는 또 다른 방법은 tied() 함수를
+사용하는 것으로, 이것에 의해 clobber 를 아래처럼 사용해서 설정할 수 있습니다.
 
     tie %daemon_dots, 'daemon';
     tied(%daemon_dots)->clobber(1);
@@ -1344,7 +1339,7 @@ The clobber method is simply:
 
 =end original
 
-clobber メソッドは単純です。
+clobber 메소드는 단순합니다.
 
     sub clobber {
 	my $self = shift;
@@ -1362,9 +1357,9 @@ be careful to check whether they really want to clobber files.
 
 =end original
 
-このメソッドはハッシュから要素を取り除くとき、典型的には delete() 関数を
-使ったときに呼び出されます。
-繰り返しますが、本当にファイルを clobber したいのかを注意深く検査しています。
+이 메소드는 해쉬에서 요소를 제거할 때, 전형적으로는 delete() 함수를
+사용할 때에 호출됩니다.
+반복하지만, 분명히 파일을 clobber 하고싶은 가를 주의 깊게 검사하고 있습니다.
 
     sub DELETE   {
 	carp &whowasi if $DEBUG;
@@ -1390,11 +1385,11 @@ the caller whether the file was successfully deleted.
 
 =end original
 
-DELETE の 返す値は delete() の戻り値から来ています。
-もしあなたが通常の delete() の動作をまねしたいというのであれば、
-FETCH がこのキーに対して返すであろう値を返すべきでしょう。
-この例では、戻り値としてファイルの削除に成功したかどうかを
-返すことを選択しました。
+DELETE 의 반환값은 delete() 의 반환값에서 옵니다.
+만약 일반적인 delete() 의 동작을 흉내내고 싶다면,
+FETCH 가 이 키에 대해 반환할 값을 반환해야 할 겁니다.
+이 예제에서는 반환값으로 파일의 삭제에 성공했는 가 어떤가를 반환하는 것을
+선택했습니다.
 
 =item CLEAR this
 X<CLEAR>
@@ -1406,8 +1401,8 @@ assigning the empty list to it.
 
 =end original
 
-このメソッドはハッシュ全体が消去されるとき、通常は空リストが代入されたときに
-呼び出されます。
+이 메소드는 해쉬전체가 제거될 때, 일반적으로는 빈 리스트가 대입된 때에
+호출 됩니다.
 
 =begin original
 
@@ -1417,10 +1412,9 @@ dangerous thing that they'll have to set CLOBBER to something higher than
 
 =end original
 
-私たちの例では、これはユーザーのすべてのドットファイルを
-削除してしまいます!
-これはとても危険なことで、実際に削除するには CLOBBER に 1 を超える値を
-セットすることが必要となります。
+우리들의 예제에서는, 이것은 유저의 모든 DotFiles를 삭제하고 있습니다.
+이것은 아주 위험한 것으로, 실제로는 삭제하기 위한 CLOBBER 에 1을 넘는 값을
+설정하는 것이 필요합니다.
 
     sub CLEAR    {
 	carp &whowasi if $DEBUG;
@@ -1444,9 +1438,8 @@ hash element for this:
 
 =end original
 
-このメソッドは特定のハッシュにおいて、exists() 関数が使われたときに
-呼び出されます。
-私たちの例では、このためにハッシュ要素 C<{LIST}> を参照します。
+이 메소드는 특정 해쉬에서, exists() 함수가 사용될 때 호출됩니다.
+이 예제에서는, 이때문에 해쉬 요소 C<{LIST}> 를 참조합니다.
 
     sub EXISTS   {
 	carp &whowasi if $DEBUG;
@@ -1466,8 +1459,8 @@ call.
 
 =end original
 
-このメソッドは keys() や each() を呼び出すのと同様に、ハッシュを通じた
-反復をユーザーが行おうとするときに呼び出されます。
+이 메소드는 keys() 나 each() 를 호출하는 것처럼, 해쉬를 통한 반복을
+유저가 수행하려고 할 때에 호출됩니다.
 
     sub FIRSTKEY {
 	carp &whowasi if $DEBUG;
@@ -1488,11 +1481,10 @@ than one sequence, or not really storing things in a hash anywhere.
 
 =end original
 
-このメソッドは keys() または each() 反復の間に呼び出されます。
-二番目の引数として、最後にアクセスしたキーをとります。
-これは、あなたが順番に取り出すとか、二度以上反復子を呼び出したり、
-あるいは実際にはハッシュのどこにも格納されていないものであるときに
-便利です。
+이 메소드는 keys() 또는 each() 반복 사이에 호출됩니다.
+2번째의 인수로써, 최후에 접근한 키를 얻습니다.
+이것은, 순서대로 얻어내거나, 2번이상의 반복자를 호출하거나,
+혹은 실제로는 해쉬의 어디에도 없는 것일 때에 편리합니다.
 
 =begin original
 
@@ -1501,8 +1493,8 @@ thing, but we'll have to go through the LIST field indirectly.
 
 =end original
 
-私たちの例では本当のハッシュを使うので、やることは簡単です。
-しかし、LIST フィールドを間接的に扱わなければなりません。
+이 예제에서는 진짜 해쉬를 사용하기 때문에, 하는 것은 간단합니다.
+그러나, LIST 필드를 간접적으로 취급하지 않으면 안됩니다.
 
     sub NEXTKEY  {
 	carp &whowasi if $DEBUG;
