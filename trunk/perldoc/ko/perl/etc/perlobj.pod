@@ -97,10 +97,10 @@ constructor:
 
 =end original
 
-C++ 과는 달리 Perl은 컨스트럭터에 대해 특별한 구문을 준비하지 않습니다.
-컨스트럭터는 단순히, 클래스에 "bless" 한 무엇인가의 리퍼런스를
+C++ 과는 달리 Perl은 생성자에 대해 특별한 구문을 준비하지 않습니다.
+생성자는 단순히, 클래스에 "bless" 한 무엇인가의 리퍼런스를
 반환하는 서브루틴으로, 일반적으로는 서브틴이 정의되어 있는 클래스입니다.
-아래는 전형적인 컨스트럭터를 나타냅니다.
+아래는 전형적인 생성자를 나타냅니다.
 
     package Critter;
     sub new { bless {} }
@@ -113,7 +113,7 @@ a construct this way, too:
 =end original
 
 C<new> 라고 하는 단어는 특별한 것이 아닙니다.
-컨스트럭터를 아래와 같이 쓰는 것도 가능합니다.
+생성자를 아래와 같이 쓰는 것도 가능합니다.
 
     package Critter;
     sub spawn { bless {} }
@@ -131,8 +131,8 @@ they create.
 
 실제로는, 이건 C++ 프로그래머가 C++ 처럼 Perl 의 C<new> 가 동작한다고
 생각해서 함정에 빠질 일이 없다 는 점에서 선택할 만한 것입니다.
-해결하고 픈 문제에 관한 컨텍스트에서 알기쉬운 컨스트럭터로 하는 것을
-추천합니다. 예를 들면, Perl 의 Tk 익스텐션의 컨스트럭터에서는
+해결하고 픈 문제에 관한 컨텍스트에서 알기쉬운 생성자로 하는 것을
+추천합니다. 예를 들면, Perl 의 Tk 익스텐션의 생성자에서는
 작성하는 위젯에서 이름을 얻고 있습니다.
 
 =begin original
@@ -149,7 +149,7 @@ have been returned directly, like this:
 
 =end original
 
-Perl 의 컨스트럭터에 관해서 C++ 과 다른 것은,
+Perl 의 생성자에 관해서 C++ 과 다른 것은,
 C++ 에서는 자신이 메모리를 할당할 필요가 있다는 것입니다.
 C<{}> 는 빈 이름없는 해쉬를 할당합니.
 bless() 는 인수에 리퍼런스를 얻고, 그 오브젝트에 오브젝트가
@@ -171,7 +171,7 @@ that wish to call methods in the class as part of the construction:
 =end original
 
 실제로는, 구축의 일부로써 클래스의 메소드를 호출하는 것처럼 더욱
-복잡한 컨스트럭터를 잘 보이도록 하는 것이겠죠.
+복잡한 생성자를 잘 보이도록 하는 것이겠죠.
 
     sub new {
 	my $self = {};
@@ -191,7 +191,7 @@ so that your constructors may be inherited:
 
 상속에 대해서 신경쓰고 있으면(혹 그러고 계시다면,
 L<perlmodlib/"Modules: Creation, Use, and Abuse">를 참조해주세요)
-계승될지도 모르는 컨스트럭터에서 인수 두개를 얻는 형식의 bless 를
+계승될지도 모르는 생성자에서 인수 두개를 얻는 형식의 bless 를
 사용하고 싶다면 :
 
     sub new {
@@ -217,8 +217,6 @@ whatever $class we blessed the object into:
 기대하고 있다면, 아래와 같은 형식을 사용합니다.
 initialize() 라 하는 메소드는 $class를 자신들이 오브젝트에 bless 하고 있는 
 지 어떤 지에 상관없이 사용됩니다.
-
-(TBT)
 
     sub new {
 	my $this = shift;
@@ -255,7 +253,7 @@ having to do this, the parent class is probably misbehaving, though.
 
 =end original
 
-컨스트럭터는 현재 참조된 오브젝트를 별도의 클래스에 소속시키기 위해
+생성자는 현재 참조된 오브젝트를 별도의 클래스에 소속시키기 위해
 다시 bless 할지도 모릅니다.
 하지만, 새로운 클래스는 나중에 없어지는 원인이 됩니다.
 오브젝트는 한번에 하나의 클래스에만 속할 수 없는 것처럼 
@@ -463,7 +461,7 @@ C++ 과는 달리, Perl 은 메소드 정의에 대한 특별한 구문이 없�
 구문을 제공하고 있습니다)
 메소드는 첫번째 인수로써, 메소드를 기동한 오브젝트(리퍼런스),
 혹은 패키지(문자열)을 기대하고 있습니다.
-메소드의 호ㄹ방법에는 두종류가 있는데, 각각 클래스 메소드,
+메소드의 호출방법에는 두종류가 있는데, 각각 클래스 메소드,
 인스턴스 메소드라고 부릅니다.
 
 =begin original
@@ -484,7 +482,7 @@ object by name:
 클래스메소드는 첫번째 인수로써 클래스 이름을 기대합니다.
 클래스메소드는 클래스 전체에 대한 기능을 제공하는 것이고, 클래스에
 속한 각각의 오브젝트에 대한 것이 아닙니다.
-컨스트럭터는 보통은 클래스메소드이지만,
+생성자는 보통은 클래스메소드이지만,
 대안에 대해서는 L<perltoot>와 L<perltooc>를 참조해주세요.
 많은 클래스메소드는 단순히 첫번째인수를 무시합니다.
 이것은 이미 자신이 놓여있는 패키지의 이름을 알고 있고,
@@ -547,11 +545,8 @@ dereferencing.
 =end original
 
 이미 C<< -> >> 연산자를 리퍼런스로 쓰는 것에 익숙해 졌겠죠?
-You should already be familiar with the use of the C<< -> >> operator with
-references.  In fact, since C<$fred> above is a reference to an object,
-you could think of the method call as just another form of
-dereferencing.
-(TBT)
+사실 C<$fred> 이후는 오브젝트로의 리퍼런스이고, 
+다른 오브젝트의 디리퍼런스로써 메소드를 호출할 수 있다고 생각할 수 있습니다.
 
 =begin original
 
@@ -561,10 +556,8 @@ So the above code is mostly equivalent to:
 
 =end original
 
-Whatever is on the left side of the arrow, whether a reference or a
-class name, is passed to the method subroutine as its first argument.
-So the above code is mostly equivalent to:
-(TBT)
+화살표의 왼쪽에 있는 무엇이든, 리퍼런스나 클래스 이름이 첫번째 인수로
+메소드 서브루틴에 넘겨졌든 어떻든 간에 위의 코드는 거의 같은 것입니다.
 
     my $fred = Critter::find("Critter", "Fred");
     Critter::display($fred, "Height", "Weight");
@@ -580,6 +573,7 @@ it in any base classes of that package, and so on.
 
 =end original
 
+Perl 은 어떻게해서 패키지에 서브루틴이 있는지 알고 있을까요? 
 How does Perl know which package the subroutine is in?  By looking at
 the left side of the arrow, which must be either a package name or a
 reference to an object, i.e. something that has been blessed to a
