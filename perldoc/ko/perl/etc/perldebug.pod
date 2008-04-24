@@ -7,7 +7,7 @@ perldebug - Perl debugging
 
 =end original
 
-perldebug - Perl のデバッグ
+perldebug - Perl 디버깅
 
 =head1 DESCRIPTION
 
@@ -17,7 +17,7 @@ First of all, have you tried using the B<-w> switch?
 
 =end original
 
-まず最初に一言「もう B<-w> スイッチはお使いになりましたか。」
+일단 먼저, "B<-w> 스위치는 사용하고 계십니까?"
 
 =begin original
 
@@ -26,8 +26,8 @@ L<perldebtut>, which is a tutorial introduction to the debugger .
 
 =end original
 
-もし Perl デバッガに慣れていないなら、デバッガに関するチュートリアルである
-L<perldebtut> を読んだ方がいいかもしれません。
+만약 Perl 디버거에 적응되지 않았다면, 디버거에 관한 튜토리얼인
+L<perldebtut> 를 읽는 편이 좋을 지도 모릅니다.
 
 =head1 The Perl Debugger
 
@@ -44,14 +44,13 @@ X<-d>
 
 =end original
 
-Perl を B<-d> スイッチを付けて起動すれば、スクリプトは Perl ソースデバッガ
-上で実行されることになります。
-これは対話的な Perl 環境のように動作し、
-ソースコードの表示、ブレークポイントの設定、スタックのバックトレース、
-変数の値の変更、などを実行するデバッガコマンドを入力できます。
-これはとても便利なので、単にやりたいことを対話的に試すために
-デバッガを起動するようになるでしょう。
-例えば:
+Perl 을 B<-d> 스위치를 붙여서 기동시키면, 스크립트는 Perl 소스디버거위에서
+실행되게 됩니다. 이것은 대화적인 Perl 환경처럼 작동하고,
+소스코드의 표시, 브레이크포인트의 설정, 스택의 역추적, 변수의 값 변경,
+등을 실행하는 디버거커맨드를 입력할 수 있습니다.
+이것은 매우 편리하므로, 단지 하고 싶은 것을 대화적으로 시험하기 위해
+디버거를 기동하게 될 겁니다.
+예를 들면:
 X<-d>
 
     $ perl -d -e 42
@@ -67,13 +66,11 @@ preloads a special Perl library file containing the debugger.
 
 =end original
 
-しかし、Perl デバッガは典型的なコンパイルされた環境の様に独立した
-プログラムではありません。　その代わりに、
--d フラグによって、コンパイラがインタプリタに渡すパース木にソース情報を
-埋め込むようにしています。これは、ソースがデバッガ上で動作できるためには、
-一度正常にコンパイルできないといけないということです。
-それからインタプリタが起動され、デバッガを含む
-特別な Perl ライブラリをロードします。
+그러나, Perl 디버거는 전형적인 컴파일된 환경처럼 독립된 프로그램이 아닙니다.
+그 대신에, -d 플래그에 의해, 컴파일러가 인터프리터에 넘겨져 파스 트리 위에
+동작되기 위해서는, 일단 정상적으로 컴파일되지 않으면 안되는 것입니다.
+그러면 인터프리터가 기동되고, 디버거를 포함한 특별한 Perl 라이브러리를
+로드합니다.
 
 =begin original
 
@@ -85,12 +82,12 @@ line it's I<about> to execute, rather than the one it has just executed.
 
 =end original
 
-プログラムは、最初の実行時実行文のI<直前>で停止し
-(ただし、以下コンパイル時実行文については後述します)、以下に示すいずれかの
-コマンドが入力されるのを待ちます。
-よくある期待とは逆に、
-デバッガが停止してある行のコードを表示しているときは、
-直前に実行した行ではなく、常にI<今から実行する>行を表示します。
+프로그램은, 맨 처음 실행 시에 실행문의 I<직전>에 정지하고
+(단, 아래 컴파일시 실행문에 대해서는 뒤에 기술하겠습니다), 아래에 나타내는
+것 중의 커맨드 하나가 입력되기를 기다립니다.
+흔한 기대와는 달리,
+디버거가 정지하고 있는 행의 코를 표시하고 있을 때는,
+직전에 실행한 줄이 아닌, 항상 I<지금부터 실행하는> 줄을 표시합니다.
 
 =begin original
 
@@ -100,9 +97,9 @@ uses the DB package for keeping its own state information.)
 
 =end original
 
-デバッガが認識できないコマンドは現在のパッケージ内で Perl のコードとして
-実行(C<eval>)されます。
-(デバッガは自分自身の状態を保存するために DB パッケージを使います。)
+디버거가 인식할 수 없는 커맨드는 현재의 패키지안에서 Perl 의 코드로써
+실행(C<eval>)됩니다.
+(디버거는 자기자신의 상태를 보존하기 위해 DB패키지를 사용합니다.)
 
 =begin original
 
@@ -114,11 +111,12 @@ material which should be in the same scope, stuff it in one line.
 
 =end original
 
-C<eval> は暗黙のスコープで区切られていることに注意してください。
-結果として、新しく導入されたレキシカル変数や変更された捕捉バッファの内容は
-eval の後失われます。
-デバッガは Perl を学ぶよい環境ですが、もし同じスコープ内であるべき
-ものを使って対話的に実験したい場合は、それを 1 行に書いてください。
+C<eval> 은 암묵의 스코프에서 나뉜다는 것에 주의해주세요.
+결과로써, 새롭게 도입된 렉시컬 변수나 변경된 보조 버퍼의 내용은
+eval 뒤에 잃어버립니다.
+디버거는 Perl 을 배우는 보다 좋은 환경이지만, 만약 같은 스코프안에서
+어떤 것을 사용해 대화적인 실험을 하고 싶은 경우에는, 그것을 첫번째 줄에 
+써주세요.
 
 =begin original
 
@@ -131,15 +129,14 @@ or braces.
 
 =end original
 
-デバッガコマンドとして入力された文字列は、まず先頭と末尾の
-空白が切り詰められます。
-デバッガコマンドがプログラムの関数名と一致する場合、
-関数名の前に C<;> や C<+> のような、デバッガコマンドに見えない文字を
-付け加えるか、括弧でくくってください。
+디버거커맨드로써 입력된 문자열은, 우선 맨앞과 맨끝의 공백이 잘려나갑니다.
+디버거커맨드가 프로그램의 함수이름과 일치하는 경우,
+함수이름의 앞에 C<;>나 C<+> 같은, 디버거 커맨드에게 보이지 않는 문자를
+덧붙이거나, 괄호로 감싸주세요.
 
 =head2 Debugger Commands
 
-(デバッガコマンド)
+(디버거 커맨드)
 
 =begin original
 
@@ -147,7 +144,7 @@ The debugger understands the following commands:
 
 =end original
 
-デバッガは以下のコマンドを理解します:
+디버거는 아래의 커맨드를 이해합니다.
 
 =over 12
 
@@ -160,7 +157,7 @@ Prints out a summary help message
 
 =end original
 
-サマリヘルプメッセージを表示します。
+요약된 도움말을 표시합니다.
 
 =item h [command]
 
@@ -170,7 +167,7 @@ Prints out a help message for the given debugger command.
 
 =end original
 
-指定されたコマンドの説明を表示します。
+지정된 커맨드의 설명을 표시합니다.
 
 =item h h
 
@@ -180,7 +177,7 @@ The special argument of C<h h> produces the entire help page, which is quite lon
 
 =end original
 
-C<h h> という特別なコマンドは、かなり長い、ヘルプ全体を表示します。
+C<h h> 라고 하는 특별한 커맨드는 꽤 긴 도움말 전체를 표시합니다.
 
 =begin original
 
@@ -190,8 +187,8 @@ that it's run through your pager, as in
 
 =end original
 
-C<h h> コマンド(や他のコマンドでも)の出力で画面がスクロールしてしまう場合、
-以下のようにコマンドの前にパイプ記号をつけるとページャーを呼び出します:
+C<h h> 커맨드(나 그외의 커맨드에서도) 의 출력으로 화면이 스크롤되어버릴 경우,
+아래처럼 커맨드의 앞에 파이프기호를 붙이면 페이저를 호출합니다.
 
     DB> |h h
 
@@ -201,7 +198,7 @@ You may change the pager which is used via C<o pager=...> command.
 
 =end original
 
-使用されるページャーは C<O pager=...> コマンドで変更できます。
+사용되는 페이저는 C<O pager=...> 커맨드로 변경할 수 있습니다.
 
 =item p expr
 X<debugger command, p>
@@ -214,9 +211,9 @@ data structures and objects are not dumped, unlike with the C<x> command.
 
 =end original
 
-現在のパッケージでの C<print {$DB::OUT} expr> と同じです。
-特に、これは Perl 自身の C<print> 関数なので、
-C<x> コマンドと違って、ネストしたデータ構造やオブジェクトはダンプしません。
+현재의 패키지에서의 C<print {$DB::OUT} expr> 과 같습니다.
+특히, 이것은 Perl 자신의 C<print> 함수이므로,
+C<x> 커맨드와 달리, 중첩된 데이터 구조나 오브젝트는 덤프하지 않습니다.
 
 =begin original
 
@@ -225,9 +222,8 @@ where STDOUT may be redirected to.
 
 =end original
 
-STDOUT がどこにリダイレクトされていても、
-ファイルハンドル C<DB::OUT> は F</dev/tty> に対して
-オープンされています。
+STDOUT 이 어디로 리다이렉트되어도, 파일핸들 C<DB::OUT> 는 F</dev/tty>에 대해서
+오픈되어집니다.
 
 =item x [maxdepth] expr
 X<debugger command, x>
@@ -242,12 +238,11 @@ See L<Dumpvalue> if you'd like to do this yourself.
 
 =end original
 
-式をリストコンテキストで評価し、結果を多少読みやすい形で表示します。
-ネストしたデータは再帰的に表示します。
-これは Perl の実際の C<print> 関数とは異なります。
-When dumping
-hashes, you'll probably prefer 'x \%h' rather than 'x %h'.
-これを自分自身で行いたい場合は L<Dumpvalue> を参照して下さい。
+식을 리스트컨텍스트로 평가하고, 결과를 다소 읽기 쉬운 형태로 표시합니다.
+중첩된 데이터는 재귀적으로 표시합니다.
+이것은 Perl 의 실제 C<print> 함수와는 다릅니다.
+해쉬를 덤프할 때는, 'x %h' 가 아닌 'x \%h'로 해주어야 합니다.
+이것을 자기 스스로 하고 싶을 경우는 L<Dumpvalue> 를 참조해주세요.
 
 =begin original
 
@@ -256,8 +251,7 @@ L<"Configurable Options">.
 
 =end original
 
-出力フォーマットは L<"Configurable Options"> に記された
-様々なオプションの影響を受けます。
+출력커맨드는 L<"Configurable Options"> 는 기술된 여러 옵션의 영향을 받습니다.
 
 =begin original
 
@@ -267,9 +261,9 @@ temporarily set to I<N>.
 
 =end original
 
-C<maxdepth> が指定されている場合、それは数値 I<N> でなければなりません;
-C<dumpDepth> オプションが一時的に I<N> に設定されたかのように、
-値は I<N> レベルの深さでだけダンプされます。
+C<maxdepth> 가 지정되어진 경우, 그것을 변수 I<N> 이 아니면 안됩니다;
+C<dumpDepth> 옵션이 일시적으로 I<N> 에 설정된 것처럼,
+값은 I<N> 레벨의 깊이만큼 덤프됩니다.
 
 =item V [pkg [vars]]
 X<debugger command, V>
@@ -284,12 +278,12 @@ the symbol names, like this:
 
 =end original
 
-package (デフォルトは C<main>) 内のすべて (または、一部) の
-変数 (variable) をデータプリティプリンタを使って表示します
-(ハッシュは何が何か解るように、key と value を表示し、
-コントロール文字は表示できる形にします)。
-以下に示すように、symbol は名前だけを示し、(C<$> などの) 型識別子を
-付けないようにしてください:
+package (기본적으로는 C<main>) 안의 모든 (또는, 일부) 변수(variable)를
+데이터 프리티 프린터를 사용해서 표시합니다.
+(해쉬는 뭐가뭔지 알수 있도록, key 와 value 를 표시하고,
+컨트롤문자는 표시할 수 있는 형태로 합니다).
+아래에 나타내고 있는 것처럼, symbol 은 이름만을 표하고, (C<$> 등의) 
+형 식별자를 붙이지 않도록 해주세요.
 
     V DB filename line
 
@@ -299,7 +293,7 @@ Use C<~pattern> and C<!pattern> for positive and negative regexes.
 
 =end original
 
-正と逆の正規表現のためには C<~pattern> と C<!pattern> を使ってください。
+참 거짓의 정규표현식을 위해서 C<~pattern> 와 C<!pattern>을 사용해 주세요.
 
 =begin original
 
@@ -307,7 +301,7 @@ This is similar to calling the C<x> command on each applicable var.
 
 =end original
 
-これは有効な変数のそれぞれについて C<x> を呼び出すのと似ています。
+이것은 유효한 각각의 변수에 대해 C<x> 를 호출하는 것과 비슷합니다.
 
 =item X [vars]
 X<debugger command, X>
@@ -318,7 +312,7 @@ Same as C<V currentpackage [vars]>.
 
 =end original
 
-C<V 現在のパッケージ [vars]> と同じです。
+C<V 현재의 패키지 [vars]> 와 같습니다.
 
 =item y [level [vars]]
 X<debugger command, y>
@@ -335,14 +329,14 @@ controlled by the same options.
 
 =end original
 
-現在のスコープや、I<level> だけ高いスコープの全て(またはいくつか)の
-レキシカル変数を表示します(記憶法: C<mY> 変数)。
-C<V> や C<X> コマンドと全く同じように、I<vars> を制定することで
-表示される変数を制限できます。
-バージョン 0.08 以降の C<PadWalker> モジュールが必要です;
-もしインストールされていなければ警告されます。
-出力は C<V> コマンドと同じスタイルにフォーマットされ、
-このフォーマットは同じオプションで制御されます。
+현재의 스코프나, I<level> 만 높은 스코프의 모든(혹은 몇개의)
+렉시컬변수를 표시합니다(기억법 : C<mY> 변수).
+C<V> 나 C<X> 커맨드 처럼, I<vars> 를 지정하는 것으로
+표시되는 변수를 제한할 수 있습니다.
+버젼 0.08 이후의 C<PadWalker> 모듈이 필요합니다;
+만약 인스톨되어있지 않으면 경고를 냅니다.
+출력은 C<V> 커맨드와 같은 스타일로 포맷이 정해지고,
+이 포맷은 같은 옵션으로 제어됩니다.
 
 =item T
 X<debugger command, T> X<backtrace> X<stack, backtrace>
@@ -353,7 +347,7 @@ Produce a stack backtrace.  See below for details on its output.
 
 =end original
 
-スタックのバックトレースを行います。出力についての詳細は後述します。
+스택의 역추적을 수행합니다. 출력에 대해서의 자세한 내용은 뒤에 기술하겠습니다.
 
 =item s [expr]
 X<debugger command, s> X<step>
