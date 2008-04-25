@@ -360,9 +360,9 @@ supplied that includes function calls, it too will be single-stepped.
 
 =end original
 
-シングルステップ実行します。
-サブルーチンをたどりながら、別の実行文の先頭に到達するまで実行します。
-関数呼び出しを含む式が与えられた場合、これもシングルステップ実行します。
+싱글 스텝을 실행합니다.
+서브루틴을 호출하면서, 별도의 실행문의 맨 앞에 도달하기까지 실행합니다.
+함수호출을 포함한 식이 주어진 경우, 이것도 싱글스텝 실행을 합니다.
 
 =item n [expr]
 X<debugger command, n>
@@ -376,9 +376,9 @@ each statement.
 
 =end original
 
+다음. 다음의의 실행문의 맨앞에 도달하기 까지, 서브루틴<BLAH>
+함수호출을 포함한 식이 주어진 경우, 매 줄마다 정지하면서 함수를 실행합니다.
 ネクスト。次の実行文の先頭に到達するまで、サブルーチンにまたがって実行します。
-関数呼び出しを含む式が与えられた場合、
-各行毎に停止しながら関数を実行します。
 
 =item r
 X<debugger command, r>
@@ -390,9 +390,9 @@ Dump the return value if the C<PrintRet> option is set (default).
 
 =end original
 
-現在のサブルーチンから戻るまで実行します。
-C<PrintRet> がセットされていれば(デフォルトではセットされています)
-返り値をダンプします。
+현재의 서브루틴에서 돌아오기까지 실행합니다.
+C<PrintRet> 가 정의되어있다면 (기본적으로 정의되어있습니다)
+반환값을 덤프합니다.
 
 =item <CR>
 
@@ -402,7 +402,7 @@ Repeat last C<n> or C<s> command.
 
 =end original
 
-最後の C<n> または C<s> を繰り返します。
+마지막의 C<n> 또는 C<s> 를 반복합니다.
 
 =item c [line|sub]
 X<debugger command, c>
@@ -414,9 +414,9 @@ at the specified line or subroutine.
 
 =end original
 
-続きを実行します。
-オプションとして、1 回限りのブレークポイントを
-指定された行またはサブルーチンに設定します。
+다음을 실행합니다.
+옵션으로써, 단 한번의 브레이크 포인트를 지정된 줄, 또는
+서브루틴에 설정합니다.
 
 =item l
 X<debugger command, l>
@@ -427,7 +427,7 @@ List next window of lines.
 
 =end original
 
-次の 1 画面分をリスト表示します。
+다음의 한 화면분의 리스트를 표시합니다.
 
 =item l min+incr
 
@@ -437,7 +437,7 @@ List C<incr+1> lines starting at C<min>.
 
 =end original
 
-C<min> から C<incr+1> 行をリスト表示します。
+C<min> 에서 C<incr+1> 줄을 리스트표시합니다.
 
 =item l min-max
 
@@ -447,8 +447,8 @@ List lines C<min> through C<max>.  C<l -> is synonymous to C<->.
 
 =end original
 
-C<min> 行から C<max> 行をリスト表示します。
-C<l -> は C<-> と同じです。
+C<min> 줄에서 C<max> 줄을 리스트표시합니다.
+C<l -> 은 C<-> 과 같습니다. 
 
 =item l line
 
@@ -458,7 +458,7 @@ List a single line.
 
 =end original
 
-指定行をリスト表示します。
+지정줄을 리스트표시합니다.
 
 =item l subname
 
@@ -469,8 +469,8 @@ be a variable that contains a code reference.
 
 =end original
 
-サブルーチンの最初の一画面分をリスト表示します。
-I<subname> は コードリファレンスが入った変数でも構いません。
+서브루틴의 최초의 한 화면분을 리스트표시합니다.
+I<subname> 은 코드리퍼런스가 들어있는 변수라도 상관없습니다.
 
 =item -
 X<debugger command, ->
@@ -481,7 +481,7 @@ List previous window of lines.
 
 =end original
 
-前の 1 画面分をリスト表示します。
+앞의 한화면분을 리스트표시합니다.
 
 =item v [line]
 X<debugger command, v>
@@ -492,7 +492,7 @@ View a few lines of code around the current line.
 
 =end original
 
-指定行付近の(数行のコードをリスト表示します。
+지정 줄 부근의 몇 줄의 코드를 리스트 표시합니다.
 
 =item .
 X<debugger command, .>
@@ -504,8 +504,8 @@ executed, and print out that line.
 
 =end original
 
-最後に実行した行への内部デバッガポインタを返し、
-その行を表示します。
+마지막에 실행한 줄로 내부 디버거 포인터를 돌려주고, 
+그 행을 표시합니다.
 
 =item f filename
 X<debugger command, f>
@@ -518,9 +518,9 @@ a regex.
 
 =end original
 
-異なるファイルまたは C<eval> 行に表示を切り替えます。
-もし I<filename> が %INC にあるフルパス名でなければ、
-正規表現として扱われます。
+다른 파일 또는 C<eval> 줄에 표시를 바꿉니다.
+만약 I<filename> 이 %INC 에 있는 풀 패스 이름이 아니라면,
+정규표현으로 취급합니다.
 
 =begin original
 
@@ -532,11 +532,11 @@ accessible.
 
 =end original
 
-C<eval> した文字列は(アクセス可能なら)ファイル名として扱われます:
-C<f (eval 7)> と C<f eval 7\b> は (実行した順で) 7 番目に C<eval> した
-文字列の中身にアクセスします。
-現在実行した C<eval> の中身と、サブルーチンを定義する C<eval> した
-中身は保存されるので、アクセス可能です。
+C<eval> 한 문자열은(접근가능하다면) 파일이름으로써 취급됩니다:
+C<f (eval 7)> 과 C<f eval 7\b> 은 (실행한 순서대로) 7번째에 C<eval>한
+문자열의 내용에 접근합니다.
+현재 실행한 C<eval>의 내용과 서브루틴을 정의하는 C<eval> 한
+내용은 보존되기에, 접근 가능합니다.
 
 =item /pattern/
 
@@ -547,9 +547,9 @@ The search is case-insensitive by default.
 
 =end original
 
-pattern を用いて Perl 正規表現による前方検索を行います。
-最後の / はなくてもかまいません。
-デフォルトでは検索は大文字小文字を区別しません。
+pattern 을 사용해서 Perl 정규표현에의한 전방검색을 수행합니다.
+마지막의 /는 없어도 됩니다.
+기본적으로는 검색은 대문자소문자를 구별하지 않습니다.
 
 =item ?pattern?
 
@@ -560,9 +560,9 @@ The search is case-insensitive by default.
 
 =end original
 
-pattern を用いて後方検索を行います。
-最後の ? はなくてもかまいません。
-デフォルトでは検索は大文字小文字を区別しません。
+pattern 을 사용해 후방검색을 수행합니다.
+마지막의 ? 는 없어도 상관없습니다.
+기본적으로는 검색은 대문자와 소문자를 구별하 않습니다.
 
 =item L [abw]
 X<debugger command, L>
@@ -573,8 +573,8 @@ List (default all) actions, breakpoints and watch expressions
 
 =end original
 
-ブレークポイント、アクション、ウォッチ式を
-(デフォルトは全て)リストアップします。
+브레이크포인트, 액션, watch expressions를 
+(기본은 모두) 리스트업 합니다.
 
 =item S [[!]regex]
 X<debugger command, S>
@@ -585,7 +585,7 @@ List subroutine names [not] matching the regex.
 
 =end original
 
-regex に一致する(または一致しない)サブルーチン名をリストアップします。
+regex 에 일치하는(또는 일치하지않는) 서브루틴 이름을 리스트업합니다.
 
 =item t
 X<debugger command, t>
@@ -596,8 +596,7 @@ Toggle trace mode (see also the C<AutoTrace> option).
 
 =end original
 
-トレースモードの on/off を切り替えます。(C<AutoTrace>
-オプションも参照して下さい)
+추적 모드의 on/off 를 바꿉니다. (C<AutoTrace> 옵션도 참조해주세요)
 
 =item t expr
 X<debugger command, t>
@@ -609,9 +608,8 @@ See L<perldebguts/"Frame Listing Output Examples"> for examples.
 
 =end original
 
-C<expr> の実行をトレースします。
-例については L<perldebguts/"Frame Listing Output Examples"> を
-参照して下さい。
+C<expr> 의 실행을 추적합니다.
+예제에 대해서는 L<perldebguts/"Frame Listing Output Examples"> 를 참조해주세요.
 
 =item b
 X<breakpoint>
@@ -623,7 +621,7 @@ Sets breakpoint on current line
 
 =end original
 
-現在の位置にブレークポイントを設定します。
+현재의 위에 브레이크포인트를 설정합니다.
 
 =item b [line] [condition]
 X<breakpoint>
@@ -639,11 +637,11 @@ don't use C<if>:
 
 =end original
 
-与えられた行の直前にブレークポイントを設定します。
-condition が指定されると、その文にさしかかる度に評価されます。
-condition が真となったときにだけブレークポイントが働きます。
-ブレークポイントは、実行可能な文で始まる行にだけ、
-設定できます。　condition には C<if> を使いません:
+주어진 줄의 직전에 브레이크포인트를 설정합니다.
+condition 이 설정되면, 그 구문에 접근할 때마다 평가됩니다.
+condition 이 잠이 되었을 때에만 브레이크 포인트가 작동합니다.
+브레이크 포인트는 실행가능한 구문으로 시작되는 행에만,
+설정가능합니다. condition 에는 C<if> 를 사용할 수 없습니다:
 
     b 237 $x > 30
     b 237 ++$count237 < 11
@@ -661,9 +659,9 @@ is not supported).
 
 =end original
 
-サブルーチンの最初の実行可能文にブレークポイントを設定します。
-I<subname> は コードリファレンスが入った変数でも構いません
-(この場合は I<condition> は非対応です)。
+서브루틴의 최초의 실행가능문에 브레이크 포인트를 설정합니다.
+I<subname> 은 코드리퍼런스가 들어있는 변수여도 상관없습니다.
+(이 경우는 I<condition> 은 비대응입니다)
 
 =item b postpone subname [condition]
 X<breakpoint>
@@ -675,7 +673,7 @@ Set a breakpoint at first line of subroutine after it is compiled.
 
 =end original
 
-コンパイル後、サブルーチンの最初の行にブレークポイントをセットします。
+컴파일 뒤, 서브루틴의 최초의 줄에 브레이크포인트를 설정합니다.
 
 =item b load filename
 X<breakpoint>
@@ -688,8 +686,8 @@ which should be a full pathname found amongst the %INC values.
 
 =end original
 
-I<filename> の最初に実行される行の手前にブレークポイントをセットします。
-これは %INC の値に含まれるフルパス名であるべきです。
+I<filename> 의 최초에 실행된 줄의 앞에 브레이크 포인트를 설정합니다.
+이것은 %INC 의 값에 포함된 전체 경로 이름이어야 합니다.
 
 =item b compile subname
 X<breakpoint>
@@ -702,8 +700,8 @@ subroutine is compiled.
 
 =end original
 
-指定されたサブルーチンがコンパイルされた後、最初に実行される文の手前に
-ブレークポイントをセットします。
+지정된 서브루틴이 컴파일된 후, 최초에 실행된 구문 앞에
+브레이크 포인트를 설정합니다.
 
 =item B line
 X<breakpoint>
@@ -715,7 +713,7 @@ Delete a breakpoint from the specified I<line>.
 
 =end original
 
-I<line> で指定されたブレークポイントを削除します。
+I<line> 으로 지정된 브레이크포인트를 삭제합니다.
 
 =item B *
 X<breakpoint>
@@ -727,7 +725,7 @@ Delete all installed breakpoints.
 
 =end original
 
-すべてのブレークポイントを削除します。
+모든 브레이크포인트를 삭제합니다.
 
 =item a [line] command
 X<debugger command, a>
@@ -740,10 +738,9 @@ The sequence of steps taken by the debugger is
 
 =end original
 
-その行を実行する前に行うアクションを設定します。
-I<line> が省略されると、いままさに実行しようとしていた行に
-アクションを設定します。
-デバッガが実行する処理の順番は以下の通りです。
+그 줄을 실행하기 전에 실행하는 액션을 설정합니다.
+I<line>이 생략되면, 그때 실행하려고 한 줄에 액션을 설정합니다.
+디버거가 실행하는 처리의 순서는 아래와 같습니다.
 
 =begin original
 
@@ -755,11 +752,11 @@ I<line> が省略されると、いままさに実行しようとしていた行
 
 =end original
 
-  1. この行のブレークポイントをチェックします
-  2. 必要なら行を表示します(トレース)
-  3. この行に結び付けられたアクションを実行します
-  4. ブレークポイントやシングルステップの場合はユーザーに確認します
-  5. 行を評価します
+  1. 이 줄의 브레이크 포인트를 체크합니다.
+  2. 필요하다면 줄을 표시합니다(추적)
+  3. 이 줄에 연결된 액션을 실행합니다.
+  4. 브레이크포인트나 싱글스텝의 경우는 유저에게 확인합니다.
+  5. 줄을 평가합니다.
 
 =begin original
 
@@ -768,7 +765,7 @@ For example, this will print out $foo every time line
 
 =end original
 
-例えば、以下のコードは 53 行を通過する毎に $foo を表示します。
+예를들면, 아래의 코드는 53 행을 통과할 때마다 $foo 를 표시합니다.
 
     a 53 print "DB FOUND $foo\n"
 
