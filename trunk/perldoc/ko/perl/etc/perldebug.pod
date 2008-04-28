@@ -778,9 +778,9 @@ Delete an action from the specified line.
 
 =end original
 
-指定された行に設定されたアクションを削除します。
-I<line> が省略されると、いままさに実行しようとしている行に設定されている
-アクションが削除されます。
+설정된 줄에 설정된 액션을 삭제합니다.
+I<line> 이 생략되면, 지금 바로 실행하고자하는 줄에 설정되어있는
+액션이 삭제됩니다.
 
 =item A *
 X<debugger command, A>
@@ -791,7 +791,7 @@ Delete all installed actions.
 
 =end original
 
-設定されたすべてのアクションを削除します。
+설정된 모든 액션을 삭제합니다.
 
 =item w expr
 X<debugger command, w>
@@ -803,8 +803,8 @@ is, because they're supposed to be obvious.
 
 =end original
 
-グローバルなウォッチ式を追加します。この機能はよくあるものなので、
-どういうものかはわかってもらえると思います。
+전역 워치 식을 추가합니다. 이 기능은 자주 쓰이는 것으로,
+어떤 것인가 알아주었으면 합니다.
 
 =item W expr
 X<debugger command, W>
@@ -815,7 +815,7 @@ Delete watch-expression
 
 =end original
 
-ウォッチ式を削除します。
+워치식을 삭제합니다.
 
 =item W *
 X<debugger command, W>
@@ -826,7 +826,7 @@ Delete all watch-expressions.
 
 =end original
 
-全てのウォッチ式を削除します。
+모든 워치식을 삭제합니다.
 
 =item o
 X<debugger command, o>
@@ -837,7 +837,7 @@ Display all options
 
 =end original
 
-全てのオプションを表示します。
+모든 옵션을 표시합니다.
 
 =item o booloption ...
 X<debugger command, o>
@@ -848,7 +848,7 @@ Set each listed Boolean option to the value C<1>.
 
 =end original
 
-リストされた各真偽値オプションの値を C<1> に設定します。
+리스트된 각 참/거짓값 옵션의 값을 C<1> 에 설정합니다.
 
 =item o anyoption? ...
 X<debugger command, o>
@@ -859,7 +859,7 @@ Print out the value of one or more options.
 
 =end original
 
-1 つ、あるいは複数のオプションの値を表示します。
+하나 혹은 복수의 옵션 값을 표시합니다.
 
 =item o option=value ...
 X<debugger command, o>
@@ -879,16 +879,16 @@ it?\"">.
 
 =end original
 
-一つまたは複数のオプションをセットします。
-値自身に空白を含む場合、クォートする必要があります。
-例えば、B<less> をオプション付きで呼び出す場合は
-C<o pager="less -MQeicsNfr"> のようにします。
-シングルクォートとダブルクォートのどちらでも使えますが、クォートする場合は、
-クォート文字と同じ文字はエスケープする必要があります;
-そしてエスケープ文字自身もエスケープして、クォート文字を
-エスケープしているのではないことを示す必要があります。
-言い換えると、クォートに関わりなく、シングルクォートルールに従います;
-例えば: C<o option='this isn\'t bad'> や
+하나 혹은 복수의 옵션을 설정합니다.
+값에 공백을 포함한 경우, 인용할 필요가 있습니다.
+예를 들면, B<less>를 옵션을 붙여서 호출할 경우는
+C<o pager="less -MQeicsNfr"> 처럼 럼 합니다.
+따옴표와 쌍따옴표 어느쪽이라도 쓸 수 있지만, 인용할 경우는,
+인용문자와 같은 문자는 이스케이프할 필요가 있습니다;
+그리고 이스케이프 문자도 이스케이프해서, 인용문자를 
+이스케이프하고 있는 것이 아니라는 것을 나타낼 필요가 있습니다.
+바꿔 말하면, 인용에 상관없이, 따움표룰에 따릅니다;
+예를들면 : C<o option='this isn\'t bad'> 나
 C<o option="She said, \"Isn't it?\"">
 
 =begin original
@@ -902,12 +902,12 @@ for a list of these.
 
 =end original
 
-歴史的な理由により、C<=value> は省略可能ですが、そうするのが安全な場合にのみ
-デフォルトは 1 です -- これは、ほとんどの場合ブール値オプションです。
-C<=> を使って指定した値を代入する方が常によいです。
-C<option> は短縮できますが、明確化のためにはそうしない方がいいでしょう。
-いくつかのオプションは互いにセットできます。
-それらの一覧については L<"Configurable Options"> を参照してください。
+역사적인 이유에 의해, C<=value> 는 생략가능합니다만, 그렇게 하는 것이
+안전한 경웨만 기본값은 1입니다 -- 이것은 대부분의 경우 불값옵션입니다.
+C<=> 를 사용해 지정한 값을 대입하는 쪽이 더 좋습니다.
+C<option> 은 단축할 수 있지만, 명확화를 위해서는 그러지 않는 편이 좋습니다.
+몇개인가의 옵션은 상호간에 설정할 수 있습니다.
+그런 것들의 리스트에 대해서는 L<"Configurable Options"> 를 참조해주세요.
 
 =item < ?
 X<< debugger command, < >>
@@ -918,7 +918,7 @@ List out all pre-prompt Perl command actions.
 
 =end original
 
-プロンプト表示前に実行するアクションを全て表示します。
+프롬프트 표시전에 실행하는 액션을 모두 표시합니다.
 
 =item < [ command ]
 X<< debugger command, < >>
@@ -930,9 +930,9 @@ A multi-line command may be entered by backslashing the newlines.
 
 =end original
 
-デバッガがプロンプトを出す直前に、毎回実行するアクション
-(Perl のコマンド)を設定します。
-複数行の command は、バックスラッシュと改行で書くことができます。
+디버거가 프롬프트를 출력하기 직전에, 매번 실행하는 액션(Perl 커맨드)를
+설정합니다.
+여러 줄의 커맨드는, 백슬래쉬와 줄바꿈으로 쓸 수 있습니다.
 
 =item < *
 X<< debugger command, < >>
@@ -943,7 +943,7 @@ Delete all pre-prompt Perl command actions.
 
 =end original
 
-プロンプト表示前に実行するアクションを全て削除します。
+프롬프트 표시전에 실행ㅏ는 액션을 모두 삭제합니다.
 
 =item << command
 X<< debugger command, << >>
@@ -955,9 +955,9 @@ A multi-line command may be entered by backwhacking the newlines.
 
 =end original
 
-デバッガがプロンプトを出す直前に、毎回実行するアクション
-(Perl のコマンド)を追加します。
-複数行の command は、バックスラッシュと改行で書くことができます。
+디버거가 프롬프트를 출력하기 직전에, 매번 실행하는 액션(Perl 커맨드)를
+추가합니다.
+여러 줄의 커맨드는 백슬래쉬와 줄바꿈으로 쓸 수 있습니다.
 
 =item > ?
 X<< debugger command, > >>
@@ -968,7 +968,7 @@ List out post-prompt Perl command actions.
 
 =end original
 
-プロンプト表示後に実行するアクションを全て表示します。
+프롬프트 표시 뒤에 실행하는 액션을 모두 표시합니다.
 
 =item > command
 X<< debugger command, > >>
@@ -982,10 +982,10 @@ couldn't've guessed this by now).
 
 =end original
 
-スクリプトの実行に戻るコマンドを入力した時に、デバッガが
-プロンプトを出した後で、毎回実行するアクション(Perl のコマンド)を設定します。
-複数行の command は、バックスラッシュと改行で書くことができます
-(きっとあなたは今までこのことを知らなかったはずです)。
+스크립트 실행으로 돌아가는 커맨드를 입력한 때에, 디버거가
+프롬프트를 출력한 뒤에, 매번 실행하는 액션(Perl 커맨드)를 설정합니다.
+여러 줄의 커맨드는, 백 슬래쉬와 줄바꿈으로 쓸 수 있습니다.
+(분명 지금까지 이런 것을 몰랐겠죠?)
 
 =item > *
 X<< debugger command, > >>
@@ -996,7 +996,7 @@ Delete all post-prompt Perl command actions.
 
 =end original
 
-プロンプト表示後に実行するアクションを全て削除します。
+프롬프트 표시 뒤에 실행하는 액션을 모두 삭제합니다.
 
 =item >> command
 X<<< debugger command, >> >>>
@@ -1009,9 +1009,9 @@ command may be entered by backslashing the newlines.
 
 =end original
 
-スクリプトの実行に戻るコマンドを入力した時に、デバッガが
-プロンプトを出した後で、毎回実行するアクション(Perl のコマンド)を追加します。
-複数行の command は、バックスラッシュと改行で書くことができます。
+스크립트 실행으로 돌아가는 커맨드를 입력한 때에, 디버거가 스크립트를
+출력한 뒤에, 매번 실행하는 액션(Perl 커맨드)를 추가합니다.
+여러 줄의 커맨드는 백슬래쉬와 줄바꿈으로 쓸 수 있습니다.
 
 =item { ?
 X<debugger command, {>
@@ -1022,7 +1022,7 @@ List out pre-prompt debugger commands.
 
 =end original
 
-プロンプト表示前に実行するデバッガコマンドを表示します。
+프롬프트 표시 전에 실행하는 디버거 커맨드를 표시합니다.
 
 =item { [ command ]
 
@@ -1033,10 +1033,10 @@ A multi-line command may be entered in the customary fashion.
 
 =end original
 
-デバッガがプロンプトを出す前に、毎回実行するアクション(デバッガの
-コマンド)を設定します。
-複数行の command は、いつもの方法で書くことができます
-B<警告> もし C<command> がないと、全てのアクションが消えてしまいます!
+디버거가 프롬프트를 출력하기 전에, 매번 실행하는 액션(디버거의 커맨드)
+을 설정합니다.
+여러 줄의 커맨드는 하던 대로 쓸 수 있습니다.
+B<경고> 혹은 C<command> 가 없으면, 모든 액션이 지워집니다!
 
 =begin original
 
@@ -1047,10 +1047,9 @@ C<do { ... }>.
 
 =end original
 
-このコマンドはある意味新しいので、もし代わりに間違ってブロックを
-入力したように見えるときには、警告が出ます。
-本当に奏したい場合は、C<;{ ... }> か、いっそ C<do { ... }> と
-書いてください。
+이 커맨드는 어떤 의미에서 새로운 것이기에, 만약 대신해서 잘못된 블록을
+입력한 듯이 보일때에는 경고를 냅니다.
+진짜로 알릴 때는 C<;{ ... }> 나, C<do { ... }>로 써주세요.
 
 =item { *
 X<debugger command, {>
@@ -1061,7 +1060,7 @@ Delete all pre-prompt debugger commands.
 
 =end original
 
-プロンプト前に実行するデバッガコマンドを全て削除します。
+프롬프트 앞에 실행하는 디버거 커맨드를 전부 삭제합니다.
 
 =item {{ command
 X<debugger command, {{>
@@ -1073,9 +1072,9 @@ A multi-line command may be entered, if you can guess how: see above.
 
 =end original
 
-毎回デバッガプロンプトを表示する前に実行するアクション(デバッガコマンド)を
-追加します。予測可能な方法な方法で複数行コマンドも登録できます:
-上記を参照してください。
+매번 디버거 프롬프트를 나타내기 전에 실행하는 액션(디버거 커맨드)를
+추가합니다. 예측가능한 방법으로 여러 줄로 된 커맨드도 등록할 수 있습니다:
+위를 참조해주세요.
 
 =item ! number
 X<debugger command, !>
@@ -1086,7 +1085,8 @@ Redo a previous command (defaults to the previous command).
 
 =end original
 
-以前のコマンドを再実行します。(number が省略されると、直前のコマンドを実行します)
+이전의 커맨드를 다시 실행합니다.
+(number 가 생략되면, 직전의 커맨드를 실행합니다)
 
 =item ! -number
 X<debugger command, !>
@@ -1097,7 +1097,7 @@ Redo number'th previous command.
 
 =end original
 
-指定数値分前のコマンドを実行します。
+지정수치만큼 앞의 커맨드를 실행합니다.
 
 =item ! pattern
 X<debugger command, !>
@@ -1109,9 +1109,8 @@ See C<o recallCommand>, too.
 
 =end original
 
-pattern で始まるうち、最も最近に実行されたコマンドを
-再実行します。
-C<O recallCommand> も参照して下さい。
+pattern 으로 시작하는 동안, 제일 최근에 실행된 커맨드를 재실행합니다.
+C<O recallCommand> 도 참조해주세요.
 
 =item !! cmd
 X<debugger command, !!>
@@ -1126,11 +1125,11 @@ information.
 
 =end original
 
-cmd をサブプロセスとして実行します(DB::IN から読み込み、DB::OUT に書き出します)。
-C<O shellBang> も参照してください。
-ユーザーの現在のシェル(つまり、 C<$ENV{SHELL}> 変数)が使われるので、
-終了コードの適切な解釈やシグナルとコアダンプの情報が妨害されるかもしれない
-ことに注意してください。
+cmd 를 서브프로세스로 실행합니다(DB::IN 으로 읽어들이고, DB::OUT으로 써냅니다)
+C<O shellBang> 도 참조해주세요
+유저의 현재 셸(즉, C<$ENV{SHELL}> 변수)가 사용되기 때문에,
+종료 코드의 적절한 해석이나 시그널과 코어덤프의 정보가 방하될지도 모르는 것에
+주의해주세요.
 
 =item source file
 X<debugger command, source>
