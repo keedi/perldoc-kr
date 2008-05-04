@@ -1498,7 +1498,7 @@ If 0, allows I<stepping off> the end of the script.
 
 =end original
 
-0 だと、スクリプトの最後で I<プログラムを終了する> ことを認めます。
+0일 경우, 스크립트 마지막에서 I<프로그램을 종료하는> 것을 인식합니다.
 
 =item C<PrintRet>
 X<debugger option, PrintRet>
@@ -1509,7 +1509,7 @@ Print return value after C<r> command if set (default).
 
 =end original
 
-設定されると(デフォルト)、C<r> コマンドの後に返り値を表示します。
+설정되면, C<r> 커맨드의 뒤에 반환값을 표시합니다.(기본값)
 
 =item C<ornaments>
 X<debugger option, ornaments>
@@ -1523,12 +1523,12 @@ This is considered a bug.
 
 =end original
 
-コマンドラインの画面への表示に影響を与えます(L<Term::ReadLine> を
-参照してください)。
-今のところ、これを無効にする方法はありません;
-これにより、ディスプレイやページャーによっては判読できない出力を
-行うことがあります。
-これはバグと考えられています。
+커맨드라인의 화면으로의 표시에 영향을 줍니다(L<Term::ReadLine> 을
+참조해주세요).
+현재, 이것을 무효화하는 방법은 없습니다;
+이것에 의해, 디스플레이나 페이저에 의해서는 판독할 수 없는 출력을
+수행할 수 있습니다.
+이것은 버그라고 생각됩니다.
 
 =item C<frame>
 X<debugger option, frame>
@@ -1541,10 +1541,9 @@ on exit might be useful if interspersed with other messages.)
 
 =end original
 
-サブルーチンへの出入り時のメッセージ表示に影響を与えます。
-C<frame & 2> が偽なら、サブルーチンに入る時にのみメッセージを出力します。
-(出るときのメッセージは、他のメッセージがまき散らされているときには
-有用でしょう。)
+서브루틴에 출입할 때의 메시지 표시에 영향을 줍니다.
+C<frame & 2> 이 거짓이면, 서브루틴에 들어갈 때에만 메시지를 출력합니다.
+(나올 때의 메시는, 다른 메시지가 뿌려져 있을 때에는 유용할 겁니다)
 
 =begin original
 
@@ -1555,11 +1554,11 @@ C<tie>d C<FETCH> is enabled on the printed arguments.  If C<frame
 
 =end original
 
-C<frame & 4> の場合、関数の引数に加えて、コンテキストと呼び出し元の
-情報を表示します。
-C<frame & 8> の場合、引数の表示にオーバーロードされた C<文字列化> と
-C<tie> した C<FETCH> が有効になります。
-C<frame & 16> の場合、サブルーチンからの返り値が表示されます。
+C<frame & 4> 의 경우, 함수의 인수에 더해, 컨텍스트라와 호출하는 곳의
+정보를 표시합니다.
+C<frame & 8> 의 경우, 인수의 표시에 오버로드된 C<문자열화>와
+C<tie> 한 C<FETCH> 가 유효하게 됩니다.
+C<frame & 16> 의 경우, 서브루틴에서의 반환값이 표시됩니다.
 
 =begin original
 
