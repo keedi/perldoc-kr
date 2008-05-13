@@ -1567,6 +1567,7 @@ next option:
 
 =end original
 
+인수리스트가 <BLAH> 했을 때ㅣ 길이는 다음의 옵션의 <BLAH> 가 됩니다.
 引数リストが切り詰められた時の長さは次のオプションの管轄となります:
 
 =item C<maxTraceLen>
@@ -1579,6 +1580,7 @@ bit 4 is set.
 
 =end original
 
+C<frame> 옵션의 bit 4가 정의되어 있을 때의 인수리스트를 <BLAH>한 길이
 C<frame> オプションの bit 4 がセットされている時の引数リストを切り詰める
 長さ。
 
@@ -1591,7 +1593,7 @@ Change the size of code list window (default is 10 lines).
 
 =end original
 
-コードリストウィンドウの大きさを変更します(デフォルトは 10 行です)。
+코드 리스트윈도우의 길이를 변경합니다(기본값은 10줄입니다).
 
 =back
 
@@ -1602,7 +1604,7 @@ commands:
 
 =end original
 
-以下のオプションは C<V>, C<X>, C<x> コマンドに影響を与えます。
+아래의 옵션은 C<V>, C<X>, C<x> 커맨드에 영향을 줍니다.
 
 =over 12
 
@@ -1615,7 +1617,7 @@ Print only first N elements ('' for all).
 
 =end original
 
-最初の N 要素だけを表示します('' を指定すると全て表示します)。
+최초의 N 요소만을 표시합니다('' 를 지정하면 모두 표시합니다).
 
 =item C<dumpDepth>
 X<debugger option, dumpDepth>
@@ -1627,9 +1629,9 @@ Negative values are interpreted as infinity.  Default: infinity.
 
 =end original
 
-構造をダンプするときに再帰の深さを N レベルに制限します。
-負数を指定すると無限として解釈されます。
-デフォルト: 無限。
+구조를 덤프할 때에 재귀의 깊이를 N 레벨로 제한합니다.
+부수를 지정하면 무한으로 해석됩니다.
+기본값 : 무한
 
 =item C<compactDump>, C<veryCompact>
 X<debugger option, compactDump> X<debugger option, veryCompact>
@@ -1641,8 +1643,8 @@ may be printed on one line.
 
 =end original
 
-配列とハッシュの出力スタイルを変更します。
-C<compactDump> の場合は、短い配列は 1 行で表示します。
+배열과 해쉬의 출력 스타일을 변경합니다.
+C<compactDump> 경우는, 짧은 배열은 1줄로 표시합니다.
 
 =item C<globPrint>
 X<debugger option, globPrint>
@@ -1653,7 +1655,7 @@ Whether to print contents of globs.
 
 =end original
 
-グロブの内容を表示するかどうかです。
+GLOB의 내용을 표시할 것인지 말지입니다.
 
 =item C<DumpDBFiles>
 X<debugger option, DumpDBFiles>
@@ -1664,7 +1666,7 @@ Dump arrays holding debugged files.
 
 =end original
 
-デバッグしていているファイルが保持している配列をダンプします。
+디버그하 있는 파일이 가지고 있는 배열을 덤프합니다.
 
 =item C<DumpPackages>
 X<debugger option, DumpPackages>
@@ -1675,7 +1677,7 @@ Dump symbol tables of packages.
 
 =end original
 
-パッケージのシンボルテーブルをダンプします。
+패키지의 심볼테이블을 덤프합니다.
 
 =item C<DumpReused>
 X<debugger option, DumpReused>
@@ -1686,7 +1688,7 @@ Dump contents of "reused" addresses.
 
 =end original
 
-「再利用された」アドレスの内容をダンプします。
+[재이용된] 주소의 내용을 덤프합니다.
 
 =item C<quote>, C<HighBit>, C<undefPrint>
 X<debugger option, quote> X<debugger option, HighBit>
@@ -1701,11 +1703,10 @@ with their high bit set are printed verbatim.
 
 =end original
 
-文字列ダンプのスタイルを変更します。
-C<quote> のデフォルトは C<auto> です;
-C<"> や C<'> にセットすることでダブルクォート風やシングルクォート風に
-できます。
-デフォルトでは、最上位ビットがセットされている文字はそのまま表示されます。
+문자열 덤프의 스타일을 변경합니다.
+C<quote> 의 기본값은 C<auto> 입니다;
+C<"> 나 C<'> 로 설정하는 것으로 쌍따옴표나 따옴표 형태로 됩니다.
+기본값으로는 최상위 비트가 설정되어 있는 문자는 그대로 표시됩니.
 
 =item C<UsageOnly>
 X<debugger option, UsageOnly>
@@ -1718,10 +1719,10 @@ include lexicals in a module's file scope, or lost in closures.
 
 =end original
 
-基本的なパッケージ単位のメモリ使用量ダンプ。
-パッケージ内の変数で見つかった文字列のサイズの合計を計算します。
-モジュールのファイルスコープ内のレキシカルや、クロージャ内で
-失われたものは含まれません。
+기본적인 패키지단위의 메모리 사용율 덤프.
+패키지 안의 변수에서 발견한 문자열의 사이즈의 합계를 계산합니다.
+모듈의 파일스코프 안의 렉시컬이나 클로져안에서
+잃어버린 것은 포함되지 않습니다.
 
 =back
 
@@ -1735,11 +1736,10 @@ there.
 
 =end original
 
-rc ファイルが読み込まれた後、デバッガは C<$ENV{PERLDB_OPTS}> 環境変数を
-読み込み、デバッガのプロンプトから "O ..." として入力されたかのように
-パースします。
-初期化オプション C<TTY>, C<noTTY>, C<ReadLine>, C<NonStop> も
-ここで設定できます。
+rc 파일이 읽어진 다음, 디버거는 C<$ENV{PERLDB_OPTS}> 환경변수를 읽어들여,
+더버거의 프롬프트에서 "O ..."로써 입력된 건처럼 파싱합니다.
+초기화옵션 C<TTY>, C<noTTY>, C<ReadLine>, C<NonStop> 도 
+여기서 설정할 수 있습니다.
 
 =begin original
 
@@ -1747,7 +1747,7 @@ If your rc file contains:
 
 =end original
 
-rc ファイルに以下のように書くと:
+rc 파일에 아래처럼 쓰면:
 
   parse_options("NonStop=1 LineInfo=db.out AutoTrace");
 
@@ -1759,10 +1759,9 @@ better reset C<LineInfo> to F</dev/tty> if you expect to see anything.)
 
 =end original
 
-スクリプトは人間の介入なしに実行され、トレース情報を
-I<db.out> ファイルに出力します。
-(中断して、何も表示されない場合は、C<LineInfo> を F</dev/tty> に
-リセットしたほうがよいでしょう。)
+스크립트는 인간의 개입없이 실행되어, 추적정보를 I<db.out> 파일에 출력합니다.
+(중단해서, 무엇도 표시되지 않는 경우는, C<LineInfo> 를 F</dev/tty> 에
+리셋한 편이 좋을 겁니다)
 
 =over 12
 
@@ -1775,7 +1774,7 @@ The TTY to use for debugging I/O.
 
 =end original
 
-デバッグ I/O として TTY を使います。
+디버거 I/O 로써 TTY 를 사용합니다.
 
 =item C<noTTY>
 X<debugger option, noTTY>
@@ -1790,11 +1789,11 @@ runtime using the C<Term::Rendezvous> module of your choice.
 
 =end original
 
-セットすると、デバッガは C<NonStop> モードとなり、TTY と接続されません。
-もし中断された(または Perl スクリプトから明示的に $DB::signal や
-$DB::single をセットすることによってデバッガに制御が移った)場合、
-起動時に C<TTY> オプションで指定された TTY か、実行時に C<Term::Rendezvous>
-モジュールで選択された TTY に接続されます。
+절정하면, 디버거는 C<NonStop> 모드가 되고, TTY 와 접속되지 않습니다.
+만약 중단된(또는 펄 스크립트에서 명시적인 $DB::signal 이나
+$DB::single 을 설정하는 것에 의해 디버거에 제어가 넘어간) 경우,
+기동시에 C<TTY> 옵션으로 지정된 TTY 나, 실행시에 C<Term::Rendezvous>
+모듈로 선택된 TTY에 접속됩니다.
 
 =begin original
 
@@ -1808,14 +1807,13 @@ possible.
 
 =end original
 
-このモジュールは、2 つのメソッド C<IN> と C<OUT> をもつオブジェクトを
-返すメソッド C<new> を実装する必要があります。
-これらはそれぞれ、デバッグ入力と出力のためのファイルハンドルを
-返すようにします。
-C<new> メソッドは起動時に C<$ENV{PERLDB_NOTTY}> の値を含んでいる
-引数を検査し、さもなければ C<"$ENV{HOME}/.perldbtty$$"> となります。
-このファイルは適切な所有権について検査されないので、
-理論的にはセキュリティの問題が起こり得ます。
+이 모듈은 2개의 메소드 C<IN> 과 C<OUT> 을 가진 오브젝트를 
+반환하는 메소드 C<new> 를 구성할 필요가 있습니다.
+이런것은 각각, 디버거 입력과 출력을 위한 파일핸들을 반환하게 됩니다.
+C<new> 메소드는 기동시에 C<$ENV{PERLDB_NOTTY}> 의 값을 포함한
+인수를 검사하고, 없으면 C<"$ENV{HOME}/.perldbtty$$"> 가 됩니다.
+이 파일은 적절한 소유권에 대해 검사되지 않으므로,
+이론적으로는 보안문제가 발생할 수 있습니다.
 
 =item C<ReadLine>
 X<debugger option, ReadLine>
@@ -1827,8 +1825,8 @@ to debug applications that themselves use ReadLine.
 
 =end original
 
-偽だと、デバッグするアプリケーション自身が ReadLine を使うために、
-readline 対応を無効にします。
+거짓이면, 디버그하는 어플리케이션 자신이 ReadLine 을 사용하기 위해,
+readline 대응을 무효화합니다.
 
 =item C<NonStop>
 X<debugger option, NonStop>
@@ -1840,8 +1838,8 @@ programmatically by setting $DB::signal or $DB::single.
 
 =end original
 
-設定されると、デバッガは中断されるか、プログラム的に $DB::signal か
-$DB::single に設定されるまで、非対話的モードとなります。
+설정되면, 디버거는 중단되거나, 프로그램적으로 $DB::signal 이나
+$DB::single 에 설정되기까지, 비대화적 모드가 됩니다.
 
 =back
 
@@ -1851,7 +1849,7 @@ Here's an example of using the C<$ENV{PERLDB_OPTS}> variable:
 
 =end original
 
-以下に C<$ENV{PERLDB_OPTS}> 変数を使った例を示します:
+아래에 C<$ENV{PERLDB_OPTS}> 변수를 사용한 예를 나타냅니다;
 
     $ PERLDB_OPTS="NonStop frame=2" perl -d myprogram
 
@@ -1866,12 +1864,12 @@ always spell them out in full for legibility and future compatibility.
 
 =end original
 
-これは、人間の関与なしでスクリプト B<myprogram> を実行し、進入と終了の
-ポイントの呼び出し木を表示します。
-C<NonStop=1 frame=2> は C<N f=2> と等価で、もともとオプションは最初の文字
-(C<Dump*> オプションを法として) に省略できます。
-それでもやはり、読みやすさと将来の互換性のために、常にフルスペルを書くことが
-推奨されます。
+이것은, 인간의 관여없이 스크립트 B<myprogram> 을 실행하고, 진입과 종료의
+포인트의 호출트리를 표시합니다.
+C<NonStop=1 frame=2> 은 C<N f=2> 와 같으며, 본래 옵션은 최초의 문자
+(C<Dump*> 옵션을 기반으로한)에 생략할 수 있습니다.
+그래도 역시, 읽기 쉬움과 장래의 호환성을 위해, 항상 풀 스펠을 쓰는 것을
+권장합니다.
 
 =begin original
 
@@ -1879,7 +1877,7 @@ Other examples include
 
 =end original
 
-もう一つの例としては:
+또다른 예제로서는:
 
     $ PERLDB_OPTS="NonStop LineInfo=listing frame=2" perl -d myprogram
 
@@ -1892,10 +1890,10 @@ into a subroutine and each executed line into the file named F<listing>.
 
 =end original
 
-とするとスクリプトは非対話的に実行され、サブルーチンへの進入と実行行を
-F<listing> という名前のファイルに記録します。
-(中断すると、何か「対話的」にするために C<LineInfo> をリセットする方が
-良いでしょう!)
+라고 하면 스크립트는 비대화적으로 실행되고, 서브틴으로의 진입과 실행줄을
+F<listing> 이라고 하는 이름의 파일로 기술합니다.
+(중단하면, 뭔가가 "대화적"으로 하기 위해 C<LineInfo> 를 리셋하는 편이
+좋을겁니다)
 
 =begin original
 
@@ -1904,7 +1902,7 @@ variable settings):
 
 =end original
 
-(環境変数設定を表示する標準シェル構文を使った)もう一つの例としては:
+(환경변수설정을 표시하는 표준모듈구문을 사용한) 다른 하나의 예로써는:
 
   $ ( PERLDB_OPTS="NonStop frame=1 AutoTrace LineInfo=tperl.out"
       perl -d myprogram )
@@ -1917,10 +1915,9 @@ corresponds to F</dev/ttyXX>, say, by issuing a command like
 
 =end original
 
-これは C<Term::ReadLine> 地震を使っているプログラムをデバッグするのに
-便利です。
-以下のようなコマンドを使って、使用中のシェルを、F</dev/ttyXX> に対応する
-ウィンドウの TTY からデタッチすることを忘れないで下さい:
+이것은 C<Term::ReadLine> 을 사용한 프로그램을 디버그하기에 편리합니다.
+아래처럼 커맨드를 사용해서, 사용중의 셸을, F</dev/ttyXX> 에 대응하는
+윈도우의 TTY에서 디터치하는 것을 잊지 말아주세요.
 
   $ sleep 1000000
 
@@ -1930,11 +1927,11 @@ See L<perldebguts/"Debugger Internals"> for details.
 
 =end original
 
-詳細については L<perldebguts/"Debugger Internals"> を参照してください。
+자세한 내용은 L<perldebguts/"Debugger Internals"> 을 참조해주세요.
 
 =head2 Debugger input/output
 
-(デバッガの入出力)
+(디버거의 입출력)
 
 =over 8
 
@@ -1946,7 +1943,7 @@ The debugger prompt is something like
 
 =end original
 
-デバッガのプロンプトは以下のようだったり:
+디버거의 프롬프트는 아래와 같거나:
 
     DB<8>
 
@@ -1956,7 +1953,7 @@ or even
 
 =end original
 
-あるいは以下のようだったりします:
+또는 아래와 같거나 합니다.
 
     DB<<17>>
 
@@ -1973,13 +1970,13 @@ expression> command.
 
 =end original
 
-ここで数値はコマンド番号で、組み込みの B<csh> 風履歴機構を使って
-アクセスするのに使います。
-例えば、C<!17> はコマンド番号 17 を再実行します。
-不等号の深さはデバッガのネストの深さを示します。
-例えば、既にブレークポイントにいて、それ自身にもブレークポイントを
-含む関数呼び出しの結果を表示させたり、C<s/n/t expression> コマンドを
-使って式をステップ実行したりした時に複数の不等号の組を見ることがあります。
+여기에 수치는 커맨드 번호로, 내장 B<csh> 같은 이력기구를 사용해서
+접근하는 것에 사용합니다.
+예를들면, C<!17> 은 커맨드 번호 17을 재실행합니다.
+부등호의 깊이는 디버거의 중첩의 깊이를 표시합니다.
+예를들면, 이미 브레이크포인트에 있고, 그 자신에도 브레이크포인트를
+포함한 함수호출의 결과를 표시하거나, C<s/n/t expression> 커맨드를
+사용해 식을 스텝 실행하거나 하는 때에 복수의 부등호의 쌍을 볼 때가 있습니다.
 
 =item Multiline commands
 
@@ -2322,8 +2319,8 @@ by directly setting internal variables or calling debugger functions.
 
 =end original
 
-最後の手段として、 C<PERL5DB> を、直接内部変数を設定したり
-デバッガ関数を呼び出すことでデバッガをカスタマイズすることもできます。
+마지막 수단으로써, C<PERL5DB> 를 직접내부변수를 설정하거나,
+디버거 함수를 호출하는 것으로 디버거를 커스터마이즈ㄹ 수도 있습니다.
 
 =begin original
 
@@ -2333,12 +2330,12 @@ use only, and as such are subject to change without notice.
 
 =end original
 
-このドキュメント(や L<perldebguts>)に記述されていない変数や
-関数は内部使用専用として扱われ、予告なく変更されることがあります。
+이 문서(또는 L<perldebguts>)에 기술되지 않은 변수나 
+함수는 내부사용전용으로 취급되어, 예고없이 변경될 수 있습니다.
 
 =head2 Readline Support
 
-(readline 対応)
+(readline 지원)
 
 =begin original
 
@@ -2351,13 +2348,13 @@ These do not support normal B<vi> command-line editing, however.
 
 =end original
 
-出荷時の状態では、コマンドライン履歴参照機能として提供されるのは、
-エクスクラメーションマークを付けることによる単純なものだけです。
-しかし、CPAN から Term::ReadKey と Term::ReadLine のモジュールを
-インストールすることで、GNU I<readline>(3) が提供するような
-完全な編集機能が使えるようになります。
-これらは CPAN の F<modules/by-module/Term> ディレクトリにあります。
-しかし、これらは通常の B<vi> コマンドライン編集は対応していません。
+출하시의 상태에서는, 커맨드라인 이력참조기능으로써 제공되는 것은,
+Exclamation Point를 붙이는 것으로 가능합니다.
+그러나 CPAN에서 Term::ReadKey 와 Term::ReadLine 의 모듈을 
+인스톨하는 것으로, GNU I<readline>(3) 가 제공되는 듯한 완전한
+편집기능을 사용하게 되었습니다.
+이것들은 CPAN 의 F<modules/by-module/Term> 디렉토리에 있습니다.
+그러나 이것들은 일반적인 B<vi> 커맨드라인 편집은 지원하지 않습니다.
 
 =begin original
 
@@ -2367,8 +2364,8 @@ completion.
 
 =end original
 
-基本的なコマンドライン補完も利用可能です。
-残念ながら、レキシカル変数名は補完できません。
+기본적인 커맨드라인보완도 이용가능합니다.
+아쉽게도, 렉시컬변수이름은 보완할 수 없습니다.
 
 =head2 Editor Support for Debugging
 
@@ -2383,9 +2380,9 @@ with C debuggers.
 
 =end original
 
-FSF 版の B<emacs> がシステムにインストールされている場合は、
-C デバッガとの連携を連想させるような、Perl デバッガとの統合
-ソフトウェア開発環境を提供します。
+FSF 판의 B<emacs> 가 시스템에 인스톨 된 경우는,
+C 디버거와의 연계를 연상시키는 것처럼, Perl 디버거와의 통합
+소프트웨어 개발환경을 제공합니다.
 
 =begin original
 
@@ -2395,9 +2392,9 @@ Look in the I<emacs> directory of the Perl source distribution.
 
 =end original
 
-Perl には B<emacs> を Perl の文法(の一部)を解釈する文法指向の
-エディタとして振舞わせるためのスタートファイルを同梱しています。
-Perl ソース配布の I<emacs> ディレクトリを参照してください。
+Perl 에는 B<emacs> 를 Perl 의 문법(의 일부)를 해석하는 문법지향의
+에디터로써 다루기위한 스타트파일을 가지고 있습니다.
+Perl 소스배포의 I<emacs> 디렉토리를 참조해주세요.
 
 =begin original
 
@@ -2410,12 +2407,12 @@ Perl distribution was uncertain.
 
 =end original
 
-ベンダー同梱の B<vi> および X11 ウィンドウシステムと相互作用させるための
-Tom Christiansen による似たようなセットアップも利用可能です。
-これは B<emacs> が提供する統合マルチウィンドウサポートと同様に動作し、
-デバッガがエディタを制御します。
-しかし、これを記述している時点では、このツールの Perl 配布の中での
-最終的な位置は不確定です。
+어느 벤더에도 들어있는 B<vi> 및 X11 윈도우시스템과 상호작용시키기 위한
+Tom Christiansen 에 의한 비슷한 셋업도 이용할 수 있습니다.
+이것은 B<emacs> 가 제공하는 통합 멀티윈도우서포트처럼 동작하고,
+디버거가 에디터를 제어합니다.
+그러나, 이것을 기술하고 있는 시점에서는, 이 툴의 Perl 배포의 안에서의
+최종적인 위치는 불확정입니다.
 
 =begin original
 
@@ -2424,8 +2421,8 @@ and windy version, for coloring of Perl keywords.
 
 =end original
 
-B<vi> ユーザーは、Perl のキーワードを色付けする、マウスとウィンドウ対応の
-B<vim> と B<gvim> を調べてみてください。
+B<vi> 유저는, Perl 키워드를 색지정할 경우, 마우스와 윈도우 대응의
+B<vim> 과 B<gvim> 을 알아보세요.
 
 =begin original
 
@@ -2435,14 +2432,14 @@ your Perl as a C programmer might.
 
 =end original
 
-perl のみが完全に Perl をパースできるので、これら全ての CASE ツールには
-足りないところがあることに注意してください; 特に C プログラマーが書くような
-Perl プログラムを書いていない場合はそうです。
+Perl 만이 완전하게 Perl 을 파싱할 수 있기에, 이것들 모두의 CASE 툴에는
+부족한 부분이 있는 것에 주의해주세요; 특히 C 프로그래머가 쓸 듯한
+Perl 프로그램을 쓰지 않을 경우가 그렇습니다.
 
 =head2 The Perl Profiler
 X<profile> X<profiling> X<profiler>
 
-(Perl プロファイラ)
+(Perl 프로파일러)
 
 =begin original
 
@@ -2455,12 +2452,12 @@ just type:
 
 =end original
 
-Perl の実行に代替デバッガを使いたい場合は、単に B<-d> オプションに
-コロンとパッケージからなる引数を付けてスクリプトを起動してください。
-もっとも有名な Perl 用代替デバッガは Perl プロファイラです。
-Devel::DProf は Perl 標準配布に含まれています。
-ファイル F<mycode.pl> にある Perl プログラムをプロファイリングしたい
-場合、以下のようにします:
+Perl 실행에 다른 디버거를 사용하고 싶은 경우는 간단하게 B<-d> 옵션에
+콜론과 패키지로 구성된 인수를 붙여서 스크립트를를 기동해주세요.
+가장 유명한 Perl 용 대용 디버거는 Perl 프로파일러입니다.
+Devel::DProf 는 Perl 표준배포에 포함되어 있습니다.
+파일 F<mycode.pl> 에 있는 Perl 프로그램을 프로파일링하고 싶은 경우,
+아래처럼 합니다.
 
     $ perl -d:DProf mycode.pl
 
@@ -2473,16 +2470,16 @@ interpret the information in that profile.
 
 =end original
 
-スクリプトが終了すると、プロファイラはプロファイル情報を
-F<tmon.out> というファイルにダンプします。
-Perl 標準配布に含まれている B<dprofpp> のようなツールが、この
-プロファイルの情報を解釈するのに使えます。
+스크립트가 종료하면, 프로파일러는 프로파일 정보를
+F<tmon.out> 이라는 파일에 덤프합니다.
+Perl 표준배포에 포함된 B<dprofpp> 같은 툴이, 이 프로파일의 정보를
+해석하는 것에 사용할 수 있습니다.
 
 =head1 Debugging regular expressions
 X<regular expression, debugging>
 X<regex, debugging> X<regexp, debugging>
 
-(正規表現のデバッグ)
+(정규표현의 디버그)
 
 =begin original
 
@@ -2496,19 +2493,19 @@ L<perldebguts/"Debugging regular expressions">.
 
 =end original
 
-C<use re 'debug'> を指定すると、Perl 正規表現エンジンがどのように
-動作するかの詳細を見ることができます。
-この、典型的には大量の出力を理解するためには、
-一般的に正規表現マッチがどのように行われるかだけでなく、
-Perl の正規表現が内部的にどのようにオートマトンにコンパイルされるかを
-知らなければなりません。
-これらの事柄は詳細は
-L<perldebguts/"Debugging regular expressions"> にあります。
+C<use re 'debug'> 를 지정하면, Perl 정규표현엔진이 어떻게 동작하는 가의
+자세한 내용을 볼 수 있습니다.
+이 전형적으로는 대량의 출력을 이해하기 위해서는,
+일반적으로 정규표현 매치가 어떻게 수행되는 가뿐만 아니라,
+Perl 의 정규표현이 내부적으로 어떻게 오토마톤에 컴파일 되는 가를
+모르면 안됩니다.
+자세한 내용은 L<perldebguts/"Debugging regular expressions"> 에 있습니다.
+
 
 =head1 Debugging memory usage
 X<memory usage>
 
-(メモリ使用のデバッグ)
+(메모리 사용의 디버그)
 
 =begin original
 
@@ -2519,11 +2516,10 @@ See L<perldebguts/"Debugging Perl memory usage"> for the details.
 
 =end original
 
-Perl には自身のメモリ使用状況を報告するための内部機能があります。
-しかしこれはかなり上級の概念で、メモリ割り当てがどのように行われるかに
-ついての理解が必要となります。
-詳細については
-L<perldebguts/"Debugging Perl memory usage"> を参照して下さい。
+Perl 에는 자신의 메모리사용상황을 보고하기 위한 내부기능이 있습니다.
+그러나 이것은 꽤 상급의 개념으로, 메모리 할당이 어떻게 수행되는 가에
+대해 이해할 필요가 있습니다.
+상세한 내용은 L<perldebguts/"Debugging Perl memory usage"> 를 참조해주세요.
 
 =head1 SEE ALSO
 
@@ -2533,7 +2529,7 @@ You did try the B<-w> switch, didn't you?
 
 =end original
 
-B<-w> スイッチはもう使いましたよね?
+B<-w> 스위치는 이미 사용했었죠?
 
 =begin original
 
@@ -2566,9 +2562,9 @@ have to type the path or C<which $scriptname>.
 
 =end original
 
-#! を使っているので普通は $PATH に見つかるスクリプトをデバッグするとき、
--S オプションを付けると perl は $PATH からスクリプトを探すので、
-パスや C<which $scriptname> をタイプする必要がなくなります。
+#! 를 사용하고 있기때문에 보통은 $PATH 에 보이는 스크립트를 디버그할 때,
+-S 옵션을 붙이면 perl 은 $PATH 에서 스크립트를 찾기때문에,
+경로나 C<which $scriptname> 을 사용할 필요가 없어집니다.
 
   $ perl -Sd foo.pl
 
@@ -2581,8 +2577,8 @@ that were not compiled by Perl, such as those from C or C++ extensions.
 
 =end original
 
-C や C++ 拡張のような、Perl でコンパイルされていないものに対して
-スタックフレーム情報やあらゆるデバッグ関数を使うことはできません。
+C 나 C++ 확장처럼, Perl 에서 컴파일되지 않은 것에 대해서
+스택플레임정보나 여러 디버그 함수를 사용할 수는 없습니다.
 
 =begin original
 
@@ -2591,8 +2587,8 @@ or C<pop>), the stack backtrace will not show the original values.
 
 =end original
 
-サブルーチン内で(C<shift> や C<pop> を使って) @_ 引数を変更した場合、
-スタックバックトレースで元の値を表示することはできません。
+서브루틴 안에서(C<shift> 나 C<pop> 을 사용해서) @_ 인수를 변경한 경우,
+스택 역추적으로 원래의 값을 표시할 수는 없습니다.
 
 =begin original
 
@@ -2601,8 +2597,8 @@ command-line switch, because it itself is not free of warnings.
 
 =end original
 
-デバッガは現在のところ B<-W> コマンドラインスイッチと同時に
-使うことはできません。これ自身が警告から逃れられないからです。
+디버거는 현재 B<-W> 커맨드라인스위치와 동시에 사용할 수는 없습니다.
+이 자신이 경고에서 자유로울 수 없기 때문입니다.
 
 =begin original
 
@@ -2614,9 +2610,9 @@ it needs to raise an exception to longjmp(3) out of slow syscalls.
 
 =end original
 
-(キーボードやソケットからの C<wait>, C<accept>, C<read>などの)
-遅いシステムコールを実行中で、独自の C<$SIG{INT}> ハンドラを設定していない場合、
-デバッガに戻ってくるために CTRL-C を使うことはできません。
-これは、デバッガ自身の C<$SIG{INT}> ハンドラが
-遅いシステムコールから longjmp(3) で出るための例外を発生させる必要性を
-理解しないからです。
+(키보드나 소켓에서의 C<wait>, C<accept>, C<read> 등의)
+느린 시스템 호출을 실행중이고, 독자의 C<$SIG{INT}> 핸들러를 설정하지않는 경우
+디버거로 돌아오기 위해 CTRL-C를 사용할 수는 없습니다.
+    이것은 디버거 자신의 C<$SIG{INT}> 핸들러가
+느린 시스템 호출으로부터 longjmp(3) 에서 나오기 위해 예외를 발생시킬 필요성을
+이해하지 않기 때문입니다.
