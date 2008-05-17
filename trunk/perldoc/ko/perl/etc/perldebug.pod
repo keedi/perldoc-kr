@@ -223,7 +223,7 @@ where STDOUT may be redirected to.
 =end original
 
 STDOUT 이 어디로 리다이렉트되어도, 파일핸들 C<DB::OUT> 는 F</dev/tty>에 대해서
-오픈되어집니다.
+오픈됩니다.
 
 =item x [maxdepth] expr
 X<debugger command, x>
@@ -261,7 +261,7 @@ temporarily set to I<N>.
 
 =end original
 
-C<maxdepth> 가 지정되어진 경우, 그것을 변수 I<N> 이 아니면 안됩니다;
+C<maxdepth> 가 지정되어진 경우, 그것을 변수 I<N> 이어야 합니다;
 C<dumpDepth> 옵션이 일시적으로 I<N> 에 설정된 것처럼,
 값은 I<N> 레벨의 깊이만큼 덤프됩니다.
 
@@ -283,7 +283,7 @@ package (기본적으로는 C<main>) 안의 모든 (또는, 일부) 변수(varia
 (해쉬는 뭐가뭔지 알수 있도록, key 와 value 를 표시하고,
 컨트롤문자는 표시할 수 있는 형태로 합니다).
 아래에 나타내고 있는 것처럼, symbol 은 이름만을 표하고, (C<$> 등의) 
-형 식별자를 붙이지 않도록 해주세요.
+형태 식별자를 붙이지 않도록 해주세요.
 
     V DB filename line
 
@@ -376,9 +376,8 @@ each statement.
 
 =end original
 
-다음. 다음의의 실행문의 맨앞에 도달하기 까지, 서브루틴<BLAH>
+그리고. 다음 실행문의 맨앞에 도달하기 까지, 서브루틴 호출을 거쳐서 실행됩니다.
 함수호출을 포함한 식이 주어진 경우, 매 줄마다 정지하면서 함수를 실행합니다.
-ネクスト。次の実行文の先頭に到達するまで、サブルーチンにまたがって実行します。
 
 =item r
 X<debugger command, r>
@@ -492,7 +491,7 @@ View a few lines of code around the current line.
 
 =end original
 
-지정 줄 부근의 몇 줄의 코드를 리스트 표시합니다.
+지정한 줄 부근의 몇 줄의 코드를 리스트 표시합니다.
 
 =item .
 X<debugger command, .>
@@ -574,7 +573,7 @@ List (default all) actions, breakpoints and watch expressions
 =end original
 
 브레이크포인트, 액션, watch expressions를 
-(기본은 모두) 리스트업 합니다.
+(기본은 모두) 나열합니다.
 
 =item S [[!]regex]
 X<debugger command, S>
@@ -585,7 +584,7 @@ List subroutine names [not] matching the regex.
 
 =end original
 
-regex 에 일치하는(또는 일치하지않는) 서브루틴 이름을 리스트업합니다.
+regex 에 일치하는(또는 일치하지않는) 서브루틴 이름을 나열합니다.
 
 =item t
 X<debugger command, t>
@@ -639,7 +638,7 @@ don't use C<if>:
 
 주어진 줄의 직전에 브레이크포인트를 설정합니다.
 condition 이 설정되면, 그 구문에 접근할 때마다 평가됩니다.
-condition 이 잠이 되었을 때에만 브레이크 포인트가 작동합니다.
+condition 이 참이 되었을 때에만 브레이크 포인트가 작동합니다.
 브레이크 포인트는 실행가능한 구문으로 시작되는 행에만,
 설정가능합니다. condition 에는 C<if> 를 사용할 수 없습니다:
 
@@ -779,7 +778,7 @@ Delete an action from the specified line.
 =end original
 
 설정된 줄에 설정된 액션을 삭제합니다.
-I<line> 이 생략되면, 지금 바로 실행하고자하는 줄에 설정되어있는
+I<line> 이 생략되면, 지금 바로 실행하고자하는 줄에 설정되어 있는
 액션이 삭제됩니다.
 
 =item A *
@@ -859,7 +858,7 @@ Print out the value of one or more options.
 
 =end original
 
-하나 혹은 복수의 옵션 값을 표시합니다.
+하나 이상의 옵션 값을 표시합니다.
 
 =item o option=value ...
 X<debugger command, o>
@@ -879,7 +878,7 @@ it?\"">.
 
 =end original
 
-하나 혹은 복수의 옵션을 설정합니다.
+하나 이상의 옵션을 설정합니다.
 값에 공백을 포함한 경우, 인용할 필요가 있습니다.
 예를 들면, B<less>를 옵션을 붙여서 호출할 경우는
 C<o pager="less -MQeicsNfr"> 처럼 럼 합니다.
@@ -943,7 +942,7 @@ Delete all pre-prompt Perl command actions.
 
 =end original
 
-프롬프트 표시전에 실행ㅏ는 액션을 모두 삭제합니다.
+프롬프트 표시전에 실행하는 액션을 모두 삭제합니다.
 
 =item << command
 X<< debugger command, << >>
@@ -1376,7 +1375,7 @@ default, both are set to C<!>, which is unfortunate.
 =end original
 
 재귀호출 커맨드와 셸기동에 사용되는 문자입니다.
-기본적으로는, 불행히도, 양쪽ㄷ C<!>에 설정되어 있습니다.
+기본적으로는, 불행히도, 양쪽 다 C<!>에 설정되어 있습니다.
 
 =item C<pager>
 X<debugger option, pager>
@@ -1567,8 +1566,7 @@ next option:
 
 =end original
 
-인수리스트가 <BLAH> 했을 때ㅣ 길이는 다음의 옵션의 <BLAH> 가 됩니다.
-引数リストが切り詰められた時の長さは次のオプションの管轄となります:
+<BLAH>
 
 =item C<maxTraceLen>
 X<debugger option, maxTraceLen>
@@ -1989,10 +1987,9 @@ Here's an example:
 
 =end original
 
-複数の文からなるサブルーチン定義やフォーマットといった、複数行の
-コマンドを入力したい場合は、通常はデバッガコマンドを終了させる改行を
-バックスラッシュでエスケープしてください。
-以下は例です:
+여러 구문에서의 서브루틴정의나 포맷같은, 여러줄의 커맨드를 입력하고 싶은 경우는
+일반적으로는 디버거 커맨드를 종료시키는 개행을 백슬래쉬로 이스케이프해주세요.
+아래는 예입니다;
 
       DB<1> for (1..4) {         \
       cont:     print "ok\n";   \
@@ -2009,8 +2006,8 @@ commands typed into the debugger.
 
 =end original
 
-この、改行をエスケープする問題は、対話的にデバッガに入力されたコマンドに
-特有であることに注意してください。
+이 개행을 이스케이프하는 문제는, 대화적으로 디버거에 입력된 커맨드에
+특유한 것에 주의하세요.
 
 =item Stack backtrace
 X<backtrace> X<stack, backtrace>
@@ -2022,8 +2019,7 @@ look like:
 
 =end original
 
-これは、C<T> コマンドによって表示されるスタックバックトレースの
-例です:
+이것은, C<T> 커맨드에 의해 표시되는 스택백트레이스의 예입니다:
 
     $ = main::infested called from file `Ambulation.pm' line 10
     @ = Ambulation::legs(1, 2, 3, 4) called from file `camel_flea' line 7
@@ -2046,18 +2042,17 @@ also from I<camel_flea>, but from line 4.
 
 =end original
 
-上記の左側の文字は関数が呼び出されたコンテキストを示しています;
-C<$> と C<@> はそれぞれスカラコンテキストとリストコンテキストを意味し、
-C<.> は無効コンテキスト(実際のところはスカラコンテキストのようなもの)を
-意味します。
-上記の表示は、スタックダンプを実行したときに C<main::infested> にいて、
-これはファイル I<Ambulation.pm> の 10 行目から、スカラコンテキストで
-引数なしで呼び出されています; つまり C<&infested> のようにして
-呼び出されています。
-次のスタックフレームは、関数 C<Ambulation::legs> が I<camel_flea> から
-リストコンテキストで 4 つの引数と共に呼び出されています。
-最後のスタックフレームは、C<main::pests> が、同じファイル I<camel_flea> の
-4 行目からスカラコンテキストで呼び出されています。
+위의 좌측의 문자는 함수가 호출된 컨텍스트를 나타내고 있습니다;
+C<$> 와 C<@> 은 각각 스칼라컨텍스트와 리스트 컨텍스트를 의미하고,
+C<.> 은 무효컨텍스트(실제로는 스칼라컨텍스트같은 것)를 의미합니다.
+위의 표시는, 스택 탭을 실행한 때에 C<main::infested> 에 있고,
+이것은 파일 I<Ambulation.pm> 의 10번째 줄에서, 스칼라컨텍스트로
+인수없이 호출되고 있습니다; 즉 C<&infested> 처럼 해서
+호출되고 있습니다.
+다음의 스택프레임은 함수 <Ambulation::legs> 가 I<camel_flea> 에서
+리스트컨텍스트로 4개의 인수와 함께 호출됩니다.
+마지막의 스택프레임은, C<main::pets> 가, 같은 파일 I<camel_flea> 의
+4번째줄에서 스칼라컨텍스트로 호출됩니다.
 
 =begin original
 
@@ -2067,8 +2062,8 @@ an C<eval>) frame.
 
 =end original
 
-有効な C<use> 文の中から C<T> コマンドを実行すると、バックとレースには
-C<require> フレームと C<eval> フレームの両方が含まれます。
+유효한 C<use> 문의 안에서 C<T> 커맨드를 실행하면, 역추적에는
+C<reuqire> 프레임과 C<eval> 프레임의 양쪽이 포함됩니다.
 
 =item Line Listing Format
 
@@ -2078,7 +2073,7 @@ This shows the sorts of output the C<l> command can produce:
 
 =end original
 
-これは C<l> コマンドの出力を示しています:
+이것은 C<l> 커맨드의 출력을 나타내고 있습니다:
 
     DB<<13>> l
   101:                @i{@i} = ();
@@ -2100,10 +2095,9 @@ about to be executed is marked by C<< ==> >>.
 
 =end original
 
-ブレーク可能な行には C<:> が付いています。
-ブレークポイントのある行には C<b> が、アクションがある行には
-C<a> があります。
-今から実行しようとしている行には C<< ==> >> が付いています。
+브레이크가능한 줄에는 C<:> 가 붙어있습니다.
+브레이크포인트인 줄에는 C<b> 가, 액션이 있는 줄에는 C<a> 가 있습니다.
+지금부터 실행하려고하는 줄에는 C<< ==> >> 가 붙어있습니다.
 
 =begin original
 
@@ -2114,11 +2108,11 @@ from its original positions or take on entirely different forms.
 
 =end original
 
-デバッガで表示されるコードは、元のソースコードと同じように見えるとは
-限らないことに注意してください。
-行指示子と外部ソースフィルタが、Perl がコードを見る前にコードを
-変更することがあり、それによってコードが元の位置から移動したり、
-完全に異なる形になったりします。
+디버거로 표시된 코드는, 원래 소스코드와 똑같이 보인다고 말할 수 없는 것에
+주의해 주세요.
+행지시자와 외부 소스필터가, Perl 이 코드를 보기 전에 코드를 
+변경할 때가 있고, 그것에 의해 코드가 원래의 위치에서 이동하거나,
+완전히 다른 형태가 되거나 합니다.
 
 =item Frame listing
 
@@ -2130,15 +2124,15 @@ for incredibly long examples of these.
 
 =end original
 
-C<frame> オプションが設定されると、デバッガはサブルーチンに入ったとき
-(および出たときもオプションで)違ったスタイルで表示します。
-これらの非常に長い例については L<perldebguts> を参照してください。
+C<frame> 옵션이 설정되면, 디버거는 서브루틴에 들어갔을 때
+(그리고 나올때도 옵션으로) 다른 스타일로 표시합니다.
+이런것들의 꽤 긴 예제에 대해서는 L<perldebguts> 를 참조해주세요.
 
 =back
 
 =head2 Debugging compile-time statements
 
-(コンパイル時に実行される文のデバッグ)
+(컴파일 시에 실행되는 구문의 디버깅)
 
 =begin original
 
@@ -2152,14 +2146,14 @@ which is harmless if the debugger is not running:
 
 =end original
 
-コンパイル時に実行される文 (BEGIN と CHECK のブロック内のコードや
-C<use> 文) があれば、それらはデバッガによってI<止めることができま
-せん>。C<require> と INIT ブロックは可能です。
-また、コンパイル時実行文は C<PERLDB_OPTS> で C<AutoTrace> オプションを
-設定することでトレースできます。
-しかし、以下のような文を自分で Perl コードに含めれば、
-デバッガに制御を渡すことができます。
-この文は、デバッガを起動していないときには、何もしません:
+컴파일 시에 실행될 구문 (BEGIN 과 CHECK 의 블록 안의 코드나
+C<use> 구문) 이 있다면, 그것들은 디버거에 의해 I<멈출 수 없습니다>.
+C<require> 와 INIT 블록은 가능합니다.
+또, 컴파일 시 실행문은 C<PERLDB_OPTS> 로 C<AutoTrace> 옵션을
+설정하는 것으로 추적할 수 있습니다.
+그러나, 아래처럼 구문을 스스로 Perl 코드에 포함하면
+디버거에 제어를 넘길 수가 있습니다.
+이 구문은, 디버거를 기동하지 않을 때에는 아무것도 하지 않습니다.
 
     $DB::single = 1;
 
@@ -2172,11 +2166,10 @@ having typed the C<t> command.
 
 =end original
 
-C<$DB::single> に 2 をセットすると、C<n>コマンドをタイプしたのと
-等価になります。
-1 を設定すると C<s> コマンドとなります。
-C<$DB::trace> 変数は C<t> コマンドをタイプした状態をシミュレートするために
-1 にセットするべきです。
+C<$DB::single> 에 2 를 설정하면, C<n> 커맨드를 넣은 것과 같아집니다.
+1 을 설정하면 C<s> 커맨드가 됩니다.
+C<$DB::trace> 변수는 C<t> 커맨드를 넣은 상태를 시험하기 위해
+1 으로 설정해야합니다.
 
 =begin original
 
@@ -2185,8 +2178,8 @@ breakpoint on the I<load> of some module:
 
 =end original
 
-コンパイル時に実行されるコードをデバッグするもう一つの方法は、
-モジュールの I<load> にブレークポイントを設定して:
+컴파일 시에 실행될 코드를 디버그하는 다른 하나의 방법은,
+모듈의 I<load> 에 브레이크 포인트를 설정하고;
 
     DB<7> b load f:/perllib/lib/Carp.pm
   Will stop on load of `f:/perllib/lib/Carp.pm'.
@@ -2198,12 +2191,12 @@ compile subname> for the same purpose.
 
 =end original
 
-(可能なら) C<R> コマンドを使ってデバッガを再起動することです。
-C<b compile subname> も同じ目的に使えます。
+(가능하면) C<R> 커맨드를 사용해서 디버거를 재기동하는 것입니다.
+C<b compile subname> 도 같은 목적으로 사용할 수 있습니다.
 
 =head2 Debugger Customization
 
-(デバッガのカスタマイズ)
+(디버거의 커스터마이즈)
 
 =begin original
 
@@ -2215,11 +2208,11 @@ from customization files.
 
 =end original
 
-デバッガにはおそらくあなたが自分で修正する必要があるとは思わないような
-ところまで含んだ設定フックがあります。
-デバッガの振る舞いは、デバッガ内で C<o> コマンドを使って変更できます;
-これは C<PERLDB_OPT> 環境変数経由でコマンドラインからか、設定ファイルから
-変更できます。
+디버거에는 아마도 당신이 자신이 수정할 필요가 있다고는 생각하지 않을 
+곳까지 포함된 설정후크가 있습니다.
+디버거의 행동은, 디버거 안에서 C<o> 커맨드를 사용해 변경할 수 있습니다;
+이것은 C<PERLDB_OPT> 환경변수 경유로 커맨드라인에서나, 설정파일에서
+변경할 수 있습니다.
 
 =begin original
 
@@ -2229,10 +2222,9 @@ like these (the last one is one people expect to be there):
 
 =end original
 
-初期化コードを入れたファイル .perldb を設定することでも、
-いくらかのカスタマイズができます。
-たとえば、以下のようなエイリアスが行えます (最後のものは、
-人々があると思っているものです):
+초기화코드를 넣은 파일 .perldb 를 설정하는 것으로도,
+몇가지인가의 커스터마이즈가 됩니다.
+예를들어, 아래처럼 alias 를 실행할 수 있습니다.
 
     $DB::alias{'len'}  = 's/^len(.*)/p length($1)/';
     $DB::alias{'stop'} = 's/^stop (at|in)/b/';
@@ -2245,7 +2237,7 @@ You can change options from F<.perldb> by using calls like this one;
 
 =end original
 
-F<.perldb> のオプションを、以下のような呼び出しによって変更できます:
+F<.perldb> 의 옵션을, 아래와 같은 호출에 의해 변경될 수 있습니다:
 
     parse_options("NonStop=1 LineInfo=db.out AutoTrace=1 frame=2");
 
@@ -2262,14 +2254,14 @@ by no one but its owner.
 
 =end original
 
-コードは C<DB> パッケージで実行されます。
-F<.perldb> は C<PERLDB_OPTS> の前に処理されることに注意してください。
-F<.perldb> で C<afterinit> サブルーチンが定義されていると、この関数は
-デバッガの初期化終了後に呼び出されます。
-F<.perldb> はカレントディレクトリかホームディレクトリに置くことができます。
-このファイルは Perl によって実行され、任意のコマンドを含めることが
-できるので、セキュリティ上の理由から、スーパーユーザーが現在のユーザーに
-よって所有され、所有者以外には書込み禁止になっていなければなりません。
+코드는 C<DB> 패키지에서 실행됩니다.
+F<.perldb> 는 C<PERLDB_OPTS> 의 앞에서 처리되는 것에 주의해주세요.
+F<.perldb> 에서 C<afterinit> 서브루틴이 정의되면, 이 함수는
+디버거의 초기화종료 뒤에 호출됩니다.
+F<.perldb> 는 최근 디렉토리인나 홈디렉토리에 놓을 수 있습니다.
+이 파일은 Perl 에 의해 실행되어, 임의의 커맨드를 포함하는 것이 가능하므로,
+보안상의 이유에서, 슈퍼유저가 현재의 유저에 의해 소유되고, 소유자이외에는
+쓰기 금지가 되어 있지 않으면 안됩ㄴ디ㅏ.
 
 =begin original
 
@@ -2278,9 +2270,9 @@ You can mock TTY input to debugger by adding arbitrary commands to
 
 =end original
 
-@DB::typeahead に任意のコマンドを追加することで、デバッガへの TTY 入力を
-模倣できます。
-例えば、あなたの F<.perldb> ファイルに以下のように書くと:
+@DB::typeahead 에 임의의 커맨드를 추가하는 것으로, 디버거로의 TTY 입력을
+모방할 수 있습니다.
+예를 들어, 당신의 F<.perldb> 파일에 아래처럼 쓰면:
 
     sub afterinit { push @DB::typeahead, "b 4", "b 6"; }
 
@@ -2292,10 +2284,9 @@ interface and is subject to change in future releases.
 
 =end original
 
-デバッガ初期化の直後に 4 行目と 6 行目にブレークポイントを
-設定しようとします。
-@DB::typeahead はサポートしているインターフェースではなく、将来の
-リリースでは変更されることがあることに注意してください。
+디버거 초기화의 값 뒤에 4줄째와 6줄째에 브레이크포인트를 설정하도록 합니다.
+@DB::typeahead 는 서포트하고 있는 인터페이스가 아니라, 앞으로 릴리즈에서는
+변경될 수가 있으니 주의해주세요.
 
 =begin original
 
@@ -2306,9 +2297,9 @@ something like this:
 
 =end original
 
-デバッガを変更したい場合には、perl5db.pl を Perl ライブラリから
-別の名前にコピーし、修正してください。それから
-環境変数 C<PERL5DB> には、以下のように設定する必要があるでしょう:
+디버거를 변경하고 싶은 경우에는, perl5db.pl 을 Perl 라이브러리에서
+별도의 이름으로 복사해서, 수정해주세요. 그리고,
+환경변수 C<PERL5DB> 에는, 아래처럼 설정할 필요가 있을 겁니다:
 
     BEGIN { require "myperl5db.pl" }
 
@@ -2369,7 +2360,7 @@ completion.
 
 =head2 Editor Support for Debugging
 
-(デバッグのためのエディタ対応)
+(디버깅을 위한 에디터 지원)
 
 =begin original
 
@@ -2613,6 +2604,6 @@ it needs to raise an exception to longjmp(3) out of slow syscalls.
 (키보드나 소켓에서의 C<wait>, C<accept>, C<read> 등의)
 느린 시스템 호출을 실행중이고, 독자의 C<$SIG{INT}> 핸들러를 설정하지않는 경우
 디버거로 돌아오기 위해 CTRL-C를 사용할 수는 없습니다.
-    이것은 디버거 자신의 C<$SIG{INT}> 핸들러가
+이것은 디버거 자신의 C<$SIG{INT}> 핸들러가
 느린 시스템 호출으로부터 longjmp(3) 에서 나오기 위해 예외를 발생시킬 필요성을
 이해하지 않기 때문입니다.
