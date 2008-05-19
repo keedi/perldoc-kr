@@ -321,11 +321,3 @@ perldata(1), perlref(1), perldsc(1)
 Tom Christiansen <F<tchrist@perl.com>>
 
 Last update: Thu Jun  4 16:16:23 MDT 1998
-
-=begin meta
-
-Translate: KIMURA Koichi (5.005_03)
-Update: Kentaro Shirakata <argrath@ub32.org> (5.6.1-)
-
-=end meta
-

@@ -1858,11 +1858,3 @@ shell:
     __END__
     foo at goop line 345.
 
-=begin meta
-
-Created: KIMURA Koichi
-Updated: Kentaro Shirakata <argrath@ub32.org>
-Translated JP2KR : JEEN <aiatejin@gmail.com>
-=end meta
-
-=cut
