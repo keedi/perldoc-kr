@@ -717,15 +717,15 @@ perl4 처럼 하기에는, 자신이 임시 변수로 복사해서 그 배열에
 
 =item * B<-e> behavior fixed
 
-perl4 では、B<-e> スイッチにアタッチされたテキストは無視されて、常に
-後に続く引数からプログラムが取り出されていました。さらに、
-B<-e> スイッチの後に引数を渡さない場合も受け付けていました。
-これらの振る舞いは両方とも修正されました。
+perl4 에서는, B<-e> 스위치로 접근한 텍스트는 무시되고, 항상
+뒤에 따라온 인수부터 프로그램이 뽑아내었었습니다. 거기에,
+B<-e> 스위치의 뒤에 인수를 넘기지 않은 경우도 받아들였습니다.
+이런 행동은 양쪽 모두 수정되었습니다.
 
     perl -e'print "attached to -e"' 'print "separate arg"'
 
-    # perl4 の出力: separate arg
-    # perl5 の出力: attached to -e
+    # perl4 의 출력: separate arg
+    # perl5 의 출력: attached to -e
 
     perl -e
 
@@ -734,21 +734,21 @@ B<-e> スイッチの後に引数を渡さない場合も受け付けていま�
 
 =item * C<push> returns number of elements in resulting list
 
-perl4 では C<push> の戻り値はドキュメントに書かれていませんでしたが、
-実際には対象となるリストに最後にpushした値が返されていました。
-Perl5 では、C<push> の戻り値はドキュメントに明記され、かつそれは
-perl4 から変更されました。これは push した後のリストにある要素の数を
-返します。
+perl4 에서는 C<push> 의 반환값은 문서에 쓰여져 있지 않았지만,
+실제로는 대상이 되는 리스트에 마지막에 push한 값dl 반환되었습니다.
+Perl5 에서는, C<push> 의 반환값은 문서에 명기되었고 그것은,
+perl4 부터 변경되었습니다. 이것은 push한 뒤의 리스트에 있는 요소의 수를
+반환합니다.
 
     @x = ('existing');
     print push(@x, 'first new', 'second new');
 
-    # perl4 の出力: second new
-    # perl5 の出力: 3
+    # perl4 의 출력: second new
+    # perl5 의 출력: 3
 
 =item * Some error messages differ
 
-一部のエラーメッセージが異なっています。
+일부의 에러메시지가 다릅니다.
 
 =item * C<split()> honors subroutine args
 
@@ -760,19 +760,19 @@ being returned.   Perl 5 has more respect for your subroutine arguments.
 
 =end original
 
-Perl 4 では、リストコンテキストで C<split()> の最初の引数の
-デリミタが C<??> だった場合、返される結果が C<@_> にも設定されました。
-Perl 5 ではサブルーチンの引数により多くの敬意を払います。
+Perl 4 에서는, 리스트컨텍스트에서 C<split()> 의 최초의 인수의
+구분자가 C<??> 였던 경우, 반환된 결과가 C<@_> 에도 설정되었습니다.
+Perl 5에서는 서브루틴의 인수에 의해 많은 경의를 가집니다.
 
 =item * Bugs removed
 
-幾つかのバグがうかつにも修正されているかもしれません :-)
+몇개인가 버그가 수정되었을 지도 모릅니다 :-)
 
 =back
 
 =head2 Parsing Traps
 
-(パースの罠)
+(파싱의 함정)
 
 =begin original
 
@@ -780,45 +780,45 @@ Perl4-to-Perl5 traps from having to do with parsing.
 
 =end original
 
-パースに関する Perl4 と Perl5 の違いの罠です。
+파싱에 관한 Perl4 와 Perl5 의 차이의 함정입니다.
 
 =over 4
 
 =item * Space between . and = triggers syntax error
 
-. と = の間にあるスペースに注意。
+. 과 = 의 사이에 있는 스페이스에 주의. 
 
     $string . = "more string";
     print $string;
 
-    # perl4 の出力: more string
-    # perl5 の出力: syntax error at - line 1, near ". ="
+    # perl4 의 출력: more string
+    # perl5 의 출력: syntax error at - line 1, near ". ="
 
 =item * Better parsing in perl 5
 
-perl5 では構文解析が改良されました。
+perl5 에서는 구문해석이 개량되었습니다.
 
     sub foo {}
     &foo
     print("hello, world\n");
 
-    # perl4 の出力: hello, world
-    # perl5 の出力: syntax error
+    # perl4 의 출력: hello, world
+    # perl5 의 출력: syntax error
 
 =item * Function parsing
 
-“それが関数に見えるのなら、それは関数だ”のルール。
+"그것이 함수로 보이는 것이면, 그것은 함수다"라는 룰.
 
   print
     ($foo == 1) ? "is one\n" : "is zero\n";
 
-    # perl4 の出力: is zero
-    # perl5 の警告: "Useless use of a constant in void context" if using -w
+    # perl4 의 출력: is zero
+    # perl5 의 경고: "Useless use of a constant in void context" if using -w
 
 =item * String interpolation of C<$#array> differs
 
-C<$#array> 構造の文字列展開で名前の周りにブレースがあるときには
-違いがあります。
+C<$#array> 구조의 문자열전개로 이름의 주변에 프레이즈가 있을 때에는
+차이가 있습니다.
 
     @a = (1..3);
     print "${#a}";
@@ -842,10 +842,9 @@ a syntax error near the C<}> and the missing (or unexpected) comma.
 
 =end original
 
-perl が C<map {> (または C<grep {>) を見つけると、C<{> が BLOCK の開始か
-ハッシュリファレンスかを推測します。
-推測に失敗すると、C<}> の近くでカンマがない (あるいは予想外の位置に
-カンマがある) という文法エラーが報告されます。
+perl 이 C<map {> (또는 C<grep {>) 를 발견하면, C<{> 가 BLOCK 의 개시가
+해쉬리퍼런스인가를 추측합니다.
+추측에 실패하면, C<}> 의 근처에서 컴마가 없다(혹은 예상외의 위치에 컴마가 있다) 라는 에러가 보고됩니다.
 
 =begin original
 
@@ -864,7 +863,7 @@ the time. (See L<perlfunc/map>.)
 
 =head2 Numerical Traps
 
-(数値の罠)
+(숫자값의 함정)
 
 =begin original
 
@@ -873,8 +872,8 @@ operands, or output from same.
 
 =end original
 
-同じものに対する数値演算子、オペランド、出力に関する
-Perl4 と Perl5 の違いの罠です。
+같은 것에 대한 숫자연산자, 오퍼랜드, 출력에 관한 
+Perl 4와 Perl5 의 차이에 대한 함정입니다.
 
 =over 5
 
@@ -893,18 +892,18 @@ tries to be more precise.  For example, on a Solaris Sparc:
 
 =end original
 
-書式指定された出力と、最下位の数字。
-一般的に Perl 5 はより的確に試します。
-例えば、Solaris Sparc では:
+서식지정된 출력과, 최하위의 숫자.
+일반적으로 Perl 5는 보다 정확하게 시험합니다.
+예를 들면, Solaris Sparc 에서는:
 
     print 7.373504 - 0, "\n";
     printf "%20.18f\n", 7.373504 - 0;
 
-    # Perl4 の出力:
+    # Perl4 의 출력:
     7.3750399999999996141
     7.375039999999999614
 
-    # Perl5 の出力:
+    # Perl5 의 출력:
     7.373504
     7.375039999999999614
 
@@ -914,7 +913,7 @@ Notice how the first result looks better in Perl 5.
 
 =end original
 
-Perl 5 では、最初の結果がより良いものであることに注目してください。
+Perl 5 에서는, 최초의 결과가 보다 좋은 것인 것에 주의해 주세요.
 
 =begin original
 
@@ -929,30 +928,30 @@ and even floating point format may be slightly different.
 
 =item * Auto-increment operator over signed int limit deleted
 
-ここに記述されていた項目は削除されました。
-以前あったものでは、オートインクリメント演算子が符号付き整数の限界を越えたことを
-検知しないということを紹介していました。
-これはバージョン 5.003_04 で修正されましたが、大きな整数を取り扱うことに
-不安を感じているのであれば
+여기에 기술된 항목은 삭제되었습니다.
+이전 있었던 것에서는, 오토인크리먼트 연산자가 등호붙은 정수의 한계를
+넘은 것을 감지하지 않았던 것을 소개하고 있었습니다.
+이것은 버젼 5.003_04 에서 수정되었습니다만, 큰 정수를 다루는 것에
+불안한 느낌이 있다면
 
    use Math::BigInt;
 
-を使うことを考慮してください。
+를 사용ㅏ는 것을 고려해주세요.
 
 =item * Assignment of return values from numeric equality tests doesn't work
 
-数値の等価性の比較の結果を代入しても、perl ではその比較の結果が
-偽 (0) であったときにはうまくいきません。
-論理比較は、現在 0 ではなく null を返します。
+숫자의 등가성의 비교의 결과를 대입해서도, perl 에서는 그 비교의 결과가
+거짓(0) 이었던 때에는 잘 되지않습니다.
+논리비교는 현재 0 가 아닌 null 을 반환합니다.
 
     $p = ($test == 1);
     print $p,"\n";
 
-    # perl4 の出力: 0
-    # perl5 出力:
+    # perl4 의 출력: 0
+    # perl5 의 출력:
 
-この新しい仕様の別の例は L<"General Regular Expression Traps using s///, etc.">
-を参照してください。
+이런 새로운 스펙의 다른 예는 
+L<"General Regular Expression Traps using s///, etc.">를 참조해주세요.
 
 =item * Bitwise string ops
 
@@ -966,12 +965,13 @@ to the C<vec()> function. perl5 treats the string operands as bitstrings.
 
 =end original
 
-数値としても文字列としても操作可能なビット操作演算子 (C<& | ^ ~>) が
-文字列のみを引数として与えられた場合、
-perl4 は、プログラムが C<vec()> 関数の呼び出しを含んでいればオペランドを
-ビット文字列として扱います。
-perl5 は文字列オペランドをビット文字列として扱います
-(さらなる詳細については L<perlop/Bitwise String Operators> を参照してください)。
+숫자값으로써도 문자열로써도 조작가능한 비트조작연산자 (C<& | ^ ~>) 가
+문자열만을 인수로써 부여된 경우,
+Perl 4에서는 프로그램이 C<vec()> 함수의 호출을 포함하고 있으면 오퍼랜드를
+비트문자열로써 취급합니다.
+Perl 5는 문자열 오퍼랜드를 비트문자열로써 취급합니다.
+(보다 자세한 내용에 대해서는 
+L<perlop/Bitwise String Operators> 를 참조해주세요.)
 
     $fred = "10";
     $barney = "12";
@@ -993,7 +993,7 @@ perl5 は文字列オペランドをビット文字列として扱います
 
 =head2 General data type traps
 
-(一般的なデータ型の罠)
+(일반적인 데이터 형태의 함정) 
 
 =begin original
 
@@ -1002,8 +1002,8 @@ within certain expressions and/or context.
 
 =end original
 
-ほとんどのデータ型と、それらの特定の表現やコンテキストでの
-使い方に関する Perl4 と Perl5 の違いの罠です。
+대부분의 데이터 형태와, 그것들의 특정 표현이나 컨텍스트에서의
+사용법에 관한 Perl4 와 Perl5 의 차이에 대한 함정입니다.
 
 =over 5
 
@@ -1015,19 +1015,18 @@ Negative array subscripts now count from the end of the array.
 
 =end original
 
-配列の添え字が負であったとき、それは配列の終端から数えられるように
-なりました。
+배열의 첨자가 음수인 경우, 그것은 배열의 끝까지 세아리도록 되어있습니다.
 
     @a = (1, 2, 3, 4, 5);
     print "The third element of the array is $a[3] also expressed as $a[-2] \n";
 
-    # perl4 の出力: The third element of the array is 4 also expressed as
-    # perl5 の出力: The third element of the array is 4 also expressed as 4
+    # perl4 의 출력: The third element of the array is 4 also expressed as
+    # perl5 의 출력: The third element of the array is 4 also expressed as 4
 
 =item * Setting C<$#array> lower now discards array elements
 
-C<$#array> に(それまでよりも)小さな値を設定したときには、余計な
-配列要素は捨てられ、さらにそれが元に戻せないようになりました。
+C<$#array> 에(그것보다도) 작은 값을 설정한 경우에는, 쓸데없는
+배열요소를 버리고, 거기에 그것이 원래대로 돌아가지 않도록 합니다.
 
     @a = (a,b,c,d,e);
     print "Before: ",join('',@a);
@@ -1036,19 +1035,19 @@ C<$#array> に(それまでよりも)小さな値を設定したときには、�
     $#a =3;
     print ", Recovered: ",join('',@a),"\n";
 
-    # perl4 の出力: Before: abcde, After: ab, Recovered: abcd
-    # perl5 の出力: Before: abcde, After: ab, Recovered: ab
+    # perl4 의 출력: Before: abcde, After: ab, Recovered: abcd
+    # perl5 의 출력: Before: abcde, After: ab, Recovered: ab
 
 =item * Hashes get defined before use
 
-ハッシュは使われる前に定義されます。
+해쉬는 사용되기 전에 정의됩니다.
 
     local($s,@a,%h);
     die "scalar \$s defined" if defined($s);
     die "array \@a defined" if defined(@a);
     die "hash \%h defined" if defined(%h);
 
-    # perl4 の出力:
+    # perl4 의 출력:
     # perl5 dies: hash %h defined
 
 =begin original
@@ -1058,21 +1057,22 @@ defined(%h).
 
 =end original
 
-Perl は defined(@a) と defined(%h) に警告を出すようになりました。
+Perl 은 defined(@a) 와 defined(%h) 에
+경고를 내도록 되어있습니다. 
 
 =item * Glob assignment from localized variable to variable
 
-ある変数から別の変数へのグロブの代入は、
-代入された変数が代入の後で局所化されているときには
-失敗します。
+어떤 변수에서 별도의 변수로 GLOB 대입은
+대입된 변수가 대입한 뒤에 국소화되어 있는 때에는
+실패합니다.
 
     @a = ("This is Perl 4");
     *b = *a;
     local(@a);
     print @b,"\n";
 
-    # perl4 の出力: This is Perl 4
-    # perl5 の出力:
+    # perl4 의 출력: This is Perl 4
+    # perl5 의 출력:
 
 =item * Assigning C<undef> to glob
 
@@ -1087,12 +1087,12 @@ has quite a few effects.
 
 =end original
 
-C<undef> のグロブへの代入は Perl5 では何の影響も及ぼしません。
-Perl4 では結び付けられたスカラーを undefine します
-(しかし SEGV を含め、なんらかの副作用があるかもしれません)。
-Perl 5 はまた型グロブに C<undef> を代入すると警告されます。
-(型グロブに C<undef> を代入するのは、型グロブに対して
-C<undef> 関数を呼び出すのとは違います)。いくつかの効果があります。
+C<undef> 의 GLOB 로의 대입은 Perl5 에서는 어떤 영향도 끼치지 않습니다.
+Perl4 에서는 결합된 스칼라를 undef 합니다.
+(그러나 SEGV 를 포함해, 뭔가의 부작용이 있을 지도 모릅니다).
+Perl 5는 또 형태GLOB에 C<undef> 를 대입하면 경고가 납니다.
+(형태GLOB에 C<undef> 를 대입하는 것은 형태GLOB에 대해
+C<undef> 함수를 호출하는 것과는 다릅니다). 몇 가지의 효과가 있습니다.
 
     $foo = "bar";
     *foo = undef;
@@ -1105,8 +1105,8 @@ C<undef> 関数を呼び出すのとは違います)。いくつかの効果が�
 
 =item * Changes in unary negation (of strings)
 
-(文字列に対する)単項の符号反転の意味が変わりました。
-この変更は戻り値と、マジックインクリメントの両方に影響します。
+(문자열에 대한 당항의 부등반전의 의미가 변하였습니다.
+이 변경은 반환값과 매직 인크리먼트의 양쪽에 양향이 있습니다.
 
     $x = "aaa";
     print ++$x," : ";
@@ -1118,7 +1118,7 @@ C<undef> 関数を呼び出すのとは違います)。いくつかの効果が�
 
 =item * Modifying of constants prohibited
 
-perl4 では定数を変更してしまいます。
+perl4 에서는 정수를 변경해 버립니다.
 
     $foo = "x";
     &mod($foo);
@@ -1144,7 +1144,7 @@ perl4 では定数を変更してしまいます。
 
 =item * C<defined $var> behavior changed
 
-perl4 と perl5 とで全然違う動作:
+perl4 와 perl5 에서는 전혀 다른 동작을 합니다:
 
     print "$x", defined $x
 
@@ -1153,10 +1153,10 @@ perl4 と perl5 とで全然違う動作:
 
 =item * Variable Suicide
 
-perl5 では、変数の自殺(variable sucide)の振る舞いはより
-首尾一貫したものとなりました。
-perl4 ではスカラーのみがそうであるような振る舞いを、
-perl5 ではハッシュとスカラーで示します。
+perl5 에서는, 변수의 자살(variable sucide) 행동은 보다
+일관된 것이 됩니다.
+perl4 에서는 스칼라만이 그런 비슷한 행동을,
+perl5 에서는 해쉬와 스칼라에서 보입니다.
 
     $aGlobal{ "aKey" } = "global value";
     print "MAIN:", $aGlobal{"aKey"}, "\n";
@@ -1168,7 +1168,7 @@ perl5 ではハッシュとスカラーで示します。
         local( %aNewLocal ); # perl 4 != 5.001l,m
         $aNewLocal{"aKey"} = "this should never appear";
         print "SUB: ", $theArgument{"aKey"}, "\n";
-        $aNewLocal{"aKey"} = "level $GlobalLevel";   # 出力すべきもの
+        $aNewLocal{"aKey"} = "level $GlobalLevel";   # 출력해야하는 것
         $GlobalLevel++;
         if( $GlobalLevel<4 ) {
             &test( *aNewLocal );
@@ -1193,7 +1193,7 @@ perl5 ではハッシュとスカラーで示します。
 
 =head2 Context Traps - scalar, list contexts
 
-(コンテキストの罠 - スカラーコンテキストとリストコンテキスト)
+(컨텍스트의 함정 - 스칼라 컨텍스트와 리스트컨텍스트)
 
 =over 5
 
@@ -1206,9 +1206,9 @@ context.  This means you can interpolate list values now.
 
 =end original
 
-formatに対する引数リストの要素は、リストコンテキストで
-評価されるようになりました。これは、今やリストの値が
-展開できるようになったということです。
+format에 대한 인수 리스트의 요소는, 리스트컨텍스트에서
+평가되게 됩니다. 이것은, 지금이나 리스트의 값이
+[전개되는 듯 한 것입니다.
 
     @fmt = ("foo","bar","baz");
     format STDOUT=
@@ -1222,19 +1222,19 @@ formatに対する引数リストの要素は、リストコンテキストで
 
 =item * C<caller()> returns false value in scalar context if no caller present
 
-C<caller()> 関数は呼び出し元がなく、スカラーコンテキストで呼ばれた
-場合には偽を返すようになりました。これによりライブラリファイルが
-(自分が)require されたのかを判断することができます。
+C<caller()> 함수는 호출하는 곳이 없고, 스칼라 컨텍스트에서 불러진 경우에는
+거짓을 반환하도록 되었습니다. 이것에 의해 라이브러 파일이 
+(자신이) require 되었다는 것을 판단할 수 있습니다.
 
     caller() ? (print "You rang?\n") : (print "Got a 0\n");
 
     # perl4 errors: There is no caller
-    # perl5 の出力: Got a 0
+    # perl5 의 출력: Got a 0
 
 =item * Comma operator in scalar context gives scalar context to args
 
-スカラーコンテキストにあるカンマ演算子は、その引数に対して
-スカラーコンテキストを与えるようになりました。
+스칼라 컨텍스트에 있는 컴마 연산자는, 그 인수애 대해
+스칼라 컨텍스트를 주도록 되었습니다.
 
     @y= ('a','b','c');
     $x = (1, 2, @y);
@@ -1253,9 +1253,9 @@ unlike Perl 4:
 
 =end original
 
-C<sprintf()> のプロトタイプは ($;@) なので、最初の引数は
-スカラコンテキストです。従って、配列を渡すと、
-Perl 4 とは違っておそらくあなたの望まない結果になるでしょう。
+C<sprintf()> 의 프로토타입은 ($;@) 이기에, 최초의 인수는
+스칼라컨텍스트입니다. 따라서, 배열을 넘기면,
+Perl 4 와는 달리 아마도 당신이 바라지 않는 결과가 될 것입니다.
 
     @z = ('%s%s', 'foo', 'bar');
     $x = sprintf(@z);
@@ -1270,19 +1270,19 @@ C<printf()> works the same as it did in Perl 4, though:
 
 =end original
 
-しかし、C<printf()> のほうは Perl 4 と同じように動きます:
+그러나, C<printf()> 쪽은 Perl4 와 같은 행동을 합니다:
 
     @z = ('%s%s', 'foo', 'bar');
     printf STDOUT (@z);
 
-    # perl4 の出力: foobar
-    # perl5 の出力: foobar
+    # perl4 출력: foobar
+    # perl5 출력: foobar
 
 =back
 
 =head2 Precedence Traps
 
-(評価順序の罠)
+(평가 순서의 함정)
 
 =begin original
 
@@ -1290,7 +1290,7 @@ Perl4-to-Perl5 traps involving precedence order.
 
 =end original
 
-評価順序に関する Perl4 と Perl5 の違いの罠です。
+평가순서에 관한 Perl4 와 Perl5 의 차이에 대한 함정입니다.
 
 =begin original
 
@@ -1300,9 +1300,8 @@ inconsistencies that made the behavior differ from what was documented.
 
 =end original
 
-Perl4 はほとんどの演算子で Perl5 と同じ優先順位を持っています。
-しかし Perl4 では、ドキュメントとは少々異なるような
-一貫性に欠けるものがあります。
+Perl4 는 대부분의 연산자에서 Perl5 처럼 우선순위를 가지고 있습니다.
+그러나, Perl4 에서는, 문서와는 조금 다른 듯한 일관성에 결점이 있습니다.
 
 =over 5
 
@@ -1314,60 +1313,60 @@ LHS vs. RHS when both sides are getting an op.
 
 =end original
 
-左辺と右辺は両方とも演算子を取るようになりました。
+좌변과 우변은 양쪽모두 연산자를 가질 수 있게 되었습니다.
 
     @arr = ( 'left', 'right' );
     $a{shift @arr} = shift @arr;
     print join( ' ', keys %a );
 
-    # perl4 の出力: left
-    # perl5 の出力: right
+    # perl4 의 출력: left
+    # perl5 의 출력: right
 
 =item * Semantic errors introduced due to precedence
 
-以下の例は、優先順位の関係で意味エラー(semantic error)となるようになりました。
+아래의 예는, 우선순위의 관계에서 의미에러(semantic error)가 되도록 했습니다.
 
     @list = (1,2,3,4,5);
     %map = ("a",1,"b",2,"c",3,"d",4);
-    $n = shift @list + 2;   # リストの最初の要素に2を加える
+    $n = shift @list + 2;   # 리스트의 최초의 요소에 2를 더한다. 
     print "n is $n, ";
-    $m = keys %map + 2;     # ハッシュにあるアイテムの数+2
+    $m = keys %map + 2;     # 해쉬에 있는 아이템의 수+2 
     print "m is $m\n";
 
-    # perl4 出力: n is 3, m is 6
+    # perl4 출력: n is 3, m is 6
     # perl5 errors and fails to compile
 
 =item * Precedence of assignment operators same as the precedence of assignment
 
-代入演算子の優先順位は、代入と同じとなりました。
-perl4 は間違って、この優先順位が関連演算子と同じものに
-なっています。このため、式の中にあるのと同じように括弧でくくらなければ
-ならなくなりました。
+대입연산자의 우선순위는, 대입과 같습니다.
+perl4 는 달라서, 이 우선순위가 관련연산자와 같은 것으로 되어 있습니다.
+이 때문에, 식의 안에 있는 것과 같도록 괄호로 감싸지 않으면
+안되도록 되었습니다.
 
     /foo/ ? ($a += 2) : ($a -= 2);
 
-下のようにしてしまうと、
+아래와 같이 해버리면,
 
     /foo/ ? $a += 2 : $a -= 2
 
-これは
+이것은
 
     (/foo/ ? $a += 2 : $a) -= 2;
 
-のように間違って解析されてしまいます。
-その一方で、
+처럼 다르게 해석될 수 있습니다.
+한편,
 
     $a += /foo/ ? 1 : 2;
 
-これは C プログラマーが期待するであろう動作になりました。
+이것은 C 프로그래머가 기대하고 있을 동작이 됩니다.
 
 =item * C<open> requires parentheses around filehandle
 
     open FOO || die;
 
-これはもはや正しくなくなりました。ここではファイルハンドルを
-括弧で括る必要があります。さもなければ、perl5 はこういった文を
-そのデフォルトの優先順位のまま放っておきます(以下の例参照)。
+이것은 더이상 옳은 방법이 아닙니다. 여기에서는 파일핸들을 
+괄호로 감쌀 필요가 있습니다. 그렇지 않으면, perl5 는 이런 구문을
+그 기본값의 우선순위 대로 놔둡니다(아래의 예를 참조하세요).
 
     open(FOO || die);
 
@@ -1376,22 +1375,21 @@ perl4 は間違って、この優先順位が関連演算子と同じものに
 
 =item * C<$:> precedence over C<$::> gone
 
-perl4 は特殊変数 C<$:> の優先順位に、perl5 が C<$::> を main パッケージと
-みなすのと同じ優先順位を与えます。
+perl4 는 특수변수 C<$:> 의 우선순위에, perl5 가 C<$::> 를 main 패키지로
+보는 것과 같은 우선순위를 부여합니다.
 
     $a = "x"; print "$::a";
 
-    # perl 4 の出力: -:a
-    # perl 5 の出力: x
+    # perl 4 의 출력: -:a
+    # perl 5 의 출력: x
 
 =item * Precedence of file test operators documented
 
-perl には、ファイルテスト演算子と代入演算子を組み合わせたときに
-優先順位のバグがありました。したがって、Perl4 の優先順位テーブルでは
-C<-e $foo .= "q"> は
-C<((-e $foo) .= "q")> と解釈すべきなのに実際には
-C<((-e $foo) .= "q")> と解釈していました。
-Perl5 ではドキュメントにある通りの優先順位です。
+perl 에는, 파일테스트 연산자와 대입연산자를 조합할 때에
+우선순위의 버그가 있었습니다. 따라서, Perl4 의 우선순위 테이블에서는
+C<-e $foo .= "q"> 는 C<((-e $foo) .= "q")> 로 해석되어야 하는 데 실제로는
+C<((-e $foo) .= "q")> 로 해석해 버립니다.
+Perl5 에서는 문서에 있는 대로의 우선순위입니다.
 
     -e $foo .= "q"
 
@@ -1411,14 +1409,14 @@ Thus, for:
 
 =end original
 
-perl4 では、key()、each()、values() はシングルハッシュに対する
-特別に高い評価順序を持った演算子でした。
-しかし perl5 では、これらの演算子は通常の名前付き単項演算子となりました。
-ドキュメントにある通り、名前付き単項演算子は、C<+ - .> のような
-数学演算子や連結演算子よりも低い優先順位を持っています。
-しかし、perl4 ではこれらの演算子よりも key() などのほうが強く演算対象と
-結び付いていたのです。
-したがって、以下の例のようになります:
+perl4 에서는, key(), each(), values() 는 싱글 해쉬에 대해
+특별히 높은 평가순위를 가졌던 연산자 였습니다.
+그러나 perl5 에선, 이런 연산자는 일반적인 이름붙은 단항연산자가 됩니다.
+문서에 있는 대로, 이름붙은 단항연산자는, C<+ - .> 처럼
+수학연산자나 연결연산자보다도 낮은 우선순위를 가지고 있습니다.
+그러나 perl4 에서는 이런 연산자보다도 key() 들 쪽이 강력한 연산대상으로
+보고 있었습니다.
+따라서, 아래의 예제처럼 됩니다.
 
     %foo = 1..10;
     print keys %foo - 1
@@ -1426,13 +1424,13 @@ perl4 では、key()、each()、values() はシングルハッシュに対する
     # perl4 prints: 4
     # perl5 prints: Type of arg 1 to keys must be hash (not subtraction)
 
-この perl4 の振る舞いは便利であるかもしれませんが、一貫性に欠けます。
+이 perl4 의 행동은 편리할지도 모릅니다만, 일관성에 문제가 있습니다.
 
 =back
 
 =head2 General Regular Expression Traps using s///, etc.
 
-(s/// などを使ったときの一般的な正規表現の罠)
+(s/// 등을 사용할 때의 일반적인 정규표현의 함정) 
 
 =begin original
 
@@ -1440,7 +1438,7 @@ All types of RE traps.
 
 =end original
 
-正規表現に関する全てのタイプの罠。
+정규표현에 관한 모든 타입의 함정.
 
 =over 5
 
