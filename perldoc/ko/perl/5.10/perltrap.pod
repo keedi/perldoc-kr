@@ -1444,24 +1444,22 @@ All types of RE traps.
 
 =item * C<s'$lhs'$rhs'> interpolates on either side
 
-C<s'$lhs'$rhs'> はもはやいずれの辺にあっても展開されなくなりました。
-以前は $lhs は展開し、$rhs を展開しませんでした。
-(文字列にあるリテラルの '$' にはいまでもマッチしません)。
+C<s'$lhs'$rhs'> 은 더이상 어느 변에 있어도 전개되지 않게 되었습니다.
+이전은 $lhs 는 전개고, $rhs 를 전개하지않았습니다.
+(문자열에 이쓴 리터럴의 '$' 에는 지금에도 매치하지 않습니다).
 
     $a=1;$b=2;
     $string = '1 2 $a $b';
     $string =~ s'$a'$b';
     print $string,"\n";
 
-    # perl4 の出力: $b 2 $a $b
-    # perl5 の出力: 1 2 $a $b
+    # perl4 의 출력: $b 2 $a $b
+    # perl5 의 출력: 1 2 $a $b
 
 =item * C<m//g> attaches its state to the searched string
 
-C<m//g> は、その状態を正規表現ではなく検索対象の文字列に
-結び付けるようになりました
-(sub に対するブロックのスコープが残っているのであれば、
-検索文字列の状態は失われます)。
+C<m//g> 는, 그 상태를 정규표현이 아닌 검색대상의 문자열로 보도록 했습니다.
+(sub 에 대해 블록의 영역이 남아있다면, 검색문자열의 상태는 잃어버립니다).
 
     $_ = "ababab";
     while(m/ab/g){
@@ -1470,14 +1468,14 @@ C<m//g> は、その状態を正規表現ではなく検索対象の文字列に
     sub doit{local($_) = shift; print "Got $_ "}
 
     # perl4 prints: Got blah Got blah Got blah Got blah
-    # perl5 の出力: infinite loop blah...
+    # perl5 의 출력: infinite loop blah...
 
 =item * C<m//o> used within an anonymous sub
 
-現在のところ、C<m//o> 量指定子を無名サブルーチンの中にある正規表現で
-使った場合、I<すべての> クロージャーはそのような無名サブルーチンから、
-そういったクロージャの中で一番最初に使われたものの中で
-コンパイルされたかのような正規表現を生成します。
+현재, C<m//o> 양지정자를 이름없는 서브루틴의 안에 있는 정규표현에서
+사용한 경우, I<모든> 클로져는 그런 이름없는 서브루틴에서,
+그런 클로져의 안에서 제일 처음에 사용되는 것의 안에서
+컴파일 되는 것처럼 정규표현을 생성합니다.
 
     sub build_match {
         my($left,$right) = @_;
@@ -1494,50 +1492,50 @@ ok
 not ok
 not ok
 
-この例の場合、build_match() は常にC<最初>に build_match() が呼ばれたときの
-$left と $right の内容にマッチするようなサブルーチンを返します。
-呼び出されたその時点での値ではありません。
+이 예제의 경우, build_match() 는 항상 C<최초>에 build_match() 가 호출된 때의
+$left와 $right 의 내용에 매치하는 서브루틴을 반환합니다.
+호출된 그 시점에서의 값이 아닙니다.
 
 =item * C<$+> isn't set to whole match
 
-マッチングの中で括弧が使われなかった場合、perl4 では
-C<$+> には C<$&> と同じようにマッチした全体がセットされますが、
-Perl5 ではそうではありません。
+매칭의 안에서 괄호가 사용되지 않은 경우, perl4 에서는 
+C<$+> 에는 C<$&> 처럼 매치한 전체가 설정되지만,
+Perl5 에서는 그렇지 않습니다.
 
     "abcdef" =~ /b.*e/;
     print "\$+ = $+\n";
 
-    # perl4 の出力: bcde
-    # perl5 の出力:
+    # perl4 의 출력: bcde
+    # perl5 의 출력:
 
 =item * Substitution now returns null string if it fails
 
-置換は、失敗したときには空文字列を返すようになりました。
+치환은 실패한 때엔는 빈 문자열을 반환하도록 되었습니다.
 
     $string = "test";
     $value = ($string =~ s/foo//);
     print $value, "\n";
 
-    # perl4 の出力: 0
-    # perl5 の出力:
+    # perl4 의 출력: 0
+    # perl5 의 출력:
 
-この新しい仕様に関しては L<数値に関する罠> も参照してください。
+이 새로운 스펙에 관해서는 L<숫자값에 관한 함정> 도 참조해주세요.
 
 =item * C<s`lhs`rhs`> is now a normal substitution
 
-C<s`lhs`rhs`> (バッククォートの使用)は通常の置換となり、
-バッククォートの展開は行われなくなりました。
+C<s`lhs`rhs`> (역 따옴표의 사용)은 보통 치환이 되고,
+역따옴표의 전개는 수행되지 않습니다.
 
     $string = "";
     $string =~ s`^`hostname`;
     print $string, "\n";
 
-    # perl4 の出力: <the local hostname>
-    # perl5 の出力: hostname
+    # perl4 의 출력: <the local hostname>
+    # perl5 의 출력: hostname
 
 =item * Stricter parsing of variables in regular expressions
 
-正規表現中の変数の使用に関する構文解析がより厳密になりました。
+정규표현 중의 변수의 사용에 관한 구문해석이 보다 엄밀하게 되었습니다.
 
     s/^([^$grpc]*$grpc[$opt$plus$rep]?)//o;
 
@@ -1552,10 +1550,10 @@ C<[$opt]> is a character class in perl4 and an array subscript in perl5
 
 =end original
 
-同じスクリプトでこの例に付け加えことは、
-置換後の文字列の実際の値です。
-C<[$opt]> は perl4 ではキャラクタクラスであり、perl5 では
-配列の添え字となります。
+같은 스크립트에서 이 예제에 부가한 것은,
+치환 후의 문자열의 실제의 값입니다.
+C<[$opt]> 는 perl4 에서는 캐릭터클래스이고, perl5 에서는
+배열의 첨자가 됩니다.
 
     $grpc = 'a';
     $opt  = 'r';
@@ -1563,27 +1561,27 @@ C<[$opt]> は perl4 ではキャラクタクラスであり、perl5 では
     s/^([^$grpc]*$grpc[$opt]?)/foo/;
     print;
 
-    # perl4 の出力: foo
-    # perl5 の出力: foobar
+    # perl4 의 출력: foo
+    # perl5 의 출력: foobar
 
 =item * C<m?x?> matches only once
 
-perl5 では、C<m?x?> は C<?x?> と同様に一回だけマッチします。
-perl4 では、C</x/> や C<m!x!> と同じように何度でもマッチします。
+perl5 에서는 C<m?x?> 나 C<?x?> 처럼 한번만 매치합니다. 
+perl4 에서는 C</x/> 나 C<m!x!> 처럼 몇번이도 매치합니다. 
 
     $test = "once";
     sub match { $test =~ m?once?; }
     &match();
     if( &match() ) {
-        # m?x? が二回以上マッチ
+        # m?x? が2회 이상 매치
         print "perl4\n";
     } else {
-        # m?x? が一回だけマッチ
+        # m?x? が한번만 매치
         print "perl5\n";
     }
 
-    # perl4 の出力: perl4
-    # perl5 の出力: perl5
+    # perl4 의 출력: perl4
+    # perl5 의 출력: perl5
 
 =item * Failed matches don't reset the match variables
 
@@ -1594,14 +1592,14 @@ Unlike in Ruby, failed matches in Perl do not reset the match variables
 
 =end original
 
-Ruby と違って、Perl ではマッチングに失敗してもマッチング変数
-($1, $2, ..., C<$`>, ...) はリセットされません。
+Ruby 와는 달리, Perl 에서는 매칭에 실패해도 매칭 변수
+($1, $2, ..., C<$`>, ...) 는 리셋되지 않습니다. 
 
 =back
 
 =head2 Subroutine, Signal, Sorting Traps
 
-(サブルーチン、シグナル、ソートの罠)
+(서브루틴, 시그널, 정렬의 함정)
 
 =begin original
 
