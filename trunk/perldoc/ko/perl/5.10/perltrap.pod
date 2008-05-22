@@ -1609,18 +1609,16 @@ general subroutine traps.  Includes some OS-Specific traps.
 
 =end original
 
-Perl4 と Perl5 の違いの罠に分類される一般的なものは
-シグナル、ソート、そしてそれらに関連する
-サブルーチンで、いくつかの OS 固有の罠を含めた
-サブルーチンの罠と同じ様なものです。
+Perl4 와 Perl5 의 차이의 함정으로 분류된 일반적인 것은
+시그널, 정렬, 그리고 그것들에 관련한 서브루틴으로, 몇가지의 OS 고유의 
+함정을 포함한 서브루틴의 함정과 같은 것입니다.
 
 =over 5
 
 =item * Barewords that used to look like strings look like subroutine calls
 
-文字列のように見える裸の単語は、その名前が使うよりも前に
-サブルーチンの名前として定義されている場合にはサブルーチンとして
-みなされます。
+문자열 처럼 보이는 단어는, 그 이름이 사용하기 이전에
+서브루틴의 이름으로 정의되어 있는 경우에는 서브루틴으로 간주됩니다.
 
     sub SeeYa { warn"Hasta la vista, baby!" }
     $SIG{'TERM'} = SeeYa;
@@ -1629,12 +1627,11 @@ Perl4 と Perl5 の違いの罠に分類される一般的なものは
     # perl4 prints: SIGTERM is now main'SeeYa
     # perl5 prints: SIGTERM is now main::1 (and warns "Hasta la vista, baby!")
 
-B<-w> を使って、これを発見できます。
+B<-w> 를 사용해서, 이것을 발견할 수 있습니다.
 
 =item * Reverse is no longer allowed as the name of a sort subroutine
 
-reverse はもはやソートのサブルーチンの名前としては
-使えなくなりました。
+reverse 는 더이상 정렬의 서브루틴의 이름으로써는 사용할 수 없게 되었습니다.
 
     sub reverse{ print "yup "; $a <=> $b } 
     print sort reverse (2,1,3);
@@ -1645,19 +1642,19 @@ reverse はもはやソートのサブルーチンの名前としては
 
 =item * C<warn()> won't let you specify a filehandle.
 
-常に STDERR に出力していたにもかかわらず、perl4 では warn() はファイルハンドルの
-指定を必要としていましたが、perl5 では必要なくなりました。
+항상 STDERR 에 출력하고 있던 것에 상관없이, perl4 에서는 warn() 은
+파일핸들의 지정을 필요로 햇었습니다만, perl5에서는 필요없어졌습니다.
 
     warn STDERR "Foo!";
 
-    # perl4 の出力: Foo!
-    # perl5 の出力: String found where operator expected
+    # perl4 의 출력: Foo!
+    # perl5 의 출력: String found where operator expected
 
 =back
 
 =head2 OS Traps
 
-(OS の罠)
+(OS 의 함정)
 
 =over 5
 
@@ -1672,14 +1669,13 @@ on the handler _not_ being reset will have to be reworked.
 
 =end original
 
-HPUX 及び一部の SysV OS では、perl4 のときには
-シグナルが発生する度にそのシグナルハンドラ関数の中で
-シグナルハンドラを再設定しなければなりませんでした。
-perl5 では、この再設定を正しく行うようになりました。
-ハンドラを再設定しないということに依存したプログラムは
-作業しなおす必要があります。
-
-5.002 以降の perl では、SysV のときには sigaction() を使います。
+HPUX 및 일부의 SysV OS 에서는, perl4 때에는
+시그널이 발생할 때에 그 시그널핸들러 함수의 안에서
+시그널 핸들러를 재설정하지 않으면 안되었습니다.
+perl5 에서는, 이 재설정을 제대로 수행하게 되었습니다.
+핸들러를 재설정하지 않는 다는 것에 의존한 프로그램은 
+다시 작업할 필요가 있습니다.
+5.002 이후의 perl 에서는, SysV 때에는 sigaction() 을 사용합니.
 
     sub gotit {
         print "Got @_... ";
@@ -1701,11 +1697,10 @@ perl5 では、この再設定を正しく行うようになりました。
 
 =item * SysV C<seek()> appends correctly
 
-SysV OS では、
-アペンドモード(C<<< >> >>>)でオープンしたファイルに対する
-C<seek()> は fopen() マニュアルページにあるように正しく動作するように
-なりました。例えば、アペンドモードでファイルをオープンした場合には
-既にファイルにある情報を上書きすることはできません。
+SysV OS 에서는, 추가모드(C<<< >> >>>)로 오픈한 파일에 대해
+C<seek()> 는 fopen() 매뉴얼페이지에 있게 바르게 동작하게 되었습니다.
+예를들면, 추가 모드로 파일을 연 경우에는,
+특히 파일핸들에 있는 정보를 덮어쓸 수는 없습니다.
 
     open(TEST,">>seek.test");
     $start = tell TEST;
@@ -1725,7 +1720,7 @@ C<seek()> は fopen() マニュアルページにあるように正しく動作�
 
 =head2 Interpolation Traps
 
-(展開の罠)
+(전개의 함정)
 
 =begin original
 
@@ -1734,14 +1729,14 @@ within certain expressions, statements, contexts, or whatever.
 
 =end original
 
-Perl4 と Perl5 の違いの罠には、式や文、コンテキストなどにおける
-展開に関するものがあります。
+Perl4 와 Perl5 의 차이의 함정에는, 식과 구문, 컨텍스트등에 의한
+전개에 관한 것이 있습니다.
 
 =over 5
 
 =item * C<@> always interpolates an array in double-quotish strings
 
-ダブルクォートで囲まれた文字列にある @ は常に配列に展開されます。
+쌍따옴표로 감싸진 문자열에 있는 @ 은 항상 배열로 전개됩니다.
 
     print "To: someone@somewhere.com\n";
 
@@ -1750,8 +1745,8 @@ Perl4 と Perl5 の違いの罠には、式や文、コンテキストなどに�
 
 =item * Double-quoted strings may no longer end with an unescaped $
 
-ダブルクォートで括られた文字列がエスケープされていない $  で
-終了することがなくなりました。
+쌍따옴표로 감싸진 문자열에 이스케이프되지 않은 $ 로 종료하는 것이
+없어졌습니다.
 
     $foo = "foo$";
     print "foo is $foo\n";
@@ -1759,13 +1754,13 @@ Perl4 と Perl5 の違いの罠には、式や文、コンテキストなどに�
     # perl4 prints: foo is foo$
     # perl5 errors: Final $ should be \$ or $name
 
-注意:perl5 は、$bar の終端にある @ については“エラーにしません”
+주의: perl5 는, $bar 의 끝에 있는 @에 대해서 "에러가 되지 않습니다"
 
 =item * Arbitrary expressions are evaluated inside braces within double quotes
 
-Perl はダブルクォート中にあるブレースの内側の任意の式を
-評価するようになりました(一般的には、C<$> や C<@> に続いて
-開きのブレースがきたときです)。
+Perl 은 쌍따옴표 안에 있는 중괄호의 안쪽의 임의의 식을
+평가하도록 되었습니다(일반적으로는, C<$> 나 C<@> 에 이어서
+열린 중괄호가 온 때입니다).
 
     @www = "buz";
     $foo = "foo";
@@ -1773,11 +1768,10 @@ Perl はダブルクォート中にあるブレースの内側の任意の式を
     sub foo { return "bar" };
     print "|@{w.w.w}|${main'foo}|";
 
-    # perl4 の出力: |@{w.w.w}|foo|
-    # perl5 の出力: |buz|bar|
+    # perl4 의 출력: |@{w.w.w}|foo|
+    # perl5 의 출력: |buz|bar|
 
-C<use strict;> を使って、perl5 におけるこのような罠を避けることが
-できることに注意してください。
+C<use strict;> 를 사용해서, perl5 에서의 이런 함정을 피할 수 있습니다.
 
 =item * C<$$x> now tries to dereference $x
 
@@ -1788,25 +1782,24 @@ now tries to dereference $x.  C<$$> by itself still works fine, however.
 
 =end original
 
-"this is $$x" はプロセス ID を展開するようになっていましたが、
-今は $x の参照外し(dereference)を試みます。
-それでも C<$$> 自身は今でもきちんと動作します。
+"this is $$x" 는 프로세스 ID 를 전개하도록 되어 있습니다만,
+지금은 $x 의 참조벗기기(dereference) 를 시험합니다.
+그래도 C<$$> 자신은 지금도 제대로 동작합니다.
 
     $s = "a reference";
     $x = *s;
     print "this is $$x\n";
 
-    # perl4 の出力: this is XXXx   (XXX はカレントプロセスID)
+    # perl4 의 출력: this is XXXx   (XXX 는 최근 프로세스ID)
     # perl5 prints: this is a reference
 
 =item * Creation of hashes on the fly with C<eval "EXPR"> requires protection
 
-C<eval "EXPR"> を使ったその場(on the fly)でのハッシュの生成は
-ハッシュの名前を指定する C<$> がプロテクトされているか、もしくは
-両方のカーリーブレースがプロテクトされていることを要求します。
-両方のカーリーブレースがプロテクトされている場合には、perl4 と
-perl5 の結果は同じです。
-
+C<eval "EXPR"> 을 사용한 그 곳(on the fly)에서의 해쉬의 생성은
+해쉬의 이름을 지정하는 C<$> 가 보호되어 있든지, 혹은
+양쪽의 카리브레이스가 보호되어 있는 것을 요구합니다.
+양쪽의 카리브레이스가 보호되어 있는 경우에는, perl4 와
+perl5 의 결과는 같습니다.
 
     $hashname = "foobar";
     $key = "baz";
@@ -1814,40 +1807,40 @@ perl5 の結果は同じです。
     eval "\$$hashname{'$key'} = q|$value|";
     (defined($foobar{'baz'})) ?  (print "Yup") : (print "Nope");
 
-    # perl4 の出力: Yup
-    # perl5 の出力: Nope
+    # perl4 의 출력: Yup
+    # perl5 의 출력: Nope
 
-以下のものを:
+아래의 것을:
 
     eval "\$$hashname{'$key'} = q|$value|";
 
-次のように変更すると:
+다음처럼 변경하면:
 
     eval "\$\$hashname{'$key'} = q|$value|";
 
-結果はこうなります:
+결과는 이렇게 됩니다:
 
-    # perl4 の出力: Nope
-    # perl5 の出力: Yup
+    # perl4 의 출력: Nope
+    # perl5 의 출력: Yup
 
-以下のように変更した場合には
+아래처럼 변경한 경우에는
 
     eval "\$$hashname\{'$key'\} = q|$value|";
 
-結果はこうなります。
+결과는 이렇게 됩니다.
 
-    # perl4 の出力: Yup
-    # perl5 の出力: Yup
-    # これは両方のバージョンで同じ結果となります
+    # perl4 의 출력: Yup
+    # perl5 의 출력: Yup
+    # 이것은 양쪽의 버젼에서 같은 결과가 됩니다.
 
 =item * Bugs in earlier perl versions
 
-以前のバージョンにあったバグに依存しているような perl4 プログラム。
+앞의 버젼에 있었던 버그에 의존하고 있는 perl4 프로그램.
 
     perl -e '$bar=q/not/; print "This is $foo{$bar} perl5"'
 
-    # perl4 の出力: This is not perl5
-    # perl5 の出力: This is perl5
+    # perl4 의 출력: This is not perl5
+    # perl5 의 출력: This is perl5
 
 =item * Array and hash brackets during interpolation
 
@@ -1858,7 +1851,7 @@ interpolation.
 
 =end original
 
-展開中の配列とハッシュの大かっこについても注意する必要があります。
+전개중의 배열과 해쉬의 대괄호에 대해서도 주의할 필요가 있습니다.
 
     print "$foo["
 
@@ -1867,8 +1860,8 @@ interpolation.
 
     print "$foo{"
 
-    perl 4 の出力: {
-    perl 5 の出力: syntax error
+    perl 4 의 출력: {
+    perl 5 의 출력: syntax error
 
 =begin original
 
@@ -1894,21 +1887,21 @@ Similarly, watch out for: C<\$$foo{bar}>
 
 =end original
 
-同様に、C<\$$foo{bar}> にも注意してください:
+마찬가지로, C<\$$foo{bar}> 에도 주의해주세요.
 
     $foo = "baz";
     print "\$$foo{bar}\n";
 
     # perl4 prints: $baz{bar}
-    # perl5 の出力: $
+    # perl5 의 출력: $
 
-perl5 は存在しない C<$foo{bar}> を探しに行きますが、perl4 は
-$foo を“baz”に展開しただけで満足します。
-C<eval> でもこの事に注意してください。
+perl5 는 의존하지 않는 C<$foo{bar}> 를 찾으러 가지만, perl4 는
+$foo 를 "baz" 에 전개한 것만으로 만족합니다.
+C<eval> 에도 이것에 주의해주세요.
 
 =item * C<qq()> string passed to C<eval> will not find string terminator
 
-C<eval> に C<qq()> された文字列を渡した場合
+C<eval> 에 C<qq()> 된 문자열을 넘길 경우
 
     eval qq(
         foreach \$y (keys %\$x\) {
@@ -1923,7 +1916,7 @@ C<eval> に C<qq()> された文字列を渡した場合
 
 =head2 DBM Traps
 
-(DBM の罠)
+(DBM의 함정)
 
 =begin original
 
@@ -1931,46 +1924,46 @@ General DBM traps.
 
 =end original
 
-DBMに関する一般的な罠。
+DBM에 관한 일반적인 함정.
 
 =over 5
 
 =item * Perl5 must have been linked with same dbm/ndbm as the default for C<dbmopen()>
 
-perl4 で(もしくは他の dbm/ndbm ツールで)作成した dbm データベースを、
-perl5 の元で同じスクリプトで扱おうとすると失敗します。
-perl5 の作成において、拡張 dbm の実装を C<tie> しないときに
-C<dbmopen()> がデフォルトで使用する関数のために
-(perl4 のときと同じ)同じ dbm/ndbm をリンクしていなければなりません。
+perl4 에서(혹은 다른 dbm/ndbm 툴에서) 작성한 dbm 데이터베이스를,
+perl5 에서 같은 스크립트로 취급하려고 하면 실패합니다.
+perl5 의 작성에 대해, 확장 dbm 의 구축을 C<tie> 하지 않을 때에
+C<dbmopen()> 이 기본값으로 사용하는 함수이기에
+(perl4 때와 마찬가지로) 같은 dbm/ndbm 을 링크하고 있지 않으면 안됩니다.
 
     dbmopen (%dbm, "file", undef);
     print "ok\n";
 
-    # perl4 の出力: ok
-    # perl5 の出力: ok (IFF linked with -ldbm or -lndbm)
+    # perl4 의 출력: ok
+    # perl5 의 출력: ok (IFF linked with -ldbm or -lndbm)
 
 
 =item * DBM exceeding limit on the key/value size will cause perl5 to exit immediately
 
-key/value のサイズに関する制限を超えたときに発生するエラーにより、
-perl5 では即座にプログラムから exit します。
+key/value 의 크기에 관한 제한을 넘었을 때에 발생하는 에러에 의해,
+perl5 에서는 즉시 프로그램에서 exit 합니다.
 
     dbmopen(DB, "testdb",0600) || die "couldn't open db! $!";
-    $DB{'trap'} = "x" x 1024;  # ほとんどの dbm/ndbmには大きすぎる値
+    $DB{'trap'} = "x" x 1024;  # 대부분의 dbm/ndbm에는 너무 큰 값 
     print "YUP\n";
 
-    # perl4 の出力
+    # perl4 의 출력
     dbm store returned -1, errno 28, key "trap" at - line 3.
     YUP
 
-    # perl5 の出力
+    # perl5 의 출력
     dbm store returned -1, errno 28, key "trap" at - line 3.
 
 =back
 
 =head2 Unclassified Traps
 
-(未分類の罠)
+(미분류의 함정)
 
 =begin original
 
@@ -1978,15 +1971,15 @@ Everything else.
 
 =end original
 
-その他全て。
+그외 전부.
 
 =over 5
 
 =item * C<require>/C<do> trap using returned value
 
-(C<require>/C<do> の戻り値を使ったときの罠)
+(C<require>/C<do> 의 반환값을 사용한 때의 함정 ) 
 
-doit.pl というファイルが
+doit.pl 이라는 파일이
 
     sub foo {
         $rc = do "./do.pl";
@@ -1994,26 +1987,26 @@ doit.pl というファイルが
     }
     print &foo, "\n";
 
-であって、do.pl が以下のような内容だったとすると、
+이고, do.pl 이 아래와 같은 내용이었다고 하면,
 
     return 3;
 
-doit.pl の実行結果はこうなります。
+doit.pl 의 실행결과는 이렇게 됩니다.
 
-    # perl 4 の出力: 3 (サブルーチンからすぐに抜けます)
-    # perl 5 の出力: 8
+    # perl 4 의 출력: 3 (서브루틴에서 즉시 빠져나옵니다) 
+    # perl 5 의 출력: 8
 
-C<do> を C<require> に置き換えても同じ振る舞いとなります。
+C<do> 를 C<require> 로 바꿔도 같은 동작이 됩니다. 
 
 =item * C<split> on empty string with LIMIT specified
 
-(空文字列に LIMIT を指定して C<split> を使った場合)
+(빈문자열에 LIMIT 를 지정해서 C<split> 를 사용한 경우)
 
     $string = '';
     @list = split(/foo/, $string, 2)
 
-Perl4 は空文字列を持った一要素のリストを返しますが、Perl5 は
-空リストを返します。
+Perl4 는 빈문자열을 가진 하나의 요소의 리스트를 반환하지만, Perl5 는
+빈 리스트를 반환합니다.
 
 =back
 
@@ -2024,13 +2017,5 @@ they'll be fixed and removed.
 
 =end original
 
-いつものように、バグとして公式に宣言されたものがあれば、
-それは修正されて取り除かれるでしょう。
-
-=begin meta
-
-Translate: KIMURA Koichi (5.005_03)
-Update: Kentaro Shirakata <argrath@ub32.org> (5.6.1-)
-
-=end meta
-
+항상, 버그로써 공식적으로 선언된 것이 있으면,
+그것은 수정되어 없어졌을 겁니다.
