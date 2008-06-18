@@ -2298,7 +2298,7 @@ reference appropriately.
 
 =head2 Locking the Door and Throwing Away the Key
 
-(ドアに施錠して、鍵を放り投げる)
+(문을 잠그고 열쇠를 던지기)
 
 =begin original
 
@@ -2309,11 +2309,11 @@ implementation of this class to access class attributes directly?
 
 =end original
 
-現在インプリメントされるように、ファイルスコープのレキシカル変数の
-%ClassData と同じ範囲内のどのコードでも、そのハッシュを直接に、変更できます。
-これは良いでしょうか？
-このクラスの実装の他の部分が、直接にクラス属性にアクセスすることを許すことは、
-受け入れられか、望ましいものでしょうか？
+현재 임플리먼트된 것처럼 파일 영역의 렉시컬 변수의 
+%ClassData 처럼 범위 안의 어느 코드에서도 그 해쉬를 직접 변경할 수 있습니다.
+이것은 좋은 것일까요?
+이 클래스 구성의 다른 부분이 직접 클래스 속성에 접근하는 것을 허락하는 것은
+받아들일는 것을 원하는 것일까요?
 
 =begin original
 
@@ -2326,13 +2326,13 @@ properly designed accessor methods is probably not a good idea after all.
 
 =end original
 
-このことは、あなたがどれくらい注意深くありたいかに依存します。
-Cosmo クラスに戻って、考えてください。
-&supernova メソッドが直接に、$Cosmos::Starts か、
-C<$colsmos::Cosmos{stars}> を変更していたら、Multiverse を考案するときに、
-クラスを再利用することができなかったでしょう。
-クラスそれ自身でさえも、そのクラス属性に、適切に設計されたアクセサメソッドが
-仲介している介入なしに、アクセスするのは、結局、良い考えではないでしょう。
+이 것은 당신이 어느정도 주의 깊게 하고 싶가에 의존합니다.
+Cosmo 클래스로 돌아가서 생각해주세요.
+&supernova 메소가 직접 $Cosmose::Starts 가 
+C<$colsmos::Cosmos{stars}> 를 변경했다면, Multiverse 를 고안할 때에 
+클래스를 재이용하는 것이 불가능했겠죠.
+클래스 그 자신에서도 그 클래스 속성에 적절하게 설계된 접근자 메소드가 
+중개하고 있는 개입없이 접근하는 것은 결국 좋은 생각이 아닐겁니다.
 
 =begin original
 
@@ -2342,9 +2342,9 @@ you can.
 
 =end original
 
-クラス自身からクラス属性へのアクセスを制限するのは、ふつう、
-強力なオブジェクト指向言語でさえ、強制されていません。
-ですが、Perl では、できます。
+클래스 자신에게서 클래스 속성으로 접근을 제한하는 것은 보통 
+강력한 오브젝트 지향언어에서도 강제로 제한하고 있지 않습니다.
+하지만 Perl 에서는 가능합니다.
 
 =begin original
 
@@ -2384,11 +2384,11 @@ stronger than most OO languages provide.
 
 =end original
 
-誰も -- 絶対に誰も -- クラス属性に、支配しているアクセサメソッドの
-仲介なしには、クラス属性を読み書きすることを許されていません。
-メソッドだけが、支配ているレキシカル変数にアクセスするからです。
-この、クラス属性への仲介するアクセスの使用は、ほとんどの、オブジェクト指向
-言語が提供するものよりも、はるかに強力な、プライバシーの形です。
+누구도 -- 절대 누구라도 -- 클래스 속성에, 지배하고 있는 접근자 메소드의
+중개없이는 클래스 속성을 읽고 쓰는 것을 허락하지 않습니다. 
+메소드만이 지배하고 있는 렉시컬 변수에 접근하기 때문입니다.
+이 클래스 속성으로 중개하는 접근자의 사용은 대부분의 오브젝트 지향 언어가
+제공하는 것보다도 보다 강력한 프라이버시의 형태입니다.
 
 =begin original
 
@@ -2398,9 +2398,9 @@ methods.
 
 =end original
 
-データごとの アクセサメソッドを作成するために使用される、コードを
-反復するのは、不精を苛立だせるので、
-似たようなメソッドを作成するのに、再びクロージャを使用しましょう。
+데이터 마다 접근자 메소드를 만들기 위해 사용되는 코드를 
+반복하는 것은 쓸데없기 때문에,
+닮은 메소드를 작성하는 것에 다시금 클로져를 사용합시다.
 
     package Some_Class;
 
@@ -2429,12 +2429,12 @@ the &UNIVERSAL::can method and SUPER as shown previously.
 
 =end original
 
-上のクロージャは、以前に示した、&UNIVERSAL::can メソッドと SUPER を使用して、
-継承を考慮に入れるために修正できます。
+위의 클로져는, 이전에 보인 &UNIVERSAL::can 메소드와 SUPER 를 사용해서, 
+상속을 고려해두기 위해 수정할 수 있습니다.
 
 =head2 Translucency Revisited
 
-(半透明、再び)
+(다시 반투명성)
 
 =begin original
 
@@ -2448,8 +2448,8 @@ only lexicals.
 
 =end original
 
-Veriman クラスは、そのメタオブジェクトとして、パッケージ変数、
-クラスの名前の %Vermin を使って、半透明性をデモンストレーションしました。
+Vermin 클래스는 그 메타 오브젝트로써, 패키지 변수, 
+클래스의 이름의 %Vermin 을 사용해서, 분투명성을 보았습니다.
 継承か、もしかすると、Exporter を和らげるそれらの必需品以上に、
 絶対に、パッケージでない変数を使いたいなら、この作戦は、身近なものです。
 残念なことに、半透明の属性はアピールするテクニックですので、
@@ -2463,9 +2463,9 @@ would end up poking around somewhere you might not have meant to poke.
 
 =end original
 
-ここに、クラスの名前のハッシュを避けたいと思う 2 つ目の理由があります。
-それらに、ダブルコロンのクラス名を使うと、
-つつくつもりのないどこかを、結局、つつくことになるでしょう。
+여기에 클래스의 이름의 해쉬를 피하고 싶다고 생각하는 2 번째 이유가 있습니다.
+그것들에게 더블 콜론의 클래스 이름을 사용하면, 
+집어낼리 없는 곳을 결국 집어내게 될 것입니다.
 
     package Vermin;
     $class = "Vermin";
@@ -2489,15 +2489,14 @@ lookup instead of just looking in the current package.
 
 =end original
 
-最初のケースでは、クラスの名前にはダブルコロンがなかったので、現在の
-パッケージのハッシュを得ました。
-ですが、次のケースでは、現在のパッケージのハッシュを得る代わりに、
-Vermin パッケージの、ハッシュ %Noxious を得ました。
-(有毒な害虫は、他のパッケージに侵入し、そのまわりに、自分のデータを
-撒き散らします :-) Perl の命名仕様は、相対パッケージを
-サポートしません。
-ですので、ダブルコロンは、現在のパッケージの中を見るだけではなく、
-完全修飾された検索を引き起こします。
+맨 처음의 케이스에서는 클래스의 이름에는 더블콜론이 없기때문에 현재의 
+패키지의 해쉬를 얻습니다.
+하지만, 다음의 케이스에서는 현재의 패키지 해쉬를 얻는 대신에 
+Vermin 패키지의 해쉬 %Noxious 를 얻씁니다.
+(유독한 해충은 다른 패키지에 침입해서 그 대신에 자신의 데이터를 
+뿌립니다 :-) Perl 의 명명규칙은 상대 패키지를 지원하지 않습니다.
+그렇기에 더블콜론은 현재의 패키지의 안을 보는 것만 아니라
+완전수식된 검색을 발생시킵니다.
 
 =begin original
 
@@ -2514,18 +2513,18 @@ than one class uses the same Cwd package.
 
 =end original
 
-実際問題、Vermin クラスには、吹き飛ばした、%Noxious という名前の、
-存在するパッケージ変数は、ありそうもないです。
-まだ、信用できないなら、ルールを知っている自分の領域を、つねに
-見張ることができます。
-Eponymous::Vermin::Noxious か、Hieronymus::Vermin::Boschious か、
-Leave_Me_Alone::Vermin::Noxious を、クラス名として、代わりに、使うように。
-確かに、 他の誰かが、Eponymous::Vermin という名のクラスを、
-それ自身の %Noxious ハッシュと一緒に持つことは、理論上は可能ですが、
-この種類のことは、つねに真実です。
-パッケージの名前の得決定者はいません。
-2 つ以上のクラスが同じ Cwd パッケージを使うなら、@Cwd::ISA のようなグローバル
-変数が衝突するするのは、ありがちなケースです。
+실제 문제, Vermin 클래스에는 넘겨버린 %Noxious 이라는 이름이라는
+존재하는 패키지 변수는 있을 듯하지도 않습니다.
+아직 신용할 수 없다면, 룰을 알 있는 자신의 영역을 이미 
+넓혀 볼 수 있습니다.
+Eponymous::Vermin::Noxious 나 Hieronymus::Vermin::Boschious 나
+Leave_Me_Alone::Vermin::Noxious 를 클래스 이름으로써 대신에 사용하도록. 
+확실히 다른 누군가가 Eponymous::Vermin 이라는 이름의 클래스를
+그 자신의 %Noxious 해쉬와 함께 가지는 것은 이론상은 가능하지만,
+이 종류는 이미 진실입니다. 
+패키지의 이름의 결정자는 없습니다.
+2 개 이상의 클래스가 같은 Cwd 패키지를 사용하면, @Cwd::ISA 같은 글로벌 변수가
+충돌하는 것은 있을 지도 모르는 케이스 입니다.
 
 =begin original
 
@@ -2537,11 +2536,11 @@ so that they access a lexical instead.
 
 =end original
 
-パラノイアの不快な苦痛がまだ残っているなら、別の解決法があります。
-一価のクラスのために、あるいは半透明の属性のために、
-クラスのメタオブジェクトにを持つのに、パッケージ変数を
-持たなくてはいけないとするものは何もありません。
-代わりに、レキシカルにアクセスするようなメソッドをコードにしてください。
+파라노이어의 불쾌한 고통이 아직 남아있다면, 다른 해결법이 있습니다.
+monadic 클래스를 위해 혹은 반투명 속성을 위해
+클래스의 메타오브젝트를 얻는 것에 패키지 변수를 
+가지지 않으면 안된다고 하는 것은 아무것도 없습니다.
+대신에, 렉시컬에 접근하는 것같은 메소드를 코드로 해주세요.
 
 =begin original
 
@@ -2550,9 +2549,9 @@ to those given previously, but this time using no package variables.
 
 =end original
 
-Vermin クラスの別の実装です。
-以前に与えられたものと同じ意味ですが、今回は、パッケージ変数を
-使っていません。
+Vermin 클래스의 별도의 구성입니다.
+이전에 주어진 것과 같은 의미이지만, 이번에는 패키지 변수를 
+사용하지는 않습니다.
 
     package Vermin;
 
@@ -2628,7 +2627,7 @@ Vermin クラスの別の実装です。
 
 =head1 NOTES
 
-(注意)
+(주의)
 
 =begin original
 
@@ -2638,9 +2637,9 @@ better approach.
 
 =end original
 
-継承は強力ですが、繊細な仕組みです。
-注意深い見通しと設計の後で使うのが一番です。
-継承の代わりに、集約が、よりよいアプローチであることがよくあります。
+계승은 강력하지만 미세한 구성입니다.
+주의 깊은 통찰과 설계를 바탕으로 사용하는 것이 중요합니다.
+상속 대신에 집약이 보다 좋은 어프로치일 경우가 종종 있습니다.
 
 =begin original
 
@@ -2650,10 +2649,9 @@ module's methods wind up getting compiled.
 
 =end original
 
-SelfLoader か、AutoLoader との接続では、ファイルスコープのレキシカル変数を
-使えません。
-モジュールのメソッドが、結局コンパイルされるレキシカルスコープを
-変更するからです。
+SelfLoader 나, AutoLoader 와의 접속에서는 파일 영역의 렉시컬 변수를
+사용할 수 없습니다.
+모듈의 메소드가 결국 컴파일되는 렉시컬영역을 변경하기 때문입니다.
 
 =begin original
 
@@ -2687,12 +2685,10 @@ worth checking out.
 
 =end original
 
-CPAN にある Tie::SecureHash と、Class::Data::Inheritable モジュールは、
-良く調べる価値があります。
+CPAN 에 있는 Tie::SecureHash Class::Data::Inheritable 모듈은
+알아볼 가치가 있습니다.
 
 =head1 AUTHOR AND COPYRIGHT
-
-(著者と著作権)
 
 Copyright (c) 1999 Tom Christiansen.
 All rights reserved.
@@ -2708,8 +2704,6 @@ credit would be courteous but is not required.
 
 =head1 ACKNOWLEDGEMENTS
 
-(謝辞)
-
 Russ Allbery, Jon Orwant, Randy Ray, Larry Rosler, Nat Torkington,
 and Stephen Warren all contributed suggestions and corrections to this
 piece.  Thanks especially to Damian Conway for his ideas and feedback,
@@ -2719,8 +2713,6 @@ you start thinking outside the tiny little box that today's "popular"
 object-oriented languages enforce.
 
 =head1 HISTORY
-
-(履歴)
 
 Last edit: Sun Feb  4 20:50:28 EST 2001
 
