@@ -177,87 +177,84 @@ L<Exporter> 를 봐주세요.
 
 반드시 유닛 테스트 코드를 만들고, 당신의 모듈이 여러 플랫폼위의
 Perl 에서 의도한대로 잘 움직이는 것을 확인합시다.
-CPAN にモジュールをアップロードすると、たくさんのテスターがモジュール
-をビルドして、テストの結果をあなたに送ってくれるでしょう。ここでもまた、
-C<h2xs> をつかえば、あとで拡張可能な、テストフレームワークが提供されま
-す。単にコンパイルが通るかだけでなく、いろいろとテストしましょう。
+CPAN 에 모듈을 업로드하려면, 많은 테스터가 모듈을 빌드해서 
+테스트의 결과를 당신에게 보내줄 겁니다. 여기에서도 또, 
+C<h2x2> 를 사용하면, 나중에 확장가능한 테스트프레임워가 제공됩니다. 
+단순히 컴파일이 통하는 가하는 것만 아니라 여러가지를 테스트합시다.
 
-=item README を書く
+=item README 를 쓰기
 
-CPAN にアップロードするときは、README ファイルが自動で抽出されて、あな
-たの CPAN ディレクトリにおかれます。また、モジュールリストに載った場合
-には、F<by-module> や F<by-category> のメインディレクトリにも配置され
-ます。このファイルに、そのモジュールのすることの詳細や、一つ前のリリー
-スからの変更点を書いておくと良いでしょう。
+CPAN 에 업로드할 때는 README 파일이 자동으로 유출되고, 당신의 
+CPAN 디렉토에 놓여집니다. 또, 모듈리스트에 실린 경우에는 
+F<by-module> 이나 F<by-category> 의 메인디렉토리에도 배치됩니다.
+이 파일에 그 모듈이 하는 것의 상세한 내용이나 이전의 릴리즈에서의 
+변경점을 적어두면 좋겠죠?
 
 =back
 
-=head2 Step-by-step: モジュールを配布する
+=head2 Step-by-step: 모듈을 배포하기
 
 =over 3
 
-=item CPAN ユーザ IDを取得する
+=item CPAN 유저 ID 취득하기
 
-CPAN でモジュールを配布するには、CPAN ID が必要です。どうやって取得す
-るかは、C<http://www.cpan.org/modules/04pause.html> (もしくはそのミラー) 
-の指示を読んでください。
+CPAN 에서 모듈을 배포하기에는, CPAN ID 가 필요합니다. 어떻게 해서 
+얻을 까는 C<http://www.cpan.org/modules/04pause.html>(혹은 그 미러)
+의 지시를 읽어 주세요.
 
 =item C<perl Makefile.PL; make test; make dist>
 
-ここでも、C<h2xs> はすべてやってくれます。モジュールをインストールする
-ときによくみる、標準的な C<Makefile.PL> ができています。これが生成する 
-Makefile に C<dist> ターゲットがあります。
+여기에서도 C<h2x2> 는 모든 것을 해줍니다. 모듈을 인스톨할 때에 자주 보는 
+표준적인 C<Makefile.PL> 이 생깁니다. 이것이 생성하는 Makefile 에 
+C<dist> 타겟이 있습니다.
 
-モジュールがテストにパスしたことを確認したら(いつでも確認することはよ
-いことです)、 C<make dist> を実行すれば、Makefile はアップロード準備の
-ととのった tarball ファイルを生成してくれます。
+모듈이 테스트를 패스한 것을 확인하면 (언제라도 확인하는 것은 좋은 겁니다)
+C<make dist> 를 실행하면, Makefile 은 업로드 준비를 마친 
+tarball 파일을 생성해줍니다.
 
-=item tarball をアップロードする
+=item tarball 을 업로드하기 
 
-CPAN ID を取得できたときに届く email に、PAUSE (the Perl Authors
-Upload SErver) へのログイン方法が載っています。メニューから選択して、
-モジュールをCPANにアップロードできます。
+CPAN ID 를 얻었을 때 도착하는 email 에 PAUSE( the Perl Authors Upload SErver)
+로의 로그인 방법이 적혀있습니다. 메뉴에서 선택해서 모듈을 CPAN에 업로드 
+할 수 있습니다.
 
-=item モジュールリストにアナウンスする
+=item 모듈 리스트에 알리기 
 
-アップロードしたら、あなたのディレクトリにあるだけでは人目を引きません。
-のこりの CPAN モジュールと同じように載せたければ、モジュールリストにそ
-のことを伝えます。一番良い方法は、モジュールリストと同じスタイルで 
-Email をこんな感じでかくことです:
+업로드 하면, 당신의 디렉토리에 있는 것만으로는 다른 사람들의 시선을 끌 수 없죠.
+남은 CPAN 모듈처럼 싣고 싶다면, 모듈 리스트에 그 것을 전달합니다. 
+제일 좋은 방법은 모듈리스트와 같은 스타일로 Email 을 이렇게 쓰는 겁니다.
 
   Net::Acme bdpOP   Interface to Acme Frobnicator servers      FOOBAR
   ^         ^^^^^   ^                                          ^
-  |         |||||   モジュールの説明                           あなたのID
+  |         |||||   모듈의 설명                                당신의 Iㅇ
   |         ||||| 
-  |         ||||\-ライセンス: (p)standard Perl, (g)GPL, (b)BSD,
+  |         ||||\-라이센스: (p)standard Perl, (g)GPL, (b)BSD,
   |         ||||              (l)LGPL, (a)rtistic, (o)ther
   |         ||||
-  |         |||\- インタフェース: (O)OP, (r)eferences, (h)ybrid, (f)unctions
+  |         |||\- 인터페이스: (O)OP, (r)eferences, (h)ybrid, (f)unctions
   |         |||
-  |         ||\-- 言語: (p)ure Perl, C(+)+, (h)ybrid, (C), (o)ther
+  |         ||\-- 언어: (p)ure Perl, C(+)+, (h)ybrid, (C), (o)ther
   |         ||
-  Module    |\--- サポート: (d)eveloper, (m)ailing list, (u)senet, (n)one
+  Module    |\--- 서포트: (d)eveloper, (m)ailing list, (u)senet, (n)one
   Name      |
-            \---- 開発状況: (i)dea, (c)onstructions, (a)lpha, (b)eta,
+            \---- 개발상황: (i)dea, (c)onstructions, (a)lpha, (b)eta,
                             (R)eleased, (M)ature, (S)tandard
 
 
-それに、モジュールの説明と、これがリストに含まれるべき理由を記述します。
-何も答えが返って来なければ、次の更新で、モジュールリストに掲載されるで
-しょう。C<modules@perl.org> に subscribe しようとしないようにしてくだ
-さい。これはメーリングリストではないのです。我慢してください。
+그리고 모듈의 설명과 이것은 리스트에 포함되어야 할 이유를 기술합니다.
+무엇도 답이 오지 않으면, 다음 갱신에서 모듈리스트에 실릴 겁니다.
+C<modules@perl.org> 에 subscribe 하려고 하지 않도록 해주세요.
+이것은 메일링 리스트가 아닙니다. 
 
-=item clpa にアナウンスする
+=item clpa 에 알리기 
 
-リリースしたことを世界中にアナウンスしたいという野望があるなら、モデレー
-トされている、C<comp.lang.perl.announce> ニュースグループにアナウンス
-を投稿してみましょう。
+릴리즈한 것을 전세계에 알리고 싶다는 야망이 있다면, 모데레이터된 
+C<comp.lang.perl.announce> 뉴스그룹에 알립니다.
 
-=item バグをなおす!
+=item 버그를 고치기
 
-ユーザが集まってくると、バグレポートが送られて来ます。運がよければ、パッ
-チを送ってくれるでしょう。ソフトウェアプロジェクトのメンテナンスという
-喜びが待っています ...
+유저가 모여들면 버그리포트를 보내옵니다. 운이 좋으면 패치를 보내올 겁니다.
+소프트웨어 프로젝트의 유지보수라는 것은 기쁨이 기다리고 있는 겁니다.
 
 =back
 
