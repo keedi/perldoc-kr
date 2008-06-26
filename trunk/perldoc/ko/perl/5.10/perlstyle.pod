@@ -358,9 +358,9 @@ the middle.  Just "outdent" it a little to make it more visible:
 
 =end original
 
-ループの先頭や末尾で抜け出すのに、ばかげたコードをかかないでください。
-Perl には C<last> 演算子があるので、途中で抜け出すことができます。
-ちょっとだけ読みやすくするには "アウトデント" します:
+루프의 맨앞이랑 ë끝에서 뽑아낸 것에 이상한 코드를 쓰지 마세요.
+Perl 에는 C<last> 연산자가 있기때문에 도중에 빠져나올 수가 있습니다.
+조금만 읽기 쉽게하려면 "아웃덴트" 합니다:
 
     LINE:
 	for (;;) {
@@ -380,9 +380,9 @@ previous example.
 
 =end original
 
-ループのラベルは積極的に使いましょう -- 可読性をあげるのと共に、多段階の
-ループ抜け出しもできるようになります。
-先ほどの例を見てください。
+루프의 라벨은 적극적으로 사용합시다 -- 가능성을 주는 것과 함께, 여러 계층의
+루프 이탈도 가능하게 됩니다.
+앞의 예를 봐주세요.
 
 =item *
 
@@ -395,11 +395,10 @@ the C<system()> function instead.
 
 =end original
 
-C<grep()> (や C<map()>)、また `逆クォート` を無効コンテキスト、つまり
-返り値を無視する文で使用しないでください。
-これらの関数はすべて返り値を持っていますから、それを使用してください。
-いらないのであれば、C<foreach()> ループや C<system()> 関数を
-使用してください。
+C<grep()> (나 C<map()>) 또 '역따옴표' 를 무효컨텍스트, 즉 반환값을 
+무시하는 구문에서 사용하지 마세요.
+이 함수들은 모든 반환값을 가지고 있기 때문에, 그것을 사용해주세요.
+필요없다면, C<foreac()> 루프나 C<system()> 함수를 사용해주세요.
 
 =item *
 
@@ -414,13 +413,12 @@ determined by the B<Configure> program when Perl was installed.
 
 =end original
 
-ポータビリティのために、すべてのマシンで実装されていないかもしれない機能を
-使用する際は、それを eval で囲って、失敗するかどうかチェックしてください。
-ある機能が、どのバージョンやパッチレベルで実装されているか知っている
-場合には、C<$]> (C<English> モジュールでは、C<$PERL_VERSION>) を
-チェックすることもできます。
-C<Config> モジュールを使えば、Perl インストール時の C<Configure> プログラムに
-よって決定された値を調べることができます。
+포터빌리티를 위해 모든 머신에서 구성되어 있지 않을 지도 모르는 기능을 
+사용할 때는 그것을 eval 로 감싸고, 실패할 지 어떨지를 체크해주세요.
+어떤 기능이 어떤 버젼이랑 패치레벨에서 구성되어 있는 지 알고 있는 경우에는 
+C<$]> (C<English> 모듈에서는 C<$PERL_VERSION>) 을 체크할 수도 있습니다.
+C<Config> 모듈을 사용하면, Perl 설치 시의 C<Configure> 프로그램에의해
+지정된 값을 조사할 수 있습니다.
 
 =item *
 
@@ -431,8 +429,8 @@ you've got a problem.
 
 =end original
 
-ニーモニックな識別子を選んでください。
-そのニーモニックが何を意味するか思い出せなければ、問題です。
+mnemonic 한 식별자를 골라주세요.
+이 mnemonic이 무엇을 의미하는 가 생각나지 않는 다면 문제입니다.
 
 =item *
 
@@ -446,11 +444,10 @@ consistently with C<VAR_NAMES_LIKE_THIS>.
 
 =end original
 
-C<$gotit> のような短い識別子なら ok ですが、 in longer identifiers 単語を
-区切るにはアンダースコアを使用してください。
-一般的には、とくに英語のネイティブスピーカーでない人にとっては、C<$var_names_like_this> の方が C<$VarNamesLikeThis> より読みやすいです。
-このルールは C<VAR_NAMES_LIKE_THIS> についても同様に当てはまります。
-(TBT)
+C<$gotit> 같은 ㅉ랍은 식별자라면 ok 입니다만 in longer identifiers 단어를
+구분하기에는 언더바를 사용해주세요.
+일반적으로 특히 영어의 네이티브 스피커가 아닌 사람에게는 C<$var_names_like_this> 쪽이 C<$VarNamesLikeThis> 보다 읽기 쉽습니다.
+이 룰은 C<VAR_NAMES_LIKE_THIS> 에 대해서도 똑같이 해당됩니다.
 
 =begin original
 
@@ -463,13 +460,13 @@ few sparse bytes.
 
 =end original
 
-パッケージ名は、このルールの例外になることがあります。
-Perl は小文字のモジュール名を、C<integer> や C<strict> のような"プラグマ"
-モジュールのために予約しています。
-その他のモジュールは大文字からはじめて、小文字を混ぜて使用すべきですが、
-アンダースコアは使用しません。
-プリミティブなファイルシステムでは、モジュール名をファイルとして
-表現する際に、バイト数の制限があるためです。
+패키지이름은 이 룰의 예외가 될 수 있습니다.
+Perl 은 소문자의 모듈이름을 C<integer> 나 C<strict> 같은 "프라그마" 모듈을 
+위해 예약하고 있습니다.
+그 외의 모듈은 대문자로 시작해서 소문자를 섞어서 써야하지만,
+언더바는 사용하지 않습니다.
+프리미티브한 파일 시스템에서는 모듈이름을 파일로써 표현할 때에는 
+바이트 수의 제한이 있기 때문입니다.
 
 =item *
 
@@ -480,8 +477,8 @@ or nature of a variable. For example:
 
 =end original
 
-変数のスコープや性質を表現するのに、大文字小文字を使うと便利でしょう。
-たとえば:
+변수의 영역이나 성질을 표현하는 것에 대문자소문자를 사용하면 편리할 겁니다.
+예를들면:
 
 =begin original
 
@@ -491,9 +488,9 @@ or nature of a variable. For example:
 
 =end original
 
-    $ALL_CAPS_HERE   定数のみ (perl 変数との衝突に注意!)
-    $Some_Caps_Here  パッケージワイドなグローバル/スタティック変数
-    $no_caps_here    関数スコープの my(),local()変数
+    $ALL_CAPS_HERE   변수만 (perl 변수와의 충돌에 주의!)
+    $Some_Caps_Here  패키지와이드한 글로벌/스태틱 변수
+    $no_caps_here    함수 영역의 my(), local() 변수 
 
 =begin original
 
@@ -502,8 +499,8 @@ E.g., C<$obj-E<gt>as_string()>.
 
 =end original
 
-関数とメソッドの名前はすべて小文字だとベストです。
-例えば、C<$obj-E<gt>as_string()>。
+함수와 메소드의 이름은 모두 소문자인 것이 최고입니다.
+예를들면 C<$obj-E<gt>as_string()>.
 
 =begin original
 
@@ -512,8 +509,8 @@ function should not be used outside the package that defined it.
 
 =end original
 
-先頭にアンダースコアをつけることによって、変数や関数を定義したパッケージ外で
-使用すべきでないことを命じすることができます。
+맨 앞에 언더바를 붙이는 것에 의해 변수나 함수를 정의한 패키지 밖에서 
+사용해야하는 것이 아닌 것을 정의할 수 있습니다.
 
 =item *
 
@@ -525,10 +522,10 @@ Don't use slash as a delimiter when your regexp has slashes or backslashes.
 
 =end original
 
-ほんとにごちゃごちゃな正規表現を使う場合には、C</x> 修飾子を使用して
-スペースをいれ、ごみみたいにならないようにしてください。
-正規表現内にスラッシュやバックスラッシュがあるときには、デリミタに
-スラッシュを使わないように。
+정말로 엉망인 정규표현을 사용할 경우에는 C</x> 수식자를 사용해서 
+스페이스를 넣고, 쓰레기처럼 보이지 않도록 해주세요.
+정규표현에 슬래쉬나 백슬래쉬가 있을 때에는 딜리미터에 슬ㅐ쉬를 
+사용하지 않도록 해주세요.
 
 =item *
 
@@ -541,10 +538,10 @@ functions or list operators to avoid excessive ampersands and parentheses.
 
 =end original
 
-新しい C<and> と C<or> 演算子を使用し、リスト演算子のカッコがたくさんに
-なったり、C<&&> や C<||> が大量発生するのを避けてください。
-サブルーチンは、関数やリスト演算子であるかのように扱い、アンパサンドや
-カッコが大量発生するのを避けてください。
+새로운 C<and> 와 C<or> 연산자를 사용해서, 리스트 연산자의 괄호가 많아지거나
+C<&&> 나 C<||> 가 대량으로 발생하는 것을 피해주세요.
+서브루틴은 함수나 리스트 연산자인 것처럼 다루고, 앰퍼센트나 괄호가 
+대량발생하는 것을 피해주세요.
 
 =item *
 
@@ -554,7 +551,7 @@ Use here documents instead of repeated C<print()> statements.
 
 =end original
 
-C<print()> 文を繰り返さず、ヒアドキュメントを使用してください。
+C<print()> 문을 반복하지 않고, here document 를 사용해주세요.
 
 =item *
 
@@ -565,8 +562,7 @@ to fit on one line anyway.
 
 =end original
 
-対応するものの開始位置はそろえてください、とくに、1行におさまらないものに
-関して。
+대응하는 부분의 개시위치는 정리해주세요. 특히 한줄에 한줄에 장황하게 늘어놓는 것.
 
     $IDX = $ST_MTIME;
     $IDX = $ST_ATIME 	   if $opt_u;
@@ -589,11 +585,11 @@ sufficient example:
 
 =end original
 
-システムコールの返りコードはつねにチェックしてください。
-良いエラーメッセージは C<STDERR> に書き出され、問題を発生させた
-プログラム名や、失敗したシステムコールと引数、そして(とても重要)標準
-システムエラーメッセージを含むべきです。
-以下はシンプルですが、十分な例です:
+시스템 호출의 반환 코드는 항상 체크해주세요.
+좋은 에러 메시지는 C<STDERR> 에 써내고, 문제를 발생시키는 프로그램이름이나 
+실패한 시스템 호출과 인수, 그리고 (매우 중요) 표준 시스템 에러 메시지를 
+포함해야 합니다.
+아래는 심플하지만 충분한 예제입니다:
 
     opendir(D, $dir)	 or die "can't opendir $dir: $!";
 
@@ -605,7 +601,7 @@ Line up your transliterations when it makes sense:
 
 =end original
 
-見やすくなる場合には、tr の開始位置をそろえてください。
+보기 쉬울 경우에는 tr 의 개시위치를 정리해주세요.
 
     tr [abc]
        [xyz];
@@ -623,16 +619,15 @@ world view.  Consider... oh, never mind.
 
 =end original
 
-再利用性を考慮しましょう。
-同じことをあとでやるかもしれないときに、脳の力を一発のプログラムで
-無駄にする必要はありますか?
-コードの一般化を考慮し、モジュールやオブジェクトクラスを書くことを
-考慮しましょう。
-コードが C<use strict> と C<use warnings> (あるいは B<-w>) が有効でも
-きちんと動くか考慮しましょう。
-コードを捨て去ることも考慮しましょう。
-世界の見方を変えることを考慮しましょう。
-他にも……ああ、もういいや。
+재이용성을 고려해봅시다.
+같은 것을 나중에 할지도 모를 때에, 뇌의 힘을 한방의 프로그램으로 
+쓸데없이 할 필요는 있을까요?
+코드의 일반화를 고려해서, 모듈이나 오브젝트 클래스를 쓰는 것을 고려합시다.
+코드가 C<use strict> 와 C<use warnings> (혹은 B<-w>) 가 유효하더라도 
+제대로 움직이는 가를 고려합시다.
+코드를 버리는 것도 고려합시다.
+세계를 보는 방법을 바꾸는 것을 생각해봅시다.
+다른 것도... 아. 뭐 괜찮습니다.
 
 =item *
 
@@ -704,7 +699,7 @@ Be consistent.
 
 =end original
 
-つねに一貫性を。
+항상 일관성을.
 
 =item *
 
@@ -714,7 +709,7 @@ Be nice.
 
 =end original
 
-つねに素敵に。
+항상 훌륭하게.
 
 =back
 
