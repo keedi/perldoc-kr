@@ -61,7 +61,7 @@ function addSidebar() {
   <div id="new_release">
     [% IF release.data %]
       [% IF release.deprecated %]
-        <p>[% terms.Bugzilla %] [%+ release.deprecated FILTER html %] 가 더 이상
+        <p>[% terms.Bugzilla %] [%+ release.deprecated FILTER html %]는 더 이상
 	지원되지 않습니다. 시스템 보안을 유지하기 위해 업그레이드 하십시오.</p>
       [% END %]
 
@@ -70,9 +70,9 @@ function addSidebar() {
       에서 받을 수 있습니다.<br>
       게시 날짜: [% release.data.date FILTER html %]</p>
 
-      <p class="notice">이 메시지는 admin권한으로 로그인한 유저만 볼 수 있습니다.
+      <p class="notice">이 메시지는 관리자 권한으로 로그인한 유저만 볼 수 있습니다.
       이 공지는
-      <a href="editparams.cgi?section=core#upgrade_notification">Parameters</a> 페이지에서
+      <a href="editparams.cgi?section=core#upgrade_notification">매개변수</a> 페이지에서
       설정하실 수 있습니다.</p>
     [% ELSIF release.error == "missing_package" %]
       <p>패키지 '[% release.package FILTER html %]'가 없습니다. 이 패키지는
@@ -81,7 +81,7 @@ function addSidebar() {
     [% ELSIF release.error == "cannot_download" %]
       <p>해당 XML 파일 '[% release.xml_file FILTER html %]'을 생성할 수 없습니다.
       웹에 접속할 수 있는지, 그리고 웹 서버가 현재 디렉토리에 쓸 수 있는지 확인해 보십시오.
-      프록시가 (behind proxy) 면, <a href="editparams.cgi?section=core#proxy_url">프록시 url</a>
+      프록시를 사용중이면, <a href="editparams.cgi?section=core#proxy_url">프록시 url</a>
       의 매개변수를 정확히 설정하십시오.</p>
     [% ELSIF release.error == "no_update" %]
       <p>현재 XML 파일 '[% release.xml_file FILTER html %]'을 업데이트 할 수 없습니다.
