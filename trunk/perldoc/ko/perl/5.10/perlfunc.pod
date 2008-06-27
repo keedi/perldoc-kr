@@ -7,7 +7,7 @@ perlfunc - Perl builtin functions
 
 =end original
 
-perlfunc - Perl 組み込み関数
+perlfunc - Perl 내장함수
 
 =head1 DESCRIPTION
 
@@ -30,25 +30,23 @@ arguments.
 
 =end original
 
-この節の関数は、式の中で項として使うことができます。
-これらは、大きく 2 つに分けられます:
-リスト演算子と名前付き単項演算子です。
-これらの違いは、その後に出て来るコンマとの優先順位の関係にあります。　
-(L<perlop> の優先順位の表を参照してください。)
-リスト演算子は 2 個以上の引数をとるのに対して、
-単項演算子が複数の引数をとることはありません。
-つまり、コンマは単項演算子の引数の終わりとなりますが、
-リスト演算子の場合には、引数の区切りでしかありません。
-単項演算子は一般に、
-引数に対してスカラコンテキストを与えるのに対して、
-スカラ演算子の場合には、引数に対してスカラコンテキストを与える場合も、
-リストコンテキストを与える場合もあります。
-1 つのリスト演算子が
-両方のコンテキストを与える場合には、スカラ引数がいくつか並び、
-最後にリスト引数が 1 つ続きます。
-(リスト引数は 1 つだけです。)
-たとえば、splice() は 3 つのスカラ引数に 1 つのリスト引数が続きます。
-一方 gethostbyname() は 4 つのスカラ引数を持ちます。
+이 섹션의 함수는 식의 안에서 항으로써 사용할 수 있습니다.
+이것들은 크게 2개로 나뉩니다.
+리스트연산자와 이름붙은 단항연산자입니다.
+이 둘의 차이점은 그 뒤에 나올 콤마와의 우선순위의 관계에 있습니다.
+(L<perlop> 의 우ㄴ순위의 표를 참조해주세요.)
+리스트연산자는 2개 이상의 인수를 얻는 것에 대해서 
+단항연산자가 복수의 인수를 얻을 수는 없습니다.
+즉, 콤마는 단항연산자의 인수의 끝이 되지만, 
+리스트연산자의 경우에는 인수의 구분자일 뿐입니다.
+단항연산자는 일반적으로 인수에 대해 스칼라컨텍스트를 주는 것에 대해서 
+스칼라 연산자의 경우에는 인수에 대해서 스칼라 컨텍스트를 주는 경우도 
+리스트 컨텍스트를 주는 경우도 있습니다.
+하나의 리스트 연산자가 양쪽의 컨텍스트를 주는 경우에는 스칼라 인수가 
+몇 개 열거되고, 마지막에 리스트 인수가 하나 계속됩니다.
+(리스트 인수는 1개뿐입니다)
+예를 들면 splice() 는 3개의 스칼라인수에 하나의 리스트인수가 계속됩니다.
+한편 gethostbyname() 은 4개ㅢ 스칼라 인수를 얻습니다.
 
 =begin original
 
@@ -62,14 +60,12 @@ Commas should separate elements of the LIST.
 
 =end original
 
-後に載せる構文記述では、リストをとり
-(そのリストの要素にリストコンテキストを与える)
-リスト演算子は、引数として LIST をとるように書いています。
-そのようなリストには、任意のスカラ引数の組み合わせやリスト値を
-含めることができ、リスト値はリストの中に、
-個々の要素が展開されたように埋め込まれます。
-1 次元の長いリスト値が形成されることになります。
-LIST の要素は、コンマで区切られます。
+마지막에 실리는 구문기술에서는 리스트를 얻어(그 리스트의 요소에 
+리스트 컨텍스트를 부여) 리스트 연산자는 인수로써 LIST 를 얻도록 씁니다.
+그런 리스트에는 임의의 스칼라 인수의 조합이나 리스트 값을 포함할 수 있고,
+리스트 값은 리스트 안에 각각의 요소가 전개되는 것처럼 들어갑니다.
+1차원의 긴 리스트값이 형성될 수도 있습니다.
+LIST 요소는 콤마로 구분되어집니다.
 
 =begin original
 
@@ -84,16 +80,14 @@ be careful sometimes:
 
 =end original
 
-以下のリストの関数はすべて、引数の前後の括弧は省略可能と
-なっています。
-(構文記述では省略しています。)
-括弧を使うときには、
-単純な (しかし、ときには驚く結果となる) 規則が適用できます:
-I<関数に見える>ならば、I<それは関数>で、優先順位は関係ありません。
-そう見えなければ、それはリスト演算子か単項演算子で、優先順位が
-関係します。
-また、関数と開き括弧の間の空白は関係ありませんので、
-ときに気を付けなければなりません:
+아래의 리스트 함수는 모두, 인수의 앞뒤의 괄호는 생략가능합니다.
+(구문기술에서는 생략하고 있습니다)
+괄호를 사용할 때에는 단순한(하지만, 때로는 깜짝 놀랄 결과가 됩니다) 규칙을
+적용할 수 있습니다: I<함수처럼 보인다면>, I<그것은 함수>이고, 우선순위는 
+관계없습니다.
+그렇게 보이면, 그것은 리스트 연산자가 단항연산자로, 우선순위가 관계있습니다.
+또, 함수와 열린괄호의 사이의 공백은 관계없기 때문에, 때로는 
+신경쓰지 않으면 안됩니다:
 
     print 1+2+4;	# Prints 7.
     print(1+2) + 4;	# Prints 3.
@@ -108,9 +102,8 @@ example, the third line above produces:
 
 =end original
 
-Perl に B<-w> スイッチを付けて実行すれば、こういったものには
-警告を出してくれます。
-たとえば、上記の 3 つめは、以下のような警告が出ます:
+Perl 에 B<-w> 스위치를 붙여서 실행하면 이런 것에는 경고를 냅니다.
+예를 들면, 위의 3번째는 아래처럼 경고가 나옵니다:
 
     print (...) interpreted as function at - line 1.
     Useless use of integer addition in void context at - line 1.
@@ -124,10 +117,10 @@ C<time() + 86_400>.
 
 =end original
 
-いくつかの関数は引数を全くとらないので、単項演算子としても
-リスト演算子としても動作しません。
-このような関数としては C<time> や C<endpwent> があります。
-例えば、C<time+86_400> は常に C<time() + 86_400> として扱われます。
+몇 가지의 함수는 인수를 모두 얻지 않기에, 단항연산자로써도
+리스트연산자로써도 동작하지 않습니다.
+이런 함수로써는 C<time> 이나 C<endpwent> 가 있습니다.
+예를 들면, <time+86_400> 은 항상 C<time() + 86_400> 으로 취급됩니다.
 
 =begin original
 
@@ -138,9 +131,9 @@ null list.
 
 =end original
 
-スカラコンテキストでも、リストコンテキストでも使える関数は、
-致命的でないエラーを示すために、スカラコンテキストでは
-未定義値を返し、リストコンテキストでは空リストを返します。
+스칼라컨텍스트에서도 리스트 컨텍스트에서도 사용할 수 있는 함수는 
+치명적이지 않은 에러를 나타내기 위해 스칼라 컨텍스트에서는 
+미정의값을 반환하고, 리스트컨텍스트에서는 빈 리스트를 반환합니다.
 
 =begin original
 
@@ -158,17 +151,17 @@ X<context>
 
 =end original
 
-以下に述べる重要なルールを忘れないで下さい: リストコンテキストでの
-振る舞いとスカラコンテキストでの振る舞いの関係、あるいはその逆に
-B<ルールはありません>。
-2 つの全く異なったことがあります。
-それぞれの演算子と関数は、スカラコンテキストでは、もっとも適切と
-思われる値を返します。
-リストコンテキストで返す時のリストの長さを返す演算子もあります。
-リストの最初の値を返す演算子もあります。
-リストの最後の値を返す演算子もあります。
-成功した操作の数を返す演算子もあります。
-一般的には、一貫性を求めない限り、こちらが求めることをします。
+아래에 기술한 중요한 룰을 잊지 않도록해주세요: 리스트 컨텍스트에서의 
+행동과 스칼라 컨텍스트에서의 행동의 관게, 혹은 그 반대의 B<룰은 관계없습니>.
+2 개의 전혀 다른 것이 있습니다.
+각각 연산자와 함수는 스칼라 컨텍스트에서는 제일 적절하다고 생각되는 값을
+반환합니다.
+리스트 컨텍스트에서 반환할 때의 리스트의 길이를 반환하는 연산자도 있습니다.
+리스트의 맨처음의 값을 반환하는 연산자도 있습니다.
+리스트의 맨 마지막의 값을 반환하는 연산자도 있습니다.
+성공한 조작의 수를 반환하는 연산자도 있습니다.
+일반적으로는 일관성을 요구하지 않는 한 이쪽이 원하는 일을 합니다.
+
 X<context>
 
 =begin original
@@ -182,12 +175,12 @@ was never a list to start with.
 
 =end original
 
-スカラコンテキストでの名前付き配列は、スカラコンテキストでのリストを
-一目見たものとは全く違います。
-コンパイラはコンパイル時にコンテキストを知っているので、
-C<(1,2,3)> のようなリストをスカラコンテキストで得ることはできません。
-これはスカラコンマ演算子を生成し、コンマのリスト作成版ではありません。
-これは初めからリストであることはないことを意味します。
+스칼라 컨텍스트에서의 이름붙은 배열은, 스칼라컨텍스트에서의 리스트를 
+한번 본 것과는 전혀 다릅니다.
+컴파일러는 컴파일 시에 컨텍스트를 알고 있기 때문에, C<(1,2,3)> 같은 
+리스트를 스칼라 컨텍스트로 얻을 수는 없습니다. 
+이것은 스칼라 컴마 연산자를 생성하고, 컴마의 리스트 작성판이 아닙니다.
+이것은 처음부터 리스트가 아니라는 것을 의미합니다.
 
 =begin original
 
@@ -201,18 +194,18 @@ variable on failure.  Other functions do not, except accidentally.
 
 =end original
 
-一般的に、同じ名前のシステムコールのラッパーとして動作する Perl の関数
-(chown(2), fork(2), closedir(2) など)は、以下に述べるように、
-成功時に真を返し、そうでなければ C<undef> を返します。
-これは失敗時に C<-1> を返す C のインターフェースとは違います。
-このルールの例外は C<wait>, C<waitpid>, C<syscall> です。
-システムコールは失敗時に特殊変数 C<$!> をセットします。
-その他の関数は、事故を除いて、セットしません。
+일반적으로, 같은 이름의 시스템 호출의 래퍼로써 동작하는 Perl 함수 
+(chown(2), fork(2), closedir(2) 같은)는 아래에 기술한대로, 
+성공 시에 참을 반환하고 그렇지 않으면 C<undef> 를 반환합니다.
+이것은 실패 시에 C<-1> 을 반환하는 C 의 인터페이스와는 다릅니다.
+이 룰의 예외는 C<wait>, C<waitpid>, C<syscall> 입니다.
+시스템 호출은 실패시에 특수변수 C<$!> 을 설정합니다.
+그 외의 함수는 사고를 빼고는 설정하지 않습니다.
 
 =head2 Perl Functions by Category
 X<function>
 
-(カテゴリ別の Perl 関数)
+(카테고리 별 Perl 함수)
 
 =begin original
 
@@ -223,16 +216,16 @@ than one place.
 
 =end original
 
-以下に、カテゴリ別の関数(キーワードや名前付き演算子のような、
-関数のように見えるものも含みます)を示します。
-複数の場所に現れる関数もあります。
+아래에 카테고리 별 함수(키워나 이름붙은 연산자같은 함수처럼 보이는 것도 
+파함합니다) 를 나타냅니다. 
+여러 곳에 나타나는 함수도 있습니다.
 
 =over 4
 
 =item Functions for SCALARs or strings
 X<scalar> X<string> X<character>
 
-(スカラや文字列のための関数)
+(스칼라나 문자열을 위한 함수)
 
 C<chomp>, C<chop>, C<chr>, C<crypt>, C<hex>, C<index>, C<lc>, C<lcfirst>,
 C<length>, C<oct>, C<ord>, C<pack>, C<q//>, C<qq//>, C<reverse>,
@@ -241,14 +234,14 @@ C<rindex>, C<sprintf>, C<substr>, C<tr///>, C<uc>, C<ucfirst>, C<y///>
 =item Regular expressions and pattern matching
 X<regular expression> X<regex> X<regexp>
 
-(正規表現とパターンマッチング)
+(정규표현과 패턴매칭)
 
 C<m//>, C<pos>, C<quotemeta>, C<s///>, C<split>, C<study>, C<qr//>
 
 =item Numeric functions
 X<numeric> X<number> X<trigonometric> X<trigonometry>
 
-(数値関数)
+(숫자값 함수)
 
 C<abs>, C<atan2>, C<cos>, C<exp>, C<hex>, C<int>, C<log>, C<oct>, C<rand>,
 C<sin>, C<sqrt>, C<srand>
@@ -256,28 +249,28 @@ C<sin>, C<sqrt>, C<srand>
 =item Functions for real @ARRAYs
 X<array>
 
-(実配列のための関数)
+(실제 배열을 위한 함수)
 
 C<pop>, C<push>, C<shift>, C<splice>, C<unshift>
 
 =item Functions for list data
 X<list>
 
-(リストデータのための関数)
+(리스트 데이터를 위한 함수)
 
 C<grep>, C<join>, C<map>, C<qw//>, C<reverse>, C<sort>, C<unpack>
 
 =item Functions for real %HASHes
 X<hash>
 
-(実ハッシュのための関数)
+(실제 해쉬를 위한 함수)
 
 C<delete>, C<each>, C<exists>, C<keys>, C<values>
 
 =item Input and output functions
 X<I/O> X<input> X<output> X<dbm>
 
-(入出力関数)
+(입출력 함수)
 
 C<binmode>, C<close>, C<closedir>, C<dbmclose>, C<dbmopen>, C<die>, C<eof>,
 C<fileno>, C<flock>, C<format>, C<getc>, C<print>, C<printf>, C<read>,
@@ -287,14 +280,14 @@ C<warn>, C<write>
 
 =item Functions for fixed length data or records
 
-(固定長データやレコードのための関数)
+(고정길이 데이터나 레코드를 위한 함수)
 
 C<pack>, C<read>, C<syscall>, C<sysread>, C<syswrite>, C<unpack>, C<vec>
 
 =item Functions for filehandles, files, or directories
 X<file> X<filehandle> X<directory> X<pipe> X<link> X<symlink>
 
-(ファイルハンドル、ファイル、ディレクトリのための関数)
+(파일핸들, 파일, 디렉토리를 위한 함수)
 
 C<-I<X>>, C<chdir>, C<chmod>, C<chown>, C<chroot>, C<fcntl>, C<glob>,
 C<ioctl>, C<link>, C<lstat>, C<mkdir>, C<open>, C<opendir>,
@@ -304,14 +297,14 @@ C<umask>, C<unlink>, C<utime>
 =item Keywords related to the control flow of your Perl program
 X<control flow>
 
-(プログラムの流れを制御することに関連するキーワード)
+(프로그램의 흐름을 제어하는 것에 관련된 키워드)
 
 C<caller>, C<continue>, C<die>, C<do>, C<dump>, C<eval>, C<exit>,
 C<goto>, C<last>, C<next>, C<redo>, C<return>, C<sub>, C<wantarray>
 
 =item Keywords related to switch
 
-(switch に関連するキーワード)
+(switch 에 관련된 키워드)
 
 C<break>, C<continue>, C<given>, C<when>, C<default>
 
@@ -322,12 +315,12 @@ See L<feature> and L<perlsyn/"Switch statements">.)
 
 =end original
 
-(これらは "switch" 機能が有効の場合にのみ利用可能です。
-L<feature> と L<perlsyn/"Switch statements"> を参照してください。)
+(이것들은 "swtich" 기능이 유효한 경우에만 이용가능합니다.
+L<feature> 와 L<perlsyn/"Switch statemnets"> 를 참조해주세요.)
 
 =item Keywords related to scoping
 
-(スコープに関するキーワード)
+(영역에 관한 키워드)
 
 C<caller>, C<import>, C<local>, C<my>, C<our>, C<state>, C<package>,
 C<use>
@@ -339,12 +332,12 @@ L<feature>.)
 
 =end original
 
-(C<state> は "state" 機能が有効の場合にのみ利用可能です。
-L<feature> を参照してください。)
+(C<state> 는 "state" 기능이 유효한 경우에만 이용가능합니다.
+L<feature> 를 참조해주세요.)
 
 =item Miscellaneous functions
 
-(さまざまな関数)
+(여러가지 함수)
 
 C<defined>, C<dump>, C<eval>, C<formline>, C<local>, C<my>, C<our>,
 C<reset>, C<scalar>, C<state>, C<undef>, C<wantarray>
@@ -352,7 +345,7 @@ C<reset>, C<scalar>, C<state>, C<undef>, C<wantarray>
 =item Functions for processes and process groups
 X<process> X<pid> X<process id>
 
-(プロセスとプロセスグループのための関数)
+(프로세스와 프로세스그룹을 위한 함수)
 
 C<alarm>, C<exec>, C<fork>, C<getpgrp>, C<getppid>, C<getpriority>, C<kill>,
 C<pipe>, C<qx//>, C<setpgrp>, C<setpriority>, C<sleep>, C<system>,
@@ -361,14 +354,14 @@ C<times>, C<wait>, C<waitpid>
 =item Keywords related to perl modules
 X<module>
 
-(perl モジュールに関するキーワード)
+(perl 모듈에 관한 키워드)
 
 C<do>, C<import>, C<no>, C<package>, C<require>, C<use>
 
 =item Keywords related to classes and object-orientation
 X<object> X<class> X<package>
 
-(クラスとオブジェクト指向に関するキーワード)
+(클래스와 오브젝트 지향에 관한 키워드)
 
 C<bless>, C<dbmclose>, C<dbmopen>, C<package>, C<ref>, C<tie>, C<tied>,
 C<untie>, C<use>
@@ -376,7 +369,7 @@ C<untie>, C<use>
 =item Low-level socket functions
 X<socket> X<sock>
 
-(低レベルソケット関数)
+(저레벨 소켓함수)
 
 C<accept>, C<bind>, C<connect>, C<getpeername>, C<getsockname>,
 C<getsockopt>, C<listen>, C<recv>, C<send>, C<setsockopt>, C<shutdown>,
@@ -385,7 +378,7 @@ C<socket>, C<socketpair>
 =item System V interprocess communication functions
 X<IPC> X<System V> X<semaphore> X<shared memory> X<memory> X<message>
 
-(System V プロセス間通信関数)
+(System V 프로세스간 통신함수)
 
 C<msgctl>, C<msgget>, C<msgrcv>, C<msgsnd>, C<semctl>, C<semget>, C<semop>,
 C<shmctl>, C<shmget>, C<shmread>, C<shmwrite>
@@ -393,7 +386,7 @@ C<shmctl>, C<shmget>, C<shmread>, C<shmwrite>
 =item Fetching user and group info
 X<user> X<group> X<password> X<uid> X<gid>  X<passwd> X</etc/passwd>
 
-(ユーザーとグループの情報取得)
+(유저와 그룹의 정보 취득)
 
 C<endgrent>, C<endhostent>, C<endnetent>, C<endpwent>, C<getgrent>,
 C<getgrgid>, C<getgrnam>, C<getlogin>, C<getpwent>, C<getpwnam>,
@@ -402,7 +395,7 @@ C<getpwuid>, C<setgrent>, C<setpwent>
 =item Fetching network info
 X<network> X<protocol> X<host> X<hostname> X<IP> X<address> X<service>
 
-(ネットワーク情報取得)
+(네트워크 정보 획득)
 
 C<endprotoent>, C<endservent>, C<gethostbyaddr>, C<gethostbyname>,
 C<gethostent>, C<getnetbyaddr>, C<getnetbyname>, C<getnetent>,
@@ -413,14 +406,14 @@ C<setnetent>, C<setprotoent>, C<setservent>
 =item Time-related functions
 X<time> X<date>
 
-(時刻に関する関数)
+(시각에 관함함수)
 
 C<gmtime>, C<localtime>, C<time>, C<times>
 
 =item Functions new in perl5
 X<perl5>
 
-(perl5 で新設された関数)
+(perl5 에서의 새로운 함수)
 
 C<abs>, C<bless>, C<break>, C<chomp>, C<chr>, C<continue>, C<default>, 
 C<exists>, C<formline>, C<given>, C<glob>, C<import>, C<lc>, C<lcfirst>,
@@ -435,12 +428,12 @@ operator, which can be used in expressions.
 
 =end original
 
-* - C<sub> は perl4 ではキーワードですが、perl5 では演算子なので、
-式で使えます。
+* - C<sub> 는 perl4 에서는 키워드이지만, petl5 에서는 연산자이기에 식으로
+사용할 수 있습니다.
 
 =item Functions obsoleted in perl5
 
-(perl5 では古いものとなった関数)
+(perl5 에서는 낡은 함수)
 
 C<dbmclose>, C<dbmopen>
 
@@ -449,7 +442,7 @@ C<dbmclose>, C<dbmopen>
 =head2 Portability
 X<portability> X<Unix> X<portable>
 
-(移植性)
+(이식성)
 
 =begin original
 
@@ -461,10 +454,11 @@ by this are:
 
 =end original
 
-Perl は Unix 環境で生まれたので、全ての共通する Unix システムコールに
-アクセスします。非 Unix 環境では、いくつかの Unix システムコールの
-機能が使えなかったり、使える機能の詳細が多少異なったりします。
-これによる影響を受ける Perl 関数は以下のものです:
+Perl 은 Unix 환경에서 태어났기 때문에 모든 공통하는 Unix 시스템 호출에 
+접근합니다. 비 Unix 환경에서는 몇 가지의 Unix 시스템 호ㄹ의 
+기능을 사용할 수 없거나, 사용할 수 있는 기능의 상세 내용이 조금 
+다르거나 합니다.
+이것에 의해 영향을 받는 Perl 함수는 아래와 같습니다:
 
 C<-X>, C<binmode>, C<chmod>, C<chown>, C<chroot>, C<crypt>,
 C<dbmclose>, C<dbmopen>, C<dump>, C<endgrent>, C<endhostent>,
@@ -491,8 +485,8 @@ L<perlport> and other available platform-specific documentation.
 
 =end original
 
-これらの関数の移植性に関するさらなる情報については、
-L<perlport> とその他のプラットホーム固有のドキュメントを参照して下さい。
+이 함수들의 이식성에 관한 정보데 대해서는 L<perlport> 와 
+그 외의 플랫폼고유의 도메인을 참조해주세요.
 
 =head2 Alphabetical Listing of Perl Functions
 
@@ -521,16 +515,15 @@ operator may be any of:
 
 =end original
 
-X は以下にあげる文字で、ファイルテストを行ないます。
-この単項演算子は、ファイル名かファイルハンドルを唯一の
-引数として動作し、「あること」について真であるか否かを
-判定した結果を返します。
-引数が省略されると、C<-t> では STDIN を調べますが、その他は C<$_> を調べます。
-特に記述されていなければ、真として C<1> を返し、偽として
-C<''> を返し、ファイルが存在しなければ、未定義値を返します。
-みかけは変わっていますが、優先順位は名前付き単項演算子と同じで、
-他の単項演算子と同じく、引数を括弧で括ることもできます。
-演算子には以下のものがあります:
+X 는 아래에 주는 문자로, 파일 테스트를 수행합니다.
+이 단항연산자는 파일이름이나 파일핸들을 유일한 인수로써 동작하고,
+"어떤 것"에 대해 참인지 거짓인지를 판정한 결과를 반환합니다.
+인수가 생략되면, C<-t> 에서는 STDIN 을 조사하지만, 그 외에는 C<$_> 를 조사합니다.
+특히 기술되지 않으면, 참으로써 C<1> 을 반환하고, 거짓으로써 C<''> 를 반환하고,
+파일이 존재하지 않으면, 미정의값을 반환합니다.
+겉보기에는 바뀌었지만, 우선순위는 이름붙은 단항연산자와 같으며, 
+다른 단항연산자처럼 인수를 괄호로 묶을 수도 있습니다.
+연산자에는 아래와 같은 것들이 있습니다:
 
 =begin original
 
@@ -541,10 +534,10 @@ C<''> を返し、ファイルが存在しなければ、未定義値を返し�
 
 =end original
 
-    -r  ファイルが実効 uid/gid で読み出し可
-    -w  ファイルが実効 uid/gid で書き込み可
-    -x  ファイルが実効 uid/gid で実行可
-    -o  ファイルが実効 uid の所有物
+    -r  파일이 실효한 uid/gid 로 읽기 가능 
+    -w  파일이 실효한 uid/gid 로 쓰기 가능
+    -x  파일이 실효한 uid/gid 로 실행 가능 
+    -o  파일이 실효한 uid 소유물
 
 =begin original
 
@@ -555,10 +548,10 @@ C<''> を返し、ファイルが存在しなければ、未定義値を返し�
 
 =end original
 
-    -R  ファイルが実 uid/gid で読み出し可
-    -W  ファイルが実 uid/gid で書き込み可
-    -X  ファイルが実 uid/gid で実行可
-    -O  ファイルが実 uid の所有物
+    -R  파일이 진짜 uid/gid 로 읽기 가능
+    -W  파일이 진짜 uid/gid 로 쓰기 가능
+    -X  파일이 진짜 uid/gid 로 실행 가능
+    -O  파일이 진짜 uid 소유물 
 
 =begin original
 
@@ -568,9 +561,9 @@ C<''> を返し、ファイルが存在しなければ、未定義値を返し�
 
 =end original
 
-    -e  ファイルが存在する
-    -z  ファイルの大きさがゼロ(空)
-    -s  ファイルの大きさがゼロ以外 (バイト単位での大きさを返す)
+    -e  파일이 존재
+    -z  파일의 크기가 제로(빈 파일)
+    -s  파일의 크기가 제로 이외 (바이트 단위로 크기를 반환)
 
 =begin original
 
@@ -585,14 +578,14 @@ C<''> を返し、ファイルが存在しなければ、未定義値を返し�
 
 =end original
 
-    -f  ファイルは通常ファイル
-    -d  ファイルはディレクトリ
-    -l  ファイルはシンボリックリンク
-    -p  ファイルは名前付きパイプ (FIFO) またはファイルハンドルはパイプ
-    -S  ファイルはソケット
-    -b  ファイルはブロック特殊ファイル
-    -c  ファイルはキャラクタ特殊ファイル
-    -t  ファイルハンドルは tty にオープンされている
+    -f  파일은 통상의 파일 
+    -d  파일은 디렉토리
+    -l  파일은 심볼릭 링크
+    -p  파일은 이름붙은 파이프(FIFO) 또는 파일 핸들은 파이프
+    -S  파일은 소켓
+    -b  파일은 블록 특수 파일 
+    -c  파일은 캐릭터 특수 파일
+    -t  파일 핸들은 tty 에 오픈되어 있다
 
 =begin original
 
@@ -602,9 +595,9 @@ C<''> を返し、ファイルが存在しなければ、未定義値を返し�
 
 =end original
 
-    -u  ファイルの setuid ビットがセットされている
-    -g  ファイルの setgid ビットがセットされている
-    -k  ファイルの sticky ビットがセットされている
+    -u  파일의 setuid 비트가 설정되어 있다
+    -g  파일의 setgid 비트가 설정되어 있다
+    -k  파일의 sticky 비트가 설정되어 있다
 
 =begin original
 
@@ -613,8 +606,8 @@ C<''> を返し、ファイルが存在しなければ、未定義値を返し�
 
 =end original
 
-    -T  ファイルは ASCII テキストファイル (発見的に推測します)
-    -B  ファイルは「バイナリ」ファイル (-T の反対)
+    -T  파일은 ASCII 텍스트 파일 (유추)
+    -B  파일은 바이너리 파일 (-T 의 반대)
 
 =begin original
 
@@ -624,9 +617,9 @@ C<''> を返し、ファイルが存在しなければ、未定義値を返し�
 
 =end original
 
-    -M  スクリプト実行開始時刻からファイル修正時刻を引いたもの(日単位)
-    -A  同様にアクセスがあってからの日数
-    -C  同様に(Unix では) inode が変更されてからの日数(それ以外のプラットフォームでは違うかもしれません)
+    -M  스크립트 실행시각에서 파일 수정시각을 뺀 것(날짜 단위)
+    -A  똑같이 접근이 있고부터의 일수
+    -C  똑같이(Unix 에서는) inode 가 변경되고서의 일수(그 외의 플랫폼에서는 다를지도 모릅니다)
 
 =begin original
 
