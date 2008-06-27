@@ -76,7 +76,7 @@ function addSidebar() {
       설정하실 수 있습니다.</p>
     [% ELSIF release.error == "missing_package" %]
       <p>패키지 '[% release.package FILTER html %]'가 없습니다. 이 패키지는
-      <a href="editparams.cgi?section=core#upgrade_notification">새로 릴리즈된 것을 알려주는데</a>
+      <a href="editparams.cgi?section=core#upgrade_notification">새로 릴리즈된 것을 알려주는데에</a>
       필요합니다.</p>
     [% ELSIF release.error == "cannot_download" %]
       <p>해당 XML 파일 '[% release.xml_file FILTER html %]'을 생성할 수 없습니다.
@@ -84,18 +84,19 @@ function addSidebar() {
       프록시가 (behind proxy) 면, <a href="editparams.cgi?section=core#proxy_url">프록시 url</a>
       의 매개변수를 정확히 설정하십시오.</p>
     [% ELSIF release.error == "no_update" %]
-      <p>현재 XML 파일 '[% release.xml_file FILTER html %]' cannot be updated.
-      Please make sure the web server can edit this file.</p>
+      <p>현재 XML 파일 '[% release.xml_file FILTER html %]'을 업데이트 할 수 없습니다.
+      웹 서버가 이 파일을 수정할 수 있는지 확인해 보십시오.</p>
     [% ELSIF release.error == "no_access" %]
-      <p>The local XML file '[% release.xml_file FILTER html %]' cannot be read.
-      Please make sure this file has the correct rights set on it.</p>
+      <p>현재 XML 파일 '[% release.xml_file FILTER html %]'을 읽을 수 없습니다.
+      이 파일이 올바른 접근권한을 가지고 있는지 확인해 보십시오.</p>
     [% ELSIF release.error == "corrupted" %]
-      <p>The local XML file '[% release.xml_file FILTER html %]' has an invalid XML format.
-      Please delete it and try accessing this page again.</p>
+      <p>현재 XML 파일 '[% release.xml_file FILTER html %]' 잘못된 XML 포맷을 가지고 있습니다.
+      이 파일을 삭제하고 페이지를 다시 접속해 보십시오.</p>
     [% ELSIF release.error == "unknown_parameter" %]
-      <p>'[% Param("upgrade_notification") FILTER html %]' is not a valid notification
-      parameter. Please check this parameter in the
-      <a href="editparams.cgi?section=core#upgrade_notification">Parameters</a> page.</p>
+      <p>'[% Param("upgrade_notification") FILTER html %]' 는 유효하지 않는 공지
+      매개변수입니다. 해당 매개변수를
+      <a href="editparams.cgi?section=core#upgrade_notification">매개변수</a> 페이지에서
+      확인해 보십시오.</p>
     [% END %]
   </div>
 [% END %]
@@ -103,36 +104,36 @@ function addSidebar() {
 <div id="page-index">
   <div class="intro"></div>
 
-  <p>Welcome to [% terms.Bugzilla %]. To see what's new in this version
-    of [% terms.Bugzilla %], see the 
-    <a href="page.cgi?id=release-notes.html">release notes</a>!
-    You may also want to read the 
+  <p>[% terms.Bugzilla %]에 오신 것을 환영합니다. [% terms.Bugzilla %]의 이번 버전에서
+    새롭게 바뀐 점들을
+    <a href="page.cgi?id=release-notes.html">release notes</a> 페이지에서 확인하십시오!
+    또한
     <a href="[% docs_urlbase FILTER html %]using.html">
-    [%- terms.Bugzilla %] User's Guide</a> to find out more about 
-    [%+ terms.Bugzilla %] and how to use it.</p>
+    [%- terms.Bugzilla %] 사용자 가이드</a>에서
+    [%+ terms.Bugzilla %]에 관해 사용하는 방법을 비롯한 더 많은 것을 읽을 수 있습니다.</p>
 
-  <p>Most common actions:</p>
+  <p>가장 일반적인 작업들:</p>
   <ul>
-    <li id="query"><a href="query.cgi">Search existing [% terms.bug %] reports</a></li>
-    <li id="enter-bug"><a href="enter_bug.cgi">Enter a new [% terms.bug %] report</a></li>
-    <li id="report"><a href="report.cgi">Summary reports and charts</a></li>
+    <li id="query"><a href="query.cgi">현재 존재하는 [% terms.bug %] 리포트 검사</a></li>
+    <li id="enter-bug"><a href="enter_bug.cgi">새로운 [% terms.bug %] 리포트 등록</a></li>
+    <li id="report"><a href="report.cgi">리포트와 차트 요약하기</a></li>
 [% IF user.id %]
-    <li id="userprefs"><a href="userprefs.cgi">Change password or user preferences</a></li>
+    <li id="userprefs"><a href="userprefs.cgi">비밀번호 변경 또는 사용자 환경설정</a></li>
   [% IF user.authorizer.can_logout %]
-    <li id="logout"><a href="relogin.cgi">Log out [% user.login FILTER html %]</a></li>
+    <li id="logout"><a href="relogin.cgi">[% user.login FILTER html %] 로그아웃</a></li>
   [% END %]
 [% ELSIF user.authorizer.can_login %]
   </ul>
     [% PROCESS "account/auth/login-small.html.tmpl" %]
   <ul>
   [% IF Param('createemailregexp') && user.authorizer.user_can_create_account %]
-    <li id="account"><a href="createaccount.cgi">Open a new [% terms.Bugzilla %] account</a></li>
+    <li id="account"><a href="createaccount.cgi">새 [% terms.Bugzilla %] 계정 열기</a></li>
   [% END %]
 [% END %]
-    <li id="sidebar"><a href="javascript:addSidebar()">Add to Sidebar</a> (requires a Mozilla browser like Mozilla Firefox)</li>
+    <li id="sidebar"><a href="javascript:addSidebar()">사이드바 추가하기</a>
+    (Mozilla Firefox와 같은 Mozilla 브라우저가 필요함)</li>
     <li id="quick_search_plugin">
-      <a href="javascript:window.external.AddSearchProvider('[% urlbase FILTER html %]search_plugin.cgi')">Install
-      the Quick Search plugin</a> (requires Firefox 2 or Internet Explorer 7)
+      <a href="javascript:window.external.AddSearchProvider('[% urlbase FILTER html %]search_plugin.cgi')">Quick Search 플러그인 설치하기</a> (Firefox 2 또는 Internet Explorer 7가 필요함)
     </li>
 
 
