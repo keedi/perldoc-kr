@@ -24,9 +24,10 @@ use warnings;
 use YAML;
 use Readonly;
 
-Readonly my $conf_file    => 'slide.conf';
-Readonly my $code_tag     => qr{ \.code }x;
-Readonly my $default_conf => <<'END_DEFAULT_CONF';
+Readonly my $CONF_FILE    => 'slide.conf';
+Readonly my $CODE_TAG     => qr{ \.code }x;
+Readonly my $DEFAULT_CONF => <<'END_DEFAULT_CONF';
+---
 macro:
     title:      Inser Title
     link:       http://insert.your.link/index.html
@@ -40,28 +41,28 @@ path:
     images:     images
 END_DEFAULT_CONF
 
-my $slide_info = -f $conf_file ? YAML::LoadFile($conf_file)
-               : YAML::Load($default_conf);
+my $slide_info = -f $CONF_FILE ? YAML::LoadFile($CONF_FILE)
+               : YAML::Load($DEFAULT_CONF);
 
 print apply_slide_info( start_slide() );
 
 LOOP_LINES:
 while ( my $line = <> ) {
     chomp $line;
+    $line = convert_escaped_char( chomp $line );
     next unless $line;
 
     # 회피문자 처리
-    $line = convert_escaped_char( $line );
 
-    if ( $line =~ m/^$code_tag/ ) {
+    if ( $line =~ m/^$CODE_TAG/ ) {
         # 코드 태그 처리
         my @code_lines;
 
         LOOP_CODE_LINES:
         while ( my $code_line = <> ) {
-            chomp $code_line;
-            last LOOP_CODE_LINES if $code_line =~ m/^$code_tag/;
-            push @code_lines, convert_escaped_char( $code_line );
+            $code_line = convert_escaped_char( chomp $code_line );
+            last LOOP_CODE_LINES if $code_line =~ m/^$CODE_TAG/;
+            push @code_lines, $code_line;
         }
         print "\n", code_markup(@code_lines);
     }
