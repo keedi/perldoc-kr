@@ -35,6 +35,12 @@ function Slide(frame, screen, slides, pagenum, translate){
         if (--cur < 0) cur = max - 1;
         this.go(cur);
     };
+    this.home = function(){
+        this.go(0);
+    };
+    this.end = function(){
+        this.go(max - 1);
+    };
     return this;
 }
 
@@ -79,7 +85,15 @@ window.onload = function(e){
 
 window.onkeydown = function(e){
     switch(e.keyCode){
-        case 37: { slide.prev(); break; }
-        case 39: { slide.next(); break; }
+        case 35:  // End
+        case 221: // ']'
+            { slide.end(); break; }
+        case 36:  // Home
+        case 219: // '['
+            { slide.home(); break; }
+        case 37: // Left Arrow
+            { slide.prev(); break; }
+        case 39: // Right Arrow
+            { slide.next(); break; }
     }
 }

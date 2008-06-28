@@ -30,7 +30,7 @@ MSG_L=@echo "[L] $@ ..."
 PREFIX=@
 endif
 
-%.html: %.txt
+%.html: %.txt $(MKSLIDE)
 	$(MSG_C)
 	$(MKSLIDE) $< > $@
 
