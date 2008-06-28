@@ -49,10 +49,10 @@ print apply_slide_info( start_slide() );
 LOOP_LINES:
 while ( my $line = <> ) {
     chomp $line;
-    $line = convert_escaped_char( chomp $line );
     next unless $line;
 
     # 회피문자 처리
+    $line = convert_escaped_char( $line );
 
     if ( $line =~ m/^$CODE_TAG/ ) {
         # 코드 태그 처리
@@ -60,9 +60,9 @@ while ( my $line = <> ) {
 
         LOOP_CODE_LINES:
         while ( my $code_line = <> ) {
-            $code_line = convert_escaped_char( chomp $code_line );
+            chomp $code_line;
             last LOOP_CODE_LINES if $code_line =~ m/^$CODE_TAG/;
-            push @code_lines, $code_line;
+            push @code_lines, convert_escaped_char( $code_line );
         }
         print "\n", code_markup(@code_lines);
     }
