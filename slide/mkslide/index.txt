@@ -1,0 +1,90 @@
+mkslide 란?
+HTML + JavaScript + CSS
+사실은?
+YAPC::Asia 2008 Dan Kogai씨 발표물 형식
+
+매우 간단한 형식의 HTML
+.code
+<div>
+<h1> 내용 </h1>
+</div>
+.code
+오오!! :-)
+
+처음에는?
+vi에서 작업하다!
+헉...
+손가락 마비 증세가... :-(
+
+그래서?
+BlueFish Editor!
+오오!! :-)
+자동완성!
+단축키!
+So CooooOOL!!
+
+하지만,
+여전히 손가락이...
+T_T
+
+그래서?
+mkslide.pl
+
+엥? mkslide.pl?
+슬라이드 급조를 도와주는 초간단 스크립트
+전투력 상승! :-D
+
+어떻게 쓰나요?
+index.txt 를 만드세요!
+텍스트를 입력, 엔터
+또 입력, 엔터, 입력, 엔터, ...
+저장 -> 종료
+.code
+do {
+    insert_text();
+    insert_newline();
+} for @number_of_slides;
+save_it();
+quit_editor();
+.code
+
+코드를 넣고 싶다면?
+.code
+  코드를 넣고 싶다면 .code로 시작
+  .code
+  #!/usr/bin/perl
+  use strict;
+  use warnings;
+
+  print "Hello, mkslide.pl";
+  .code
+  코드 넣기를 그만둔다면 .code로 시작
+.code
+
+이제 필요한건?
+Make It!
+.code
+$ make
+[C] index.html ...
+bin/mkslide.pl index.txt > index.html
+$ _
+.code
+:-)
+
+발표 자료 정보를 변경하려면?
+slide.conf 를 편집하세요!
+.code
+macro:
+    title:      mkslide 사용하기
+    link:       http://localhost/index.html
+    email:      keedi@naver.com
+    name:       keedi (김도형)
+    company:    Emstone
+    community:  Perlmania
+.code
+macro 항목 하부 항목을 고치는 것으로 충분!
+
+기능이 너무 부족해요!
+(-_-)(_ _)
+미안합니다!
+mkslide.pl 을 마음껏 고쳐주세요! :-)
