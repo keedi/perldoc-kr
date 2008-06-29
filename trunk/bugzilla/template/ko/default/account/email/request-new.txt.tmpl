@@ -24,34 +24,36 @@
 [% expiration_ts = token_ts + (constants.MAX_TOKEN_AGE * 86400) %]
 From: [% Param('mailfrom') %]
 To: [% email %]
-Subject: [% terms.Bugzilla %]: confirm account creation
+Subject: [% terms.Bugzilla %]: 계정 생성 확인 메일
 X-Bugzilla-Type: admin
 
-[%+ terms.Bugzilla %] has received a request to create a user account
-using your email address ([% email %]).
+[%+ terms.Bugzilla %]에서 당신의 이메일 주소([% email %])를 사용하여
+사용자 계정을 만드려는 요청을 받았습니다.
 
-To continue creating an account using this email address, visit the 
-following link by [%+ time2str("%B %o, %Y at %H:%M %Z", expiration_ts) %]:
+이 메일 주소로 계정을 생성하는 것을 계속하려면, 
+[%+ time2str("%B %o, %Y at %H:%M %Z", expiration_ts) %]안에
+다음 링크를 방문하십시오:
 
 [%+ urlbase %]token.cgi?t=[% token FILTER url_quote %]&a=request_new_account
 
-If you did not receive this email before [%+ time2str("%B %o, %Y at %H:%M %Z", expiration_ts) %] or
-you wish to create an account using a different email address you can begin
-again by going to:
+만약 당신이 현재 메일을 [%+ time2str("%B %o, %Y at %H:%M %Z",
+expiration_ts) %]전에 받지 않았거나,
+다른 이메일 주소를 사용하여 계정을 생성하고 싶다면, 다음을 방문하여 처음부터 다시 시작할 수 있습니다:
 
 [%+ urlbase %]createaccount.cgi
 
 [% IF Param('createemailregexp') == '.*' && Param('emailsuffix') == '' %]
-PRIVACY NOTICE: [% terms.Bugzilla %] is an open [% terms.bug %] tracking system. Activity on most
-[%+ terms.bugs %], including email addresses, will be visible to the public. We recommend
-using a secondary account or free web email service (such as Gmail, Yahoo,
-Hotmail, or similar) to avoid receiving spam at your primary email address.
+프라이버시 공지: [% terms.Bugzilla %] 은 오픈 [% terms.bug %] 트래킹 시스템입니다.
+이메일 주소를 포함하여 [% terms.bugs %] 에서 하는 대부분의 활동들은 공개적으로 노출됩니다.
+따라서 저희는 부가적인 계정이나 무료 이메일 서비스 (Gmail, Yahoo, Hotmail 등)를
+사용하여 당신의 주요한 이메일 주소에 스팸이 날라오는 것을 막을 수 있도록 할 것을 권장합니다.
 [% END %]
 
-If you do not wish to create an account, or if this request was made in
-error you can do nothing or visit the following link:
+만약 당신이 계정을 생성하고 싶지 않거나, 이 요청이 오류로 인해 발생하였다면,
+당신은 아무것도 하지 않아도 되며, 다음 링크를 방문하셔도 됩니다:
 
 [%+ urlbase %]token.cgi?t=[% token FILTER url_quote %]&a=cancel_new_account
 
-If the above links do not work, or you have any other issues regarding
-your account, please contact administration at [% Param('maintainer') %].
+만약 위의 링크들이 작동하지 않거나, 당신의 계정에 관한 다른 문의가 있을 경우,
+[% Param('maintainer') %]에서 관리자에게 연락하십시오.
+
