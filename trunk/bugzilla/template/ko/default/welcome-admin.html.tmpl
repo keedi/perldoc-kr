@@ -52,35 +52,30 @@
     당신의 브라우저가 쿠키를 제대로 관리하기 위해 중요합니다.</li>
 
     <li><a href="editparams.cgi?section=core#utf8">utf8</a>은 원하는 모든 텍스트를
-    UTF-8로 인코딩할 수 있도록 합니다.(이 매개변수를 켜는 것을 강력히 권함)</li>
+    UTF-8로 인코딩할 수 있도록 합니다. (이 매개변수를 켜는 것을 강력히 권함)</li>
   </ul>
 
   <p>또한 다음 매개변수들이 매우 중요합니다:</p>
 
   <ul>
-    <li><a href="editparams.cgi?section=auth#requirelogin">requirelogin</a>, if turned
+    <li><a href="editparams.cgi?section=auth#requirelogin">requirelogin</a>는 , if turned
     on, will protect your installation from users having no account on this installation.
     In other words, users who are not explicitly authenticated with a valid account
     cannot see any data. This is what you want if you want to keep your data private.</li>
 
     <li><a href="editparams.cgi?section=auth#createemailregexp">createemailregexp</a>
-    defines which users are allowed to create an account on this installation. If set
-    to ".*" (the default), everybody is free to create his own account. If set to
-    "@mycompany.com$", only users having an account @mycompany.com will be allowed to
-    create an account. If left blank, users will not be able to create accounts themselves;
-    only an administrator will be able to create one for them. If you want a private
-    installation, you must absolutely set this parameter to something different from
-    the default.</li>
+    는 이 설치에서 계정을 만들 수 있는 사용자를 정의할 수 있습니다. 값을 ".*" (기본값) 으로 설정하면 누구든 자신의 계정을
+    만들 수 있게 됩니다. 그리고 "@mycompany.com$"으로 설정하면 @mycompany.com 계정을 가진 사용자만 허용됩니다.
+    공백으로 놔두게 되면, 사용자들은 자신이 직접 계정을 생성할 수 없습니다. 만약 공개적인 설치를 원하시지 않는다면, 반드시
+    이 변수는 기본값과 다르게 설정하십시오.</li>
 
     <li><a href="editparams.cgi?section=mta#mail_delivery_method">mail_delivery_method</a>
-    defines the method used to send emails, such as sendmail or SMTP. You have to set
-    it correctly to send emails.</li>
+    는 sendmail 이나 SMTP와 같이 이메일을 보내는 방식을 정의합니다. 정확히 설정해야 이메일을 보낼 수 있습니다.</li>
   </ul>
 
   <p>
-    After having set up all this, we recommend looking at [% terms.Bugzilla %]'s other
-    parameters as well at some time so that you understand what they do and whether you
-    want to modify their settings for your installation.
+    이 모든 설정을 마치면, [% terms.Bugzilla %]의 나머지 매개변수들도 한번 볼 것을 권합니다. 이들이 어떤 역할을 하는지
+    이해하고 당신의 설치에 이들을 수정하고 싶은지 알 수 있습니다.
   </p>
 </div>
 
