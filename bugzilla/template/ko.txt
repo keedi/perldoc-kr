@@ -31,3 +31,5 @@ target milestone    목표 지점
 terms.Bugzilla      사이트 이름(예: Emstone Bugzilla)
 terms.bug       버그
 version         버전
+inactive        비활성
+only removed    지우기만 함
