@@ -43,25 +43,25 @@
 
 <p style="font-size:smaller">
  To change multiple [% terms.bugs %]:</p>
+ 여러 개의 [% terms.bugs %] 변경:</p>
 <ol style="font-size:smaller">
-  <li>Check the [% terms.bugs %] you want to change above.</li>
-  <li>Make your changes in the form fields below.  If the change
-   you are making requires an explanation, include it in
-   the comments box.</li>
-  <li>Click the <em>Commit</em> button.</li>
+  <li>위에서 변경하기를 원하는 [% terms.bugs %] 을/를 체크하세요.</li>
+  <li>아래 칸에 변경할 내용을 넣으세요.
+   변경할 내용에 대한 설명이 필요하면 의견란에 기입하세요.</li>
+  <li><em>확인</em> 버튼을 누르세요.</li>
 </ol>
 
 <table id="form">
   <tr>
 
-    <th><label for="product">Product:</label></th>
+    <th><label for="product">제품:</label></th>
     <td>
       [% PROCESS selectmenu menuname = "product"
                             menuitems = products
                             property = "name" %]
     </td>
 
-    <th><label for="version">Version:</label></th>
+    <th><label for="version">버전:</label></th>
     <td>
       [% PROCESS selectmenu menuname = "version"
                             menuitems = versions
@@ -71,7 +71,7 @@
   </tr>
   <tr>
 
-    <th><label for="component">Component:</label></th>
+    <th><label for="component">구성 요소:</label></th>
     <td>
       [% PROCESS selectmenu menuname = "component"
                             menuitems = components %]
@@ -79,7 +79,7 @@
 
     <th>
       <label for="priority">
-        <a href="page.cgi?id=fields.html#priority">Priority</a>:
+        <a href="page.cgi?id=fields.html#priority">중요도</a>:
       </label>
     </th>
     <td>
@@ -92,7 +92,7 @@
 
     <th>
       <label for="rep_platform">
-        <a href="page.cgi?id=fields.html#rep_platform">Platform</a>:
+        <a href="page.cgi?id=fields.html#rep_platform">플랫폼</a>:
       </label>
     </th>
     <td>
@@ -102,7 +102,7 @@
 
     <th>
       <label for="bug_severity">
-        <a href="page.cgi?id=fields.html#bug_severity">Severity</a>:
+        <a href="page.cgi?id=fields.html#bug_severity">엄격도</a>:
       </label>
     </th>
     <td>
@@ -115,7 +115,7 @@
   <tr>
     <th>
       <label for="op_sys">
-        <a href="page.cgi?id=fields.html#op_sys">OS</a>:
+        <a href="page.cgi?id=fields.html#op_sys">운영체제</a>:
       </label>
     </th>
     <td [% " colspan=\"3\"" IF !Param("usetargetmilestone") %]>
@@ -124,7 +124,7 @@
     </td>
 
     [% IF Param("usetargetmilestone") %]
-      <th><label for="target_milestone">Target Milestone:</label></th>
+      <th><label for="target_milestone">목표 지점:</label></th>
       <td>
         [% PROCESS selectmenu menuname = "target_milestone"
                               menuitems = targetmilestones %]
@@ -133,19 +133,19 @@
   </tr>
   
   <tr>
-    <th><label for="bug_status">Status:</label></th>
+    <th><label for="bug_status">상태:</label></th>
     <td colspan="3">[% PROCESS status_section %]</td>
   </tr>
   [% IF user.in_group(Param("timetrackinggroup")) %]
     <tr>
-      <th><label for="estimated_time">Estimated Hours:</label></th>
+      <th><label for="estimated_time">예상 시간:</label></th>
       <td>
         <input id="estimated_time"
                name="estimated_time"
                value="[% dontchange FILTER html %]"
                size="6">
       </td>
-      <th><label for="deadline">Deadline (YYYY-MM-DD):</label></th>
+      <th><label for="deadline">마감일 (YYYY-MM-DD):</label></th>
       <td>
         <input id="deadline"
                name="deadline"
@@ -154,7 +154,7 @@
       </td>
     </tr>
     <tr>
-      <th><label for="remaining_time">Remaining Hours:</label></th>
+      <th><label for="remaining_time">남은 시간:</label></th>
       <td>
         <input id="remaining_time"
                name="remaining_time"
@@ -167,7 +167,7 @@
   [% END %]
 
   <tr>
-    <th><label for="assigned_to">Assignee:</label></th>
+    <th><label for="assigned_to">할당받은 사람:</label></th>
     <td colspan="3">
       [% INCLUDE global/userselect.html.tmpl
            id => "assigned_to"
@@ -177,13 +177,13 @@
            size => 32
       %]
       <input type="checkbox" id="set_default_assignee" name="set_default_assignee" value="1">
-      <label for="set_default_assignee">Reset Assignee to default</label>
+      <label for="set_default_assignee">할당받은 사람을 기본값으로 초기화</label>
     </td>
   </tr>
 
   [% IF Param("useqacontact") %]
     <tr>
-      <th><label for="qa_contact">QA Contact:</label></th>
+      <th><label for="qa_contact">QA 연락처:</label></th>
       <td colspan="3">
         [% INCLUDE global/userselect.html.tmpl
              id => "qa_contact"
@@ -193,19 +193,19 @@
              size => 32
         %]
         <input type="checkbox" id="set_default_qa_contact" name="set_default_qa_contact" value="1">
-        <label for="set_default_qa_contact">Reset QA Contact to default</label>
+        <label for="set_default_qa_contact">QA 연락처를 기본값으로 초기화</label>
       </td>
     </tr>
   [% END %]
 
   <tr>
 
-    <th><label for="masscc">CC List:</label></th>
+    <th><label for="masscc">참조 목록:</label></th>
     <td colspan="3">
       <input id="masscc" name="masscc" size="32">
       <select name="ccaction">
-        <option value="add">Add these to the CC List</option>
-        <option value="remove">Remove these from the CC List</option>
+        <option value="add">참조 목록에 더하기</option>
+        <option value="remove">참조 목록에서 지우기</option>
       </select>
     </td>
 
@@ -216,16 +216,16 @@
 
       <th>
         <label for="keywords">
-          <a href="describekeywords.cgi">Keywords</a>:
+          <a href="describekeywords.cgi">주요 단어</a>:
         </label>
       </th>
       <td colspan="3">
         <input id="keywords" name="keywords" size="32" 
                onfocus = "this.chooser.open();">
         <select name="keywordaction">
-          <option value="add">Add these keywords</option>
-          <option value="delete">Delete these keywords</option>
-          <option value="makeexact">Make the keywords be exactly this list</option>
+          <option value="add">주요 단어 더하기</option>
+          <option value="delete">주요 단어 지우기</option>
+          <option value="makeexact">주요 단어를 해당 목록에 맞게 만들기</option>
         </select>
       </td>
 
@@ -235,7 +235,7 @@
   [% IF Param('usestatuswhiteboard') %]
     <tr>
       <td align="right">
-        <b>Status Whiteboard:</b>
+        <b>상황판:</b>
       </td>
       <td colspan="7">
         <input name="status_whiteboard" 
@@ -261,7 +261,7 @@
   %]
 [% END %]
 
-<b><label for="comment">Additional Comments:</label></b><br>
+<b><label for="comment">추가 의견:</label></b><br>
 [% INCLUDE global/textarea.html.tmpl
   name    = 'comment'
   id      = 'comment'
@@ -272,13 +272,13 @@
 
 [% IF groups.size > 0 %]
 
-  <b>Groups:</b><br>
+  <b>그룹:</b><br>
   <table border="1">
     <tr>
-      <th>Don't<br>change<br>this group<br>restriction</th>
-      <th>Remove<br>[% terms.bugs %]<br>from this<br>group</th>
-      <th>Add<br>[% terms.bugs %]<br>to this<br>group</th>
-      <th>Group Name:</th>
+      <th>해당 그룹의<br>제한 조건을<br>변경하지<br>마세요</th>
+      <th>해당 그룹에서<br>[% terms.bugs %] 을/를<br>지우기</th>
+      <th>해당 그룹에<br>[% terms.bugs %] 을/를<br>더하기</th>
+      <th>그룹 이름:</th>
     </tr>
 
     [% FOREACH group = groups %]
@@ -309,8 +309,7 @@
   </table>
 
   [% IF foundinactive %]
-    <p style="font-size:smaller">(Note: [% terms.Bugs %] may not be added to [% FILTER inactive %]inactive
-    groups[% END %], only removed.)</p>
+    <p style="font-size:smaller">(주의: [% FILTER inactive %] 비활성 그룹에 [% terms.Bugs %] 을/를 [% FILTER inactive %] 비활성 그룹에 더하지 않을 수도 있음[% END %], 지우기만 함.)</p>
   [% END %]
 
 [% END %]
