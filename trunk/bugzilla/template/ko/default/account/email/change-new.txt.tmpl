@@ -38,5 +38,7 @@ X-Bugzilla-Type: admin
 
 [%+ urlbase %]token.cgi?t=[% token FILTER url_quote %]&a=cxlem
 
-당신이 아무것도 하지 않으면, 이 요청은 [%+ max_token_age %]일 후에 자동으로 파기될 것입니다.
-(자동 파기일: [%+ time2str("%B %o, %Y at %H:%M %Z", expiration_ts) %]).
+당신이 아무것도 하지 않으면, 이 요청은 [%+ max_token_age %]일
+([%+ time2str("%B %o, %Y at %H:%M %Z", expiration_ts) %])
+후에 자동으로 파기될 것입니다.
+
