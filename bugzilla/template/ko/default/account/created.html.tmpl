@@ -26,15 +26,15 @@
 [% PROCESS global/variables.none.tmpl %]
 
 [% title = BLOCK %]
-  Request for new user account '[% login FILTER html %]' submitted
+  새 '[% login FILTER html %]' 계정 요청이 전송되었습니다.
 [% END %]
 
 [% PROCESS global/header.html.tmpl title = title %]
 
 <p>
-  A confirmation email has been sent containing a link to continue
-  creating an account. The link will expire if an account is not
-  created within [% constants.MAX_TOKEN_AGE FILTER html %] days.
+  계정 생성을 확인하고 완료하기 위한 링크가 포함된 이메일이 발송되었습니다.
+  이 링크는 계정이 [% constants.MAX_TOKEN_AGE FILTER html %]일 기한 안에 완료되지
+  않으면 파기됩니다.
 </p>
 
 [% PROCESS global/footer.html.tmpl %] 
