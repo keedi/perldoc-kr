@@ -26,9 +26,8 @@
 
 [% expiration_ts = date + (constants.MAX_TOKEN_AGE * 86400) %]
 <div>
-  To create your account, you must enter a password in the form below.
-  Your email address and Real Name (if provided) will be shown with
-  changes you make.
+  계정을 생성하려면, 아래에 반드시 비밀번호를 입력해야 합니다.
+  당신의 이메일 주소와 실명(입력할 경우)는 당신의 변경 사항들과 같이 보여질 것입니다.
 </div>
 
 <form id="confirm_account_form" method="post" action="token.cgi">
@@ -36,19 +35,19 @@
   <input type="hidden" name="a" value="confirm_new_account">
   <table>
     <tr>
-      <th align="right">Email Address:</th>
+      <th align="right">이메일 주소:</th>
       <td>[% email FILTER html %]</td>
     </tr>
     <tr>
-      <th align="right"><small><i>(OPTIONAL)</i></small> <label for="realname">Real Name</label>:</th>
+      <th align="right"><small><i>(OPTIONAL)</i></small> <label for="realname">실명</label>:</th>
       <td><input type="text" id="realname" name="realname" value=""></td>
     </tr>
     <tr>
-      <th align="right"><label for="passwd1">Type your password</label>:</th>
+      <th align="right"><label for="passwd1">비밀번호 입력</label>:</th>
       <td><input type="password" id="passwd1" name="passwd1" value=""></td>
     </tr>
     <tr>
-      <th align="right"><label for="passwd2">Confirm your password</label>:</th>
+      <th align="right"><label for="passwd2">비밀번호 확인</label>:</th>
       <td><input type="password" id="passwd2" name="passwd2" value=""></td>
     </tr>
     <tr>
@@ -59,13 +58,13 @@
 </form>
 
 <p>
-  This account will not be created if this form is not completed by
-  <u>[%+ time2str("%B %o, %Y at %H:%M %Z", expiration_ts) %]</u>.
+  현재 폼이 <u>[%+ time2str("%B %o, %Y at %H:%M %Z", expiration_ts) %]</u>까지
+  완료되지 않으면, 이 계정은 생성되지 않을 것입니다.
 </p>
 
 <p>
-  If you do not wish to create an account with this email click the
-  cancel account button below and your details will be forgotten.
+  만약 현재 이메일 주소로 계정을 생성하고 싶지 않다면, 하단의 '계정 취소' 버튼을 누르십시오.
+  누를 경우 입력한 나머지 정보는 잃게됩니다.
 </p>
 
 <form id="cancel_account_form" method="post" action="token.cgi">
