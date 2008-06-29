@@ -37,7 +37,7 @@
 [% USE Bugzilla %]
 
 <p>
-  I need a legitimate login and password to continue.
+  계속하기 위해 정확한 로그인 아이디와 비밀번호가 필요합니다.
 </p>
 
 <form name="login" action="[% target FILTER html %]" method="POST"
@@ -75,8 +75,8 @@
         <td>
           <input type="checkbox" id="Bugzilla_restrictlogin" name="Bugzilla_restrictlogin"
                  checked="checked">
-          <label for="Bugzilla_restrictlogin">Restrict this session to this IP address
-          (using this option improves security)</label>
+          <label for="Bugzilla_restrictlogin">이 세션을 현재 아이피 주소로 제한하기
+          (이 옵션을 사용하면 보안을 향상할 수 있음)</label>
         </td>
       </tr>
     [% END %]
@@ -88,8 +88,8 @@
   <input type="submit" name="GoAheadAndLogIn" value="Log in" id="log_in">
   
   <p>
-    (Note: you should make sure cookies are enabled for this site. 
-    Otherwise, you will be required to log in frequently.)
+    (주의: 쿠키가 이 사이트에 대해 허용되어 있는지 확인하는 것이 좋습니다.
+    그렇지 않으면, 당신은 주기적으로 로그인을 해야 할 수 있습니다.)
   </p>
 </form>
 
@@ -101,8 +101,8 @@
     <hr>
 
     <p>
-      If you don't have a [% terms.Bugzilla %] account, you can
-      <a href="createaccount.cgi">create a new account</a>.
+      만약 [% terms.Bugzilla %] 계정을 가지고 있지 않다면, 지금
+      <a href="createaccount.cgi">새 계정을 만들 수 있습니다</a>.
     </p>
   [% END %]
 
@@ -112,9 +112,8 @@
     <a name="forgot"></a>
     <form method="get" action="token.cgi">
       <input type="hidden" name="a" value="reqpw">
-      If you have an account, but have forgotten your password,
-      enter your login name below and submit a request
-      to change your password.<br>
+      이미 계정을 가지고 있지만 비밀번호를 잃어버리셨다면,
+      아래에 로그인 이름을 입력하고 비밀번호 변경을 요청하십시오.<br>
       <input size="35" name="loginname">
       <input type="submit" id="request" value="Submit Request">
     </form>
