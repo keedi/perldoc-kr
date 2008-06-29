@@ -56,7 +56,7 @@
         <td>
           <input type="checkbox" id="Bugzilla_remember" name="Bugzilla_remember" value="on"
                  [%+ "checked" IF Param('rememberlogin') == "defaulton" %]>
-          <label for="Bugzilla_remember">Remember my Login</label>
+          <label for="Bugzilla_remember">내 로그인 기억하기</label>
         </td>
       </tr>
     [% END %]
@@ -67,8 +67,8 @@
         <td>
           <input type="checkbox" id="Bugzilla_restrictlogin" name="Bugzilla_restrictlogin"
                  checked="checked">
-          <label for="Bugzilla_restrictlogin">Restrict this session to this IP address
-          (using this option improves security)</label>
+          <label for="Bugzilla_restrictlogin">이 세션을 현재 아이피 주소로 제한하기
+          (이 옵션을 사용하면 보안을 향상할 수 있음)</label>
         </td>
       </tr>
     [% END %]
@@ -81,7 +81,7 @@
         # verification method #%]
 
       [% IF user.authorizer.can_change_password %]
-        <td>[ <a href="index.cgi?GoAheadAndLogIn=1#forgot">Forgot my Password</a> ]</td>
+        <td>[ <a href="index.cgi?GoAheadAndLogIn=1#forgot">비밀번호 찾기</a> ]</td>
       [% END %]
     </tr>
   </table>
