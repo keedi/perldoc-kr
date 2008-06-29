@@ -35,7 +35,7 @@
   #%]
 
 [% title = BLOCK %]
-  Account History for '[% otheruser.login FILTER html %]'
+  '[% otheruser.login FILTER html %]'의 계정 내력
 [% END %]
 
 
@@ -73,12 +73,12 @@
 
 <p><a href="editusers.cgi?action=edit&amp;userid=
   [%- otheruser.id FILTER url_quote %]"
-  title="Edit user '[% otheruser.login FILTER html %]'">Edit this user</a> or
-  <a title="Search For Users" href="editusers.cgi">find other accounts</a>
+  title="Edit user '[% otheruser.login FILTER html %]'">이 사용자를 수정</a>하거나
+  <a title="Search For Users" href="editusers.cgi">다른 계정을 찾기.</a>
   [% IF listselectionvalues.matchtype != 'exact' %]
-    or go <a title="Return to the user list"
-       href="editusers.cgi?action=list[% INCLUDE listselectionurlparams %]">back
-    to the user list</a>
+    또는 <a title="Return to the user list"
+       href="editusers.cgi?action=list[% INCLUDE listselectionurlparams %]">
+    사용자 목록으로 돌아가기</a>
   [% END %]
 </p>
 
