@@ -1,0 +1,32 @@
+additional comment 추가 의견
+comment         의견
+comments box    의견란
+commit          확인
+edit            수정
+product         제품
+remeber         저장
+terms.Bugzilla	사이트 이름(예: Emstone Bugzilla)
+version         버전
+component       구성 요소
+priority        중요도
+platform        플랫폼
+severity        엄격도
+OS              운영체제
+milestone       지점
+target milestone    목표 지점
+status          상태
+estimated hours 예상 시간
+deadline        마감일
+remaining time  남은 시간
+assignee        할당받은 사람
+contact         연락처
+QA contact      QA 연락처
+list            목록
+CC              참조
+CC list         참조 목록
+remove          지우기
+add             더하기
+keyword         주요 단어
+status whiteboard   상황판
+group           그룹
+terms.bug       버그
