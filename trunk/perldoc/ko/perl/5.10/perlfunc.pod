@@ -627,7 +627,7 @@ Example:
 
 =end original
 
-例:
+예제:
 
     while (<>) {
 	chomp;
@@ -649,17 +649,15 @@ conditions.
 
 =end original
 
-ファイルのパーミッション演算子 C<-r>, C<-R>, C<-w>, C<-W>, C<-x>,
-C<-X> の解釈は、ファイルのモードとユーザの実効／実 uid と
-実効／実 gid のみから判断されます。
-実際にファイルが読めたり、書けたり、実行できたりするためには、
-別の条件が必要かもしれません:
-例えば、ネットワークファイルシステムアクセスコントロール、
-ACL(アクセスコントロールリスト)、読み込み専用ファイルシステム、
-認識できない実行ファイルフォーマット、などです。
-これらの 6 つの演算子を、特定の操作が可能かどうかを確認するために使うのは
-通常は誤りであることに注意してください; なぜなら、これらは競合条件を
-招きやすいからです。
+파일의 퍼미션 연산자 C<-r>, C<-R>, C<-w>, C<-W>, C<-x>, C<-X> 의 해석은
+파일의 모드와 유저의 실효/실 uid 와 실효/실 gid 만으로 판단됩니다.
+실제로 파일을 읽을 수 있거나, 쓸 수 있거나, 실행할 수 있게 하기 위해서는
+별도의 조건이 필요할지도 모릅니다.
+예를들면, 네트워크 파일시스템접근 컨트롤, ACL(Access Control List), 
+일기 전용 파일시스템, 인식 할수 없는 실행파일 포맷 등입니다.
+이 6개의 연산자들을 특정의 조작이 가능한지를 확인하기 위해 사용하는 것은
+일반적으로는 오해라는 것에 주의해주세요; 왜냐면, 이것들은 경합조건을 
+빼기 쉽기때문입니다.
 
 =begin original
 
@@ -671,13 +669,11 @@ or temporarily set their effective uid to something else.
 
 =end original
 
-ローカルファイルシステムのスーパーユーザには、
-C<-r>, C<-R>, C<-w>, C<-W> に対して、常に 1 が返り、モード中の
-いずれかの実行許可ビットが立っていれば、C<-x>, C<-X> にも 1 が
-返ることにも注意してください。
-スーパーユーザが実行するスクリプトでは、ファイルのモードを調べるためには、
-stat() を行なうか、実効 uid を一時的に別のものにする
-必要があるでしょう。
+로컬파일 시스템의 수퍼유저에게는 C<-r>, C<-R>, C<-w>, C<-W> 에 대해서 
+항상 1이 반환되고, 모드 중의 어떤것이 실행허가 비트가 서 있으면, 
+C<-x>, C<-X> 에도 1이 반환되는 것에도 주의해주세요.
+수퍼유저가 실헹하는 스크립트에서는, 파일의 모드를 조사하기위해서는
+stat() 을 실행할 거나 실효 uid 를 일시적으로 별도의 것으로 할 필요가 있습니다.
 
 =begin original
 
@@ -696,20 +692,18 @@ information.
 
 =end original
 
-ACL を使っている場合は、生の stat() モードビットより
-精度の高い結果を作成する C<filetest> プラグマがあります。
-C<use filetest 'access'> とした場合、上述したファイルテストは
-システムコールの access() ファミリーを使って権限が与えられているか
-どうかをテストします。
-また、このプラグマが指定されている場合、C<-x> と C<-X> は
-たとえ実行許可ビット(または追加の実行許可 ACL)がセットされていない
-場合でも真を返すことに注意してください。
-この挙動は使用するシステムコールの定義によるものです。
-C<use filetest 'access'> の実装により、このプラグマが有効の場合は
-C<_> 特殊ファイルハンドルはファイルテストの結果をキャッシュしないことに
-注意してください。
-さらなる情報については C<filetest> プラグマのドキュメントを
-参照してください。
+ACL 을 사용하고 있는 경우는 현재의 stat() 모드비트보다도 정밀도 높은 
+결과를 작성하는 C<filetest> 프라그마가 있습니다.
+C<use filetest 'access'> 라고 한 경우, 위에 기술한 파일테스트는 
+시스템 호ㄹ의 access() 패밀리를 사용해서 권한을 줄수 있는가 어떤 가를 
+테스트합니다.
+또, 이 프라그마가 지정된 경우, C<-x> 와 C<-X> 는 설령 실행허가비트
+(또는 추가의 실행허가 ACL) 이 설정되어 있지 않은 경우에도 
+참을 반환하는 것에 주의해주세요.
+이 동작은 사용하는 시스템 호출의 정의에 의한 것입니다. 
+C<use filetest 'access'> 의 구성에 의해, 이 프라그마가 유효한 경우는 
+C<_> 특수 파일핸들은 파일테스트의 결과를 캐쉬하지 않는 것에 주의해주세요.
+보다 자세한 정보에 대해서는 C<filetest> 프라그마의 문서를 참조해주세요.
 
 =begin original
 
@@ -719,10 +713,9 @@ following a minus are interpreted as file tests.
 
 =end original
 
-C<-s/a/b> は、置換演算 (s///) の符号反転ではありません。
-しかし、C<-exp($foo)> は期待どおりに動作します。
-マイナス記号の後に英字が 1 字続くときにのみ、ファイルテストと
-解釈されます。
+C<-s/a/b> 는 치환연산 (s///) 의 부호반전이 아닙니.
+그러나, C<-exp($foo)> 는 기대한 대로 동작합니다.
+마이너스 기호의 뒤에 영어가 1자가 따라붙을 때에만 파일 테스트로 해석됩니다.
 
 =begin original
 
@@ -739,22 +732,19 @@ against the file first, as in C<next unless -f $file && -T $file>.
 
 =end original
 
-ファイルテスト C<-T> と C<-B> の動作原理は、次のようになっています。
-ファイルの最初の数ブロックを調べて、変わった制御コードや
-上位ビットがセットされているような、通常のテキストには現れない文字を探します。
-そのような文字が、たくさん (>30%) 見つかるようであれば、
-そのファイルは C<-B> ファイルであると判断されます;
-さもなければ C<-T> ファイルとなります。
-最初のブロックにヌル文字が含まれるファイルも、
-バイナリファイルとみなされます。
-C<-T> や C<-B> をファイルハンドルに対して用いると、
-最初のブロックを調べる代わりに、IO バッファを調べます。
-調べたファイルの中身が何もないときや、
-ファイルハンドルを調べたときに EOF に達して
-いたときには、C<-T> も C<-B> も「真」を返します。
-C<-T> テストをするためにはファイルを読み込まないといけないので、
-たいていは C<next unless -f $file && -T $file> というような形で
-まず調べたいファイルに対して C<-f> を使いたいはずです。
+파일테스트 C<-T> 와 C<-B> 의 동작원리는 다음처럼 되어있습니다.
+파일의 최초의 수 블록을 조사하고, 바뀐 제어코드나 상위 비트가 설정되어 있는
+일반적인 텍스트에는 나타나지 않는 문자를 찾습니다.
+그런 문자가 많이(>30%) 발견되면 그 파일은 C<-B> 파일인 것으 판단됩니다.
+그렇지 않으면 C<-T> 파일이 됩니다.
+최초의 블록에 스루문자가 포함되어 있는 파일도, 바이너리 파일로 간주합니다.
+C<-T> 나 C<-B> 를 파인핸들에 대해서 사용하면,
+맨처음ㅢ 블록을 조사하는 대신에 IO 버퍼를 조사합니다.
+조사한 파일의 내용이 아무것도 없을 때나, 파일핸들을 조사할 때에 EOF 에 
+도달한 때에는 C<-T> 도 C<-B> 도 참을 반환합니다.
+C<-T> 테스트를 하기 위해서는 파일을 읽어들이지 않으면 안되기 때문에 
+대개는 C<next unless -f $file && ^T $file> 과 같은 형태로 
+우선은 조사하고 싶은 파일에 대해서 C<-f> 를 사용하고 싶을 겁니다.
 
 =begin original
 
@@ -769,16 +759,14 @@ Example:
 
 =end original
 
-どのファイルテスト (あるいは、C<stat> や C<lstat>) 演算子にも、
-下線だけから成る特別なファイルハンドルを与えると、
-前回のファイルテスト (や stat) の stat 構造体が使われ、
-システムコールを省きます。
-(C<-t> には使えませんし、lstat() や C<-l> は実ファイルではなく、
-シンボリックリンクの情報を stat 構造体に残すことを
-覚えておく必要があります。)
-(また、stat バッファが C<lstat> 呼び出しで埋まった場合、
-C<-T> と C<-B> の結果は C<stat _> の結果でリセットされます。
-例:
+어느 파일테스트(혹은 C<stat> 이나 C<lstat>) 연산자에도, 
+밑줄에서부터 만들어지는 특별한 파일핸들을 주면,
+앞의 파일테스트(나 stat) 의 stat 구조체가 사용되어 시스템 호출을 생략합니다.
+(C<-t> 에는 사용할 수 없고, lstat() 나 C<-l> 는 실제 파일이 아니고, 
+심볼릭링크의 정보를 stat 구조체에 남기는 것을 기억해둘 필요가 있습니다.)
+(또, stat 버퍼가 C<lstat> 호출로 넣어진 경우, 
+C<-T> 와 C<-B> 의 결과는 C<stat _> 의 결과로 리셋됩니다.
+예제:
 
     print "Can do.\n" if -r $a || -w _ || -x _;
 
@@ -802,11 +790,12 @@ operator, no special magic will happen.)
 
 =end original
 
-Perl 5.9.1 から、純粋にシンタックスシュガーとして、ファイルテスト演算子を
-スタックさせることができるので、C<-f -w -x $file> は
-C<-x $file && -w _ && -f _> と等価です。
-(これば文法上だけの話です; もし C<-f $file> の返り値を他のファイルテスト
-演算子の引数として使う場合は、何の特別なことも起きません。)
+Perl 5.9.1 에서 순수하게 신택스 슈거로써 파일테스트 연산를 
+스택시키는 것이 가능하기에 C<-f -w -x $file> 은 
+C<-x $file && -w _ && -f _> 와 같습니다.
+(이것은 문법상에서만의 얘기입니다; 만약 C<-f $file> 의 반환값을 
+다른파일 테스트 연산자의 인수로써 사용하는 경우는 어떤 특별한 것도 
+일어나지 않습니다)
 
 =item abs VALUE
 X<abs> X<absolute>
@@ -820,8 +809,8 @@ If VALUE is omitted, uses C<$_>.
 
 =end original
 
-引数の絶対値を返します。
-VALUE が省略された場合は、C<$_> を使います。
+인수의 절대값을 반환합니다.
+VALUE 가 생략된 경우는 C<$_> 를 사용합니다.
 
 =item accept NEWSOCKET,GENERICSOCKET
 X<accept>
@@ -834,10 +823,9 @@ See the example in L<perlipc/"Sockets: Client/Server Communication">.
 
 =end original
 
-accept(2) システムコールと同様に、着信するソケットの接続を受け付けます。
-成功時にはパックされたアドレスを返し、失敗すれば偽を返します。
-L<perlipc/"Sockets: Client/Server Communication"> の
-例を参照してください。
+accept(2) 시스템 호출처럼, 착신하는 소켓의 접속을 접합니다.
+성공시에는 pack 된 주소를 반환하고, 실패하면 거짓을 반환합니다.
+L<perlipc/"Sockets: Client/Server Communication"> 의 예제를 참조해주세요.
 
 =begin original
 
@@ -847,9 +835,9 @@ value of $^F.  See L<perlvar/$^F>.
 
 =end original
 
-ファイルに対する close-on-exec フラグをサポートしているシステムでは、
-フラグは $^F の値で決定される、新しくオープンされたファイル記述子に対して
-セットされます。L<perlvar/$^F> を参照してください。
+파일에 대해 close-on-exec 플래그를 서포트하고 있는 시스템에서는 
+플래그는 $^F 의 값으로 결정되고, 새롭게 오픈된 파일 기술자에 대해서
+설정됩니다. L<perlvar/$^F> 를 참조해주세요.
 
 =item alarm SECONDS
 X<alarm>
@@ -869,11 +857,11 @@ scheduling may delay the delivery of the signal even further.)
 
 =end original
 
-指定した壁時計秒数が経過した後に、自プロセスに SIGALRM が
-送られてくるようにします。SECONDS が指定されていない場合は、
-C<$_>に格納されている値を使います。
-(マシンによっては、秒の数え方が異なるため、指定した秒数よりも
-最大で 1 秒ずれます。)
+지정한 벽시계초수가 경과한 뒤에 자기 프로세스에 SIGALRM 이 
+전송되도록 합ㅣ다. SECONDS 가 지정되어 있지 않은 경우는 
+C<$_> 에 있는 값을 사용합니다.
+(머신에 따라서는 초를 세는 법이 다르기 때문에 지정한 초수보다도 
+최대 1초의 차가 있습니다)
 
 =begin original
 
@@ -884,11 +872,11 @@ amount of time remaining on the previous timer.
 
 =end original
 
-一度には 1 つのタイマだけが設定可能です。
-呼び出しを行なう度に、以前のタイマを無効にしますし、
-新しくタイマを起動しないで以前のタイマをキャンセルするために
-引数に C<0> を指定して呼び出すことができます。
-以前のタイマの残り時間が、返り値となります。
+한번에 하나의 타이머만이 설정가능합니다.
+호출을 수행할 때마다 이전의 타이머를 무효화하고, 
+새로운 타이머를 기동하지 않고 이전의 타이머를 캔슬하기 위해 
+인수에 C<0> 을 설정하고 호출할 수 있습니다.
+이전의 타이머의 남은 시간이 반환값이 됩니다.
 
 =begin original
 
@@ -901,13 +889,12 @@ your system supports it. See L<perlfaq8> for details.
 
 =end original
 
-1 秒より精度の高いスリープを行なうには、
-Time::HiRes モジュール(CPAN から、また Perl 5.8 からは
-標準配布されています) が ualarm() を提供します。
-Perl の 4 引数版 select() を最初の 3 引数を未定義にして使うか、
-setitimer(2) をサポートしているシステムでは、Perl の
-C<syscall> インタフェースを使ってアクセスすることもできます。
-詳しくは L<perlfaq8> を参照してください。
+1초보다 정밀도 높은 슬리프를 수행하려면, Time::HiRes 모듈(CPAN 에서, 
+또는 Perl 5.8에서는 표준배포되어있습니다) 이 ualaram() 을 제공합니다.
+Perl 의 4인수판 select() 를 최초의 3인수를 미정의해서 사용하든 지
+settimer(2) 를 지원하고 있는 시스템에서는 Perl 의 
+C<syscall> 인터페이스를 사용해서 접근하는 것도 가능합니다.
+자세한 내용은 L<perlfaq8> 을 참조해주세요.
 
 =begin original
 
@@ -916,8 +903,9 @@ It is usually a mistake to intermix C<alarm> and C<sleep> calls.
 
 =end original
 
-C<alarm> と C<sleep> を混ぜて使うのは普通は間違いです。
-(C<sleep> は内部的に C<alarm> を使って内部的に実装されているかもしれません)
+C<alarm> 과 C<sleep> 를 섞어서 사용하는 것은 통상적으로는 잘못된 것입니다.
+(C<sleep> 는 내부적으로 C<alarm> 을 사용해서 내부적으로 구성되어 있을 지도
+모릅니다)
 
 =begin original
 
@@ -929,13 +917,13 @@ modulo the caveats given in L<perlipc/"Signals">.
 
 =end original
 
-C<alarm> をシステムコールの時間切れのために使いたいなら、
-C<eval>/C<die> のペアで使う必要があります。
-システムコールが失敗したときに C<$!> に C<EINTR> がセットされることに
-頼ってはいけません。なぜならシステムによっては Perl は 
-システムコールを再開するためにシグナルハンドラを設定するからです。
-C<eval>/C<die> は常にうまく動きます。
-注意点については L<perlipc/"Signals"> を参照して下さい。
+C<alarm> 을 시스템 호출의 시간단축을 위해 사용하고 싶다면, 
+C<eval>/C<die> 의 쌍으로 사용할 필요가 있습니다.
+시스템 호출이 실패한 때에 C<$!> 에 C<EINTR> 이 설정되어 있는 것에
+연결해서는 안됩니다. 왜냐면 시스템에 의해서는 Perl 은 
+시스템 호출을 재개하기 위해 시그널 핸들러를 설정하기 때문입니다.
+C<eval>/C<die> 는 항상 잘 움직입니다.
+주의점에 대해서는 C<Lperlipc/"Signals"> 를 참조해주세요.
 
     eval {
 	local $SIG{ALRM} = sub { die "alarm\n" }; # NB: \n required
@@ -957,7 +945,7 @@ For more information see L<perlipc>.
 
 =end original
 
-さらなる情報については L<perlipc> を参照してください。
+보다 자세한 정보에 대해서는 L<perlipc>를 참조해주세요.
 
 =item atan2 Y,X
 X<atan2> X<arctangent> X<tan> X<tangent>
@@ -968,7 +956,7 @@ Returns the arctangent of Y/X in the range -PI to PI.
 
 =end original
 
--πからπの範囲で Y/X の逆正接を返します。
+-π에서π의 범위로 Y/X 의 역정접을 반환합니다. 
 
 =begin original
 
@@ -977,8 +965,8 @@ function, or use the familiar relation:
 
 =end original
 
-正接を求めたいときは、C<Math::Trig::tan> を使うか、
-以下のよく知られた関係を使ってください。
+정접을 구하기 위해서는, C<Math::Trig::tan> 을 사용하든가 
+아래의 잘 알려진 함수를 사용해 주세요.
 
     sub tan { sin($_[0]) / cos($_[0])  }
 
@@ -988,7 +976,7 @@ Note that atan2(0, 0) is not well-defined.
 
 =end original
 
-atan2(0, 0) は未定義であることに注意してください。
+atan2(0, 0) 은 미정의인 것에 주의해주세요.
 
 =item bind SOCKET,NAME
 X<bind>
@@ -1002,10 +990,10 @@ L<perlipc/"Sockets: Client/Server Communication">.
 
 =end original
 
-bind(2) システムコールと同様に、ネットワークアドレスをソケットに結び付けます。
-成功時には真を返し、失敗時には偽を返します。
-NAME は、ソケットに対する、適切な型のパックされたアドレスでなければなりません。
-L<perlipc/"Sockets: Client/Server Communication"> の例を参照してください。
+bind(2) 시스템 호출 처럼, 네트워크주소를 소켓에 연결합니다.
+성공시에는 참을 반환하고, 실패시에는 거짓을 반환합니다.
+NAME 은 , 소켓에 대해 적절한 형태로 pack 된 주소가 아니면 안됩니다.
+L<perlipc/"Sockets: Client/Server Communication"> 의 예제를 참조해주세요.
 
 =item binmode FILEHANDLE, LAYER
 X<binmode> X<binary> X<text> X<DOS> X<Windows>
@@ -1022,11 +1010,9 @@ otherwise it returns C<undef> and sets C<$!> (errno).
 
 =end original
 
-バイナリファイルとテキストファイルを区別する OS において、
-FILEHANDLE を「バイナリ」または「テキスト」で読み書きするように
-指定します。
-FILEHANDLE が式である場合には、その式の値がファイルハンドルの
-名前として使われます。
+바이너리 파일과 텍스트파일을 구별하는 OS에서는 
+FILEHANDLE 을 "바이너리" 혹은 "텍스트" 로 읽도록 지정합니다.
+FILEHANDLE 이 식인 경우에는, 그 식의 값이 파일핸들의 이름으로 사용됩니다.
 
 =begin original
 
@@ -1038,12 +1024,12 @@ set their I/O to be by default UTF-8 encoded Unicode, not bytes.
 
 =end original
 
-テキストファイルでないものを扱う場合に binmode() が必要な
-システムもあります(一般的には DOS と Windows ベースのシステムです)。
-移植性のために、適切なときには常にこれを使い、適切でないときには
-決して使わないというのは良い考えです。
-また、デフォルトとして I/O を bytes ではなく UTF-8 エンコードされた
-Unicode にセットすることも出来ます。
+텍스트파일이 아닌 것을 다루는 경우에 bindmode() 가 필요한 
+시스템도 있습니다(일반적으로는 DOS 와 Windows 기반의 시스템입니다).
+이식성을 위해서 적절한 때에는 항상 이것을 사용하고, 적절하지 않을 때에는
+결코 사용하지 않는 것은 좋은 생각입니다.
+또, 기본값으로써 I/O 를 bytes 가 아닌 UTF-8 인코드 된 Unicode 로 
+정의하는 것도 가능합니다.
 
 =begin original
 
@@ -1052,8 +1038,8 @@ like for example images.
 
 =end original
 
-言い換えると: プラットフォームに関わらず、
-例のイメージのようなバイナリファイルに対しては binmode() を使ってください。
+바꿔 말하면: 플랫폼에 상관없이 예제의 이미지처럼 바이너리 파일에 대해서는
+binmode() 를 사용해 주세요.
 
 =begin original
 
@@ -1063,10 +1049,10 @@ When LAYER is present using binmode on text file makes sense.
 
 =end original
 
-LAYER が存在すると、それは単一の文字列ですが、複数の指示子を
-含むことができます。
-指示子はファイルハンドルの振る舞いを変更します。
-LAYER が存在すると、テキストファイルでの binmode が意味を持ちます。
+LAYER 가 존재하면, 그것은 단일의 문자열이지만, 복수의 지시자를 
+포함할 수가 있습니다.
+지시자는 파일핸들의 행동을 변경합니다.
+LAYER 가 존재하면, 텍스트 파일에서의 binmode 가 의미를 가집니다.
 
 =begin original
 
@@ -1081,14 +1067,14 @@ PERLIO environment variable.
 
 =end original
 
-LAYER が省略されたり、C<:raw> が指定されると、ファイルハンドルはバイナリ
-データの通過に適するように設定されます。
-これには CRLF 変換をオフにしたり、それぞれを(Unicode 文字ではなく)
-バイトであるとマークしたりすることを含みます。
-I<"プログラミング Perl">(ラクダ本) やその他で暗示されているにも関わらず、
-C<:raw> は単なる C<:crlf> の I<逆ではありません> -- ストリームの
-バイナリとしての性質に影響を与える I<その他の層も無効にされます>。
-L<PerlIO>, L<perlrun> およびPERLIO 環境変数に関する議論を参照してください。
+LAYER 가 생략되거나, C<:raw> 가 지정되면, 파일핸들은 바이너리 데이터의 
+통과에 적합하게 설정됩니다.
+이것에는 CRLF 변환ㅡㄹ 끄거나, 각각을 (Unicode 문자가 아닌) 
+바이트이면 마크하거하 한 것을 포함합니다.
+I<"프로그래밍 Perl"> (낙타책) 이나 그 외에 암시되어 있는 것에도 상관없이 
+C<:raw:> 는 단순히 C<:crlf> 의 I<반대가 아닙니다> -- 스트림의 
+바이너리로써의 성질에 영향을 주는 I<그 외의 계층도 무효화됩니다>.
+L<PerlIO>, L<perlrun> 및 PERLIO 환경변수에 관한 의논을 참조하세요.
 
 =begin original
 
@@ -1098,10 +1084,10 @@ establish default I/O layers.  See L<open>.
 
 =end original
 
-C<:bytes>, C<:crlf>, and C<:utf8>, 及びその他の C<:...> 形式の指示子は
-I/O I<層> が呼び出されます。
-C<open> プラグマはデフォルト I/O 層を指定するために使われます。
-L<open> を参照してください。
+C<:bytes>, C<:crlf>, C<:utf8> 와 그외의 C<:...> 형식의 지시자는 
+I/O I<층> 이 호출됩니다.
+C<open> 프라그마는 기본 I/O 층을 지정하기 위해 사용됩니다.
+L<open> 을 참조해주세요.
 
 =begin original
 
@@ -1114,12 +1100,12 @@ of this version of Perl therefore refers to "layers" rather than to
 
 =end original
 
-I<binmode() 関数の LAYER パラメータは 「プログラミングPerl 第3版」では
-「ディシプリン(DISCIPLINE)」と表現されていました。
-しかし、「ラクダ本第3版」として知られているこの本の出版後、この機能の名前は
-「ディシプリン」から「層」に変更することで合意されました。
-従って、このバージョンの Perl の全ての文書では「ディシプリン」ではなく
-「層」と記述されています。では通常の解説に戻ります…。>
+I<binmode() 함수의 LAYER 파라미터는 "프로그래밍 Perl 제 3판" 에서는 
+"디시플린(DISCIPLINE)" 이라고 표현되어 있습니다.
+그러나 "낙타책 제 3판" 으로 알려진 이 책의 출판 뒤에, 이 기능의 이름은 
+"DISCIPLINE" 에서 "계층" 으로 변경한 것으로 합의되었습니다.
+따라서, 이 버젼의 Perl 의 모든 문서에서는 "DISCIPLINE" 이 아닌 
+"계층"으로 기술되어 있습니다. 그럼 다시 해설로 돌아가겠습니다. >
 
 =begin original
 
