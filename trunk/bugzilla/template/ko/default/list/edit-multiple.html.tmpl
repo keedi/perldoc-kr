@@ -166,7 +166,7 @@
   [% END %]
 
   <tr>
-    <th><label for="assigned_to">할당받은 사람:</label></th>
+    <th><label for="assigned_to">담당자:</label></th>
     <td colspan="3">
       [% INCLUDE global/userselect.html.tmpl
            id => "assigned_to"
@@ -176,7 +176,7 @@
            size => 32
       %]
       <input type="checkbox" id="set_default_assignee" name="set_default_assignee" value="1">
-      <label for="set_default_assignee">할당받은 사람을 기본값으로 초기화</label>
+      <label for="set_default_assignee">담당자를 기본값으로 초기화</label>
     </td>
   </tr>
 
