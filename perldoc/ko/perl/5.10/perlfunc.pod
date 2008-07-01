@@ -1116,11 +1116,11 @@ UTF-8. More details can be found in L<PerlIO::encoding>.
 
 =end original
 
-FILEHANDLE が UTF-8 であるというマークをつけるには、C<:utf8> か
-C<:encoding(utf8)> を使ってください。
-C<:utf8> は、さらなるチェックなしにデータが UTF-8 としてマークしますが、
-C<:encoding(utf8)> はデータが実際に有効な UTF-8 かどうかをチェックします。
-さらなる詳細は L<PerlIO::encoding> にあります。
+FILEHANDLE 이 UTF-8 인 마크를 붙이기에는, C<:utf8>  이나 
+C<:encoding(utf8)> 을 사용해주세요.
+C<:utf8> 은 보다 더 체크없이 데이터가 UTF-8 으로써 마크하지만, 
+C<:encoding(utf8)> 은 데이터가 실제로 유효한 UTF-8 인지 어떤지를 체크합니다.
+보다 자세한 내용은 L<PerIO::encoding> 에 있습니다.
 
 =begin original
 
@@ -1136,17 +1136,16 @@ internally Perl will operate on UTF-8 encoded Unicode characters.
 
 =end original
 
-一般的に binmode() は open() を呼び出した後、このファイルハンドルに対する
-I/O 操作をする前に呼び出すべきです。
-binmode() を呼び出すと、普通はこのファイルハンドルに対して
-バッファリングされている全ての出力データ
-(およびおそらくは入力データ)をフラッシュします。
-例外は、このハンドルに対するデフォルト文字エンコーディングを変更する
-C<:encoding> 層です; L<open> を参照してください。
-C<:encoding> 層はストリームの途中で呼び出す必要があることがあり、
-それによってストリームはフラッシュされません。
-Perl は内部で UTF-8 エンコードされた Unicode 文字を操作しているので、
-C<:encoding> は暗黙のうちに自身を C<:utf8> 層の上に押し上げます。
+일반적으로 binmode() 는 open() 호출 뒤, 이 파일핸들에 대한 I/O 조작을 
+하기 전에 호출되어야 합니다.
+binmode() 를 호출하면, 보통은 이 파일핸들에 대해 
+버퍼링되는 모든 출력 데이터(및 아마 입력데이터)를 플래쉬합니다.
+예외는 이 핸들에 대해 기본값문자 인코딩을 변경하는 
+C<:encoding> 층입니다; L<open> 을 참조해주세요.
+C<:encoding> 층은 스트림의 도충에서 호출할 필요가 있는 있고, 
+그것에 의해 스트림은 플래쉬되지 않습니다.
+Perl 은 내부에서 UTF-8 인코드된 Unicode 문자를 조작하기 때문에
+C<:encoding> 은 암묵적으로 자신을 C<:utf8> 층위에 둡니다.
 
 =begin original
 
@@ -1160,12 +1159,12 @@ one character.
 
 =end original
 
-オペレーションシステム、デバイスドライバ、C ライブラリ、
-Perl ランタイムシステムは全て、プログラマが外部表現に関わらず
-1 文字 (C<\n>) を行終端として扱えるように協調作業します。
-多くのオペレーティングシステムでは、ネイティブテキストファイル表現は
-内部表現と同じですが、C<\n> の外部表現が複数文字になる
-プラットフォームもあります。
+오퍼레이션 시스템, 디바이스 드라이스 드라이버, C 라이브러리, 
+Perl 런타임시스템은 모두, 프로그래머가 외부표현에 상관없이 
+한 문자(C<\n>) 를 줄 끝단으로 다루는 것처럼 협조작업합니다.
+많은 오퍼레이팅 시스템에서는 네이티브 텍스트파일표현은 
+내부표현과 같지만, C<\n> 의 외부표현이 복수문자가 되는 
+플랫폼도 있습니다.
 
 =begin original
 
@@ -1182,18 +1181,16 @@ you want for text files, but it can be disastrous for binary files.
 
 =end original
 
-Mac OS、全ての Unix 系、VMS の Stream_LF ファイルは
-テキストの外部表現として各行の末尾に 1 つの文字を
-使っています(その文字は Mac OS では復帰で、
-Unix とほとんどのVMS のファイルでは改行です)。
-VMS, MS-DOS, MS-Windows 系といったその他のシステムでは、
-プログラムからは C<\n> は単純に C<\cJ> に見えますが、
-テキストファイルとして保存される場合は C<\cM\cJ> の 2 文字になります。
-つまり、もしこれらのシステムで binmode() を使わないと、
-ディスク上の C<\cM\cJ> という並びは入力時に C<\n> に変換され、
-プログラムが出力した全ての C<\n> は C<\cM\cJ> に逆変換されます。
-これはテキストファイルの場合は思い通りの結果でしょうが、
-バイナリファイルの場合は悲惨です。
+Mac OS, 모든 Unix 계열, VMS 의 Stream_LF 파일은 텍스트 외부표현으로써 
+각 줄의 끝단에 한문자를 사용하고 있습니다(그 문자는 Mac OS 에서는 복귀로 
+VMS, MS-DOS, MS-Windows 계열같은 그 외의 시스템에서는
+프로그램에서는 C<\n> 은 단순히 C<\cJ> 로 보입니다만, 
+텍스트파일로써 보존될 경우는 C<\cM\cJ> 의 두문자가 됩니다.
+즉, 만약 이 시스템들에서 binmode() 를 사용하지 않으면, 
+데스크상의 C<\cM\cJ> 같은 나열은 입력시에 C<\n> 으로 변경되고, 
+프로그램이 출력한 모든 C<\n> 은 C<\cM\cJ> 로 역변환됩니다.
+이것은 텍스트파일의 경우는 생각대로의 결과이지만, 
+바이너리파일의 경우에는 비참합니다.
 
 =begin original
 
@@ -1205,12 +1202,11 @@ the file, unless you use binmode().
 
 =end original
 
-binmode() を(いくつかのシステムで)使うことによるその他の作用としては、
-特別なファイル終端マーカーがデータストリームの一部として
-見られることです。
-Microsoft ファミリーのシステムでは、binmode() を使っていないと
-もしバイナリデータに C<\cZ> が含まれていたときに、I/O サブシステムが
-これをファイル終端とみなすことを意味します。
+binmode() 를(몇 개의 시스템에서) 사용하는 것에 의해 그 외의 작용으로써는, 
+특별한 파일 종단 마커가 데이터 스트림의 일부로써 볼 수 있습니다.
+Microsoft 패밀리의 시스템에서는 bindmode() 를 사용하지 않으면 
+만약 바이너리 데이터에 C<\cZ> 가 포함되어 있을 때에, I/O 서브 시스템이 
+이것을 파일 끝단으로 간주하는 것을 의미합니다.
 
 =begin original
 
@@ -1222,11 +1218,11 @@ line-termination sequences.
 
 =end original
 
-binmode() は readline() と print() 操作にだけではなく、
-read(), seek(), sysread(), syswrite(), tell() を使うときにも重要です
-(詳細は L<perlport> を参照してください)。
-入出力の行端末シーケンスを手動でセットする方法については
-L<perlvar> の C<$/> 変数と C<$\> 変数を参照してください。
+binmode() 는 readline() 과 print() 조작에서만이 아니라, 
+read(), seek(), sysread(), syswrite(), tell() 을 사용할 때에ㄴ도 중요합니다
+(자세한 내용은 L<perlport> 를 참조해주세요).
+입출력의 줄 끝단의 시퀀스를 수동으로 설정하는 방법에 대해서는 
+L<perlvar> 의 C<$/> 변수와 C<$\> 변수를 참조해주세요.
 
 =item bless REF,CLASSNAME
 X<bless>
@@ -1245,15 +1241,15 @@ of objects.
 
 =end original
 
-この関数は、REF で渡された オブジェクトに対し、
-CLASSNAME 内のオブジェクトとなったことを伝えます。
-CLASSNAME が省略された場合には、その時点のパッケージとなります。
-C<bless> は通常、コンストラクタの最後に置かれますので、
-簡便のためにそのリファレンスを返します。
-派生クラスが bless される関数を継承する場合は、
-常に 2 引数版を使ってください。
-オブジェクトの bless (や再 bless) について、
-詳しくは L<perltoot> と L<perlobj> を参照してください。
+이 변수는, REF 에서 건제니 오브젝트에 대해서, 
+CLASSNAME 안의 오브젝트가 된 것을 전달합니다.
+CLASSNAME 이 생략된 경우에는, 그 시점의 패키지가 됩니다.
+C<bless> 는 일반적으로 생성자의 마지막에 놓여지기 때문에, 
+간편하게 그 리퍼런스를 반환합니다.
+파생클래스가 bless 된 함수를 계승하는 경우는 
+항상 2인수판을 사용해주세요.
+오브젝트의 bless(나 재 bless) 에 대한 
+상세한 내용응 L<perltoot> 와 L<perlobj>를 참조해주세요.
 
 =begin original
 
@@ -1265,13 +1261,11 @@ that CLASSNAME is a true value.
 
 =end original
 
-大文字小文字が混じっている CLASSNAME のオブジェクトは常に bless することを
-考慮してください。
-全て小文字の名前を持つ名前空間は Perl プラグマのために予約されています。
-組み込みの型は全て大文字の名前を持ちます。
-混乱を避けるために、
-パッケージ名としてこのような名前は避けるべきです。
-CLASSNAME は真の値を持つようにしてください。
+대문자솜누자가 섞여진 경우 CLASSNAME 의 오브젝트는 항상 bless 하는 것을 
+고려해주세요.
+모든 소문자의 이름을 가지는 이름공간은 Perl 프로그래머를 위해 예약되어 있습니다.
+혼란을 피하기 위해서, 패키지이름으로써 이런 이름은 피해야 합니다.
+CLASSNAME 은 참의 값을 가지도록 해주세요.
 
 =begin original
 
@@ -1279,7 +1273,7 @@ See L<perlmod/"Perl Modules">.
 
 =end original
 
-L<perlmod/"Perl Modules"> を参照して下さい。
+L<perlmod/"Perl Modules"> 을 참조해주세요.
 
 =item break
 
@@ -1289,7 +1283,7 @@ Break out of a C<given()> block.
 
 =end original
 
-C<given()> ブロックから脱出します。
+C<given()>  블록에서 탈출합니다.
 
 =begin original
 
@@ -1298,8 +1292,8 @@ for more information.
 
 =end original
 
-このキーワードは "switch" 機能によって有効になります:
-さらなる情報については L<feature> を参照してください。
+이 키워드는 "switch" 기능에 의해 유효하게 됩니다:
+보다 자세한 정보에 대해서는 L<feature> 를 참조해주세요.
 
 =item caller EXPR
 X<caller> X<call stack> X<stack> X<stack trace>
@@ -1315,11 +1309,11 @@ otherwise.  In list context, returns
 
 =end original
 
-その時点のサブルーチン呼び出しのコンテキストを返します。
-スカラコンテキストでは、呼び元がある場合
-(サブルーチン、C<eval>、C<require> の中にいるとき) には
-呼び出し元のパッケージ名を返し、その他のときには未定義値を返します。
-リストコンテキストでは、以下を返します:
+그 시점의 서브루틴 호출의 생성자를 반환합니다.
+스칼라 컨텍스트에서는 호출하는 곳이 있는 경우 
+(서브루틴, C<eval>, C<require> 의 안에 있을 때) 에는
+호출하는 패키지를 반환하고, 그 외의 경우에는 미정의값을 반환합니다.
+리스트 컨텍스트에서는 아래를 반환합니다.
 
     # 0         1          2
     ($package, $filename, $line) = caller;
@@ -1332,9 +1326,8 @@ to go back before the current one.
 
 =end original
 
-EXPR を付けると、デバッガがスタックトレースを表示するために使う情報を返します。
-EXPR の値は、現状から数えて、
-いくつ前のコールフレームまで戻るかを示します。
+EXPR 을 붙이면, 디버거가 스택트레이스를 표시하기 위해 사용하는 정보를 반환합니다. EXPR 의 값은 현상태에서 센 
+몇개의 앞의 콜 프레임까지 반환하는 가를 표시합니다.
 
     #  0         1          2      3            4
     ($package, $filename, $line, $subroutine, $hasargs,
@@ -1361,22 +1354,21 @@ between versions of Perl, and are not meant for external use.
 
 =end original
 
-ここでフレームがサブルーチン呼び出しでない場合、C<eval> ではなく
-C<(eval)> になります。
-この場合、追加の要素である $evaltext と C<$is_require> がセットされます:
-C<$is_require> はフレームが C<require> または C<use> で作られた場合に
-真になり、$evaltext は C<eval EXPR> のテキストが入ります。
-特に、C<eval BLOCK> の場合、$subroutine は C<(eval)> になりますが、
-$evaltext は未定義値になります。
-(それぞれの C<use> は C<eval EXPR> の中で C<require> フレームを作ることに
-注意してください。)
-$subroutine は、そのサブルーチンがシンボルテーブルから削除された場合は
-C<(unknown)> になります。
-C<$hasargs> はこのフレーム用に C<@_> の新しい実体が設定された場合に真となります。
-C<$hints> と C<$bitmask> は caller がコンパイルされたときの
-実際的なヒントを含みます。
-C<$hints> は C<$bitmask> は Perl のバージョンによって変更される
-可能性があるので、外部での使用を想定していません。 
+여기에서 프레임이 서브루틴 호출이 아닌 경우, C<eval> 이 아닌 C<(eval)> 이 
+됩니다.
+이 경우, 추가 요소인 $evaltext 와 C<$is_require> 가 정의되어 있습니다:
+C<$is_requure> 는 프레임이 C<require> 또는 C<use> 로 만들어진 경우에 
+참이 되고, $evaltext 는 C<eval EXPR> 의 텍스트가 들어갑니다.
+특히, C<eval BLOCK> 의 경우, $subroutine 은 C<(eval)> 이 되지만, 
+$evaltext 는 미정의값이 됩니다.
+(각각의 C<use> 는 C<eval EXPR> 안에서 C<require> 프레임을 만드는 것에 
+주의해주세요) 
+$subroutine 은 그 서브루틴이 심볼테이블에서 삭제된 경우는 
+C<(unknown)> 이 됩니다.
+C<$hasargs> 는 이 프레임 용에 C<@_> 의 새로운 실체가 설계된 경우에 참이 됩니다.
+C<$hints> 와 C<$bitmask> 는 caller 가 컴파일된 때에 실제적인 힌트를 포함합니다.
+C<$hints> 와 C<$bitmask> 는 Perl 의 버젼에 따라 변경될 가능성이 있기 때문에 
+외부에서의 사용을 상정하지 않습니다.
 
 =begin original
 
@@ -1386,9 +1378,9 @@ of this hash, as they are the actual values stored in the optree.
 
 =end original
 
-C<$hinthash> は、caller がコンパイルされた時の C<%^H> の値を含む
-ハッシュへのリファレンスか、あるいは C<%^H> が空の場合は C<undef> です。
-このハッシュの値は構文木に保管されている実際の値なので、変更しないで下さい。
+C<$hinthash> 는, caller 가 컴파일 된 때의 C<%^H> 의 값을 포함하는 
+해쉬로의 리퍼런스나 혹은 C<%^H> 가 빌 경우는 C<undef> 입니다.
+이 해쉬의 값은 구문 트리에 보관되는 실제의 값이기에 변경하지 말아주세요.
 
 =begin original
 
@@ -1398,9 +1390,8 @@ arguments with which the subroutine was invoked.
 
 =end original
 
-さらに、DB パッケージの中から呼ばれた場合は、caller は
-より詳細な情報を返します。
-サブルーチンが起動されたときの引数を変数 C<@DB::args> に設定します。
+보다 더 DB 패키지의 안에서 호출된 경우는 caller 는 보다 자세한 정보를 
+반환합니다. 서브루틴이 기동된 때의 인수를 변수 C<@DB::args> 에 설정합니다.
 
 =begin original
 
@@ -1412,12 +1403,12 @@ previous time C<caller> was called.
 
 =end original
 
-C<caller> が情報を得る前にオプティマイザが呼び出しフレームを最適化して
-しまうかもしれないことに注意してください。
-これは、C<caller(N)> が C<< N > 1 >> のとき、
-あなたが予測した呼び出しフレームの情報を返さないかもしれないことを意味します。
-特に、C<@DB::args> は C<caller> が前回呼び出された時の情報を
-持っているかもしれません。
+C<caller> 가 정보를 가지기 전에 옵티마이저가 호출 프레임을 최적화해버릴 지도
+모르는 것에 주의하세요.
+이것은 C<caller(N)> 이 C<< N > 1 >> 일 때 
+당신이 예측한 호출 프레임의 정보를 반환하지 않을 지도 모르는 것을 의미합니다.
+특히 C<@DB::args> 는 C<caller> 가 앞에서 호출된 때의 정보를 
+가지고 있을 지도 모릅니다.
 
 =item chdir EXPR
 X<chdir>
