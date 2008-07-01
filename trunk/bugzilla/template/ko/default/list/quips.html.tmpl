@@ -30,15 +30,15 @@
 
 [% PROCESS global/header.html.tmpl
            title = "$terms.Bugzilla Quip System"
-           header = "Add your own clever headline"
+           header = "여러분만의 기발한 헤드라인을 더하세요."
  %]
 
 [% IF added_quip %]
   <p>
     <font color="red">
-      Your quip '<tt>[% added_quip FILTER html %]</tt>' has been added.
+      입력하신 '<tt>[% added_quip FILTER html %]</tt>'를 더했습니다.
       [% IF Param("quip_list_entry_control") == "moderated" AND !user.groups.admin %]
-        It will be used as soon as it gets approved.
+        approved 하면 곧 사용할 것입니다.
       [% END %]
     </font>
   </p>
@@ -47,27 +47,28 @@
 [% IF deleted_quip %]
   <p>
     <font color="red">
-      The quip '<tt>[% deleted_quip FILTER html %]</tt>' has been deleted.
+      '<tt>[% deleted_quip FILTER html %]</tt>' quip을 지웠습니다.
     </font>
   </p>
 [% END %]
 
 [% IF approved or unapproved %]
-  <p>[% approved.size %] quips approved and [% unapproved.size %] quips unapproved</p>
+  <p>[% approved.size %] 개의 quip을 approved 했습니다. [% unapproved.size %] quip은 unapproved 합니다.</p>
 [% END %]
 
 
 <p>
-  [% terms.Bugzilla %] will pick a random quip for the headline on each 
-  [% terms.bug %] list.
+  [% terms.Bugzilla %]의 [% terms.bug %] 목록 헤드라인에
+  임의의 quip을 보여줄 것입니다.
 </p>
 
 [% IF Param("quip_list_entry_control") != "closed" %]
   <p>
-    You can extend the quip list. Type in something clever or funny or boring
-    (but not obscene or offensive, please) and bonk on the button.
+    quip 목록을 확장할 수 있습니다. 반짝이거나 재미있거나,
+    지루한(obscence 하거나 공격적이지 않은 내용으로 부탁합니다.)
+    내용을 넣고 버튼에 bonk 해주세요.
     [% IF Param("quip_list_entry_control") == "moderated" AND !user.groups.admin %]
-      Note that your quip has to be approved before it is used.
+      여러분의 quip은 사용하기 전에 approved 받아야 합니다.
     [% END %]
   </p>
 
@@ -75,18 +76,18 @@
     <input type="hidden" name="action" value="add">
     <input size="80" name="quip">
     <p>
-      <input type="submit" id="add" value="Add This Quip">
+      <input type="submit" id="add" value="입력한 Quip을 더하기">
     </p>
   </form>
 [% ELSE %]
-  <p>No new entries may be submitted at this time.
+  <p>이번에는 새로운 항목을 submit 하지 않을 것입니다.
   </p>
 [% END %]
 
 [% IF show_quips %]
   [% IF !user.in_group('admin') %]
     <h2>
-      Existing quips:
+      존재하는 quip:
     </h2>
     <ul>
       [% FOREACH quipid = quipids %]
@@ -95,7 +96,7 @@
       [% END %]
     </ul>
   [% ELSE %]
-    <h2>Edit existing quips:</h2>
+    <h2>존재하는 quip 고치기:</h2>
     <p>
       <strong>Note:</strong> Only approved quips will be shown.
       If the parameter 'quip_list_entry_control' is set to <q>open</q>, 
