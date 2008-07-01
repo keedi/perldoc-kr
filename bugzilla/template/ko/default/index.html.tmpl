@@ -85,7 +85,7 @@ function addSidebar() {
       의 매개변수를 정확히 설정하십시오.</p>
     [% ELSIF release.error == "no_update" %]
       <p>현재 XML 파일 '[% release.xml_file FILTER html %]'을 업데이트 할 수 없습니다.
-      웹 서버가 이 파일을 수정할 수 있는지 확인해 보십시오.</p>
+      웹 서버가 이 파일을 고칠 수 있는지 확인해 보십시오.</p>
     [% ELSIF release.error == "no_access" %]
       <p>현재 XML 파일 '[% release.xml_file FILTER html %]'을 읽을 수 없습니다.
       이 파일이 올바른 접근권한을 가지고 있는지 확인해 보십시오.</p>
