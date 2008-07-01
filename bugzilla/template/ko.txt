@@ -12,6 +12,7 @@ contact         연락처
 create account  사용자 등록
 deadline        마감일
 edit            수정
+email           전자우편
 estimated hours 예상 시간
 group           그룹
 id              아이디
@@ -22,6 +23,7 @@ milestone       지점
 note            주의
 notice          알림
 only removed    지우기만 함
+open            열린
 os              운영체제
 platform        플랫폼
 pri             중요도
@@ -37,8 +39,10 @@ severity        엄격도
 status          상태
 status whiteboard   상황판
 summary         요약
+system          시스템
 target milestone    목표 지점
 targetM         목표 모델
 terms.Bugzilla      사이트 이름(예: Emstone Bugzilla)
 terms.bug       버그
+tracking        추적
 version         버전

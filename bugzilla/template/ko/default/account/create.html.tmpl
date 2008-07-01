@@ -28,7 +28,7 @@
 [% PROCESS global/variables.none.tmpl %]
 
 [% title = BLOCK %]
-  새 [% terms.Bugzilla %] 계정 만들기
+  [% terms.Bugzilla %] 사용자 등록
 [% END %]
 
 [% PROCESS global/header.html.tmpl
@@ -36,23 +36,23 @@
            onload = "document.forms['account_creation_form'].login.focus();" %]
 
 <p>
-  [% terms.Bugzilla %] 계정을 만들려면,
+  [% terms.Bugzilla %]의 사용자를 등록하기 위해
 [% IF Param('emailsuffix') == '' %]
-  정확한 이메일 주소를 입력하십시오.
+  정확한 전자우편 주소를 입력하세요.
 [% ELSE %]
-  [% Param('emailsuffix') %]를 뒤에 붙이면 당신이 이메일을 받을 수 있는 주소가 되는
+  [% Param('emailsuffix') %]를 붙이면 전자우편을 받을 수 있는 주소가 되는
   계정 아이디를 입력하십시오.
 [% END %]
-  당신에게 계정 생성을 확인하기 위해 입력한 주소로 이메일이 발송될 것입니다.
-  <b>당신은 이메일을 받을 때 까지 로그인 할 수 없습니다.</b> 만약 이메일이 오랜 시간동안 도착하지
-  않는다면, <a href="mailto:[% Param("maintainer") %]">[% Param("maintainer") %]</a>
-  에서 [% terms.Bugzilla %] 설치의 메인테이너에게 문의하십시오.
+  사용자 등록을 확인하기 위해 입력한 주소로 전자우편을 발송합니다.
+  <b>전자우편을 확인하기 전에는 로그인 할 수 없습니다.</b>
+  전자우편이 오랫동안 도착하지 않는다면 [% terms.Bugzilla %]의 설치 관리자인
+  <a href="mailto:[% Param("maintainer") %]">[% Param("maintainer") %]</a>에게 문의하세요.
 </p>
 
 [% IF Param('createemailregexp') == '.*' && Param('emailsuffix') == '' %]
 <p>
-  <b>프라이버시 공지:</b> [% terms.Bugzilla %] 은 오픈 [% terms.bug %]
-  트래킹 시스템입니다. 이메일 주소를 포함하여 [% terms.bugs %] 에서 하는 대부분의 활동들은 공개적으로
+  <b>개인정보 알림:</b> [% terms.Bugzilla %] 은/는 열린 [% terms.bug %]
+  추적 시스템입니다. 전자우편 주소를 포함하여 [% terms.bugs %] 에서 하는 대부분의 활동들은 공개적으로
   노출됩니다. 따라서 저희는 부가적인 계정이나 무료 이메일 서비스 (Gmail, Yahoo, Hotmail 등)를
   사용하여 당신의 주요한 이메일 주소에 스팸이 날라오는 것을 막을 수 있도록 하기를 <b>권장합니다</b>.
 </p>
