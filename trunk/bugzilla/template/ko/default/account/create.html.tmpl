@@ -51,10 +51,11 @@
 
 [% IF Param('createemailregexp') == '.*' && Param('emailsuffix') == '' %]
 <p>
-  <b>개인정보 알림:</b> [% terms.Bugzilla %] 은/는 열린 [% terms.bug %]
-  추적 시스템입니다. 전자우편 주소를 포함하여 [% terms.bugs %] 에서 하는 대부분의 활동들은 공개적으로
-  노출됩니다. 따라서 저희는 부가적인 계정이나 무료 이메일 서비스 (Gmail, Yahoo, Hotmail 등)를
-  사용하여 당신의 주요한 이메일 주소에 스팸이 날라오는 것을 막을 수 있도록 하기를 <b>권장합니다</b>.
+  <b>개인정보 알림:</b>
+  [% terms.Bugzilla %] 은/는 열린 [% terms.bug %] 추적 시스템입니다.
+  [% terms.bugs %]에서의 활동은 전자우편 주소를 포함해 외부에서 볼 수 있습니다.
+  따라서 부가적인 계정이나 무료 전자우편 서비스 (Gmail, Yahoo, Hotmail 등)를
+  사용해서 당신의 중요한 전자우편 주소에 스팸이 날라오는 것을 막기를 <b>권장합니다</b>.
 </p>
 [% END %]
 
@@ -62,7 +63,7 @@
   <table>
     <tr>
       <td align="right">
-        <b>이메일 주소:</b>
+        <b>전자우편 주소:</b>
       </td>
       <td>
         <input size="35" id="login" name="login">
