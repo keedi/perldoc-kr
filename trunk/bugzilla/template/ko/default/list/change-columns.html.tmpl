@@ -25,16 +25,16 @@
 %]
 
 <p>
-  Select the columns you wish to appear in your [% terms.bug %] lists. Note that
-  this feature requires cookies to work.
+  [% terms.bug %] 목록에서 보려는 세로 항목을 선택하세요.
+  이 기능은 쿠키가 동작해야지 사용할 수 있습니다.
 </p>
 
 [% PROCESS "global/field-descs.none.tmpl" %]
-[% field_descs.short_short_desc     = "Summary (first 60 characters)" %]
-[% field_descs.short_desc           = "Full Summary" %]
-[% field_descs.assigned_to_realname = "Assignee Realname" %]
-[% field_descs.reporter_realname    = "Reporter Realname" %]
-[% field_descs.qa_contact_realname  = "QA Contact Realname" %]
+[% field_descs.short_short_desc     = "요약 (첫 60 글자)" %]
+[% field_descs.short_desc           = "요약 전문" %]
+[% field_descs.assigned_to_realname = "담당자의 진짜 이름" %]
+[% field_descs.reporter_realname    = "보고자의 진짜 이름" %]
+[% field_descs.qa_contact_realname  = "QA 연락처의 진짜 이름" %]
 
 <form action="colchange.cgi">
   <input type="hidden" name="rememberedquery" value="[% buffer FILTER html %]">
@@ -51,14 +51,14 @@
     <input id="nosplitheader" type="radio" name="splitheader" value="0"
       [%+ "checked='checked'" IF NOT splitheader %]>
     <label for="nosplitheader">
-      Normal headers (prettier)
+      일반 머릿말 (더 보기좋음)
     </label>
     <br>
 
     <input id="splitheader" type="radio" name="splitheader" value="1"
       [%+ "checked='checked'" IF splitheader %]>
     <label for="splitheader">
-      Stagger headers (often makes list more compact)
+      Stagger 머릿말 (목록을 간결하게 보여줌)
     </label>
   </p>
 
@@ -68,13 +68,14 @@
              value="[% saved_search.id FILTER html%]" >
       <input type="checkbox" id="save_columns_for_search" checked="checked" 
              name="save_columns_for_search" value="1">
-      <label for="save_columns_for_search">Save this column list only 
-        for search '[% saved_search.name FILTER html %]'</label>
+      <label for="save_columns_for_search">
+        '[% saved_search.name FILTER html %]' 검색으로
+        세로 항목 목록을 저장함</label>
     </p>
   [% END %]
 
   <p>
-    <input type="submit" id="change" value="Change Columns">
+    <input type="submit" id="change" value="세로 항목 변경">
   </p>
 </form>
 
@@ -82,7 +83,7 @@
   <input type="hidden" name="rememberedquery" value="[% buffer FILTER html %]">
   <input type="hidden" name="resetit" value="1">
   <input type="submit" id="reset" 
-         value="Reset to [% terms.Bugzilla %] default">
+         value="기본 [% terms.Bugzilla %] 설정으로 초기화">
 </form>
 
 [% PROCESS global/footer.html.tmpl %]
