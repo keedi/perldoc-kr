@@ -188,13 +188,13 @@
         [% IF bugs.size > 1 && caneditbugs && !dotweak %]
           <a href="buglist.cgi?[% urlquerypart FILTER html %]
             [%- "&order=$qorder" FILTER html IF order %]&amp;tweak=1"
-            >한꺼번에&nbsp;여러&nbsp;[% terms.Bugs %]&nbsp;바꾸기</a>
+            >한꺼번에 여러 [% terms.Bugs %] 바꾸기</a>
           |
         [% END %]
 
         [% IF bugowners %]
-          <a href="mailto:
-            [% bugowners FILTER html %]">[% terms.Bug %] 을/를&nbsp;할당받은&nbsp;사람에게&nbsp;메일&nbsp;보내기</a> |
+          <a href="mailto:[% bugowners FILTER html %]">
+            담당자에게 [% terms.Bug %] 전자우편 보내기</a> |
         [% END %]
 
         [%# Links to more things users can do with this bug list. %]
@@ -207,7 +207,7 @@
       <a href="query.cgi?[% urlquerypart FILTER html %]
       [% IF editqueryname != '' %]&amp;known_name=
         [% editqueryname FILTER url_quote %]
-      [% END %]">검색&nbsp;수정</a>
+      [% END %]">검색 고치기</a>
     </td>
       
     [% IF searchtype == "saved" %]
