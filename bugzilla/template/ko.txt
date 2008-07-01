@@ -1,9 +1,21 @@
+*approve        approve
+*bonk           bonk
+*clever         기발한
+*entry          항목
+*headline       헤드라인
+*obscene        obscene
+*pondering      pondering
+*quip           quip
+*stagger        stagger
+*unapproved     unapproved
 account         사용자
 add             더하기
 additional comment 추가 의견
-assignee        할당받은 사람
+assignee        담당자
 cc              참조
 cc list         참조 목록
+change          변경
+column          세로 항목
 comment         의견
 comments box    의견란
 commit          확인
@@ -11,21 +23,26 @@ component       구성 요소
 contact         연락처
 create account  사용자 등록
 deadline        마감일
-edit            수정
+delete          지우다
+edit            고치기
 email           전자우편
 estimated hours 예상 시간
+full summary    요약 전문
 group           그룹
+header          머릿말
 id              아이디
 inactive        비활성
 keyword         주요 단어
 list            목록
 milestone       지점
+normal          일반
 note            주의
 notice          알림
 only removed    지우기만 함
 open            열린
 os              운영체제
 platform        플랫폼
+prettier        더 보기좋음
 pri             중요도
 priority        중요도
 privacy         개인정보
@@ -34,6 +51,7 @@ qa contact      QA 연락처
 remaining time  남은 시간
 remeber         저장
 remove          지우기
+reporter        보고자
 sev             엄격도
 severity        엄격도
 status          상태
