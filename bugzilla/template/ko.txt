@@ -1,3 +1,4 @@
+account         사용자
 add             더하기
 additional comment 추가 의견
 assignee        할당받은 사람
@@ -8,6 +9,7 @@ comments box    의견란
 commit          확인
 component       구성 요소
 contact         연락처
+create account  사용자 등록
 deadline        마감일
 edit            수정
 estimated hours 예상 시간
@@ -18,11 +20,13 @@ keyword         주요 단어
 list            목록
 milestone       지점
 note            주의
+notice          알림
 only removed    지우기만 함
 os              운영체제
 platform        플랫폼
 pri             중요도
 priority        중요도
+privacy         개인정보
 product         제품
 qa contact      QA 연락처
 remaining time  남은 시간
