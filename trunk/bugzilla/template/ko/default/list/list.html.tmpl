@@ -188,7 +188,7 @@
         [% IF bugs.size > 1 && caneditbugs && !dotweak %]
           <a href="buglist.cgi?[% urlquerypart FILTER html %]
             [%- "&order=$qorder" FILTER html IF order %]&amp;tweak=1"
-            >한&nbsp;번에&nbsp;여러&nbsp;개의&nbsp;[% terms.Bugs %]&nbsp;을/를&nbsp;바꾸기</a>
+            >한꺼번에&nbsp;여러&nbsp;[% terms.Bugs %]&nbsp;바꾸기</a>
           |
         [% END %]
 
