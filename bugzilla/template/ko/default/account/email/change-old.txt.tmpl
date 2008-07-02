@@ -28,21 +28,18 @@
 [% expiration_ts = token_ts + (max_token_age * 86400) %]
 From: [% Param('mailfrom') %]
 To: [% emailaddress %]
-Subject: [% terms.Bugzilla %] Change Email Address Request
+Subject: [% terms.Bugzilla %] 전자우편 주소 변경 요청
 Importance: High
 X-MSMail-Priority: High
 X-Priority: 1
 X-Bugzilla-Type: admin
 
-[%+ terms.Bugzilla %]에서 당신의 계정의 이메일 주소를 [%+ newemailaddress %]로
-변경하는 요청을 받았습니다.
+사용자를 [%+ newemailaddress %] 전자우편 주소로
+변경해달라는 요청이 [%+ terms.Bugzilla %](으)로 왔습니다.
 
-만약 당신이 이 요청을 하지 않았거나, 이 요청을 취소하고 싶다면,
-다음 링크를 방문하십시오:
+요청한 적이 없거나, 요청을 취소하고 싶다면, 다음 링크를 방문하세요:
 
 [%+ urlbase %]token.cgi?t=[% token FILTER url_quote %]&a=cxlem
 
-당신이 아무것도 하지 않고, [%+ newemailaddress %] 에서 이 요청을 수락하면,
-이 변경 요청은 [%+ max_token_age %]일
-([%+ time2str("%B %o, %Y at %H:%M %Z", expiration_ts) %])
-후에 영구적으로 적용될 것입니다.
+아무것도 하지 않고, [%+ newemailaddress %] 에서 이 요청을 승인하면
+[%+ max_token_age %]일 이후([%+ time2str("%B %o, %Y at %H:%M %Z", expiration_ts) %])부터 변경을 적용합니다.
