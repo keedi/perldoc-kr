@@ -1432,14 +1432,14 @@ false otherwise. See the example under C<die>.
 
 =end original
 
-(可能であれば、) カレントディレクトリを EXPR に移します。
-EXPR を指定しないと、C<$ENV{HOME}> が設定されていれば、
-そのディレクトリに移ります。
-そうでなく、C<$ENV{LOGDIR}>が設定されていれば、そのディレクトリに移ります。
-(VMS では C<$ENV{SYS$LOGIN}> もチェックされ、もしセットされていれば使われます。)
-どちらも設定されていなければ、C<chdir> は何もしません。
-成功時には真を返し、そうでなければ偽を返します。
-C<die> の項の例を参照してください。
+(가능하다면) 최근 디렉토리를 EXPR 로 옮깁니다.
+EXPR 을 지정하지 않으면 C<$ENV{HOME}> 이 지정되면, 
+그 디렉토리로 옮깁니다.
+그ㅎ지 않고, C<$ENV{LOGDIR}> 이 지정되었으면, 그 디렉토리로 옮깁니다.
+(VMS 에서는 C<$ENV{SYS$LOGIN}> 도 체크되어, 만약 설정되어 있으면 사용됩니다).
+어느 쪽도 설정되어있지 않으면 C<chdir> 은 아무것도 하지 않습니다.
+성공 시에는 참을 반환하고, 그렇지 않으면 거짓을 반환합니다.
+C<die> 의 항의 예를 참조해주세요.
 
 =begin original
 
@@ -1449,10 +1449,10 @@ passing handles produces a fatal error at run time.
 
 =end original
 
-fchdir に対応しているシステムでは、ファイルハンドルやディレクトリハンドルを
-引数として渡せます。
-fchdir に対応していないシステムでは、ハンドルを渡すと実行時に
-致命的エラーになります。
+fchdir 에 대응하고 있는 시스템에서는 파일핸들이나 디렉토리 핸들을 인수로 
+건넵니다.
+fchdir 에 대응하지 않는 시스템에서는 핸들을 건네면 실행시에 
+치명적에러가 됩니다.
 
 =item chmod LIST
 X<chmod> X<permission> X<mode>
@@ -1467,11 +1467,11 @@ successfully changed.  See also L</oct>, if all you have is a string.
 
 =end original
 
-LIST に含まれるファイルの、パーミッションを変更します。
-LIST の最初の要素は、数値表現のモードでなければなりません。
-C<0644> は OK ですが、 C<'0644'> はだめです。
-変更に成功したファイルの数を返します。
-文字列を使いたい場合は、L</oct> を参照してください。
+LIST 에 포함된 파일의 퍼미션을 변경합니다.
+LIST 의 최초의 요소는 숫자값표현의 모드여야 합니다.
+C<0644> 는 OK 입니다만, C<'0644'> 는 안됩니다.
+변경시에 성공한 파일의 수를 반환합니다.
+문자열을 사용하고 싶은 경우는 L</oct> 를 참조해주세요.
 
     $cnt = chmod 0755, 'foo', 'bar';
     chmod 0755, @executables;
@@ -1490,12 +1490,12 @@ file names.
 
 =end original
 
-fchmod に対応しているシステムでは、ファイルハンドルを引数として渡せます。
-fchmod に対応していないシステムでは、ファイルハンドルを渡すと実行時に
-致命的エラーになります。
-ファイルハンドルを認識させるためには、グロブまたはリファレンスとして
-渡されなければなりません。
-裸の単語はファイル名として扱われます。
+fchmod 에 대응하는 시스템에서는 파일핸들을 인수로 건넵니다.
+fchmod 에 대응하지 않는 시스템에서는 파일핸들을 건네면 실행시에 
+치명적인 에러가 나옵니다.
+파일핸들을 인식시키기 위해서는 글로브 또는 리퍼런스로써 
+건네지 않으면 안됩니다.
+Barewards 는 파일이름으로써 취급됩니다.
 
     open(my $fh, "<", "foo");
     my $perm = (stat $fh)[2] & 07777;
@@ -1508,7 +1508,7 @@ module:
 
 =end original
 
-シンボリックな C<S_I*> 定数を Fcntl モジュールからインポートすることもできます。
+심볼릭한 C<S_I*> 정수를 Fcntl 모듈에서 임포트 할 수도 있습니다.
 
     use Fcntl ':mode';
 
@@ -1538,18 +1538,18 @@ If VARIABLE is omitted, it chomps C<$_>.  Example:
 
 =end original
 
-より安全な C<chop> (以下を参照してください) です。
-C<$/> (C<English> モジュールでは、$INPUT_RECORD_SEPARATOR
-とも言う) のその時点の値に対応する行末文字を削除します。
-全ての引数から削除した文字数の合計を返します。
-入力レコードから、改行を削除したいのだけれど、最後のレコードには改行が
-入っているのかわからないような場合に、使用できます。
-段落モード (C<$/ = "">) では、レコードの最後の改行をすべて取り除きます。
-吸い込みモード (C<$/ = undef>) や 固定長レコードモード
-(C<$/> が整数へのリファレンスや類似のものの場合。L<perlvar>を参照してください)
-では、chomp() は何も取り除きません。
-VARIABLE が省略されると、$_ を対象として chomp します。
-例:
+모다 안전한 C<chop> (아래르 참조해주세요) 입니다.
+C<$/> (C<English> 모듈에서는 $INPUT_RECORD_SEPARATOR 라고도 한다)
+의 그 시점의 값에 대응하는 개행문자를 삭제합니다.
+모든 인수에 삭제한 문자수의 합계를 반환합니다.
+입력 코드에서 개행을 삭제하고 싶었는데, 마지막 레코드에 개행이 
+들어있을 지 모를 경우에 사용할 수 있습니다.
+단락 모드 (C<$/ = "">) 에서는 레코드의 마지막의 개행을 모두 뺄 수 있습니다.
+흡입모드 (C<$/ = undef>) 나 고정 길이 레코드 모드 (C<$/> 이 
+정수로의 리퍼런스나 유사한 것인 경우 L<perlvar> 를 참조해주세요)
+그러면 chomp() 는 아무것도 없애지 않습니다.
+VARIABLE 이 생략되면, $_ 을 대상으로해서 chomp 합니다.
+예제:
 
     while (<>) {
 	chomp;	# avoid \n on last field
@@ -1563,7 +1563,7 @@ If VARIABLE is a hash, it chomps the hash's values, but not its keys.
 
 =end original
 
-VARIABLE がハッシュなら、ハッシュのキーではなく値について chomp します。
+VARIABLE 이 해쉬라면, 해쉬의 키가 아닌 값에 대해서 chomp 합니다.
 
 =begin original
 
@@ -1571,7 +1571,7 @@ You can actually chomp anything that's an lvalue, including an assignment:
 
 =end original
 
-左辺値であれば、代入を含めて、任意のものを chomp できます:
+좌변치라면, 대입을 포함해서 임의의 것을 chomp 할 수 있습니다:
 
     chomp($cwd = `pwd`);
     chomp($answer = <STDIN>);
@@ -1583,8 +1583,7 @@ characters removed is returned.
 
 =end original
 
-リストを chomp すると、個々の要素が chomp され、
-削除された文字数の合計が返されます。
+리스트를 chomp 하면, 고정 요소가 chomp 되어 삭제된 문자수의 합이 반환됩니다.
 
 =begin original
 
@@ -1597,13 +1596,11 @@ as C<chomp($a, $b)>.
 
 =end original
 
-単純な変数以外のものを chomp する場合はかっこが必要であることに
-注意してください。
-これは、C<chomp $cwd = `pwd`;> は、予測している
-C<chomp( $cwd = `pwd` )> ではなく、C<(chomp $cwd) = `pwd`;> と
-解釈されるからです。
-同様に、C<chomp $a, $b> ではなく、C<chomp($a, $b)> C<chomp($a), $b> と
-解釈されます。
+단순한 변수이외의 것을 chomp 하는 경우는 괄호가 필요한 것임을 주의해주세요.
+이것은 C<chomp $cow = `pwd`;> 는 예측되는 C<chomp($cwd = `pwd`)> 가 아닌 
+C<(chomp $cwd) = `pwd`;> 로 해석되기 때문입니다.
+이처럼, C<chomp $a, $b> 가 아니라 C<chomp($a, $b)> C<chomp($a), $b> 로 
+해석됩니다.
 
 =item chop VARIABLE
 X<chop>
@@ -1621,12 +1618,12 @@ If VARIABLE is a hash, it chops the hash's values, but not its keys.
 
 =end original
 
-文字列の最後の文字を切り捨てて、その切り取った文字を返します。
-文字列の検索もコピーも行ないませんので
-C<s/\n//> よりも、ずっと効率的です。
-VARIABLE が省略されると、$_ を対象として chop します。
-VARIABLE がハッシュの場合、ハッシュの value を chop しますが、
-key は chop しません。
+문자열의 마지막의 문자를 잘라내고 그 잘라낸 문자를 반환합니다.
+문자열의 검색도 복사도 수행하지 않기 때문에 C<s/\n//> 보다도 
+매우 효율적입니다.
+VARIABLE 이 생략되면, $_ 을 대상으로 chop 합니다.
+VARIABLE 이 해쉬일 경우, 해쉬의 value 를 chop 합니다만 
+key 는 chop 하지 않습니다.
 
 =begin original
 
@@ -1634,7 +1631,7 @@ You can actually chop anything that's an lvalue, including an assignment.
 
 =end original
 
-実際のところ、代入を含む左辺値となりうるなんでも chop できます。
+실제, 대입을 포함한 좌변치인 것이라도 chop 할 수 있습니다.
 
 =begin original
 
@@ -1643,8 +1640,8 @@ last C<chop> is returned.
 
 =end original
 
-リストを chop すると、個々の要素が chop されます。
-最後の C<chop> の値だけが返されます。
+리스트를 chop 하면, 각각의 요소가 chop 됩니다.
+마지막의 C<chop> 의 값만이 반환됩니다.
 
 =begin original
 
@@ -1653,9 +1650,9 @@ character, use C<substr($string, 0, -1)>.
 
 =end original
 
-C<chop> は最後の文字を返すことに注意してください。
-最後以外の全ての文字を返すためには、C<substr($string, 0, -1)> を
-使ってください。
+C<chop> 는 마지막의 문자를 반환하는 것에 주의해주세요.
+마지막 이외의 모든 문자를 반환하기 위해서는 C<substr($string, 0, -1)> 를 
+사용해주세요.
 
 =begin original
 
@@ -1663,7 +1660,7 @@ See also L</chomp>.
 
 =end original
 
-L</chomp> も参照してください。
+L</chomp> 도 참조해주세요.
 
 =item chown LIST
 X<chown> X<owner> X<user> X<group>
@@ -1678,12 +1675,12 @@ successfully changed.
 
 =end original
 
-LIST に含まれるファイルの所有者 (とグループ) を変更します。
-LIST の最初の 2 つの要素には、I<数値表現> の uid と gid を
-この順序で与えなければなりません。
-どちらかの値を -1 にすると、ほとんどのシステムではその値は
-変更しないと解釈します。
-変更に成功したファイルの数が返されます。
+LIST 에 포함된 파일의 소유자 (와 그룹) 을 변경합니다.
+LIST 의 처음의 2개의 요소에는 I<수치표현> 의 uid 와 gid 를 
+이 순서로 주지 않으면 안됩니다.
+어느쪽의 값을 -1 하면 대부분의 시스템에서는 그 값은 변경하지 않으면 
+해석합니다.
+변경시 성공한 파일의 수가 반환됩니다.
 
     $cnt = chown $uid, $gid, 'foo', 'bar';
     chown $uid, $gid, @filenames;
@@ -1698,12 +1695,11 @@ file names.
 
 =end original
 
-fchown に対応しているシステムでは、ファイルハンドルを引数として渡せます。
-fchown に対応していないシステムでは、ファイルハンドルを渡すと実行時に
-致命的エラーになります。
-ファイルハンドルを認識させるためには、グロブまたはリファレンスとして
-渡されなければなりません。
-裸の単語はファイル名として扱われます。
+fchown 에 대응하고 있는 시스템에서는 파일핸들을 인수로써 건넵니다.
+fchown 에 대ㅇ하고 있지 않는 시스템에서는 파일핸들을 건네면 실행시에 
+치명적인 에러가 됩니다.
+파일핸들을 인식시키기 위해서는 글로브 혹은 리퍼런스로써 건네야 합니다.
+Barewords 는 파일이름으로 취급됩니다.
 
 =begin original
 
@@ -1711,8 +1707,7 @@ Here's an example that looks up nonnumeric uids in the passwd file:
 
 =end original
 
-passwd ファイルから数値表現でない uid を検索する例を
-示します:
+passwd 파일에서 수치표현이 아닌 uid 를 검색하는 예를 나타냅니다:
 
     print "User: ";
     chomp($user = <STDIN>);
@@ -1735,11 +1730,11 @@ On POSIX systems, you can detect this condition this way:
 
 =end original
 
-ほとんどのシステムでは、スーパーユーザーだけがファイルの所有者を
-変更できますが、グループは実行者の副グループに変更できるべきです。
-安全でないシステムでは、この制限はゆるめられています。
-しかしこれは移植性のある仮定ではありません。
-POSIX システムでは、以下のようにしてこの条件を検出できます:
+대부분의 시스템에서는 수퍼유저만이 파일의 소유자를 변경할 수 있ㅣ만, 
+그룹은 실행자의 부 그룹에 변경할 수 있어야 합니다.
+안전하지 않은 시스템에서는 이 제한은 느슨해져 있습니다.
+하지만 이것은 이식성 있는 가정이 아닙니다.
+POSIX 시스템에서는 아래처럼해서 이 조건을 검출할 수 있습니다:
 
     use POSIX qw(sysconf _PC_CHOWN_RESTRICTED);
     $can_chown_giveaway = not sysconf(_PC_CHOWN_RESTRICTED);
@@ -1757,9 +1752,9 @@ chr(0x263a) is a Unicode smiley face.
 
 =end original
 
-特定の文字セットでの NUMBER で表わされる文字を返します。
-たとえば、C<chr(65)> は ASCII と Unicode の両方で C<"A"> となります。
-chr(0x263a) は Unicode のスマイリーフェイスです。
+특정의 문자셋 에서의 NUMBER 로 표현된 문자를 반환합니다.
+예를들어, C<chr(65)> 는 ASCII 와 Unicode 양쪽에서 C<"A"> 가 됩니다.
+chr(0x263a) 는 Unicode 의 스마일 페이스입니다.
 
 =begin original
 
@@ -1769,9 +1764,9 @@ except under the L<bytes> pragma, where low eight bits of the value
 
 =end original
 
-負の数は Unicode の置換文字 (chr(0xfffd)) を与えますが、
-L<bytes> プラグマの影響下では、(integer に切り詰められた)値の下位 8 ビットが
-使われます。
+음수는 Unicode 의 치환문자 (chr(0xfffd)) 를 주지만, 
+L<bytes> 프라그마의 영향아래에서는 (integer 로 묶여진) 값의 하위 8비트가
+사용됩니다.
 
 =begin original
 
@@ -1779,15 +1774,15 @@ If NUMBER is omitted, uses C<$_>.
 
 =end original
 
-NUMBER が省略された場合、C<$_> を使います。
-
+NUMBER 가 생략된 경우, C<$_> 를 사용합니다.
+ 
 =begin original
 
 For the reverse, use L</ord>.
 
 =end original
 
-逆を行うためには、L</ord> を参照してください。
+거꾸로 수행하기 위해서는 L</ord> 를 참조해주세요.
 
 =begin original
 
@@ -1796,8 +1791,8 @@ internally not encoded as UTF-8 for backward compatibility reasons.
 
 =end original
 
-128 から 255 までの文字は過去との互換性のために
-デフォルトでは UTF-8 Unicode にエンコードされません。
+128 에서 255 까지의 문자는 과거와의 호환성을 위해서 
+기본값으로는 UTF-8 Unicode 로 인코드되지 않습니다.
 
 =begin original
 
@@ -1805,8 +1800,8 @@ See L<perlunicode> for more about Unicode.
 
 =end original
 
-Unicode についてもっと知りたいなら、L<perlunicode> を
-参照してください。
+Unicode 에 대해서 좀더 알고 싶다면, L<perlunicode> 를 
+참조해주세요.
 
 =item chroot FILENAME
 X<chroot> X<root>
