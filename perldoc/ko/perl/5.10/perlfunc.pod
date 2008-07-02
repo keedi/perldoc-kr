@@ -636,7 +636,7 @@ Example:
     }
 
 =begin original
-
+ 
 The interpretation of the file permission operators C<-r>, C<-R>,
 C<-w>, C<-W>, C<-x>, and C<-X> is by default based solely on the mode
 of the file and the uids and gids of the user.  There may be other
