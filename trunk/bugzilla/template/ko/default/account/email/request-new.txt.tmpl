@@ -24,36 +24,37 @@
 [% expiration_ts = token_ts + (constants.MAX_TOKEN_AGE * 86400) %]
 From: [% Param('mailfrom') %]
 To: [% email %]
-Subject: [% terms.Bugzilla %]: 계정 생성 확인 메일
+Subject: [% terms.Bugzilla %]: 사용자 등록 확인 전자우편
 X-Bugzilla-Type: admin
 
-[%+ terms.Bugzilla %]에서 당신의 이메일 주소([% email %])를 사용하여
-사용자 계정을 만드려는 요청을 받았습니다.
+[%+ terms.Bugzilla %]에서 전자우편 주소([% email %])를
+이용한 사용자 등록을 요청하셨습니다.
 
-이 메일 주소로 계정을 생성하는 것을 계속하려면, 
-[%+ time2str("%B %o, %Y at %H:%M %Z", expiration_ts) %]안에
-다음 링크를 방문하십시오:
+이 전자우편 주소로 사용자를 등록하려면,
+[%+ time2str("%B %o, %Y at %H:%M %Z", expiration_ts) %]까지
+다음 링크를 방문하세요:
 
 [%+ urlbase %]token.cgi?t=[% token FILTER url_quote %]&a=request_new_account
 
-만약 당신이 현재 메일을 [%+ time2str("%B %o, %Y at %H:%M %Z",
-expiration_ts) %]전에 받지 않았거나,
-다른 이메일 주소를 사용하여 계정을 생성하고 싶다면, 다음을 방문하여 처음부터 다시 시작할 수 있습니다:
+만약 이 전자우편을 [%+ time2str("%B %o, %Y at %H:%M %Z", expiration_ts) %]
+후에 받으셨거나 다른 전자우편 주소로 사용자를 등록하고 싶다면,
+다음 링크를 방문해서 처음부터 다시 시작할 수 있습니다:
 
 [%+ urlbase %]createaccount.cgi
 
 [% IF Param('createemailregexp') == '.*' && Param('emailsuffix') == '' %]
-프라이버시 공지: [% terms.Bugzilla %] 은 오픈 [% terms.bug %] 트래킹 시스템입니다.
-이메일 주소를 포함하여 [% terms.bugs %] 에서 하는 대부분의 활동들은 공개적으로 노출됩니다.
-따라서 저희는 부가적인 계정이나 무료 이메일 서비스 (Gmail, Yahoo, Hotmail 등)를
-사용하여 당신의 주요한 이메일 주소에 스팸이 날라오는 것을 막을 수 있도록 할 것을 권장합니다.
+개인정보 알림:
+[% terms.Bugzilla %] 은/는 열린 [% terms.bug %] 추적 시스템입니다.
+[% terms.bugs %]에서의 활동은 전자우편 주소를 포함해 외부에서 볼 수 있습니다.
+따라서 부가적인 계정이나 무료 전자우편 서비스 (Gmail, Yahoo, Hotmail 등)를
+사용해서 중요한 전자우편 주소에 스팸이 오는 것을 막는것이 좋습니다.
 [% END %]
 
-만약 당신이 계정을 생성하고 싶지 않거나, 이 요청이 오류로 인해 발생하였다면,
-당신은 아무것도 하지 않아도 되며, 다음 링크를 방문하셔도 됩니다:
+만약 사용자 등록을 하고 싶지 않거나, 이 요청이 오류로 발생했다면,
+아무것도 하지 않아도 됩니다. 또는 다음 링크를 방문하세요:
 
 [%+ urlbase %]token.cgi?t=[% token FILTER url_quote %]&a=cancel_new_account
 
-만약 위의 링크들이 작동하지 않거나, 당신의 계정에 관한 다른 문의가 있을 경우,
-[% Param('maintainer') %]에서 관리자에게 연락하십시오.
+위 링크가 들어갈 수 없거나, 사용자 관련 궁금한 점은,
+[% Param('maintainer') %]로 관리자에게 연락하세요.
 
