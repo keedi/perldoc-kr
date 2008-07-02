@@ -33,7 +33,9 @@ delete          지우다, 지우기
 edit            고치기
 email           전자우편
 estimated hours 예상 시간
+field           항목
 form            입력 서식
+format          형식
 full summary    요약 전문
 full text       전문
 group           그룹
@@ -60,17 +62,20 @@ privacy         개인정보
 product         제품
 qa contact      QA 연락처
 quip            경구
+relevant        관련있다(관련된 이지만 능동으로)
 remaining time  남은 시간
 remeber         저장
 remove          지우기
 reporter        보고자
 save            저장, 저장하기
 search form     검색 서식
+section         부분
 sev             엄격도
 severity        엄격도
 status          상태
 status whiteboard   상황판
 submit          제출
+substring       부분 문자열
 summary         요약
 system          시스템
 target milestone    목표 지점
