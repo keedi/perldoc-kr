@@ -1,26 +1,25 @@
-*administration 관리자
-*approve        approve
-*bonk           bonk
-*clever         기발한
+*action         action
 *entry          항목
-*form           입력 양식
-*headline       헤드라인
 *issue          이슈
 *link           링크
 *maintainer     관리자
 *obscene        obscene
 *optional       optional
 *pondering      pondering
-*quip           quip
 *stagger        stagger
-*unapproved     unapproved
 account         사용자
 add             더하기
 additional comment 추가 의견
+administration  관리자
+approve         승인하다
 assignee        담당자
+author          저자
+bonk            누르다(원래는 퉁 치다 라는 뜻)
 cc              참조
 cc list         참조 목록
 change          변경
+check all       모두 선택
+clever          창의적인
 column          세로 항목
 comment         의견
 comments box    의견란
@@ -30,13 +29,16 @@ confirm         승인
 contact         연락처
 create account  사용자 등록
 deadline        마감일
-delete          지우다
+delete          지우다, 지우기
 edit            고치기
 email           전자우편
 estimated hours 예상 시간
+form            입력 서식
 full summary    요약 전문
+full text       전문
 group           그룹
 header          머릿말
+headline        주요 제목
 id              아이디
 inactive        비활성
 keyword         주요 단어
@@ -57,10 +59,13 @@ priority        중요도
 privacy         개인정보
 product         제품
 qa contact      QA 연락처
+quip            경구
 remaining time  남은 시간
 remeber         저장
 remove          지우기
 reporter        보고자
+save            저장, 저장하기
+search form     검색 서식
 sev             엄격도
 severity        엄격도
 status          상태
@@ -70,7 +75,13 @@ summary         요약
 system          시스템
 target milestone    목표 지점
 targetM         목표 모델
+term            낱말
 terms.Bugzilla      사이트 이름(예: Emstone Bugzilla)
 terms.bug       버그
+text            본문
 tracking        추적
+unapproved      승인받지 않은
+uncheck all     모두 해제
 version         버전
+view            보기
+word            낱말
