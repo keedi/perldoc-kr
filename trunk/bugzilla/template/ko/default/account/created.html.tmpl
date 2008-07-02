@@ -26,15 +26,15 @@
 [% PROCESS global/variables.none.tmpl %]
 
 [% title = BLOCK %]
-  새 '[% login FILTER html %]' 계정 요청이 전송되었습니다.
+  새로운 사용자 '[% login FILTER html %]' 등록 요청을 보냈습니다.
 [% END %]
 
 [% PROCESS global/header.html.tmpl title = title %]
 
 <p>
-  계정 생성을 확인하고 완료하기 위한 링크가 포함된 이메일이 발송되었습니다.
-  이 링크는 계정이 [% constants.MAX_TOKEN_AGE FILTER html %]일 기한 안에 완료되지
-  않으면 파기됩니다.
+  사용자 등록을 확인하고 완료할 수 있는 링크를 포함한 전자우편을 보냈습니다.
+  [% constants.MAX_TOKEN_AGE FILTER html %]일 까지만
+  이 링크를 이용해서 사용자 등록을 할 수 있습니다. 
 </p>
 
 [% PROCESS global/footer.html.tmpl %] 
