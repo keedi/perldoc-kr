@@ -30,7 +30,7 @@
 
 [% PROCESS global/header.html.tmpl
            title = "$terms.Bugzilla Quip System"
-           header = "여러분만의 기발한 헤드라인을 더하세요."
+           header = "여러분만의 창의적인 헤드라인을 더하세요."
  %]
 
 [% IF added_quip %]
@@ -47,28 +47,28 @@
 [% IF deleted_quip %]
   <p>
     <font color="red">
-      '<tt>[% deleted_quip FILTER html %]</tt>' quip을 지웠습니다.
+      '<tt>[% deleted_quip FILTER html %]</tt>' 경구를 지웠습니다.
     </font>
   </p>
 [% END %]
 
 [% IF approved or unapproved %]
-  <p>[% approved.size %] 개의 quip을 approved 했습니다. [% unapproved.size %] quip은 unapproved 합니다.</p>
+  <p>[% approved.size %] 개의 경구를 승인 받았습니다. [% unapproved.size %] 개의 경구는 승인받지 못했습니다.</p>
 [% END %]
 
 
 <p>
   [% terms.Bugzilla %]의 [% terms.bug %] 목록 헤드라인에
-  임의의 quip을 보여줄 것입니다.
+  임의의 경구를 보여줄 것입니다.
 </p>
 
 [% IF Param("quip_list_entry_control") != "closed" %]
   <p>
-    quip 목록을 확장할 수 있습니다. 반짝이거나 재미있거나,
+    경구 목록을 확장할 수 있습니다. 반짝이거나 재미있거나,
     지루한(obscence 하거나 공격적이지 않은 내용으로 부탁합니다.)
-    내용을 넣고 버튼에 bonk 해주세요.
+    내용을 넣고 버튼을 눌러주세요.
     [% IF Param("quip_list_entry_control") == "moderated" AND !user.groups.admin %]
-      여러분의 quip은 사용하기 전에 approved 받아야 합니다.
+      여러분의 경구는 사용하기 전에 승인받아야 합니다.
     [% END %]
   </p>
 
@@ -76,18 +76,18 @@
     <input type="hidden" name="action" value="add">
     <input size="80" name="quip">
     <p>
-      <input type="submit" id="add" value="입력한 Quip을 더하기">
+      <input type="submit" id="add" value="입력한 경구를 더하기">
     </p>
   </form>
 [% ELSE %]
-  <p>이번에는 새로운 항목을 submit 하지 않을 것입니다.
+  <p>이번에는 새로운 항목을 제출하지 않을 것입니다.
   </p>
 [% END %]
 
 [% IF show_quips %]
   [% IF !user.in_group('admin') %]
     <h2>
-      존재하는 quip:
+      존재하는 경구:
     </h2>
     <ul>
       [% FOREACH quipid = quipids %]
@@ -96,20 +96,20 @@
       [% END %]
     </ul>
   [% ELSE %]
-    <h2>존재하는 quip 고치기:</h2>
+    <h2>존재하는 경구 고치기:</h2>
     <p>
-      <strong>Note:</strong> Only approved quips will be shown.
-      If the parameter 'quip_list_entry_control' is set to <q>open</q>, 
-      entered quips are automatically approved.
+      <strong>주의:</strong> 승인한 경구만 나타납니다.
+      'quip_list_entry_control' 인자를 <q>open</q>으로 설정할 경우
+      입력하는 경구를 자동으로 승인합니다.
     </p>
     <form name="editform" method="post" action="quips.cgi">
       <input type="hidden" name="action" value="approve">
       <table border="1">
         <thead><tr>
-          <th>Quip</th>
-          <th>Author</th>
+          <th>경구</th>
+          <th>저자</th>
           <th>Action</th>
-          <th>Approved</th>
+          <th>승인</th>
         </tr></thead><tbody>
         [% FOREACH quipid = quipids %]
           <tr>
@@ -121,7 +121,7 @@
             </td>
             <td>
               <a href="quips.cgi?action=delete&amp;quipid=[% quipid FILTER url_quote %]">
-                Delete
+                지우기
               </a>
             </td>
             <td>
@@ -143,23 +143,24 @@
           }
         }
         document.write(' <input type="button" name="uncheck_all" '
-                      +'value="Uncheck All" onclick="SetCheckboxes(false);">');
+                      +'value="모두 해제" onclick="SetCheckboxes(false);">');
         document.write(' <input type="button" name="check_all" '
-                      +'value="Check All" onclick="SetCheckboxes(true);">');
+                      +'value="모두 선택" onclick="SetCheckboxes(true);">');
         //--></script>
 
-      <input type="submit" id="update" value="Save Changes">
+      <input type="submit" id="update" value="변경 저장">
     </form>
     <br>
   [% END %]
 [% ELSE %]
   <p>
     Those who like their wisdom in large doses can
-    <a href="quips.cgi?action=show">view
+    <a href="quips.cgi?action=show">
+    모든 경구 목록 보기
     [% IF user.in_group('admin') %]
-      and edit
+      그리고 고치기
     [% END %]
-    the whole quip list</a>.
+    </a>
   </p>
 [% END %]
 
