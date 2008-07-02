@@ -61,7 +61,7 @@ priority        중요도
 privacy         개인정보
 product         제품
 qa contact      QA 연락처
-quip            경구
+quip            가벼운 글귀
 relevant        관련있다(관련된 이지만 능동으로)
 remaining time  남은 시간
 remeber         저장
