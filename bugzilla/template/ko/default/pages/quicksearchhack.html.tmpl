@@ -23,28 +23,27 @@
  %]
 
 <p>
-  Type in one or more words (or word fragments) to search for:
+  검색할 하나 이상의 낱말(또는 낱말 조각)를 입력하세요:
 </p>
 
 <form name="f" action="buglist.cgi" method="get"
       onsubmit="if (this.quicksearch.value == '')
-                { alert('Please enter one or more search terms first.');
+                { alert('먼저 하나 이상의 검색 용어를 입력하세요.');
                   return false; } return true;">
   <input type="text" size="40" name="quicksearch">
   <input type="submit" value="Find" id="find">
-  <input type="submit" name="load" value="Load Search Form" id="load">
+  <input type="submit" name="load" value="검색 서식 불러오기" id="load">
 </form>
 
 <p>
-  This is a case-insensitive &ldquo;all words as substrings&rdquo; search;
-  words are separated by spaces.
-  By default, the following fields are relevant: Summary, Keywords,
-  Product, Component, Status Whiteboard.
-  If a word looks like a part of a URL, that field is included in the search,
-  too.
+  &ldquo;부분 문자열 같은 모든 낱말&rdquo; 검색으로 대소문자를 가리지 않습니다;
+  낱말은 공백으로 구분합니다.
+  기본적으로 다음 항목과 관련있습니다:
+  요약, 주요 단어, 제품, 구성 요소, 상황판.
+  URL의 부분으로 보이는 낱말이 있다면 그 항목도 검색에 포함합니다.
 </p>
 <p>
-  The generic format for a &ldquo;word&rdquo; is
+  &ldquo;낱말&rdquo; 의 일반적인 형식은 다음과 같습니다.
   <tt>field1,&hellip;,fieldN:value1,&hellip;,valueM</tt>.
   A [% terms.bug %] qualifies if at least one of the values occurs as a
   substring in at least one of the fields.
@@ -379,9 +378,9 @@
 </table>
 
 <p>
-  More information can be found in the
+  <a href="page.cgi?id=quicksearch.html">introductory page</a>의
   <a href="page.cgi?id=quicksearch.html#features">&ldquo;Features&rdquo;</a>
-  section on the <a href="page.cgi?id=quicksearch.html">introductory page</a>.
+  부분에서 더 많은 정보를 찾을 수 있습니다.
 </p>
 
 [% PROCESS global/footer.html.tmpl %]
