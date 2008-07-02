@@ -23,22 +23,19 @@
 [% expiration_ts = token_ts + (max_token_age * 86400) %]
 From: [% Param('mailfrom') %]
 To: [% emailaddress %]
-Subject: [% terms.Bugzilla %] 이메일 주소 변경 요청
+Subject: [% terms.Bugzilla %] 전자우편 주소 변경 요청
 X-Bugzilla-Type: admin
 
-[%+ terms.Bugzilla %]에서 당신의 주소로 부터
-[% oldemailaddress %]계정의 이메일 주소 변경 요청을 받았습니다.
+[%+ oldemailaddress %] 사용자를 지금 전자우편 주소로
+변경해달라는 요청이 [%+ terms.Bugzilla %](으)로 왔습니다.
 
-변경을 수락하려면, 다음 링크를 방문하십시오:
+변경하려면, 다음 링크를 방문하세요:
 
 [%+ urlbase %]token.cgi?t=[% token FILTER url_quote %]&a=cfmem
 
-만약 당신이 이 요청을 하지 않았거나, 이 요청을 취소하고 싶다면,
-다음 링크를 방문하십시오:
+요청한 적이 없거나, 요청을 취소하고 싶다면, 다음 링크를 방문하세요:
 
 [%+ urlbase %]token.cgi?t=[% token FILTER url_quote %]&a=cxlem
 
-당신이 아무것도 하지 않으면, 이 요청은 [%+ max_token_age %]일
-([%+ time2str("%B %o, %Y at %H:%M %Z", expiration_ts) %])
-후에 자동으로 파기될 것입니다.
-
+[%+ max_token_age %]일 이후([%+ time2str("%B %o, %Y at %H:%M %Z", expiration_ts) %])까지
+아무것도 하지 않으면, 요청의 효력은 없어집니다.
