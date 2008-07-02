@@ -26,8 +26,8 @@
 
 [% expiration_ts = date + (constants.MAX_TOKEN_AGE * 86400) %]
 <div>
-  계정을 생성하려면, 아래에 반드시 비밀번호를 입력해야 합니다.
-  당신의 이메일 주소와 실명(입력할 경우)는 당신의 변경 사항들과 같이 보여질 것입니다.
+  사용자를 등록하기 위해서 반드시 아래쪽에 비밀번호를 입력해야 합니다.
+  전자우편 주소와 실명(입력할 경우)은 변경 사항과 함께 보입니다.
 </div>
 
 <form id="confirm_account_form" method="post" action="token.cgi">
@@ -35,7 +35,7 @@
   <input type="hidden" name="a" value="confirm_new_account">
   <table>
     <tr>
-      <th align="right">이메일 주소:</th>
+      <th align="right">전자우편 주소:</th>
       <td>[% email FILTER html %]</td>
     </tr>
     <tr>
@@ -52,25 +52,26 @@
     </tr>
     <tr>
       <th align="right">&nbsp;</th>
-      <td><input type="submit" id="confirm" value="Send"></td>
+      <td><input type="submit" id="confirm" value="보내기"></td>
     </tr>
   </table>
 </form>
 
 <p>
-  현재 폼이 <u>[%+ time2str("%B %o, %Y at %H:%M %Z", expiration_ts) %]</u>까지
-  완료되지 않으면, 이 계정은 생성되지 않을 것입니다.
+  입력 양식을 <u>[%+ time2str("%B %o, %Y at %H:%M %Z", expiration_ts) %]</u>까지
+  작성하지 못하면, 사용자를 등록할 수 없습니다.
 </p>
 
 <p>
-  만약 현재 이메일 주소로 계정을 생성하고 싶지 않다면, 하단의 '계정 취소' 버튼을 누르십시오.
-  누를 경우 입력한 나머지 정보는 잃게됩니다.
+  현재 전자우편 주소로 사용자를 등록하지 않으려면,
+  아래의 '사용자 등록 취소' 버튼을 누르세요.
+  이 경우 입력한 나머지 정보는 잃어버립니다.
 </p>
 
 <form id="cancel_account_form" method="post" action="token.cgi">
   <input type="hidden" name="t" value="[% token FILTER html %]">
   <input type="hidden" name="a" value="cancel_new_account">
-  <input type="submit" id="confirm" value="Cancel Account">
+  <input type="submit" id="confirm" value="사용자 등록 취소">
 </form>
 
 [% PROCESS global/footer.html.tmpl %]
