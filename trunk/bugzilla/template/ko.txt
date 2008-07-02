@@ -1,9 +1,15 @@
+*administration 관리자
 *approve        approve
 *bonk           bonk
 *clever         기발한
 *entry          항목
+*form           입력 양식
 *headline       헤드라인
+*issue          이슈
+*link           링크
+*maintainer     관리자
 *obscene        obscene
+*optional       optional
 *pondering      pondering
 *quip           quip
 *stagger        stagger
@@ -20,6 +26,7 @@ comment         의견
 comments box    의견란
 commit          확인
 component       구성 요소
+confirm         승인
 contact         연락처
 create account  사용자 등록
 deadline        마감일
@@ -33,11 +40,13 @@ header          머릿말
 id              아이디
 inactive        비활성
 keyword         주요 단어
+lapse           효력이 없어지다.
 list            목록
 milestone       지점
 normal          일반
 note            주의
 notice          알림
+old             예전
 only removed    지우기만 함
 open            열린
 os              운영체제
@@ -56,6 +65,7 @@ sev             엄격도
 severity        엄격도
 status          상태
 status whiteboard   상황판
+submit          제출
 summary         요약
 system          시스템
 target milestone    목표 지점
