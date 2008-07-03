@@ -271,13 +271,13 @@
 
 [% IF groups.size > 0 %]
 
-  <b>그룹:</b><br>
+  <b>집단:</b><br>
   <table border="1">
     <tr>
-      <th>해당 그룹의<br>제한 조건을<br>변경하지<br>마세요</th>
-      <th>해당 그룹의<br>[% terms.bugs %]<br>지우기</th>
-      <th>해당 그룹에<br>[% terms.bugs %]<br>더하기</th>
-      <th>그룹 이름:</th>
+      <th>해당 집단의<br>제한 조건을<br>변경하지<br>마세요</th>
+      <th>해당 집단의<br>[% terms.bugs %]<br>지우기</th>
+      <th>해당 집단에<br>[% terms.bugs %]<br>더하기</th>
+      <th>집단 이름:</th>
     </tr>
 
     [% FOREACH group = groups %]
@@ -308,7 +308,7 @@
   </table>
 
   [% IF foundinactive %]
-    <p style="font-size:smaller">(주의: [% terms.Bugs %] 을/를 [% FILTER inactive %] 비활성 그룹에 더하지 않을 수도 있음[% END %], 지우기만 함.)</p>
+    <p style="font-size:smaller">(주의: [% terms.Bugs %] 을/를 [% FILTER inactive %] 비활성 집단에 더하지 않을 수도 있음[% END %], 지우기만 함.)</p>
   [% END %]
 
 [% END %]
