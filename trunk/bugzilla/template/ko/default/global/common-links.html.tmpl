@@ -22,9 +22,9 @@
 [% DEFAULT qs_suffix = "" %]
 
 <ul class="links">
-  <li><a href="./">Home</a></li>
-  <li><span class="separator">| </span><a href="enter_bug.cgi">New</a></li>
-  <li><span class="separator">| </span><a href="query.cgi">Search</a></li>
+  <li><a href="./">처음화면</a></li>
+  <li><span class="separator">| </span><a href="enter_bug.cgi">등록</a></li>
+  <li><span class="separator">| </span><a href="query.cgi">검색</a></li>
 
   <li class="form">
     <span class="separator">| </span>
@@ -33,58 +33,58 @@
                   { alert('Please enter one or more search terms first.');
                     return false; } return true;">
     <input class="txt" type="text" id="quicksearch[% qs_suffix FILTER html %]" name="quicksearch">
-    <input class="btn" type="submit" value="Find" id="find[% qs_suffix FILTER html %]">
+    <input class="btn" type="submit" value="찾기" id="find[% qs_suffix FILTER html %]">
     [%-# Work around FF bug: keep this on one line %]</form></li>
 
-  <li><span class="separator">| </span><a href="report.cgi">Reports</a></li>
+  <li><span class="separator">| </span><a href="report.cgi">보고서</a></li>
 
   <li>
     [% IF Bugzilla.has_flags %]
       <span class="separator">| </span>
       [% IF user.id %]
         <a href="request.cgi?requester=[% user.login FILTER url_quote %]&amp;requestee=
-                 [% user.login FILTER url_quote %]&amp;do_union=1&amp;group=type&amp;action=queue">My Requests</a>
+                 [% user.login FILTER url_quote %]&amp;do_union=1&amp;group=type&amp;action=queue">내 요청</a>
       [% ELSE %]
-        <a href="request.cgi">Requests</a>
+        <a href="request.cgi">요청</a>
       [% END %]
     [% END %]
   [%-# Work around FF bug: keep this on one line %]</li>
 
   [% IF user.id && Param('usevotes') %]
-    <li><span class="separator">| </span><a href="votes.cgi?action=show_user">My&nbsp;Votes</a></li>
+    <li><span class="separator">| </span><a href="votes.cgi?action=show_user">내 투표</a></li>
   [% END %]
 
   [% IF user.login %]
-    <li><span class="separator">| </span><a href="userprefs.cgi">Preferences</a></li>
+    <li><span class="separator">| </span><a href="userprefs.cgi">환경설정</a></li>
     [% IF user.groups.tweakparams || user.groups.editusers || user.can_bless
           || (Param('useclassification') && user.groups.editclassifications)
           || user.groups.editcomponents || user.groups.admin || user.groups.creategroups
           || user.groups.editkeywords || user.groups.bz_canusewhines
           || user.get_products_by_permission("editcomponents").size %]
-      <li><span class="separator">| </span><a href="admin.cgi">Administration</a></li>
+      <li><span class="separator">| </span><a href="admin.cgi">관리자</a></li>
     [% END %]
 
     [% PROCESS link_to_documentation %]
 
     <li>
       <span class="separator">| </span>
-      [% IF user.authorizer.can_logout %]
-        <a href="relogin.cgi">Log&nbsp;out</a>
-      [% ELSE %]
-        Logged&nbsp;in&nbsp;as
-      [% END %]
       [% IF sudoer %]
-        [%+ sudoer.login FILTER html %] (<b>impersonating
-        [%+ user.login FILTER html %]</b>
-        <a href="relogin.cgi?action=end-sudo">end session</a>)
+        [%+ sudoer.login FILTER html %]
+	(<b>[%+ user.login FILTER html %] 사용자인척</b>
+        <a href="relogin.cgi?action=end-sudo">그만하기</a>)
       [% ELSE %]
         [%+ user.login FILTER html %]
+      [% END %]
+      [% IF user.authorizer.can_logout %]
+        <a href="relogin.cgi">로그아웃</a>
+      [% ELSE %]
+        사용자로 로그인 했습니다.
       [% END %]
     [%-# Work around FF bug: keep this on one line %]</li>
   [% ELSE %]
     [% IF Param('createemailregexp')
           && user.authorizer.user_can_create_account %]
-      <li><span class="separator">| </span><a href="createaccount.cgi">New&nbsp;Account</a></li>
+      <li><span class="separator">| </span><a href="createaccount.cgi">사용자 등록</a></li>
     [% END %]
 
     [% PROCESS link_to_documentation %]
@@ -113,7 +113,7 @@
         [% script_name = script_name _ "?GoAheadAndLogIn=1" %]
       [% END %]
         
-      <li><span class="separator">| </span><a href="[% script_name FILTER html %]">Log&nbsp;In</a></li>
+      <li><span class="separator">| </span><a href="[% script_name FILTER html %]">로그인</a></li>
     [% END %]
   [% END %]
 </ul>
@@ -122,7 +122,7 @@
     [% IF doc_section %]
       <li>
         <span class="separator">| </span>
-        <a href="[% docs_urlbase _ doc_section FILTER html %]" target="_blank">Help</a>
+        <a href="[% docs_urlbase _ doc_section FILTER html %]" target="_blank">도움말</a>
       </li>
     [% END %]
 [% END %]
