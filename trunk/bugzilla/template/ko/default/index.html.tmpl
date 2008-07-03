@@ -118,7 +118,7 @@ function addSidebar() {
     <li id="enter-bug"><a href="enter_bug.cgi">새로운 [% terms.bug %] 리포트 등록</a></li>
     <li id="report"><a href="report.cgi">리포트와 차트 요약하기</a></li>
 [% IF user.id %]
-    <li id="userprefs"><a href="userprefs.cgi">비밀번호 변경 또는 사용자 환경설정</a></li>
+    <li id="userprefs"><a href="userprefs.cgi">열쇠글 변경 또는 사용자 환경설정</a></li>
   [% IF user.authorizer.can_logout %]
     <li id="logout"><a href="relogin.cgi">[% user.login FILTER html %] 로그아웃</a></li>
   [% END %]
