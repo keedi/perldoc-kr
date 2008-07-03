@@ -2168,12 +2168,12 @@ restrict what salts C<crypt()> accepts.
 
 =end original
 
-新しい salt を選択する場合は、集合 C<[./0-9A-Za-z]> から
-(C<join '', ('.', '/', 0..9, 'A'..'Z', 'a'..'z')[rand 64, rand 64]> のようにして)
-ランダムに2 つの文字を選びます。
-この文字集合は単なる推薦です; salt として許される文字はシステムの暗号化
-ライブラリだけに依存し、Perl は C<crypt()> がどのような salt を受け付けるかに
-ついて制限しません。
+새로운 salt 를 선택할 경우는 집합 C<[./0-9A-Za-z]> 에서 
+(C<join '', ('.', '/', 0..9, 'A'..'Z', 'a'..'z')[rand 64, rand 64]> 처럼 해서)
+랜덤하게 2개의 문자를 선택합니다.
+이 문자집합은 단순한 추천사항입니다; salt 로 허락된 문자는 시스템의 암호화
+라이브러리에만 의존하고 Perl 은 C<crypt()> 가 어떻게 salt 를 받아들이는 가에 
+대해서 제한하고 있습니다.
 
 =begin original
 
@@ -2182,8 +2182,8 @@ their password:
 
 =end original
 
-プログラムを実行する人が、
-自分のパスワードを知っていることを確認する例です:
+프로그램을 실행하는 사람이 
+자신의 패스워드를 알고 있는 것을 확인하는 예제입니다:
 
     $pwd = (getpwuid($<))[1];
 
@@ -2206,7 +2206,7 @@ for it is unwise.
 
 =end original
 
-もちろん、自分自身のパスワードを誰にでも入力するのは賢明ではありません。
+물론 자기신의 패스워드를 누구에게도 입력하는 것은 현명하지 않습니다.
 
 =begin original
 
@@ -2216,9 +2216,9 @@ back.  Look at the L<Digest> module for more robust algorithms.
 
 =end original
 
-L<crypt|/crypt> 関数は大量のデータのハッシュ化には向いていません。
-これは情報を戻せないという理由だけではありません。
-より頑強なアルゴリズムについては L<Digest> モジュールを参照してください。
+L<crypt|/crypt> 함수는 대량의 데이터의 해쉬화에는 맞지 않습니다.
+이것은 정보를 돌아가 하지 않는 이유만이 아닙니다.
+보다 견고한 알고리즘에 대해서는 L<Digest> 모듈을 참조해주세요.
 
 =begin original
 
@@ -2231,12 +2231,12 @@ C<Wide character in crypt>.
 
 =end original
 
-Unicode 文字列(I<潜在的には> 255 を越えるコードポイントを持つ文字を
-含みます)に crypt() を使った場合、Perl は crypt() を呼び出す前に与えられた
-文字列を8 ビットバイト文字列にダウングレードする(文字列のコピーを作る)
-ことで状況のつじつまを合わせようとします。
-うまく動けば、それでよし。動かなければ、crypt() は
-C<Wide character in crypt> というメッセージと共に die します。
+Unicode 문자열(I<잠재적으로는> 255 를 넘는 코드 포인트를 가진 문자를
+포함합니다)에 crypt() 를 사용한 경우, Perl 은 crypt() 를 호출하기 전에 
+주어진 문자열을 8비트바이트 문자열에 다운그레이트하는 (문자열의 복사를 만듬)
+것으로 상황을 맞출수 있습니다.
+잘 움직이면, 그것으로 좋고 그렇지 않으면 crypt() 는 
+C<Wide  character in crypt> 라는 메시지와 함께 die 합니다.
 
 =item dbmclose HASH
 X<dbmclose>
@@ -2247,7 +2247,7 @@ X<dbmclose>
 
 =end original
 
-[この関数は、C<untie> 関数に大きくとって代わられました。]
+[이 함수는 C<untie> 함수로 바뀌었습니다]
 
 =begin original
 
@@ -2255,7 +2255,7 @@ Breaks the binding between a DBM file and a hash.
 
 =end original
 
-DBM ファイルとハッシュの連結をはずします。
+DBM 파일과 해쉬의 연결을 해제합니다.
 
 =item dbmopen HASH,DBNAME,MASK
 X<dbmopen> X<dbm> X<ndbm> X<sdbm> X<gdbm>
@@ -2266,7 +2266,7 @@ X<dbmopen> X<dbm> X<ndbm> X<sdbm> X<gdbm>
 
 =end original
 
-[この関数は、C<tie> 関数に大きくとって代わられました。]
+[이 함수는 C<tie> 함수로 크게 바뀌었습니다]
 
 =begin original
 
@@ -2282,6 +2282,7 @@ ndbm, calling C<dbmopen> produced a fatal error; it now falls back to
 sdbm(3).
 
 =end original
+
 
 dbm(3), ndbm(3), sdbm(3), gdbm(3) ファイルまたは Berkeley DB
 ファイルを連想配列に結び付けます。
