@@ -10,7 +10,9 @@
 account         사용자
 add             더하기
 additional comment 추가 의견
-administration  관리자
+administration  관리자측
+administrator   관리자
+appropriate     적당한
 approve         승인하다
 assignee        담당자
 author          저자
@@ -20,6 +22,7 @@ cc list         참조 목록
 change          변경
 check all       모두 선택
 clever          창의적인
+click           누르세요
 column          세로 항목
 comment         의견
 comments box    의견란
@@ -30,23 +33,30 @@ contact         연락처
 create account  사용자 등록
 deadline        마감일
 delete          지우다, 지우기
+distribute      나누다
 edit            고치기
 email           전자우편
 estimated hours 예상 시간
 field           항목
+fixed           끝냄
+footer          꼬리말
 form            입력 서식
 format          형식
 full summary    요약 전문
 full text       전문
 group           그룹
-header          머릿말
+header          머리말
 headline        주요 제목
 id              아이디
 inactive        비활성
+indicate        나타내다
+item            항목
 keyword         주요 단어
 lapse           효력이 없어지다.
 list            목록
+match           일치하다
 milestone       지점
+minimal         최소한의
 normal          일반
 note            주의
 notice          알림
@@ -54,6 +64,7 @@ old             예전
 only removed    지우기만 함
 open            열린
 os              운영체제
+page            화면
 platform        플랫폼
 prettier        더 보기좋음
 pri             중요도
@@ -61,17 +72,22 @@ priority        중요도
 privacy         개인정보
 product         제품
 qa contact      QA 연락처
+query           질의
 quip            가벼운 글귀
 relevant        관련있다(관련된 이지만 능동으로)
+relevant product    관련제품
 remaining time  남은 시간
 remeber         저장
 remove          지우기
 reporter        보고자
+review         관찰
+same            같은
 save            저장, 저장하기
 search form     검색 서식
 section         부분
 sev             엄격도
 severity        엄격도
+standard        표준
 status          상태
 status whiteboard   상황판
 submit          제출
@@ -87,6 +103,11 @@ text            본문
 tracking        추적
 unapproved      승인받지 않은
 uncheck all     모두 해제
+valid           유효한
 version         버전
 view            보기
+vote            투표, 표
+vote for this XXX   현재 XXX에 투표하기
+voting          투표
+weighted vote   가중투표(복수투표)
 word            낱말
