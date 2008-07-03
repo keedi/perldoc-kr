@@ -22,28 +22,29 @@
 [% PROCESS global/variables.none.tmpl %]
 [% INCLUDE global/header.html.tmpl title = "Voting" %]
 
-<p>[% terms.Bugzilla %] has a "voting" feature. Each product allows users to 
-have a certain number of votes. (Some products may not allow any, which means 
-you can't vote on things in those products at all.) With your vote, you 
-indicate which [% terms.bugs %] you think are the most important and 
-would like to see fixed. Note that voting is nowhere near as effective 
-as providing a fix yourself.</p>
+<p>[% terms.Bugzilla %]에는 "투표" 기능이 있습니다.
+각 제품에서 사용자는 일정수의 투표를 할 수 있습니다.
+(어떤 제품에서는 전혀 투표를 할 수 없을 수도 있습니다.
+이것은 해당 제품에서 투표를 할 수 없음을 의미합니다.)
+투표를 통해서 어떤 [% terms.bugs %]을/를
+중요하다고 생각하는지, 끝내기 원하는지를 나타낼 수 있습니다.
+직접 수정하는 것보다 효과적인 투표는 아무데도 없다는 것을 주의하세요.</p>
 
-<p>Depending on how the administrator has configured the relevant product,
-you may be able to vote for the same [% terms.bug %] more than once.
-Remember that you have a limited number of votes. When weighted voting 
-is allowed and a limited number of votes are available to you, you will 
-have to decide whether you want to distribute your votes among a large 
-number of [% terms.bugs %] indicating your minimal interest or focus on 
-a few [% terms.bugs %] indicating your strong support for them.
+<p>관리자가 관련 제품을 설정한 정도에 따라
+같은 [% terms.bug %]에 한 번 이상 투표할 수 도 있습니다.
+투표는 횟수 제한이 있음을 기억하세요.
+가중투표가 가능하고 투표 횟수에 제한이 있다면
+여러 [% terms.bugs %]에 나눠서 투표해서 최소한의 관심을 표시할지
+몇 개의 [% terms.bugs %]에 집중해서 많은 관심을 표시할지 결정해야 합니다.
 </p>
 
 <p>To look at votes:</p>
 
 <ul>
-  <li>Go to the query page. Do a normal query, but enter 1 in the "At least
-  ___ votes" field. This will show you items that match your query that
-  have at least one vote.</li>
+  <li>질의 화면으로 가세요.
+  "At least ___ votes" 항목에 1을 넣은 평범한 질의를 보내보세요.
+  질의에 일치하는 한 개 이상의 표를 받은 항목을 볼 수 있습니다.
+  </li>
 </ul>
 
 <p>To vote for [% terms.abug %]:</p>
@@ -51,19 +52,19 @@ a few [% terms.bugs %] indicating your strong support for them.
 <ul>
   <li>Bring up the [% terms.bug %] in question.</li>
 
-  <li>Click on the "Vote for this [% terms.bug %]" link that appears just 
-  above the "Additional Comments" field. (If no such link appears, then voting 
-  may not be allowed in this [% terms.bug %]'s product.)</li>
+  <li>"추가 의견" 항목 위의 "현재 [% terms.bug %]에 투표하기" 링크를 누르세요.
+  (링크가 나타나지 않는다면, 현재 [% terms.bug %]의 제품은
+  투표를 지원하지 않는 것입니다.)</li>
 
-  <li>Indicate how many votes you want to give this [% terms.bug %]. This page 
-  also displays how many votes you've given to other [% terms.bugs %], so you 
-  may rebalance your votes as necessary.</li>
+  <li>현재 [% terms.bug %]에 몇 개의 표를 줄 것인지 나타내세요.
+  다른 [% terms.bugs %]에 얼만큼 투표했는지도 알 수 있기 때문에
+  필요하다면 투표한 내역을 재조정해도 괜찮습니다.</li>
 </ul>
 
-<p>You will automatically get email notifying you of any changes that occur
-on [% terms.bugs %] you vote for.</p>
+<p> 투표한 [% terms.bugs %]에서 발생하는 모든 변경사항은
+자동으로 보내는 전자우편을 통해 알 수있습니다.</p>
 
-<p>You may review your votes at any time by clicking on the "<a href=
-"votes.cgi?action=show_user">My Votes</a>" link in the page footer.</p>
+<p>페이지 꼬리말에 있는 "<a href="votes.cgi?action=show_user">My Votes</a>"
+링크를 누르면 언제든지 투표를 관찰할 수 있습니다.</p>
 
 [% INCLUDE global/footer.html.tmpl %]
