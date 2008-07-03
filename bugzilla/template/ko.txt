@@ -6,13 +6,14 @@
 *obscene        obscene
 *optional       optional
 *pondering      pondering
+*session        세션
 *stagger        stagger
 account         사용자
 add             더하기
 additional comment 추가 의견
 administration  관리자측
 administrator   관리자
-appropriate     적당한
+appropriate     적당한, 해당하는
 approve         승인하다
 assignee        담당자
 author          저자
@@ -31,11 +32,13 @@ component       구성 요소
 confirm         승인
 contact         연락처
 create account  사용자 등록
+critical        위험한
 deadline        마감일
 delete          지우다, 지우기
 distribute      나누다
 edit            고치기
 email           전자우편
+especially      특히
 estimated hours 예상 시간
 field           항목
 fixed           끝냄
@@ -44,10 +47,14 @@ form            입력 서식
 format          형식
 full summary    요약 전문
 full text       전문
-group           그룹
+group           집단
+guideline       지침
 header          머리말
 headline        주요 제목
 id              아이디
+impersonate     ~인 척하다
+impersonated user   대역 사용자
+impersonation   ~인 척하기
 inactive        비활성
 indicate        나타내다
 item            항목
@@ -65,6 +72,7 @@ only removed    지우기만 함
 open            열린
 os              운영체제
 page            화면
+password        열쇠글
 platform        플랫폼
 prettier        더 보기좋음
 pri             중요도
@@ -99,10 +107,12 @@ targetM         목표 모델
 term            낱말
 terms.Bugzilla      사이트 이름(예: Emstone Bugzilla)
 terms.bug       버그
+testing         테스트
 text            본문
 tracking        추적
 unapproved      승인받지 않은
 uncheck all     모두 해제
+user            사용자
 valid           유효한
 version         버전
 view            보기
