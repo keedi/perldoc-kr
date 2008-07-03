@@ -1,5 +1,4 @@
 *action         행동, action
-chart           도표
 *entry          항목
 *issue          이슈
 *link           링크
@@ -12,7 +11,7 @@ chart           도표
 account         사용자
 add             더하기
 additional comment 추가 의견
-administration  관리자측
+administration  관리자측, 관리
 administrator   관리자
 appropriate     적당한, 해당하는
 approve         승인하다
@@ -22,6 +21,7 @@ bonk            누르다(원래는 퉁 치다 라는 뜻)
 cc              참조
 cc list         참조 목록
 change          변경
+chart           도표
 check all       모두 선택
 clever          창의적인
 click           누르세요
@@ -43,6 +43,7 @@ email           전자우편
 especially      특히
 estimated hours 예상 시간
 field           항목
+find            찾기
 fixed           끝냄
 footer          꼬리말
 form            입력 서식
@@ -54,6 +55,7 @@ guide           길잡이
 guideline       길잡이
 header          머리말
 headline        주요 제목
+help            도움말
 id              아이디
 impersonate     ~인 척하다
 impersonated user   대역 사용자
@@ -66,8 +68,6 @@ lapse           효력이 없어지다.
 list            목록
 login           로그인
 logout          로그아웃
-plugin          플러그인
-quick search    빠른 검색
 match           일치하다
 milestone       지점
 minimal         최소한의
@@ -84,6 +84,8 @@ page            화면
 parameter       매개변수
 password        열쇠글
 platform        플랫폼
+plugin          플러그인
+preference      환경설정
 prettier        더 보기좋음
 pri             중요도
 principle       원칙
@@ -92,6 +94,7 @@ privacy         개인정보
 product         제품
 qa contact      QA 연락처
 query           질의
+quick search    빠른 검색
 quip            가벼운 글귀
 release date    배포 날짜
 relevant        관련있다(관련된 이지만 능동으로)
