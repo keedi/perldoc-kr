@@ -19,49 +19,52 @@
   #%]
 
 [% PROCESS global/variables.none.tmpl %]
-[% INCLUDE global/header.html.tmpl title = "sudo: User Impersonation" %]
+[% INCLUDE global/header.html.tmpl title = "sudo: 다른 사용자인 척하기" %]
 
 <p>
-  [%+ terms.Bugzilla %] includes the ability to have one user impersonate 
-another, in something called a <i>sudo session</i>, so long as the person 
-doing the impersonating has the appropriate privileges.
+  [%+ terms.Bugzilla %]에서는 <i>sudo session</i> 기능을 제공합니다.
+  이 기능을 사용하면 다른 사용자인 척할 수 있습니다.
+  다른 사용자인 척하는 동안은 그에 해당하는 권한을 가집니다.
 </p>
 
 <p>
-  While a session is in progress, [% terms.Bugzilla %] will act as if the 
-  impersonated user is doing everything.  This is especially useful for testing,
-  and for doing critical work when the impersonated user is unavailable.  The 
-  impersonated user will receive an email from [% terms.Bugzilla %] when the 
-  session begins; they will not be told anything else.
+  [% terms.Bugzilla %]에서 다른 사용자인 척하는 동안은
+  대역 사용자가 모든것을 수행하는 것처럼 동작합니다.
+  이 기능은 특히 테스트를 할 때나,
+  대역 사용자로는 가능하지 않은 위험한 작업을 할때 유용합니다.
+
+  다른 사용자인 척하는 시점에 [% terms.Bugzilla %](은)는
+  대역 사용자에게 전자우편을 보낼 것입니다;
+  전자우편에는 단지 위의 내용만 들어갑니다.
 </p>
 
 <p>
-  To use this feature, you must be a member of the appropriate group.  The group 
-  includes all administrators by default.  Other users, and members of other 
-  groups, can be given access to this feature on a case-by-case basis.  To 
-  request access, contact the maintainer of this installation: 
+  이 기능을 사용하기 위해 해당 집단에 속해야 합니다.
+  기본으로 모든 관리자는 이 집단에 속합니다.
+  다른 사용자나 다른 그룹의 구성원은 상황에 따라
+  접근 권한을 얻을 수 있습니다.
+  접근 권한이 필요하다면 관리자에게 문의하세요:
   <a href="mailto:[% Param("maintainer") %]">
   [%- Param("maintainer") %]</a>.
 </p>
 
 <p>
-  If you would like to be protected from impersonation, you should contact the 
-  maintainer of this installation to see if that is possible.  People with 
-  access to this feature are protected automatically.
+  대역 사용자 기능을 막으려면 관리자에게 가능한지 문의하세요.
+  이 기능을 사용하면 자동으로 사람들의 접근을 막을 수 있습니다.
 </p>
 
 <p id="message">
   [% IF user.groups.bz_sudoers %]
-    You are a member of the <b>bz_sudoers</b> group.  You may use this 
-    feature to impersonate others.
+    <b>bz_sudoers</b> 집단의 구성원입니다.
+    다른 사람인 척하는 기능을 사용할 수 있습니다.
   [% ELSE %]
-    You are not a member of an appropriate group.  You may not use this 
-    feature.
+    대역 기능 집단의 구성원이 아닙니다.
+    다른 사람인 척하는 기능을 사용할 수 없습니다.
   [% END %]
   [% IF user.groups.bz_sudo_protect %]
     <br>
-    You are a member of the <b>bz_sudo_protect</b> group.  Other people will 
-    not be able to use this feature to impersonate you.
+    <b>bz_sudo_protect</b> 집단의 구성원입니다.
+    다른 사람이 여러분인 척 할 수 없습니다.
   [% END %]
 </p>
 
