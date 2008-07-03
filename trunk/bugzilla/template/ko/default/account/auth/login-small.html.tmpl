@@ -38,12 +38,12 @@
 <form name="login" action="[% script_name FILTER html %]" method="POST">
   <table id="login-small">
     <tr>
-      <th align="right"><label for="Bugzilla_login">Login:</label></th>
+      <th align="right"><label for="Bugzilla_login">사용자:</label></th>
       <td><input size="20" id="Bugzilla_login" name="Bugzilla_login">
           [% Param('emailsuffix') FILTER html %]</td>
     </tr>
     <tr>
-      <th align="right"><label for="Bugzilla_password">Password:</label></th>
+      <th align="right"><label for="Bugzilla_password">열쇠글:</label></th>
       <td>
         <input type="password" size="20" id="Bugzilla_password" name="Bugzilla_password">
       </td>
@@ -67,14 +67,14 @@
         <td>
           <input type="checkbox" id="Bugzilla_restrictlogin" name="Bugzilla_restrictlogin"
                  checked="checked">
-          <label for="Bugzilla_restrictlogin">이 세션을 현재 아이피 주소로 제한하기
-          (이 옵션을 사용하면 보안을 향상할 수 있음)</label>
+          <label for="Bugzilla_restrictlogin">이 세션을 현재 IP 주소로 제한하기
+          (이 기능을 선택하면 보안을 향상할 수 있습니다.)</label>
         </td>
       </tr>
     [% END %]
 
     <tr>
-      <td><input type="submit" name="GoAheadAndLogIn" value="Login"
+      <td><input type="submit" name="GoAheadAndLogIn" value="로그인"
                  id="log_in"></td>
 
       [%# For now, password change requests only apply to the DB
