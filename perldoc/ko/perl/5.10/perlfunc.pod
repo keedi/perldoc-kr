@@ -1819,13 +1819,12 @@ omitted, does a C<chroot> to C<$_>.
 
 =end original
 
-
-同じ名前のシステムコールと同じことをします。
-現在のプロセス及び子プロセスに対して、C</>で始まるパス名に関して
-指定されたディレクトリを新しいルートディレクトリとして扱います。
-(これはカレントディレクトリを変更しません。カレントディレクトリはそのままです)。
-セキュリティ上の理由により、この呼び出しはスーパーユーザーしか行えません。
-FILENAME を省略すると、C<$_> へ C<chroot> します。
+같은 이름의 시스템 호출과 같은 것을 합니다.
+현재의 프로세스 및 자식 프로세스에 대해서, C</> 로 시작하는 경로이름에 관해서 
+지정된 디렉토리를 새로운 루트 디렉토리로 취급합니다.
+(이것은 최근 디렉토리를 변경하지 않습니다. 최근 디렉토리 그 대로입니다).
+보안 상의 이유에 의해, 이 호출은 수퍼유저밖에 수행할 수 없습니다.
+FILENAME 을 생략하면, C<$_> 로 C<chroot> 합니다.
 
 =item close FILEHANDLE
 X<close>
@@ -1842,10 +1841,10 @@ omitted.
 
 =end original
 
-FILEHANDLE に対応したファイルまたはパイプをクローズして、
-IO バッファをフラッシュし、システムファイル記述子をクローズします。
-操作が成功し、PerlIO 層からエラーが報告されなかった場合に真を返します。
-引数が省略された場合、現在選択されているファイルハンドルをクローズします。
+FILEHANDLE 에 대응한 파일 또는 파이프를 클로즈해서, 
+IO 버퍼를 플러쉬해서 시스템 파일 기술자를 클로즈합니다.
+조작이 성공하고 PerlIO 계층에서 에러가 보고되지 않은 경우에는 참을 반환합니다.
+인수가 생략된 경우, 현재 선택된 파일핸들을 클로즈합니다.
 
 =begin original
 
@@ -1856,13 +1855,12 @@ counter (C<$.>), while the implicit close done by C<open> does not.
 
 =end original
 
-クローズしてすぐにまた、同じファイルハンドルに
-対してオープンを行なう場合には、C<open> が自動的に C<close>
-を行ないますので、close FILEHANDLE する必要はありません
-(C<open> を参照してください)。
-ただし、明示的にクローズを行なったときにのみ入力ファイルの
-行番号 (C<$.>) のリセットが行なわれ、C<open> によって行なわれる
-暗黙の C<close>では行なわれません。
+클로즈하고 곧 다시 같은 파일핸들에 대해서 오픈을 수행하는 경우에는 
+C<open> 이 자동적으로 C<close> 를 수행하기 때문에, close FILEHANDLE 할 
+필요는 없습니다(C<open> 을 참조해주세요). 
+단, 명시적으로 클로즈를 수행한 때에만 입력파일의 
+행번호 (C<$.>) ë 리셋이 수행되어, C<open> 에 의해 수행되는 암묵적인 
+C<close> 에서는 수행되지 않습니다.
 
 =begin original
 
@@ -1877,15 +1875,15 @@ C<${^CHILD_ERROR_NATIVE}>.
 
 =end original
 
-ファイルハンドルがパイプつきオープンなら、
-C<close> はその他のシステムコールが失敗したり
-プログラムが非ゼロのステータスで終了した場合にも偽を返します
-(プログラムが非ゼロで終了しただけの場合は、C<$!>がC<0>にセットされます)。
-後でパイプの出力を見たい場合のために、
-パイプのクローズでは、パイプ上で実行されている
-プロセスの完了を待ちます。
-また自動的にコマンドのステータス値を C<$?> と
-C<${^CHILD_ERROR_NATIVE}> に設定します。
+파일핸들이 파이프붙은 오픈이라면, 
+C<close> 는 그 밖의 시스템 호출이 실패하거나 
+프로그램이 제로가 아닌 상태에서 종료한 경우에도 거짓을 반환합니다.
+(프로그램이 제로가 아닌 경우에서 끝난 것 뿐일 경우, C<$!> 가 C<0> 로 
+설정됩니다). 
+나중에 파이프의 출력을 보고 싶은 경우를 위해서 파이프의 클로즈에서는 
+파이프 상에서 실행되는 프로세스의 완료를 가집니다.
+또 자동적으로 커맨드의 상태값을 C<$?> 과 C<${^CHILD_ERROR_NATIVE}> 로
+설정합니다.
 
 =begin original
 
@@ -1896,11 +1894,10 @@ handle that, be sure to read all the data before closing the pipe.
 
 =end original
 
-途中で(つまり、書き込み側が閉じる前に)
-パイプの読み込み側が閉じた場合、
-書き込み側に SIGPIPE が配送されます。
-書き込み側がこれを扱えない場合、パイプを閉じる前に
-確実に全てのデータが読み込まれるようにする必要があります。
+도중에(즉, 쓰는 쪽이 닫히기 전) 
+파이프가 읽는 쪽이 닫힌 경우 쓰는 쪽에 SIGPIPE 가 배송됩니다.
+쓰는 쪽이 이것을 취급할 수 없는 경우, 
+파이프를 닫기 전에 확실하게 모든 데이터가 읽혀지도록 할 필요가 있습니다.
 
 =begin original
 
@@ -1908,7 +1905,7 @@ Example:
 
 =end original
 
-例:
+예제:
 
     open(OUTPUT, '|sort >foo')  # pipe to sort
         or die "Can't start sort: $!";
@@ -1926,8 +1923,8 @@ filehandle, usually the real filehandle name.
 
 =end original
 
-FILEHANDLE は式でもかまいません。この場合、値は間接ファイルハンドルと
-して扱われ、普通は実際のファイルハンドル名です。
+FILEHANDLE 은 식이라도 상관없습니다. 이 경우, 값은 간접 파일핸들로써 
+취급되고, 보통은 실제의 파일핸들 이름입니다.
 
 =item closedir DIRHANDLE
 X<closedir>
@@ -1939,8 +1936,7 @@ system call.
 
 =end original
 
-C<opendir> でオープンしたディレクトリをクローズし、
-システムコールの返り値を返します。
+C<opendir> 로 오픈한 디렉토리를 클로즈하고, 시스템호출의 반환값을 반환합니다.
 
 =item connect SOCKET,NAME
 X<connect>
@@ -1954,11 +1950,10 @@ L<perlipc/"Sockets: Client/Server Communication">.
 
 =end original
 
-connect(2) システムコールと同様に、リモートソケットへの接続を試みます。
-成功時には真を返し、失敗時には偽を返します。
-NAME は、ソケットに対する、適切な型のパックされた
-アドレスでなければなりません。
-L<perlipc/"Sockets: Client/Server Communication"> の例を参照してください。
+connect(2) 시스템 호출처럼, 리모트 소켓으로의 접속을 시험합니다.
+성공시에는 참을 반환í고 실패시에는 거짓을 반환합니다.
+NAME 은 소켓에 대해 적절한 형태의 pack 된 주소가 아니면 안됩니다.
+L<perlipc/"Sockets: Client/Server Communication"> 의 예제를 참조하세요.
 
 =item continue BLOCK
 X<continue>
@@ -1977,13 +1972,12 @@ statement).
 
 =end original
 
-C<continue> は実際には関数ではなく、実行制御文です。
-C<continue> BLOCK が BLOCK (典型的には C<while> または C<foreach> の中)にあると、
-これは条件文が再評価される直前に常に実行されます。
-これは C における C<for> ループの 3 番目の部分と同様です。
-従って、これは C<next> 文
-(これは C の C<continue> 文と似ています)を使ってループが繰り返されるときでも
-ループ変数を増やしたいときに使えます。
+C<continue> 는 실제로는 함수가 아닌 실행제어문입니다.
+C<continue> BLOCK 이 BLOCK (전형적으로는 C<while> 또는 C<foreach> 안)에 있으면, 
+이것은 조건문이 재평가되기 직전에 항상 실행됩니다.
+이것은 C에 의한 C<for> 루프의 3번째 부분과 같습니다.
+따라서, 이것은 C<next> 문 (이것은 C의 C<continue> 문과 비슷합니다)을 사용해서 
+루프가 반복될 때에도 루프 변수를 더하거나 할 때에도 사용할 수 있습니다.
 
 =begin original
 
@@ -1994,10 +1988,10 @@ block, it may be more entertaining.
 
 =end original
 
-C<last>, C<next>, C<redo> が C<continue> ブロック内に現れる可能性があります。
-C<last> と C<redo> はメインブロックの中で実行されたのと同じように振舞います。
-C<next> の場合は、C<continue> ブロックを実行することになるので、
-より面白いことになります。
+C<last>, C<next>, C<redo>  C<continue> 블록 안에 나타날 가능성이 있습니다.
+C<last> 와 C<redo> 는 메인블록 안에서 실행되는 것처럼 행동합니다.
+C<next> 의 경우는 C<continue> 블록을 실행하는 것이 되기때문에,
+보다 재미있습니다.
 
     while (EXPR) {
 	### redo always comes here
@@ -2017,9 +2011,9 @@ to check the condition at the top of the loop.
 
 =end original
 
-C<continue> 節を省略するのは、文法的には空の節を指定したのと同じで、
-論理的には十分です。
-この場合、C<next> は直接ループ先頭の条件チェックに戻ります。
+C<continue> 섹션을 생략하는 것은 문법적으로는 빈 섹션을 지정한 것과 
+같기에 논리적으로는 충분합니다. 이 경우, C<next> 는 간접루프 앞의 
+조건체크로 돌아갑니다.
 
 =begin original
 
@@ -2030,10 +2024,10 @@ L<perlsyn/"Switch statements"> for more information.
 
 =end original
 
-"switch" 機能が有効なら、C<continue> は現在の C<when> や C<default> の
-ブロックから飛び出して、次の場合に移動するための文となります。
-さらなる情報については L<feature> と L<perlsyn/"Switch statements"> を
-参照してください。
+"switch" 기능이 유하다면, C<continue> 는 현재의 C<when> 이나 C<default> 
+의 블록에서 날아가, 다음의 경우로 이동하기 위한 구문이 됩니다.
+보다 자세한 정보에 대해서는 L<feature> 와 L<perlsyn/"Switch statements"> 
+를 참조해주세요.
 
 =item cos EXPR
 X<cos> X<cosine> X<acos> X<arccosine>
@@ -2047,8 +2041,8 @@ takes cosine of C<$_>.
 
 =end original
 
-(ラジアンで示した) EXPR の余弦を返します。
-EXPR が省略されたときには、C<$_> の余弦を取ります。
+(라디안으로 표현된) EXPR 의 cosine 을 반환합니다.
+EXPR 이 생략된 때에는 C<$_> 의 cosine 을 얻습니다.
 
 =begin original
 
@@ -2057,8 +2051,8 @@ function, or use this relation:
 
 =end original
 
-逆余弦を求めるためには、C<Math::Trig::acos()> 関数を使うか、
-以下の関係を使ってください。
+역 cosine 을 구하기 위해서는 C<Math::Trig::acos()> 함수를 사용하거나 
+아래의 함수를 사용해주세요.
 
     sub acos { atan2( sqrt(1 - $_[0] * $_[0]), $_[0] ) }
 
@@ -2074,9 +2068,9 @@ been extirpated as a potential munitions).
 
 =end original
 
-C ライブラリの crypt(3) 関数と全く同じように、ダイジェスト文字列を
-作成します(一時的な必需品として、まだ絶滅していないバージョンを
-持っていると仮定しています)。
+C 라이브리의 crypt(3) 함수와 완전 같이, 다이제스트 문자열을 
+작성합니다(일시적인 필수품으로 아직 없어지지 않은 버젼을 가지고 있다고 
+가정하고 있습니다).
 
 =begin original
 
@@ -2089,12 +2083,12 @@ digest.
 
 =end original
 
-crypt() は一方向ハッシュ関数です。
-PLAINTEXT と SALT はダイジェストと呼ばれる短い文字列に変えられて、
-それが返されます。
-PLAINTEXT と SALT が同じ場合は常に同じ文字列を返しますが、ハッシュから
-元の PLAINTEXT を得る(既知の)方法はありません。
-PLAINTEXT や SALT を少し変更してもダイジェストは大きく変更されます。
+crypt() 는 한방향 해쉬 함수입니다.
+PLAINTEXT 와 SALT 는 다이제스트로 불려지는 짧은 문자열로 바꿔져서
+그것이 반환됩니다.
+PLAINTEXT 와 SASLT 가 같은 경우는 항상 같은 문자열을 반환하지만, 
+해쉬에서 원래 PLAINTEXT 를 가지는 (기존의) 방법은 없습니다.
+PLAINTEXT 나 SALT 를 조금 변경해도 다이제스트는 크게 변경됩니다.
 
 =begin original
 
