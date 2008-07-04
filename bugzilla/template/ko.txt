@@ -1,4 +1,3 @@
-*action         행동, action
 *entry          항목
 *issue          이슈
 *link           링크
@@ -9,6 +8,7 @@
 *session        세션
 *stagger        stagger
 account         사용자
+action          동작
 add             더하기
 additional comment 추가 의견
 administration  관리자측, 관리
@@ -23,6 +23,8 @@ cc list         참조 목록
 change          변경
 chart           도표
 check all       모두 선택
+choose          고르다
+classification  분류
 clever          창의적인
 click           누르세요
 column          세로 항목
@@ -36,6 +38,8 @@ create account  사용자 등록
 critical        위험한
 deadline        마감일
 delete          지우다, 지우기
+described       설명하기
+description     설명
 distribute      나누다
 edit            고치기
 effective       효과적인
@@ -108,8 +112,10 @@ same            같은
 save            저장, 저장하기
 search form     검색 서식
 section         부분
+select          고르다
 sev             엄격도
 severity        엄격도
+specify         열거
 standard        표준
 status          상태
 status whiteboard   상황판
