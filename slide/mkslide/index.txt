@@ -23,6 +23,7 @@ vi에서 작업하다!
 
 그래서?
 BlueFish Editor!
+.img bluefish.png BlueFish Editor
 오오!! :-)
 자동완성!
 단축키!
@@ -84,6 +85,17 @@ quit_editor();
   줄 바꿈은 그대로 유지합니다.
   .text
   글자 넣기를 그만둔다면 첫 칸을 .text로 시작
+.code
+
+그림을 넣으려면?
+.code
+  형식:
+  .img <파일이름>
+  .img <파일이름> <이름표>
+
+  사용:
+  .img photo_perlmania.jpg
+  .img photo_perlmania.jpg 펄매니아 사진
 .code
 
 이제 필요한건?

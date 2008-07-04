@@ -88,6 +88,7 @@ while ( my $line = <> ) {
             print "\n", text_markup(@sub_lines);
         };
         case qr/^$TAG{img}/, sub {
+            print "\n", img_markup($line);
         };
         default sub {
             # 일반 적인 경우
@@ -107,6 +108,31 @@ sub convert_escaped_char {
     $line =~ s/>/&gt;/g;
 
     return $line;
+}
+
+sub img_markup {
+    my ( $line ) = @_;
+    my ( $tag, $file, $name ) = split q{ }, $line, 3;
+
+    return unless $file;
+
+    my $img_str;
+    if ( $name ) {
+        $img_str = qq{$name<br>\n<img src="$slide_info->{path}{images}/$file" alt="$name">};
+    }
+    else {
+        $img_str = qq{<img src="$slide_info->{path}{images}/$file">};
+    }
+
+    my $str = <<"END_SECTION";
+<div>
+<p>
+$img_str
+</p>
+</div>
+END_SECTION
+
+    return $str;
 }
 
 sub normal_markup {
