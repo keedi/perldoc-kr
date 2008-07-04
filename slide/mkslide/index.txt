@@ -1,9 +1,14 @@
 mkslide 란?
 HTML + JavaScript + CSS
 사실은?
-YAPC::Asia 2008 Dan Kogai씨 발표물 형식
+.text
+동경에서 열린
+YAPC::Asia 컨퍼런스 때
+Dan Kogai씨가 사용한
+발표물 형식
+.text
 
-매우 간단한 형식의 HTML
+초 간단 HTML
 .code
 <div>
 <h1> 내용 </h1>
@@ -31,14 +36,23 @@ T_T
 mkslide.pl
 
 엥? mkslide.pl?
-슬라이드 급조를 도와주는 초간단 스크립트
+.text
+슬라이드 급조를
+도와주는
+초간단 스크립트
+.text
 전투력 상승! :-D
 
 어떻게 쓰나요?
+
+.text
 index.txt 를 만드세요!
 텍스트를 입력, 엔터
 또 입력, 엔터, 입력, 엔터, ...
+헉헉...
 저장 -> 종료
+.text
+
 .code
 do {
     insert_text();
@@ -48,7 +62,7 @@ save_it();
 quit_editor();
 .code
 
-코드를 넣고 싶다면?
+코드를 넣으려면?
 .code
   코드를 넣고 싶다면 .code로 시작
   .code
@@ -58,7 +72,18 @@ quit_editor();
 
   print "Hello, mkslide.pl";
   .code
-  코드 넣기를 그만둔다면 .code로 시작
+  코드 넣기를 그만둔다면 첫 칸을 .code로 시작
+.code
+
+많은 글자 넣기?
+.code
+  글자를 많이 넣고 싶다면 .text로 시작
+  .text
+  설명해야 할 내용이 많다면 이렇게
+  텍스트 태그안에 내용을 넣도록 합니다.
+  줄 바꿈은 그대로 유지합니다.
+  .text
+  글자 넣기를 그만둔다면 첫 칸을 .text로 시작
 .code
 
 이제 필요한건?
@@ -75,12 +100,12 @@ $ _
 slide.conf 를 편집하세요!
 .code
 macro:
-    title:      mkslide 사용하기
-    link:       http://localhost/index.html
-    email:      keedi@naver.com
-    name:       keedi (김도형)
-    company:    Emstone
-    community:  Perlmania
+    title:     mkslide 사용하기
+    link:      http://localhost/index.html
+    email:     keedi@naver.com
+    name:      keedi (김도형)
+    company:   Emstone
+    community: Perlmania
 .code
 macro 항목 하부 항목을 고치는 것으로 충분!
 

@@ -8,7 +8,10 @@
 #  DESCRIPTION:  텍스트 문서를 이용해서 html 슬라이드를 만들어 줍니다.
 #
 #      OPTIONS:  ---
-# REQUIREMENTS:  YAML, Readonly
+# REQUIREMENTS:
+#               YAML
+#               Readonly
+#               Switch::Perlish
 #         BUGS:  ---
 #        NOTES:  ---
 #       AUTHOR:  김도형 (Keedi Kim), <keedi@naver.com>
@@ -23,9 +26,14 @@ use warnings;
 
 use YAML;
 use Readonly;
+use Switch::Perlish;
 
-Readonly my $CONF_FILE    => 'slide.conf';
-Readonly my $CODE_TAG     => qr{ \.code }x;
+Readonly my $CONF_FILE => 'slide.conf';
+Readonly my %TAG       => (
+	code => qr{ \.code }x,
+	text => qr{ \.text }x,
+	img  => qr{ \.img  }x,
+);
 Readonly my $DEFAULT_CONF => <<'END_DEFAULT_CONF';
 ---
 macro:
@@ -54,22 +62,38 @@ while ( my $line = <> ) {
     # 회피문자 처리
     $line = convert_escaped_char( $line );
 
-    if ( $line =~ m/^$CODE_TAG/ ) {
-        # 코드 태그 처리
-        my @code_lines;
+    switch $line, sub {
+        case qr/^$TAG{code}/, sub {
+            # 코드 태그 처리
+            my @sub_lines;
 
-        LOOP_CODE_LINES:
-        while ( my $code_line = <> ) {
-            chomp $code_line;
-            last LOOP_CODE_LINES if $code_line =~ m/^$CODE_TAG/;
-            push @code_lines, convert_escaped_char( $code_line );
-        }
-        print "\n", code_markup(@code_lines);
-    }
-    else {
-        # 일반 적인 경우
-        print "\n", normal_markup($line);
-    }
+            LOOP_CODE_LINES:
+            while ( my $sub_line = <> ) {
+                chomp $sub_line;
+                last LOOP_CODE_LINES if $sub_line =~ m/^$TAG{code}/;
+                push @sub_lines, convert_escaped_char( $sub_line );
+            }
+            print "\n", code_markup(@sub_lines);
+        };
+        case qr/^$TAG{text}/, sub {
+            # 텍스트 태그 처리
+            my @sub_lines;
+
+            LOOP_TEXT_LINES:
+            while ( my $sub_line = <> ) {
+                chomp $sub_line;
+                last LOOP_TEXT_LINES if $sub_line =~ m/^$TAG{text}/;
+                push @sub_lines, convert_escaped_char( $sub_line );
+            }
+            print "\n", text_markup(@sub_lines);
+        };
+        case qr/^$TAG{img}/, sub {
+        };
+        default sub {
+            # 일반 적인 경우
+            print "\n", normal_markup($line);
+        };
+    };
 }
 
 print "\n", end_slide();
@@ -107,6 +131,22 @@ sub code_markup {
 <pre>
 $concat_line
 </pre>
+</div>
+END_SECTION
+
+    return $str;
+}
+
+sub text_markup {
+    my ( @lines ) = @_;
+
+    my $concat_line = join "<br>\n", @lines;
+
+    my $str = <<"END_SECTION";
+<div>
+<p>
+$concat_line
+</p>
 </div>
 END_SECTION
 
@@ -163,13 +203,17 @@ onkeyup="slide.go(\$('pagenum').value)" onclick="\$('pagenum').select()">
 </div>
 
 <div>
-<p>by <a href="mailto:###EMAIL###">###NAME###</a></p>
+<p>
+by <a href="mailto:###EMAIL###">###NAME###</a>
+</p>
+<p>
 ###COMPANY###<br>
-###COMMUNITY###<br>
+###COMMUNITY###
+</p>
 </div>
 
 <div>
-<p>문서는 이곳에서도 볼 수 있습니다:</p>
+<p>문서는 이곳에서도<br>볼 수 있습니다:</p>
 <p><a target="_blank" href="###LINK###">###LINK###</a></p>
 </div>
 END_START_SLIDE

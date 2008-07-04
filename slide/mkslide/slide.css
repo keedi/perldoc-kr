@@ -3,6 +3,9 @@
     width:    100%;
     height:   640px;
 }
+p{
+    font-size:130%;
+}
 body{
     font-size:100%;
     background-color: #C4D6E2;
@@ -21,7 +24,7 @@ body{
 .screen pre {
   border: dotted 1px;
   text-align: left;
-  font-size:75%;
+  font-size:70%;
   color: #0F0;
   background-color:#000;
   overflow: auto;
