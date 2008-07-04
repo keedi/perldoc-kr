@@ -87,20 +87,20 @@
                 } %]
 
 [% status_descs = { "UNCONFIRMED" => "미확인",
-                    "NEW"         => "새로운 버그",
-                    "ASSIGNED"    => "할당함",
-                    "REOPENED"    => "새로 열림",
-                    "RESOLVED"    => "결심함",
-                    "VERIFIED"    => "검증함",
-                    "CLOSED"      => "닫음" } %]
+                    "NEW"         => "신규",
+                    "ASSIGNED"    => "할당",
+                    "REOPENED"    => "재작업",
+                    "RESOLVED"    => "해결",
+                    "VERIFIED"    => "검사완료",
+                    "CLOSED"      => "종료" } %]
 
 [% MACRO get_status(status) GET status_descs.$status || status %]
 
-[% resolution_descs = { "FIXED"      => "끝냄",
-                        "INVALID"    => "무효",
-                        "WONTFIX"    => "끝내지 않을것음",
-                        "DUPLICATE"  => "복제",
-                        "WORKSFORME" => "내게만 발생함",
+[% resolution_descs = { "FIXED"      => "고침",
+                        "INVALID"    => "틀림",
+                        "WONTFIX"    => "안고침",
+                        "DUPLICATE"  => "중복",
+                        "WORKSFORME" => "재현불가",
                         "MOVED"      => "옮김",
                         "---"        => "---",
                         " "          => " " } %]
