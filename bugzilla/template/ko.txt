@@ -53,6 +53,7 @@ depends on      의존성
 described       설명하기
 description     설명
 distribute      나누다
+download        내려받기
 drop down       늘어진
 duplicate       복제
 edit            고치기
@@ -84,6 +85,7 @@ impersonate     ~인 척하다
 impersonated user   대역 사용자
 impersonation   ~인 척하기
 inactive        비활성
+incomplete      완전하지 않은
 indicate        나타내다
 invalid         무효한
 item            항목
@@ -139,6 +141,7 @@ requestee       요청받는 사람
 requester       요청자
 resolution      결정
 resolved        결심함
+retain          계속 유지하다
 review          재검토
 revise          고치다
 same            같은
@@ -153,6 +156,7 @@ specify         열거
 standard        표준
 status          상태
 status whiteboard   상황판
+submission      제출
 submit          제출
 substring       부분 문자열
 summary         요약
@@ -172,6 +176,7 @@ uncheck all     모두 해제
 unconfirmed     미확인
 unknown type    모르는 형식
 update          판올림, 갱신
+upload          올려주기
 user            사용자
 valid           유효한
 verified        검증함
