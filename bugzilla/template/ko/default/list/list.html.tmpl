@@ -94,7 +94,7 @@
 
 [% IF bugs.size > 9 %]
   <span class="bz_result_count">
-    [% bugs.size %] [%+ terms.bugs %] found.
+    [% bugs.size %]개 [%+ terms.bugs %] 찾음.
   </span>
 [% END %]
 
@@ -121,9 +121,9 @@
   [% IF bugs.size == 0 %]
     [% terms.zeroSearchResults %].
   [% ELSIF bugs.size == 1 %]
-    One [% terms.bug %] found.
+    [% terms.bug %] 1개 찾음.
   [% ELSE %]
-    [% bugs.size %] [%+ terms.bugs %] found.
+    [% bugs.size %]개 [%+ terms.bugs %] 찾음.
   [% END %]
 </span>
 
@@ -152,7 +152,7 @@
             <input type="hidden" name="id" value="[% id FILTER html %]">
           [% END %]
           <input type="hidden" name="format" value="multiple">
-          <input type="submit" id="long_format" value="Long Format">
+          <input type="submit" id="long_format" value="긴 형식">
         </form>
         <form method="post" action="show_bug.cgi">
             <input type="hidden" name="ctype" value="xml">
@@ -166,7 +166,7 @@
         [% IF user.in_group(Param('timetrackinggroup')) %]
           <form method="post" action="summarize_time.cgi">
             <input type="hidden" name="id" value="[% buglist_joined FILTER html %]">
-            <input type="submit" id="timesummary" value="Time Summary">
+            <input type="submit" id="timesummary" value="시간 요약">
           </form>
         [% END %]
       </td>
@@ -178,12 +178,12 @@
         [% urlquerypart FILTER html %]&amp;ctype=csv">CSV</a> |
         <a href="buglist.cgi?
         [% urlquerypart FILTER html %]&amp;title=
-        [%- title FILTER html %]&amp;ctype=atom">Feed</a> |
+        [%- title FILTER html %]&amp;ctype=atom">Atom 피드</a> |
         <a href="buglist.cgi?
         [% urlquerypart FILTER html %]&amp;ctype=ics">iCalendar</a> |
         <a href="colchange.cgi?
         [% urlquerypart FILTER html %]&amp;query_based_on=
-          [% defaultsavename OR searchname FILTER url_quote %]">Change&nbsp;Columns</a> |
+          [% defaultsavename OR searchname FILTER url_quote %]">표시 항목 변경</a> |
 
         [% IF bugs.size > 1 && caneditbugs && !dotweak %]
           <a href="buglist.cgi?[% urlquerypart FILTER html %]
@@ -214,7 +214,7 @@
       <td valign="middle" nowrap="nowrap" class="bz_query_forget">
         |
         <a href="buglist.cgi?cmdtype=dorem&amp;remaction=forget&amp;namedcmd=
-                [% searchname FILTER url_quote %]">'[% searchname FILTER html %]' 의 검색 잊기</a>
+                [% searchname FILTER url_quote %]">'[% searchname FILTER html %]' 검색 없애기</a>
       </td>
     [% ELSE %]
       <td>&nbsp;</td>
