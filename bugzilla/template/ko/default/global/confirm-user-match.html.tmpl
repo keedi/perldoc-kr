@@ -39,7 +39,7 @@
 [% PROCESS "global/field-descs.none.tmpl" %]
 
 [% IF matchsuccess == 1 %]
-  [% PROCESS global/header.html.tmpl title="Confirm Match" %]
+  [% PROCESS global/header.html.tmpl title="일치 확인" %]
 
 [% USE Bugzilla %]
 
@@ -54,24 +54,23 @@
 
   <p>
     [% IF matchmultiple %]
-      [% terms.Bugzilla %] cannot make a conclusive match for one or more
-      of the names and/or email addresses you entered on the previous page.
-      <br>Please examine the lists of potential matches below and select the
-      ones you want,
+      이전 화면에서 입력한 하나 이상의 이름 과/또는 전자우편 주소를
+      이용한 [% terms.Bugzilla %]의 검색 확실히 일치한다고 할 수 없습니다.
+      <br>아래의 가능성 있는 검색 결과를 점검하고 선택하세요.
     [% ELSE %]
-      [% terms.Bugzilla %] is configured to require verification whenever
-      you enter a name or partial email address.
-      <br>Below are the names/addresses you entered and the matched accounts.
-      Please confirm that they are correct,
+      이름과 전자우편 주소의 일부를 입력할 때 검증을 하도록
+      [% terms.Bugzilla %](을)를 설정한 상태입니다.
+      <br>아래는 입력한 이름과 주소며, 일치하는 사용자입니다.
+      이 정보가 맞는지 확인하세요.
     [% END %]
-    or go back to the previous page to revise the names you entered.
+    또는, 입력한 이름을 고치려면 이전 화면으로 가세요.
   </p>
 [% ELSE %]
-  [% PROCESS global/header.html.tmpl title="Match Failed" %]
+  [% PROCESS global/header.html.tmpl title="일치 실패" %]
   <p>
-    [% terms.Bugzilla %] was unable to make any match at all for one or more of
-    the names and/or email addresses you entered on the previous page.<br>
-    Please go back and try other names or email addresses.
+    이전 화면에서 입력한 하나 이상의 이름 과/또는 전자우편 주소를 이용해
+    [% terms.Bugzilla %]에서 일치하는 결과를 찾을 수 없습니다.<br>
+    이전 화면으로 가서 다른 이름이나 전자우편 주소로 검색해 보세요.
   </p>
 [% END %]
 
@@ -97,17 +96,16 @@
                 [% IF query.value.users.size > 1 %]
                   [% IF query.value.status == 'fail' %]
                     <font color="#FF0000">
-                      matches multiple users.
+                      여러 사용자에 일치합니다.
                     </font>
-                    Please go back and try again with a more specific
-                    name/address.
+                    이전 화면으로 가서 다른 이름이나
+                    전자우편 주소로 검색해 보세요.
                   [% ELSE %]
                     [% IF query.value.status == 'trunc' %]
-                      matched
-                      more than the maximum
-                      of [% query.value.users.size %] users:<br>
+                      최대 [% query.value.users.size %]
+                      이상의 사용자에 일치:<br>
                     [% ELSE %]
-                      matched:<br>
+                      일치:<br>
                     [% END %]
                     <select name="[% field.key FILTER html %]"
                      id="[% field.key FILTER html %]"
@@ -128,16 +126,17 @@
                     </select>
                   [% END %]
                 [% ELSE %]
-                  matched
+                  일치
                   <b>[% query.value.users.0.identity FILTER html %]</b>
                 [% END %]
             [% ELSE %]
                 [% IF (query.key.length < 3) && !(Param('emailsuffix'))
                     && (Param('usermatchmode') == 'search') %]
-                  <font color="#FF0000">was too short for substring match
-                  (minimum 3 characters)</font>
+                  <font color="#FF0000">
+                  부분 문자열로 비교하기에 너무 짧습니다 (최소 3 글자)
+                  </font>
                 [% ELSE %]
-                  <font color="#FF0000">did not match anything</font>
+                  <font color="#FF0000">어느 것에도 일치하지 않습니다</font>
                 [% END %]
             [% END %]
             </div>
@@ -158,7 +157,7 @@
   [% PROCESS "global/hidden-fields.html.tmpl" exclude="^Bugzilla_(login|password)$" %]
 
   <p>
-    <input type="submit" id="continue" value="Continue">
+    <input type="submit" id="continue" value="계속">
   </p>
 
   </form>
@@ -176,7 +175,7 @@
   [%-# ELSIF for things that don't belong in the field_descs hash here -%]
 
   [% ELSIF field_name.match("^requestee") %]
-    [% fields.${field_name}.flag_type.name %] requestee
+    [% fields.${field_name}.flag_type.name %] 요청받는 사람
 
   [% ELSE %]
     [% field_name FILTER html %]
