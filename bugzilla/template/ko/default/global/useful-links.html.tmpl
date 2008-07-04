@@ -27,7 +27,7 @@
 
 <ul id="useful-links">
   <li id="links-actions">
-    <div class="label">Actions: </div>
+    <div class="label">작업: </div>
       [% PROCESS "global/common-links.html.tmpl" qs_suffix = "_bottom" %]
   </li>
 
@@ -39,12 +39,12 @@
     [% print_pipe = 0 %]
     <li id="links-saved">
       <div class="label">
-        Saved Searches:
+        저장한 검색:
       </div>
       <ul class="links">
         [% IF user.showmybugslink %]
           [% filtered_username = user.login FILTER url_quote %]
-          <li><a href="[% Param('mybugstemplate').replace('%userid%', filtered_username) %]">My [% terms.Bugs %]</a></li>
+          <li><a href="[% Param('mybugstemplate').replace('%userid%', filtered_username) %]">내 [% terms.Bugs %]</a></li>
           [% print_pipe = 1 %]
         [% END %]
 
