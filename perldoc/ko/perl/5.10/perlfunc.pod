@@ -2569,11 +2569,11 @@ after them down.  Use splice() for that.  See L</exists>.
 
 =end original
 
-配列要素を削除した場合、配列の位置は初期の、初期化されていない状態になります。
-引き続いて同じ要素に対して exists() でテストすると偽を返します。
-また、配列の途中の配列要素を削除してもインデックスはシフトしません。
-このためには splice() を使ってください。
-L</exists> を参照してください。
+배열요소를 삭제한 경우, 뱅ㄹ의 위치는 초기의 초기화되지 않은 상태가 됩니다.
+계속해서 같은 요소에 대해서 exsists() 로 테스트하면 거짓을 반환합니다.
+또, 배열의 도충의 배열 요소를 삭제해도 인덱스는 시프트하지 않ㅅ브니다.
+이 때문에 splice() 를 사용해주세요.
+L</exists> 를 참조해주세요.
 
 =begin original
 
@@ -2581,7 +2581,7 @@ The following (inefficiently) deletes all the values of %HASH and @ARRAY:
 
 =end original
 
-以下は、%HASH と @ARRAY のすべての値を(非効率的に)削除します:
+아래는 %HASH 와 @ARRAY 의 모든 값을 (비효율적으로) 삭제합니다:
 
     foreach $key (keys %HASH) {
 	delete $HASH{$key};
@@ -2597,7 +2597,7 @@ And so do these:
 
 =end original
 
-そして以下のようにもできます:
+그리고 아래처럼해도 됩니다.
 
     delete @HASH{keys %HASH};
 
@@ -2610,8 +2610,8 @@ or undefining %HASH or @ARRAY:
 
 =end original
 
-しかし、これら二つは単に空リストを代入するか、%HASH や @ARRAY を
-undef するより遅いです:
+그러나 이 2개는 단순히 빈 리스트를 대입하거나 %HASH 나 @ARRAY 를 
+undef 하는 것보다 느립니다.
 
     %HASH = ();		# completely empty %HASH
     undef %HASH;	# forget %HASH ever existed
@@ -2627,9 +2627,9 @@ lookup:
 
 =end original
 
-最終的な操作がハッシュ要素、配列要素、ハッシュスライス、配列スライスの
-いずれかである限りは、EXPR には任意の複雑な式を置くことができることに
-注意してください:
+마지막 조작이 해쉬 요소, 배열 요소, 해쉬 사이즈, 배열 사이즈 중의 
+어느것인한 EXPR 에는 임의의 복잡한 식을 두는 것이 가능하는 것에 
+주의해주세요.
 
     delete $ref->[$x][$y]{$key};
     delete @{$ref->[$x][$y]}{$key1, $key2, @morekeys};
@@ -2652,15 +2652,14 @@ C<die> the way to raise an exception.
 
 =end original
 
-C<eval> の外では、LIST の値を C<STDERR> に出力し、その時点の
-C<$!> (errno) の値で exit します。
-C<$!> の値が C<0> ならば、
-C<<< ($? >> 8) >>> (backtick `command` のステータス) の値で exitします。
-C<<< ($? >> 8) >>> も C<0> であれば、C<255> で exit することになります。
-C<eval> の中で使用すると、エラーメッセージが、
-C<$@> に入れられます。
-C<eval> は中断され、未定義値を返します。
-これが C<die> が例外を発生させる方法です。
+C<eval> 의 밖에서는 LIST 의 값을 C<STDERR> 을 출력하고 그 시점의 
+C<$!> (errno) 의 값으로 exit 합니다.
+C<$!> 의 값이 C<0> 라면 
+C<<< ($? >> 8) >>> (backtick `command` 의 스테이터스) 의 값으로 exit 합니다.
+C<<< ($? >> 8) >>> 도 C<0> 이면, C<255> 로 exit 하게 됩니다.
+C<eval> 의 안에서 사용하면 에러메시지가 C<$@> 에 들어갈 수 있습니.
+C<eval> 은 중단되고 미정의 값을 반환합니다.
+이것이 C<die> 가 예외를 발생시키는 방법입니다.
 
 =begin original
 
@@ -2668,7 +2667,7 @@ Equivalent examples:
 
 =end original
 
-等価な例:
+같은 예:
 
     die "Can't cd to spool: $!\n" unless chdir '/usr/spool/news';
     chdir '/usr/spool/news' or die "Can't cd to spool: $!\n"
@@ -2684,13 +2683,13 @@ C<$.>.  See L<perlvar/"$/"> and L<perlvar/"$.">.
 
 =end original
 
-LIST の最後の要素が改行で終わっていなければ、その時点の
-スクリプト名とスクリプトの行番号、(もしあれば) 
-入力ファイルの行番号と改行文字が、続けて表示されます。
-「入力行番号」("chunk" とも呼ばれます)は
-「行」という概念が現在有効であると仮定しています。
-また特殊変数 C<$.> でも利用可能です。
-L<perlvar/"$/"> と L<perlvar/"$."> も参照してください。
+LIST 의 마지막의 요소가 개행으로 끝나지 않으면, 그 시점의 
+스크립트 이름과 시크립트의 행번호 (만약 있다면) 입력 파일의 
+행번호로 개행문자가 계속해서 표시된디ㅏ.
+"입력행번호" ("chunk" 라고도 불립니다) 는 
+"행" 이라는 개념이 현재 유효하닥고 가정합니다.
+또 특수변수 C<$.> 이라도 이용가능합니다.
+L<perlvar/"$/"> 와 L<perlvar/"$."> 도 참조해주세요.
 
 =begin original
 
@@ -2700,10 +2699,10 @@ Suppose you are running script "canasta".
 
 =end original
 
-ヒント: メッセージの最後を C<", stopped"> のようなもので
-終わるようにしておけば、C<"at foo line 123"> のように
-追加されて、わかりやすくなります。
-"canasta" というスクリプトを実行しているとします。
+힌트 : 메시지의 마지막을 C<", stopped"> 같은 것으로 
+끝나게 해두면, C<"at foo line 123"> 처럼 
+추가되어, 알기 쉬워집니다.
+"canasta" 라는 스크립트를 실행한다고 합니다.
 
     die "/etc/games is no good";
     die "/etc/games is no good, stopped";
@@ -2714,7 +2713,7 @@ produce, respectively
 
 =end original
 
-これは、それぞれ以下のように表示します。
+이것은 각각 아래처럼 표시합니다.
 
     /etc/games is no good at canasta line 123.
     /etc/games is no good, stopped at canasta line 123.
@@ -2725,7 +2724,7 @@ See also exit(), warn(), and the Carp module.
 
 =end original
 
-exit() と warn() と Carp モジュールも参照してください。
+exit() 와 warn() 과 Carp 모듈도 참주해주세요.
 
 =begin original
 
@@ -2735,9 +2734,8 @@ This is useful for propagating exceptions:
 
 =end original
 
-LIST が空で C<$@> が(典型的には前回の eval で)既に値を持っている場合、
-値は C<"\t...propagated"> を追加した後再利用されます。
-これは例外を伝播させる場合に有効です:
+LIST 가 비었고 C<$@> 가 (전형적으로는 앞에서의 eval에서) 이미 값을 가지고 
+있는 경우 이것은 예외를 전달시키는 경우에 유효합니다.
 
     eval { ... };
     die unless $@ =~ /Expected exception/;
@@ -2752,12 +2750,12 @@ were called.
 
 =end original
 
-LIST が空で、C<$@> が C<PROPAGATE> メソッドを含むオブジェクトへの
-リファレンスを含む場合、このメソッドが追加ファイルと行番号を引数として
-呼び出されます。
-返り値は C<$@> の値を置き換えます。
-つまり、C<< $@ = eval { $@->PROPAGATE(__FILE__, __LINE__) }; >> が
-呼び出されたかのようになります。
+LIST 가 비었고 C<$@> 가 C<PROPAGATE> 메소드를 포함하는 메소드로의 
+리퍼런스를 포함한 경우, 이 메소드가 추가 파일과 행번호를 인수로써 
+호출됩니다.
+반환값은 C<$@> 의 값을 바꿉니다.
+즉 C<< $@ = eval { $@->PROPAGATE(__FILE__, __LINE__) }; >> 이 
+호출되게 됩니다.
 
 =begin original
 
@@ -2765,7 +2763,7 @@ If C<$@> is empty then the string C<"Died"> is used.
 
 =end original
 
-C<$@> が空の場合、C<"Died"> が使われます。
+C<$@> 이 빌 경우 C<"Died"> 가 사용됩니다.
 
 =begin original
 
@@ -2782,18 +2780,18 @@ other manipulations.  Here's an example:
 
 =end original
 
-die() はリファレンス引数と共に呼び出すこともできます。
-eval() 内部でこのように呼び出された場合、$@ はリファレンスを持ちます。
-この振る舞いは、例外の性質にすいて任意の状態を管理するオブジェクトを使った
-より複雑な例外ハンドリングの実装を可能にします。
-このようなスキーマは $@ の特定の文字列値を正規表現を使って
-マッチングするときに時々好まれます。
-$@ はグローバル変数で、eval() はオブジェクト実装の内部で
-使われることがあるので、エラーオブジェクトの解析はグローバル変数の
-リファレンスを置き換えないことに注意を払わなければなりません。
-最も簡単な解決方法は、他の操作をする前にリファレンスのローカルコピーを
-作ることです。
-以下に例を示します:
+die() 는 리퍼런스 인수와 함께 호출될 수도 있습니다.
+eval() 내부에서 이렇게 호출된 경우, $@ 은 리퍼런스를 가집니다.
+이 행동은 예외의 성질에 대해 임의의 상태를 관리하는 오브젝트를 사용한 
+보다 복잡한 예외 핸들링의 구성을 가능하게 합니다.
+이런 스키마는 $@ 의 특정 문자열값을 정규표현을 사용해서 매칭할 때에 
+때때로 사용됩니다.
+$@ 은 글로벌 변수로 eval() 은 오브젝트 구성의 내부에서 
+사용될 수 있기 때문에 에러 오브젝트의 해석은 글로벌 변수의 
+리퍼런스를 치환하지 않는 것에 주의를 기울이지 않으면 안됩니다.
+제일 간단한 해결방법은 다른 조작을 하기 전에 리퍼런스의 로컬 카피를 
+만드는 것입니다.
+아래에 예가 있습니다:
 
     use Scalar::Util 'blessed';
 
@@ -2815,10 +2813,10 @@ exception objects.  See L<overload> for details about that.
 
 =end original
 
-perl は捕らえられなかった例外のメッセージを表示する前に文字列化するので、
-このようなカスタム例外オブジェクトの文字列化をオーバーロードしたいと
-思うかもしれません。
-これに関する詳細は L<overload> を参照してください。
+perl 은 확보되지 않은 예외의 메시지를 표시하기 전에 문자열이 되기 때문에,
+이런 커스텀 예외 오브젝트의 문자열화를 오버라이드하고 싶다고 
+생각할지도 모르겠습니다.
+이것에 관한 상세한 내용은 L<overload> 를 참조해주세요.
 
 =begin original
 
@@ -2835,17 +2833,17 @@ nothing in such situations, put
 
 =end original
 
-C<$SIG{__DIE__}> フックをセットすることで、C<die> がその行動を行う
-直前に実行されるコールバックを設定できます。
-結び付けられたハンドラはエラーテキストと共に呼び出され、
-必要なら再び C<die> を呼び出すことでエラーテキストを変更できアス。
-C<%SIG> のエントリをセットする詳細については、L<perlvar/$SIG{expr}> を、
-例については L<"eval BLOCK"> を参照してください。
-この機能はプログラムが終了しようとする前に 1 回だけ実行していましたが、
-現在ではそうではありません --
-C<$SIG{__DIE__}> フックは eval() されたブロック/文字列の中でも
-呼ばれるのです!
-もしそのような状況で何もしなくない時は:
+C<$SIG{__DIE__}> 후크를 설정하는 것으로 C<die> 가 그 행동을 수행하기 
+직전에 실행되는 콜백을 설정할 수 있습니다.
+연결된 핸들러는 에러 텍스트와 함께 호출되어 
+필요하다면 다시 C<die> 를 호출하는 것으로 에러 텍스트를 변경할 수 있습니다.
+C<%SIG> 의 엔트리를 설정하는 자세한 내용에 대해서는 L<perlvar/$SIG{expr}>를 
+예제에 대해서는 L<"eval BLOCK"> 을 참조해주세요.
+이 기능은 프로램이 종료하기 전에 한번만 실행되었지만, 
+현재는 그렇지 않습니다 --
+C<$SIG{__DIE__}> 후크는 eval() 된 블록/문자열의 안에서도 
+호출되는 것입니다!
+만약 그런 상황에서 아무것도 하지 않을 때는:
 
 	die @_ if $^S;
 
@@ -2857,9 +2855,9 @@ behavior may be fixed in a future release.
 
 =end original
 
-をハンドラの最初の行に置いてください(L<perlvar/$^S> を参照してください)。
-これは離れたところで不思議な行動を引き起こすので、
-この直感的でない振る舞いは将来のリリースで修正されるかもしれません。
+을 핸들러의 첫번째 줄에 놓아주세요(L<perlvar/$^S> 를 참조해주세요).
+이것은 떨어진 곳에서 불가사의한 행동을 일으키기 때문에 ,
+이 직감적이지 않은 행동은 장래의 릴리즈에서 수정될지도 모르겠습니다.
 
 =item do BLOCK
 X<do> X<block>
@@ -2874,12 +2872,11 @@ first.)
 
 =end original
 
-実際は関数ではありません。
-BLOCK で示されるコマンド列の最後の値を返します。
-C<while> や C<until> ループ修飾子で修飾すると、
-ループ条件を調べる前に 1 度、BLOCK を実行します。
-(これ以外の実行文は、ループ修飾子により、条件が最初に
-調べられます。)
+실제는 함수가 아닙니다.
+BLOCK 에서 나타내는 커맨드 열의 최후의 값을 반환합니다.
+C<while> 이나 C<until> 루프 수식자로 수식하면 
+루프 조건을 조사하기 전에 한번 BLOCK 을 실행합니다.
+(이 이외의 실행문은 루프 수식자에 의해 조건이 최초에 조사됩니다.)
 
 =begin original
 
@@ -2889,10 +2886,10 @@ See L<perlsyn> for alternative strategies.
 
 =end original
 
-C<do BLOCK> はループとしては I<扱われません>。
-従って、C<next>, C<last>, C<redo> といったループ制御文は
-ブロックから抜けたり再開することはできません。
-その他の戦略については L<perlsyn> を参照して下さい。
+C<do BLOCK> 은 루프로써 I<취급되지 않습니다>.
+따라서 C<next>, C<last>, C<redo> 같은 루프 제어문은 
+블록에서 빠지거나 재개할 수는 없습니다.
+그 밖의 전략에 대해서는 L<perlsyn> 을 참조해주세요.
 
 =item do SUBROUTINE(LIST)
 X<do>
@@ -2903,8 +2900,8 @@ This form of subroutine call is deprecated.  See L<perlsub>.
 
 =end original
 
-この形のサブルーチン呼び出しは非推奨です。
-L<perlsub> を参照してください。
+이 형태의 서브루틴 호출은 비추천입니다.
+L<perlsub> 를 참조해주세요.
 
 =item do EXPR
 X<do>
@@ -2916,8 +2913,8 @@ file as a Perl script.
 
 =end original
 
-EXPR の値をファイル名として用い、そのファイルの中身を
-Perl のスクリプトとして実行します。
+EXPR 의 값을 파일 이름으로 사용하고 그 파일 안을 
+Perl 스크립트로 실행합니다.
 
     do 'stat.pl';
 
@@ -2927,7 +2924,7 @@ is just like
 
 =end original
 
-は以下のものと同じようなものですが、
+는 아래와 같은 것입니다만,
 
     eval `cat stat.pl`;
 
