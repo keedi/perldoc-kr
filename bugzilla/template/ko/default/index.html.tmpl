@@ -61,7 +61,7 @@ function addSidebar() {
   <div id="new_release">
     [% IF release.data %]
       [% IF release.deprecated %]
-        <p>[% terms.Bugzilla %] [%+ release.deprecated FILTER html %](을)를 더 이상
+        <p>[% terms.Bugzilla %] [%+ release.deprecated FILTER html %]를 더 이상
 	지원하지 않습니다. 시스템 보안을 유지하기 위해 판올림 하세요.</p>
       [% END %]
 
