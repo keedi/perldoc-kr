@@ -64,16 +64,16 @@
         <input type="hidden" name="remtype" value="asnamed">
         <input type="hidden" name="list_of_bugs" value="1">
         <select id="lob_action" name="action" onchange="update_text();">
-          <option value="add">Add</option>
+          <option value="add">더하기</option>
           [% IF lists_of_bugs.size %]
-            <option value="remove">Remove</option>
+            <option value="remove">지우기</option>
           [% END %]
         </select>
 
         [% IF Param('docs_urlbase') %]
-          <a href="[% docs_urlbase FILTER html %]query.html#individual-buglists">the named tag</a>
+          <a href="[% docs_urlbase FILTER html %]query.html#individual-buglists">이름달린 꼬리표</a>
         [% ELSE %]
-          the named tag
+          이름달린 꼬리표
         [% END %]
 
         [% IF lists_of_bugs.size %]
@@ -83,17 +83,17 @@
             [% END %]
           </select>
         [% END %]
+        [%+ terms.bugs %]
+        <input type="text" name="bug_ids" size="12" maxlength="80"
+         [%- " value=\"$bugids\"" IF bugids %]>
+        <span id="lob_direction">에</span>
         <span id="lob_new_query_text">
-          [% " or create and add the tag" IF lists_of_bugs.size %]
+          [% "꼬리표를 만들고 더하기" IF lists_of_bugs.size %]
           <input class="txt" type="text" id="lob_newqueryname"
                  size="20" maxlength="64" name="newqueryname"
                  onkeyup="manage_old_lists();">
         </span>
-        <span id="lob_direction">to</span>
-        [%+ terms.bugs %]
-        <input type="text" name="bug_ids" size="12" maxlength="80"
-         [%- " value=\"$bugids\"" IF bugids %]>
-        <input type="submit" value="Commit" id="commit_list_of_bugs">
+        <input type="submit" value="확인" id="commit_list_of_bugs">
       </form>
     </li></ul>
   </li>
