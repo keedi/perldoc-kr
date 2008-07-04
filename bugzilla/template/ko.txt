@@ -4,7 +4,6 @@
 *maintainer     관리자
 *obscene        obscene
 *optional       optional
-*pondering      pondering
 *session        세션
 *stagger        stagger
 account         사용자
@@ -130,6 +129,7 @@ parameter       매개변수
 password        열쇠글
 platform        플랫폼
 plugin          플러그인
+pondering       *(숙고하다. 생각하다)
 preference      환경설정
 prettier        더 보기좋음
 pri             중요도
