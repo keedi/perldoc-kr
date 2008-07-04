@@ -53,7 +53,7 @@
 [% END %]
 
 [% IF approved or unapproved %]
-  <p>[% approved.size %] 개의 가벼운 글귀를 승인 받았습니다. [% unapproved.size %] 개의 가벼운 글귀는 승인받지 못했습니다.</p>
+  <p>[% approved.size %] 개의 가벼운 글귀를 확인했습니다. [% unapproved.size %] 개의 가벼운 글귀는 확인하지 못했습니다.</p>
 [% END %]
 
 
@@ -68,7 +68,7 @@
     지루한(obscence 하거나 공격적이지 않은 내용으로 부탁합니다.)
     내용을 넣고 버튼을 눌러주세요.
     [% IF Param("quip_list_entry_control") == "moderated" AND !user.groups.admin %]
-      여러분의 가벼운 글귀는 사용하기 전에 승인받아야 합니다.
+      여러분의 가벼운 글귀는 사용하기 전에 확인받아야 합니다.
     [% END %]
   </p>
 
@@ -98,9 +98,9 @@
   [% ELSE %]
     <h2>존재하는 가벼운 글귀 고치기:</h2>
     <p>
-      <strong>주의:</strong> 승인한 가벼운 글귀만 나타납니다.
+      <strong>주의:</strong> 확인한 가벼운 글귀만 나타납니다.
       'quip_list_entry_control' 인자를 <q>open</q>으로 설정할 경우
-      입력하는 가벼운 글귀를 자동으로 승인합니다.
+      입력하는 가벼운 글귀를 자동으로 확인합니다.
     </p>
     <form name="editform" method="post" action="quips.cgi">
       <input type="hidden" name="action" value="approve">
@@ -108,8 +108,8 @@
         <thead><tr>
           <th>가벼운 글귀</th>
           <th>저자</th>
-          <th>Action</th>
-          <th>승인</th>
+          <th>동작</th>
+          <th>확인</th>
         </tr></thead><tbody>
         [% FOREACH quipid = quipids %]
           <tr>
