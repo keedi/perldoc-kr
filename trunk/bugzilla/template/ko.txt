@@ -13,8 +13,10 @@ add             더하기
 additional comment 추가 의견
 administration  관리자측, 관리
 administrator   관리자
+alias           별명
 appropriate     적당한, 해당하는
 approve         승인하다
+assigned        할당함
 assignee        담당자
 author          저자
 bonk            누르다(원래는 퉁 치다 라는 뜻)
@@ -27,20 +29,26 @@ choose          고르다
 classification  분류
 clever          창의적인
 click           누르세요
+closed          닫음
 column          세로 항목
 comment         의견
 comments box    의견란
 commit          확인
 component       구성 요소
+configured      설정하다
 confirm         승인
 contact         연락처
+continue        계속
 create account  사용자 등록
+creation time   생성 시간
 critical        위험한
+date/time       날짜/시간
 deadline        마감일
 delete          지우다, 지우기
 described       설명하기
 description     설명
 distribute      나누다
+duplicate       복제
 edit            고치기
 effective       효과적인
 email           전자우편
@@ -52,29 +60,38 @@ fixed           끝냄
 footer          꼬리말
 form            입력 서식
 format          형식
+free text       자유로운 글
 full summary    요약 전문
 full text       전문
 group           집단
 guide           길잡이
 guideline       길잡이
+hardware        하드웨어
 header          머리말
 headline        주요 제목
 help            도움말
+hours left      남은 시간
+hours worked    일한 시간
 id              아이디
 impersonate     ~인 척하다
 impersonated user   대역 사용자
 impersonation   ~인 척하기
 inactive        비활성
 indicate        나타내다
+invalid         무효한
 item            항목
 keyword         주요 단어
 lapse           효력이 없어지다.
+large text box  큰 글 상자
 list            목록
 login           로그인
 logout          로그아웃
 match           일치하다
 milestone       지점
 minimal         최소한의
+moved           옮김
+multiple selection  다중 선택
+multiple selection box  다중 선택 상자
 normal          일반
 note            주의
 notice          알림
@@ -101,18 +118,26 @@ query           질의
 quick search    빠른 검색
 quip            가벼운 글귀
 release date    배포 날짜
+releated documentation  관련 문서
 relevant        관련있다(관련된 이지만 능동으로)
 relevant product    관련제품
 remaining time  남은 시간
 remeber         저장
 remove          지우기
+reopened        새로 열림
 reporter        보고자
-review         관찰
+requestee       요청받는 사람
+requester       요청자
+resolution      결정
+resolved        결심함
+review          재검토
+revise          고치다
 same            같은
 save            저장, 저장하기
 search form     검색 서식
 section         부분
 select          고르다
+setting         설정
 sev             엄격도
 severity        엄격도
 specify         열거
@@ -130,16 +155,23 @@ terms.Bugzilla      사이트 이름(예: Emstone Bugzilla)
 terms.bug       버그
 testing         테스트
 text            본문
+text box        글 상자
 tracking        추적
+type            형식
 unapproved      승인받지 않은
 uncheck all     모두 해제
+unconfirmed     미확인
+unknown type    모르는 형식
 update          판올림, 갱신
 user            사용자
 valid           유효한
+verified        검증함
 version         버전
 view            보기
 vote            투표, 표
 vote for this XXX   현재 XXX에 투표하기
 voting          투표
 weighted vote   가중투표(복수투표)
+wontfix         끝내지 않을것임
 word            낱말
+worksforme      내게만 발생함
