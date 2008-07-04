@@ -110,14 +110,14 @@ function addSidebar() {
     <a href="page.cgi?id=release-notes.html">release notes</a>를 보세요.
     [%+ terms.Bugzilla %]에 대한 자세한 내용과 사용하는 방법을 알기 위해
     <a href="[% docs_urlbase FILTER html %]using.html">
-    [%- terms.Bugzilla %] 사용자 길잡이</a>를 읽어보세요.
+    [%- terms.Bugzilla %] 사용 설명서</a>를 읽어보세요.
     </p>
 
   <p>가장 자주 사용하는 기능:</p>
   <ul>
-    <li id="query"><a href="query.cgi">지금 있는 [% terms.bug %] 보고서 찾기</a></li>
-    <li id="enter-bug"><a href="enter_bug.cgi">새로운 [% terms.bug %] 보고서 작성하기</a></li>
-    <li id="report"><a href="report.cgi">보고서와 도표 요약하기</a></li>
+    <li id="query"><a href="query.cgi">현재 [% terms.bug %] 검색하기</a></li>
+    <li id="enter-bug"><a href="enter_bug.cgi">새로운 [% terms.bug %] 등록하기</a></li>
+    <li id="report"><a href="report.cgi">보고서나 도표 요약하기</a></li>
 [% IF user.id %]
     <li id="userprefs"><a href="userprefs.cgi">열쇠글 변경 또는 사용자 환경설정</a></li>
   [% IF user.authorizer.can_logout %]
@@ -148,7 +148,7 @@ function addSidebar() {
                   { alert('하나 이상의 검색어를 입력하세요.');
                     return false; } return true;">
   <div>
-    <p>[% terms.abug %] #(번호)이나 검색할 낱말을 입력하세요:</p>
+    <p>[% terms.abug %] #(번호)나 검색할 낱말을 입력하세요:</p>
     <input id="quicksearch" type="text" name="빠른 검색">
     <input id="find" type="submit" value="찾기">
     <a href="page.cgi?id=quicksearch.html">[도움말]</a>
