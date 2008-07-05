@@ -71,7 +71,6 @@ while ( my $line = <> ) {
 
             LOOP_CODE_LINES:
             while ( my $sub_line = <> ) {
-                chomp $sub_line;
                 last LOOP_CODE_LINES if $sub_line =~ m/$TAG{code}/;
                 push @sub_lines, convert_escaped_char( $sub_line );
             }
@@ -185,7 +184,7 @@ END_SECTION
 sub code_markup {
     my ( @lines ) = @_;
 
-    my $concat_line = join "\n", @lines;
+    my $concat_line = join q{}, @lines;
 
     my $str = <<"END_SECTION";
 <div>
