@@ -1,0 +1,321 @@
+# Section 1 #
+
+괄호 이야기
+괄호는 언제 쓰나?
+역시 쉽게 쉽게...
+핵심!
+
+괄호는 빼자!!
+언제?
+빌트인 함수
+
+그외에는?
+언제나 넣자! :-)
+
+예를 들어보면...
+내가 만든 함수
+우선 순위가 심히 걱정된다면...
+함수를 한줄에 여러개 쓸때?
+괄호를 좋아할 때
+괄호를 쓰자!!!
+
+결론...
+한 줄에 하나 쓰는 빌트인 함수를 빼고는 괄호를 쓰자!
+
+
+
+# Section 2 #
+
+Oh! My my...
+my 란?
+쉽게 쉽게~
+거짓말 좀 보태고...
+
+C 언어를 예로 들면
+auto
+
+.code
+static int swap(int *n1, int *n2)
+{
+    int tmp;
+
+    tmp = *n1;
+    *n1 = *n2;
+    *n2 = tmp;
+}
+.code
+
+.code
+static int swap(int *n1, int *n2)
+{
+    auto int tmp;
+
+    tmp = *n1;
+    *n1 = *n2;
+    *n2 = tmp;
+}
+.code
+
+펄로 생각해보면?
+
+.code
+static int swap(int *n1, int *n2)
+{
+    auto int tmp;
+
+    tmp = *n1;
+    *n1 = *n2;
+    *n2 = tmp;
+}
+.code
+
+.code
+static int swap(int *n1, int *n2)
+{
+    my int tmp;
+
+    tmp = *n1;
+    *n1 = *n2;
+    *n2 = tmp;
+}
+.code
+
+.code
+static int swap(int *n1, int *n2)
+{
+    my tmp;
+
+    tmp = *n1;
+    *n1 = *n2;
+    *n2 = tmp;
+}
+.code
+
+.code
+static int swap(int *n1, int *n2)
+{
+    my $tmp;
+
+    $tmp = *n1;
+    *n1 = *n2;
+    *n2 = $tmp;
+}
+.code
+
+.code
+swap( \$num1, \$num2 );
+
+sub swap {
+    my ( $n1, $n2 ) = @_;
+    my $tmp;
+
+    $tmp = $$n1;
+    $$n1 = $$n2;
+    $$n2 = $tmp;
+}
+.code
+
+물론...
+.code
+# Let's Swap!
+( $num1, $num2 ) = ( $num2, $num1 );
+.code
+
+auto vs. my?
+C 언어의 auto와 my 다른점은?
+파일 전체 영향주기 가능
+
+.code
+my $like_static_global;
+
+{
+    my $like_auto;
+
+    {
+        my $like_another_auto;
+    }
+}
+.code
+
+
+
+# Section 3 #
+
+따옴표 안에서 값 출력하기!
+유용한가?
+별로~
+그런데 왜?
+100번에 1번 정도는 유용할 때가...
+
+.code
+print "30 + 50 = ", 30 + 50, "\n";
+
+---
+30 + 50 = 80
+.code
+
+.code
+print "30 + 50 = 30 + 50\n";
+
+---
+30 + 50 = 30 + 50
+.code
+
+.code
+print "30 + 50 = ${30 + 50}\n";
+
+---
+Can't use string ("80") as a SCALAR ref
+while "strict refs" in use at test.pl line 24.
+.code
+
+.code
+print "30 + 50 = ${ \(30 + 50) }\n";
+
+---
+30 + 50 = 80
+.code
+
+:-)
+We got the POWER!!
+
+.code
+my $num1 = 30;
+my $num2 = 50;
+print "$num1 + $num2 = ", $num1 + $num2, "\n";
+
+---
+30 + 50 = 80
+.code
+
+이제!
+
+.code
+my $num1 = 30;
+my $num2 = 50;
+print "$num1 + $num2 = ${ \( $num1 + $num2 ) }\n";
+
+---
+30 + 50 = 80
+.code
+
+CooL~!
+
+함수는?
+
+.code
+sub add_num { $_[0] + $_[1] }
+my $num1 = 30;
+my $num2 = 50;
+print "$num1 + $num2 = ${ \( add_num($num1, $num2) ) }\n";
+
+---
+30 + 50 = 80
+.code
+
+
+
+# Section 4 #
+
+상수 문제
+고전적인 방법
+Use Constant!
+.code
+use constant PI => 4 * atan2(1, 1);
+.code
+요즘은 별로...
+bareword 로 인한 불편함
+
+논쟁의 여지는 있지만...
+추천하고 싶은 모듈은?
+Use Read Only!
+.code
+use Readonly;
+
+Readonly my $PI => 4 * atan2(1, 1);
+.code
+
+
+
+# Section 5 #
+
+리스트 관련 기능?
+Use List Utility!
+.code
+use List::Util;
+.code
+perldoc List::Util
+
+
+
+# Section 6 #
+
+스위치?
+Use Switch!
+.code
+use Switch;
+.code
+
+소스 필터를 싫어한다면?
+사용하지 마세요!
+왠지 찜찜하다면...
+사용하지 마세요!
+(물론 전 사용합니다~ :-)
+
+다른 괜찮은 모듈 소개해주세요!
+Use Perlish Switch!
+.code
+use Switch::Perlish;
+.code
+
+.code
+    switch $line, sub {
+        case qr/$TAG{code}/, sub {
+            # 코드 태그 처리
+        };
+        case qr/$TAG{text}/, sub {
+            # 텍스트 태그 처리
+            }
+        };
+        case qr/$TAG{ul}/, sub {
+            # 순서 없는 리스트 태그 처리
+        };
+        case qr/$TAG{img}/, sub {
+            # 이미지 태그 처리
+        };
+        default sub {
+            # 일반 적인 경우
+        };
+    };
+.code
+
+vi mkslide.pl
+:-)
+
+
+
+# Section 7 #
+
+모듈 사용할때 함수 사용?
+Cool::Module 의 foo, bar 함수 사용하기?
+
+.code
+use Cool::Module 'foo';
+use Cool::Module 'bar';
+.code
+
+.code
+use Cool::Module ('foo', 'bar');
+.code
+
+.code
+use Cool::Module qw(foo bar);
+.code
+
+
+
+# Section 8 #
+
+회사에서 사용하고 있는 Perl의 예?
+Makefile 과 연동한 빌드
+Visual C 와 연동한 빌드
