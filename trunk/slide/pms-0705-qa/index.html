@@ -1,0 +1,637 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/x html1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<link rel="stylesheet" href="slide.css" type="text/css" />
+<title>재미있는 이야기들</title>
+<script language="javascript" src="slide.js"></script>
+</head>
+
+<body>
+<table id="frame" class="frame">
+<tr>
+<td colspan="3" id="screen" height="90%"
+class="screen" align="center" valign="center">
+</td>
+</tr>
+<tr>
+<td nowrap align="left"><a href="javascript:slide.prev()">prev</a>
+<input id="translate" type="checkbox" onclick="slide.go()">Translate</td>
+<td width="100%"></td>
+<td nowrap align="right">Page
+<input id="pagenum" type="text" size="2" value="0"
+onkeyup="slide.go($('pagenum').value)" onclick="$('pagenum').select()">
+<a href="javascript:slide.next()">next</a></td>
+</tr>
+</table>
+
+<div id="slides">
+
+<div>
+<h1>재미있는 이야기들</h1>
+</div>
+
+<div>
+<p>
+by <a href="mailto:keedi@naver.com">keedi (김도형)</a>
+</p>
+<p>
+Emstone<br>
+Perlmania
+</p>
+</div>
+
+<div>
+<p>문서는 이곳에서도<br>볼 수 있습니다:</p>
+<p><a target="_blank" href="http://localhost/index.html">http://localhost/index.html</a></p>
+</div>
+
+<div>
+<h1># Section 1 #</h1>
+</div>
+
+<div>
+<h1>괄호 이야기</h1>
+</div>
+
+<div>
+<h1>괄호는 언제 쓰나?</h1>
+</div>
+
+<div>
+<h1>역시 쉽게 쉽게...</h1>
+</div>
+
+<div>
+<h1>핵심!</h1>
+</div>
+
+<div>
+<h1>괄호는 빼자!!</h1>
+</div>
+
+<div>
+<h1>언제?</h1>
+</div>
+
+<div>
+<h1>빌트인 함수</h1>
+</div>
+
+<div>
+<h1>그외에는?</h1>
+</div>
+
+<div>
+<h1>언제나 넣자! :-)</h1>
+</div>
+
+<div>
+<h1>예를 들어보면...</h1>
+</div>
+
+<div>
+<h1>내가 만든 함수</h1>
+</div>
+
+<div>
+<h1>우선 순위가 심히 걱정된다면...</h1>
+</div>
+
+<div>
+<h1>함수를 한줄에 여러개 쓸때?</h1>
+</div>
+
+<div>
+<h1>괄호를 좋아할 때</h1>
+</div>
+
+<div>
+<h1>괄호를 쓰자!!!</h1>
+</div>
+
+<div>
+<h1>결론...</h1>
+</div>
+
+<div>
+<h1>한 줄에 하나 쓰는 빌트인 함수를 빼고는 괄호를 쓰자!</h1>
+</div>
+
+<div>
+<h1># Section 2 #</h1>
+</div>
+
+<div>
+<h1>Oh! My my...</h1>
+</div>
+
+<div>
+<h1>my 란?</h1>
+</div>
+
+<div>
+<h1>쉽게 쉽게~</h1>
+</div>
+
+<div>
+<h1>거짓말 좀 보태고...</h1>
+</div>
+
+<div>
+<h1>C 언어를 예로 들면</h1>
+</div>
+
+<div>
+<h1>auto</h1>
+</div>
+
+<div>
+<pre>
+static int swap(int *n1, int *n2)
+{
+    int tmp;
+
+    tmp = *n1;
+    *n1 = *n2;
+    *n2 = tmp;
+}
+
+</pre>
+</div>
+
+<div>
+<pre>
+static int swap(int *n1, int *n2)
+{
+    auto int tmp;
+
+    tmp = *n1;
+    *n1 = *n2;
+    *n2 = tmp;
+}
+
+</pre>
+</div>
+
+<div>
+<h1>펄로 생각해보면?</h1>
+</div>
+
+<div>
+<pre>
+static int swap(int *n1, int *n2)
+{
+    auto int tmp;
+
+    tmp = *n1;
+    *n1 = *n2;
+    *n2 = tmp;
+}
+
+</pre>
+</div>
+
+<div>
+<pre>
+static int swap(int *n1, int *n2)
+{
+    my int tmp;
+
+    tmp = *n1;
+    *n1 = *n2;
+    *n2 = tmp;
+}
+
+</pre>
+</div>
+
+<div>
+<pre>
+static int swap(int *n1, int *n2)
+{
+    my tmp;
+
+    tmp = *n1;
+    *n1 = *n2;
+    *n2 = tmp;
+}
+
+</pre>
+</div>
+
+<div>
+<pre>
+static int swap(int *n1, int *n2)
+{
+    my $tmp;
+
+    $tmp = *n1;
+    *n1 = *n2;
+    *n2 = $tmp;
+}
+
+</pre>
+</div>
+
+<div>
+<pre>
+swap( \$num1, \$num2 );
+
+sub swap {
+    my ( $n1, $n2 ) = @_;
+    my $tmp;
+
+    $tmp = $$n1;
+    $$n1 = $$n2;
+    $$n2 = $tmp;
+}
+
+</pre>
+</div>
+
+<div>
+<h1>물론...</h1>
+</div>
+
+<div>
+<pre>
+# Let's Swap!
+( $num1, $num2 ) = ( $num2, $num1 );
+
+</pre>
+</div>
+
+<div>
+<h1>auto vs. my?</h1>
+</div>
+
+<div>
+<h1>C 언어의 auto와 my 다른점은?</h1>
+</div>
+
+<div>
+<h1>파일 전체 영향주기 가능</h1>
+</div>
+
+<div>
+<pre>
+my $like_static_global;
+
+{
+    my $like_auto;
+
+    {
+        my $like_another_auto;
+    }
+}
+
+</pre>
+</div>
+
+<div>
+<h1># Section 3 #</h1>
+</div>
+
+<div>
+<h1>따옴표 안에서 값 출력하기!</h1>
+</div>
+
+<div>
+<h1>유용한가?</h1>
+</div>
+
+<div>
+<h1>별로~</h1>
+</div>
+
+<div>
+<h1>그런데 왜?</h1>
+</div>
+
+<div>
+<h1>100번에 1번 정도는 유용할 때가...</h1>
+</div>
+
+<div>
+<pre>
+print "30 + 50 = ", 30 + 50, "\n";
+
+---
+30 + 50 = 80
+
+</pre>
+</div>
+
+<div>
+<pre>
+print "30 + 50 = 30 + 50\n";
+
+---
+30 + 50 = 30 + 50
+
+</pre>
+</div>
+
+<div>
+<pre>
+print "30 + 50 = ${30 + 50}\n";
+
+---
+Can't use string ("80") as a SCALAR ref
+while "strict refs" in use at test.pl line 24.
+
+</pre>
+</div>
+
+<div>
+<pre>
+print "30 + 50 = ${ \(30 + 50) }\n";
+
+---
+30 + 50 = 80
+
+</pre>
+</div>
+
+<div>
+<h1>:-)</h1>
+</div>
+
+<div>
+<h1>We got the POWER!!</h1>
+</div>
+
+<div>
+<pre>
+my $num1 = 30;
+my $num2 = 50;
+print "$num1 + $num2 = ", $num1 + $num2, "\n";
+
+---
+30 + 50 = 80
+
+</pre>
+</div>
+
+<div>
+<h1>이제!</h1>
+</div>
+
+<div>
+<pre>
+my $num1 = 30;
+my $num2 = 50;
+print "$num1 + $num2 = ${ \( $num1 + $num2 ) }\n";
+
+---
+30 + 50 = 80
+
+</pre>
+</div>
+
+<div>
+<h1>CooL~!</h1>
+</div>
+
+<div>
+<h1>함수는?</h1>
+</div>
+
+<div>
+<pre>
+sub add_num { $_[0] + $_[1] }
+my $num1 = 30;
+my $num2 = 50;
+print "$num1 + $num2 = ${ \( add_num($num1, $num2) ) }\n";
+
+---
+30 + 50 = 80
+
+</pre>
+</div>
+
+<div>
+<h1># Section 4 #</h1>
+</div>
+
+<div>
+<h1>상수 문제</h1>
+</div>
+
+<div>
+<h1>고전적인 방법</h1>
+</div>
+
+<div>
+<h1>Use Constant!</h1>
+</div>
+
+<div>
+<pre>
+use constant PI =&gt; 4 * atan2(1, 1);
+
+</pre>
+</div>
+
+<div>
+<h1>요즘은 별로...</h1>
+</div>
+
+<div>
+<h1>bareword 로 인한 불편함</h1>
+</div>
+
+<div>
+<h1>논쟁의 여지는 있지만...</h1>
+</div>
+
+<div>
+<h1>추천하고 싶은 모듈은?</h1>
+</div>
+
+<div>
+<h1>Use Read Only!</h1>
+</div>
+
+<div>
+<pre>
+use Readonly;
+
+Readonly my $PI =&gt; 4 * atan2(1, 1);
+
+</pre>
+</div>
+
+<div>
+<h1># Section 5 #</h1>
+</div>
+
+<div>
+<h1>리스트 관련 기능?</h1>
+</div>
+
+<div>
+<h1>Use List Utility!</h1>
+</div>
+
+<div>
+<pre>
+use List::Util;
+
+</pre>
+</div>
+
+<div>
+<h1>perldoc List::Util</h1>
+</div>
+
+<div>
+<h1># Section 6 #</h1>
+</div>
+
+<div>
+<h1>스위치?</h1>
+</div>
+
+<div>
+<h1>Use Switch!</h1>
+</div>
+
+<div>
+<pre>
+use Switch;
+
+</pre>
+</div>
+
+<div>
+<h1>소스 필터를 싫어한다면?</h1>
+</div>
+
+<div>
+<h1>사용하지 마세요!</h1>
+</div>
+
+<div>
+<h1>왠지 찜찜하다면...</h1>
+</div>
+
+<div>
+<h1>사용하지 마세요!</h1>
+</div>
+
+<div>
+<h1>(물론 전 사용합니다~ :-)</h1>
+</div>
+
+<div>
+<h1>다른 괜찮은 모듈 소개해주세요!</h1>
+</div>
+
+<div>
+<h1>Use Perlish Switch!</h1>
+</div>
+
+<div>
+<pre>
+use Switch::Perlish;
+
+</pre>
+</div>
+
+<div>
+<pre>
+    switch $line, sub {
+        case qr/$TAG{code}/, sub {
+            # 코드 태그 처리
+        };
+        case qr/$TAG{text}/, sub {
+            # 텍스트 태그 처리
+            }
+        };
+        case qr/$TAG{ul}/, sub {
+            # 순서 없는 리스트 태그 처리
+        };
+        case qr/$TAG{img}/, sub {
+            # 이미지 태그 처리
+        };
+        default sub {
+            # 일반 적인 경우
+        };
+    };
+
+</pre>
+</div>
+
+<div>
+<h1>vi mkslide.pl</h1>
+</div>
+
+<div>
+<h1>:-)</h1>
+</div>
+
+<div>
+<h1># Section 7 #</h1>
+</div>
+
+<div>
+<h1>모듈 사용할때 함수 사용?</h1>
+</div>
+
+<div>
+<h1>Cool::Module 의 foo, bar 함수 사용하기?</h1>
+</div>
+
+<div>
+<pre>
+use Cool::Module 'foo';
+use Cool::Module 'bar';
+
+</pre>
+</div>
+
+<div>
+<pre>
+use Cool::Module ('foo', 'bar');
+
+</pre>
+</div>
+
+<div>
+<pre>
+use Cool::Module qw(foo bar);
+
+</pre>
+</div>
+
+<div>
+<h1># Section 8 #</h1>
+</div>
+
+<div>
+<h1>회사에서 사용하고 있는 Perl의 예?</h1>
+</div>
+
+<div>
+<h1>Makefile 과 연동한 빌드</h1>
+</div>
+
+<div>
+<h1>Visual C 와 연동한 빌드</h1>
+</div>
+
+<div>
+<h1>Any Question?</h1>
+</div>
+
+<div>
+<h1>Thank you!</h1>
+</div>
+
+</div><!--contents-->
+</body>
+</html>
