@@ -1,0 +1,138 @@
+왜 Perl이 Support Language?
+경쟁회사에서 나온 신제품;;
+어이쿠 선수를 치다니?!
+
+물이라도 흐려놓자;;
+자 어서 '-')/
+
+위에서 내린 결정은
+JEEN님도 모르게 이루어 졌고;;
+묵묵히 소화해 내야 하는데...
+
+120개나 되는 리포트 페이지!!
+단순한 HTML 페이지가 아니다;;
+HTML에 CSS에 JS 그리고 PHP, MySQL....
+
+새로운 템플레이트에 꾸겨 넣기!!
+120개 + 기타등등을 다 열어서 하라구요?
+허걱
+... 싫어요
+는 말 못했구요...
+
+자 이때를 위한 펄이 아니신지요
+그래서 나온게...
+
+현실감을 위해 코드 그대로 공개 하겠습니다
+이번에 사용된 템플레이트 생성기
+logger_template.pl
+'-') < 하아아아악
+
+Regexp #1
+.code
+# a compiled list of regular expression list
+# report_code line
+my $regex_rpt = qr{\$report_code\s*=\s*["']\d*["']\s*;};
+
+# elminate inc_reportHeader
+my $regex_header = qr{include.+inc_reportHeader\.tsp.+\n};
+
+# elminate inc_reportFooter
+# my $regex_footer = qr{<?.+include.+inc_reportFooter\.tsp.+\n};
+
+# remove irritating comments
+my $regex_comments = qr{\/\/\s*(리포트 코드번호|REPORT 시작)\n};
+.code
+
+Regexp #2
+.code
+# trim off what we dont want
+$logger_src =~ s/$regex_header//;
+# $logger_src =~ s/$regex_footer//;
+# $logger_src =~ s/\/report/\/report_2008/g;
+# $logger_src =~ s/\/report/\/report_2008/g;
+$logger_src =~ s/inc_reportFooter\.tsp/report_footer\.inc/;
+$logger_src =~ s/\$DOCUMENT_ROOT\.\"\/report\//\"/g;
+
+# $logger_src =~ s/$regex_rpt// and $report_code_line = $&;
+$logger_src =~ s/$regex_comments//g;
+# $logger_src =~ s/$regex_make_header//;
+# prepend report_code declaration to the report_template
+$report_src =~ s/<\?/<\?\n\t$header_frag\n/;
+.code
+
+
+Slurping #1
+.code
+{
+  local $/;
+  open my $fd_template, '+<', $template_file
+    or die "Couldn't open such template file: $!";
+
+  $report_template = <$fd_template>;
+
+  close $fd_template;
+}
+.code
+
+Slurping #2
+.code
+open my $fd_logger, '<', $logger_file
+  or die "Couldn't open such logger file: $!";
+my $logger_src = do { local $/; <$fd_logger> };
+.code
+
+HERE DOC
+.code
+    my $contents =<<REPORT;
+$report_src
+$logger_src
+REPORT
+.code
+
+saving everying into a file
+.code
+print $fd_report $contents;
+.code
+
+
+one-liner 치환 작업들...
+.code
+perl -i.bak -ple 's/(images\/)/<\?=\$images_dir;\?>\//g'
+
+perl -i.bak -ple 's/include\s*\(\s*\$DOCUMENT_ROOT\s*\.
+\s*\"\/report\//include(\"/' trk_uniqueMuser.tsp
+
+perl -i.bak -ple 's/include\s*\(\s*\$DOCUMENT_ROOT\s*\.
+\s*\"\/report\/inc_reportMidFunc\.tsp\"\s*\);/include\
+( \"inc_reportMidFunc\.tsp\" \);/' trk_uniqueMuser.tsp
+
+perl -i.bak -ple 's/include\s*\(\s*\$DOCUMENT_ROOT\s*\.
+\s*\"\/report\//include(\"/' trk_uniqueMuser.tsp
+include ( $DOCUMENT_ROOT."/report/
+.code
+
+약간의 쉘 스크립트
+.code
+for file in *.tsp do;
+ perl -ne '@L=<>;last}{$report_str = join("", @L);
+ $report_str =~ /report_code.*?(\d{4}).*draw_main_day.*/s and print "$1|"' $file;
+done
+
+for file in `grep -l inc_fixSessCnt *` ;do 
+    perl -i.bak -ple 's|include\( "inc_fixSessCnt.tsp" \);||' $file;
+done
+.code
+
+아쉬웠던 점들... ㅜㅡ
+미숙한 정규식
+연습이 모자른 one-liner (for, grep, glob 등에 의존)
+코드 구현 속도...
+정리가 안된 스니펫들....
+개발 환경 (디렉토리 날린일;;)
+
+code generation...
+
+자신만의 ToolBox를 정하고 그거에 대한 연마와 문서화를 해 보기
+
+귀찮아서 안하게 될 작업을 하게끔 해준다는것!
+좀더 긍정적으로 더 많은 시도를 하게끔 해준다는것!
