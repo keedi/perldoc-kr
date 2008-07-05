@@ -30,9 +30,11 @@ use Switch::Perlish;
 
 Readonly my $CONF_FILE => 'slide.conf';
 Readonly my %TAG       => (
-	code => qr{ \.code }x,
-	text => qr{ \.text }x,
-	img  => qr{ \.img  }x,
+	code => qr{ ^ \.code    }x,
+	text => qr{ ^ \.text    }x,
+	img  => qr{ ^ \.img     }x,
+	ul   => qr{ ^ \s* [*+-] }x,
+	ol   => qr{ ^ \d+ \.    }x,
 );
 Readonly my $DEFAULT_CONF => <<'END_DEFAULT_CONF';
 ---
@@ -63,31 +65,48 @@ while ( my $line = <> ) {
     $line = convert_escaped_char( $line );
 
     switch $line, sub {
-        case qr/^$TAG{code}/, sub {
+        case qr/$TAG{code}/, sub {
             # 코드 태그 처리
             my @sub_lines;
 
             LOOP_CODE_LINES:
             while ( my $sub_line = <> ) {
                 chomp $sub_line;
-                last LOOP_CODE_LINES if $sub_line =~ m/^$TAG{code}/;
+                last LOOP_CODE_LINES if $sub_line =~ m/$TAG{code}/;
                 push @sub_lines, convert_escaped_char( $sub_line );
             }
             print "\n", code_markup(@sub_lines);
         };
-        case qr/^$TAG{text}/, sub {
+        case qr/$TAG{text}/, sub {
             # 텍스트 태그 처리
             my @sub_lines;
 
             LOOP_TEXT_LINES:
             while ( my $sub_line = <> ) {
                 chomp $sub_line;
-                last LOOP_TEXT_LINES if $sub_line =~ m/^$TAG{text}/;
+                last LOOP_TEXT_LINES if $sub_line =~ m/$TAG{text}/;
                 push @sub_lines, convert_escaped_char( $sub_line );
             }
             print "\n", text_markup(@sub_lines);
         };
-        case qr/^$TAG{img}/, sub {
+        case qr/$TAG{ul}/, sub {
+            # 순서 없는 리스트 태그 처리
+            my @sub_lines;
+            push @sub_lines, convert_escaped_char( $line );
+
+            LOOP_UL_LINES:
+            while ( my $sub_line = <> ) {
+                chomp $sub_line;
+                if ( $sub_line !~ m/$TAG{ul}/ ) {
+                    $line = $sub_line;
+                    last LOOP_UL_LINES;
+                }
+                push @sub_lines, convert_escaped_char( $sub_line );
+            }
+            print "\n", ul_markup(@sub_lines);
+        };
+        case qr/$TAG{img}/, sub {
+            # 이미지 태그 처리
             print "\n", img_markup($line);
         };
         default sub {
@@ -129,6 +148,22 @@ sub img_markup {
 <p>
 $img_str
 </p>
+</div>
+END_SECTION
+
+    return $str;
+}
+
+sub ul_markup {
+    my ( @lines ) = @_;
+
+    my $concat_line = join "\n", map { s/$TAG{ul}//; "<li>$_</li>"; } @lines;
+
+    my $str = <<"END_SECTION";
+<div>
+<ul>
+$concat_line
+</ul>
 </div>
 END_SECTION
 

@@ -63,6 +63,13 @@ save_it();
 quit_editor();
 .code
 
+지원하는 기능
+* 헤딩: 기본
+* 텍스트: .text
+* 프로그램 코드: .code
+* 그림첨부: .img
+* 리스트: *
+
 코드를 넣으려면?
 .code
   코드를 넣고 싶다면 .code로 시작
@@ -98,6 +105,14 @@ quit_editor();
   .img photo_perlmania.jpg 펄매니아 사진
 .code
 
+목록을 넣으려면?
+.code
+  '*', '+', '-' 로 시작하면 목록이 만들어집니다.
+  * 리스트1
+  * 리스트2
+  * 리스트3
+.code
+
 이제 필요한건?
 Make It!
 .code
@@ -122,6 +137,20 @@ macro:
 macro 항목 하부 항목을 고치는 것으로 충분!
 
 기능이 너무 부족해요!
+기능이 마음에 안들어요!
+코드가 이상해요!
 (-_-)(_ _)
 미안합니다!
+
 mkslide.pl 을 마음껏 고쳐주세요! :-)
+Come and Join Us!
+.text
+http://code.google.com/p/perldoc-kr
+.text
+
+Check Out from SVN Now!
+.code
+# check it out! :-)
+$SVN=http://perldoc-kr.googlecode.com/svn/
+svn checkout $SVN/trunk/slide slide-perldoc
+.code
