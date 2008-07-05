@@ -32,6 +32,7 @@ body{
 }
 .screen ol,ul,dl{
   text-align: left;
+  padding: 2em;
 }
 .translated{
      font-size: 18pt;
