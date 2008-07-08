@@ -90,80 +90,73 @@ shebang 라인에 Perl의 -w 스위치를 사용할 수 있습니다.
 
 	use warnings;
 
-If you do not understand a warning, you can look up a verbose version
-of the warning in L<perldiag> or you can use the diagnostics pragma in
-your code.
+만약에 경고의 의미를 모르겠다면, L<perldiag>안의 warnings 의 내용을
+볼 수 있으며, 또는 코드 안에서 disanostics 프라그마를 사용할 수 있습니다.
 
 	use diagnostics;
 
-=item Solve the first problem first!
+=item 첫번째 문제를 제일 처음에 해결하세요
 
-After you get error or warning messages from perl, fix the first
-message then see if the perl still issues the other messages.  Those
-extra messages may be artifacts of the first problem.
+에러 또는 경고 메시지를 Perl 에게서 받은 다음, 먼저 첫번째 메시지를 
+해결한 다음에 아직도 Perl 이 다른 메시지를 내는 가를 확인하세요. 
+다른 메시지들이 맨 처음의 메시지의 내용과 복합적인 것일지도 모르기
+때문입니다. 
 
-=item Look at the code before the line number in the error message!
+=item 에러 메시지에 있는 줄의 앞에 위치한 코드를 보세요!
 
-Perl gives you warning messages when it gets worried and not before. 
-By the time perl gets worried the problem has already occurred and the
-line number perl is on is actually B<after> the problem.  Look at the
-couple of expressions before the line number in the warning.
+Perl 은 곤란한 시점에서 경고메시지를 줍니다. Perl 이 곤란한 시점까지는
+문제가 발생하고 있는 것이며, Perl 이 말하는 줄 번호는 실제로는 
+문제 다음의 것입니다. 경고받은 줄 위치의 앞의 코드를 보세요.
 
-=item Is the value what you think it is?
+=item 그 값은 당신이 생각했던 것인가요? 
 
-Do not guess!  Actually examine the value right before you want to use
-it in an expression.  The best debugger in the universe is print.
+추측하지 마세요! 사전에 예상하고 있던 값인지 어떤지를 검증하세요.
+최선의 디버거는 print 입니다.
 
 	print STDERR "The value is [$value]\n";
 
-I enclose $value in braces so I can see any leading or trailing
-whitespace or newlines.
+저는 $value 를 [ ] 로 감싸고, 그리고 앞과 뒤를 스페이스나 줄바꿈으로
+볼 수 가 있습니다. 
 
-If I have anything other than a scalar, I use Data::Dumper to print
-the data structures.
+만약 스칼라가 아닌 다른 것을 원한다면, 전 데이터 구조를 찍기위해서 
+Data::Dumper 를 사용합니다.
 	
 	require Data::Dumper;
 
 	print STDERR "The hash is ", Data::Dumper::Dumper( %hash ), "\n";
 	
-If the value is not what you think it is, back up a few steps and try
-again!  Do this until you find the point at which the value stops
-being what you think it should be!
+값이 예상하고 있는 것과 다르다면, 몇 단계 앞으로 돌아와서 다시 한번 해보세요!
+이런 것을 값이 관계하고 있지 않은 곳까지 반복하세요!
 
-You can also use the built-in perl debugger with perl's -d switch. See
-L<perldebug> for details.
+Perl -d 스위치를 사용하면 내장 디버거도 사용할 수 있습니다.
+자세한 내용은 L<perldebug> 를 참조하세요.
 
 	perl -d script.pl
 
-You can also use other debuggers or development environments, like a
-ptkdb (a graphical debugger based on Tk) or Komodo (ActiveState's Perl
-IDE based on Mozilla).
+ptkdb( 그래피컬한 Tk 기반의 디버거 ) 나 Komodo( 모질라 기반의 ActiveState 의
+Perl IDE ) 같은 다른 디버거나 개발환경도 사용할 수 있습니다.
 
-=item Are you using the function correctly?
+=item 함수를 바르게 사용하고 있나요?
 
-I have been programming Perl for quite a long time and I still look at
-L<perlfunc> almost every day.  Some things I just cannot keep
-straight, and sometimes I am so sleep-deprived that I take leave of
-all of my senses and wonder why sprintf() does not print to the
-screen.
+저는 꽤 오랜 시간동안 Perl 로 프로그래밍 해왔지만, 거의 매일을 L<perlfunc> 를 
+보고 있습니다. 어떤 것은 기억할 수 없고, 어떤 때는 잠에 겨워서 머리가 멍한 채로
+sprintf() 가 왜 화면에 찍지 않는 가 신기하다고 생각한 적도 있습니다.
 
-You can look up a particular function with the perldoc command and its
--f switch.
+perldoc 커맨드와 -f 스위치를 사용하면 보고싶은 함수를 조사할 수 있습니다.
 
 	perldoc -f function_name
 
-If you are using a module, check the documentation to make sure you
-are using it in the right way.  You can check the documentation for
-the module using perldoc.
+모듈을 사용하고 있다면, 바르게 사용하고 있는 가 확인하기 위해서, 문서를 체크해 
+주세요. perldoc 을 사용해서 그 모듈의 문서를 체크할 수 있습니다.
 
 	perldoc Module::Name
 	
-=item Are you using the right special variable?
+=item 바른 특수변수를 사용하고 있나요?
 
-Again, I constantly refer to L<perlvar>.  Well, not really since I
-find I<The Perl Pocket Reference> much easier to use.
+또, 전 항상 L<perlvar> 를 참조하고 있습니다. 흠, I<The Perl Pocket Reference>를 
+사용하는 게 편리하기때문에 사실이 아닐지도 모르죠.
 
-=item Do you have the right version of the module?
+=item 제대로 된 버젼의 모듈을 가지고 있나요?
 
 Some modules change behavior between versions.  Do you have the
 version of the module that you think you have?  You can check
