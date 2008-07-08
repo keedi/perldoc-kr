@@ -16,7 +16,7 @@ brian's Guide to Solving Any Perl Problem
 
 =over 4
 
-=item 개인적인 일이 아니다
+=item 개인적인 일이 아닙니다
 
 코드를 쓴 사람에 대해서는 잊어버리세요. 당신은 자신이 아티스트라고 
 생각할지는 모르겠지만 어떤 달인이라도 잘못을 해왔습니다. 어느 누구의
