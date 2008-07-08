@@ -1,0 +1,283 @@
+# $Id$
+
+=head1 NAME
+
+brian's Guide to Solving Any Perl Problem
+
+=head1 SYNOPSIS
+
+이 가이드에 따라서 건전함을 유지하세요.
+
+=head1 DESCRIPTION
+
+=head2 나의 디버깅 철학
+
+전 이 세가지를 믿습니다
+
+=over 4
+
+=item 개인적인 일이 아니다
+
+코드를 쓴 사람에 대해서는 잊어버리세요. 당신은 자신이 아티스트라고 
+생각할지는 모르겠지만 어떤 달인이라도 잘못을 해왔습니다. 어느 누구의
+코드라도 잘못된 곳은 있습니다. 즉, 제 코드도 그렇고, 당신의 코드도 
+마찬가지로 틀린 곳이 있습니다. 하지만 그것이 좋은 일이라고 생각하세요.
+뭔가 문제가 있으면, 당신이 먼저 "내 이상한 코드에 뭔가 문제가 있나봐"
+라고 생각해야 합니다. Perl 탓을 해서는 안된다는 것을 의미하구요. 
+이건 개인적이지 않기때문입니다.
+
+B<당신>이 한 것에 대해서는 잊어버리세요. 당신이 한 것이 잘 돌아간다면,
+이런 건 읽지 않겠지만, 잊어버리는 것은 나쁜 게 아니에요.
+오히려 발전할 때입니다. 우리도 그래왔어요.
+
+=item 개인의 책임
+
+만약 당신의 스크립트에 문제가 있다면 그것은 당신의 문제입니다.
+그리고 당신은 그것을 풀기 위한 최선의 노력을 해야합니다. 하지만, 
+기억해세요. 스크립트가 다른 누군가의 것이라면 그것은 그들의 문제라는 것을.
+다른 사람에게 당신이 가지고 있는 문제를 공유하기 전에 스스로 당신의 일을 
+최선을 다해서 수행하세요. 이 가이드에 있는 대로 모든 것을 수행했음에도
+문제가 해결되지 않는다면 그것이 바로 최선을 다한 것입니다.
+그때가 바로 다른 사람에게 문제를 제시할 때인 것이죠.
+
+=item 당신의 방법을 바꾸세요
+
+두번 다시 같은 문제가 일어나지 않게 문제를 고칩니다. 문제는 
+당신이 B<무엇>을 코딩했느냐 가 아니라 B<어떻게> 코딩했냐는 것입니다.
+편안한 삶을 위해서 방법을 바꾸세요. Perl 을 당신에게 맞춰봤자 
+안되니까, 모든 것을 Perl 에 맞춰보세요. Perl 은 언어일 뿐이지 
+삶의 방법이 아닙니다.
+
+=back
+
+=head2 제가 쓰는 방법
+
+=over 4
+
+=item 엄밀하게 컴파일하고 있나요?
+
+아직 엄밀성을 사용하고 있지 않다면, 당장 사용하세요. Perl 구루들은
+그것이 다른 문제들을 해결하고, 새로운 것을 배우고, CPAN 에 모듈을 
+업로드할 시간을 벌기위해서 strict 를 사용하고 있습니다.
+
+스크립트에서 strict 프라그마를 사용함으로 엄밀성있게 사용할 수 있습니다.
+
+	use strict;
+
+Perl 의 -M 스위치를 사용하면 커맨드라인에 엄밀성을 적용할 수 있죠.
+
+	perl -Mstrict script.pl
+
+엄밀성에 곤혹스러우실 지도 모르겠지만, 그것을 켜둔 채로 몇주간 
+프로그래밍하다보면 더 나은 코드를 쓰고, 짧은 시간에 간단한 에러들을 
+추적해내서 아마도 이 가이드가 필요없어질 지도 모릅니다.
+
+=item 경고는 뭘까요?
+
+Perl 은 의문이 많은 구축에 경고를 던져줍니다. warnings 를 사용해서
+Perl 이 당신을 돕도록 하세요.
+
+shebang 라인에 Perl의 -w 스위치를 사용할 수 있습니다.
+
+	#!/usr/bin/perl -w
+
+물론 커맨드라인에도 warnings 를 켤 수 있죠.
+
+	perl -w script.pl
+
+모든 흥미있는 특색들과 함께 렉시컬 warnings 를 사용할 수 있습니다.
+자세한 내용은 L<warnings> 를 참조하세요.
+
+	use warnings;
+
+If you do not understand a warning, you can look up a verbose version
+of the warning in L<perldiag> or you can use the diagnostics pragma in
+your code.
+
+	use diagnostics;
+
+=item Solve the first problem first!
+
+After you get error or warning messages from perl, fix the first
+message then see if the perl still issues the other messages.  Those
+extra messages may be artifacts of the first problem.
+
+=item Look at the code before the line number in the error message!
+
+Perl gives you warning messages when it gets worried and not before. 
+By the time perl gets worried the problem has already occurred and the
+line number perl is on is actually B<after> the problem.  Look at the
+couple of expressions before the line number in the warning.
+
+=item Is the value what you think it is?
+
+Do not guess!  Actually examine the value right before you want to use
+it in an expression.  The best debugger in the universe is print.
+
+	print STDERR "The value is [$value]\n";
+
+I enclose $value in braces so I can see any leading or trailing
+whitespace or newlines.
+
+If I have anything other than a scalar, I use Data::Dumper to print
+the data structures.
+	
+	require Data::Dumper;
+
+	print STDERR "The hash is ", Data::Dumper::Dumper( %hash ), "\n";
+	
+If the value is not what you think it is, back up a few steps and try
+again!  Do this until you find the point at which the value stops
+being what you think it should be!
+
+You can also use the built-in perl debugger with perl's -d switch. See
+L<perldebug> for details.
+
+	perl -d script.pl
+
+You can also use other debuggers or development environments, like a
+ptkdb (a graphical debugger based on Tk) or Komodo (ActiveState's Perl
+IDE based on Mozilla).
+
+=item Are you using the function correctly?
+
+I have been programming Perl for quite a long time and I still look at
+L<perlfunc> almost every day.  Some things I just cannot keep
+straight, and sometimes I am so sleep-deprived that I take leave of
+all of my senses and wonder why sprintf() does not print to the
+screen.
+
+You can look up a particular function with the perldoc command and its
+-f switch.
+
+	perldoc -f function_name
+
+If you are using a module, check the documentation to make sure you
+are using it in the right way.  You can check the documentation for
+the module using perldoc.
+
+	perldoc Module::Name
+	
+=item Are you using the right special variable?
+
+Again, I constantly refer to L<perlvar>.  Well, not really since I
+find I<The Perl Pocket Reference> much easier to use.
+
+=item Do you have the right version of the module?
+
+Some modules change behavior between versions.  Do you have the
+version of the module that you think you have?  You can check
+the most module version with a simple perl one-liner.
+
+	perl -MModule::Name -le 'print Module::Name->VERSION';
+
+If you read most of your documentation off of the local machine,
+like at http://www.perldoc.com or http://search.cpan.org, then
+you are more likely to encounter version differences in documentation.
+
+=item Have you made a small test case?
+
+If you are trying something new, or think a particular peice of
+code is acting funny, write the shortest possible program to do
+just that peice.  This removes most of the other factors from
+consideration.  If the small test program does what it thinks it
+does, the problem probably is not in that code.  If the program
+does not do what you think it does, then perhaps you have found 
+your problem.
+
+=item Did you check the environment?
+
+Some things depend on environment variables.  Are you sure that
+they are set to the right thing?  Is your environment the same
+that the program will see when it runs?  Remember that programs
+intended for CGI programs or cron jobs may see different environments
+than those in your interactive shell, especially on different 
+machines.
+
+Perl stores the environment in %ENV.  If you need one of those
+variables, be ready to supply a default value if it does not 
+exist, even if only for testing.
+
+If you still have trouble, inspect the environment.
+
+	require Data::Dumper;
+	print STDERR Data::Dumper::Dumper( \%ENV );
+
+=item Have you checked Google?
+
+If you have a problem, somebody else has probably had that problem.
+See if one of those other people posted something to the usenet group
+comp.lang.perl.misc by searching Google Groups
+(http://groups.google.com). The difference between people who ask
+questions on usenet and those who answer them is the ability to use
+Google Groups effectively.
+
+=item Have you profiled the application?
+
+If you want to track down the slow parts of the program, have you
+profiled it?  Let Devel::SmallProf do the heavy lifting for you.  It
+counts the times perl executes a line of code as well as how long it
+takes and prints a nice report.
+
+=item Which test fails?
+
+If you have a test suite, which test fails?  You should be able to
+track down the error very quickly since each test will only exercise a
+little bit of code.
+
+If you don't have a test suite, why not make one?  If you have a
+really small script, or this is a one-off script, then I will not make
+you write a couple of tests.  Anything other than that could really
+benefit from some test scripts.  Test::Harness makes this so simple
+that you really have no excuse not to do it. If you do not have the
+time, perhaps you are wasting too much time debugging scripts without
+tests.  MakeMaker is just not for modules after all.
+
+=item Did you talk to the bear?
+
+Explain you problem aloud.  Actually say the words.
+
+For a couple of years I had the pleasure of working with a really good
+programmer who could solve almost anything.  When I got really stuck I
+would walk over to his desk and start to explain my problem.  Usually
+I did not made it past the third sentence without saying "Never
+mind---I got it". He almost never missed either.
+
+Since you will probably need to do this so much, I recommend some sort
+of plush toy to act as your Perl therapist so you do not annoy your
+colleagues.  I have a small bear that sits on my desk and I explain
+problems to him.  My girlfriend does not even pay attention when I
+talk to myself anymore.
+
+=item Does the problem look different on paper?
+
+You have been staring at the computer screen, so maybe a different 
+medium will let you look at things in a new way.  Try looking at
+a print-out of your program.
+
+=item Have you watched The Daily Show with Jon Stewart?
+
+Seriously.  Perhaps you do not like Jon Stewart, so choose something
+else.  Take a break.  Stop thinking about the problem for a bit and
+let your mind relax.  Come back to the problem later and the fix may
+become immediately apparent.
+
+=item Have you packed your ego?
+
+If you still have not made it this far, the problem may be
+psychological. You might be emotionally attached to a certain part of
+the code, so you do not change it.  You might also think that everyone
+else is wrong but you.  When you do that, you do not seriously
+consider the most likely source of bugs---yourself.  Do not ignore
+anything.  Verify everything.
+
+=head1 AUTHOR
+
+brian d foy, E<lt>bdfoy@cpan.orgE<gt>
+
+=head1 COPYRIGHT
+
+Copyright 2002, Perl Documentation Project, 
+All Rights Reserved
+
+=cut
