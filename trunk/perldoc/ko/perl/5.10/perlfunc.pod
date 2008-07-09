@@ -3616,11 +3616,11 @@ expanding wildcards or splitting up words with whitespace in them.
 
 =end original
 
-C<exec> や C<system> で間接オブジェクトを使うのもより安全です。
-この使い方(system() でも同様にうまく動きます)は、たとえ引数が一つだけの
-場合も、複数の値を持つリストとして引数を解釈することを強制します。
-この方法で、シェルによるワイルドカード展開や、空白による単語の分割から
-守られます。
+C<exec> 나 C<system> 에서 간접오브젝트를 사용하는 것보다 안전합니다.
+이 사용법(system() 에서도 마찬가지로 잘 움직입니다)은 설령 인수가 
+하나인 경우도 복수의 값을 가지는 리스트로 인수를 해석하는 것을 강제합니다.
+이 방법으로 셸에의한 와일드카드 전개나 공백에 의한 단어의 분할으로부터
+지킬 수 있습니다.
 
     @args = ( "echo surprise" );
 
@@ -3637,11 +3637,11 @@ didn't find it, and set C<$?> to a non-zero value indicating failure.
 
 =end original
 
-間接オブジェクトなしの一つ目のバージョンでは、I<echo> プログラムが実行され、
-C<"surprise"> が引数として渡されます。
-二つ目のバージョンでは違います -- 文字通り I<"echo surprise"> という名前の
-プログラムを実行しようとして、見つからないので、失敗したことを示すために
-C<$?> に非 0 がセットされます。
+간접오브젝트없는 첫번째의 바젼에서는 I<echo> 프로그램이 실행되고, 
+C<"surprise"> 가 인수로써 넘겨집니다.
+두번째의 버젼에서는 다릅니다 -- 문자대로 I<"echo surprise"> 라는 이름의
+프로그램을 실행하려고해서 발견하지 못하기 때문에 실패한 일을 나타내기 위해
+C<$?> 에 비 0가 설정됩니다.
 
 =begin original
 
@@ -3653,13 +3653,13 @@ open handles in order to avoid lost output.
 
 =end original
 
-v5.6.0 から、Perl は exec の前に出力用に開かれている全てのファイルを
-フラッシュしようとしますが、これに対応していないプラットフォームもあります
-(L<perlport> を参照してください)。
-安全のためには、出力が重複するのを避けるために、全てのオープンしている
-ハンドルに対して C<$|> (English モジュールでは $AUTOFLUSH) を設定するか、
-C<IO::Handle> モジュールの C<autoflush()> メソッドをを呼ぶ必要が
-あるかもしれません。
+v5.6.0 에 Perl 은 exec 의 앞에 출력용으로 열려진 모든 파일을 
+플래쉬하려고 하지만, 이것에 대응하지 않은 플랫폼도 있습니다
+(L<perlport> 를 참조해주세요).
+안전을 위해서는 출력이 중복하는 것을 피하기 위해 모든 오픈되어 있는
+핸들에 대해 C<$|> (English 모듈에서는 $AUTOFLUSH) 를 설정하거나 
+C<IO::Handle> 모듈의 C<autoflush()> 메소드를 호출할 필요가 
+있을지도 모릅니다.
 
 =begin original
 
@@ -3668,8 +3668,8 @@ any C<DESTROY> methods in your objects.
 
 =end original
 
-C<exec> は C<END> ブロックや、オブジェクトの C<DESTROY> メソッドを
-呼び出さないことに注意してください。
+C<exec> 는 C<END> 블록이나 오브젝트의 C<DESTROY> 메소드를 
+호출하지 않는 것에 주의해주세요.
 
 =item exists EXPR
 X<exists> X<autovivification>
@@ -3683,10 +3683,9 @@ element is not autovivified if it doesn't exist.
 
 =end original
 
-ハッシュ要素か配列要素を示す表現が与えられ、
-指定された要素が、ハッシュか配列に存在すれば、
-たとえ対応する value が未定義でも真を返します。
-要素が存在しなかった場合は自動活性化されません。
+해쉬 요소가 배열요소를 나타내는 표현이 주어져, 설정된 요소가 
+해쉬나 배열에 존재하ㄴ, 설령 대응하는 value 가 미정의라도 참을 반환합니다.
+요소가 존재하지 않는 경우는 자동활성화되지 않습니다.
 
     print "Exists\n" 	if exists $hash{$key};
     print "Defined\n" 	if defined $hash{$key};
@@ -3703,8 +3702,8 @@ it exists, but the reverse doesn't necessarily hold true.
 
 =end original
 
-ハッシュまたは配列要素は、定義されているときにのみ真となり、
-存在しているときにのみ定義されますが、逆は必ずしも真ではありません。
+해쉬 또는 배열요소는 정의되어 있을 때에만 참이 되고,
+존재하고 있을 때에만 설정되지만, 그 반대는 반드시 참이 아닙니다.
 
 =begin original
 
@@ -3718,14 +3717,14 @@ called -- see L<perlsub>.
 
 =end original
 
-引数としてサブルーチンの名前が指定された場合、
-指定されたサブルーチンが宣言されていれば(たとえ未定義でも)
-真を返します。
-exists や defined のために言及されているサブルーチン名は
-宣言としてのカウントに入りません。
-存在しないサブルーチンでも呼び出し可能かもしれないことに注意してください:
-パッケージが C<AUTOLOAD> メソッドを持っていて、最初に呼び出された時に
-存在を作り出すかもしれません -- L<perlsub> を参照してください。
+인수로써 서브루틴의 이름이 설정된 경우, 
+지정된 서브루틴이 선언되어있으면(그게 미정의라도) 
+참을 반환합니다.
+exists 나 defined 를 위해 언급된 서브루틴 이름은 
+선언으로써의 카운트에 들어가지 않습니다.
+존재하지 않는 서브루틴에서도 호출가능할지도 모르는 것에 주의해주세요:
+패키지가 C<AUTOLOAD> 메소드를 가지고 있고, 처음에 호출된 때에
+존재를 만들어낼지도 모릅니다 -- L<perlsub> 를 참조해주세요.
 
     print "Exists\n" 	if exists &subroutine;
     print "Defined\n" 	if defined &subroutine;
@@ -3737,8 +3736,8 @@ operation is a hash or array key lookup or subroutine name:
 
 =end original
 
-最終的な操作がハッシュや配列の key による検索またはサブルーチン名である限りは、
-EXPR には任意の複雑な式を置くことができます:
+최종적인 조작이 해쉬나 배열의 key 에 의해 검색 또는 서브루틴 이름인 한,
+EXPR 에는 임의의 복잡한 식을 둘 수 있습니다:
 
     if (exists $ref->{A}->{B}->{$key}) 	{ }
     if (exists $hash{A}{B}{$key}) 	{ }
@@ -3758,12 +3757,12 @@ This happens anywhere the arrow operator is used, including even:
 
 =end original
 
-ネストした配列やハッシュの一番深い部分は、その存在をテストしただけでは
-存在するようにはなりませんが、途中のものは存在するようになります。
-従って C<< $ref->{"A"} >> と C<< $ref->{"A"}->{"B"} >> は上記の $key の
-存在をテストしたことによって存在するようになります。
-これは、矢印演算子が使われるところでは、以下のようなものを含むどこででも
-起こります。
+중첩한 배열이나 해쉬의 제일 깊은 부분은 그 존재를 중첩한 것만으로는 
+존재하게 되는 것은 아닙니다만 도중의 것은 존재하게 됩니다.
+따라서 C<< $ref->{"A"} >> 와 C<< $ref->{"A"}->{"B"} >> 는 위의 $key 의
+존재를 테스트한 것에 의해 존재하게 됩니다.
+이것은 화살표 연산자가 사용되는 곳에서는 아래와 같은 것을 포함하는
+어디에서라도 발생합니다.
 
     undef $ref;
     if (exists $ref->{"Some key"})	{ }
@@ -3777,8 +3776,8 @@ release.
 
 =end original
 
-一目見ただけでは -- あるいは二目見ても -- 驚かされる、左辺値コンテキストでの
-自動有効化は将来のリリースでは修正されるでしょう。
+한번 본 것만으로는 -- 혹은 두번 봐도 -- 놀라는 좌변치 컨텍스트에서의 
+자동유효화는 앞으로의 릴리즈에서는 수정될 겁니다.
 
 =begin original
 
@@ -3787,8 +3786,8 @@ to exists() is an error.
 
 =end original
 
-exists() の引数としてサブルーチン名でなくサブルーチン呼び出しを使うと、
-エラーになります。
+exists() 의 인수로써 서브루틴 이름이 아닌 서브루틴 호출을 사용하면 
+에러가 됩니다.
 
     exists &sub;	# OK
     exists &sub();	# Error
@@ -3804,8 +3803,8 @@ Evaluates EXPR and exits immediately with that value.    Example:
 
 =end original
 
-EXPR を評価し、即座にその値を持って終了します。
-例:
+EXPR 을 평가해서 즉시 그 값을 가지고 종료합니다.
+예제:
 
     $ans = <STDIN>;
     exit 0 if $ans =~ /^[Xx]/;
@@ -3821,14 +3820,14 @@ the mailer to return the item undelivered, but that's not true everywhere.
 
 =end original
 
-C<die> も参照してください。
-EXPR が省略された場合には、ステータスを C<0> として終了します。
-EXPR の値として広く利用可能なのは C<0> が成功で C<1> がエラーということだけです。
-その他の値は、 Perl が実行される環境によって異なる解釈がされる
-可能性があります。
-例えば、I<sendmail> 到着メールフィルタから 69 (EX_UNAVAILABLE) で終了すると
-メーラーはアイテムを配達せずに差し戻しますが、
-これはいつでも真ではありません。
+C<die> 도 참조해주세요.
+EXPR 이 생략된 경우에는 상태를 C<0> 로써 종료합니다.
+EXPR 의 값으로써 넓게 이용가능한 것은 C<0> 이 성공으로 C<1> 이 에러라는 
+것뿐입니다.
+그 외의 값은 Perl 이 실행되는 환경에 의해 다른 해석이 될 가능성이 있습니다.
+예를들어, I<sendmail> 도착 메일 필터에서 69 (EX_UNAVAILABLE) 로 
+종료하면 메일러는 아이템을 배달하지 않고 되돌리지ㄴ, 
+이것은 항상 참이 아닙니다.
 
 =begin original
 
@@ -3838,9 +3837,9 @@ which can be trapped by an C<eval>.
 
 =end original
 
-誰かが発生したエラーをトラップしようと考えている可能性がある場合は、
-サブルーチンの中断に C<exit> を使わないでください。
-代わりに C<eval> でトラップできる C<die> を使ってください。
+누군가가 발생한 에러를 트랩하려고 생각할 가능성이 있는 경우는 
+서브루틴의 중단에 C<exit> 를 사용하지 말아주세요.
+대신에 C<eval> 로 트랩할 수 있는 C<die> 를 사용해주세요.
 
 =begin original
 
@@ -3853,14 +3852,14 @@ See L<perlmod> for details.
 
 =end original
 
-exit() 関数は常に直ちに終了するわけではありません。
-まず、定義されている END ルーチンを呼び出しますが、
-C<END> ルーチン自身は exit を止められません。
-同様に、呼び出す必要のあるオブジェクトデストラクタは
-すべて、実際の終了前に呼び出されます。
-これが問題になる場合は、END やデストラクタが実行されることを
-防ぐために C<POSIX:_exit($status)> を呼び出してください。
-詳しくは L<perlmod> を参照してください。
+exit() 함수는 항상 바로 종료하는 것이 아닙니다.
+우선 정의되어 있는 END 루틴을 호출하지만, C<END> 루틴 자신은 exit 를
+멈출 수 없습니다.
+마찬가지로 호출할 필요가 있는 오브젝트 파괴자는 모든 실제의 종료전에 
+호출됩니다.
+이것이 문제가 되는 경우는 END 나 파괴자가 실행되는 것을 
+방지하기 위해 C<POSIX:_exit($status)> 를 호출해주세요.
+자세한 내용은 L<perlmod> 를 참조해주세요.
 
 =item exp EXPR
 X<exp> X<exponential> X<antilog> X<antilogarithm> X<e>
@@ -3874,8 +3873,8 @@ If EXPR is omitted, gives C<exp($_)>.
 
 =end original
 
-I<e> (自然対数の底) の EXPR 乗を返します。　
-EXPR を省略した場合には、C<exp($_)> を返します。
+I<e> (자연대수의 기반) 의 EXPR 승을 반환합니다.
+EXPR 을 생략한 경우에는, C<exp($_)> 를 반환합니다.
 
 =item fcntl FILEHANDLE,FUNCTION,SCALAR
 X<fcntl>
@@ -3886,8 +3885,8 @@ Implements the fcntl(2) function.  You'll probably have to say
 
 =end original
 
-fcntl(2) 関数を実装します。
-正しい定数定義を得るために、まず、
+fcntl(2) 함수를 구성합니다.
+바른 정수정의를 얻기 위해서는 우선,
 
     use Fcntl;
 
@@ -3899,9 +3898,9 @@ For example:
 
 =end original
 
-と書くことが必要でしょう。
-引数の処理と返り値については、下記の C<ioctl> と同様に動作します。
-例:
+이라고 쓸 필요가 있습니다.
+인수의 처리와 반환값에 대해서는 아래의 C<ioctl> 처럼 동작합니다.
+예제:
 
     use Fcntl;
     fcntl($filehandle, F_GETFL, $packed_return_buffer)
