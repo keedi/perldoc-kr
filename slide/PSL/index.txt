@@ -72,6 +72,8 @@ Slurping #1
 
   close $fd_template;
 }
+.text
+
 .code
 
 Slurping #2
