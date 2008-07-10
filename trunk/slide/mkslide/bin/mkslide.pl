@@ -30,11 +30,13 @@ use Switch::Perlish;
 
 Readonly my $CONF_FILE => 'slide.conf';
 Readonly my %TAG       => (
-	code => qr{ ^ \.code    }x,
-	text => qr{ ^ \.text    }x,
-	img  => qr{ ^ \.img     }x,
-	ul   => qr{ ^ \s* [*+-] }x,
-	ol   => qr{ ^ \d+ \.    }x,
+	code    => qr{ ^ \.code    }x,
+	text    => qr{ ^ \.text    }x,
+	img     => qr{ ^ \.img     }x,
+	ul      => qr{ ^ \.ul      }x,
+	ol      => qr{ ^ \.ol      }x,
+	ul_item => qr{ ^ \s* [*+-] }x,
+	ol_item => qr{ ^ \d+ \.    }x,
 );
 Readonly my $DEFAULT_CONF => <<'END_DEFAULT_CONF';
 ---
@@ -61,9 +63,6 @@ while ( my $line = <> ) {
     chomp $line;
     next unless $line;
 
-    # 회피문자 처리
-    $line = convert_escaped_char( $line );
-
     switch $line, sub {
         case qr/$TAG{code}/, sub {
             # 코드 태그 처리
@@ -72,7 +71,7 @@ while ( my $line = <> ) {
             LOOP_CODE_LINES:
             while ( my $sub_line = <> ) {
                 last LOOP_CODE_LINES if $sub_line =~ m/$TAG{code}/;
-                push @sub_lines, convert_escaped_char( $sub_line );
+                push @sub_lines, $sub_line;
             }
             print "\n", code_markup(@sub_lines);
         };
@@ -84,25 +83,39 @@ while ( my $line = <> ) {
             while ( my $sub_line = <> ) {
                 chomp $sub_line;
                 last LOOP_TEXT_LINES if $sub_line =~ m/$TAG{text}/;
-                push @sub_lines, convert_escaped_char( $sub_line );
+                push @sub_lines, $sub_line;
             }
             print "\n", text_markup(@sub_lines);
         };
-        case qr/$TAG{ul}/, sub {
+        case qr/($TAG{ul})|($TAG{ul_item})/, sub {
             # 순서 없는 리스트 태그 처리
             my @sub_lines;
-            push @sub_lines, convert_escaped_char( $line );
+            my %opt;
+            if ( $line =~ m/$TAG{ul}/ ) {
+                my $opt_str = (split / /, $line, 2)[1];
+                if ( $opt_str ) {
+                    map {
+                        my ( $name, $val ) = split /=/, $_, 2;
+                        $val =~ s/^" //x;
+                        $val =~ s/ "$//x;
+                        $opt{$name} = $val;
+                    } $opt_str =~ m/ ( \w+ = (?: "[^"]*" | \w* ) ) /gx;
+                }
+            }
+            else {
+                push @sub_lines, $line;
+            }
 
             LOOP_UL_LINES:
             while ( my $sub_line = <> ) {
                 chomp $sub_line;
-                if ( $sub_line !~ m/$TAG{ul}/ ) {
+                if ( $sub_line !~ m/$TAG{ul_item}/ ) {
                     $line = $sub_line;
                     last LOOP_UL_LINES;
                 }
-                push @sub_lines, convert_escaped_char( $sub_line );
+                push @sub_lines, $sub_line;
             }
-            print "\n", ul_markup(@sub_lines);
+            print "\n", ul_markup(\%opt, @sub_lines);
         };
         case qr/$TAG{img}/, sub {
             # 이미지 태그 처리
@@ -154,12 +167,37 @@ END_SECTION
 }
 
 sub ul_markup {
-    my ( @lines ) = @_;
+    my ( $opt_ref, @lines ) = @_;
 
-    my $concat_line = join "\n", map { s/$TAG{ul}//; "<li>$_</li>"; } @lines;
+    my $effect  = $opt_ref->{effect} || q{};
 
+    my $str;
+    if ( $effect eq 'seq' ) {
+        my $idx;
+        $str .= ul_item_markup( $opt_ref, map('...', @lines) );
+        $str .= ul_item_markup(
+            $opt_ref,
+            @lines[0 .. $idx++],
+            map('...', $idx + 1 .. @lines)
+        ) for @lines;
+    }
+    else {
+        $str = ul_item_markup( $opt_ref, @lines );
+    }
+
+    return $str;
+}
+
+sub ul_item_markup {
+    my ( $opt_ref, @lines ) = @_;
+
+    my $subject = $opt_ref->{subject} || q{};
+
+    @lines = map convert_escaped_char($_), @lines;
+    my $concat_line = join "\n", map { s/$TAG{ul_item}//; "<li>$_</li>"; } @lines;
     my $str = <<"END_SECTION";
 <div>
+$subject
 <ul>
 $concat_line
 </ul>
@@ -171,6 +209,8 @@ END_SECTION
 
 sub normal_markup {
     my ( $line ) = @_;
+
+    $line = convert_escaped_char( $line );
 
     my $str = <<"END_SECTION";
 <div>
@@ -184,7 +224,9 @@ END_SECTION
 sub code_markup {
     my ( @lines ) = @_;
 
+    @lines = map convert_escaped_char($_), @lines;
     my $concat_line = join q{}, @lines;
+    chomp $concat_line;
 
     my $str = <<"END_SECTION";
 <div>
@@ -200,6 +242,7 @@ END_SECTION
 sub text_markup {
     my ( @lines ) = @_;
 
+    @lines = map convert_escaped_char($_), @lines;
     my $concat_line = join "<br>\n", @lines;
 
     my $str = <<"END_SECTION";
