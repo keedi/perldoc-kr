@@ -185,7 +185,7 @@ END_SECTION
 sub code_markup {
     my ( @lines ) = @_;
 
-    my $concat_line = join "\n", @lines;
+    my $concat_line = join q{}, @lines;
 
     my $str = <<"END_SECTION";
 <div>
