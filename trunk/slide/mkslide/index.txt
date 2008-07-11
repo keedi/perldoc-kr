@@ -81,6 +81,12 @@ quit_editor();
   코드 넣기를 그만둔다면 첫 칸을 .code로 시작
 .code
 
+코드 파일을 넣으려면?
+.code
+  코드 파일의 내용을 넣고 싶다면 src 속성 사용
+  .code src="bin/hello_world.pl"
+.code
+
 많은 글자 넣기?
 .code
   글자를 많이 넣고 싶다면 .text로 시작

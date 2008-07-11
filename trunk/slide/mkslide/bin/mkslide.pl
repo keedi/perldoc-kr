@@ -67,6 +67,29 @@ while ( my $line = <> ) {
         case qr/$TAG{code}/, sub {
             # 코드 태그 처리
             my @sub_lines;
+            my %opt;
+            my $opt_str = (split / /, $line, 2)[1];
+            if ( $opt_str ) {
+                map {
+                    my ( $name, $val ) = split /=/, $_, 2;
+                    $val =~ s/^" //x;
+                    $val =~ s/ "$//x;
+                    $opt{$name} = $val;
+                } $opt_str =~ m/ ( \w+ = (?: "[^"]*" | \w* ) ) /gx;
+            }
+
+            if ( $opt{src} ) {
+                open my $fh, $opt{src}
+                    or do {
+                        push @sub_lines, "Cannot open file [$opt{src}]: $!";
+                        print "\n", code_markup(@sub_lines);
+                        stop;
+                    };
+                @sub_lines = <$fh>;
+                close $fh;
+                print "\n", code_markup(@sub_lines);
+                stop;
+            }
 
             LOOP_CODE_LINES:
             while ( my $sub_line = <> ) {
