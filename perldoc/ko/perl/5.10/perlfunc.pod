@@ -4666,29 +4666,27 @@ facility are unlikely to be supported.
 
 =end original
 
-I<getpw*()> では、$quota, $comment, $expire フィールドは、
-多くのシステムでは対応していないので特別な処理がされます。
-$quota が非対応の場合、空のスカラになります。
-対応している場合、通常はディスククォータの値が入ります。
-$comment フィールドが非対応の場合、空のスカラになります。
-対応している場合、通常はユーザーに関する管理上のコメントが入ります。
-$quota フィールドはパスワードの寿命を示す $change や $age である
-システムもあります。
-$comment フィールドは $class であるシステムもあります。
-$expire フィールドがある場合は、アカウントやパスワードが時間切れになる
-期間が入ります。
-動作させるシステムでのこれらのフィールドの有効性と正確な意味については、
-getpwnam(3) のドキュメントと F<pwd.h> ファイルを参照してください。
-$quota と $comment フィールドが何を意味しているかと、$expire フィールドが
-あるかどうかは、C<Config> モジュールを使って、C<d_pwquota>, C<d_pwage>,
-C<d_pwchange>, C<d_pwcomment>, C<d_pwexpire> の値を調べることによって
-Perl 自身で調べることも出来ます。
-シャドウパスワードは、通常の C ライブラリルーチンを権限がある状態で
-呼び出すことでシャドウ版が取得できるか、System V にあるような
-(Solaris と Linux を含みます) shadow(3) 関数があるといった、
-直感的な方法で実装されている場合にのみ対応されます。
-独占的なシャドウパスワード機能を実装しているシステムでは、
-それに対応されることはないでしょう。
+I<getpw*()> 에서는 $quota, $comment, $expire 필드는 많은 시스템에서는 
+대응하지 않기에 특별한 처리가 됩니다.
+$quota 가 비대응인 경우 빈 스칼라가 됩니다.
+대응하고 있는 경우 일반적인 디스크쿼터의 값이 들어갑니다.
+$comment 필드가 비대응일 경우, 빈 스칼라가 됩니다.
+대응하고 있는 경우, 일반으로는 유저에 관한 관리상의 커멘트가 들어갑니다.
+$quota 필드는 패스워드의 수명을 나타내고 $change 나 $age 인 시스템도 있습니다.
+$comment 필드는 $class 인 시스템도 있습니다.
+$expire 필드가 있는 경우는 계정이나 패스워드가 시간이 끊긴 기간이 들어갑니다.
+동작시키는 시스템에서의 이 필드들의 유효성과 정확한 의미에 대해서는 
+getpwnam(3) 의 문서와 F<pwd.h> 필드를 참조해주세요.
+$quota 와 $comment 필드가 무엇을 의미하고 있는 가와 $expire 필드가 
+있는 지 어떤지는 C<Config> 모듈을 사용해서 C<d_pwquota>, C<d_pwage>, 
+C<d_pwchange>, C<d_pwcomment>, C<d_pwexpire> 의 값을 조사하는 것에 의해 
+Perl 자신이 조사할 수 도 있습니다.
+섀도우패스워드는 일반적인 C 라이브러리루틴을 권한이 있는 상태에서 
+호출하는 것으로 섀도우 판을 얻을 수 있지만, System V 에 있는 
+(Solaris 와 Linux 를 포함합니다) shadow(3) 함수가 있으면
+직감적인 방법으로 구성되는 경우만 대응됩니다.
+독점적인 섀도우패스워드 기능을 구성하고 잇는 시스템에서는 
+그것에 대응되는 것은 없습니.
 
 =begin original
 
@@ -4697,8 +4695,8 @@ the login names of the members of the group.
 
 =end original
 
-I<getgr*()> によって返る値 $members は、グループのメンバの
-ログイン名をスペースで区切ったものです。
+I<getgr*()> 에 의해 반환되는 값 $members 는 그룹의 멤버의 로그인이름을 
+스페이스로 구분한 것입니다.
 
 =begin original
 
@@ -4711,12 +4709,12 @@ by saying something like:
 
 =end original
 
-I<gethost*()> 関数では、C で C<h_errno> 変数がサポートされていれば、
-関数呼出が失敗したときに、C<$?> を通して、その値が返されます。
-成功時に返される C<@addrs> 値は、対応するシステムコールが返す、
-生のアドレスのリストです。
-インターネットドメインでは、個々のアドレスは、4 バイト長で、
-以下のようにして unpack することができます。
+I<gethost*()> 함수에서는 C 로 C<h_errno> 변수가 지원되면, 
+함수호출이 실패한 때는 C<$?> 를 통해서 그 값이 반환됩니다.
+성공시에 반환되는 C<@addrs> 값은 대응하는 시스템 호출이 반환한
+raw address 의 리스트입니다.
+인터넷도메인에서는 각각의 주소는 4바이트의 기리로 
+아래처럼 해서 unpack 할 수가 있습니다.
 
     ($a,$b,$c,$d) = unpack('W4',$addr[0]);
 
@@ -4726,7 +4724,7 @@ The Socket library makes this slightly easier:
 
 =end original
 
-Socket ライブラリを使うともう少し簡単になります。
+Socket 라이브러리를 사용하면 조금 더 간단하게 됩니다.
 
     use Socket;
     $iaddr = inet_aton("127.1"); # or whatever address
@@ -4742,8 +4740,7 @@ you can write this:
 
 =end original
 
-逆方向に、ホスト名から IP アドレスを解決するには以下のように書けます:
-
+거꾸로 호스트이름으로부터 IP 주소를 해결하기 위해서는 아래처럼 쓸 수 있습니다:
     use Socket;
     $packed_ip = gethostbyname("www.perl.org");
     if (defined $packed_ip) {
@@ -4757,8 +4754,8 @@ its return value is checked for definedness.
 
 =end original
 
-C<gethostbyname()> はスカラコンテキストで呼び出すようにして、返り値が
-定義されているかを必ずチェックしてください。
+C<gethostbyname()> 는 스칼라 컨텍스트에서 호출되게 해서 반환값이 
+구성되는 지를 반드시 체크해주세요.
 
 =begin original
 
@@ -4772,14 +4769,14 @@ for each field.  For example:
 
 =end original
 
-返り値のリストの何番目がどの要素かを覚えるのに疲れたなら、
-名前ベースのインターフェースが標準モジュールで提供されています:
+반환값의 리스트의 몇번째가 어떤 요소인가를 기억하는 것이 힘들다면 
+이름 기반의 인터페이스가 표준 모듈로 제공되어 있습니다:
 C<File::stat>, C<Net::hostent>, C<Net::netent>,
 C<Net::protoent>, C<Net::servent>, C<Time::gmtime>, C<Time::localtime>,
-C<User::grent> です。
-これらは通常の組み込みを上書きし、
-それぞれのフィールドに適切な名前をつけたオブジェクトを返します。
-例:
+C<User::grent> 입니다.
+이것들은 통상의 일반 내장함수를 오버라이드해서 
+각각의 필드에 적절한 이름을 붙인 오브젝트를 반환합니다.
+예제:
 
    use File::stat;
    use User::pwent;
@@ -4793,9 +4790,9 @@ a C<User::pwent> object.
 
 =end original
 
-同じメソッド(uid)を呼び出しているように見えますが、違います。
-なぜなら C<File::stat> オブジェクトは C<User::pwent> オブジェクトとは
-異なるからです。
+같은 메소드(uid) 를 호출하는 듯이 보이지만, 다릅니.
+왜냐면 C<File::stat> 오브젝트는 C<User::pwent> 오브젝트와는 
+다르기 때문입니다.
 
 =item getsockname SOCKET
 X<getsockname>
@@ -4808,8 +4805,8 @@ IPs that the connection might have come in on.
 
 =end original
 
-SOCKET 接続のこちら側の pack された sockaddr アドレスを返します。
-複数の異なる IP から接続されるためにアドレスがわからない場合に使います。
+SOCKET 접속의 이쪽의 pakc 된 sockaddr 주소를 반환합니다.
+복수의 다른 IP 에서 접속되기위해서 주소를 알 수 없을 경우에 사용합니다.
 
     use Socket;
     $mysockaddr = getsockname(SOCK);
@@ -4834,15 +4831,14 @@ number of TCP, which you can get using getprotobyname.
 
 =end original
 
-与えられた LEVEL で SOCKET に関連付けられた OPTNAME と言う名前のオプションを
-問い合わせます。
-オプションはソケットの種類に依存しした複数のプロトコルレベルに存在することも
-ありますが、少なくとも最上位ソケットレベル SOL_SOCKET (C<Socket> モジュールで
-定義されています)は存在します。
-その他のレベルのオプションを問い合わせるには、そのオプションを制御する
-適切なプロトコルのプロトコル番号を指定します。
-例えば、オプションが TCP プロトコルで解釈されるべきであることを示すためには、
-LEVEL は getprotobyname で得られる TCP のプロトコル番号を設定します。
+주어진 레벨에서 SOCKET 에 관련된 OPTNAME 이라는 이름의 옵션을 질의합니다.
+옵션은 소켓의 종류에 의존한 복수의 프로토콜레벨에 존재하는 것도 있습니다만, 
+적어도 최상위 소켓레벨 SOL_SOCKET ( C<Socket> 모듈에서 정의됩니다)는 
+존재합니다.
+다른 레벨의 옵션을 질의하기에는 그 옵션을 제어하는 적절한 프로토콜의 
+프로토콜의 번호를 지정합니다.
+예를 들면, 옵션이 TCP 프로토콜로 해석되어야하는 것이라고 표시하기 위해서는 
+LEVEL 은 getprotobyname 에서 얻어진 TCP 프로토콜 번호를 설정합니다.
 
 =begin original
 
@@ -4855,13 +4851,12 @@ integer which you can decode using unpack with the C<i> (or C<I>) format.
 
 =end original
 
-この呼び出しは、要求されたソケットオプションの pack された文字列表現か、
-あるいはエラーがある場合は C<undef> を返します(エラーの理由は $! にあります)。
-pack された文字列の正確な中身は LEVEL と OPTNAME に依存するので、
-詳細についてはシステムドキュメントを確認してください。
-しかし、とても一般的な場合というのはオプションが整数の場合で、この場合
-結果は unpack の C<i> (あるいは C<I>)フォーマットでデコードできる pack された
-整数です。
+이 호출은 요구된 소켓옵션의 pack 된 문자열 표현인지,
+혹은 에러가 있는 경우는 C<undef> 를 반환합니다(에러의 이유는 $! 에 있습니다).
+pack 된 문자열의 정확한 내용은 LEVEL 과 OPTNAME 에 의존하기때문에, 
+자세한 내용에 대해서는 시스템 문서를 확인해주세요.
+그러나 매우 일반적인 경우라는 것은 옵션이 정수인 경우에서 이 경우 
+결과는 unpack 의 C<i> (혹은 C<I>) 포맷에서 디코드되는 pack 된 정수입니다.
 
 =begin original
 
@@ -4869,7 +4864,7 @@ An example testing if Nagle's algorithm is turned on on a socket:
 
 =end original
 
-あるソケットで Nagle のアルゴリズム有効かどうかを調べる例です:
+어떤 소켓에서 Nagle 의 알고리즘 유효인지 어떤지를 조사하는 예제입니다:
 
     use Socket qw(:all);
 
@@ -4899,16 +4894,14 @@ more detail in L<perlop/"I/O Operators">.
 
 =end original
 
-リストコンテキストでは、
-EXPR の値を、標準 Unix シェル F</bin/csh> が行なうように
-ファイル名の展開を行なった結果のリスト(空かもしれません)を返します。
-スカラコンテキストでは、glob はこのようなファイル名展開を繰り返し、
-リストがなくなったら undef を返します。
-これは、C<< <*.c> >> 演算子を実装する内部関数ですが、
-直接使用することもできます。
-EXPR を省略すると、C<$_>が使われます。
-C<< <*.c> >>演算子については
-L<perlop/"I/O Operators"> でより詳細に議論しています。
+리스트 컨텍스트에서는, EXPR 의 값을 표준 Unix 셸 F</bin/csh> 이 수행되도록
+파일이름의 전개를 수행한 결과 리스트(비어있을 지도 모르지만)를 반환합니다.
+스칼라컨텍스트에서는 glob 는 이런 파일이름 전개를 반복해서 
+리스트가 없어지면 undef 를 반환합니다.
+이것은 C<< <*.c> >> 연산자를 구성하는 내부함수입니다만, 직접 사용할 수도 있습니다.
+EXPR 을 생략하면 C<$_> 이 사용됩니다.
+C<< <*.c> >> 연산자에 대해서는 
+L<perlop/"I/O Operators"> 에서 보다 자세희 의논하고 있습니다.
 
 =begin original
 
@@ -4917,9 +4910,9 @@ C<File::Glob> extension.  See L<File::Glob> for details.
 
 =end original
 
-v5.6.0 から、この演算子は標準の C<File::Glob> 拡張を使って
-実装されています。
-詳細は L<File::Glob> を参照して下さい。
+v5.6.0 에서 이 연산자는 표준의 C<File::Glob> 확장을 사용해서 
+구성되어 있습니다.
+자세한 내용은 L<File:Glob> 를 참조해주세요.
 
 =item gmtime EXPR
 X<gmtime> X<UTC> X<Greenwich>
