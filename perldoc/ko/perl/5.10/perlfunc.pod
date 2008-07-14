@@ -4454,12 +4454,12 @@ does not accept a PID argument, so only C<PID==0> is truly portable.
 
 =end original
 
-指定された PID の現在のプロセスグループを返します。
-PID に C<0> を与えるとカレントプロセスの指定となります。
-getpgrp(2) を実装していないマシンで実行した場合には、例外が発生します。
-PID を省略するとカレントプロセスのプロセスグループを返します。
-POSIX 版の C<getpgrp> は PID 引数を受け付けないので、
-C<PID==0> のみが完全に移植性があります。
+지정된 PID 의 현재의 프로세스그룹을 반환합니다.
+PID 에 C<0> 을 주면 최근 프로세스의 지정이 됩니다.
+gerpgrp(2) 를 구성하고 있지 않은 머신에서 실행한 경우에는 예외가 발생합니다.
+PID 를 생략하면 최근 프로세스의 프로세스 그룹을 반환합니다.
+POSIX 판의 C<getpgrp> 는 PID 인수를 받지 않기 때문에, 
+C<PID==0> 만이 완전히 이식성이 있습니다.
 
 =item getppid
 X<getppid> X<parent> X<pid>
@@ -4470,7 +4470,7 @@ Returns the process id of the parent process.
 
 =end original
 
-親プロセスのプロセス id を返します。
+부모 프로세스의 프로세스 id 를 반환합니다.
 
 =begin original
 
@@ -4483,12 +4483,12 @@ C<Linux::Pid>.
 
 =end original
 
-Linux ユーザーへの注意: Linux では C<getpid()> と C<getppid()> の C 関数は
-スレッドが異なると異なった値を返します。
-移植性のために、この振る舞いは perl レベルの関数 C<getppid()> には
-反映されず、スレッドをまたいで一貫性のある値を返します。
-基礎となる C<getppid()> を呼び出したい場合は、CPAN モジュールである
-C<Linux::Pid> を使ってください。
+Linux 유저에게 주의: Linux 에서는 C<getpid()> 와 C<getppid()> 의 C 함수는
+스레드가 다르면 다른 값을 반환합니다.
+이식성을 위해 이 행동은 perl 레벨의 함수 C<getppid()> 에는 
+반영되지 않고, 스레드를 일관성있는 값을 반환합니다.
+기초가 되는 C<getppid()> 를 호출하고 싶은 경우는 CPAN 모듈인 
+C<Linux::Pid> 를 사용해주세요.
 
 =item getpriority WHICH,WHO
 X<getpriority> X<priority> X<nice>
@@ -4501,10 +4501,10 @@ machine that doesn't implement getpriority(2).
 
 =end original
 
-プロセス、プロセスグループ、ユーザに対する現在の優先度を返します。
-(L<getpriority(2)> を参照してください。)
-getpriority(2) を実装していない
-マシンで実行した場合には、致命的例外が発生します。
+프로세스, 프로세스그룹, 유저에 대한 현재의 우선도를 반환합니다.
+(L<getpriority(2)> 를 참조해주세요)
+getpriority(2) 를 구성하지 않는 
+머신에서 실행한 경우에는 치명적 예외가 발생합니다.
 
 =item getpwnam NAME
 X<getpwnam> X<getgrnam> X<gethostbyname> X<getnetbyname> X<getprotobyname>
@@ -4580,9 +4580,9 @@ various get routines are as follows:
 
 =end original
 
-これらのルーチンは、システムライブラリの同名の関数を実行します。
-リストコンテキストでは、さまざまな
-get ルーチンからの返り値は、次のようになります:
+이 루틴들은 시스템 라이브러리의 같은 이름의 함수를 실행합니다.
+리스트 컨텍스트에서는 여러가지 get 루틴에서의 반환값은 
+다음과 같이 됩니다:
 
     ($name,$passwd,$uid,$gid,
        $quota,$comment,$gcos,$dir,$shell,$expire) = getpw*
@@ -4598,7 +4598,7 @@ get ルーチンからの返り値は、次のようになります:
 
 =end original
 
-(エントリが存在しなければ、空リストが返されます。)
+(엔트리가 존재하지 않으면 빈 리스트가 반환됩니다)
 
 =begin original
 
@@ -4612,12 +4612,12 @@ login shell, are also tainted, because of the same reason.
 
 =end original
 
-$gcos フィールドの正確な意味はさまざまですが、通常は(ログイン名ではなく)
-ユーザーの実際の名前とユーザーに付随する情報を含みます。
-但し、多くのシステムではユーザーがこの情報を変更できるので、この情報は
-信頼できず、従って $gcos は汚染されます(L<perlsec> を参照してください)。
-ユーザーの暗号化されたパスワードとログインシェルである $passwd と
-$shell も、同様の理由で汚染されます。
+$gcos 필드의 정확한 의미는 여러가지 입니다만, 일반적으로는(로그인 이름이 아닌)
+유저의 실제의 이름과 유저에 부합하는 정보를 포함합니다.
+단, 많은 시스템에서는 유저가 이 정보를 변경할 수 있기때문에, 이 정보는 
+신뢰할 수 없고, 따라서 $gcos 는 오염됩니다(L<perlsec> 를 참조해주세요).
+유저의 암호화된 패스워드와 로그인셸인 $passwd 와 $shell 도 
+같은 이유로 오염됩니다.
 
 =begin original
 
@@ -4627,10 +4627,10 @@ lookup by name, in which case you get the other thing, whatever it is.
 
 =end original
 
-スカラコンテキストでは、*nam、*byname といった NAME で検索するもの以外は、
-name を返し、NAME で検索するものは、何か別のものを返します。
-(エントリが存在しなければ、未定義値が返ります。)
-例:
+스칼라 컨텍스트에서는 *name, *byname 같은 NAME 으로 검색하는 것 이외에는 
+name 을 반환하고 NAME 로 검색하는 것은 뭔가 다른 것을 반환합니다.
+(엔트리가 존재하지 않으면 미정의값을 반환합니다)
+예제:
 
     $uid   = getpwnam($name);
     $name  = getpwuid($num);
