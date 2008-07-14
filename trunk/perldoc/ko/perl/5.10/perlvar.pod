@@ -1,5 +1,5 @@
 
-=encoding euc-jp
+=encoding utf8
 
 =head1 NAME
 
@@ -9,13 +9,13 @@ perlvar - Perl predefined variables
 
 =end original
 
-perlvar - Perl で定義済みの変数
+perlvar - Perl 에서의 미리정의된 변수 
 
 =head1 DESCRIPTION
 
 =head2 Predefined Names
 
-(定義済みの変数)
+(미리 정의된 변수)
 
 =begin original
 
@@ -26,9 +26,9 @@ you need only say
 
 =end original
 
-以下の名前は Perl では特別な意味を持ちます。
-記号的な名前の多くは記憶法があるか、シェルでの類推が可能です。
-それでも長い名前を使用したい場合には
+아래의 이름은 Perl 에서는 특별한 의미를 가집니다.
+기호적인 이름의 많은 기억법이 있지만, 셸에서의 유추가 가능합니다. 
+그래도 긴 이름을 사용하고 싶은 경우에는 
 
     use English;
 
@@ -40,11 +40,11 @@ borrowed from B<awk>. In general, it's best to use the
 
 =end original
 
-とプログラムの最初に書いてください。
-これは、すべての短い名前の別名として、
-カレントパッケージで長い名前を付けるものです。
-B<awk> から持ってきた中間的な名前を持っているものもあります。
-一般的に、一番良い使い方は:
+라고 프로그램의 맨 처음에 써주세요.
+이것은 모든 짧은 이름의 별명으로써
+최근 패키지에서의 긴 이름을 붙일 수 있습니다.
+B<awk> 에서 가지고 온 중간적인 이름을 가지고 있는 것도 있습니다.
+일반적으로 제일 좋은 방법은:
 
     use English '-no_match_vars';
 
@@ -70,12 +70,12 @@ lines below for this contain the word HANDLE.) First you must say
 
 =end original
 
-現在選択されているファイルハンドルに
-依存する変数の場合には、代わりに IO::Handle オブジェクトに
-関するオブジェクトメソッドを呼び出して設定することができますが、
-通常の組み込み変数よりは効率が落ちます。
-(以下の要約では HANDLE という語を含んでいます。)
-まず最初に必ず、
+현재 선택된 파일핸들에 
+존재하는 변수인 경우에는 대신에 IO::Handle 오브젝트에 관한 
+오브젝트메소드를 호출해서 설정할 수 있습니다만, 
+일반적인 내장변수보다는 효율이 떨어집니다.
+(아래의 요약에서는 HANDLE 이라는 단어를 포함하고 있습니다).
+우선 맨처음에 반드시
 
     use IO::Handle;
 
@@ -85,7 +85,7 @@ after which you may use either
 
 =end original
 
-と書き、その後で以下のように書くか、
+라고 쓰고, 그 뒤에 아래처럼 쓰거나
 
     method HANDLE EXPR
 
@@ -95,7 +95,7 @@ or more safely,
 
 =end original
 
-もしくはより安全に以下のように書きます:
+혹은 보다 안전하게 아래처럼 쓸 수 있습니다:
 
     HANDLE->method(EXPR)
 
@@ -109,11 +109,11 @@ autoflush(), which will assume a 1 for you, just to be different.
 
 =end original
 
-それぞれのメソッドは、IO::Handle 属性の昔の値を返します。
-メソッドはそれぞれ EXPR をとることができ、指定した場合には、
-問題の IO::Handle 属性の新しい値を指定することになります。
-指定しない場合には、多くのメソッドでは現在の値に対して何もしませんが、
-autoflush() では 1 を指定されたものとします。
+각각의 메소드는 IO::Handle 속성의 옛 값을 반환합니다.
+메소드는 각각 EXPR 을 얻을 수 있고, 설정한 경우에는 
+문제의 IO::Handle 속성의 새로운 값을 지정하게 됩니다.
+설정한 경우에는 많은 메소드에서는 현재의 값에 대해서 아무것도 하지 않습니다만,
+autoflush() 에서는 1을 지정한 것으로 합니다.
 
 =begin original
 
@@ -122,8 +122,8 @@ learn how to use the regular built-in variables.
 
 =end original
 
-IO::Handle クラスを読み込むのはコストの高い操作なので、
-通常の組み込み変数の使い方を覚えるべきです。
+IO::Handle 클래스를 읽는 것은 비용이 높은 조작이기에, 
+일반적인 내장함수의 사용법을 기억해둬야 합니다.
 
 =begin original
 
@@ -133,10 +133,9 @@ a reference, you'll raise a run-time exception.
 
 =end original
 
-これらの変数の中には "read-only" として扱われるものもあります。
-つまり、そういった変数に対して、直接にしろ、リファレンスを
-介して間接にしろ、代入を行なおうとした場合には、実行時に
-例外処理が起動されます。
+이것은 변수의 안에서는 "read-only" 로 취급되는 것도 있습니다.
+즉, 그런 변수에 대해, 직접 리퍼런스를 건ㄷ리든 간접적으로 하든 
+대입을 수행하려고 한 경우에는 실행시에 예외처리가 기동됩니다.
 
 =begin original
 
@@ -168,7 +167,7 @@ But the following code is quite bad:
 
 =end original
 
-しかし以下のコードは完全に悪いものです:
+그러나 아래의 코드는 완전히 나쁜 것입니다:
 
     open my $fh, "foo" or die $!;
     undef $/; # enable slurp mode
@@ -219,7 +218,7 @@ Here is an example of how your own code can go broken:
 
 =end original
 
-以下はどのように自分のコードが壊れるかの例です:
+아래는 어떻게 자신의 코드가 무너지는 가하는 예제입니다:
 
     for (1..5){
         nasty_break();
@@ -236,7 +235,7 @@ You probably expect this code to print:
 
 =end original
 
-おそらくこのコードは以下のように表示されることを期待しています:
+아마도 이 코드는 아래처럼 표시되는 것을 기대하고 있습니다:
 
     1 2 3 4 5
 
@@ -246,7 +245,7 @@ but instead you get:
 
 =end original
 
-しかし、以下のようになります:
+그러나 아래처럼 됩니다:
 
     5 5 5 5 5
 
@@ -257,9 +256,9 @@ first. The fix is to add local():
 
 =end original
 
-なぜでしょう? 
-nasty_break() は C<$_> をローカル化する前に変更するからです。
-修正するには、local() を追加します:
+왜 그럴까요?
+nasty_break() 는 C<$_> 을 로컬화하기 전에 변경하기 때문입니다.
+수정하기에는 local()  을 추가합니다.
 
         local $_ = 5;
 
@@ -283,8 +282,7 @@ arrays, then the hashes.
 
 =end original
 
-以下のリストはまずスカラ変数、それから配列、ハッシュの順に
-並んでいます。
+아래의 리스트는 우선 스칼라 변수, 그리고 배열, 해쉬의 순으로 나열합니다.
 
 =over 8
 
@@ -300,8 +298,7 @@ equivalent:
 
 =end original
 
-デフォルトの入力とパターン検索のスペース。
-以下の 2つは同値です:
+기본ê의 입력과 패턴 검색의 스페이스, 아래의 2가지는 같은 값입니다.
 
     while (<>) {...}	# equivalent only in while!
     while (defined($_ = <>)) {...}
@@ -322,7 +319,7 @@ don't use it:
 
 =end original
 
-Perl が(あなたが使いたくなくても) $_ を仮定する場合がいくつかあります:
+Perl 이 (당신이 사용하고 싶지 않아도) $_ 을 가정ㅏ는 경우가 몇가지 있습니다:
 
 =over 3
 
@@ -336,8 +333,8 @@ STDIN.
 
 =end original
 
-様々な単項関数。ord() や int()、また C<-t> 以外の全ての
-ファイルテスト (C<-f>, C<-d>)など。C<-t> のデフォルトは STDIN です。
+여러가지 단항함수. ord() 나 int() 또는 C<-t> 이외의 모든 
+파일테스트(C<-f>, C<-d>) 등, C<-t> 의 기본값은 STDIN 입니다.
 
 =item *
 
