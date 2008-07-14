@@ -4247,11 +4247,10 @@ You should reopen those to F</dev/null> if it's any issue.
 
 =end original
 
-fork した子プロセスが STDIN や STDOUT といったシステムファイル記述子を
-継承する場合、(CGI スクリプトやリモートシェルといった
-バックグラウンドジョブのような)リモートサーバは考え通りに
-動かないであろうことに注意してください。
-このような場合ではこれらを F</dev/null> として再オープンするべきです。
+fork 한 자식 프로세스가 STDIN 이나 STDOUT 같은 시스템 파일 기술자를 
+상속하는 경우 (CGI 스크립트나 리모트 셸같은 백그라운드 잡 같은) 
+리모트 서버는 생각한대로 움직이지 않을 것이라는 것에 주의해주세요.
+이런 경우에서는 이것들을 F</dev/null> 로 다 오픈해야 합니다.
 
 =item format
 X<format>
@@ -4263,8 +4262,8 @@ example:
 
 =end original
 
-C<write> 関数で使うピクチャーフォーマットを宣言します。
-例:
+C<write> 함수로 사용하는 그림 포맷을 선언합니다.
+예제:
 
     format Something =
 	Test: @<<<<<<<< @||||| @>>>>>
@@ -4282,7 +4281,7 @@ See L<perlform> for many details and examples.
 
 =end original
 
-詳細と例については L<perlform> を参照して下さい。
+자세한 내용과 예제에 대해서는 L<perlform> 을 참조하세요.
 
 =item formline PICTURE,LIST
 X<formline>
@@ -4304,19 +4303,19 @@ record format, just like the format compiler.
 
 =end original
 
-これは、C<format> が使用する内部関数ですが、直接呼び出すこともできます。
-これは、PICTURE の内容にしたがって、LIST の値を整形し (L<perlform> を
-参照してください)、結果をフォーマット出力アキュムレータC<$^A>
-(English モジュールでは C<$ACCUMULATOR>) に納めます。
-最終的に、C<write> が実行されると、C<$^A> の中身が、
-何らかのファイルハンドルに書き出されます。
-また、自分で C<$^A> を読んで、C<$^A> の内容を C<""> に戻してもかまいません。
-format は通常、1 行ごとに C<formline> を行ないますが、
-C<formline> 関数自身は、PICTURE の中にいくつの改行が入っているかは、
-関係がありません。
-これは、C<~> と C<~~>トークンは PICTURE 全体を一行として扱うことを意味します。
-従って、1 レコードフォーマットを実装するためには
-フォーマットコンパイラのような複数 formline を使う必要があります。
+이것은 C<format> 이 사용하는 내부함수입니다만 직접 호출할 수도 있습니다.
+이것은 PICTURE 의 내용에 따라서 LIST 의 값을 바꿔서 (L<perlform> 을 
+참조하세요) 결과를 포맷출력 아큐물레이터 C<$^A> (English 모듈에서는 
+C<$ACCUMULATOR>) 에 넣습니다.
+최정적으로는 C<write> 가 실행되면 C<$^A> 의 내용이 
+어떤 파일 핸들에 쓰여집니다.
+또, 자신이 C<$^A> 를 읽고 C<$^A> 의 내용을 C<""> 에 돌아가도 상관없습니다.
+format 은 일반적으로 한 줄마다 C<formline> 을 수행하지만, 
+C<formline> 함수자신은 PICTURE 의 안에 몇개의 개행이 들어있는 가는 
+관계가 없습니다.
+이것은 C<~> 과 C<~~> 토큰은 PICTURE 전체를 한줄로써 다루는 것을 의미합니다.
+따라서 한 레코드 포맷을 구성하기 위해서는 
+포맷컴파일러 같은 복수 formline 을 사용할 필요가 있습니다.
 
 =begin original
 
@@ -4326,10 +4325,10 @@ C<formline> always returns true.  See L<perlform> for other examples.
 
 =end original
 
-ダブルクォートで PICTURE を囲む場合には、C<@> という文字が
-配列名の始まりと解釈されますので、注意してください。
-C<formline> は常に真を返します。
-その他の例については L<perlform> を参照してください。
+쌍따옴표로 PICTURE 를 감싸는 경우에는 C<@> 같은 문자가 
+배열이름의 시작으로 해석되기 때문에 주의해주세요.
+C<formline> 은 항상 참을 반환합니다.
+그외의 예제에 대해서는 L<perlform> 을 참조해주세요.
 
 =item getc FILEHANDLE
 X<getc> X<getchar> X<character> X<file, read>
@@ -4347,14 +4346,14 @@ to hit enter.  For that, try something more like:
 
 =end original
 
-FILEHANDLE につながれている入力ファイルから、次の一文字を返します。
-ファイルの最後、またはエラーが発生した場合は、未定義値を返します
-(後者の場合は C<$!> がセットされます)。
-FILEHANDLE が省略された場合には、STDIN から読み込みを行ないます。
-これは特に効率的ではありません。
-しかし、これはユーザーがリターンキーを押すのを待つことなく
-一文字を読み込む用途には使えません。
-そのような場合には、以下のようなものを試して見てください:
+FILEHANDLE 에 연결되어 있는 입력 파일에서 다음의 한문자를 반환합니다.
+파일의 마지막 또는 에러가 발생한 경우는 미정의값을 반환합니다
+(후자의 경우는 C<$!> 가 정의됩니다).
+FILEHANDLE 이 생략된 경우에는 STDIN 에서 읽기를 수행합니다.
+이것은 특히 효율적이지 않습니다.
+그러나 이것은 유저가 리턴키를 누르는 것을 가지지 않고 
+한문자를 읽는 용도로는 사용할 수 없습니다.
+그런 경우에는 아래와 같은 것을 시험해주세요.
 
     if ($BSD_STYLE) {
 	system "stty cbreak </dev/tty >/dev/tty 2>&1";
@@ -4380,8 +4379,8 @@ is left as an exercise to the reader.
 
 =end original
 
-$BSD_STYLE をセットするべきかどうかを決定する方法については
-読者への宿題として残しておきます。
+$BSD_STYLE 을 설정하는 가 어떤가를 결정하는 방법에 대해서는 
+독자에게 숙제로 남겨두겠습니다.
 
 =begin original
 
@@ -4392,10 +4391,10 @@ L<perlmodlib/CPAN>.
 
 =end original
 
-C<POSIX::getattr> 関数は POSIX 準拠を主張するシステムでこれを
-より移植性のある形で行います。
-お近くの CPAN サイトから C<Term::ReadKey> モジュールも参照して下さい;
-CPAN に関する詳細は L<perlmodlib/CPAN> にあります。
+C<POSIX::getattr> 함수는 POSIX 에 준하는 처리를 주장하는 시스템으로 
+이것을 보다 이석성있는 형태로 수행합니다.
+가까운 CPAN 사이트에서 C<Term::ReadKey> 모듈도 참조해주세요;
+CPAN 에 관한 자세한 내용은 L<perlmodlib/CPAN> 에 있습니다.
 
 =item getlogin
 X<getlogin> X<login>
@@ -4408,9 +4407,9 @@ use C<getpwuid>.
 
 =end original
 
-これは同じ名前の C ライブラリ関数を実装していて、
-多くのシステムでは、もしあれば、/etc/utmp から現在のログイン名を返します。
-ヌルであれば、getpwuid() を使ってください。
+이것은 같은 이름의 C 라이브러리 함수를 구성하고 있고,
+많은 시스템에서는 만약있다면 /etc/utmp/ 에서 현재의 로그인이름을 반환합니다.
+Null 이면 getpwuid() 를 사용해주세요.
 
     $login = getlogin || getpwuid($<) || "Kilroy";
 
@@ -4421,8 +4420,8 @@ secure as C<getpwuid>.
 
 =end original
 
-C<getlogin> を認証に使ってはいけません。
-これは C<getpwuid> のように安全ではありません。
+C<getlogin> 을 인증에 사용해서는 안됩니다.
+이것은 C<gwtpwuid> 처럼 안전하지 않습니다.
 
 =item getpeername SOCKET
 X<getpeername> X<peer>
@@ -4433,7 +4432,7 @@ Returns the packed sockaddr address of other end of the SOCKET connection.
 
 =end original
 
-SOCKET コネクションの向こう側のパックされた aockaddr アドレスを返します。
+SOCKET 연결의 반대쪽의 pack 된 aockaddr 주소를 반환합니다.
 
     use Socket;
     $hersockaddr    = getpeername(SOCK);
