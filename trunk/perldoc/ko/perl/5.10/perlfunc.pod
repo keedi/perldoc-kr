@@ -4063,16 +4063,15 @@ waiting for the lock (check the return status to see if you got it).
 
 =end original
 
-OPERATION は LOCK_SH, LOCK_EX, LOCK_UN のいずれかで、LOCK_NB と
-組み合わされることもあります。
-これらの定数は伝統的には 1, 2, 8, 4 の値を持ちますが、Fcntl モジュールから
-シンボル名を独立してインポートするか、 ':flock' タグを使うグループとして、
-シンボル名をを使うことができます。
-LOCK_SH は共有ロックを要求し、LOCK_EX は排他ロックを要求し、LOCK_UN は
-前回要求したロックを開放します。
-LOCK_NB と LOCK_SH か LOCK_EX がビット単位の論理和されると、C<flock> は
-ロックを取得するまで待つのではなく、すぐに返ります(ロックが取得できたか
-どうかは返り値を調べます)。
+OPERATION 은 LOCK_SH, LOCK_EX, LOCK_UN 중에서 LOCK_NB 과 조합될 수도 있습니다.
+이 정수들은 전통적으로는 1, 2, 8, 4 의 값을 가지지만, Fcntl 모듈에서는
+심볼이름을 독립해서 임포트하거나 ':flock' 태그를 사용해 그룹으로써 
+심볼이름을 사용할 수 있습니다.
+LOCK_SH 는 공유 록을 요구하고, LOCK_EX 는 배타 록을 요구하며, LOCK_UN 은 
+앞서 요구한 록을 개방합니다.
+LOCK_NB 와 LOCK_SH 나 LOCK_EX 가 비트단위의 논리합되면 C<flock> 은 
+록을 얻기까지 기다리는 것이 아니라 곧 반환합니다(록이 취득되었는지 
+어떤지는 반환값을 조사합니다).
 
 =begin original
 
@@ -4081,8 +4080,8 @@ before locking or unlocking it.
 
 =end original
 
-不一致の可能性を避けるために、Perl はファイルをロック、アンロックする前に
-FILEHANDLE をフラッシュします。
+불일치 가능성을 피하기 위해 Perl 은 파일을 록, 언록하기 전에 
+FILEHANDLE 을 플러쉬ㅂ니다.
 
 =begin original
 
@@ -4094,13 +4093,12 @@ differing semantics shouldn't bite too many people.
 
 =end original
 
-lockf(3) で作成されたエミュレーションは共有ロックを提供せず、
-FILEHANDLE が書き込みモードで開いていることを必要とすることに
-注意してください。
-これは lockf(3) が実装している動作です。
-しかし、全てではないにしてもほとんどのシステムでは fcntl(2) を使って
-lockf(3) を実装しているので、異なった動作で多くの人々を混乱させることは
-ないはずです。
+lockf(3) 에서 작성한 에뮬레이션은 공유록을 제공하지 않고, 
+FILEHANDLE 이 쓰기 모드에서 열려있는 것을 필요로 하는 것에 주의하세요.
+이것은 lockf(3) 가 구성하고 있는 동작입니다.
+그러나, 전부는 아니라고 해도 대부분의 시스템에서는 fcntl(2) 를 사용해서
+lockf(3) 를 구성하고 있기 때문에, 다른 동작으로 많은 사람들을 혼란시키는
+것은 없을 것입니다.
 
 =begin original
 
@@ -4110,9 +4108,9 @@ with write intent to use LOCK_EX.
 
 =end original
 
-flock(3) の fcntl(2) エミュレーションは、 LOCK_SH を使うためには
-FILEHANDLE を読み込みで開いている必要があり、LOCK_EX を使うためには
-書き込みで開いている必要があることに注意してください。
+flock(3) 의 fnctl(2) 에뮬레션은 LOCK_SH 를 사용하기위해 
+FILEHANDLE 을 읽기에서 열려있을 필요가 있고, LOCK_EX 를 사용하기 위해 
+쓰기에서 열려있을 필요가 있다는 것에 주의하세요.
 
 =begin original
 
@@ -4125,11 +4123,11 @@ perl.
 
 =end original
 
-ネットワーク越しにはロックできない C<flock> もあることに注意してください;
-このためには、よりシステム依存な C<fcntl> を使う必要があります。
-Perl にシステムの flock(2) 関数を無視させ、自身の fcntl(2) ベースの
-エミュレーションを使う場合は、perl を設定するときに F<Configure>
-プログラムに C<-Ud_flock> オプションを渡してください。
+네트워크를 넘어서는 록할수 없는 C<flock> 도 있는 것에 주의해주세요;
+이 때문에 보다 시스템 의존적인 C<fcntl> 을 사용할 필요가 있습니다.
+Perl 시스템의 flock(2) 함수를 무시시키고, 자신의 fcntl(2) 베이스의
+에뮬레이션을 사용하는 경우는 Perl 을 설정할 대에 F<Configure> 
+프로그램에 C<-Ud_flock> 옵션을 건네주세요.
 
 =begin original
 
@@ -4137,7 +4135,7 @@ Here's a mailbox appender for BSD systems.
 
 =end original
 
-BSD システムでのメールボックスへの追加処理の例を示します。
+BSD 시스템에서의 메일박스로의 추가처리의 예제를 나타냅니다.
 
     use Fcntl ':flock'; # import LOCK_* constants
 
@@ -4167,9 +4165,9 @@ function lose the locks, making it harder to write servers.
 
 =end original
 
-真の flock() に対応しているシステムではロックは fork() を通して
-継承されるのに対して、より不安定な fcntl() に頼らなければならない場合、
-サーバを書くのはより難しくなります。
+진정으로 flock() 에 대응하고 있는 시스템에서는 록은 fork() 를 통해서 
+계승되는 것에 대해서 보다 불안전한 fcntl() 에 연결되지 않으면 안되는 경우
+서버를 쓰는 것은 보다 힘들게 됩니다.
 
 =begin original
 
@@ -4177,7 +4175,7 @@ See also L<DB_File> for other flock() examples.
 
 =end original
 
-その他の flock() の例としては L<DB_File> も参照してください。
+그 밖의 flock() 의 예제로써는 L<DB_File> 도 참조해주세요.
 
 =item fork
 X<fork> X<child> X<parent>
@@ -4195,17 +4193,17 @@ dominant paradigm for multitasking over the last few decades.
 
 =end original
 
-同じプログラムの同じ地点から開始する新しいプロセスを作成するために
-システムコール fork(2) を行ないます。
-親プロセスには、チャイルドプロセスの pid を、
-チャイルドプロセスに C<0> を返しますが、
-fork に失敗したときには、C<undef>を返します。
-ファイル記述子(および記述子に関連するロック)は共有され、
-その他の全てはコピーされます。
-fork() に対応するほとんどのシステムでは、
-これを極めて効率的にするために多大な努力が払われてきました
-(例えば、データページへの copy-on-write テクノロジーなどです)。
-これはここ 20 年にわたるマルチタスクに関する主要なパラダイムとなっています。
+같은 프로그램의 같은 지점에서 개시하는 새로운 프로세스를 작성하기 위해 
+시스템 호출 fork(2) 를 수행합니다.
+부모 프로세스에는 자식 프로세스의 pid 를 
+자식 프로세스에는 C<0> 을 반환하지만,
+fork 에 실패한 때에는 C<undef> 를 반환합니다.
+파일의 기술자(및 기술자에 관한 록)은 공유되어 
+그 밖의 모든 것은 복사됩니다.
+fork() 에 대응하는 대부분의 시스템에서는 
+이것을 최대한 효율적으로 하기위해 많은 노력을 기울이고 있습니다
+(예를 들어, 데이터베이스로의 copy-on-write 테크놀로지등입니다).
+이것은 이 20년에 걸친 멀티태스크에 관한 주요한 패러다임이 되고 있습니다.
 
 =begin original
 
@@ -4217,14 +4215,12 @@ C<IO::Handle> on any open handles in order to avoid duplicate output.
 
 =end original
 
-v5.6.0 から、Perl は子プロセスを fork する前に出力用にオープンしている全ての
-ファイルをフラッシュしようとしますが、これに対応していないプラットフォームも
-あります(L<perlport> を参照してください)。
-安全のためには、出力が重複するのを避けるために、
-全てのオープンしているハンドルに対して C<$|> (English モジュールでは
-$AUTOFLUSH) を設定するか、
-C<IO::Handle> モジュールの C<autoflush()>メソッドをを呼ぶ必要が
-あるかもしれません。
+v5.6.0 에서 Perl 은 자식프로스를 fork 하기 전에 출력용으로 오픈되어 있는 
+모든 파일을 플러쉬하려고 합니다만, 이것에 대응하고 있지 않은 플랫폼도 
+있습니다(L<perlport> 를 참조해주세요).
+안전을 위해, 출력이 중복하는 것을 피하기 위해, 모든 오픈되어 있는 핸들에 대해 
+C<$|> (English 모듈에서는 $AUTOFLUSE) 를 설정하거나 
+C<IO::Handle> 모듈의 C<autoflush()> 메소드를 호출할 필요가 있을지도 모릅니다.
 
 =begin original
 
@@ -4235,11 +4231,11 @@ forking and reaping moribund children.
 
 =end original
 
-チャイルドプロセスの終了を待たずに、C<fork> を繰り返せば、
-ゾンビをためこむことになります。
-C<$SIG{CHLD}> に C<"IGNORE"> を指定することでこれを回避できるシステムもあります。
-fork と消滅しかけている子プロセスを回収するための更なる例については
-L<perlpc> も参照してください。
+자식 프로세스의 종료를 기다리지 않고, C<fork> 를 반복하면, 
+좀비를 양산하게 됩니다. 
+C<$SIG{CHLD*> 에 C<"IGNORE"> 를 지정하는 것으로 이것을 피할 수 있는 
+시스템도 있습니다. fork 와 소멸에 걸친 자식 프로세스를 회수하기 위한
+예제에 대해서는 L<perlpc> 도 참조해주세요.
 
 =begin original
 
