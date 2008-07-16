@@ -5227,16 +5227,16 @@ functions will serve you better than will int().
 
 =end original
 
-EXPR の整数部を返します。
-EXPR を省略すると、C<$_> を使います。
-この関数を丸めのために使うべきではありません。
-第一の理由として C<0> の方向への切捨てを行うから、第二の理由として
-浮動小数点数の機械表現は時々直感に反した結果を生み出すからです。
-たとえば、C<int(-6.725/0.025)> は正しい結果である -269 ではなく
--268 を返します。
-これは実際には -268.99999999999994315658 というような値になっているからです。
-通常、C<sprintf>, C<printf>, C<POSIX::floor>, C<POSIX::ceil> の方が
-int() より便利です。
+EXPR 의 정수부를 반환합니다.
+EXPR 을 생략하면 C<$_> 을 사용합니다.
+이 함수를 반올림으로 사용하는 것은 아닙니다.
+첫번째 이유로써  C<0> 의 방향으로의 버리기 때문이고, 두번째 이유로 
+부동소수점의 기계표현은 때때로 직감에 반한 결과를 내기 때문입니다.
+예를 들어, C<int(-6.725/0.025)> 는 바른 결과인 -269 가 아닌 
+-268 을 반환합니다.
+이것은 실제로는 -268.99999999999994315658 같은 값이 되기 때문입니다.
+보통 C<sprintf>, C<printf>, C<POSIX::floor>, C<POSIX::ceil> 쪽이 
+int() 보다 편리합니다.
 
 =item ioctl FILEHANDLE,FUNCTION,SCALAR
 X<ioctl>
@@ -5247,8 +5247,8 @@ Implements the ioctl(2) function.  You'll probably first have to say
 
 =end original
 
-ioctl(2) 関数を実装します。
-正しい関数の定義を得るために、おそらく最初に
+ioctl(2) 함수를 구성합니다.
+바른 함수의 정의를 얻기 위해 아마도 처음에
 
     require "sys/ioctl.ph";	# probably in $Config{archlib}/sys/ioctl.ph
 
@@ -5269,20 +5269,17 @@ C<ioctl>.
 
 =end original
 
-としなくてはならないでしょう。
-F<sys/ioctl.ph> がないか、間違った定義をしている場合には、
-F<< <sys/ioctl.ph> >>のような C のヘッダファイルをもとに、
-自分で作らなければなりません。
-(Perl の配布キットに入っている B<h2ph> という
-Perl スクリプトがこれを手助けしてくれるでしょうが、これは重要です。)
-FOUNCTION に応じて SCALAR が読み書きされます。
-SCALAR の文字列値へのポインタが、実際の C<ioctl> コールの
-3 番目の引数として渡されます。
-(SCALAR が文字列値を持っておらず、数値を持っている場合には、
-文字列値へのポインタの代わりに、その値が渡されます。
-このことを保証するためには、使用する前に SCALAR にC<0> を足してください。)
-C<ioctl> で使われる構造体の値を操作するには、
-C<pack> 関数と C<unpack> 関数が必要となるでしょう。
+이라고 해두지 않으면 안됩니다.
+F<sys/ioctl.ph> 가 없거나 잘못된 정의를 하고 있는 경우에는 
+F<< <sys/ioctl.ph> >> 같은 C 의 헤더파일을 기본으로  자신이 
+만들지 않으면 안됩니다.
+(Perl 의 배포킷에 들어있는 B<h2ph> 라는 Perl 스크립트가 이것을 도와주지만, 
+이것은 중요합니다)
+FUNCTION 에 대해 SCALAR 가 읽고쓰여집니다.
+SCALAR 의 문자열값으로 포인터가 실제 C<ioctl> 호출의 3번째 인수로써 넘겨집니다.
+이 것을 보증하기 위해서는 사용하기 전에 SCALAR에 C<0> 을 더해줍니다.)
+C<ioctl> 으로 사용된 구조체 값을 조작하기에는 C<pack> 함수와 C<unpack> 함수가
+필요로 합니다.
 
 =begin original
 
@@ -5290,7 +5287,7 @@ The return value of C<ioctl> (and C<fcntl>) is as follows:
 
 =end original
 
-C<ioctl> (と C<fcntl>) の返り値は、以下のようになります:
+C<ioctl> (과 C<fcntl>) 의 반환값은 아래처럼 됩니다:
 
 =begin original
 
@@ -5314,8 +5311,8 @@ system:
 
 =end original
 
-つまり Perl は、成功時に「真」、失敗時に「偽」を返す
-ことになり、OS が実際に返した値も、以下のように簡単に知ることができます。
+즉 Perl 은 성공시에 "참", 실패할때는 "거짓"을 반환하게 되고,
+OS 가 실제로 반환한 값도 아래처럼 간단히 알 수 있습니다.
 
     $retval = ioctl(...) || -1;
     printf "System returned %d\n", $retval;
@@ -5327,8 +5324,8 @@ about improper numeric conversions.
 
 =end original
 
-特別な文字列 C<"0 だが真"> は、不適切な数値変換に関する
-B<-w> 警告を回避します。
+특별한 문자열 C<"0 이지만 참"> 은, 부적절한 수치변환에 관한 
+B<-w> 경고를 회피합니다.
 
 =item join EXPR,LIST
 X<join>
@@ -5340,9 +5337,9 @@ separated by the value of EXPR, and returns that new string.  Example:
 
 =end original
 
-LIST の個別の文字列を、EXPR の値で区切って
-1 つの文字列につなげ、その文字列を返します。
-例:
+LIST 의 개별 문자열을 EXPR 의 값으로 구분하고 
+하나의 문자열에 연결해서 그 문자열을 반환합니다.
+예제:
 
     $rec = join(':', $login,$passwd,$uid,$gid,$gcos,$home,$shell);
 
@@ -5353,9 +5350,9 @@ first argument.  Compare L</split>.
 
 =end original
 
-C<split> と違って、C<join> は最初の引数にパターンは取れないことに
-注意してください。
-L</split> と比較してください。
+C<split> 와는 달리 C<join> 은 맨처음의 인수에 패턴은 얻을 수 없는 것에 
+주의하세요.
+L</split> 와 비교해주세요.
 
 =item keys HASH
 X<keys> X<key>
@@ -5367,8 +5364,8 @@ Returns a list consisting of all the keys of the named hash.
 
 =end original
 
-指定したハッシュのすべての key からなる、リストを返します。
-(スカラコンテキストでは、key の数を返します。)
+지정한 해쉬의 모든 key 로부터 리스트를 반환합니다.
+(스칼라 컨텍스트에서는 key 의 수를 반환합니다)
 
 =begin original
 
@@ -5382,13 +5379,13 @@ Attacks">).
 
 =end original
 
-キーは見たところではランダムな順番に返されます。
-実際のランダムな順番は perl の将来のバージョンでは変わるかもしれませんが、
-C<values> や C<each> 関数が同じ(変更されていない)ハッシュに対して
-生成するのと同じ順番であることは保証されます。
-Perl 5.8.1 以降ではセキュリティ上の理由により、
-実行される毎に順番は変わります
-(L<perlsec/"Algorithmic Complexity Attacks"> を参照してください)。
+키는 겉으로는 랜덤한 순서로 반환됩니다.
+실제 랜덤한 순서는 perl 의 장래의 버젼에서는 바뀔지도 모릅니다만, 
+C<values> 나 C<each> 함수가 같은(변경되지 않은) 해쉬에 대해서 
+생성하는 것과 같은 순서인 것은 보증됩니다.
+Perl 5.8.1. 이후에서는 보안상의 이유에 의해서, 실행될 때마다 
+순서가 바뀝니다.
+(L<perlsec/"Algorithmic Complexity Attacks"> 를 참조해주세요)
 
 =begin original
 
@@ -5398,10 +5395,9 @@ the iterator with no other overhead.
 
 =end original
 
-副作用として、HASH の反復子を初期化します
-(L</each> を参照してください)。
-特に、無効コンテキストで keys() を呼び出すと
-オーバーヘッドなしで反復子を初期化します。
+부작용으로 HASH 의 반복자를 초기화합니다(L</each>를 참조해주세요).
+특히 무효 컨텍스트에서 keys() 를 호출하면 오버헤드 없이도 반복자를 
+초기화합니다.
 
 =begin original
 
@@ -5409,7 +5405,7 @@ Here is yet another way to print your environment:
 
 =end original
 
-環境変数を表示する別の例です:
+환경변수를 표시하는 다른 예제입니다:
 
     @keys = keys %ENV;
     @values = values %ENV;
@@ -5423,7 +5419,7 @@ or how about sorted by key:
 
 =end original
 
-key でソートしてもいいでしょう:
+key 로 정렬해도 좋습니다:
 
     foreach $key (sort(keys %ENV)) {
 	print $key, '=', $ENV{$key}, "\n";
@@ -5436,9 +5432,9 @@ modifying them will not affect the original hash.  Compare L</values>.
 
 =end original
 
-返される値はハッシュにある元のキーのコピーなので、
-これを変更しても元のハッシュには影響を与えません。
-L</values> と比較してください。
+반환된 값은 해쉬에 있는 원래의 키의 복사이기에 이것을 변경해도 
+원래의 해쉬에는 형향을 끼치지 않습니다.
+L</values> 와 비교해주세요.
 
 =begin original
 
@@ -5447,8 +5443,8 @@ Here's a descending numeric sort of a hash by its values:
 
 =end original
 
-ハッシュを値でソートするためには、C<sort> 関数を使う必要があります。
-以下ではハッシュの値を数値の降順でソートしています:
+해쉬를 값으로 소트하기 위해서는 C<sort> 함수를 사용할 필요가 있습니다.
+아래에서는 해쉬의 값을 수치의 내림차순으로 정렬합니다.
 
     foreach $key (sort { $hash{$b} <=> $hash{$a} } keys %hash) {
 	printf "%4d %s\n", $hash{$key}, $key;
@@ -5463,10 +5459,10 @@ an array by assigning a larger number to $#array.)  If you say
 
 =end original
 
-左辺値としては、C<keys> を使うことで与えられたハッシュに割り当てられた
-ハッシュ表の大きさを増やすことができます。
-これによって、ハッシュが大きくなっていくなっていくときの
-効率の測定ができます。以下のようにすると:
+좌변값으로써는 C<keys> 를 사용하는 것으 주어진 해쉬에 할당된 
+해쉬표의 크기를 늘릴 수 있습니다.
+이것에 의해, 해쉬가 커지는 때의 효율의 측정이 가능합니다.
+아래처럼 하면:
 
     keys %hash = 200;
 
@@ -5482,13 +5478,13 @@ as trying has no effect).
 
 =end original
 
-C<%hash> は少なくとも 200 の大きさの表が割り当てられます -- 
-実際には 2 のべき乗に切り上げられるので、256 が割り当てられます。
-この表はたとえ C<%hash = ()> としても残るので、
-もし C<%hash> がスコープにいるうちにこの領域を開放したい場合は
-C<undef %hash> を使います。
-この方法で C<keys> を使うことで、表の大きさを小さくすることはできません
-(間違えてそのようなことをしても何も起きないので気にすることはありません)。
+C<%hash> 는 적어도 200 의 크기의 표가 할당됩니다 -- 
+실제로는 2 승에 반올림되기에 256이 할당됩니다.
+이 표는 예를들어 C<%hash = ()> 라고 해도 남기때문에 
+만약 C<%hash> 가 영역에 있는 사이에 이 영역을 개방하고 싶은 경우는 
+C<undef %hash> 를 사용합니다.
+이 방법으로 C<keys> 를 사용하는 것으로 표의 크기를 작게할 수는 없습니다.
+(잘못해서 그런 것을 해도 아무것도 일어나지 않기에, 신경쓸 것은 없습니다)
 
 =begin original
 
@@ -5496,7 +5492,7 @@ See also C<each>, C<values> and C<sort>.
 
 =end original
 
-C<each>, C<values>, C<sort> も参照してください。
+C<each>, C<values>, C<sort> 도 참조해주세요.
 
 =item kill SIGNAL, LIST
 X<kill> X<signal>
@@ -5509,9 +5505,8 @@ same as the number actually killed).
 
 =end original
 
-プロセスのリストにシグナルを送ります。シグナル送信に成功したプロセスの
-数を返します
-(実際に kill に成功したプロセスと同じとは限りません)。
+프로세스의 리스트에 시그널을 보냅니다. 시그널 송신에 성공한 프로세스의 
+수를 반환합니다 (실제로 kill 에 성공한 프로세스와 같다고는 할 수 없습니다).
 
     $cnt = kill 1, $child1, $child2;
     kill 9, @goners;
@@ -5527,6 +5522,7 @@ L<perlport> for notes on the portability of this construct.
 
 =end original
 
+(TBT)
 SIGNAL がゼロの場合、プロセスにシグナルは送られませんが、
 but the kill(2)
 system call will check whether it's possible to send a signal to it (that
@@ -5546,13 +5542,12 @@ use a signal name in quotes.
 
 =end original
 
-シェルとは異なり、シグナルに負の数を与えると、
-プロセスではなくプロセスグループに対して kill を行ないます。
-(Syetem V では、プロセス番号として負の値を与えても、
-プロセスグループの kill を行ないますが、
-移植性がありません。)
-すなわち、通常は、負のシグナルは用いず、正のシグナルを使うことになります。
-シグナル名をクォートして使うこともできます。
+셸과는 달리, 신호에 음의 수를 주면,
+프로세스가 아닌 프로세스 그룹에 대해서 kill 을 수행합니다.
+(System V 에서는 프로세스 번호로 음의 수를 주어도 
+프로세스 그룹의 kill 을 수행하지만 이식성이 없습니다).
+즉, 일반적으로는 음의 신호를 사용하지 않고, 정의 신호를 사용하게 됩니다.
+신호이름을 인용해서 사용할 수도 있습니다.
 
 =begin original
 
@@ -5560,7 +5555,7 @@ See L<perlipc/"Signals"> for more details.
 
 =end original
 
-詳細はL<perlipc/"Signals">を参照してください。
+자세한 내용은 L<perlipc/"Signals">을 참조해주세요.
 
 =item last LABEL
 X<last> X<break>
