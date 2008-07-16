@@ -4926,8 +4926,8 @@ localized for the standard Greenwich time zone.
 
 =end original
 
-L<localtime> と同様に働きますが、返り値はグリニッジ標準時に
-ローカライズされています。
+L<localtime> 처럼 움직이지만, 반환값은 그리니치 표준시로 
+로컬라이즈됩니다.
 
 =begin original
 
@@ -4937,9 +4937,9 @@ Daylight Saving Time in GMT.
 
 =end original
 
-注意: リストコンテキストで呼び出した時、gmtime が返す末尾の値である
-$isdst は常に C<0> です。
-GMT には夏時間はありません。
+주의: 리스트컨텍스트에서 호출한 때, gmtime 가 반환하는 끝단의 값인 
+$isdst 는 항상 C<0> 입니다.
+GMT 에는 Daylight Saving Time은 없습니다.
 
 =begin original
 
@@ -4947,7 +4947,7 @@ See L<perlport/gmtime> for portability concerns.
 
 =end original
 
-移植性の問題については L<perlport/gmtime> を参照してください。
+이식성의 문제에 대해서는 L<perlport/gmtime> 을 참조해주세요.
 
 =item goto LABEL
 X<goto> X<jump> X<jmp>
@@ -4973,20 +4973,19 @@ in other languages.)
 
 =end original
 
-C<goto-LABEL> の形式は、LABEL というラベルの付いた文を
-探して、そこへ実行を移すものです。　サブルーチンや
-C<foreach> ループなど、何らかの初期化が必要な構造の中に
-入り込むことは許されません。　最適化によってなくなってしまう構造の中にも
-goto することはできません。
-また、C<sort>で与えられたブロックやサブルーチンから外へ出ることもできません。
-これ以外は、サブルーチンの外を含む、動的スコープ内の
-ほとんどすべての場所へ行くために使用できますが、普通は、
-C<last> や C<die> といった別の構造を使った方が良いでしょう。
-Perl の作者はこの形式の C<goto> を使う必要を感じたことは、
-1 度もありません (Perl では。C は別のお話です)。
-(違いは、C にはループ制御と結びついた名前つきのループがないことです。
-Perl にはあり、これが他の言語でのほとんどの構造的な C<goto> の使用法を
-置き換えます。)
+C<goto-LABEL> 의 형식은 LABEL 이라는 라벨이 붙은 문으로 찾아서 거기에 실행을
+넘기는 것입니다. 서브루틴이나 C<foreach> 루프등 뭔가의 초기화가 필요한 구조의
+안으로 넣는 것은 허락되지 않습니다. 최적화에 의해 없어져버린 구조의 안에서도
+goto 할 수는 없습니다.
+또, C<sort> 로 주어진 블록이나 서브루틴에서 밖으로 나갈 수도 없습니다.
+이 이외는 서브루틴의 밖을 포함, 동적 영ㅕㄱ 안의 대부분의 장소로 가기 위해서는
+사용할 수 있지만, 보통은 C<last> 나 C<die> 같은 별도의 구조를 사용하는 
+편이 좋을 겁니다.
+Perl 을 만든 사람은 이 형식의 C<goto> 를 사용할 필요를 느낀 것은 
+한번도 없습니다(Perl 에서는. C 와는 다른 이야기입니다).
+(차이는 C 에는 루프제어와 ë은 이름붙은 루프가 없습니다.
+Perl 에는 있고, 이것이 다른 언어에서의 대부분의 구조적은 C<goto> 의 
+사용법을 치환할 수 있습니다).
 
 =begin original
 
@@ -4996,9 +4995,9 @@ necessarily recommended if you're optimizing for maintainability:
 
 =end original
 
-C<goto-EXPR> の形式はラベル名を予測し、このスコープは動的に解決されます。
-これにより FORTRAN のような算術 C<goto> が可能になりますが、
-保守性を重視するならお勧めしません。
+C<goto-EXPR> 의 형식은 라벨이름을 예측해서, 이 영역은 동적으로 해결됩니다.
+이것에 의해 FORTRAN 같은 산술 C<goto> 가 가능하게 됩니다만, 
+보수성을 중시한다면 추천하지 않겠습니다.
 
     goto ("FOO", "BAR", "GLARCH")[$i];
 
@@ -5018,18 +5017,16 @@ routine was called first.
 
 =end original
 
-C<goto-&NAME> の形式は、その他の C<goto> の形式とはかなり
-異なったものです。
-実際、これは普通の感覚でいうところのどこかへ行くものでは全くなく、
-他の goto が持つ不名誉を持っていません。
-現在のサブルーチンを終了し (local() による変更は失われます)、
-直ちに現在の @_ の値を使って指定された名前のサブルーチンを呼び出します。
-これは、C<AUTOLOAD> サブルーチンが別のサブルーチンをロードして、
-その別のサブルーチンが最初に呼ばれたようにするために使われます
-(ただし、現在のサブルーチンで C<@_> を修正した場合には、
-その別のサブルーチンに伝えられます)。
-C<goto> のあとは、C<caller> でさえも、現在のサブルーチンが
-最初に呼び出されたと言うことができません。
+C<goto-&NAME> 형식은 그 외의 C<goto> 의 형식과는 꽤 다른 것입니다.
+실제, 이것은 보통의 감각에서의 어딘가로 가기위한 것이 아니라,
+다른 goto 가 기다리는 불명영을 가지고 있지 않습니다.
+현재의 서브루틴을 종료하고 (local() 에 의해 변경은 잃습니다)
+바로 현재의 @_ 의 값을 사용해서 지정된 이름의 서브루틴을 호출합니다.
+이것은 C<AUTOLOAD> 서루틴이 다른 서브루틴을 불러 그 별도의 서브루틴이 
+맨처음에 호출되기 위해 사용됩니다(단, 현재의 서브루틴에서 C<@_> 을 
+수정한 경우에는 그 별도의 서브루틴에 전달됩니다). 
+C<goto> 의 뒤는 C<caller> 에서도 현재의 서브루틴이 최초로 호출된 것이라고
+할 수는 없습니다.
 
 =begin original
 
@@ -5039,8 +5036,8 @@ reference.
 
 =end original
 
-NAME はサブルーチンの名前である必要はありません; コードリファレンスを
-含むスカラ値や、コードリファレンスと評価されるブロックでも構いません。
+NAME 은 서브루틴의 이름일 필요는 없습니다; 코드리퍼런스를 포함한 스칼라값이나
+코드 리퍼런스로 평가되는 블록이라도 상관없습니다.
 
 =item grep BLOCK LIST
 X<grep>
@@ -5054,8 +5051,8 @@ relatives.  In particular, it is not limited to using regular expressions.
 
 =end original
 
-これは grep(1) とその親類と同じようなものですが、同じではありません。
-特に、正規表現の使用に制限されません。
+이것은 grep(1) 과 그 부류와 같은 것입니다만, 꼭 같다고는 할 수 없습니다.
+특히 정규표현의 사용에 제한받지 않습니다.
 
 =begin original
 
@@ -5066,10 +5063,11 @@ context, returns the number of times the expression was true.
 
 =end original
 
-LIST の個々の要素に対して、BLOCK か EXPR を評価し
-(C<$_> は、ローカルに個々の要素が設定されます) 、
-その要素のうち、評価した式が真となったものからなるリスト値が返されます。
-スカラコンテキストでは、式が真となった回数を返します。　例:
+LIST 의 각각의 요소 대해 BLOCK 이나 EXPR 을 평가해서 
+(C<$_> 은 로컬에 각각의 요소가 설정됩니다), 
+그 요소의 안, 평가한 식이 참이 된 것에서의 리스트값이 반환됩니다.
+스칼라컨텍스트에서는 식이 참인 횟수를 반환합니다.
+예제:
 
     @foo = grep(!/^#/, @bar);    # weed out comments
 
@@ -5079,7 +5077,7 @@ or equivalently,
 
 =end original
 
-あるいは等価な例として:
+혹은 같은 값인 예제로써:
 
     @foo = grep {!/^#/} @bar;    # weed out comments
 
@@ -5096,17 +5094,14 @@ This is usually something to be avoided when writing clear code.
 
 =end original
 
-C<$_> は、LIST の値へのエイリアスですので、LIST の要素を
-変更するために使うことができます。
-これは、便利でサポートされていますが、
-LIST の要素が変数でないと、おかしな結果になります。
-同様に、grep は元のリストへのエイリアスを返します。
-for ループのインデックス変数がリスト要素のエイリアスであるのと
-同様です。
-つまり、grep で返されたリストの要素を
-(C<foreach>, C<map>, または他の C<grep> で)修正すると
-元のリストの要素が変更されます。
-これはきれいなコードを書こうとする邪魔になることが多いです。
+C<$_> 은 LIST 의 값으로의 Alias 이기에, LIST 의 요소를 변경하기 위해 
+사용할 수 있습니다. 
+이것은 편리하게 지원되지만, LIST 의 요소가 변수가 아니면, 
+이상한 결과가 됩니다. 이처럼 grep 은 원래의 리스트로의 alias 를 반환합니다.
+for 루프의 인덱스 변수가 리스트 요소의 alias 인 것과 같습니다.
+즉, grep 에서 반환된 리스트의 요소를 (C<foreach>, C<map>, 또는 다른 
+C<grep> 에서) 수정하면 원래의 리스트의 요소가 변경됩니다.
+이것은 예쁜 코드를 쓸려고 하는 것에 짐이 될 때가 많습니다.
 
 =begin original
 
@@ -5117,10 +5112,10 @@ can't be seen from the outside, avoiding any potential side-effects.
 
 =end original
 
-(C<my $_> として宣言されることによって) C<$_> が C<grep> が現れるスコープ内で
-レキシカルな場合は、ローカルではリスト要素へのエイリアスであることに加えて、
-C<$_> はブロック内でレキシカルでありつづけます; つまり、外側からは見えず、
-起こりうる副作用を回避します。
+(C<my $_> 로 선언되는 것에 의해) C<$_> 가 C<grep> 이 나타나는 영역안에서 
+렉시컬한 경우는 로컬에서는 리스트 요소로의 alias 인 것에 더해서 
+C<$_> 은 블록 안에서 계속 렉시컬입니다; 즉, 바깥에서 보이지않는 
+발생될지 모르는 부작용을 회피합니다.
 
 =begin original
 
@@ -5128,7 +5123,8 @@ See also L</map> for a list composed of the results of the BLOCK or EXPR.
 
 =end original
 
-BLOCK や EXPR の結果をリストの形にしたい場合は L</map> を参照してください。
+BLOCK 이나 EXPR 의 결과를 리스트의 형태로 하고 싶은 경우는 L</map> 을 
+참조해주세요.
 
 =item hex EXPR
 X<hex> X<hexadecimal>
@@ -5143,10 +5139,9 @@ L</oct>.)  If EXPR is omitted, uses C<$_>.
 
 =end original
 
-EXPR を 16 進数の文字列と解釈して、対応する値を返します。
-(C<0>, C<0x>, C<0b> で始まる文字列の変換には、L</oct> を
-参照してください。)
-EXPR が省略されると、C<$_> を使用します。
+EXPR 을 16진수의 문자열로 해석해서, 대응하는 값을 반환합니다.
+(C<0>, C<0x>, C<0b> 로 시작하는 문자열의 변환에는 L</oct> 를 참조해주세요)
+EXPR 이 생략되면 C<$_> 를 사용합니다.
 
     print hex '0xAf'; # prints '175'
     print hex 'aF';   # same
@@ -5160,11 +5155,11 @@ L</sprintf>, or L</unpack>.
 
 =end original
 
-16 進文字列は整数のみを表現します。
-整数オーバーフローを起こすような文字列は警告を引き起こします。
-oct() とは違って、先頭の空白は除去されません。
-何かを 16 進で表現したい場合は、L</printf>, L</sprintf>, L</unpack> を
-参照してください。
+16진수 문자열은 정수만을 표현합니다.
+정수 오버플로를 발생하는 문자열은 경고를 일으킵니다.
+oct() 와는 달리 맨 앞의 공백은 삭제되지 않습니다.
+뭔가를 16진수로 표현하고 싶은 경우는 L</printf>, L</sprintf>, L</unpack> 을
+참조해주세요.
 
 =item import LIST
 X<import>
@@ -5178,11 +5173,11 @@ for the package used.  See also L</use>, L<perlmod>, and L<Exporter>.
 
 =end original
 
-組み込みの C<import> 関数というものはありません。
-これは単に、別のモジュールに名前をエクスポートしたいモジュールが
-定義した(または継承した)、通常のメソッド(サブルーチン)です。
-C<use> 関数はパッケージを使う時に C<import> メソッドを呼び出します。
-L</use>, L<perlmod>, L<Exporter> も参照してください。
+내장의 C<import> 함수라는 것은 없습니다.
+이것은 단순히 다른 모듈에 이름을 export 하고 싶은 모듈이 정의한 
+(또는 상속한) 일반적인 메소드(서브루틴)입니다.
+C<use> 함수는 패키지를 사용하는 때에 C<import> 메소드를 호출합니다.
+L</use>, L<perlmod>, L<Exporter> 도 참조해주세요.
 
 =item index STR,SUBSTR,POSITION
 X<index> X<indexOf> X<InStr>
@@ -5203,16 +5198,16 @@ is not found, C<index> returns one less than the base, ordinarily C<-1>.
 
 =end original
 
-index 関数は ある文字列をもうひとつの文字列から検索しますが、
-完全正規表現パターンマッチのワイルドカード的な振る舞いはしません。
-STR の中の POSITION の位置以降で、最初に SUBSTR が見つかった位置を返します。
-POSITION が省略された場合には、STR の最初から探し始めます。
-POSITION が文字列の先頭より前、あるいは末尾より後ろを指定した場合は、
-それぞれ先頭と末尾を指定されたものとして扱われます。
-POSITION と返り値のベースは、C<0> (もしくは、変数 C<$[> に設定した値です --
-しかし、これは使ってはいけません)。
-SURSTR が見つからなかった場合には、C<index> はベースよりも 1 小さい値、
-通常は C<-1> が返されます。
+index 함수는 어떤 문자열을 다른 하나의 문자열에서 검색합니다만, 
+완전정규표현패턴매치의 와일드카드적인 행동은 하지않습니다.
+STR 안의 POSITION 의 위치이후에서 맨처음에 SUBSTR 이 발견된 위치를 반환합니다.
+POSITION 이 생략된 경우에는 STR 의 처음에서 찾기시작합니다.
+POSITION 이 문자열의 맨처음보다 앞 혹은 끝단보다 뒤를 지정한 경우는
+각각의 앞과 끝을 지정한 것으로 취급돕니다.
+POSITION 과 반환값의 베이스는 C<0> (혹은 변수 C<$[> 에 설정된 값입니다--
+그러나 이것은 사용해서는 안됩니다).
+SUBSTR 이 발견된 경우에는 C<index> 는 베이스보다도 1 작은 값, 
+일반적인 C<-1> 이 반환됩니다.
 
 =item int EXPR
 X<int> X<integer> X<truncate> X<trunc> X<floor>
