@@ -6098,9 +6098,8 @@ translates a list of numbers to the corresponding characters.  And
 
 =end original
 
-
-は、数のリストを対応する文字に変換します。
-また:
+이것은 수의 리스트를 대응하는 문자로 변환합니다.
+또:
 
     %hash = map { get_a_key_for($_) => $_ } @array;
 
@@ -6110,7 +6109,7 @@ is just a funny way to write
 
 =end original
 
-は以下のものをちょっと変わった書き方で書いたものです。
+이것은 아래의 것을 조금 바꾼 것입니다.
 
     %hash = ();
     foreach (@array) {
@@ -6128,14 +6127,13 @@ the original list for which the BLOCK or EXPR evaluates to true.
 
 =end original
 
-C<$_> は、LIST の値へのエイリアスですので、LIST の要素を
-変更するために使うことができます。
-これは、便利でサポートされていますが、
-LIST の要素が変数でないと、おかしな結果になります。
-この目的には通常の C<foreach> ループを使うことで、ほとんどの場合は
-より明確になります。
-BLOCK や EXPR が真になる元のリストの要素からなる配列については、
-L</grep> も参照してください。
+C<$_> 은 LIST 의 값의 Alias 이기때문에 LIST 의 요소를 변경하기 위해서 
+사용할 수 있습니다.
+이것은 편리하고 서포트되지만, LIST 의 요소가 변수 아니면 이상한 결과가 됩니다.
+이 목적으로는 일반적인 C<foreach> 루프를 사용하는 것으로 대부분의 경우는 
+보다 명확하게 됩니다.
+BLOCK 이나 EXPR 이 참이 되는 원래의 리스트의 요소로부터 배열에 대해서는 
+L</grep> 도 참조해주세요.
 
 =begin original
 
@@ -6146,10 +6144,10 @@ can't be seen from the outside, avoiding any potential side-effects.
 
 =end original
 
-(C<my $_> として宣言されることによって) C<$_> が C<map> が現れるスコープ内で
-レキシカルな場合は、ローカルではリスト要素へのエイリアスであることに加えて、
-C<$_> はブロック内でレキシカルでありつづけます; つまり、外側からは見えず、
-起こりうる副作用を回避します。
+(C<my $_> 로써 선언된 것에 의해)  C<$_> 이 C<map> 이 나타난 영역안에서 
+렉시컬한 경우는 로컬에서는 리스트 요소로의 alias 인 것에 더해서 
+C<$_> 은 블록 안에서 렉시컬하게 됩니다; 즉, 외부로부터는 보이지않고,
+발생할지도 모르는 부작용을 회피합니다.
 
 =begin original
 
@@ -6164,15 +6162,14 @@ such as using a unary C<+> to give perl some help:
 
 =end original
 
-C<{> はハッシュリファレンスとブロックの両方の開始文字なので、
-C<map { ...> は map BLOCK LIST の場合と map EXPR, LIST の場合があります。
-perl は終了文字の C<}> を先読みしないので、C<{> の直後の文字を見て
-どちらとして扱うかを推測します。
-通常この推測は正しいですが、もし間違った場合は、C<}> まで読み込んで
-カンマが足りない(または多い)ことがわかるまで、何かがおかしいことに
-気付きません。
-C<}> の近くで文法エラーが出ますが、perl を助けるために単項の C<+> を
-使うというように、C<{> の近くの何かを変更する必要があります。
+C<{> 은 해쉬리퍼런스와 블록의 양쪽의 개시문자이기에 
+C<map { ...> 은 map BLOCK LISST 의 경우와 map EXPR, LIST 의 경우가 있습니다.
+perl 은 종료문자의 C<}> 를 먼저 읽지않기 때문에, C<{> 의 직후의 문자를 보고 
+어느쪽으로 취급할 것인가를 추측합니다.
+일반적으로 이 추측은 정확하지만, 만약 잘못된 경우는 C<}> 까지 읽고 
+콤마가 부족한(또는 많거나) 것을 알기까지 뭔가 이상한 것을 눈치채지 못합니다.
+C<}> 의 가까이에서 문법 에러가 발생하지만, perl 을 지원하기 위해서는 단항의 
+C<+> 를 사용하는 것처럼, C<{> 가까이의 뭔가를 바꿀 필요가 있습니다.
 
     %hash = map {  "\L$_", 1  } @array  # perl guesses EXPR.  wrong
     %hash = map { +"\L$_", 1  } @array  # perl guesses BLOCK. right
@@ -6188,7 +6185,7 @@ or to force an anon hash constructor use C<+{>:
 
 =end original
 
-または C<+{> を使って無名ハッシュコンストラクタを強制します:
+또는 C<+{> 를 사용해서 이름없는 해쉬 생성자를 강제합니:
 
    @hashes = map +{ lc($_), 1 }, @array # EXPR, so needs , at end
 
@@ -6198,7 +6195,7 @@ and you get list of anonymous hashes each with only 1 entry.
 
 =end original
 
-こうするとそれぞれ 1 要素だけの無名ハッシュのリストを得られます。
+이렇게 하면 각각 1요소만의 이름해쉬의 리스트를 얻을 수 있습니다.
 
 =item mkdir FILENAME,MASK
 X<mkdir> X<md> X<directory, create>
@@ -6217,11 +6214,11 @@ to C<$_>.
 
 =end original
 
-FILENAME で指定したディレクトリを、MASK で指定した許可モード(を
-C<umask> で修正したもの) で作成します。
-成功時には真を返し、失敗時には偽を返して C<$!> (errno) を設定します。
-MASK を省略すると、0777 とみなします。
-FILENAME を省略すると、C<$_> を使います。
+FILENAME 으로 지정한 디렉토리를 MASK 로 지정한 허가모드(를 
+C<umask> 로 수정한 것) 으로 작성합니다.
+성공시에는 참을 반환하, 실패시에는 거짓을 반환해서 C$!> (errno) 를 설정합니다.
+MASK 를 생략하면 0777로 간주합니다.
+FILENAME 을 생략하면, C<$_> 를 사용합니다.
 
 =begin original
 
@@ -6234,12 +6231,12 @@ C<umask> discusses the choice of MASK in more detail.
 
 =end original
 
-一般的に、制限された MASK を使ってユーザーがより寛容にする方法を
-与えないより、寛容な MASK でディレクトリを作り、ユーザーが自身の C<umask> で
-修正するようにした方がよいです。
-例外は、(例えばメールファイルのような)プライベートに保つべきファイルや
-ディレクトリを書く場合です。
-perlfunc(1) の C<umask> で、MASK の選択に関して詳細に議論しています。
+일반적으로는 제한된 MASK 를 사용해서 유저가 보 실용적인 방법을 
+주지않는 것보다 실용적인 MASK 로 디렉토리를 만들고, 유저가 자신의 C<umask>로
+수정하게하는 것이 좋습니다.
+예외는 (예를들어 메일 파일같은) 프라이베이트로 가져야하는 파일이나 
+디렉토리를 쓰는 경입니다.
+perlfunc(1) 의 C<umask> 로 MASK 의 선택에 관해서 상세하게 논의하고 있습니다.
 
 =begin original
 
@@ -6250,10 +6247,10 @@ everyone happy.
 
 =end original
 
-POSIX 1003.1-1996 によれば、FILENAME には末尾に任意の数のスラッシュを
-つけることができます。
-このようには動かない OS やファイルシステムもあるので、Perl はみんなが
-幸せになれるように、自動的に末尾のスラッシュを削除します。
+POSIX 1003.1-1996 에 의하면 FILENAME 에는 끝단에 임의의 수의 슬래쉬를 
+붙일 수 있습니다.
+이렇게는 움직이지 않는 OS 나 파일시스템도 있기때문에 Perl 은 모두가 
+행복해지도록 자동으로 끝단의 슬래쉬를 제거합니다.
 
 =begin original
 
