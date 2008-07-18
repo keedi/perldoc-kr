@@ -6259,8 +6259,8 @@ the C<mkpath> function of the L<File::Path> module.
 
 =end original
 
-ディレクトリ構造を再帰的に作成するには、L<File::Path> モジュールの
-C<makepath> 関数を参照してください。
+디렉토리 구조를 재귀적으로 작성하기에는 L<File::Path> 모듈의 
+C<makepath> 함수를 참조해주세요.
 
 =item msgctl ID,CMD,ARG
 X<msgctl>
@@ -6271,7 +6271,8 @@ Calls the System V IPC function msgctl(2).  You'll probably have to say
 
 =end original
 
-System V IPC 関数 msgctl を呼び出します。正しい定数定義を得るために、まず
+System V IPC 함수 msgctl 을 호출합니다. 바른 정수ㅇ의를 얻기 위해서는 
+우선:
 
     use IPC::SysV;
 
@@ -6285,12 +6286,12 @@ L<perlipc/"SysV IPC">, C<IPC::SysV>, and C<IPC::Semaphore> documentation.
 
 =end original
 
-と宣言する必要があるでしょう。
-CMD が C<IPC_STAT> であれば、ARG は返される C<msqid_ds> 構造体を
-納める変数でなければなりません。
-C<ioctl> と同じように、エラー時には未定義値、
-ゼロのときは C<"0 but true">、それ以外なら、その値そのものを返します。
-L<perlipc/"SysV IPC">, C<IPC::SysV>, C<IPC::Semaphore> も参照してください。
+이라고 선언할 필요가 있겠죠?
+CMD 가 C<IPC_STAT> 이면, ARG 는 반환되는 C<msqid_ds> 구조체를 
+넣을 수 있는 변수가 아니면 안됩니다.
+ㅊ<ioctl> 처럼 에러 시에는 미정의 값, 0 일 때는 C<"0 이지만 참"> ,
+그 이외라면, 그 값을 그대 반환합니다.
+L<perlipc/"SysV IPC">, C<IPC::SysV>, C<IPC::Semaphore> 도 참조하세요.
 
 =item msgget KEY,FLAGS
 X<msgget>
@@ -6303,9 +6304,9 @@ L<perlipc/"SysV IPC"> and C<IPC::SysV> and C<IPC::Msg> documentation.
 
 =end original
 
-System V IPC 関数 msgget を呼び出します。
-メッセージキューの ID か、エラー時には未定義値を返します。
-L<perlipc/"SysV IPC">, C<IPC::SysV>, C<IPC::Msg> も参照してください。
+System V IPC 함수 msgget 을 호출합니다.
+메세지 큐의 ID 나 에러시에는 미정의 값을 반환합니다.
+L<perlipc/"SysV IPC">, C<IPC::SysV>, C<IPC::Msg> 도 참조하세요.
 
 =item msgrcv ID,VAR,SIZE,TYPE,FLAGS
 X<msgrcv>
@@ -6323,14 +6324,14 @@ C<IPC::SysV::Msg> documentation.
 
 =end original
 
-System V IPC 関数 msgrcv を呼び出し、メッセージキュー ID から、
-変数 VAR に最大メッセージ長 SIZE のメッセージを受信します。
-メッセージが受信された時、ネイティブな long 整数のメッセージタイプが
-VAR の先頭となり、実際のメッセージが続きます。
-このパッキングは C<unpack("l! a*")> で展開できます。
-変数は汚染されます。
-成功時には真を返し、エラー時には偽を返します。
-L<perlipc/"SysV IPC">, C<IPC::SysV>, C<IPC::SysV::Msg> も参照してください。
+System V IPC 関数 msgrcv 를 호출하고, 메세지 큐 ID 에서 
+변수 VAR 에 최대 메세지 길이 SIZE 의 메세지를 수신합니다.
+메세지가 수신된 때, 네이티브한 long 변수의 메세지타입이 
+VAR 의 맨 앞이 되고, 실제의 메세지가 계속됩니다.
+이 패킹은 C<unpack("l! a*"> 로 전개할 수 있습니다.
+변수는 오염됩니다.
+성공시에는 참을 반환고, 에러시에는 거짓을 반환합니다.
+L<perlipc/"SysV IPC">, C<IPC::SysV>, C<IPC::SysV::Msg> 도 참조해주세요.
 
 =item msgsnd ID,MSG,FLAGS
 X<msgsnd>
@@ -6347,13 +6348,12 @@ and C<IPC::SysV::Msg> documentation.
 
 =end original
 
-System V IPC 関数 msgsnd を呼び出し、メッセージキュー ID に
-メッセージ MSG を送信します。
-MSG の先頭は、ネイティブなlong 整数のメッセージタイプでなければならず、
-メッセージの長さ、メッセージ本体と続きます。
-これは、C<pack("l! a*", $type, $message)> として生成できます。
-成功時には真を、エラー時には偽を返します。
-C<IPC::SysV> と C<IPC::SysV::Msg> も参照してください。
+System V IPC 함수 msgsnd 를 호출하고, 메세지 큐 ID 에 메세지 MSG 를 송신합니다.
+MSG 의 앞은 네이티브한 long 정수의 메세지타입이 아니면 안되고 ,
+메세지의 길이, 메세지본체로 이어집니다.
+이것은 C<pack("l! a*", $type, $message)> 로 생성할 수 있습니다.
+성공시에는 참을, 에러일 때는 거ㅅ을 반환합니다.
+C<IPC::SysV> と C<IPC::SysV::Msg> 도 참조해주세요.
 
 =item my EXPR
 X<my>
@@ -6372,9 +6372,9 @@ the list must be placed in parentheses.
 
 =end original
 
-C<my> はリストアップされた変数を、囲っているブロック、ファイル、
-C<eval> の中でローカルな (レキシカルな) ものにします。
-複数の値を並べる場合には、括弧で括る必要があります。
+C<my> 는 리스트업된 변수를 감싸는 블럭, 파일, C<eval> 의 안에서 
+로컬한 (렉시컬한) 것으로 합니다.
+복수의 값을 나열하는 경우에는 괄호로 감쌀 필요가 있습니다.
 
 =begin original
 
@@ -6387,12 +6387,12 @@ L<attributes>, and L<Attribute::Handlers>.
 
 =end original
 
-TYPE と ATTRS の正確な文法とインターフェースは今でも進化しています。
-現在のところ、TYPE は C<fields> プラグマの使用と結び付けられていて、
-属性は C<attributes> プラグマか、Perl 5.8.0 からは
-C<Attribute::Handlers> モジュールと結び付けられています。
-詳しくはL<perlsub/"Private Variables via my()">, L<fields>,
-L<attributes>, L<Attribute::Handlers> を参照してください。
+TYPE 과 ATTRS 의 정확한 문법과 인터페이스는 지금도 진화하고 있습니다.
+현재, TYPE 은 C<fields> 프라그마의 사ㅇ과 결부되어 있고, 
+속성은 C<attributes> 프라그마나 Perl 5.8.0 부터는 
+C<Attribute::Handlers> 모듈과 결부되어 있습니다.
+자세한 내용은 L<perlsub/"Private Variables via my()">, L<fields>,
+L<attributes>, L<Attribute::Handlers> 를 참조해주세요.
 
 =item next LABEL
 X<next> X<continue>
@@ -6406,8 +6406,8 @@ the next iteration of the loop:
 
 =end original
 
-C<next> コマンドは、C での C<continue> 文のようなもので、
-ループの次の繰り返しを開始します:
+C<next> 커맨드는 C 에서의 C<continue> 문같은 것으로 
+루프의 다음 반복을 시작합니다:
 
     LINE: while (<STDIN>) {
 	next LINE if /^#/;	# discard comments
@@ -6422,9 +6422,8 @@ refers to the innermost enclosing loop.
 
 =end original
 
-C<continue> ブロックが存在すれば、たとえ捨てられる行に
-あっても、それが実行されます。
-LABEL が省略されると、このコマンドはもっとも内側のループを参照します。
+C<continue> 블록이 존재하면, 설령 버러진 줄에 있어도 그것이 실행됩니다.
+LABEL 이 생략되면 이 커맨드는 가장 안쪽의 루프를 참조합니다.
 
 =begin original
 
@@ -6434,9 +6433,9 @@ a grep() or map() operation.
 
 =end original
 
-C<next> は C<eval {}>, C<sub {}>, C<do {}> のように値を返す
-ブロックから抜けるのには使えません。
-また、grep() や map() 操作から抜けるのに使うべきではありません。
+C<next>는 C<eval {}>, C<sub {}>, C<do {}> 같은 값을 반환하는 
+블록에서 빠져나오는 것에는 사용할 수 없습니다.
+또, grep() 이나 map() 조작에서 빠져나오는 것에 사용해야하는 것이 아닙니다.
 
 =begin original
 
@@ -6445,9 +6444,8 @@ that executes once.  Thus C<next> will exit such a block early.
 
 =end original
 
-ブロック自身は一回だけ実行されるループと文法的に同一であることに
-注意してください。
-従って、C<next> はそのようなブロックから早く抜けるのに使えます。
+블록 자신은 한번만 실행되는 루프와 문법적으로 같은 것에 주의해주세요.
+따라서, C<next> 는 그런 블록에서 빨리 빠져나오는 것에 사용할 수 있습니다.
 
 =begin original
 
@@ -6456,8 +6454,8 @@ C<redo> work.
 
 =end original
 
-C<last>, C<next>, C<redo> がどのように働くかについては
-L</continue> も参照して下さい。
+C<last>, C<next>, C<redo> 가 어떻게 움직이는 가에 대해서는 
+L</continue> 도 참조해주세요.
 
 =item no Module VERSION LIST
 X<no>
@@ -6476,7 +6474,7 @@ See the C<use> function, of which C<no> is the opposite.
 
 =end original
 
-L<use> 関数を参照してください。C<no> は、その逆を行なうものです。
+L<use> 함수를 참조해주세요. C<no> 는 그 반대를 수행하는 것입니다.
 
 =item oct EXPR
 X<oct> X<octal> X<hex> X<hexadecimal> X<binary> X<bin>
@@ -6494,12 +6492,12 @@ Perl or C notation:
 
 =end original
 
-EXPR を 8 進数文字列と解釈して、対応する値を返します。
-(EXPR が C<0x> で始まるときには、16 進数文字列と解釈します。
-EXPR が C<0b>で始まるときは、2 進数文字列と解釈します。
-どの場合でも、先頭の空白は無視されます。)
-以下の例は、標準的な Perl や C の記法での
-10 進数、2 進数、8 進数、16 進数を扱います:
+EXPR 을 8진수 문자열로 해석해서, 대응하는 값을 반환합니다.
+(EXPR 이 C<0x> 로 시작할 때는 16진수 문자열로 해석합니다.
+EXPR 이 C<0b> 로 시작할 때는 2진수 문자열로 해석합니다.
+어떤 경우에도 맨앞의 공백은 무시됩니다.)
+아래의 예제는 표준적인 Perl 이 C 기법에서의 
+10 진수, 2진수, 8진수, 16진수를 다룹니다:
 
     $val = oct($val) if $val =~ /^0/;
 
@@ -6510,8 +6508,8 @@ in octal), use sprintf() or printf():
 
 =end original
 
-EXPR を省略すると、C<$_> を使用します。
-(8 進数を扱う)その他の方法としては sprintf() または printf()があります。
+EXPR 을 생략하면, C<$_> 을 사용합니다.
+(8 진수를 다루는) 그 밖의 방법에 대해서는 sprintf() 또는 printf() 가 있습니다.
 
     $perms = (stat("filename"))[2] & 07777;
     $oct_perms = sprintf "%lo", $perms;
@@ -6525,10 +6523,10 @@ conversion assumes base 10.)
 
 =end original
 
-oct() 関数は例えば、 C<644> といった文字列をファイルモードに変換する時に
-よく使います。
-(Perl は必要に応じて自動的に文字列を数値に変換しますが、
-この自動変換は十進数を仮定します。)
+oct() 함수는 예를들어, C<644> 같은 문자열을 파일모드로 변환할 때에 
+자주 사용합니다.
+(Perl 은 필요에 따라서 자동적으로 문자열을 수치로 변환합니다만, 
+이 자동변환은 10진수를 가정하고 있습니다)
 
 =item open FILEHANDLE,EXPR
 X<open> X<pipe> X<file, open> X<fopen>
@@ -6548,7 +6546,7 @@ FILEHANDLE.
 
 =end original
 
-EXPR で与えられたファイル名のファイルを開き、FILEHANDLE と結び付けます。
+EXPR 에서 주어진 파일이름의 파일을 열고 FILEHANDLE 과 겹부합니다.
 
 =begin original
 
@@ -6557,8 +6555,8 @@ introduction you may consider L<perlopentut>.)
 
 =end original
 
-(以下は総合的な open() のリファレンスです: より親切な説明については
-L<perlopentut> を参照してください。)
+(아래는 총합적인 open() 의 리퍼런스입니다: 보다 친절한 설명에 대해서는 
+L<perlopentut> 를 참조해주세요.)
 
 =begin original
 
@@ -6570,12 +6568,12 @@ C<use strict 'refs'> should I<not> be in effect.)
 
 =end original
 
-FILEHANDLE が未定義のスカラ変数(または配列かハッシュの要素)の場合、その
-変数は新しい無名ファイルハンドルへのリファレンスが代入され、
-さもなければ、もし FILEHANDLE が式なら、その値を求めている実際の
-ファイルハンドルの名前として使います。
-(これはシンボリックリファレンスとして扱われるので、
-C<use strict 'refs'> の影響を I<受けません>。)
+FILEHANDLE 이 미정의 스칼라변수(또는 배열 해쉬의 요소)인 경우, 그 변수는 
+새로운 이름없는 파일핸들로의 리퍼런스가 대입되고, 
+그렇지 않으면, 만약 FILEHANDLE 이 식이라면, 그 값ㅡㄹ 구하는 실제의 
+파일핸들의 이름으로 사용합니다.
+(이것은 심볼릭 리퍼런스로 다루기 때문에, C<use strict 'refs'> 의 영향을 
+I<받지 않습니다>.)
 
 =begin original
 
@@ -6586,11 +6584,11 @@ using C<my>, specify EXPR in your call to open.)
 
 =end original
 
-EXPR が省略された場合、FILEHANDLE と同じ名前のスカラ変数にファイル名が
-入っています。
-(レキシカル変数 -- C<my> で宣言されたもの -- はこの用途には使えないことに
-注意してください; 従って、C<my> を使っている場合は、open を呼び出すときに
-EXPR を指定してください。)
+EXPR 이 생략된 경우, FILEHANDLE 과 같은 이름의 스칼라 변수로 파일이름이 
+들어갑니다.
+(렉시컬 변수 -- C<my> 로 선언된 것 -- 는 이 용도로는 사용할 수 없다는 것에 
+ 주의해주세요; 따라서, C<my> 를 사용하는 경우는, open 을 호출할 때에 
+EXPR 을 지정해주세요)
 
 =begin original
 
@@ -6602,12 +6600,11 @@ the file is opened for appending, again being created if necessary.
 
 =end original
 
-3 以上の引数が指定された場合、開く時のモードとファイル名は分離されます。
-MODE が C<< '<' >> か空の場合、ファイルは入力用に開かれます。
-MODE が C<< '>' >> の場合、ファイルは切り詰められて出力用に開かれ、
-必要なら作成されます。
-MODE が C<<< '>>' >>> の場合、ファイルは追加用に開かれ、やはり必要なら
-作成されます。
+3 이상의 인수가 지정된 경우, 열 때의 모드와 파일이름은 분리됩니다.
+MODE 가 C<< '<' >> 가 빈 경우, 파일은 입력용으로 열립니다.
+MODE 가 C<< '>' >> 인 경우, 파일은 출력용으로 열려서 필요하면 작성됩니다.
+MODE 가 C<<< '>>' >>> 인 경우, 파일은 추가용으로 열리고, 역시 필요하다면 
+작성됩니다.
 
 =begin original
 
@@ -6622,15 +6619,14 @@ modified by the process' C<umask> value.
 
 =end original
 
-ファイルに読み込みアクセスと書き込みアクセスの両方をしたいことを示すために、
-C<< '>' >> や C<< '<' >> の前に C<'+'> を付けることができます:
-従って、C<< '+<' >> ほとんど常に 読み書き更新のために使われます --
-C<< '+>' >> モードはまずファイルを上書きします。
-普通はこれらの読み書きモードをテキストファイルの更新のためには使えません;
-なぜなら可変長のレコードで構成されているからです。
-よりよい手法については L<perlrun> の B<-i> オプションを参照してください。
-ファイルは C<0666> をプロセスの C<umask> 値で修正したパーミッションで
-作成されます。
+파일에 읽기 접근과 쓰기 접근 양쪽을 하고 싶다고 나타내기 위해서 
+C<< '>' >> 나 C<< '<' >> 의 앞에  C<'+'> 를 붙일 수 있습니다.
+따라서, C<< '+<' >> 대부분 항상 읽기 쓰기 변경을 위해 사용됩니다 --
+C<< '+>' >> 모드는 우선 파일을 덮어기 합니다.
+보통은 이 읽기 모드들을 텍스트파일의 갱신을 위해서는 사용할 수 없습니다;
+왜냐면 가변 길이의 레코드에서 구성되어 있기 때문입니다.
+보다 좋은 방법에 대해서는 L<perlrun> 의 B<-i> 옵션을 참조해주세요.
+파일은 C<0666> 을 접근의 C<umask> 의 값으로 수정한 퍼미션으로 작성됩니다.
 
 =begin original
 
@@ -6639,8 +6635,8 @@ C<'r+'>, C<'w'>, C<'w+'>, C<'a'>, and C<'a+'>.
 
 =end original
 
-これらの様々な前置詞は fopen(3) の C<'r'>, C<'r+'>,
-C<'w'>, C<'w+'>, C<'a'>, C<'a+'> のモードに対応します。
+이 다양한 전치사들은 fopen(3) 의 C<'r'>, C<'r+'>,
+C<'w'>, C<'w+'>, C<'a'>, C<'a+'> 의 모드에 대응합니다.
 
 =begin original
 
@@ -6651,9 +6647,9 @@ C<< '<' >>.
 
 =end original
 
-2 引数(と 1 引数) の形式ではモードとファイル名は(この順番で)
-結合されます(空白によって分割されているかもしれません)。
-この形式で、モードが C<< '<' >> の場合はモードを省略できます。
+2 인수(와 1 인수) 의 형식으로는 모드와 파일이름은(이 순서로) 
+결합됩니다(공백에 따라서 분할될지도 모릅니다).
+이 형식으로 모드가 C<< '<' >> 의 경우는 모드를 생략할 수 있습니다.
 
 =begin original
 
