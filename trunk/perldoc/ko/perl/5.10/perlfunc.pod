@@ -5571,10 +5571,10 @@ C<continue> block, if any, is not executed:
 
 =end original
 
-C<last> コマンドは、(ループ内で使った) C の C<break> 文と
-同じようなもので、LABEL で指定されるループを即座に抜けます。
-LABEL が省略されると、一番内側のループが対象となります。
-C<continue> ブロックがあっても実行されません:
+C<last> 커맨드는 (루프안에서 사용한) C 의 C<break> 문과 
+같은 것으로, LABEL 에서 지정한 루프를 즉시 빠져나옵니다.
+LABEL 이 생략되면, 제일 안쪽의 루프가 대상이 됩니다.
+C<continue> 블록이 있어도 실행되지 않습니다:
 
     LINE: while (<STDIN>) {
 	last LINE if /^$/;	# exit when done with header
@@ -5589,9 +5589,9 @@ a grep() or map() operation.
 
 =end original
 
-C<last> は C<eval {}>, C<sub {}>, C<do {}> といった
-値を返すブロックを終了するのには使えませんし、
-grep() や map() 操作を終了するのに使うべきではありません。
+C<last> 는 C<eval {}>, C<sub {}>, C<do {}> 같은 값을 
+반환하는 블록을 종료하는 것에는 사용할 수 없고, 
+grep() 이나 map() 조작을 종료하는 것에 사용해야하는 것은 아닙니다.
 
 =begin original
 
@@ -5601,9 +5601,9 @@ exit out of such a block.
 
 =end original
 
-ブロックはそれ自体文法的には一度だけ実行されるループと同等であることに
-注意してください。従って、C<last> でそのようなブロックを
-途中で抜け出すことができます。
+블록은 그 자체문법적으로는 한번만 실행되는 루프와 같은 것에 
+주의해주세요. 따라서 C<last> 에서 그런 블록을 도중에 
+빠져나올 수 있습니다.
 
 =begin original
 
@@ -5612,8 +5612,8 @@ C<redo> work.
 
 =end original
 
-C<last>, C<next>, C<redo> がどのように働くかについては
-L</continue> を参照して下さい。
+C<last>, C<next>, C<redo> 가 어떻게 움직이는 가에 대해서는 
+L</continue> 를 참조해주세요.
 
 =item lc EXPR
 X<lc> X<lowercase>
@@ -5629,12 +5629,12 @@ and L<perlunicode> for more details about locale and Unicode support.
 
 =end original
 
-EXPR を小文字に変換したものを返します。
-これは、ダブルクォート文字列における、
-C<\L> エスケープを実装する内部関数です。
-C<use locale> が有効な場合は、現在の LC_CTYPE ロケールを参照します。
-ロケールと Unicode のサポートに関するさらなる詳細については
-L<perllocale> と L<perlunicode> を参照してください。
+EXPR 을 소문자로 변환한 것을 반환합니다.
+이것은 쌍따옴표 문자열에 의한 
+C<\L> 이스케이프를 구성ㅏ는 내부함수입니다.
+C<use locale> 이 유효한 경우는 현재의 LC_CTYPE 로케일을 참조합니다.
+로케일과 Unicode 의 지원에 관한 보다 자세한 내용에 대해서는
+L<perllocale> 과 L<perlunicode> 를 참조해주세요.
 
 =begin original
 
@@ -5642,7 +5642,7 @@ If EXPR is omitted, uses C<$_>.
 
 =end original
 
-EXPR が省略されると、C<$_>を使います。
+EXPR 이 생략되면, C<$_> 를 사용합니다.
 
 =item lcfirst EXPR
 X<lcfirst> X<lowercase>
@@ -5659,12 +5659,12 @@ details about locale and Unicode support.
 
 =end original
 
-最初の文字だけを小文字にした、EXPR を返します。
-これは、ダブルクォート文字列における、C<\l> エスケープを
-実装する内部関数です。
-C<use locale> が有効な場合は、現在の LC_CTYPE ロケールを参照します。
-ロケールと Unicode のサポートに関するさらなる詳細については
-L<perllocale> と L<perlunicode> を参照してください。
+최초의 문자만을 소문자로한 EXPR 을 반환합니다.
+이것은 쌍따옴표 문자열에 의한, C<\l> 이스케이프를 
+구성하는 내부함수입니다.
+C<use locale> 이 유효한 경우는 현재의 LC_CTYPE 로케일을 참조합니다.
+로케일과 Unicode 의 지원에 관한 보다 자세한 내용에 대해서는 
+L<perllocale> 과 L<perlunicode> 도 참조해주세요.
 
 =begin original
 
@@ -5672,7 +5672,7 @@ If EXPR is omitted, uses C<$_>.
 
 =end original
 
-EXPR が省略されると、C<$_>を使います。
+EXPR 이 생략되면, C<$_> 를 사용합니다.
 
 =item length EXPR
 X<length> X<size>
@@ -5688,12 +5688,12 @@ For that, use C<scalar @array> and C<scalar keys %hash> respectively.
 
 =end original
 
-EXPR の値の I<文字> の長さを返します。
-EXPR が省略されたときには、C<$_> の長さを返します。
-これは配列やハッシュ全体に対してどれだけの要素を含んでいるかを
-調べるためには使えません。
-そのような用途には、それぞれ C<scalar @array> と C<scalar keys %hash> を
-利用してください。
+EXPR 의 값 I<문자> 의 길이를 반환합니다.
+EXPR 이 생략된 때에는, C<$_> 의 길이를 반환합니다.
+이것은 배열이나 해쉬전체애 대해서 어느정도의 요소를 포함하고 있는 가를 
+조사하기 위해 사용할 수는 없습니다.
+그런 용도로는 각각 C<scalar @array> 와 C<scalar keys %hash> 를 
+이용해주세요.
 
 =begin original
 
@@ -5707,13 +5707,13 @@ C<length(Encoding::encode_utf8(EXPR))>.
 
 =end original
 
-I<文字> 関する注意:
-EXPR が Unicode の場合、バイト数ではなく、文字の数が返ります。
-内部文字列のバイト数が必要な場合は L<bytes> を参照して、
-C<do { use bytes; length(EXPR) }> を使ってください。
-内部エンコーディングは様々なので、バイト数は普通は無意味です。
-UTF-8 でエンコードされている場合の文字列のバイト数を得たい場合は、
-C<length(Encoding::encode_utf8(EXPR))> を使ってください。
+I<문자> 에 관한 주의:
+EXPR 이 Unicode 인 경우, 바이트수가 아닌 문자수를 반환합니다.
+내부문자열에 바이트수가 필요한 경우는 L<bytes> 를 참조해서 
+C<do { use bytes; length(EXPR) }> 을 사용해주세요.
+내부 인코딩은 여러가지이기에, 바이트수는 보통은 무의미합니다.
+UTF-8 으로 인코드되어 이쓴 경우는 문자열의 바이트수를 얻고 싶은 경우는 
+C<length(Encoding::encode_utf8(EXPR))> 를 사용해주세요.
 
 =item link OLDFILE,NEWFILE
 X<link>
