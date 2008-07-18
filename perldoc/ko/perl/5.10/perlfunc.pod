@@ -5298,10 +5298,10 @@ C<ioctl> (과 C<fcntl>) 의 반환값은 아래처럼 됩니다:
 
 =end original
 
-	OS が返した値:		  Perl が返す値:
-	    -1	  		     未定義値
-	     0	 		「0 だが真」の文字列
-	  その他		  その値そのもの
+	OS 가 반환하는 값:		  Perl 이 반환하는 값:
+	    -1	  		     미정의값
+	     0	 		「0 이지만 참」의 문자열
+	  그외		  그 값 그것
 
 =begin original
 
@@ -5725,8 +5725,8 @@ success, false otherwise.
 
 =end original
 
-OLDFILE にリンクされた、新しいファイル NEWFILE を作ります。
-成功時には true を、失敗時には false を返します。
+OLDFILE 에 링크되어, 새로운 파일 NEWFILE 을 만듭니다.
+성공시에 true 를, 실패시에는 false 를 반환합니다.
 
 =item listen SOCKET,QUEUESIZE
 X<listen>
@@ -5739,9 +5739,9 @@ L<perlipc/"Sockets: Client/Server Communication">.
 
 =end original
 
-listen システムコールと同じことをします。成功時には真を返し、
-失敗時には偽を返します。
-L<perlipc/"Sockets: Client/Server Communication">の例を参照してください。
+listen 시스템 호출과 같은 일을 합니다. 성공시에는 참을 반환하고, 
+실패시에는 거짓을 반환합니다.
+L<perlipc/"Sockets: Client/Server Communication"> 의 예제를 참조해주세요.
 
 =item local EXPR
 X<local>
@@ -5754,9 +5754,9 @@ L<perlsub/"Private Variables via my()"> for details.
 
 =end original
 
-あなたはが本当に望んでいるのは C<my> の方でしょう。
-C<local> はほとんどの人々が「ローカル」と考えるものと違うからです。
-詳細は L<perlsub/"Private Variables via my()"> を参照してください。
+당신이 정말로 원하는 것은 C<my> 일 겁니다.
+C<local> 은 대부분의 사람들이 "로컬" 이라고 생각하는 것과 다르기 때문입니다.
+자세한 내용은 L<perlsub/"Private Variables via my()"> 를 참조하세요.
 
 =begin original
 
@@ -5767,11 +5767,10 @@ for details, including issues with tied arrays and hashes.
 
 =end original
 
-"local" はリストアップされた変数を、囲っているブロック、
-ファイル、eval の中で、ローカルなものにします。
-複数の値を指定する場合は、リストは括弧でくくらなければなりません。
-tie した配列とハッシュに関する事項を含む詳細については
-L<perlsub/"Temporary Values via local()"> を参照してください。
+"local" 은 리스트업 된 변수를 감싸진 블록, 파일, eval 의 안에서, 로컬한 것으로
+합니다. 복수의 값을 지정하는 경우는 리스트는 괄호로 감싸지 않으면 안됩니다.
+tie 한 배열과 해쉬에 관한 사항을 포함한 상세한 내용에 대해서는 
+L<perlsub/"Temporary Values via local()"> 를 참조하세요.
 
 =item localtime EXPR
 X<localtime> X<ctime>
@@ -5786,9 +5785,9 @@ follows:
 
 =end original
 
-time 関数が返す時刻を、ローカルなタイムゾーンで測った時刻として、
-9 要素の配列に変換します。
-通常は、以下のようにして使用します。
+time 함수가 반환하는 시각을 로컬한 타임존에서 측정한 시각으로써 
+9가지 요소의 배열로 변환합니다.
+일반적으로는 아래처럼 사용합니다.
 
     #  0    1    2     3     4    5     6     7     8
     ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) =
@@ -5802,9 +5801,8 @@ of the specified time.
 
 =end original
 
-すべてのリスト要素は数値で、C の `struct tm' 構造体から
-直接持ってきます。
-C<$sec>, C<$min>, C<$hour> は指定された時刻の秒、分、時です。
+모든 리스트 요소는 수치로, C 의 `struct tm` 구조체에서 직접 가지고 옵니다.
+C<$sec>, C<$min>, C<$hour> 은 지정된 시각의 초, 분, 시간입니다.
 
 =begin original
 
@@ -5814,9 +5812,9 @@ This makes it easy to get a month name from a list:
 
 =end original
 
-C<$mday> は月の何日目か、C<$mon> は月の値です。
-月の値は C<0..11> で、0 が 1 月、11 が 12 月です。
-これにより、リストから月の名前を得るのが簡単になります:
+C<$mday> 은 그 달의 몇번째인가, C<$mon> 은 그 달의 값입니다.
+달의 값은 C<0..11> 로, 0가 1월, 11이 12월 입니다.
+이것에 의해, 리스트에서 달이 이름을 가지는 것이 간단하게 됩니다.
 
     my @abbr = qw( Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec );
     print "$abbr[$mon] $mday";
@@ -5830,10 +5828,9 @@ to get a complete 4-digit year is simply:
 
 =end original
 
-C<$year> は 1900 年からの年数であり、単に西暦の下 2 桁を表しているのでは
-ありません。
-つまり、$year が C<123> なら 2023 年です。
-完全な 4 桁の西暦を得るには単に以下のようにしてください:
+C<$year> 는 1900 년에서의 년수이고, 단순히 서력의 아래 두자리를 표현하는 것이
+아닙니다. 즉 $year 가 C<123> 이라면 2023 년입니다.
+완전한 4자리의 서력을 얻기에는 그냥 아래처럼 해주세요:
 
     $year += 1900;
 
@@ -5844,8 +5841,8 @@ to do that, would you?
 
 =end original
 
-さもなければ、Y2K 問題を含んだプログラムを作ることになります -- 
-それはお望みじゃないでしょう?
+그렇지 않으면, Y2K 문제를 가진 프로그램을 가지는 것이 됩니다 --
+그것은 원하는 것이 아니죠?
 
 =begin original
 
@@ -5853,7 +5850,7 @@ To get the last two digits of the year (e.g., '01' in 2001) do:
 
 =end original
 
-西暦の下 2 桁(2001 年では '01')がほしい場合は以下のようにします:
+서력의 아래 2자리(2001년에서는 '01') 을 원하는 경우는 아래처럼 해주세요:
 
     $year = sprintf("%02d", $year % 100);
 
@@ -5865,9 +5862,9 @@ Wednesday.  C<$yday> is the day of the year, in the range C<0..364>
 
 =end original
 
-C<$wday> は曜日で、0 が日曜日、3 が木曜日です。
-C<$yday> はその年の何日目かで、C<0..364> の値を取ります
-(うるう年は C<0..365> です)。
+C<$wday> 는 요일로, 0이 월요일, 3이 목요일입니다.
+C<$yday> 는 그 년도의 몇번째인가로, C<0..364> 의 값을 얻습니다.
+(윤년은 C<0..365> 입니다)
 
 =begin original
 
@@ -5876,7 +5873,7 @@ Time, false otherwise.
 
 =end original
 
-C<$isdst> は指定された時刻が夏時間の場合は真、そうでなければ偽です。
+C<$isdst> 는 지정된 시각이 여름시간일 경우는 참, 그렇지 않으면 거짓입니다.
 
 =begin original
 
@@ -5884,7 +5881,7 @@ If EXPR is omitted, C<localtime()> uses the current time (C<localtime(time)>).
 
 =end original
 
-EXPR が省略されると、C<localtime()> は現在時刻を使います
+EXPR 이 생략되면, C<localtime()> 은 현재 시각을 사용합니다.
 (C<localtime(time())>。
 
 =begin original
@@ -5893,7 +5890,7 @@ In scalar context, C<localtime()> returns the ctime(3) value:
 
 =end original
 
-スカラコンテキストでは、C<localtime()> は ctime(3) の値を返します:
+스칼라컨테스트에서는 C<localtime()> 은 ctime(3) 의 값을 반환합니다:
 
     $now_string = localtime;  # e.g., "Thu Oct 13 04:54:34 1994"
 
@@ -5907,13 +5904,11 @@ and mktime(3) functions.
 
 =end original
 
-スカラ値はロケール依存 B<ではなく>、Perl の組み込みの値です。
-ローカル時刻ではなく GMT がほしい場合は L</gmtime> 組み込み関数を
-使ってください。
-また、(秒、分、時…の形から、time() が返す値である
-1970 年 1 月 1 日の真夜中からの秒数に変換する) C<Time::Local> モジュール
-及び POSIX モジュールで提供される strftime(3) と mktime(3) 関数も
-参照してください。
+스칼라값은 로케일 의존이 B<아닙니다>, Perl 의 내장의 값입니다.
+로케일 시각이 아닌 GMT 를 원하는 경우는 L/gttime> 내장함수를 사용해주세요.
+또 (초, 분, 시 의 형태에서 time() 이 반환하는 값인 
+1970 년 1월 1일의 한밤중에서의 초수로 변환하는) C<Time::Local> 모듈 및 
+POSIX 모듈로 제공ㅚㄴ strftime(3) 과 mktime(3) 함수도 참조하세요.
 
 =begin original
 
@@ -5923,9 +5918,9 @@ try for example:
 
 =end original
 
-似たような、しかしロケール依存の日付文字列がほしい場合は、
-ロケール環境変数を適切に設定して(L<perllocale> を参照してください)、
-以下の例を試してください:
+이와 비슷하게 로케일 의존의 날짜 문자열을 원하는 경우는 
+로케일 환경변수를 적절하게 설정해서(L<perllocale> 을 사용해주세요),
+아래의 예제를 시험해주세요.
 
     use POSIX qw(strftime);
     $now_string = strftime "%a %b %e %H:%M:%S %Y", localtime;
@@ -5939,8 +5934,7 @@ and the month of the year, may not necessarily be three characters wide.
 
 =end original
 
-曜日と月の短い表現である C<%a> と C<%b> は、3 文字とは限らないことに
-注意してください。
+요일과 달의 짧은 표현인 C<%a> 와 C<%b> 는 3문자로는 한정되지 않느 것에 주의.
 
 =begin original
 
@@ -5948,7 +5942,7 @@ See L<perlport/localtime> for portability concerns.
 
 =end original
 
-移植性については L<perlport/localtime> を参照してください。
+이식성에 대해서는 L<perlport/localtime> 을 참조해주세요.
 
 =begin original
 
@@ -5958,9 +5952,9 @@ respectively.
 
 =end original
 
-L<Time::gmtime> モジュールと L<Time::localtime> モジュールは、それぞれ
-gmtime() 関数と localtime() 関数に、名前でアクセスする機構を提供する
-便利なモジュールです。
+L<Time::gmtime> 모듈과 L<Time::localtime> 모듈은 각각 
+gmtime() 함수와 localtime() 함수에 이름으로 접근하는 기구를 제공하는 
+편리한 모듈입니다.
 
 =begin original
 
@@ -5969,8 +5963,8 @@ L<DateTime> module on CPAN.
 
 =end original
 
-包括的な日付と時刻の表現については、CPAN の L<DateTime> モジュールを
-参照してください。
+포괄적인 날짜와 시각의 표현에 대해서는 CPAN 의 L<DateTime> 모듈을 
+참조하세요.
 
 =item lock THING
 X<lock>
@@ -5982,8 +5976,8 @@ object contained in I<THING> until the lock goes out of scope.
 
 =end original
 
-この関数は I<THING> が含む共有変数またはリファレンスされたオブジェクトに、
-スコープから出るまでアドバイサリロックを掛けます．
+이 함수는 I<THING> 이 포함하는 공유변수 또는 리퍼런스된 오브젝트에 
+영역에서 나오기까지의 advisory lock 을 겁니다.
 
 =begin original
 
@@ -5994,10 +5988,10 @@ keyword.) See L<threads>.
 
 =end original
 
-lock() は「弱いキーワード」です: もしユーザーが(呼び出し前に)
-この名前で関数を定義すると、定義された関数の方が呼び出されます
-(ただし、C<use threads> とすると、lock() は常にキーワードです)。
-L<threads> を参照してください。
+lock() 는 "약한 키워드" 입니다: 만약 유저가 (호출하기 전에 )
+이 이름으로 함수를 정의하면 정의된 함수가 호출됩니다.
+(단, C<use threads> 를 하면, lock() 는 항상 키워드입니다).
+L<threads> 를 참조하세요.
 
 =item log EXPR
 X<log> X<logarithm> X<e> X<ln> X<base>
@@ -6013,11 +6007,11 @@ divided by the natural log of N.  For example:
 
 =end original
 
-EXPR の (I<e> を底とする) 自然対数を返します。
-EXPR が省略されると、C<$_> の対数を返します。
-底の異なる対数を求めるためには、基礎代数を利用してください:
-ある数の N を底とする対数は、その数の自然対数を N の自然対数で割ったものです。
-例:
+EXPR 의 (I<e> 를 기반으로) 자연대수를 반환합니다.
+EXPR 이 생략되면, C<$_> 의 대수를 반환합니다.
+기반과 다른 대수를 구하기 위해서는 기초대수를 이용해주세요:
+어떤 수 N 을 기반한 대수는 그 수의 자연대수를 N 의 자연대수로 나눈 것입니다.
+예:
 
     sub log10 {
 	my $n = shift;
@@ -6030,7 +6024,7 @@ See also L</exp> for the inverse operation.
 
 =end original
 
-逆操作については L</exp> を参照して下さい。
+역조작에 대해서는 L</expr> 을 참조하세요.
 
 =item lstat EXPR
 X<lstat>
@@ -6047,11 +6041,11 @@ information, please see the documentation for C<stat>.
 
 =end original
 
-(特別なファイルハンドルである C<_> の設定を含めて)
-C<stat> 関数と同じことをしますが、シンボリックリンクが
-指しているファイルではなく、シンボリックリンク自体の stat をとります。
-シンボリックリンクがシステムに実装されていないと、通常の C<stat> が行なわれます。
-さらにより詳細な情報については、L<stat> の文書を参照してください。
+(특별한 파일핸들인 C<_> 의 설정을 포함해)
+C<stat> 함수와 같은 일을 합니다만, 심볼릭 링크가 
+지정되어 있는 파일이 아닌, 심볼릭 링크자체의 stat 을 얻습니다.
+심볼릭 링크가 시스템에 구성되어 있지 않다면, 일반적인 C<stat> 이 수행됩니다.
+보다 더 자세한 정보에 대해서는 L<stat> 의 문서를 참조해주세요.
 
 =begin original
 
@@ -6059,7 +6053,7 @@ If EXPR is omitted, stats C<$_>.
 
 =end original
 
-EXPR が省略されると、C<$_> の stat をとります。
+EXPR 이 생략되면, C<$_> 의 stat 을 얻습니다.
 
 =item m//
 
@@ -6069,8 +6063,8 @@ The match operator.  See L<perlop>.
 
 =end original
 
-マッチ演算子です。
-L<perlop> を参照してください。
+매치연산자입니다.
+L<perlop> 를 참조해주세요.
 
 =item map BLOCK LIST
 X<map>
@@ -6088,13 +6082,13 @@ more elements in the returned value.
 
 =end original
 
-LIST の個々の要素に対して、BLOCK か EXPR を評価し
-(C<$_> は、ローカルに個々の要素が設定されます) 、
-それぞれの評価結果からなるリスト値が返されます。
-スカラコンテキストでは、生成された要素の数を返します。
-BLOCK や EXPR をリストコンテキストで評価しますので、LIST の
-個々の要素によって作られる、返り値であるリストの要素数は、
-0 個の場合もあれば、複数の場合もあります。
+LIST 의 각각의 요소에 대해서, BLOCK 이 EXPR 을 평가해서 
+(C<$_> 는 로컬에 각각의 요소가 설정됩니다), 
+각각의 평가결과로부텅 리스트의 값이 반환됩니다.
+스칼라 컨텍스트에서는 생성된 요소의 수를 반환합니다.
+BLOCK 이나 EXPR 을 리스트컨텍스트에서 평가하기때문에, LIST 의 
+각각의 요소에 따라 만들어지는 반환값인 리스트의 요소수는 
+0개의 경우도 있으면 복수의 경우도 있습니다.
 
     @chars = map(chr, @nums);
 
@@ -6103,6 +6097,7 @@ BLOCK や EXPR をリストコンテキストで評価しますので、LIST の
 translates a list of numbers to the corresponding characters.  And
 
 =end original
+
 
 は、数のリストを対応する文字に変換します。
 また:
