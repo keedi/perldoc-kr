@@ -2,6 +2,11 @@
 펄컨퍼런스의 인지도를 높이기 위한 구루 초청 서비스
 어디서든 돌릴수 있었으면 하고...
 이번의 희생자는 JEEN님이 되실듯
+JEEN이란?
+.img JEEN.gif JEEN
+IRC에 서식하는 요정
+최연소 YAPC 발표자
+하악커
 기립 박수 '-')\
 사용된 리소스들
 Front-End
@@ -45,7 +50,7 @@ HTTP::Server::Simple::Static;
 그래서 딴게 없나 떠돌아 보았습니다
 오호라! '-')/
 HTTP::Server::Simple::Dispatched
-Django-like regex dispatching with request and response objects - no CGI.pm cruft!
+Django-like regex dispatching with request and response objects - no CGI.pm crafting!
 끼얏호 이꺼 근사한걸
 .code
 dispatch => [
@@ -130,4 +135,4 @@ http://coderepos.org/share/wiki/HTTP%3A%3AEngine
 당신의 IP는 제가 알고 있습니다.
 자 어서 '-') < 모금
 프로토타입은 rojeen-latest.tar.gz을 풀어서~
-감사합니다.
+감사합니다 당신의 성함과피!! '-')/
