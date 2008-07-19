@@ -79,6 +79,7 @@ dispatch => [
 HTTP::Engine
 좋은가요?
 HTTP::Engine is a bare-bones, extensible HTTP engine.
+
 .text
 HTTP::Engine::Interface::ServerSimple
 HTTP::Engine::Interface::FastCGI
@@ -110,8 +111,15 @@ old style
 - HTTP::Headers        ...loaded. (1.64)
 - URI                  ...loaded. (1.35)
 .code
+열악한 문서화 '-');;
+http://coderepos.org/share/wiki/HTTP%3A%3AEngine
 안 쓸래요 '-') < 아흑
+그래도 유명한 모듈들에서 사용중
+*Jifty*, Moxy, Nanto
+Jifty 쓰고 싶다;;
 현재 HTTP::Server::Simple이 가장 매력적!!
+허나 디버깅이나 수정된 값을 적용하기 좀 힘들다
+힘든만큼 용이하고 포터블하다!
 당신의 IP는 제가 알고 있습니다.
 자 어서 '-') < 모금
 프로토타입은 rojeen-latest.tar.gz을 풀어서~
