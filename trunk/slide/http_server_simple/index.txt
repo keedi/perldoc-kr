@@ -1,0 +1,118 @@
+성의없는 모금함이란...
+펄컨퍼런스의 인지도를 높이기 위한 구루 초청 서비스
+어디서든 돌릴수 있었으면 하고...
+이번의 희생자는 JEEN님이 되실듯
+기립 박수 '-')\
+사용된 리소스들
+Front-End
+HTML,CSS,ExtJS
+Back-End
+HTTP::Server::Simple
+ExtJS란?
+위젯개념의 JS 라이브러리
+엔터프라이즈급의 서비스도 뚝딱!
+extjs.com
+http://extjs.com/products/extjs/
+HTTP::Server::Simple란?
+Jesse가 만든 펄코드만으로 구성된 간이서버
+http://search.cpan.org/~jesse/HTTP-Server-Simple-0.34/lib/HTTP/Server/Simple.pm
+왜 사용하게 되었는가?
+웹서버 설치가 곤란하다던가
+간단한 CGI를 작성할때나
+어디서든 돌릴수 있기 위한 모듈
+쓸만한가요?
+아니요 '-');;
+걍 쓸만해요;;
+그래도 좋아서 써요
+5초만에 구현할수 있는 웹서버
+우분이 패키지로 제공
+libhttp-server-simple-perl
+.code
+use warnings;
+use strict;
+use HTTP::Server::Simple;
+
+my $server = HTTP::Server::Simple->new();
+$server->run();
+.code
+Full CGI support
+HTTP::Server::Simple::CGI;
+Single Process, thread?
+아앍!!!
+static file 서빙이 안된다!?
+HTTP::Server::Simple::Static;
+아흑 패키지 하나로 해결이 안되요 ㅜㅡ
+그래서 딴게 없나 떠돌아 보았습니다
+오호라! '-')/
+HTTP::Server::Simple::Dispatched
+Django-like regex dispatching with request and response objects - no CGI.pm cruft!
+끼얏호 이꺼 근사한걸
+.code
+dispatch => [
+        qr{^/hello/} => sub {
+          my ($response) = @_;
+          $response->content_type('text/plain');
+          $response->content("Hello, world!");
+          return 1;
+        }
+]
+.code
+우와 이거 넘 좋아;;
+안탑깝게도 이런부분에서 미흡하네요
+Moose등 여러 모듈로 구현된 간이 서버(크다!?)
+버젼 0.06 '-');;
+GET/POST로 파라미터를 받지 못하는 문제점
+.code
+dispatch => [
+        qr{^/say/(\w+)/} => sub {
+          my ($response) = @_;
+          $response->content_type('text/plain');
+          $response->content("You asked me to say $1.");
+          return 1;
+        }
+]
+.code
+정규식으로 파라미터를 가져온다?! 음... 각하
+다시 HTTP::Server::Simple 빠꾸 (미안해요 Jesse)
+역시 CGI 모듈은 견고하고 내가 필요한건 다있는듯
+다른 간이 서버들?
+HTTP::Engine
+좋은가요?
+HTTP::Engine is a bare-bones, extensible HTTP engine.
+.text
+HTTP::Engine::Interface::ServerSimple
+HTTP::Engine::Interface::FastCGI
+HTTP::Engine::Interface::CGI
+HTTP::Engine::Interface::Test
+
+for test code interface
+HTTP::Engine::Interface::ModPerl
+
+experimental
+HTTP::Engine::Interface::Standalone
+old style
+.text
+설치는?
+.code
+- Test::More           ...loaded. (0.8)
+- IO::Scalar           ...missing.
+- File::Temp           ...loaded. (0.20 >= 0.20)
+- HTTP::Request::AsCGI ...loaded. (0.5)
+- Moose                ...loaded. (0.54 >= 0.48)
+- MooseX::Types        ...missing. (would need 0.04)
+- Scalar::Util         ...loaded. (1.18)
+- IO::Socket           ...loaded. (1.29)
+- File::Copy           ...loaded. (2.09)
+- IO::File             ...loaded. (1.13)
+- File::Spec::Unix     ...loaded. (3.27)
+- CGI::Simple::Cookie  ...missing.
+- HTTP::Body           ...missing. (would need 0.9)
+- HTTP::Headers        ...loaded. (1.64)
+- URI                  ...loaded. (1.35)
+.code
+안 쓸래요 '-') < 아흑
+현재 HTTP::Server::Simple이 가장 매력적!!
+당신의 IP는 제가 알고 있습니다.
+자 어서 '-') < 모금
+프로토타입은 rojeen-latest.tar.gz을 풀어서~
+감사합니다.
