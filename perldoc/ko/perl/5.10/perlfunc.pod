@@ -6664,18 +6664,16 @@ for alternatives.)
 
 =end original
 
-ファイル名の先頭に C<'|'> を付けると、
-そのファイル名をコマンドとして解釈し、ファイルハンドルへの
-出力がパイプを通じて、そのコマンドへ入力されます。
-逆にファイル名の最後に C<'|'> を付けた場合には、
-同様にファイル名をコマンドと解釈し、そのコマンドの出力が
-パイプを通じて、ファイルハンドルから入力として
-読み込むことができるようになります。
-これに関する例については L<perlipc/"Using open() for IPC"> を参照してください。
-(C<open> を入出力両用にパイプすることは出来ませんが
-代替案としては L<IPC::Open2>, L<IPC::Open3>,
+파일이름의 맨 앞에 C<'|'> 을 붙이면, 그 파일이름을 커맨드로 해석해서 
+파일핸들로의 출력이 파이프를 통해서 그 커맨드로 입력됩니다.
+거꾸로 파일이름의 끝에 C<'|'> 를 붙인 경우에는 마찬가지로 파일이름을 
+커맨드로 해석해서 그 커맨드의 출력이 파이프를 통해서, 파일핸들에서 
+입력으로써 읽어들일 수 있게 됩니다.
+이것에 관한 예제에 대해서는 L<perlipc/"Using open() for IPC"> 를 참조해주세요.
+(C<open> 을 입출력용으로 파이프하는 것을 불가능하지만 대신에
+L<IPC::Open2>, L<IPC::Open3>,
 L<perlipc/"Bidirectional Communication with Another Process">
-を参照してください。)
+를 참조해주세요.)
 
 =begin original
 
@@ -6691,17 +6689,15 @@ L<perlipc/"Bidirectional Communication"> for alternatives.)
 
 =end original
 
-3 引数以上の形式で
-MODE が C<'|-'> の場合、ファイル名は出力がパイプされるコマンドとして
-解釈され、MODE が C<'-|'> の場合、ファイル名は出力がこちらに
-パイプされるコマンドとして解釈されます。
-2 引数(と 1 引数) の形式ではハイフン(C<'-'>)をコマンドの代わりに
-使えます。
-これに関するさらなる例については L<perlipc/"Using open() for IPC"> を
-参照してください。
-(C<open> を入出力 I<両用> にパイプすることは出来ませんが
-代替案としては L<IPC::Open2>, L<IPC::Open3>,
-L<perlipc/"Bidirectional Communication"> を参照してください。)
+3 인수 이상의 형식에서
+MODE 가 C<'|-'> 인 경우, 파일이름이 출력이 파이프된 커맨드로 해석되어 MODE 가
+C<'-|'> 인 경우, 파일이름은 출력이 이쪽에 파이프되는 커맨드로 해석됩니다.
+2인수(와 1인수) 의 형식에서는 하이픈(C<'-'>) 을 커맨드 대신에 사용할 수 있습니다.
+이것에 관한 보다 자세한 예제에 대해서는 L<perlipc/"Using open() for IPC"> 를 
+참조해주세요.
+(C<open> 을 입출력I<용> 으로 파이프할 수 없지만, 
+대체안으로는 L<IPC::Open2>, L<IPC::Open3>,
+L<perlipc/"Bidirectional Communication"> 를 참조해주세요.)
 
 =begin original
 
@@ -6714,11 +6710,11 @@ meaning.
 
 =end original
 
-パイプでの 3 つ以上の引数の形式では、LIST (コマンド名の後の追加の引数) が
-指定されると、プラットフォームが対応していれば、LIST は起動される
-コマンドへの引数となります。
-パイプモードではない C<open> での 3 つ以上の引数の意味はまだ未定義です。
-実験的な「層」は追加の LIST 引数の意味を与えます。
+파이프에서의 3개 이상의 인수의 형식에서는 LIST( 커맨드 이름의 뒤의 추가 인수)
+가 지정되면, 플랫폼이 대응하고 있으면,  LIST 는 기동되는 커맨드로의 인수가 
+됩니다.
+파이프 모드가 아닌 C<open> 에서의 3개 이상의 인수의 의미는 아직 미정의입니다.
+실험적인 "계층"은 추가의 LIST 인수의 의미를 부여합니다.
 
 =begin original
 
@@ -6727,11 +6723,10 @@ and opening C<< '>-' >> opens STDOUT.
 
 =end original
 
-2 引数(と 1 引数)で C<'-'> を open すると STDIN がオープンされ、
-C<< '>-' >> を open すると STDOUT がオープンされます。
+2 인수(와 1인수) 에서 C<'-'> 를 open 하면 STDIN 이 오픈되어,
+C<< '>-' >> 를 open 하면 STDOUT 이 오픈됩니다.
 
 =begin original
-
 You may use the three-argument form of open to specify IO "layers"
 (sometimes also referred to as "disciplines") to be applied to the handle
 that affect how the input and output are processed (see L<open> and
@@ -6739,10 +6734,10 @@ L<PerlIO> for more details). For example
 
 =end original
 
-open の 3 引数形式では、どのように入出力が処理されるかに影響を与える
-IO 「層」(「ディシプリン」とも呼ばれます)を指定できます
-(詳細については L<open> と L<PerlIO> を参照してください)。
-例えば:
+open 의 3인수형식에서는 어떻게 입출력이 처리되는 가에 영향을 주는 
+IO "계층" ("disciplines" 라고도 불립니다)를 지정할 수 있습니다
+(자세한 내용에 대해서는 L<open> 과 L<PerlIO> 를 참조해주세요).
+예를들어:
 
   open(FH, "<:encoding(UTF-8)", "file")
 
@@ -6755,11 +6750,11 @@ usually set by the B<open> pragma or the switch B<-CioD>) are ignored.
 
 =end original
 
-は、Unicode 文字を含む UTF-8 エンコードされたファイルを開きます;
-L<perlruniintro> を参照してください。
-3 引数形式で層を指定すると、${^OPEN} (L<perlvar> を参照してください;
-通常はC<open> プラグマか B<-CioD> オプションでセットされます)
-に保存されたデフォルト層は無視されることに注意してください。
+는 Unicode 문자를 포함하는 UTF-8 인코드된 파일을 엽니다;
+L<perlruniintro> 를 참조해주세요.
+3 인수형식에서 계층을 지정하면 ${^OPEN} (L<perlvar> 를 참조해주세요;
+일반적으로는 C<open> 프라그마가 B<-CioD> 옵션에서 설정됩니다)
+에 보존된 기본 계층은 무시되는 것에 주의해주세요.
 
 =begin original
 
@@ -6769,8 +6764,8 @@ the subprocess.
 
 =end original
 
-open は、成功時にはゼロ以外を返し、失敗時には未定義値を返します。
-パイプに関る C<open> のときには、返り値はサブプロセスの pid となります。
+open 은 성공시에는 0 이외를 반환하고, 실패시에는 미정의값을 반환합니다.
+파이프에 관한 C<open> 시에는 반환값은 서브프로세스의 pid 가 됩니다.
 
 =begin original
 
@@ -6784,13 +6779,13 @@ need C<binmode>.  The rest need it.
 
 =end original
 
-テキストファイルとバイナリファイルを区別するシステムで Perl を実行している
-場合、これを扱うための小技のために L</binmode> をチェックするべきです。
-動作させているシステムで C<binmode> が必要か不要化を区別する鍵は、テキスト
-ファイルの形式です。
-Unix, Mac OS, Plan 9 といった、行の境界を 1 文字で表現し、それが C では
-C<"\n"> でエンコードされる場合、C<binmode> は不要です。
-それ以外では必要です。
+텍스트파일과 바이너리 파일을 구별하는 시스템에서 Perl 을 실행하는 경우, 
+이것을 다루기 위해 L</binmode> 를 체크해야합니다.
+동작시키는 시스템에서는 C<binmode> 가 필수인가 불필요한가를 구별하는 
+키는, 텍스트의 파일 형식입니다.
+Unix, Mac OS, Plan 9 같은 행의 경계를 1문자로 표현하고, 그것이 C에서 
+C<"\n"> 에서 인코드되는 경우, C<binmode> 는 필요없습니다.
+그 이외에서는 필요합니다.
 
 =begin original
 
@@ -6804,15 +6799,14 @@ working with an unopened filehandle is actually what you want to do.
 
 =end original
 
-ファイルを開く時、開くのに失敗した時に通常の処理を続けるのは
-普通は悪い考えですので、C<open> はしばしば C<die> と結び付けられて
-使われます。
-望むものが C<die> でない場合(例えば、CGI スクリプト のように
-きれいにフォーマットされたエラーメッセージを作りたい場合
-(但しこの問題を助けるモジュールがあります))でも、
-ファイルを開いた時の帰り値を常にチェックするべきです。
-めったにない例外は、開いていないファイルハンドルを使うのが
-本当にやりたいことの場合です。
+파일을 결때, 여는 것에 실패한 때에 일반적인 처리를 계속하는 것은 
+보통은 나쁘게 생각하기에, C<open> 은 대부분 C<die> 로 묶어서 사용됩니다.
+바라는 것이 C<die> 가 아닌 경우(예를 들어, CGI 스크립트처럼 
+예븐 포맷의 에러 메시지를 만들고 싶은 경우 
+(단, 이 문제를 도와줄 모듈이 있습니다))에서도,
+파일을 연 때의 반환값을 항상 체크해야합니다.
+쓸때없는 예외는 열지 않은 파일 핸들을 사용하는 것이 
+정말로 하고 싶은 것일 경우입니다.
 
 =begin original
 
@@ -6821,8 +6815,8 @@ argument being C<undef>:
 
 =end original
 
-特別な場合として、3 引数の形で読み書きモードで 3 番目の引数が
-C<undef> の場合:
+특별한 경우로 3인수의 형식에서 읽고 쓰기 모드로 3번째의 인수가 
+C<undef> 인 경우:
 
     open(TMP, "+>", undef) or die ...
 
@@ -6835,10 +6829,10 @@ reading.
 
 =end original
 
-無名一時ファイルとしてファイルハンドルを開きます。
-また "+<" も対称性のために動作しますが、
-一時ファイルにはまず何かを書き込みたいはずです。
-読み込みを行うためには seek() が必要です。
+이름없는 일시 파일로 파일핸들을 엽니다.
+또 "+<" 도 대칭성을 위해 동작하지만, 일시 파일에는 우선 
+뭔가를 쓰고 싶을 겁니다.
+읽기를 수행하기 위해서는 seek() 가 필요합니다.
 
 =begin original
 
@@ -6848,10 +6842,10 @@ changed this (i.e. Configure -Uuseperlio), you can open file handles to
 
 =end original
 
-v5.8.0 から、perl はデフォルトで PerlIO を使ってビルドされています。
-これ(Configure -Uuseperlio)を変更していない限り、
-以下のようにして、Perl スカラに保持されている「オンメモリの」
-ファイルをファイルハンドルを開くことができます:
+v.5.8.0 부터 perl 은 기본값으로 PerlIO 를 사용해서 빌드되어 있습니다.
+이것(Configure -Uuseperlio) 를 변경하지 않는 한, 
+아래처럼 해서, Perl 스칼라에 보존된 "in memory" 파일을 
+파일핸들을 열 수 있습니다:
 
     open($fh, '>', \$variable) || ..
 
@@ -6862,8 +6856,8 @@ file, you have to close it first:
 
 =end original
 
-しかし、もし C<STDOUT> や C<STDERR> を「オンメモリの」ファイルとして
-再び開きたい場合は、先にそれを閉じる必要があります:
+그러나, 만약 C<STDOUT> 이나 C<STDERR> 을 "in memory" 파일로써 
+다시 열고 싶은 경우는 앞서 그것을 닫을 필요가 있습니다:
 
     close STDOUT;
     open STDOUT, '>', \$variable or die "Can't open STDOUT: $!";
@@ -6874,7 +6868,7 @@ Examples:
 
 =end original
 
-例:
+예제:
 
     $ARTICLE = 100;
     open ARTICLE or die "Can't find article $ARTICLE: $!\n";
@@ -6933,7 +6927,7 @@ See L<perliol> for detailed info on PerlIO.
 
 =end original
 
-PerlIO に関する詳しい情報については L<perliol> を参照してください。
+PerlIO 에 관한 자세한 정보에 대해서는 L<perliol> 을 참조해주세요.
 
 =begin original
 
