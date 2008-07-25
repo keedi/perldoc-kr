@@ -7316,7 +7316,7 @@ See L</seek> for some details about mixing reading and writing.
 
 =end original
 
-読み書きを混ぜる場合の詳細については L</seek> を参照して下さい。
+읽기 쓰기를 섞는 경우의 자세한 내용에 대해서는 L</seek> 를 참조하세요.
 
 =item opendir DIRHANDLE,EXPR
 X<opendir>
@@ -7333,14 +7333,14 @@ DIRHANDLEs have their own namespace separate from FILEHANDLEs.
 
 =end original
 
-C<readdir>、C<telldir>、C<seekdir>、C<rewinddir>、C<closedir> で
-処理するために、EXPR で指定された名前のディレクトリをオープンします。
-成功時には真を返します。
-DIRHANDLE は間接ディレクトリハンドルとして使える値(普通は実際のディレクトリ
-ハンドルの名前)となる式でも構いません。
-DIRHANDLE が未定義のスカラ値(または配列かハッシュの要素)の場合、その変数は
-新しい無名ディレクトリハンドルへのリファレンスが代入されます。
-DIRHANDLE は、FILEHANDLE とは別に名前空間を持っています。
+C<readdir>, C<telldir>, C<seekdir>, C<rewinddir>, C<closedir> 에서 
+처리하기 위해, EXPR 에서 지정한 이름의 디렉토리를 오픈합니다.
+성공시에는 참을 반환합니다.
+DIRHANDLE 은 간접 디렉토리 핸들로써 사용할 수 있는 값(보통은 실제의 디렉토리
+핸들의 이름)이 되는 식이라도 상관없습니다.
+DIRHANDLE 이 미정의의 스칼라값(또는 배열이나 해쉬의 요소)의 경우, 그 변수는 
+새로운 이름없는 디렉토리 핸들로의 리퍼런스가 대입됩니다.
+DIRHANDLE 은 FILEHANDLE 과는 별도로 이름공간을 가지고 있습니다.
 
 =item ord EXPR
 X<ord> X<encoding>
@@ -7355,9 +7355,9 @@ uses C<$_>.
 
 =end original
 
-EXPR の最初の文字の数値としての(ASCII, EBCDIC, Unicode のような 8-bit
-ネイティブエンコーディングの)値を返します。
-EXPR を省略した場合には、C<$_> を使用します。
+EXPR 의 맨처음의 문자를 수치로써 (ASCII, EBCDIC, Unicode 같은 8-bit 
+네이티브인코딩의) 값을 반환합니다.
+EXPR 을 생략한 경우에는 C<$_> 을 사용합니다.
 
 =begin original
 
@@ -7366,8 +7366,8 @@ See L<perlunicode> for more about Unicode.
 
 =end original
 
-逆のことをするには L</chr> を参照してください。
-Unicode については L<perlunicode> を参照してください。
+반대로 하기위해서는 L</chr> 을 참조해주세요.
+Unicode 에 대해서는 L,perlunicode> 를 참조해주세요.
 
 =item our EXPR
 X<our> X<global>
@@ -7388,12 +7388,11 @@ In this way C<our> differs from C<use vars>, which is package scoped.
 
 =end original
 
-C<our> は単純名を、現在のスコープ内で使うために、現在のパッケージの
-パッケージ変数と結び付けます。
-C<use strict 'vars'> が有効の場合は、C<our> を使うことで、C<our> 宣言の
-レキシカルスコープ内で、宣言されたグローバル変数をパッケージ名で
-修飾することなく使うことができます。
-この意味では、C<use vars> はパッケージスコープなので、C<our> とは異なります。
+C<our> 는 둔순이름을 현재의 영역안에서 사용하기 위해 현재의 패키지의 패키지 
+변수로 묶습니다.
+C<use strict 'vars'> 가 유효한 경우는 C<our> 를 사용하는 것으로, C<our> 선언을
+수식하는 것 없이 사용할 수 있습니다.
+이 의미에서는 C<use vars> 는 패키지 영역이기에 C<our> 와는 다릅니다.
 
 =begin original
 
@@ -7406,11 +7405,11 @@ variable.
 
 =end original
 
-記憶領域を変数に割り当て、単純名を現在のスコープ内で使うためにその記憶領域に
-割り当てる C<my> と違って、C<our> は単純名を、現在のスコープ内で使うために、
-現在のパッケージのパッケージ変数と結び付けます。
-言い換えると、C<our> は C<my> と同じスコープルールを持ちますが、
-変数を作る必要はありません。
+기억영역을 변수에 할당하고, 단순이름을 현재의 영역 안에서 사용하기 위해 
+그 기억영역에 할당된 C<my> 와 달리, C<our> 는 단순이름을 현재의 영역안에서 
+사용하기 위해, 현재의 패키지의 패키지변수로 묶을 수 있습니다.
+바꿔 말하면, C<our> 는 C<my> 와 같은 영역 룰을 가지지만, 
+변수를 만들 필요는 없습니다.
 
 =begin original
 
@@ -7419,7 +7418,7 @@ in parentheses.
 
 =end original
 
-二つ以上の値をリストする場合は、リストはかっこでくくる必要があります。
+두 개 이상의 값을 리스트하는 경우는 리스트는 괄호로 묶을 필요가 있습니다.
 
     our $foo;
     our($bar, $baz);
@@ -7434,11 +7433,10 @@ behavior holds:
 
 =end original
 
-C<our> 宣言はレキシカルスコープ全体に対して(たとえパッケージ境界を
-越えていても)見えるグローバル変数を宣言します。
-この変数が入るパッケージは宣言した時点で定義され、
-使用した時点ではありません。
-これにより、以下のような振る舞いになります:
+C<our> 선언은 렉시컬 영역 전체에 대해서(예를 들어 패키지 경계를 넘어도) 
+보이는 글로벌 변수를 선언합니다.
+이 변수가 들어가는 패키지는 선언한 시점에서 정의되지 사용한 시점이 아닙니다.
+이것에 의해 아래와 같은 행동을 합니다.
 
     package Foo;
     our $bar;		# declares $Foo::bar for rest of lexical scope
@@ -7459,12 +7457,12 @@ merely redundant.
 
 =end original
 
-同じレキシカルスコープでも、パッケージが異なっていれば、同じ名前で複数の
-C<our> 宣言ができます。
-同じパッケージになっていると、警告が出力されるようになっていれば
-複数の C<my> 宣言がある場合と同じように警告が出力されます。
-新しい変数を名前に割り当てることになる 2 回目の C<my> 宣言と違って、
-同じパッケージの同じスコープで 2 回 C<our> 宣言するのは単に冗長です。
+같은 렉시컬 영역에서도 패키지가 다르면, 같은 이름에서 여러 C<our> 선언을 
+할 수 있습니다.
+같은 패키지로 되어 있으면, 경고가 출력되게 되어 있다면, 복수의 C<my> 선언이 
+있는 경우와 마찬가지로 경고가 출력됩니다.
+새로운 변수를 이름으로 할당하는 것이 되는 2번째의 C<my> 선언과는 달리
+같은 패키지의 같은 영역에서 2 번 C<our> 선언하는 것은 단순한 확장입니다.
 
     use warnings;
     package Foo;
@@ -7485,7 +7483,7 @@ with it.
 
 =end original
 
-C<our> 宣言には、それと結び付けられる属性のリストを持つこともあります。
+C<our> 선언에는 그것과 묶을 수 있는 속성의 리스트를 가질 수도 있습니다.
 
 =begin original
 
@@ -7498,12 +7496,12 @@ L<attributes>, and L<Attribute::Handlers>.
 
 =end original
 
-TYPE と ATTRS の正確な文法とインターフェースは今でも進化しています。
-現在のところ、TYPE は C<fields> プラグマの使用と結び付けられていて、
-属性は C<attributes> プラグマか、Perl 5.8.0 からは
-C<Attribute::Handlers> モジュールと結び付けられています。
-詳しくはL<perlsub/"Private Variables via my()">, L<fields>,
-L<attributes>, L<Attribute::Handlers> を参照してください。
+TYPE 과 ATTRS 의 정확한 문법과 인터페이스는 지금도 진화하고 있습니다.
+현재, TYPE 은 C<fields> 프라그마의 사용과 결부되어 
+속성은 C<attributes> 프라그마가 Perl 5.8.0 부터는 
+C<Attribute::Handlers> 모듈로 결부됩니다.
+자세한 내용은 L<perlsub"Private Variables via my()">, L<fields>, 
+L<attributes>, L<Attribute::Handlers> 를 참조해주세요.
 
 =item pack TEMPLATE,LIST
 X<pack>
@@ -7519,12 +7517,11 @@ converted to a sequence of 4 characters.
 
 =end original
 
-LIST の値を TEMPLATE で与えられたルールを用いて文字列に変換します。
-結果の文字列は変換した値を連結したものです。
-典型的には、それぞれの変換された値はマシンレベルの表現のように見えます。
-例えば、32-bit マシンでは、4 バイトで表現される整数を変換すると
-4 文字の文字列に変換されます。
-
+LIST 의 값을 TEMPLATE 로 주어진 룰을 사용해 문자열로 변환합니다.
+결과의 문자열은 변환한 값을 연결한 것입니다.
+전형적으로는 각각의 변환된 값은 머신 레벨의 표현처럼 보입니다.
+예를들어, 32-bit 머신에서는 4 바이트로 표현되는 정수를 변환하면 
+4문자의 문자열로 변환됩니다.
 =begin original
 
 The TEMPLATE is a sequence of characters that give the order and type
@@ -7532,7 +7529,7 @@ of values, as follows:
 
 =end original
 
-TEMPLATE は、以下のような値の型と順番を指定する文字を並べたものです:
+TEMPLATE 는, 아래처럼 값의 형태와 순서를 지정하는 문자를 나열하는 것입니다:
 
 =begin original
 
@@ -7542,9 +7539,9 @@ TEMPLATE は、以下のような値の型と順番を指定する文字を並�
 
 =end original
 
-    a   任意のバイナリデータを含む文字列、ヌル文字で埋める
-    A   テキスト (ASCII) 文字列、スペース文字で埋める
-    Z	ヌル文字終端 (ASCIZ) 文字列、ヌル文字で埋める
+    a   임의의 바이너리 데이터를 포함한 문자열, null문자로 채워짐
+    A   텍스트(ASCII)  문자열, 스페이스 문자로 채워짐
+    Z	null 문자끝(ASCIZ) 문자열, null 문자로 채워짐
 
 =begin original
 
@@ -7555,10 +7552,10 @@ TEMPLATE は、以下のような値の型と順番を指定する文字を並�
 
 =end original
 
-    b   ビット列 (バイトごとに昇ビット順、vec() と同じ)
-    B   ビット列 (バイトごとに降ビット順)
-    h   16 進数文字列 (低位ニブルが先)
-    H   16 進数文字列 (高位ニブルが先)
+    b   비트열(바이트마다 오름비트순, vec() 처럼) 
+    B   비트열(바이트마다 내림비트순)
+    h   16진수문자열(low nybble first)
+    H   16진수문자열(high nybble first)
 
 =begin original
 
@@ -7568,9 +7565,9 @@ TEMPLATE は、以下のような値の型と順番を指定する文字を並�
 
 =end original
 
-    c   signed char (8 ビット) 値
-    C   unsigned char (オクテット) 値
-    W   unsigned char 値 (255 より大きいかもしれません)
+    c   signed char (8 비트) 값
+    C   unsigned char (8진수) 값
+    W   unsigned char 값 (255 보다 클지도 모름)
 
 =begin original
 
@@ -7579,8 +7576,8 @@ TEMPLATE は、以下のような値の型と順番を指定する文字を並�
 
 =end original
 
-    s   signed short (16 ビット) 値
-    S   unsigned short 値
+    s   signed short (16 비트) 값
+    S   unsigned short 값
 
 =begin original
 
@@ -7589,8 +7586,8 @@ TEMPLATE は、以下のような値の型と順番を指定する文字を並�
 
 =end original
 
-    l   signed long (32 ビット) 値
-    L   unsigned long 値
+    l   signed long (32 비트) 값
+    L   unsigned long 값
 
 =begin original
 
@@ -7602,11 +7599,11 @@ TEMPLATE は、以下のような値の型と順番を指定する文字を並�
 
 =end original
 
-    q	符号付き 64 ビット整数
-    Q	符号なし 64 ビット整数
-	  (64 ビット整数は、システムが 64 ビット整数に対応していて、かつ Perl が
-	   64 ビット整数対応としてコンパイルされている場合にのみ使用可能です。
-           それ以外の場合は致命的エラーが発生します。)
+    q	부호붙은 64비트 정수
+    Q	부호없는 64비트 정수
+        (64비트 정수는, 시스템이 64비트정수를 지원하고, Perl 이 64 비트 정수를
+        지원하도록 컴파일 되어 있는 경우에만 사용가능합니다.
+        그 이외의 경우는 치명적인 에러가 발생합니다.)
 
 =begin original
 
@@ -7617,11 +7614,10 @@ TEMPLATE は、以下のような値の型と順番を指定する文字を並�
 
 =end original
 
-    i   signed int 値
-    I   unsigned int 値
-	  (ここでの 'integer' は 「最低」 32 bits 幅です。
-           正確なサイズはローカルの C コンパイラの
-           'int'のサイズに依存します)
+    i   signed int 값
+    I   unsigned int 값
+        (여기에서의 'integer' 는 "최저" 32bits 입니다.
+         정확한 시이즈는 로컬의 C 컴파일러의 'int' 사이즈에 의존합니다)
 
 =begin original
 
@@ -7632,10 +7628,10 @@ TEMPLATE は、以下のような値の型と順番を指定する文字を並�
 
 =end original
 
-    n   "network" 順序 (ビッグエンディアン) の unsigned short (16 ビット)
-    N   "network" 順序 (ビッグエンディアン) の unsigned long (32 ビット)
-    v   "VAX" 順序 (リトルエンディアン) の unsigned short (16 ビット)
-    V   "VAX" 順序 (リトルエンディアン) の unsigned long (32 ビット)
+    n   "network" 순서(big-endian) 의 unsigned short (16비트)
+    N   "network" 순서(big-endian) 의 unsigned long (32비트)
+    v   "VAX" 순서 (little-endian) 의 unsigned short (16 비트)
+    V   "VAX" 순서 (little-endian) の unsigned long (32 비트)
 
 =begin original
 
@@ -7644,8 +7640,8 @@ TEMPLATE は、以下のような値の型と順番を指定する文字を並�
 
 =end original
 
-    j   Perl 内部符号付き整数 (IV)
-    J   Perl 内部符号なし整数 (UV)
+    j   Perl 내부 부호붙은 정수(IV)
+    J   Perl 내부 부호없는 정수(UV)
 
 =begin original
 
@@ -7654,8 +7650,8 @@ TEMPLATE は、以下のような値の型と順番を指定する文字を並�
 
 =end original
 
-    f   機種依存の単精度浮動小数点数
-    d   機種依存の倍精度浮動小数点数
+    f   기종의존의 단정도 부동소수점
+    d   기종의존의 배정도 부동소수점
 
 =begin original
 
@@ -7667,11 +7663,11 @@ TEMPLATE は、以下のような値の型と順番を指定する文字を並�
 
 =end original
 
-    F	ネイティブフォーマットの Perl 内部浮動小数点数 (NV)
-    D	ネイティブフォーマットの長い倍精度浮動小数点数(long double)
-	  (long double は、システムが long double に対応していて、かつ Perl が
-	   long double 対応としてコンパイルされている場合にのみ使用可能です。
-           それ以外の場合は致命的エラーが発生します。)
+    F	네이티브포맷의 Perl 내부 부동소수점 (NV)
+    D	네이티브 포맷의 긴 배정도 부동소수점(long double)
+        (long double 은 시스템이 long double 을 지원하고 Perl 이 long double 
+        을 지원하게 컴파일되어 있을 때만 사용가능합니다.
+        그 이외에는 치명적인 에러가 발생합니다.)
 
 =begin original
 
