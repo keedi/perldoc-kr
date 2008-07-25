@@ -7098,22 +7098,18 @@ The following triples are more or less equivalent:
 =end original
 
 2 인수(또는 1인수)의 형태의 open() 에서 
-2 引数(または 1 引数)の形の open() で
-C<'-|'> や C<'|-'> というふうに、C<'-'> というコマンドに
-パイプをオープンすると、fork が行なわれ、open の返り値として、
-親プロセスにはチャイルドプロセスの pid が、チャイルドプロセスには
-C<0> が返されます。
-(open が成功したかどうかは、
-C<defined($pid)> のようにして調べることができます。)
-親プロセスでは、このファイルハンドルは
-通常通りに動作しますが、行なわれる入出力は、
-チャイルドプロセスの STDIN/STDOUT にパイプされます。
-チャイルドプロセス側では、そのファイルハンドルは
-オープンされず、入出力は新しい STDOUT か STDIN に対して行なわれます。
-これは、setuid で実行して、シェルコマンドのメタ文字を
-検索させたくないような場合に、パイプコマンドの起動の仕方を
-制御したいとき、普通のパイプのopen と同じように使います。
-以下の組み合わせは、だいたい同じものです:
+C<'-|'> 나 C<'|-'> 같이 C<'-'> 라는 커맨드에 파이프를 오픈하면,
+fork 가 수행되어 open 의 반환값으로 부모 프로세스에게는 자식프로세스의 
+pid가 자식 프로세스에게는 C<0> 이 반환됩니다.
+(open 이 성공했는지 어떤지는 C<defined($pid)> 처럼 해서 조사할 수 있습니다)
+부모 프로세스에서는 이 파일핸들은 보통처럼 동작하지만, 수행되는 입출력은 
+자식프로세스의 STDIN/STDOUT 에 파이프됩니다.
+자식프로세스 측에서는 그 파일핸들은 오픈되지 않고, 입출력은 새로운 
+STDOUT 이나 STDIN 에 대해 수행됩니다.
+이것은 setuid 에서 실행하고 셸 커맨드의 메타 문자를 검색시키고 싶지 않은 
+경우에 파이프커맨드의 기동의 방법을 제어하고 싶을 때, 보통의 파이프의 open처럼
+사용합니다.
+아래의 조합은 대개 같은 것입니다:
 
     open(FOO, "|tr '[a-z]' '[A-Z]'");
     open(FOO, '|-', "tr '[a-z]' '[A-Z]'");
@@ -7134,10 +7130,10 @@ UNIX) you can use the list form.
 
 =end original
 
-それぞれのブロックの最後の例ではパイプを「リスト形式」にしていますが、
-これはまだ全てのプラットフォームで対応しているわけではなりません。
-よい経験則としては、もし実行しているプラットフォームで真の C<fork()> が
-あれば(言い換えると、プラットフォームが UNIX なら) リスト形式が使えます。
+각각의 블록의 마지막의 예제에서는 파이프를 "리스트형식"으로 하고 있지만,
+이것은 아직 모든 플랫폼에서 대응하고 있는 것은 아닙니다.
+좋은 경험면에서는 만약 실행하고 있는 플랫폼에서 참의 C<fork()> 가 
+있다면(바꿔 말하면 플랫폼이 UNIX 라면) 리스트 형식을 사용할 수 있습니다.
 
 =begin original
 
@@ -7145,7 +7141,7 @@ See L<perlipc/"Safe Pipe Opens"> for more examples of this.
 
 =end original
 
-これに関する更なる例については L<perlipc/"Safe Pipe Opens"> を参照して下さい。
+이에 관한 더 많은 예제에 대해서는 L<perlipc/"Safe Pipe Opens"> 를 참조하세요.
 
 =begin original
 
@@ -7157,12 +7153,12 @@ of C<IO::Handle> on any open handles.
 
 =end original
 
-v5.6.0 から、Perl は書き込み用に開いている全てのファイルに対して
-fork を行う前にフラッシュしようとしますが、これに対応していない
-プラットフォームもあります(L<perlport> を参照してください)。
-安全のために、C<$|> (English モジュールでは $AUTOFLUSH) をセットするか、
-全ての開いているハンドルに対して C<IO::Handle> の C<autoflush()> メソッドを
-呼び出すようにしてください。
+v5.6.0 에서 Perl 은 쓰기용으로 열려있는 모든 파일에 대해 
+fork 를 수행하기 전에 플러쉬하려고 하지만, 이것을 지원하지 않는 
+플랫폼도 있습니다(L<perlport> 를 참조해주세요).
+안전을 위해 C<$|> (English 모듈에서는 $AUTOFLUSH) 를 정의하지만,
+모든 열려있는 핸들에 대해서 C<IO::Handle> 의 C<autoflush()> 메소드를 
+호출하도록 해주세요.
 
 =begin original
 
@@ -7172,10 +7168,9 @@ of $^F.  See L<perlvar/$^F>.
 
 =end original
 
-ファイルに対する close-on-exec フラグをサポートしているシステムでは、
-フラグは $^F の値で決定される、新しくオープンされたファイル記述子に対して
-セットされます。
-L<perlvar/$^F> を参照してください。
+파일에 대해 close-on-exec 플래그를 지원하고 있는 시스템에서는 
+플래그는 $^F 의 값으로 결정되고, 새롭게 오픈된 파일 기술자에 대해서 설정됩니다.
+L<perlvar/$^F> 를 참조해주세요.
 
 =begin original
 
@@ -7185,9 +7180,9 @@ C<${^CHILD_ERROR_NATIVE}>.
 
 =end original
 
-パイプのファイルハンドルを close することで、
-親プロセスは、チャイルドプロセスの終了を待ち、C<$?> と
-C<${^CHILD_ERROR_NATIVE}> にステータス値を返します。
+파이프의 파일핸들을  close 하는 것으로 
+부모 프로세스는 자식 프로세스의 종료를 기다리고, C<$?> 과
+C<${^CHILD_ERROR_NATIVE}> 의 상태값을 반환합니다.
 
 =begin original
 
@@ -7199,13 +7194,12 @@ F<"rsh cat file |">, or you could change certain filenames as needed:
 
 =end original
 
-2 引数(と 1 引数)の形の open() に渡されたファイル名は、
-はじめと終わりの空白が取り除かれ、
-通常のリダイレクト文字列を受け付けます。
-この機能は "magic open" として知られていますが、
-普通いい効果をもたらします。
-ユーザーは F<"rsh cat file |"> といったファイル名を指定できますし、
-特定のファイル名を必要に応じて変更できます。
+2인수(와 1인수) 형식의 open() 에 넘겨진 파일이름은 
+처음과 끝의 공백을 빼고,
+보통의 리다이렉트 문자열을 받습니다.
+이 기능은 "magic open" 으 알려져 있지만, 보통 좋은 효과를 가지게 합니다.
+유저는 F<"rsh cat file |"> 같은 파일이름을 지정할 수 있고,
+특정 파일이름을 필요에 따라 변경할 수 있습니다.
 
     $filename =~ s/(.*\.gz)\s*$/gzip -dc < $1|/;
     open(FH, $filename) or die "Can't open $filename: $!";
@@ -7216,8 +7210,7 @@ Use 3-argument form to open a file with arbitrary weird characters in it,
 
 =end original
 
-妙な文字が含まれているようなファイル名をオープンするには、
-3 引数の形を使います。
+묘한 문자가 포함되어 있는 듯한 파일이름을 오픈할 때 3인수의 형식을 사용합니다.
 
     open(FOO, '<', $file);
 
@@ -7227,7 +7220,7 @@ otherwise it's necessary to protect any leading and trailing whitespace:
 
 =end original
 
-あるいは、次のようにして、最初と最後の空白を保護します:
+혹은 다음처럼 해서 맨처음과 끝의 공백을 보호합니다:
 
     $file =~ s#^(\s)#./$1#;
     open(FOO, "< $file\0");
@@ -7240,8 +7233,8 @@ of open():
 
 =end original
 
-(これは奇妙なファイルシステムでは動作しないかもしれません)。
-open() の I<magic> と 3 引数形式を誠実に選択するべきです。
+(이것은 기묘한 파일시스템에서는 동작하지 않을지도 모릅니다).
+open() 의 I<magic> 과 3 인수형식을 성실하게 선택해야 합니다.
 
     open IN, $ARGV[0];
 
@@ -7252,8 +7245,8 @@ but will not work on a filename which happens to have a trailing space, while
 
 =end original
 
-とするとユーザーは C<"rsh cat file |"> という形の引数を指定できますが、
-末尾にスペースがついてしまったファイル名では動作しません。一方:
+라고 하면 유저는 C<"rsh cat file |"> 같은 형식의 인수를 지정할 수 있지만, 
+끝단의 스페이스가 붙어버린 파일이름에서는 동작하지 않습니다. 한편:
 
     open IN, '<', $ARGV[0];
 
@@ -7263,7 +7256,7 @@ will have exactly the opposite restrictions.
 
 =end original
 
-はまったく逆の制限があります。
+는 전혀 반대의 제한이 있습니다.
 
 =begin original
 
@@ -7275,12 +7268,12 @@ another way to protect your filenames from interpretation.  For example:
 
 =end original
 
-もし「本当の」C 言語の C<open> (システムの L<open(2)> を参照してください)が
-必要なら、このような副作用のない C<sysopen> 関数を使うべきです
-(ただし、C の fopen() に割り付けられる Perl の open() とは
-かすかに違うファイルモードを持ちます)。
-これはファイル名を解釈から守るもう一つの方法です。
-例えば:
+만약 "진짜" C 언어의 C<open> (시스템의 L<open(2) 를 참조해주세요)가 
+필요하다면 이런 부작용이 없는 C<sysopen> 함수를 사용해야 합니다
+(단, C 의 fopen() 에 할부된 Perl 의 open() 과는 
+확연히 다른 파일모드를 가집니다).
+이것은 파일이름을 해석에서 지키는 다른 하나의 방법입니다.
+예를들면:
 
     use IO::Handle;
     sysopen(HANDLE, $path, O_RDWR|O_CREAT|O_EXCL)
@@ -7299,10 +7292,10 @@ them, and automatically close whenever and however you leave that scope:
 
 =end original
 
-C<IO::Handle> パッケージ(または C<IO::File> や C<IO::Socket> といった
-サブパッケージ)のコンストラクタを使うことで、
-これらへのリファレンスを保持している変数のスコープを持ち、
-スコープから離れると自動的に閉じる無名ファイルハンドルを作成できます:
+C<IO::Handle> 패키지(또는 C<IO::File> 이나 C<IO::Socket> 같은 
+서브패키지)의 생성자를 사용하는 것으로 
+이것으로의 리퍼런스를 가지고 있는 변수의 영역을 가지고 
+영역에서 떠나면 자동적으로 닫힌 이름없는 파일핸들를 작성할 수 있습니다:
 
     use IO::File;
     #...
