@@ -6943,17 +6943,15 @@ number, the name of a filehandle or the normal "reference to a glob".
 
 =end original
 
-Bourne シェルの慣例にしたがって、EXPR の先頭に C<< '>&' >>
-を付けると、EXPR の残りの文字列をファイルハンドル名
-(数字であれば、ファイル記述子) と解釈して、それを (L<dup(2)> によって)
-複製してオープンします。
-C<&> は、C<< > >>, C<<< >> >>>, C<< < >>, C<< +> >>, C<<< +>> >>>,
-C<< +< >>というモード指定に付けることができます。
-指定するモード指定は、もとのファイルハンドルのモードと
-合っていないといけません。
-(ファイルハンドルの複製は既に存在する IO バッファの内容に含めません。)
-3 引数形式を使う場合は、数値を渡すか、ファイルハンドルの名前を渡すか、
-通常の「グロブへのリファレンス」を渡します。
+Bourne 셸의 관례에 따라서, EXPR 의 앞에 C<< '>&' >> 를 붙이면 
+EXPR 의 남은 문자열을 파일핸들이름(숫자이면 파일 기술자) 로 해석하고 
+그것을 (L<dup(2)> 에 의해) 복제해서 오픈합니다.
+C<&> 는 C<< > >>, C<<< >> >>>, C<< < >>, C<< +> >>, C<<< +>> >>>,
+C<< +< >> 같은 모드지정에 붙일 수 있습니다.
+지정하는 모드 지정은 원래 파일핸들의 모드와 맞지 않으면 안됩니다.
+(파일핸들의 복제는 이미 존재하는 IO 버퍼의 내용에 포함되지 않습니다.)
+3 인수형식을 사용하는 경우느 수치를 넘기거나 파일핸들의 이름을 건내거나 
+일반적인 "글로브로의 리퍼런스"를 넘깁니다.
 
 =begin original
 
@@ -6962,7 +6960,8 @@ C<STDERR> using various methods:
 
 =end original
 
-C<STDOUT> と C<STDERR> 保存し、リダイレクトし、元に戻すスクリプトを示します:
+C<STDOUT> 과 C<STDERR> 을 보존하고, 리다이렉트해서 원래로 돌아가는 
+스크립트를 표시합니다:
 
     #!/usr/bin/perl
     open my $oldout, ">&STDOUT"     or die "Can't dup STDOUT: $!";
@@ -6992,11 +6991,11 @@ parsimonious of file descriptors.  For example:
 
 =end original
 
-C<X> をファイル記述子の番号化ファイルハンドルとして、
-C<< '<&=X' >> と指定すると、Perl はそのファイル記述子に対する
-C の C<fdopen> と同じことを行ないます(そして L<dup(2)> は呼び出しません);
-これはファイル記述子をより節約します。
-例:
+C<X> 를 파일기술자의 번호화 파일핸들로써, 
+C<< '<&=X' >> 로 지정하면, Perl 은 그 파일기술자에 대해서 
+C 의 C<fdopen> 과 같은 것을 수행합니다(그리고 L<dup(2)> 는 호출하지 않습니다);
+이것은 파일 기술자를 축약합니다.
+예제:
 
     # open for input, reusing the fileno of $fd
     open(FILEHANDLE, "<&=$fd")
@@ -7007,7 +7006,7 @@ or
 
 =end original
 
-または
+또는
 
     open(FILEHANDLE, "<&=", $fd)
 
@@ -7017,7 +7016,7 @@ or
 
 =end original
 
-または
+또는
 
     # open for append, using the fileno of OLDFH
     open(FH, ">>&=", OLDFH)
@@ -7028,7 +7027,7 @@ or
 
 =end original
 
-または
+또는
 
     open(FH, ">>&=OLDFH")
 
@@ -7044,13 +7043,12 @@ the same file descriptor.
 
 =end original
 
-ファイルハンドルを倹約することは、何かがファイル記述子に依存している場合、
-例えば flock() を使ったファイルロックといった場合に有用です
-(しかも倹約できます)。
-C<< open(A, '>>&B') >> とすると、ファイルハンドル A は B と同じ
-ファイル記述子にはならないので、flock(A) と flock(B) は別々になります。
-しかし C<< open(A, '>>&=B') >> ではファイルハンドルは同じファイル記述子を
-共有します。
+파일핸들을 검약하는 것은 뭔가가 파일기술자에 의존하고 있는 경우,
+예를들면 flock() 을 사용한 파일록인 경우에 유용합니다(그러나 검약할 수 있습니다)
+C<< open(A, '>>&B') >> 라고 하면, 파일핸들 A 와 B 처럼 
+파일기술자가 되지 않기에, flock(A) 와 flock(B) 는 별개가 됩니다.
+그러나 C<< open(A, '>>&=B') >> 에서는 파일핸들은 같은 파일기술자를 
+공유합니다.
 
 =begin original
 
@@ -7062,11 +7060,11 @@ most often the default.
 
 =end original
 
-5.8.0 より前の Perl を使っている場合、"=" 機能の実装は
-標準 C ライブラリの fdopen() を使っています。
-多くの UNIX システムでは、fdopen() はファイル記述子がある値
-(典型的には 255)を超えた場合に失敗することが知られています。
-5.8.0 以降の Perl では、ほとんどの場合 PerlIO がデフォルトです。
+5.8.0 보다 앞의 Perl 을 사용하는 경우 "=" 기능의 구성은 
+표준 C 라이브러리의 fdopen() 을 사용합니다.
+많은 UNIX 시스템에서는 fdopen() 은 파일 기술자가 있는 값
+(전형적으로는 255)를 넘는 경우에 실패하는 것을 알수 있습니다.
+5.8.0 이후의 Perl 에서는 대부분의 경우 PerlIO 가 기본값입니다.
 
 =begin original
 
@@ -7076,10 +7074,10 @@ is C<define>, you have PerlIO, otherwise you don't.
 
 =end original
 
-Perl が PerlIO つきでコンパイルされているかどうかを確認するには、
-C<perl -V> として C<useperlio=> の行を見ます。
-C<useperlio> が C<define> なら PerlIO を使っています。
-そうでなければ使っていません。
+Perl 이 PerlIO 에 붙은 채로 컴파일되는 지 어떤지를 확인하기 위해서는 
+C<perl -V> 로 C<useperlio=> 의 줄을 봅니다.
+C<useperlio> 가 C<define> 이라면 PerlIO 를 사용하고 있습니다.
+그렇지 않으면 사용하고 있지 않습니다.
 
 =begin original
 
@@ -7099,6 +7097,7 @@ The following triples are more or less equivalent:
 
 =end original
 
+2 인수(또는 1인수)의 형태의 open() 에서 
 2 引数(または 1 引数)の形の open() で
 C<'-|'> や C<'|-'> というふうに、C<'-'> というコマンドに
 パイプをオープンすると、fork が行なわれ、open の返り値として、
