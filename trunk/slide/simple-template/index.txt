@@ -1,0 +1,144 @@
+간단한 코드
+
+.code
+$a = 3 + 4;
+print "I have $a eggs\n";
+.code
+
+$a를 넣고 싶은데...
+
+.code
+print "I have 3 + 4 eggs\n";
+.code
+
+스칼라 레퍼런스의 디레퍼런스 기억하세요?
+
+.code
+print "I have ${ \( 3 + 4 ) } eggs\n";
+.code
+
+:-)
+
+약간의 트릭 더하면?
+
+.code
+print "I have @{[ 3 + 4 ]} eggs\n";
+.code
+
+Much better :-)
+
+Let's go further!
+
+.code
+open SM, "|/usr/lib/sendmail -t";
+print SM <<END;
+To: $destination
+From: @{[ $source || "root" ]}
+Subject: update at @{[ scalar localtime ]}
+The following people are logged
+on to @{[ `hostname` =~ /(.*)/ ]}
+@{
+    my %foo = map /^(\S+)()/, `who`;
+    [ sort keys %foo ];
+}
+END
+close SM;
+.code
+
+몇가지 더 기억할 것들 for newbies! :-)
+
+.ul effect=seq subject="몇가지 더 기억할 것들 for newbies"
+* open 시 파이프 사용
+* heredoc 사용
+* scalar를 이용하 문맥전환
+* || 를 이용한 기본값 처리
+* `` 를 이용한 프로세서 호출
+* 해시를 이용한 중복 제거
+
+Anyway...
+
+또 다른 방법?
+문자열 전역 치환
+use 해시;
+
+.code
+%data = (
+    TO    => 'fred@random.place',
+    PRIZE => 'a pearl necklace',
+    VALUE => '1000',
+);
+$_ = <<'EOF';
+To: %TO%
+From: merlyn@stonehenge.com
+Subject: Your lucky day
+You are the winner of %PRIZE%,
+worth over $%VALUE%! Congratulations.
+EOF;
+s/%(\w+)%/$data{$1}/g;
+print;
+.code
+
+해시에 넣을 수 없다면?
+use /e;
+
+.code
+$_ = <<'EOF';
+To: %TO%
+From: merlyn@stonehenge.com
+Subject: Your lucky day
+You are the winner of %PRIZE%,
+worth over $%VALUE%! Congratulations.
+EOF;
+s/%(\w+)%/ getvaluefor($1) /eg;
+print;
+
+sub getvaluefor {
+    my $key = shift;
+    ...
+}
+.code
+
+장점은?
+다양한 연산 가능
+
+.ul effect=seq subject="다양한 연산 가능"
+* 기본값 지정 가능
+* 캐시 연산 가능
+* 등등
+
+하지만...
+
+처음에 원했던 것은?
+템플릿 내부에서의 치환
+
+Let's trick again! :)
+use DoubleEval;
+
+.code
+$_ = 'I have [ 3 + 4 ] eggs';
+s/\[(.*?)\]/$1/eegs;
+print;
+.code
+
+결과는?
+
+.code
+I have 7 eggs
+.code
+
+(+_+)a
+
+Guess what!
+
+.text
+$Old_MacDonald = q#print #; $had_a_farm = (q-q:Just another Perl hacker, :-);s/^/q[Sing it, boys and girls...], $Old_MacDonald.$had_a_farm /eieio;
+.text
+
+Enjoy with your simple templating!
+
+:-)
+
+참고 자료
+.ul subject="참고 자료"
+* Manipulating HTML or Form Letter Templates, Randal Schwartz
+
