@@ -1,0 +1,388 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/x html1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<link rel="stylesheet" href="slide.css" type="text/css" />
+<title>Simple Template</title>
+<script language="javascript" src="slide.js"></script>
+</head>
+
+<body>
+<table id="frame" class="frame">
+<tr>
+<td colspan="3" id="screen" height="90%"
+class="screen" align="center" valign="center">
+</td>
+</tr>
+<tr>
+<td nowrap align="left"><a href="javascript:slide.prev()">prev</a>
+<input id="translate" type="checkbox" onclick="slide.go()">Translate</td>
+<td width="100%"></td>
+<td nowrap align="right">Page
+<input id="pagenum" type="text" size="2" value="0"
+onkeyup="slide.go($('pagenum').value)" onclick="$('pagenum').select()">
+<a href="javascript:slide.next()">next</a></td>
+</tr>
+</table>
+
+<div id="slides">
+
+<div>
+<h1>Simple Template</h1>
+</div>
+
+<div>
+<p>
+by <a href="mailto:keedi@naver.com">keedi (김도형)</a>
+</p>
+<p>
+Emstone<br>
+Perlmania
+</p>
+</div>
+
+<div>
+<p>문서는 이곳에서도<br>볼 수 있습니다:</p>
+<p><a target="_blank" href="http://localhost/index.html">http://localhost/index.html</a></p>
+</div>
+
+<div>
+<h1>간단한 코드</h1>
+</div>
+
+<div>
+<pre>
+$a = 3 + 4;
+print "I have $a eggs\n";
+</pre>
+</div>
+
+<div>
+<h1>$a를 넣고 싶은데...</h1>
+</div>
+
+<div>
+<pre>
+print "I have 3 + 4 eggs\n";
+</pre>
+</div>
+
+<div>
+<h1>스칼라 레퍼런스의 디레퍼런스 기억하세요?</h1>
+</div>
+
+<div>
+<pre>
+print "I have ${ \( 3 + 4 ) } eggs\n";
+</pre>
+</div>
+
+<div>
+<h1>:-)</h1>
+</div>
+
+<div>
+<h1>약간의 트릭 더하면?</h1>
+</div>
+
+<div>
+<pre>
+print "I have @{[ 3 + 4 ]} eggs\n";
+</pre>
+</div>
+
+<div>
+<h1>Much better :-)</h1>
+</div>
+
+<div>
+<h1>Let's go further!</h1>
+</div>
+
+<div>
+<pre>
+open SM, "|/usr/lib/sendmail -t";
+print SM &lt;&lt;END;
+To: $destination
+From: @{[ $source || "root" ]}
+Subject: update at @{[ scalar localtime ]}
+The following people are logged
+on to @{[ `hostname` =~ /(.*)/ ]}
+@{
+    my %foo = map /^(\S+)()/, `who`;
+    [ sort keys %foo ];
+}
+END
+close SM;
+</pre>
+</div>
+
+<div>
+<h1>몇가지 더 기억할 것들 for newbies! :-)</h1>
+</div>
+
+<div>
+몇가지 더 기억할 것들 for newbies
+<ul>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+몇가지 더 기억할 것들 for newbies
+<ul>
+<li> open 시 파이프 사용</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+몇가지 더 기억할 것들 for newbies
+<ul>
+<li> open 시 파이프 사용</li>
+<li> heredoc 사용</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+몇가지 더 기억할 것들 for newbies
+<ul>
+<li> open 시 파이프 사용</li>
+<li> heredoc 사용</li>
+<li> scalar를 이용하 문맥전환</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+몇가지 더 기억할 것들 for newbies
+<ul>
+<li> open 시 파이프 사용</li>
+<li> heredoc 사용</li>
+<li> scalar를 이용하 문맥전환</li>
+<li> || 를 이용한 기본값 처리</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+몇가지 더 기억할 것들 for newbies
+<ul>
+<li> open 시 파이프 사용</li>
+<li> heredoc 사용</li>
+<li> scalar를 이용하 문맥전환</li>
+<li> || 를 이용한 기본값 처리</li>
+<li> `` 를 이용한 프로세서 호출</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+몇가지 더 기억할 것들 for newbies
+<ul>
+<li> open 시 파이프 사용</li>
+<li> heredoc 사용</li>
+<li> scalar를 이용하 문맥전환</li>
+<li> || 를 이용한 기본값 처리</li>
+<li> `` 를 이용한 프로세서 호출</li>
+<li> 해시를 이용한 중복 제거</li>
+</ul>
+</div>
+
+<div>
+<h1>Anyway...</h1>
+</div>
+
+<div>
+<h1>또 다른 방법?</h1>
+</div>
+
+<div>
+<h1>문자열 전역 치환</h1>
+</div>
+
+<div>
+<h1>use 해시;</h1>
+</div>
+
+<div>
+<pre>
+%data = (
+    TO    =&gt; 'fred@random.place',
+    PRIZE =&gt; 'a pearl necklace',
+    VALUE =&gt; '1000',
+);
+$_ = &lt;&lt;'EOF';
+To: %TO%
+From: merlyn@stonehenge.com
+Subject: Your lucky day
+You are the winner of %PRIZE%,
+worth over $%VALUE%! Congratulations.
+EOF;
+s/%(\w+)%/$data{$1}/g;
+print;
+</pre>
+</div>
+
+<div>
+<h1>해시에 넣을 수 없다면?</h1>
+</div>
+
+<div>
+<h1>use /e;</h1>
+</div>
+
+<div>
+<pre>
+$_ = &lt;&lt;'EOF';
+To: %TO%
+From: merlyn@stonehenge.com
+Subject: Your lucky day
+You are the winner of %PRIZE%,
+worth over $%VALUE%! Congratulations.
+EOF;
+s/%(\w+)%/ getvaluefor($1) /eg;
+print;
+
+sub getvaluefor {
+    my $key = shift;
+    ...
+}
+</pre>
+</div>
+
+<div>
+<h1>장점은?</h1>
+</div>
+
+<div>
+<h1>다양한 연산 가능</h1>
+</div>
+
+<div>
+다양한 연산 가능
+<ul>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+다양한 연산 가능
+<ul>
+<li> 기본값 지정 가능</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+다양한 연산 가능
+<ul>
+<li> 기본값 지정 가능</li>
+<li> 캐시 연산 가능</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+다양한 연산 가능
+<ul>
+<li> 기본값 지정 가능</li>
+<li> 캐시 연산 가능</li>
+<li> 등등</li>
+</ul>
+</div>
+
+<div>
+<h1>하지만...</h1>
+</div>
+
+<div>
+<h1>처음에 원했던 것은?</h1>
+</div>
+
+<div>
+<h1>템플릿 내부에서의 치환</h1>
+</div>
+
+<div>
+<h1>Let's trick again! :)</h1>
+</div>
+
+<div>
+<h1>use DoubleEval;</h1>
+</div>
+
+<div>
+<pre>
+$_ = 'I have [ 3 + 4 ] eggs';
+s/\[(.*?)\]/$1/eegs;
+print;
+</pre>
+</div>
+
+<div>
+<h1>결과는?</h1>
+</div>
+
+<div>
+<pre>
+I have 7 eggs
+</pre>
+</div>
+
+<div>
+<h1>(+_+)a</h1>
+</div>
+
+<div>
+<h1>Guess what!</h1>
+</div>
+
+<div>
+<p>
+$Old_MacDonald = q#print #; $had_a_farm = (q-q:Just another Perl hacker, :-);s/^/q[Sing it, boys and girls...], $Old_MacDonald.$had_a_farm /eieio;
+</p>
+</div>
+
+<div>
+<h1>Enjoy with your simple templating!</h1>
+</div>
+
+<div>
+<h1>:-)</h1>
+</div>
+
+<div>
+<h1>참고 자료</h1>
+</div>
+
+<div>
+참고 자료
+<ul>
+<li> Manipulating HTML or Form Letter Templates, Randal Schwartz</li>
+</ul>
+</div>
+
+<div>
+<h1>Any Question?</h1>
+</div>
+
+<div>
+<h1>Thank you!</h1>
+</div>
+
+</div><!--contents-->
+</body>
+</html>

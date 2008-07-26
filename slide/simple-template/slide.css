@@ -1,0 +1,39 @@
+.frame{
+    /* position: absolute; */
+    width:    100%;
+    height:   640px;
+}
+p{
+    font-size:130%;
+}
+body{
+    font-size:100%;
+    background-color: #C4D6E2;
+    color:#000
+}
+.screen {
+    border: outset 2px;
+    margin: 0;
+    padding: 0.5em;
+    font-family: sans-serif;
+    font-size:   300%;
+    text-align:  center;
+    vertical-align: middle;
+    background: transparent url(logo.png) no-repeat top left;
+}
+.screen pre {
+  border: dotted 1px;
+  text-align: left;
+  font-size:55%;
+  color: #0F0;
+  background-color:#000;
+  overflow: auto;
+  padding: 0.5em;
+}
+.screen ol,ul,dl{
+  text-align: left;
+  padding: 2em;
+}
+.translated{
+     font-size: 18pt;
+}
