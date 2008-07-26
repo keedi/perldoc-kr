@@ -5,7 +5,7 @@ $a = 3 + 4;
 print "I have $a eggs\n";
 .code
 
-$a를 넣고 싶은데...
+출력물 안에서 $a의 값 처리를 하고 싶은데...
 
 .code
 print "I have 3 + 4 eggs\n";
@@ -50,7 +50,7 @@ close SM;
 .ul effect=seq subject="몇가지 더 기억할 것들 for newbies"
 * open 시 파이프 사용
 * heredoc 사용
-* scalar를 이용하 문맥전환
+* scalar를 이용한 문맥전환
 * || 를 이용한 기본값 처리
 * `` 를 이용한 프로세서 호출
 * 해시를 이용한 중복 제거
@@ -78,7 +78,7 @@ s/%(\w+)%/$data{$1}/g;
 print;
 .code
 
-해시에 넣을 수 없다면?
+만약에 해시에 넣을 수 없는 값이라면?
 use /e;
 
 .code
@@ -109,7 +109,7 @@ sub getvaluefor {
 하지만...
 
 처음에 원했던 것은?
-템플릿 내부에서의 치환
+템플릿 내부에서의 직접 치환
 
 Let's trick again! :)
 use DoubleEval;
@@ -134,9 +134,7 @@ Guess what!
 $Old_MacDonald = q#print #; $had_a_farm = (q-q:Just another Perl hacker, :-);s/^/q[Sing it, boys and girls...], $Old_MacDonald.$had_a_farm /eieio;
 .text
 
-Enjoy with your simple templating!
-
-:-)
+Enjoy with your simple templating! :-)
 
 참고 자료
 .ul subject="참고 자료"
