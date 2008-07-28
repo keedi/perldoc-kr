@@ -8263,7 +8263,7 @@ not support long longs.)
 
 =end original
 
-(시스템이 long long 를 지원하지 않는 경우ㄴ C<$Config{longlongsize}> 는 
+(시스템이 long long 를 지원하지 않는 경우 C<$Config{longlongsize}> 는 
 미정의값이 됩니다.)
 
 =item *
@@ -8493,9 +8493,9 @@ modifiers to force big- or little-endian byte-order on floating point values.
 
 =end original
 
-もし何をしようとしているのかを正確に理解しているなら、浮動小数点数の
-バイト順をビッグエンディアンやリトルエンディアンに強制するために、
-C<E<gt>> と C<E<lt>> の修飾子が使えます。
+만약 무엇을 하려고 하는지를 확인하고 이해하고 있다면, 부동소수점수의 
+바이트순을 big-edian 이나 little-edian 으로 강제하기 위해 
+C<E<gt>> 와 C<E<lt>> 의 수식자를 쓸 수 있습니다.
 
 =begin original
 
@@ -8506,11 +8506,11 @@ will not in general equal $foo).
 
 =end original
 
-Perl では、すべての数値演算のために、内部的に double (または
-設定によっては long double) を使用しています。
-double から float へ変換し、それから再び double に戻すと
-精度が落ちることになります (つまり、C<unpack("f", pack("f", $foo)>) は、
-一般には $foo と同じではないということです)。
+Perl 에서는 모든 숫자값 연산을 위해 내부적으로 double( 또는 
+설정에 따라 long double) 을 사용하고 있습니다.
+double 에서 float 으로 변환하고 그리고 다시 double 에 돌아오면 
+정도가 떨어지게 됩니다 (즉, C<unpack("f", pack("f", $foo)>) 은, 
+일반적으로는 $foo 와 같지 않다는 것입니다).
 
 =item *
 
@@ -8526,14 +8526,13 @@ or until the end of the ()-group in which it was entered.
 
 =end original
 
-pack と unpack は二つのモードで操作します; pack された文字列を文字単位で
-処理する文字モード (C<C0> モード) と、pack された文字列を、バイト毎に、
-その UTF-8 エンコードされた形式で処理するUTF-8 モード (C<U0> モード) です。
-文字モードはフォーマット文字列が C<U> で始まっていない限りはデフォルトです。
-モードはフォーマット中に明示的に C<C0> または C<U0> と書くことでいつでも
-切り替えられます。
-モードは次のモードに切り替えられるか、現在の () グループが終了するまで
-有効です。
+pack 과 unpack 은 두개의 모드에서 조작합니다; pack 된 문자열을 문자단위로 
+처리하는 문자모드 (C<C0> 모드) 와, pack 된 문자열을 바이스다 
+그 UTF-8 인코드된 형식으로 처리하는 UTF-8 모드 (C<U0> 모드) 입니다.
+문자모드는 포맷 문자열이 C<U> 로 시작하지 않는 한은 기본값입니다.
+모드는 포맷 안에 명시적으로 C<C0> 또는 C<U0> 이라고 쓰는 것으로 
+언제나 바꿀 수 있습니다.
+모드는 다음의 모드로 바꿀 수 있거나 현재의 () 그룹이 끝나기까지 유효합니다.
 
 =item *
 
@@ -8547,12 +8546,11 @@ sequences of characters.
 
 =end original
 
-pack するときに、例えば十分な数の C<'x'> を挿入することによって
-アライメントやパッディングを行うのは全て自分でしなければなりません。
-文字列がどこへ行くか・どこから来たかを pack() や unpack() が
-知る方法はありません。
-従って C<pack> (と C<unpack>) は出力と入力をフラットな文字列として
-扱います。
+pack 할 때에, 예를들어 충분한 수의 C<'x'> 를 삽입하는 것에 의해 
+alignment 나 padding 을 수행하는 것은 모두 스스로 하지 않으면 안됩니다.
+문자열이 어디로 가는 가, 어디에서 왔는가를 pack() 이나 unpack() 이 
+아는 방법은 없습니다.
+따라서 C<pack> (과 C<unpack>) 은 출력과 입력을 플랫한 문자열로 다룹니다.
 
 =item *
 
@@ -8565,11 +8563,11 @@ C<@> starts again at 0. Therefore, the result of
 
 =end original
 
-() のグループはかっこで囲われた副テンプレートです。
-グループは繰り返し数を取ることができます; 接尾辞によるか、unpack() の場合は
-C</> テンプレート文字によります。
-グループの繰り返し毎に、C<@> の位置は 0 になります。
-従って、以下の結果は:
+() 의 그룹은 괄호로 감싸진 부 템플레이트입니다.
+그룹은 반복수를 얻을 수 있습니다;  접미사에 따르거나, unpack() 의 경우는 
+C</> 템플레이트 문자에 따릅니다.
+그룹의 반복마다 C<@> 단위는 0이 됩니다.
+따라서 아래의 결과는 :
 
     pack( '@1A((@2A)@3A)', 'a', 'b', 'c' )
 
@@ -8579,7 +8577,7 @@ is the string "\0a\0\0bc".
 
 =end original
 
-文字列 "\0a\0\0bc" です。
+문자열 "\0a\0\0bc" 입니다.
 
 =item *
 
@@ -8594,14 +8592,13 @@ aligned on the double's size.
 
 =end original
 
-C<x> と C<X> には C<!> 修飾子を付けることができます。
-この場合、これらはアライメントコマンドとして働きます:
-C<count> 文字の倍数のアライメントとなる、もっとも近い位置に移動します。
-例えば、C の C<struct {char c; double d; char cc[2]}> を pack() または
-unpack() するためには、C<W x![d] d W[2]> というテンプレートを使う必要が
-あるかもしれません;
-これは double が double のサイズでアライメントされていることを
-仮定しています。
+C<x> 와 C<X> 에는 C<!> 수식자를 붙일 수 있습니다.
+이 경우, 이것들은 alignment command 로 움직입니다:
+C<count> 문자의 배수의 alignment 가 되고, 제일 가까운 위치로 이동합니다.
+예를들면, C 의 C<struct {char c; double d; char cc[2]} 를 pack() 또는 
+unpack() 하기 위해서는 C<W x![d] d W[2]> 라는 템플레이트를 사용할 필요가 
+있을 지도 모릅니다;
+가정하고 있습니다.
 
 =begin original
 
@@ -8610,8 +8607,8 @@ both result in no-ops.
 
 =end original
 
-アライメントコマンドに対しては、C<count> に 0 を指定するのは 1 を
-指定するのと等価です; どちらも何もしません。
+alignment command 에 대해서는 C<count> 에 0 을 지정하는 것은 1을 지정하는 것과
+같습니다; 어느쪽도 아무것도 하지 않습니다.
 
 =item *
 
