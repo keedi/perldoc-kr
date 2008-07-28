@@ -8158,10 +8158,10 @@ have a repeat count.
 
 =end original
 
-C<unpack> では、今まで unpack した数値引数の内部スタックが使われます。
-C</>I<sequence-item> と書いて、繰り返し数はスタックから最後の要素を
-取り出すことで得ます。
-I<sequence-item> は繰り返し数を持っていてはいけません。
+C<unpack> 에서는 지금까지 unpack 한 숫자값인수의 내부 스택이 사용됩니다.
+C</>I<sequence-item> 이라고 쓰고, 반복수는 스택에서 마지막 요소를 뽑아내는
+것으로 얻습니다.
+I<sequence-item> 은 반복수를 가지고 있어서는 안됩니다.
 
 =begin original
 
@@ -8172,10 +8172,10 @@ given length.
 
 =end original
 
-I<sequence-item> が文字列型 (C<"A">, C<"a">, C<"Z">) を参照している場合、
-I<length-item> は文字列の数ではなく、文字列の長さです。
-pack で明示的な繰り返し数があると、pack された文字列は与えられた
-長さに調整されます。
+I<sequence-item> 이 문자열형 (C<"A">, C<"a">, C<"Z">) 를 참조하고 있는 경우,
+I<length-item> 은 문자열의 수가 아닌 문자열의 길이입니다.
+pack 에서 명시적인 반복수가 있으면, pack 된 문자열은 주어진 길이로
+조정됩니다.
 
     unpack 'W/a', "\04Gurusamy";            gives ('Guru')
     unpack 'a3/A A*', '007 Bond  J ';       gives (' Bond', 'J')
@@ -8189,7 +8189,7 @@ The I<length-item> is not returned explicitly from C<unpack>.
 
 =end original
 
-I<length-item> は C<unpack> から明示的には返されません。
+I<legnth-item> 은 C<unpack> 에서 명시적으로는 반환되지 않습니다.
 
 =begin original
 
@@ -8200,10 +8200,10 @@ which Perl does not regard as legal in numeric strings.
 
 =end original
 
-I<length-item> 文字に繰り返し数をつけるのは
-文字が C<A>, C<a>, C<Z> でない限りは有用ではありません。
-C<a> や C<Z> を I<length-item> としてパックすると C<"\000"> 文字が
-出力されることがあり、Perl はこれを有効な数値文字列として認識しません。
+I<length-item> 문자에 반복수를 붙이는 것은 
+문자가 C<A>, C<a>, C<Z> 가 아닌 한은 유용하지 않습니다.
+C<a> 나 C<Z> 를 I<length-item> 으로 pack 하면 C<"\000"> 문자가 
+출력되는 수가 있고, Perl 은 이것을 유효한 숫자값 문자열로 인식하지 않습니다.
 
 =item *
 
@@ -8218,12 +8218,13 @@ see whether using C<!> makes any difference by
 
 =end original
 
-C<s>, C<S>, C<l>, C<L> の整数タイプに引き続いて C<!> 修飾子を
-つけることで、ネイティブの short や long を指定できます --
-上述のように、例えば C<l> は正確に 32 ビットであり、ネイティブな
-(ローカルな C コンパイラによる)C<long> はもっと大きいかもしれません。
-これは主に 64 ビットプラットフォームで意味があります。
-C<!> を使うことによって違いがあるかどうかは以下のようにして調べられます:
+C<s>, C<S>, C<l>, C<L> 의 정수타입에 이어서 C<!> 수식자를 붙이는 것으로 
+네이티브의 short 나 long 을 지정할 수 있습니다 -- 
+위에 기술한 것처럼, 예를들면 C<l> 은 정확하게 32비트이고, 네이티브한 
+(로컬한 C 컴파일러에 의함) C<long> 은 더욱 클지도 모릅니다.
+이것은 주로 64비트 플랫폼에서 의미가 있습니다.
+C<!> 를 사용하는 것에 의해 차이가 있는지 없는 지는 아래처럼 해서 
+조사할 수 있습니다:
 
 	print length(pack("s")), " ", length(pack("s!")), "\n";
 	print length(pack("l")), " ", length(pack("l!")), "\n";
@@ -8235,8 +8236,8 @@ they are identical to C<i> and C<I>.
 
 =end original
 
-C<i!> と C<I!> も動作しますが、単に完全性のためだけです;
-これは C<i> 及び C<I> と同じです。
+C<i!> 과 C<I!> 도 동작하지만, 단순히 완전성을 위해서만입니다;
+이것은 C<i> 및 C<I> 와 같습니다.
 
 =begin original
 
@@ -8246,8 +8247,8 @@ L<Config>:
 
 =end original
 
-Perl がビルドされたプラットフォームでの short, int, long, long long の
-実際の(バイト数での)サイズは L<Config> でも得られます。
+Perl 이 빌드된 플랫폼에서의 short, int, long, long long 의 실제(바이트수에서의)
+사이즈는 L<Config> 에서도 얻을 수 있습니다.
 
        use Config;
        print $Config{shortsize},    "\n";
@@ -8262,8 +8263,8 @@ not support long longs.)
 
 =end original
 
-(システムが long long に対応していない場合は C<$Config{longlongsize}> は
-未定義値になります。)
+(시스템이 long long 를 지원하지 않는 경우ㄴ C<$Config{longlongsize}> 는 
+미정의값이 됩니다.)
 
 =item *
 
@@ -8277,12 +8278,12 @@ because they obey the native byteorder and endianness.  For example a
 
 =end original
 
-整数フォーマット C<s>, C<S>, C<i>, C<I>, C<l>, C<L>, C<j>, C<J> は
-ネイティブなバイト順序とエンディアンに従っているため、
-本質的にプロセッサ間や OS 間で移植性がありません。
-例えば 4 バイトの整数 0x12345678 (10 進数では 305419896) は
-内部では(CPU レジスタによって変換され扱われる形では)
-以下のようなバイト列に並べられます:
+정수 포맷 C<s>, C<S>, C<i>, C<I>, C<l>, C<L>, C<j>, C<J> 는 
+네이티브한 바이트 순서와 에디안에 따르기 때문에, 본질적으로 
+프로세서 사이나 OS 사이에서 이식성이 없습니다.
+예를들면 4바이트의 정수 0x12345678 (10 준수에서는 305419896) 은 
+내부에서는 (CPU 레지스터에 의해 변환되어 사용되는 형태에서는) 
+아래와 같은 바이트열로 나열됩니다:
 
  	0x12 0x34 0x56 0x78	# big-endian
  	0x78 0x56 0x34 0x12	# little-endian
@@ -8297,12 +8298,12 @@ mode.
 
 =end original
 
-基本的に、Intel と VAX の CPU はリトルエンディアンです。
-一方それ以外、例えば Motorola m68k/88k, PPC, Sparc, HP PA, Power,
-Cray などはビッグエンディアンです。
-Alpha と MIPS は両方ともあります:
-Digital/Compaq はリトルエンディアンモードで使っています(いました);
-SGI/Cray はビッグエンディアンモードで使っています。
+기본적으로 Intel 과 VAX 의 CPU 는 little-edian 입니다.
+한편 그 외, 예를들면 Motorola m68k/88k, PPC, Sparc, HP PA, Power, 
+Cray 등은 big-edian 입니다.
+Alpha 와 MIPS 는 양쪽다 있습니다:
+Digital/Compaq 은 little-edian 모드로 사용하고 있습니다(있었습니다);
+SGI/Cray 는 big-edian 모드에서 사용하고 있습니다.
 
 =begin original
 
@@ -8313,9 +8314,9 @@ the egg-eating habits of the Lilliputians.
 
 =end original
 
-「ビッグエンディアン」と「リトルエンディアン」の名前は
-古典である「ガリバー旅行記」とリリパット族の卵を食べる習慣から
-取られています。
+"big-edian" 과 "little-edian" 의 이름은 
+고전에 있는 "걸리버 여행기" 와 리리파트족의 달걀을 먹는 습관에서 
+따왔습니다.
 
 =begin original
 
@@ -8323,7 +8324,7 @@ Some systems may have even weirder byte orders such as
 
 =end original
 
-以下のような、さらに変わったバイト順序を持つシステムもあるかもしれません:
+아래와 같은 보다 바뀐 바이트순서를 가ㄴ 시스템도 있을 지도 모릅니다:
 
  	0x56 0x78 0x12 0x34
  	0x34 0x12 0x78 0x56
@@ -8334,7 +8335,7 @@ You can see your system's preference with
 
 =end original
 
-システムの設定は以下のようにして見ることができます:
+시스템의 설정은 아래처럼 해서 볼 수 있습니다:
 
  	print join(" ", map { sprintf "%#02x", $_ }
                             unpack("W*",pack("L",0x12345678))), "\n";
@@ -8346,8 +8347,8 @@ via L<Config>:
 
 =end original
 
-Perl がビルドされたプラットフォームでのバイト順序は
-L<Config> でも知ることができます:
+Perl 이 빌드된 플랫폼에서의 바이트순서는 
+L<Config> 에서도 알 수가 있습니다:
 
 	use Config;
 	print $Config{byteorder}, "\n";
@@ -8359,8 +8360,8 @@ and C<'87654321'> are big-endian.
 
 =end original
 
-C<'1234'> と C<'12345678'> はリトルエンディアン、
-C<'4321'> と C<'87654321'> はビッグエンディアンです。
+C<'1234'> 과 C<'12345678'> 은 little-edian. 
+C<'4321'> 과 C<'87654321'> 은 big-edian 입니다. 
 
 =begin original
 
@@ -8371,11 +8372,11 @@ See also L<perlport>.
 
 =end original
 
-移植性のあるパック化された整数がほしい場合は、
-C<n>, C<N>, C<v>, C<V> フォーマットを使うか、C<E<gt>> と C<E<lt>> の
-修飾子が使えます。
-これらの修飾子は perl 5.9.2 以降でのみ使えます。
-L<perlport> も参照して下さい。
+이식성이 있는 pack 화된 정수가 필요한 경우는 
+C<n>, C<N>, C<v>, C<V> 포맷을 사용하거나 C<E<gt>> 와 C<E<lt>> 
+수식자를 쓸 수 있습니다.
+이 수식자들은 perl 5.9.2 이후에서만 사용할 수 있습니다.
+L<perlport> 도 참조해주세요.
 
 =item *
 
@@ -8390,12 +8391,12 @@ there are some things to keep in mind.
 
 =end original
 
-C<p> と C<P> と C<()> グループと同様、全ての整数と浮動小数点数の
-フォーマットは C<E<gt>> や C<E<lt>> の修飾子をつけることで、それぞれ
-ビッグエンディアンとリトルエンディアンに強制させることができます。
-C<n>, C<N>, C<v> and C<V> は符号付き整数、64 ビット整数、浮動小数点数に
-対応していないので、これは特に有用です。
-しかし、心に留めておくべきことがいくつかあります。
+C<p> 와 C<P> 와 C<()> 그룹처럼 모든 정수와 부동소수점수의 
+포맷은 C<E<gt>> 나 C<E<lt>> 의 수식자를 붙이는 것으로 각각 
+big-edian 과 little-edian 으로 강제시킬 수 있습니다.
+C<n>, C<N>, C<v>, C<V> 는 부호붙은 정수, 64비트 정수, 부동소수점수를 
+지원하지 않기때문에 이것은 특히 유용합니다.
+그러나 신경쓰지 않으면 안되는 것이 몇가지 있습니다.
 
 =begin original
 
@@ -8405,10 +8406,10 @@ signed integers in two's complement, so usually this is not an issue.
 
 =end original
 
-異なったプラットフォームで符号付き整数を交換することは、全ての
-プラットフォームで同じフォーマットで保存されている場合にのみうまくいきます。
-ほとんどのプラットフォームでは符号付き整数は 2 の補数で保存するので、
-普通はこれは問題になりません。
+다른 플랫폼에서 부호붙은 정수를 교환하는 것은 모든 플랫폼에서 같은 
+포맷에서 보존되는 경우에만 잘 됩니다.
+대부분의 플랫폼에서는 부호붙은 정수는 2 의 보수로 보존되기 때문에 
+보통은 이것은 문제가 되지 않습니다.
 
 =begin original
 
@@ -8418,9 +8419,9 @@ do so will result in a fatal error.
 
 =end original
 
-C<E<gt>> や C<E<lt>> の修飾子はビッグエンディアンやリトルエンディアンの
-マシンでの浮動小数点フォーマットでのみ使えます。
-それ以外では、そのような試みは致命的エラーとなります。
+C<E<gt>> 나 C<E<lt>> 의 수식자는 big-edian 이나 little-edian 의 머신에서의 
+부동소수점 포맷에서만 사용할 수 있습니다.
+그 이외에서는 그런 시험은 치명적인 에러가 됩니다.
 
 =begin original
 
@@ -8435,15 +8436,15 @@ values.
 
 =end original
 
-データ交換のために浮動小数点数のバイト順をビッグエンディアンかリトル
-エンディアンに強制することは、全てのプラットフォームが同じバイナリ
-表現(例えば IEEE 浮動小数点フォーマット)の場合にのみうまくいきます。
-たとえ全てのプラットフォームが IEEE を使っていても、そこには微妙な違いが
-あるかもしれません。
-浮動小数点数に C<E<gt>> や C<E<lt>> が使えることはとても便利な場合が
-ありますが、もし自分が何をしているかを正確に理解していなければ、
-とても危険です。
-移植性のある浮動小数点数の保存のための一般的な方法がないことは確実です。
+데이터 교환을 위해 부동소수점수의 바이트순서를 big-edian 이나 little-edian
+으 강제하는 것은 모든 플랫폼이 같은 바이너리 표현(예를 들면 IEEE 부동소수점
+포맷)인 경우에만 잘 됩니다.
+예를 들어 모든 플랫폼이 IEEE 를 사용하고 있어도 그곳에는 미묘한 차이가 있을
+지도 모릅니다.
+부동소수점수에 C<E<gt>> 나 C<E<lt>> 를 사용할 수 있는 매우 편리한 경우가 
+있습니다만, 만약 자신이 무엇을 하는 가를 정확하게 이해하지 않으면, 매우 
+위험합니다.
+이석성이 있는 부동소수점의 보존을 위 일반적인 방법이 없는 것은 확실합니다.
 
 =begin original
 
@@ -8455,11 +8456,11 @@ that already has a byte-order modifier suffix.
 
 =end original
 
-C<()> グループで C<E<gt>> や C<E<lt>> を使うと、これは、副グループを
-含む全ての型のうち、バイト順修飾子を受け入れる全てのものに影響与えます。
-その他の型については沈黙のうちに無視されます。
-既にバイト順接尾辞を持っているグループ内のバイト順を上書きすることは
-できません。
+C<()> 그룹에서 C<E<gt>> 나 C<E<lt>> 를 사용하면, 이것은 부 그룹을 
+포함한 모든 형태 안에 바이트순서 수식자를 받아들이는 모든 것에 영향을 
+줍니다. 그 외의 형태에 대해서는 침묵하며 무시됩니다.
+이미 바이트순 접미사를 가지고 잇는 그룹안의 바이트순을 덮어쓸 수는 
+없습니다.
 
 =item *
 
@@ -8475,16 +8476,15 @@ of the IEEE spec).  See also L<perlport>.
 
 =end original
 
-実数 (float と double) は、機種依存のフォーマットしかありません。
-いろんな浮動小数点数のフォーマットが在り、標準的な
-"network" 表現といったものがないため、データ交換のための機能は
-用意してありません。
-つまり、あるマシンで pack した浮動小数点数は、別のマシンでは
-読めないかもしれないということです。
-たとえ双方で IEEE フォーマットの浮動小数点数演算を行なっていてもです
-(IEEE の仕様では、メモリ表現上のバイト順序までは、
-規定されていないからです)。
-L<perlport> も参照してください。
+실수 (float 과 double) 은 기종의존의 포맷밖에 없습니다.
+여러 부동소수점 수의 포맷이 있고, 표준적인 "network" 표현같은 것이
+없기 때문에 데이터 교환을 위해 기능은 준비하지 않습니다.
+즉, 어떤 머신에서 pack 한 부동소수점수는 다른 머신에서는 
+읽을 수 없을 지도 모른다는 것입니다.
+예를들어 양쪽이 IEEE 포맷의 부동소수점연산을 수행한다고 해도입니다.
+(IEEE 의 스펙ㅔ서는 메모리 표현상의 바이트순서까지는, 지정되어있지 
+않기때문입니다).
+L<perlport> 도 참조해주세요.
 
 =begin original
 
