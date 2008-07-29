@@ -24,7 +24,7 @@ body{
 .screen pre {
   border: dotted 1px;
   text-align: left;
-  font-size:70%;
+  font-size:55%;
   color: #0F0;
   background-color:#000;
   overflow: auto;
