@@ -8906,15 +8906,13 @@ L<perlop>.
 대상의 변수에 대해서 앞의 C<m//g> 가 종료한 장소의 offset 을 반환합니다(
 변수가 지정되지 않은 경우는 C<$_> 가 사용됩니다).
 0은 유효한 매치 오프셋인 것에 주의해주세요.
-C<undef> 는 검색위치가 리셋되는 것을 의미합니다
-C<undef> は検索位置がリセットされることを意味します (通常はマッチ失敗が
-原因ですが、このスカラ値にまだマッチングが行われていないためかもしれません)。
-C<pos> は正規表現エンジンがオフセットを保存するために使う場所を直接
-アクセスするので、C<pos> への代入はオフセットを変更し、そのような変更は
-正規表現における C<\G> ゼロ幅アサートにも影響を与えます。
-C<m//gc> マッチに失敗してもオフセットはリセットしないので、
-C<pos> からの返り値はどちらの場合も変更されません。
-L<perlre> と L<perlop> を参照してください。
+C<undef> 는 검색위치가 리셋되는 것을 의미합니다(보통은 매치 실패가 원인입니다만
+이 스칼라 값에 아직 매칭이 수행되지 않았기 때문일지도 모릅니다).
+C<pos> 는 정규표현엔진이 대입은 offset 을 변경해서, 그런 변경은 
+정규표현에 의한 C<\G> 제로폭 Assert 에도 영향을 줍니다.
+C<m//gc> 매치에 실패해도 offset 은 리셋하지않기에, 
+C<pos> 에서의 반환값은 어느쪽의 경우도 변경되지 않습니다.
+L<perlre> 와 L<perlop> 를 참조해주세요.
 
 =item print FILEHANDLE LIST
 X<print>
@@ -8948,27 +8946,25 @@ arguments.
 
 =end original
 
-文字列か文字列のリストを出力します。
-成功時には、真を返します。FILEHANDLE は、スカラ変数名でもよく、
-その場合には、その変数にファイルハンドル名またはそのリファレンスが
-入っているものとして扱われますから、一段階の間接指定が行なえます。
-(注: FILEHANDLE に変数を使い、次のトークンが「項」のときには、
-間に C<+> を置くか、引数の前後を括弧で括らなければ、
-誤って解釈されることがあります。)
-FILEHANDLE を省略した場合には、標準出力 (か、最後に選択された出力チャネル
--- L</select>を参照) に出力します。
-LIST も省略すると、C<$_> を現在選択されている出力チャネルに
-出力することになります。
-デフォルトの出力チャネルを STDOUT 以外にしたければ、select 演算子を
-使ってください。
-C<$,> の値が(もしあれば)各 LIST 要素の間に出力されます。
-print の引数は LIST なので、LISTの中のものは、
-すべてリストコンテキストで評価されます。
-サブルーチンの呼び出しがあれば、リストコンテキストでは、
-複数の値を返すかもしれません。
-また、すべての引数を括弧で括るのでなければ、print というキーワードの
-次に開き括弧を書いてはいけません。
-"print" と引数の間に C<+> を書くか、すべての引数を括弧で括ってください。
+문자열이 문자열의 리스트를 출력합니다.
+성공시에는 참을 반환합니다. FILEHANDLE 은 스칼라 변수이름이어도 되고, 
+그 경우에는 그 겹누세 파일핸들 이름 또는 그 리퍼런스가 들어 있는 것으로 
+취급되기 때문에, 일단계의 간접지정을 수행할 수 있습니다.
+(주: FILEHANDLE 에 변수를 사용하고 다음 토큰이 "항"일 때에는 
+ 사이에 C<+> 을 놓든가, 인수의 앞뒤를 괄호로 감싸지 않으면 
+잘못 해석될 수 있습니다).
+FILEHANDLE 을 생략한 경우에는 표준출력(이나 마지막에 선택된 출력채널
+-- L</select> 를 참조)에 출력합니다.
+LIST 를 생략하면, C<$_> 를 현재 선택된 출력채널에 출력하는 것이 됩니다.
+기본값의 출력 채널을 STDOUT 이외에 하고 싶다면, select 연산자를 
+사용해주세요.
+C<$,> 의 값이(만약 있다면) 각 LIST 요소의 사이에 출력됩니다.
+print 의 인수는 LIST 이기때문에 LIST 안의 것은 
+모든 리스트 컨텍스에서 평가됩니다.
+서브루틴의 호출이 있으면, 리스트 컨텍스트에서 복수의 값을 반환할지도 모릅니다.
+또, 모든 인수를 괄호로 감싸지 않으면, print 라는 키워드의 다음에 
+열린괄호를 써서는 안됩니다.
+"print" 와 인수의 사이에 C<+> 를 쓰거나 모든 인수를 괄호로 묶어주세요.
 
 =begin original
 
@@ -8978,9 +8974,9 @@ you will have to use a block returning the filehandle value instead:
 
 =end original
 
-もし FILESHANDLE を配列に保存していたり、それを得るためにスカラ変数より
-複雑な表現を使っている場合、
-代わりにその値を返すブロックを使う必要があります:
+만약 FILEHANDLE 을 배열에 보존하거나, 그것을 얻기위해 스칼라 변수보다 
+복잡한 표현을 사용하고 있는 경우, 
+대신에 그 값을 반환하ㄴ 블록을 사용할 필요가 있습니다:
 
     print { $files[$i] } "stuff\n";
     print { $OK ? STDOUT : STDERR } "stuff\n";
@@ -9002,13 +8998,13 @@ locale.  See L<perllocale> and L<POSIX>.
 
 =end original
 
-C<$\>(出力レコードセパレータ)を追加しないことを除けば、
-C<print FILEHANDLE sprintf(FORMAT, LIST)> と等価です。
-リストの最初の要素は、C<printf> フォーマットと解釈されます。
-フォーマット引数の説明については C<sprintf> を参照してください。
-C<use locale> が効力をもっていて、POSIX::setlocale() が呼び出されていれば、
-小数点に使われる文字は LC_NUMERIC ロケールの影響を受けます。
-L<perllocale> と L<POSIX> を参照してください。
+C<$\>(출력 레코드 구분자)를 추가하지 않는 것을 빼면, 
+C<print FILEHANDLE sprintf(FORMAT, LIST)> 와 같습니다.
+리스트의 맨처음 요소는 C<printf> 포맷으로 해석됩니다.
+포맷 인수의 설명에 대해서는 C<sprintf> 를 참조해주세요.
+C<use locale> 이 효력을 가지고 있어도, POSIX::setlocale() 이 호출되면,
+소수점으로 사용된 문자는 LC_NUMERIC 로케일의 영향을 받습ㅣ다.
+L<perllocale> 과 L<POSIX> 를 참조해주세요.
 
 =begin original
 
@@ -9018,9 +9014,9 @@ error prone.
 
 =end original
 
-単純な C<print> を使うべきところで C<printf> を使ってしまう
-罠にかからないようにしてください。
-C<print> はより効率的で、間違いが起こりにくいです。
+단순한 C<print> 를 사용해야 하는 곳에서 C<printf> 를 사용해버리는 
+함정에 걸리지 않도록 해주세요.
+C<print> 는 보다 효율적이고, 잘못된 행동이 일어나기 어렵습니다.
 
 =item prototype FUNCTION
 X<prototype>
@@ -9033,9 +9029,9 @@ the function whose prototype you want to retrieve.
 
 =end original
 
-関数のプロトタイプを文字列として返します(関数にプロトタイプがない場合は
-C<undef> を返します)。
-FUNCTION はプロトタイプを得たい関数の名前、またはリファレンスです。
+간접 프로토타입을 문자열로 반환합니다(함수에 프로토타입이 없는 경우는 
+C<undef> 를 반환합니다).
+FUNCTION 은 프로토타입을 얻고 싶은 함수의 이름, 또는 리퍼런스입니다.
 
 =begin original
 
@@ -9048,13 +9044,13 @@ describing the equivalent prototype is returned.
 
 =end original
 
-FUNCTION が C<CORE::> で始まっている場合、残りは Perl ビルドインの名前として
-扱われます。
-このビルドインが(C<qw//> のように) I<オーバーライド可能> でない、
-またはこの引数が(C<system> のように)プロトタイプとして適切に記述できない場合、
-prototype() は C<undef> を返します;
-なぜならビルドインは実際に Perl 関数のように振舞わないからです。
-それ以外では、等価なプロトタイプを表現した文字列が返されます。
+FUNCTION 이 C<CORE::> 로 시작되는 경우, 남은 Perl 빌드인 이름으로 
+취급됩니다.
+이 빌드인이(C<qw//> 처럼) I<오버라이드가 가능하지 않은>,
+또는 이 인수가(C<system>처럼) 프로토타입으로 적절히 기술할 수 없는 경우,
+prototype() 은 C<undef> 를 반환합니다;
+왜냐면 빌드인은 실제로 Perl 함수처럼 행동하지 않기때문입니다.
+그 외에는 같은 프로토타입을 표현한 문자열이 반환됩니다.
 
 =item push ARRAY,LIST
 X<push> X<stack>
@@ -9067,9 +9063,9 @@ LIST.  Has the same effect as
 
 =end original
 
-ARRAY をスタックとして扱い、LIST 内の値を ARRAY の終わりにプッシュします。
-ARRAY の大きさは、LIST の長さ分だけ大きくなります。
-これは、
+ARRAY 를 스택으로 취급하고 LIST 안의 값을 ARRAY 의 끝에 푸쉬합니다.
+ARRAY 의 크기는 LIST 의 길이의 분량만큼 크게 됩니다.
+이것은,
 
     for $value (LIST) {
 	$ARRAY[++$#ARRAY] = $value;
@@ -9082,8 +9078,8 @@ the completed C<push>.
 
 =end original
 
-とするのと同じ効果がありますが、より効率的です。
-C<push> の処理終了後の配列の要素数を返します。
+라고 하는 것과 같은 효과가 있습니다만, 보다 효율적입니다.
+C<push> 의 처리종료 뒤의 배열의 요소수를 반환합니다.
 
 =item q/STRING/
 
@@ -9101,8 +9097,8 @@ Generalized quotes.  See L<perlop/"Regexp Quote-Like Operators">.
 
 =end original
 
-汎用のクォートです。
-L<perlop/"Regexp Quote-Like Operators"> を参照してください。
+범용 인용입니다.
+L<perlop"Regexp Quote-Like Operators"> 를 참조해주세요.
 
 =item quotemeta EXPR
 X<quotemeta> X<metacharacter>
@@ -9120,12 +9116,12 @@ the C<\Q> escape in double-quoted strings.
 
 =end original
 
-EXPR の中のすべての非英数字キャラクタをバックスラッシュで
-エスケープしたものを返します
-(つまり、C</[A-Za-z_0-9]/> にマッチしない全ての文字の前には
-ロケールに関わらずバックスラッシュが前置されます)。
-これは、ダブルクォート文字列での C<\Q> エスケープを
-実装するための内部関数です。
+EXPR 의 안의 모든 영숫자 캐릭터가 아닌 것을 백슬래쉬롤 
+이스케이프한 것을 반환합니다
+(즉, C</[A-Za-z_0-9]/> 에 매치하지 않은 모든 문자의 앞에는 
+로케일에 상관없이 백슬래쉬가 전치됩니다).
+이것은 쌍따옴표문자열로의 C<\Q> 이스케이프를 
+구성하기 위한 내부함수입니다.
 
 =begin original
 
@@ -9133,7 +9129,7 @@ If EXPR is omitted, uses C<$_>.
 
 =end original
 
-EXPR が省略されると、C<$_> を使います。
+EXPR 이 생략되면, C<$_> 를 사용합니다.
 
 =item rand EXPR
 X<rand> X<random>
@@ -9151,15 +9147,14 @@ C<srand> unless C<srand> has already been called.  See also C<srand>.
 
 =end original
 
-C<0> 以上 EXPR の値未満の小数の乱数値を返します。
-(EXPR は正の数である必要があります。)
-EXPR を省略すると、C<1> とみなします。
-現在のところ、EXPR に値 C<0> をセットすると C<1> として特別扱いされます -
-これは perl 5.8.0 以前には文書化されておらず、将来のバージョンの perl では
-変更される可能性があります。
-C<srand> が既に呼ばれている場合以外は、自動的に C<srand> 関数を
-呼び出します。
-C<srand> も参照してください。
+C<0> 이상 EXPR 의 값미만의 소수의 난수값을 반환합니다.
+(EXPR 은 정수일 필요가 있습니다.)
+EXPR 을 생략하면, C<!> 로 간주합니다.
+현재, EXPR 에 값 C<0> 을 설정하면 C<1> 로 특별취급됩니다 - 
+이것은 perl 5.8.0 이전에는 문서화되지 않고, 장래의 버젼의 Perl 에서는 
+변경될 가능성이 있습니다.
+C<srand> 가 이미 호출된 경우 이외는 자동적으로 C<srand> 함수르 호출합니다.
+C<srand> 도 참조해주세요.
 
 =begin original
 
@@ -9168,8 +9163,8 @@ integers instead of random fractional numbers.  For example,
 
 =end original
 
-ランダムな小数ではなく、ランダムな整数がほしい場合は、C<rand()> から
-返された値に C<int()> を適用してください。
+랜덤한 소수가 아닌, 랜덤한 정수가 필요한 경우,  C<rand()> 에서 
+반환된 값에 C<int()> 를 적용해주세요.
 
     int(rand(10))
 
@@ -9179,7 +9174,7 @@ returns a random integer between C<0> and C<9>, inclusive.
 
 =end original
 
-これは C<0> から C<9> の値をランダムに返します。
+이것은 C<0> 에서 C<9> 의 값을 랜덤하게 반환합니다.
 
 =begin original
 
@@ -9189,9 +9184,9 @@ with the wrong number of RANDBITS.)
 
 =end original
 
-(注: もし、rand 関数が、常に大きい値ばかりや、小さい数ばかりを
-返すようなら、お使いになっている Perl が、
-良くない RANDBITS を使ってコンパイルされている可能性があります。)
+(주: 만약 rand 함수가 이미 큰값만이나 작은 값만을 반환하려면, 
+사용하고 있는 Perl 이 좋지 않은 RANDBITS 를 사용해서 컴파일 되어있을 
+가능성이 있습니다)
 
 =item read FILEHANDLE,SCALAR,LENGTH,OFFSET
 X<read> X<file, read>
@@ -9209,6 +9204,11 @@ scalar after the read.
 
 =end original
 
+지정한 FILEHANDLE 에서 변수 SCALAR 에 LENGTH I<문자> 의 
+데이터를 읽어들입니다.
+실제로 읽어ㄹ인 문자수, 파일끝단의 경우는 C<0>, 에러의 경우는 undef 중 
+어느것을 반환합니다(후자의 경우 C<$!> 도 설정됩니다).
+SCALAR 는 
 指定した FILEHANDLE から、変数 SCALAR に LENGTH I<文字> の
 データを読み込みます。
 実際に読み込まれた文字数、
