@@ -9206,16 +9206,10 @@ scalar after the read.
 
 지정한 FILEHANDLE 에서 변수 SCALAR 에 LENGTH I<문자> 의 
 데이터를 읽어들입니다.
-실제로 읽어ㄹ인 문자수, 파일끝단의 경우는 C<0>, 에러의 경우는 undef 중 
+실제로 읽어들인 문자수, 파일끝단의 경우는 C<0>, 에러의 경우는 undef 중 
 어느것을 반환합니다(후자의 경우 C<$!> 도 설정됩니다).
-SCALAR 는 
-指定した FILEHANDLE から、変数 SCALAR に LENGTH I<文字> の
-データを読み込みます。
-実際に読み込まれた文字数、
-ファイル終端の場合は C<0>、エラーの場合は undef のいずれかを返します
-(後者の場合、C<$!> もセットされます)。
-SCALAR は伸び縮みするので、
-読み込み後は、実際に読み込んだ最後の文字がスカラの最後の文字になります。
+SCALAR 는 늘어지고 작아지고 하기 때문에, 읽은 뒤에는 
+실제로 읽어들인 마지막의 문자가 스칼라의 마지막의 문자가 됩니다.
 
 =begin original
 
@@ -9228,12 +9222,11 @@ bytes before the result of the read is appended.
 
 =end original
 
-OFFSET を指定すると、文字列の先頭以外の場所から、
-読み込みを行なうことができます。
-負の数の OFFSET を指定すると、文字列の最後から逆方向に何文字目かを数えます。
-SCALAR の長さよりも大きい、正の数の OFFSET を指定すると、文字列は
-読み込みの結果が追加される前に、必要なサイズまで C<"\0"> のバイトで
-パッディングされます。
+OFFSET 을 지정하면, 문자열의 맨앞 이외의 장소에서 읽기를 수행할 수 있습니다.
+음수의 OFFSET을 지정하면 문자열을 마지막부터 약방향으로 몇 문자째인가를 셉니다.
+SCALAR 의 길이보다 크고, 양수의 OFFSET 을 지정하면 문자열은 
+읽기의 결과가 추가되기 전에, 필요한 사이즈까지 C<"\0"> 의 바이트로 
+Padding 됩니다.
 
 =begin original
 
@@ -9242,8 +9235,8 @@ fread() call.  To get a true read(2) system call, see C<sysread>.
 
 =end original
 
-この関数は、Perl か システムの fread() 関数を使って実装しています。
-本当の read(2) システムコールを利用するには、C<sysread> を参照してください。
+이 함수는 Perl 이 시스템의 fread() 함수를 사용해서 구성했습니다.
+진짜 read(2) 시스템 호출을 이용하기위해서는 C<sysread> 를 참조해주세요.
 
 =begin original
 
@@ -9257,14 +9250,13 @@ in that case pretty much any characters can be read.
 
 =end original
 
-I<文字> に関する注意: ファイルハンドルの状態によって、(8 ビットの) バイトか
-文字が読み込まれます。
-デフォルトでは全てのファイルハンドルはバイトを処理しますが、
-例えばファイルハンドルが C<:utf8> I/O 層(L</open>, C<open> プラグマ、
-L<open> を参照してください) で開かれた場合、I/O はバイトではなく、
-UTF-8 エンコードされた Unicode 文字を操作します。
-C<:encoding> プラグマも同様です:
-この場合、ほとんど大体全ての文字が読み込めます。
+I<문자> 에 관한 주의: 파일핸들의 상태에 의해 (8비트의) 바이트나 문자가 
+읽혀집니다.
+기본값으로는 모든 파일핸들은 바이트를 처리합니다만, 예를들어 파일핸들이
+C<:utf8> I/O 층(L</open>, C<open> 프라그마, L<open> 을 참조해주세요)에서
+열린 경우, I/O 는 바이트가 아니라 UTF-8 인코드된 Unicode 문자를 조작합니다.
+C<:encoding> 프라그마도 같습니다: 
+이 경우, 대부분 모든 문자를 읽어들일 수 있습니다.
 
 =item readdir DIRHANDLE
 X<readdir>
@@ -9278,12 +9270,10 @@ scalar context or a null list in list context.
 
 =end original
 
-C<opendir> でオープンしたディレクトリで、
-次のディレクトリエントリを返します。
-リストコンテキストで用いると、
-そのディレクトリの残りのエントリを、すべて返します。
-エントリが残っていない場合には、スカラコンテキストでは未定義値を、
-リストコンテキストでは空リストを返します。
+C<opendir> 로 오픈한 디렉토리에서 다음의 디렉토리 엔트리를 반환합니다.
+리스트 컨텍스트로 사용하면, 그 디렉토리의 남의 엔트리를 반환합니다.
+엔트리가 남아있지 않은 경우에는 스칼라 컨텍스트에서는 미정의값을,
+리스트 컨텍스트에서는 빈 리스트를 반환합니다.
 
 =begin original
 
@@ -9293,10 +9283,10 @@ C<chdir> there, it would have been testing the wrong file.
 
 =end original
 
-C<readdir> の返り値をファイルテストに使おうと計画しているなら、
-頭にディレクトリをつける必要があります。
-さもなければ、ここでは C<chdir> はしないので、
-間違ったファイルをテストしてしまうことになるでしょう。
+C<readdir> 의 반환값을 파일테스트로 사용하려고 계획하고 있다면, 
+맨 앞에 디렉토리를 붙일 필요가 있습니다.
+그렇지 않으면, 여기에서는 C<chdir> 은 하지 않기때문에,
+틀린 파일을 테스트해버릴 수 있을 겁니다.
 
     opendir(DIR, $some_dir) || die "can't opendir $some_dir: $!";
     @dots = grep { /^\./ && -f "$some_dir/$_" } readdir(DIR);
@@ -9319,14 +9309,13 @@ C<$INPUT_RECORD_SEPARATOR>).  See L<perlvar/"$/">.
 
 =end original
 
-型グロブが EXPR (EXPR がない場合は *ARGV) に含まれている
-ファイルハンドルから読み込みます。
-スカラコンテキストでは、呼び出し毎に一行読み込んで返します。
-ファイルの最後まで読み込んだら、以後の呼び出しでは undef を返します。
-リストコンテキストでは、ファイルの最後まで読み込んで、
-行のリストを返します。
-ここでの「行」とは、C<$/> または C<$INPUT_RECORD_SEPARATOR> で
-定義されることに注意してください。L<perlvar/"$/"> も参照して下さい。
+형태 글로브가 EXPR(EXPR 이 없는 경우는 *ARGV) 에 포함된 파일핸들에서 
+읽어들입니다.
+스칼라 컨텍스트에서는 호출마다 한줄 읽어서 반환합니다.
+파일의 마지막까지 읽어들였으면, 이후의 호출에서는 undef 를 반환합니다.
+리스트 컨텍스트에서는 파일의 마지막까지 읽어들여서 줄의 리스트를 반환합니다.
+여기에서의 "줄" 이라는 것은 C<$/> 또는 C<$INPUT_RECORD_SEPARATOR> 로 
+정의되는 것에 주의해주세요. L<perlvar/"$/"> 도 참조해주세요.
 
 =begin original
 
@@ -9336,10 +9325,10 @@ returns C<''> the first time, followed by C<undef> subsequently.
 
 =end original
 
-C<$/> に C<undef> を設定した場合は、readline() はスカラコンテキスト
-(つまりファイル吸い込みモード)となり、
-空のファイルを読み込んだ場合は、最初は C<''> を返し、
-それ以降は C<undef> を返します。
+C<$/> 에 C<undef> 를 설정한 경우는 readline() 은 스칼라 컨텍스트
+(즉 파일흡입모드)가 되고, 
+빈 파일을 읽어들인 경우는 맨처음은 C<''> 를 반환하고, 
+그 이후는 C<undef> 를 반환합니다.
 
 =begin original
 
@@ -9349,10 +9338,10 @@ operator is discussed in more detail in L<perlop/"I/O Operators">.
 
 =end original
 
-これは C<< <EXPR> >> 演算子を実装している内部関数ですが、
-直接使うこともできます。
-C<< <EXPR> >> 演算子についてのさらなる詳細については
-L<perlop/"I/O Operators"> で議論されています。
+이것은 C<< <EXPR> >> 연산자를 구성하고 있는 내부함수입니다만, 
+직접 사용할 수도 있습니다.
+C<< <EXPR> >> 연산자에 대해서 보다 자세한 내용에 대해서는 
+L<perlop/"I/O Operators"> 에서 의논되어 있습니다.
 
     $line = <STDIN>;
     $line = readline(*STDIN);		# same thing
@@ -9367,12 +9356,12 @@ steps to ensure that C<readline> was successful.
 
 =end original
 
-readline が OS のシステムエラーになると、C<$!> に対応するエラーメッセージが
-セットされます。
-tty やソケットといった、信頼できないファイルハンドルから読み込む時には
-C<$!> をチェックするのが助けになります。
-以下の例は演算子の形の C<readline> を使っており、C<readline> が
-成功したことを確実にするために必要なステップを実行しています。
+readline 이 OS 의 시스템 에러가 되면 C<$!> 에 대응하는 에러 메시지가 
+설정됩니다.
+tty 나 소켓같은 신뢰할 수 없는 파일핸들에서 읽을 때에는 C<$!> 를 
+체크하는 것이 도움이 됩니다.
+아래의 예제는 연산자의 형태의 c<readline> 를 사용하고 있고, C<readline> 이
+성공한 것을 확실히 하기 위해 필요한 스텝을 실행하고 있습니다.
 
     for (;;) {
         undef $!;
@@ -9397,12 +9386,11 @@ omitted, uses C<$_>.
 
 =end original
 
-シンボリックリンクが実装されていれば、
-シンボリックリンクの値を返します。
-実装されていないときには、致命的エラーとなります。
-何らかのシステムエラーが検出されると、
-未定義値を返し、C<$!> (errno)を設定します。
-EXPR を省略すると、C<$_> を使用します。
+심볼릭 링크가 구성되어 있으면, 
+심볼릭 링크의 값을 반환합니다.
+구성되어 있지 않은 때에는 치명적인 에러가 됩니다.
+뭔가의 시스템 에러가 검출되면, 미정의값을 반환하고 C<$!> (errno) 를 설정합니다.
+EXPR 을 생략하면, C<$_> 를 사용합니다.
 
 =item readpipe EXPR
 
@@ -9423,16 +9411,14 @@ If EXPR is omitted, uses C<$_>.
 
 =end original
 
-EXPR がシステムコマンドとして実行されます。
-コマンドの標準出力の内容が返されます。
-スカラコンテキストでは、単一の(内部的に複数行の)文字列を返します。
-リストコンテキストでは、行のリストを返します
-(但し、行は C<$/> または C<$INPUT_RECORD_SEPARATOR> で定義されます)。
-これは C<qx/EXPR/> 演算子を実装する内部関数ですが、
-直接使うことも出来ます。
-C<qx/EXPR/> 演算子は L<perlop/"I/O Operators"> でより詳細に
-述べられています。
-EXPR を省略すると、C<$_> を使用します。
+EXPR 이 시스템커맨드로 실행됩니다.
+커맨드의 표준출력의 내용이 반환됩니다.
+스칼라 컨텍스트에서는 단일의 (내부적으로 복수행의) 문자열을 반환합니다.
+리스트 컨텍스트에서는 줄의 리스트를 반환합니다.
+(단, 줄은 C<$/> 또는 C<$INPUT_RECORD_SEPARATOR> 로 정의됩니다).
+이것은 C<qw/EXPR/> 연산자를 구성하는 내부함수이지만, 직접 사용할 수도 있습니다.
+C<qw/EXPR/> 연산자는 L<perlop/"I/O Operators"> 보다 자세하게 기술되어 있습니다.
+EXPR 을 생략하면 C<$_> 를 사용합니다.
 
 =item recv SOCKET,SCALAR,LENGTH,FLAGS
 X<recv>
