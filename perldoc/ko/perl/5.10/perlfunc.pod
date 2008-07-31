@@ -9436,16 +9436,15 @@ See L<perlipc/"UDP: Message Passing"> for examples.
 
 =end original
 
-ソケット上のメッセージを受信します。
-指定されたファイルハンドル SOCKET から、変数 SCALAR に
-LENGTH 文字のデータを読み込もうとします。
-SCALAR は、実際に読まれた長さによって、大きくなったり、
-小さくなったりします。
-同名のシステムコールと同じ FLAGS を使います。
-SOCKET のプロトコルが対応していれば、送信側のアドレスを返します。
-エラー発生時には、未定義値を返します。
-実際には、C のrecvfrom(2) を呼びます。
-例についてはL<perlipc/"UDP: Message Passing">を参照してください。
+소켓 상에서의 메시지를 수신합니다.
+지정된 파일핸들 SOCKET 에서 변수 SCALAR 에 
+LENGTH 문자의 데이터를 읽어들이려고 합니다.
+SCALAR 는 실제로 읽혀진 길이에 의해 커지거나 작아지거나합니다.
+같은 이름의 시스템 호출과 마찬가지로 FLAGS 를 사용합니다.
+SOCKET 의 프르토콜을 지원하고 있으면, 수신측의 주소를 반환합니다.
+에러 발생시에는 미정의값을 반환합니다.
+실제로는 C 의 recvfrom(2) 를 반환합니다.
+예제에 대해서는 L<perlipc"UDP: Message Passing"> 을 참조해주세요.
 
 =begin original
 
@@ -9459,14 +9458,12 @@ case pretty much any characters can be read.
 
 =end original
 
-I<文字> に関する注意: ソケットの状態によって、(8 ビットの) バイトか
-文字を受信します。
-デフォルトでは全てのソケットはバイトを処理しますが、
-例えばソケットが binmode() で C<:encoding(utf8)> I/O 層(C<open> プラグマ、
-L<open> を参照してください) を使うように指定された場合、I/O はバイトではなく、
-UTF-8 エンコードされた Unicode 文字を操作します。
-C<:encoding> プラグマも同様です:
-この場合、ほとんど大体全ての文字が読み込めます。
+I<문자> 에 관한 주의: 소켓의 상태에 따라, (8비트의) 바이트나 문자ㄹ 수신합니다.
+기본값으로는 모든 소켓은 바이트를 수신하지만, 예를들어 소켓이 binmode() 로
+C<:encoding(utf8)> I/O 층(C<open> 프라그마, L<open> 을 참조해주세요) 을 
+사용하도록 지정된 경우, I/O 는 바이트가 아닌 UTF-8 인코드된 Unicode 를
+조작합니다. C<:encoding> 프라그마도 마찬가지입니다:
+이 경우, 대부분 모든 문자를 읽을 수 있습니다.
 
 =item redo LABEL
 X<redo>
@@ -9483,11 +9480,11 @@ normally use this command:
 
 =end original
 
-C<redo> コマンドは、条件を再評価しないで、ループブロックの始めからもう一度
-実行を開始します。
-C<continue> ブロックがあっても、実行されません。
-LABEL が省略されると、このコマンドは、もっとも内側のループを参照します。
-このコマンドは通常、自分への入力を欺くために使用します:
+C<redo> 커맨드는 조건을 재평가하지않고, 루프 블록의 시작부터 한번 더 실행을 
+시작합니다.
+C<continue> 블록이 있어도 실행되지 않습니다.
+LABEL 이 생략되면, 이 커맨드는 제일 안쪽의 루프를 참조합니다.
+이 커맨드는 통상, 자신으로의 입력을 속이기 위해 사용합니다.
 
     # a simpleminded Pascal comment stripper
     # (warning: assumes no { or } in strings)
@@ -9514,9 +9511,9 @@ a grep() or map() operation.
 
 =end original
 
-C<redo> は C<eval {}>, C<sub {}>, C<do {}> のように値を返す
-ブロックを繰り返すのには使えません。
-また、grep() や map() 操作から抜けるのに使うべきではありません。
+C<redo> 은 C<eval {}>, C<sub {}>, C<do {}> 처럼 값을 반환하는 블록을 
+반환하는 것에는 사용할 수 없습니다. 또, grep() 이나 map() 조작에서 
+빠지는 것에 사용해야하는 것도 아닙니다.
 
 =begin original
 
@@ -9526,10 +9523,9 @@ turn it into a looping construct.
 
 =end original
 
-ブロック自身は一回だけ実行されるループと文法的に同一であることに
-注意してください。
-従って、ブロックの中で C<redo> を使うことで効果的に
-ループ構造に変換します。
+블록 자신은 한번만 실행되는 루프와 문법적으로 같은 것에 주의해주세요.
+따라서, 블록 안에서 C<redo> 를 사용하는 것으로 효과적으로 루프구조로 
+변환합니다.
 
 =begin original
 
@@ -9538,8 +9534,8 @@ C<redo> work.
 
 =end original
 
-C<last>, C<next>, C<redo> がどのように働くかについては
-L</continue> を参照して下さい。
+C<last>, C<next>, C<redo> 가 어떻게 움직이는 가에 대해서는 
+L</continue> 를 참조해주세요.
 
 =item ref EXPR
 X<ref> X<reference>
@@ -9556,11 +9552,10 @@ Builtin types include:
 
 =end original
 
-EXPR がリファレンスであれば、空でない文字列を返し、さもなくば、
-空文字列を返します。
-EXPR が指定されなければ、C<$_> が使われます。
-返される値は、リファレンスが参照するものの型に依存します。
-組み込みの型には、以下のものがあります。
+EXPR 이 리퍼런스라면, 공백이 아닌 문자열을 반환하고, 그렇지 않으면 빈문자열을
+반환합니. EXPR 이 지정되지 않으면, C<$_> 이 사용됩니다.
+반환되는 값은, 리퍼런스가 참조하는 것의 형태에 의존합니다.
+내장 형태에는 아래와 같은 것들이 있습니다.
 
     SCALAR
     ARRAY
@@ -9581,10 +9576,9 @@ name is returned instead.  You can think of C<ref> as a C<typeof> operator.
 
 =end original
 
-参照されるオブジェクトが、何らかのパッケージに
-bless されたものであれば、これらの代わりに、
-そのパッケージ名が返されます。
-C<ref> は、C<typeof> 演算子のように考えることができます。
+참조된 오브젝트가 어떤 패키지에 bless 된 것이면 이 대입에는 
+그 패키지 이름이 반환됩니다.
+C<ref> 는 C<typeof> 연산자처럼 생각할 수 있습니다.
 
     if (ref($r) eq "HASH") {
 	print "r is a reference to a hash.\n";
@@ -9602,11 +9596,10 @@ to a L<version string|perldata/"Version Strings">.
 
 =end original
 
-返り値 C<LVALUE> は、変数ではない左辺値へのリファレンスを示します。
-これは、C<pos()> や C<substr()> のようの関数呼び出しのリファレンスから
-得られます。
-C<VSTRING> は、リファレンスが L<version string|perldata/"Version Strings"> を
-指している場合に返されます。
+반환값 C<LVALUE> 는 변수가 아닌 좌변치로의 리퍼런스를 나냅니다.
+이것은 C<pos()> 나 c<substr()> 처럼 함수호출의 리퍼런스에서 얻을 수 있습니다.
+C<VSTRING> 은 리퍼런스가 L<version string|perldata/"Version Strings"> 을 
+지정하는 경우에 반환됩니다.
 
 =begin original
 
@@ -9615,8 +9608,8 @@ resulting from C<qr//>.
 
 =end original
 
-C<Regexp> という結果は、ｈ奇数が C<qr//> からの結果である
-正規表現であることを意味します。
+C<Regexp> 라는 결과는 h 기수가 C<qr//> 에서의 결과인 정규표현인 것을 
+의미합니다.
 
 =begin original
 
@@ -9624,7 +9617,7 @@ See also L<perlref>.
 
 =end original
 
-L<perlref> も参照してください。
+L<perlref> 도 참조해주세요.
 
 =item rename OLDNAME,NEWNAME
 X<rename> X<move> X<mv> X<ren>
@@ -9636,9 +9629,9 @@ clobbered.  Returns true for success, false otherwise.
 
 =end original
 
-ファイルの名前を変更します。
-NEWNAME というファイルが既に存在した場合、上書きされるかもしれません。
-成功時には真、失敗時には偽を返します。
+파일의 이름을 변경합니다.
+NEWNAME 이라는 파일이 이미 존재한 경우, 덮어쓰여질 지도 모릅니다.
+성공시에는 참, 실패시에는 거짓을 반환합니다.
 
 =begin original
 
@@ -9651,13 +9644,13 @@ rename(2) manpage or equivalent system documentation for details.
 
 =end original
 
-この関数の振る舞いはシステムの実装に大きく依存して異なります。
-普通はファイルシステムにまたがってパス名を付け替えることはできません。
-システムの I<mv> がこれを補完している場合でもそうです。
-その他の制限には、ディレクトリ、オープンしているファイル、既に存在している
-ファイルに対して使えるか、といったことを含みます。
-詳しくは、L<perlport> および rename(2) man ページあるいは同様の
-システムドキュメントを参照してください。
+이 함수의 행동은 시스템의 구성에 크게 의존해서 달라집니다.
+보통은 파일시스템에 따라 경로이름을 바꿔 붙일 수는 없습니다.
+시스템의 I<mv> 가 이것을 보완하고 있는 경우에도 그렇습니다.
+그 외의 제한에는 디렉토리, 오픈하고 있는 파일, 이미 존재하고 있는 
+파일에 대해서 사용할 수 있는 가 등을 포함합니다.
+자세한 내용은 L<perlport> 및 rename(2) man 페이지 또는 같은 시스템 문서를 
+참조해주세요.
 
 =begin original
 
@@ -9666,8 +9659,8 @@ module.
 
 =end original
 
-プラットフォームに依存しない C<move> 関数については L<File::Copy> モジュールを
-参照してください。
+플랫폼에 의존하지 않는 C<move> 함수에 대해서는 L<File::Copy> 모듈을 
+참조해주세요.
 
 =item require VERSION
 X<require>
@@ -9683,8 +9676,8 @@ specified by EXPR or by C<$_> if EXPR is not supplied.
 
 =end original
 
-VERSION で指定される Perl のバージョンを要求するか、
-EXPR (省略時には C<$_>) によって指定されるいくつかの動作を要求します。
+VERSION 에서 지정된 Perl 의 버젼을 요구하거나 
+EXPR (생략시에는 C<$_>) 에 따라 지정된 몇개의 동작을 요구합니다.
 
 =begin original
 
@@ -9696,11 +9689,10 @@ Compare with L</use>, which can do a similar check at compile time.
 
 =end original
 
-VERSION は 5.006 のような数値(C<$]> と比較されます)か、v5.6.1 の形
-(C<$^V> (またの名を $PERL_VERSION) と比較されます)で指定します。
-VERSION が Perl の現在のバージョンより大きいと、実行時に致命的エラーが
-発生します。
-L</use> と似ていますが、これはコンパイル時にチェックされます。
+VERSION 은 5.006 같은 숫자값(C<$]> 와 비교됩니다)이나 v5.6.1 의 형태
+(C<$^V ($PERL_VERSION) 과 비교됩니다)로 지정합니다.
+VERSION 이 Perl 의 현재의 버젼보다 크면 실행시에 치명적 에러가 발생합니다.
+L</use> 와 닯아 있지만, 이것은 컴파일 시에 체크됩니다.
 
 =begin original
 
@@ -9711,10 +9703,10 @@ version should be used instead.
 
 =end original
 
-VERSION に v5.6.1 の形のリテラルを指定することは一般的には避けるべきです;
-なぜなら、この文法に対応していない Perl の初期のバージョンでは
-誤解させるようなエラーメッセージが出るからです。
-代わりに等価な数値表現を使うべきです。
+VERSION 에 v5.6.1 의 형태의 리터럴을 지정하는 것은 일반적으로 피해야합니다;
+왜냐면, 이 문법을 지원하지 않는 Perl 의 초기버젼에서는 오해할 수 있는 
+에러메시지가 나오기 때문입니다.
+대신에 같은 숫자표현을 사용해야합니다.
 
     require v5.6.1;	# run time version check
     require 5.6.1;	# ditto
@@ -9730,12 +9722,12 @@ to the included code.  Has semantics similar to the following subroutine:
 
 =end original
 
-それ以外の場合には、C<require> は、既に読み込まれていないときに読み込む
-ライブラリファイルを要求するものとなります。
-そのファイルは、基本的には C<eval> の一種である、do-FILE によって
-読み込まれますが、起動したスクリプトのレキシカル変数は読み込まれたコードから
-見えないという欠点があります。
-意味的には、次のようなサブルーチンと同じようなものです:
+그 이외의 경우에는 C<require> 는 이미 읽어들이지 않은 때에 읽어들인 
+라이브러리 파일을 요구하는 것이 됩니다.
+그 파일은 기본적으로는 c<eval> 의 일종이고, do-FILE 에 따라 
+읽혀지지만, 기동한 스크립트의 렉시컬 변수는 읽어들인 코드에서 
+보이지 않는다는 결점이 있습니다.
+의미적으로는 다음과 같은 서브루틴과 같은 것입니다;
 
     sub require {
        my ($filename) = @_;
@@ -9773,7 +9765,7 @@ name.
 
 =end original
 
-ファイルは、同じ名前で 2 回読み込まれることはないことに注意してください。
+파일은 같은 이름에서 2번 읽어들이지는 않는 다는 것에도 주의해주세요.
 
 =begin original
 
@@ -9785,12 +9777,10 @@ statements.
 
 =end original
 
-初期化コードの実行がうまくいったことを示すために、
-ファイルは真を返さなければなりませんから、
-真を返すようになっている自信がある場合を除いては、
-ファイルの最後に C<1;> と書くのが習慣です。
-実行文を追加するような場合に備えて、C<1;> と書いておいた方が
-良いでしょう。
+초기화 코드의 실행이 잘 된 것을 나타내기 위해서는 파일은 참을 반환하지 
+않으면 안되기때문에, 참을 반환하도록 되어 있는 자신이 있는 경우를 빼고는
+파일의 마지막에 C<1;> 라고 쓰는 것이 습관입니다.
+실행문을 추가하는 경우에 대비해서 C<1;> 라고 쓰는 편이 좋을 겁니다.
 
 =begin original
 
