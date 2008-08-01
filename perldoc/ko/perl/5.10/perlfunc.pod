@@ -10187,8 +10187,7 @@ C<readdir> routine on DIRHANDLE.
 
 =end original
 
-DIRHANDLE に対する C<readdir> ルーチンの現在位置を
-ディレクトリの最初に設定します。
+DIRHANDLE 에 대한 C<readdir> 루틴ㅢ 현재위치를 디렉토리의 최초에 설정합니다.
 
 =item rindex STR,SUBSTR,POSITION
 X<rindex>
@@ -10203,10 +10202,10 @@ last occurrence beginning at or before that position.
 
 =end original
 
-STR 中で I<最後に> 見つかった SUBSTR の位置を返すことを除いて、
-index() と同じように動作します。
-POSITION を指定すると、その位置から始まるか、その位置より前の、
-最後の位置を返します。
+STR 안에서 I<마지막에> 발견한 SUBSTR 의 위치를 반환하는 것을 빼고, 
+index() 처럼 동작합니다.
+POSITION 을 지정하면, 그 위치에서 시작하거나 그 위치보다 앞의, 
+마지막의 위치를 반환합니다.
 
 =item rmdir FILENAME
 X<rmdir> X<rd> X<directory, remove>
@@ -10221,10 +10220,9 @@ sets C<$!> (errno).  If FILENAME is omitted, uses C<$_>.
 
 =end original
 
-FILENAME で指定したディレクトリが空であれば、
-そのディレクトリを削除します。
-成功時には真を返し、失敗時には偽を返し、C<$!> (errno) を設定します。
-FILENAMEを省略した場合には、C<$_> を使用します。
+FILENAME 에서 지정한 디렉토리가 비어 있을 경우, 그 디렉토리를 제거합니다.
+성공시에는 참을 반환하고, 실패시에는 거짓을 반환하고, C<$!> (errno) 을 설정합니다. 
+FILENAME 을 생략한 경우에는 C<$_> 을 사용합니다.
 
 =begin original
 
@@ -10233,8 +10231,8 @@ the C<rmtree> function of the L<File::Path> module.
 
 =end original
 
-ディレクトリツリーを再帰的に削除したい (unix での C<rm -rf>) 場合、
-L<File::Path> モジュールの C<rmtree> 関数を参照してください。
+디렉토리 트리를 재귀적으로 삭제하고 싶은 (unix 에서의 C<rm -rf>) 경우 
+L<File::Path> 모듈의 C<rmtree> 함수를 참조해주세요.
 
 =item s///
 
@@ -10244,8 +10242,8 @@ The substitution operator.  See L<perlop>.
 
 =end original
 
-置換演算子。
-L<perlop> を参照してください。
+치환연산자.
+L<perlop> 를 참조해주세요.
 
 =item say FILEHANDLE LIST
 X<say>
@@ -10262,8 +10260,8 @@ LIST }>.
 
 =end original
 
-C<print> と同様ですが、暗黙に改行が追加されます。
-C<say LIST> は単に C<{ local $\ = "\n"; print LIST }> の省略形です。
+C<print> 와 비슷하지만, 아묵적으로 개행이 추가됩니다.
+C<say LIST> 는 단순히 C< local $\ = "\n"; print LIST }> 의 생략형입니다.
 
 =begin original
 
@@ -10272,8 +10270,8 @@ enabled: see L<feature>.
 
 =end original
 
-このキーワードは、"say" 機能が有効の場合にのみ利用可能です:
-L<feature> を参照してください。
+이 키워드는 "say" 기능이 유효한 경우에만 이용가능합니다:
+L<feature> 를 참조해주세요.
 
 =item scalar EXPR
 X<scalar> X<context>
@@ -10285,8 +10283,8 @@ of EXPR.
 
 =end original
 
-EXPR を強制的にスカラコンテキストで解釈されるようにして、
-EXPR の値を返します。
+EXPR 을 강제적으로 스칼라컨텍스트서 해석되도록해서, 
+EXPR 의 값을 반환합니다.
 
     @counts = ( scalar @a, scalar @b, scalar @c );
 
@@ -10300,11 +10298,11 @@ C<(some expression)> suffices.
 
 =end original
 
-式を強制的にリストコンテキストで解釈させるようにする演算子はありません。
-理論的には不要だからです。
-それでも、もしそうしたいのなら、C<@{[ (some expression) ]}> という構造を
-使えます。
-しかし、普通は単に C<(some expression)> とすれば十分です。
+식을 강제적으로 리스트 컨텍스트에서 해석시키도록 하는 연산자는 없습니다.
+이론적으로는 불필요하기 때문입니다.
+그래도 만약 그렇게 하고 싶다면, C<@{[ (some expression) ]}> 이라는 구조를 
+사용할 수 있습니다.
+그러나, 보통은 단순히 C<(some expression)> 으로 하면 충분합니다.
 
 =begin original
 
@@ -10315,10 +10313,10 @@ evaluated in scalar context.  This is seldom what you want.
 
 =end original
 
-C<scalar> は単項演算子なので、EXPR として括弧でくくったリストを使った場合、
-これはスカラカンマ表現として振舞い、最後以外の全ては無効コンテキストとして
-扱われ、最後の要素をスカラコンテキストとして扱った結果が返されます。
-これがあなたの望むものであることはめったにないでしょう。
+C<scalar> 는 단항연산자이기에 EXPR 로써 괄호로 감싼 리스트를 사용한 경우, 
+이것은 스칼라 컴마 표현으로 행동하고, 마지막이외의 모든 것은 무효 컨텍스트로
+취급되어, 마지막의 요소를 스칼라컨텍스트로 취급한 결과가 반환됩니다.
+이것이 당신이 바라는 것은 아니겠죠?
 
 =begin original
 
@@ -10326,7 +10324,7 @@ The following single statement:
 
 =end original
 
-以下の 1 つの文は:
+아래의 하나의 구문은:
 
 	print uc(scalar(&foo,$bar)),$baz;
 
@@ -10336,7 +10334,7 @@ is the moral equivalent of these two:
 
 =end original
 
-以下の 2 つの文と等価です。
+아래의 2개의 구문과 같습니다.
 
 	&foo;
 	print(uc($bar),$baz);
@@ -10347,7 +10345,8 @@ See L<perlop> for more details on unary operators and the comma operator.
 
 =end original
 
-単項演算子とカンマ演算子に関する詳細については L<perlop> を参照して下さい。
+단항연산자와 컴마 연산자에 관한 자세한 내용에 대해서는 L<perlop> 를 
+참조해주세요.
 
 =item seek FILEHANDLE,POSITION,WHENCE
 X<seek> X<fseek> X<filehandle, position>
@@ -10366,16 +10365,13 @@ otherwise.
 
 =end original
 
-C<stdio> ライブラリの C<fseek> 関数のように、FILEHANDLE の
-ファイルポインタを任意の位置に設定します。
-FILEHANDLE は、実際のファイルハンドル名を与える式でもかまいません。
-WHENCE の値が、C<0> ならば、新しい位置を POSITION の位置へ、C<1> ならば、
-現在位置から I<バイト数で> POSITION 加えた位置へ、C<2> ならば、EOF から
-POSITION だけ加えた位置へ、新しい位置を設定します。
-この値には、Fcntl モジュールで使われている C<SEEK_SET>、
-C<SEEK_CUR>、C<SEEK_END> 
-(ファイルの先頭、現在位置、ファイルの最後)という定数を使うこともできます。
-成功時には、C<1> を、失敗時には C<0> を返します。
+C<stdio> 라이브러리의 C<fseek> 함수처럼 FILEHANDLE 의 파일 포인터를 임의의 
+위치로 설정합니다. FILEHANDLE 은 실제 파일핸들이름을 주는 식이어도 상관없습니다. WHENCE 의 값이 C<0> 이라면 새로운 위치를 POSITION 의 위치로 C<1> 이라면 
+현재위치에서 I<바이트수로> POSITION 추가한 위치로, C<2> 라면 EOF 에서 
+POSITION 만 추가한 위치로, 새로운 위치를 설정합니다.
+이 값에는 Fcntl 모듈로 사용된 C<SEEK_SET>, C<SEEK_CUR>, C<SEEK_END>
+(파일의 선두, 현재위치, 파일의 마지막) 같은 정수를 사용할 수도 있습니다.
+성공시에는 C<1> 를 실패시에는 C<0> 을 반환합니다.
 
 =begin original
 
@@ -10386,10 +10382,10 @@ layer), tell() will return byte offsets, not character offsets
 
 =end original
 
-I<バイト単位> に関する注意: ファイルハンドルが (例えば C<:encoding(utf8)> 層を
-使って)文字を操作するように設定されていたとしても、tell() は文字の
-オフセットではなくバイトのオフセットを返すことに注意してください
-(なぜならこれを実装すると seek() と tell() が遅くなってしまうからです)。
+I<바이트단위> 에 관한 주의: 파일핸들이 (예를들어 C<:encoding(utf8)> 층을 
+사용해서) 문자를 조작하도록 설정되어 있다고 해도, tell() 은 문자의 
+offset 이 아닌 바이트의 offset 을 반환하는 것에 주의해주세요.
+(왜냐면 이것을 구성하면 seek() 와 tell() 이 느려지기 때문입니다).
 
 =begin original
 
@@ -10399,10 +10395,10 @@ unpredictable and non-portable.  Use C<sysseek> instead.
 
 =end original
 
-C<sysread> や C<syswrite> のためにファイルの位置を指定したい場合は、
-C<seek> は使えません -- バッファリングのために動作は予測不能で
-移植性のないものになってしまいます。
-代わりに C<sysseek> を使ってください。
+C<sysread> 나 C<syswrite> 를 위해 파일의 위치를 설정한 경우는 
+C<seek> 는 사용할 수 없습니다 -- 버퍼링을 위해 동작은 예측불능하고 
+이식성이 없는 것이 되어버립니다.
+대신에 C<sysseek> 를 사용해주세요.
 
 =begin original
 
@@ -10413,10 +10409,10 @@ A WHENCE of C<1> (C<SEEK_CUR>) is useful for not moving the file position:
 
 =end original
 
-ANSI C の規則と困難により、システムによっては読み込みと書き込みを
-切り替える度にシークしなければならない場合があります。
-その他のことの中で、これは stdio の clearerr(3) を呼び出す効果があります。
-WHENCE の C<1> (C<SEEK_CUR>) が、ファイル位置を変えないので有用です:
+ANSI C 의 규칙과 곤란에 따라, 시스템에 따라서는 쓰기와 읽기를 
+바꿀 때에 seek 하지 않으면 안되는 경우가 있습니다.
+그 외의 일 중에서 이것은 stdio 의 clearerr(3) 을 호출하는 효과가 있습니다.
+WHENCE 의 C<1> (C<SEEK_CUR>) 가, 파일위치를 바꾸지 않기에 유용합니다:
 
     seek(TEST,0,1);
 
@@ -10430,13 +10426,12 @@ next C<< <FILE> >> makes Perl try again to read something.  We hope.
 
 =end original
 
-これはアプリケーションで C<tail -f> をエミュレートするのにも有用です。
-一度読み込み時に EOF に到達すると、しばらくスリープし、
-seek() することでリセットする必要があります。
-C<seek> は現在の位置を変更しませんが、ハンドルの EOF 状態を
-I<クリアします> ので、次の C<< <FILE> >> で Perl は再び何かを
-読み込もうとします。
-そのはずです。
+이것은 어플리케이션에서 C<tail -f> 를 에뮬레이트하는 것에도 유용합니다.
+한번 읽을 때에 EOF 에 도달하면 당분간 sleep 하고, 
+seek() 하는 것으로 리셋할 필요가 있습니다.
+c<seek> 는 현재의 위치를 변경하지 않습니다만, 핸들의 EOF 상태를 
+I<클리어>하기에, 다음 C<< <FILE> >> 에서 Perl 은 다시 뭔가를 
+읽어들이려고 합니다.
 
 =begin original
 
@@ -10445,8 +10440,8 @@ cantankerous), then you may need something more like this:
 
 =end original
 
-これが動かない場合(特に意地の悪い IO 実装もあります)、
-以下のようなことをする必要があります:
+이것이 움직이지 않는 경우(특히 나쁜 IO 구성있습니다), 
+아래와 같은 것을 할 필요가 있습니다:
 
     for (;;) {
 	for ($curpos = tell(FILE); $_ = <FILE>;
@@ -10469,10 +10464,10 @@ routine.
 
 =end original
 
-DIRHANDLE での C<readdir> ルーチンの現在位置を設定します。
-POS は、C<telldir> が返す値でなければなりません。
-C<seekdir> は同名のシステムライブラリルーチンと同じく、
-ディレクトリ縮小時の問題が考えられます。
+DIRHANDLE 에서의 C<raddir> 루틴의 현재위치를 설정합니다.
+POS 는 C<telldir> 이 반환하는 값이 아니면 안됩니다.
+C<seekdir> 은 같은 이름의 시스템 라이브러리 루틴과 같고, 
+디렉토리 축소 시의 문제를 생각할 수 있습니다.
 
 =item select FILEHANDLE
 X<select> X<filehandle, default>
