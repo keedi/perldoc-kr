@@ -10486,18 +10486,14 @@ do the following:
 
 =end original
 
-その時点で、選択されていたファイルハンドルを返します。
-FILEHANDLE を指定した場合には、その値を出力のデフォルト
-ファイルハンドルに設定します。
-これには、2 つの効果があります。
-まず、ファイルハンドルを指定しないで
-C<write> や C<print> を行なった場合のデフォルトが、
-この FILEHANDLE になります。
-もう一つは、出力関連の変数への参照は、
-この出力チャネルを参照するようになります。
-たとえば、複数の出力チャネルに対して、ページ先頭フォーマットを
-設定しなければならないのであれば、
-以下のようにしなければならないでしょう。
+그 시점에서 선택된 파일핸들을 반환합니다.
+FILEHANDLE 을 지정한 경우에는 그값을 출력의 기본값 파일핸들로 설정합니다.
+이것에는 2가지의 효과가 있습니다.
+우선, 파일핸들을 지정하지 않고 C<write> 나 C<print> 를 수행한 경우의 기본값이
+이 FILEHANDLE 이 됩니다.
+또 하나는 출력관련의 변수의 참조는 이 출력채널을 참조하게 됩니다.
+예를들면, 복수의 출력 채널에 대해서, 페이지 맨앞 포맷을 지정하지 않으면 
+안되기 때문에 아래처럼 하지 않으면 안되겠죠.
 
     select(REPORT1);
     $^ = 'report1_top';
@@ -10511,8 +10507,8 @@ actual filehandle.  Thus:
 
 =end original
 
-FILEHANDLE は、実際のファイルハンドルの名前を示す式でもかまいません。
-つまり、以下のようなものです:
+FILEHANDLE 은 실제 파일핸들의 이름을 표시하는 방법이라도 상관없습니다.
+즉, 아래와 같은 것입니다:
 
     $oldfh = select(STDERR); $| = 1; select($oldfh);
 
@@ -10523,9 +10519,9 @@ methods, preferring to write the last example as:
 
 =end original
 
-ファイルハンドルはメソッドを持ったオブジェクトであると
-考えることを好むプログラマもいるかもしれません。
-そのような場合のための最後の例は以下のようなものです。
+파일핸들은 메소드를 가진 오브젝트라고 생각하는 것을 좋아하는 프로그래머도
+있을지도 모릅니다.
+그런 경우를 위해 마지막의 예제는 아래와 같은 것입니다.
 
     use IO::Handle;
     STDERR->autoflush(1);
@@ -10540,9 +10536,8 @@ can be constructed using C<fileno> and C<vec>, along these lines:
 
 =end original
 
-これは、select(2) システムコールを、指定したビットマスクで呼び出します。
-ビットマスクは、C<fileno> と
-C<vec> を使って、以下のようにして作成できます。
+이것은 select(2) 시스템 호출을 지정한 비트마스크로 호출합니다.
+비트마스크는 C<fileno> 와 C<vec> 를 사용해서 아래처럼 작성할 수 있습니다.
 
     $rin = $win = $ein = '';
     vec($rin,fileno(STDIN),1) = 1;
@@ -10556,8 +10551,8 @@ subroutine:
 
 =end original
 
-複数のファイルハンドルに select を行ないたいのであれば、
-以下のようにします。
+복수의 파일핸들에 select 를 수행하고 싶다면, 
+아래처럼 합니다.
 
     sub fhbits {
 	my(@fhlist) = split(' ',$_[0]);
@@ -10575,7 +10570,7 @@ The usual idiom is:
 
 =end original
 
-通常は、
+보통은,
 
     ($nfound,$timeleft) =
       select($rout=$rin, $wout=$win, $eout=$ein, $timeout);
@@ -10586,8 +10581,8 @@ or to block until something becomes ready just do this
 
 =end original
 
-のように使い、いずれかの準備が整うまでブロックするには、
-以下のようにします。
+처럼 사용하고, 이 중의 어느 준비가 끝나기까지 블록하는 것에는 
+아래처럼 합니다.
 
     $nfound = select($rout=$rin, $wout=$win, $eout=$ein, undef);
 
@@ -10598,8 +10593,8 @@ calling select() in scalar context just returns $nfound.
 
 =end original
 
-ほとんどのシステムではわざわざ意味のある値を $timeleft に返さないので、
-select() をスカラコンテキストで呼び出すと、単に $nfound を返します。
+대부분의 시스템에서는 일부러 의미있는 값을 $timeleft 로 반환하지 않기에 
+select() 를 스칼라 컨텍스트로 호출하면 단순히 $nfound 를 반환합니다.
 
 =begin original
 
@@ -10610,10 +10605,10 @@ $timeleft equal to the supplied $timeout.
 
 =end original
 
-どのビットマスクにも undef を設定することができます。
-TIMEOUT を指定するときは、秒数で指定し、小数でかまいません。
-注: すべての実装で、$timeleft が返せるものではありません。
-その場合、$timeleft には、常に指定した TIMEOUT と同じ値が返されます。
+어느 비트마스크에도 undef 를 설정할 수 있습니다.
+TIMEOUT 을 지정할 때에는 초수로 지정하고, 소수도 상관없습니다.
+주: 모든 구성에서 $timeleft 가 반환시키는 것이 아닙니다.
+이 경우는 $timeleft 에는 이미 지정한 TIMEOUT 과 같은 값이 반환됩니다.
 
 =begin original
 
@@ -10621,7 +10616,7 @@ You can effect a sleep of 250 milliseconds this way:
 
 =end original
 
-250 ミリ秒の sleep と同じ効果が、以下のようにして得られます。
+250 밀리 초의 sleep 와 같은 효과가 아래처럼 해서 얻을 수 있습니다.
 
     select(undef, undef, undef, 0.25);
 
@@ -10633,9 +10628,9 @@ portability of C<select>.
 
 =end original
 
-C<select> がシグナル (例えば、SIGALRM) の後に再起動するかどうかは
-実装依存であることに注意してください。
-C<select> の移植性に関する注意については L<perlport> も参照してください。
+C<select> 가 시그널(예를들면 SIGALRM) 의 뒤에 재기동하는 가 어떤가는 
+구성의존이라는 것에 주의해주세요.
+C<select> 의 이식성에 관한 주의에 대해서는 L<perlport> 도 참조하세요.
 
 =begin original
 
@@ -10644,8 +10639,8 @@ On error, C<select> behaves like the select(2) system call : it returns
 
 =end original
 
-エラー時は、C<select> は select(2) システムコールのように振舞います:
--1 を返し、C<$!> をセットします。
+에러 시는 C<select> 는 select(2) 시스템 호출로 행동합니다:
+-1 을 반환하고, C<$!> 을 설정합니다.
 
 =begin original
 
@@ -10657,11 +10652,10 @@ details.
 
 =end original
 
-注意: Unix の中には、実際に利用可能なデータがないために引き続く読み込みが
-ブロックされる場合、select(2) システムコールが、ソケットファイル記述子が
-「読み込み準備中」であると報告するものもあります。
-これは、ソケットに対して常に O_NONBLOCK フラグを使うことで回避できます。
-さらなる詳細については select(2) と fcntl(2) を参照してください。
+주의: Unix 의 안에는 실제로 이용가능한 데이터가 없기 때문에 계속해 읽기가 
+블록되는 경우, select(2) 시스템 호출이 소켓 파일기술자가 "일기 준비중"이라고 
+보고하는 것도 있습니다.
+이것은 소켓에 대해서 항상 O_NONBLOCK 플래그를 사용하는 것으로 회피할 수 있습니다. 보다 자세한 내용에 대해서는 select(2) 와 fcntl(2) 을 참조해주세요.
 
 =begin original
 
