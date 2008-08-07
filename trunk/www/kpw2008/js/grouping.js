@@ -195,42 +195,42 @@ Ext.grid.dummyData = [
       '지리정보 시스템(GIS)을 위한 Perl',
       '김건호',
       '20:00 ~ 20:05',
-      '2. 짧은 발표 (Lightening Talk)',
+      '4. 짧은 발표 (Lightening Talk)',
       'GIS(지리정보시스템)는 지리공간 데이터를 분석·가공하여 교통·통신 등과 같은 지형 관련 분야에 활용할 수 있는 시스템이다. 네비게이션과 Google Map/Earth는 GIS 분야 중 가장 널리 알려진 대표적인 성과물이다. GIS 작업은 다양한 포멧의 대용량 데이터를 다뤄야한다. 더불어 최근에는 GML/KML등의 XML 기반 자료로의 변환도 필요하다. Perl은 GIS분야가 아니더라도 이런 작업에 강점을 가지고 있다. GIS분야에서 대용량 데이터 변환, 가공, 분석에 Perl을 어떻게 활용할 수 있는지 소개한다.'
     ],
     [
       'Practical Extraction and Report for NS2',
       '김동민',
       '20:05 ~ 20:10',
-      '2. 짧은 발표 (Lightening Talk)',
+      '4. 짧은 발표 (Lightening Talk)',
       '대표적인 네트워크 시뮬레이션툴 NS2의 출력파일인 트레이스 파일은 칼럼으로 구분되어 각종 정보가 기록되어 있다. perl을 이용하여 이 파일에서 throughput, delay 등 유용한 정보를 추출(extraction)하고 그래프를 얻기 위해 결과물을 정리(report)하는 방법에 대해서 알아본다.'
     ],
     [
       '당신은 이미 Perl 하고 있다 - 소스필터를 이용한 몰래 Perl 시키기',
       '김희원',
       '20:10 ~ 20:15',
-      '2. 짧은 발표 (Lightening Talk)',
+      '4. 짧은 발표 (Lightening Talk)',
       '소스 필터는 Perl 프로그램 텍스트를 Perl이 해석하기 전에 먼저 변경한다. 이것은 C의 전처리기가 C 프로그램 텍스트를 컴파일러가 처리하기 전에 먼저 변경하는 것과 유사하다. CPAN의 소스 필터 모듈을 이용하면 놀라울 정도로 쉽게 새로운 언어를 Perl로 구현하고 실행할 수 있다. 자신이 작성한 언어를 이용해 주위 동료들이나 친구, 가족, 상사까지 몰래 Perl을 사용하게 해보자.'
     ],
     [
       'RSS 번역기 만들기',
       '강차훈',
       '20:15 ~ 20:20',
-      '2. 짧은 발표 (Lightening Talk)',
+      '4. 짧은 발표 (Lightening Talk)',
       '다양한 CPAN 모듈을 이용하면 원하는 바를 빠르게 구현할 수 있다. CPAN모듈을 사용해 RSS번역기를 쉽고 빠르게 만들어보자.'
     ],
     [
       'The Secret of Class::Data::Inheritable',
       '한송희',
       '20:20 ~ 20:25',
-      '2. 짧은 발표 (Lightening Talk)',
+      '4. 짧은 발표 (Lightening Talk)',
       'Class::Data::Inheritable 모듈은 Perl에서 간단하게 클래스를 상속하기 위해 만들어졌다. 이 모듈의 코드는 굉장히 짧지만 그 안에서 Perl의 강력한 기능을 사용해 OOP를 구현하고 있다. OOP 그 자체에 대한 내용 보다는 Class::Data::Inheritable에서 사용한 다양한 기법을 코드 분석을 통해 습득하는 데 집중한다.'
     ],
     [
       'Javascript as Mini-lang on Perl',
       '김현승',
       '20:25 ~ 20:30',
-      '2. 짧은 발표 (Lightening Talk)',
+      '4. 짧은 발표 (Lightening Talk)',
       'Javascript::Spidermonkey는 ECMA 스크립트 엔진인 SpiderMonkey를 Perl로 래핑한 CPAN 모듈이다. Javascript::Spidermonkey 모듈을 이용해서 Perl로 구현한 함수의 제어처리를 Javascript가 맡도록 위임하는 과정을 살펴본다.'
     ],
     ['Epilogue','김도형','20:30 ~ 20:50', '9. 정리하며 (Epilogue)','정리하며...']
