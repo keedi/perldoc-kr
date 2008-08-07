@@ -29,7 +29,7 @@ Ext.onReady(function(){
         groupTextTpl: '{text} ({[values.rs.length]} {[values.rs.length > 1 ? "Items" : "Item"]})',
         enableRowBody: true,
         getRowClass : function(record, rowIndex, p, store) {
-            p.body = '<p>'+record.data.desc+'</p>';
+            p.body = '<table style="margin: 5px;padding: 2px;border: 1px solid blue;width:600px;"><tr><td width="15%" align="center" rowspan="2" style="vertical-align: middle"><b>' + record.data.period + '</b></td><td width="65%"><b>' + record.data.subject + '</b></td><td width="20%">' + record.data.speaker + '</td></tr><tr><td colspan="2"><div style="width:100%;padding:3px">' + record.data.desc + '</div></td></tr></table>';
             return 'x-grid3-row-expanded';
         }
     });
@@ -45,12 +45,25 @@ Ext.onReady(function(){
         
         columns: [
 
-            {header: "발표 시간", hidden: false, width: 20, sortable: true, dataIndex: 'period'},
+            {
+                header: "발표 시간",
+                hidden: true,
+                width: 20,
+                sortable: false,
+                dataIndex: 'period',
+                renderer: function(value, p, record) {
+                    return String.format(
+                        '<div class="topic"><b>{0}</b></div>',
+                        value
+                    );
+                }
+            },
             {
                 id:'subject',
                 header: "주제",
                 width: 60,
-                sortable: true,
+                hidden: true,
+                sortable: false,
                 dataIndex: 'subject',
                 renderer: function(value, p, record) {
                     return String.format(
@@ -62,7 +75,7 @@ Ext.onReady(function(){
             {header: "발표자", hidden: true, width: 20, sortable: false, dataIndex: 'speaker'},
             {header: "발표형식", width: 20, hidden: true, sortable: true, dataIndex: 'type'}
         ],
-        
+        hideHeaders:true,
         view: gview,
         autoHeight: true,
         frame:true,
