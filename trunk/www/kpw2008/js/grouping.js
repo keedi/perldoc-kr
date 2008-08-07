@@ -29,7 +29,7 @@ Ext.onReady(function(){
         groupTextTpl: '{text} ({[values.rs.length]} {[values.rs.length > 1 ? "Items" : "Item"]})',
         enableRowBody: true,
         getRowClass : function(record, rowIndex, p, store) {
-            p.body = '<table style="margin: 5px;padding: 2px;border: 1px solid blue;width:600px;"><tr><td width="15%" align="center" rowspan="2" style="vertical-align: middle"><b>' + record.data.period + '</b></td><td width="65%"><b>' + record.data.subject + '</b></td><td width="20%">' + record.data.speaker + '</td></tr><tr><td colspan="2"><div style="width:100%;padding:3px">' + record.data.desc + '</div></td></tr></table>';
+            p.body = '<table style="padding: 3px;margin: 5px;width:595px;display:table;border-collapse:collapse;border-bottom:1px solid blue;border-top:1px solid blue"><tr><td width="15%" align="center" rowspan="2" style="border-right:1px solid blue;vertical-align: middle"><b>' + record.data.period + '</b></td><td style="border-bottom: 1px solid blue;padding: 3px" width="65%"><b>' + record.data.subject + '</b></td><td style="padding:3px;border-bottom: 1px solid blue;border-left:1px solid blue" width="20%">' + record.data.speaker + '</td></tr><tr><td colspan="2"><div style="width:100%;padding:3px">' + record.data.desc + '</div></td></tr></table>';
             return 'x-grid3-row-expanded';
         }
     });
