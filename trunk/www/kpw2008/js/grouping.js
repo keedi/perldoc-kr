@@ -44,6 +44,8 @@ Ext.onReady(function(){
         }),
         
         columns: [
+
+            {header: "발표 시간", hidden: false, width: 20, sortable: true, dataIndex: 'period'},
             {
                 id:'subject',
                 header: "주제",
@@ -58,7 +60,6 @@ Ext.onReady(function(){
                 }
             },
             {header: "발표자", hidden: true, width: 20, sortable: false, dataIndex: 'speaker'},
-            {header: "발표 시간", hidden: false, width: 20, sortable: true, dataIndex: 'period'},
             {header: "발표형식", width: 20, hidden: true, sortable: true, dataIndex: 'type'}
         ],
         
