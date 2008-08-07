@@ -92,6 +92,7 @@ Ext.onReady(function(){
 
 // Array data for the grids
 Ext.grid.dummyData = [
+    ['Prologue','김도형','12:50 ~ 13:30', '시작하며 (Prologue)','시작하며...'],
     ['최신 스타일 Perl로 개과천선하기','강차훈','13:00 ~ 13:20', '정규 발표 (Regular Talk)','역 사가 긴 Perl 특성상 과거의 오래된 자료와 서적이 많아 사용자들이 철 지난 자료를 기준으로 공부하는 경우가 흔하다. Perl이 그간 많은 버전업을 거치며 발전해 왔음에도 대부분의 사용자들은 새로운 특징을 잘 모르고 과거 방식으로 Perl 코드를 작성한다.  Perl의 최신 경향과 스타일을 살펴봄으로써 이제는 Old Perl에서 탈출하도록 하자!'],
     ['언어학을 위한 Perl','김준홍','13:30 ~ 13:50', '정규 발표 (Regular Talk)','Perl 은 유연하고도 강력한 여러 기능, 특히 언어 내부에 포함된 정규표현식의 처리 능력 덕분에 문서 처리에 뛰어난 능력을 발휘한다. 이에 언어처리 관련 분야(NLP:Natural Langua Processing, IR: Inforamion Retrival)에서는 일찍부터 Perl을 활용했다. 본 발표에서는 한국어 정보처리 특히 2000년경 명사추출기 구현 프로젝트를 중심 예로 삼아 Perl의 활용을 설명한다. 또한, 과거에서 현재로 넘어오며 달라진 여러 IT환경에 따른 새로운 방법론과 고민거리에 대해서도 잠시 시간을 할애할 예정이다.'],
     ['생물학을 위한 Perl','박민영','14:00 ~ 14:20', '정규 발표 (Regular Talk)','전산적인 지식이 없는 생물학자와 beginner bioinformatician을 위한 활용 가이드. 생물학적 실험 데이터가 점점 증가하게 됨에 따라 의미있는 데이터를 얻기 위해 대용량 데이터를 다루는 것은 필수적이다. 이러한 작업을 Perl의 BioPerl library를 사용함으로써 간편하게 처리할 수 있다. 문서를 통해 Perl로 어떤 작업을 할 수 있으며 그 활용방법은 무엇인지 알아본다.'],
@@ -111,7 +112,8 @@ Ext.grid.dummyData = [
     ['RSS 번역기 만들기','강차훈','19:40 ~ 19:45', '짧은 발표 (Lightening Talk)','다양한 CPAN 모듈을 이용하면 원하는 바를 빠르게 구현할 수 있다. CPAN모듈을 사용해 RSS번역기를 쉽고 빠르게 만들어보자.'],
     ['CPANning without Network Connection','김도형','19:45 ~ 19:50', '짧은 발표 (Lightening Talk)','Perl 커뮤니티면서 Perl 문화를 이끄는 한 주축인  CPAN은 단순한 저장소 이상의 의미를 갖는다. 프로그램을 작성해야 한다면 먼저 CPAN부터 살펴보라는 말이 있을 정도로 방대한 양의 Perl 모듈을 지니고 있는 것이 CPAN 의 특징이다. 하지만 CPAN은 네트워크를 사용하지 못하는 상황에서는 이용할 수 없는 문제가 있다. MiniCPAN을 이용해서 로컬 CPAN을 구축해 네트워크와 관련한 제약사항을 해결한다.'],
     ['The Secret of Class::Data::Inheritable','한송희','19:55 ~ 20:00', '짧은 발표 (Lightening Talk)','Class::Data::Inheritable 모듈은 Perl에서 간단하게 클래스를 상속하기 위해 만들어졌다. 이 모듈의 코드는 굉장히 짧지만 그 안에서 Perl의 강력한 기능을 사용해 OOP를 구현하고 있다. OOP 그 자체에 대한 내용 보다는 Class::Data::Inheritable에서 사용한 다양한 기법을 코드 분석을 통해 습득하는 데 집중한다.'],
-    ['Javascript as Mini-lang on Perl','김현승','20:00 ~ 20:05', '짧은 발표 (Lightening Talk)','Javascript::Spidermonkey는 ECMA 스크립트 엔진인 SpiderMonkey를 Perl로 래핑한 CPAN 모듈이다. Javascript::Spidermonkey 모듈을 이용해서 Perl로 구현한 함수의 제어처리를 Javascript가 맡도록 위임하는 과정을 살펴본다.']
+    ['Javascript as Mini-lang on Perl','김현승','20:00 ~ 20:05', '짧은 발표 (Lightening Talk)','Javascript::Spidermonkey는 ECMA 스크립트 엔진인 SpiderMonkey를 Perl로 래핑한 CPAN 모듈이다. Javascript::Spidermonkey 모듈을 이용해서 Perl로 구현한 함수의 제어처리를 Javascript가 맡도록 위임하는 과정을 살펴본다.'],
+    ['Epilogue','김도형','20:10 ~ 20:20', '정리하며 (Epilogue)','정리하며...']
 
 ];
 
