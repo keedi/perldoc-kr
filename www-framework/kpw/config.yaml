@@ -3,7 +3,7 @@ default:
 
   static:
     dirs:
-      - img
+      - images
       - css
       - js
     include_path:
