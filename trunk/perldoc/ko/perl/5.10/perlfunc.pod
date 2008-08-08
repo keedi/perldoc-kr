@@ -10665,10 +10665,10 @@ then only on POSIX systems.  You have to use C<sysread> instead.
 
 =end original
 
-B<警告>: バッファ付き I/O (C<read> や <FH>) と C<select> を
-混ぜて使ってはいけません(例外: POSIX で認められている形で使い、
-POSIX システムでだけ動かす場合を除きます)。
-代わりに C<sysread> を使わなければなりません。
+B<경고>: 버퍼붙은 I/O (C<read> 나 C<FH>) 와 C<select> 를 
+섞어쓰는 것은 안됩니다(예외 : POSIX에서 인증된 형태로 사용ㅏ고 
+POSIX 시스템에서만 움직일 경우를 제외합니다).
+대신에 C<sysread> 를 사용하지 않으면 안됩니다.
 
 =item semctl ID,SEMNUM,CMD,ARG
 X<semctl>
@@ -10679,8 +10679,8 @@ Calls the System V IPC function C<semctl>.  You'll probably have to say
 
 =end original
 
-System V IPC 関数 C<semctl> を呼び出します。
-正しい定数定義を得るために、まず
+System V IPC 함수 C<semctl> 을 호출합니다.
+바른 정수정의를 얻기 위해 우선,
 
     use IPC::SysV;
 
@@ -10697,14 +10697,14 @@ documentation.
 
 =end original
 
-と宣言する必要があるでしょう。
-CMD が、IPC_STAT か GETALL のときには、ARG は、返される
-semid_ds 構造体か、セマフォ値の配列を納める変数でなければなりません。
-C<ioctl> と同じように、エラー時には未定義値、
-ゼロのときは C<"0 だが真">、それ以外なら、その値そのものを返します。
-ARG はネイティブな short int のベクターから成っていなければなりません。
-これは C<pack("s!",(0)x$nsem)> で作成できます。
-L<perlipc/"SysV IPC">, C<IPC::SysV>, C<IPC::Semaphore> も参照してください。
+이라고 선언할 필요가 있습니다.
+CMD 가 IPC_STAT 이나 GETALL 일 때에는 ARG 는 반환되는 
+semid_ds 구조체나 세마포어 값의 배열을 넣는 변수가 아니면 안됩니다.
+C<ioctl> 처럼 에러시에는 미정의값, 0 일때는 C<"0 이지만 참">, 
+그 이외라면 그 값 그대로 반환합니다.
+ARG 는 네이티브한 short int 의 벡터에서 성립되지 않으면 안됩니다.
+이것은 C<pack("s!", (0)x$nsem) 으로 작성할 수 있습니다.
+L<perlipc/"SysV IPC">, C<IPC::SysV>, C<IPC:Semaphore> 도 참조하세요.
 
 =item semget KEY,NSEMS,FLAGS
 X<semget>
@@ -10718,10 +10718,10 @@ documentation.
 
 =end original
 
-System V IPC 関数 semget を呼び出します。
-セマフォ ID か、エラー時には未定義値を返します。
-L<perlipc/"SysV IPC">, C<IPC::SysV>, C<IPC::SysV::Semaphore> も
-参照してください。
+System V IPC 함수 semget 을 호출합니다.
+세마포어 ID 나, 에러시에는 미정의값을 반환합니다.
+L<perlipc/"SysV IPC">, C<IPC::SysV>, C<IPC::SysV::Semaphore> 도 
+참조해주세요.
 
 =item semop KEY,OPSTRING
 X<semop>
@@ -10738,15 +10738,15 @@ following code waits on semaphore $semnum of semaphore id $semid:
 
 =end original
 
-シグナルを送信や、待ち合わせなどのセマフォ操作を行なうために、
-System V IPC 関数 semop を呼び出します。
-OPSTRING は、semop 構造体の pack された配列でなければなりません。
-semop 構造体は、それぞれ、
-C<pack("s!3", $semnum, $semop, $semflag)> のように作ることができます。
-セマフォ操作の数は、OPSTRING の長さからわかります。
-成功時には真を、エラー時には偽を返します。
-以下の例は、セマフォ ID $semid のセマフォ $semnum で
-待ち合わせを行ないます。
+시그널을 송신이나 대기 등의 세모포어 조작을 수행하기 위해서는 
+System V IPC 함수 semop 를 호출합니다.
+OPSTRING 은 semop 구조체의 pack 된 배열이 아니면 안됩니다.
+semop 구조체는 각각 
+C<pack("s!3", $semnum, $semop, $semflag)> 처럼 만들 수 있습니다.
+세마포어 조작의 수는 OPSTRING 의 길이로 알 수 있습니다.
+성공시에는 참을 에러시에는 거짓을 반환합니다.
+아래의 예제는 세마포어 ID $semid 의 세마포어 $semnum 로 
+대기를 수행합니다.
 
     $semop = pack("s!3", $semnum, -1, 0);
     die "Semaphore trouble: $!\n" unless semop($semid, $semop);
@@ -10759,9 +10759,8 @@ documentation.
 
 =end original
 
-セマフォにシグナルを送るには、C<-1> を C<1> に変更してください。
-L<perlipc/"SysV IPC">, C<IPC::SysV>, C<IPC::SysV::Semaphore> も
-参照してください。
+세마포어에 시그널을 보내기 위해서는 C<-1>을 C<1> 로 변경해주세요.
+L<perlipc/"SysV IPC">, C<IPC::SysV>, C<IPC::SysV::Semaphore> 도 참조해주세요.
 
 =item send SOCKET,MSG,FLAGS,TO
 X<send>
@@ -10780,14 +10779,14 @@ L<perlipc/"UDP: Message Passing"> for examples.
 
 =end original
 
-ソケットにメッセージを送ります。
-スカラ MSG を ファイルハンドル SOCKET に送ろうとします。
-同名のシステムコールと同じフラグが指定できます。
-接続していないソケットには、送信先 TO を指定しなければならず、
-この場合、C の C<sendto> を実行します。
-送信した文字数か、エラー時には、未定義値を返します。
-C の システムコール sendmsg(2) は現在実装されていません。
-例については L<perlipc/"UDP: Message Passing"> を参照してください。
+소켓에 메시지ㄹ 보냅니다.
+스칼라 MSG 를 파일핸들 SOCKET 으로 보내려고 합니다.
+같은 이름의 시스템 호출처럼 플래그를 지정할 수 있습니다.
+접속하지 않은 소켓에는 송신처 TO 를 지정하지 않으면 안되고, 
+이 경우, C 의 C<sendto> 를 실행합니다.
+송신한 문자수나 에러시에는 미정의값을 반환합니다.
+C 의 시스템 호출 sendmsg(2) 는 현재 구성되지 않았습니다.
+예제에 대해서는 L<perlipc/"UDP: Message Passing"> 을 참조해주세요.
 
 =begin original
 
@@ -10801,14 +10800,14 @@ pragma: in that case pretty much any characters can be sent.
 
 =end original
 
-I<文字> に関する注意: ソケットの状態によって、(8 ビットの) バイトか
-文字を送信します。
-デフォルトでは全てのソケットはバイトを処理しますが、
-例えばソケットが binmode() で C<:encoding(utf8)> I/O 層(L</open>、
-C<open> プラグマ、L<open> を参照してください) を使うように指定された場合、
-I/O はバイトではなく、UTF-8 エンコードされた Unicode 文字を操作します。
-C<:encoding> プラグマも同様です:
-この場合、ほとんど大体全ての文字が書き込めます。
+I<문자> 에 관한 주의: 소켓의 상태에 따라, (8비트의) 바이트나 
+문자를 송신합니다.
+기본값에서는 모든 소켓은 바이트를 처리합니다만, 
+예를들면 소켓이 binmode() 에서 C<:encoding(utf8)> I/O 층(L</open>,
+C<open> 프라그마, L<open> 을 참조하세요) 를 사용하도록 지정한 경우, 
+I/O 는 바이트가 아닌 UTF-8 인코드 된 Unicode 문자를 조작합니다.
+C<:encoding> 프라그마도 마찬가지입니다:
+이 경우, 대개 모든 문자를 써넣을 수 있습니다.
 
 =item setpgrp PID,PGRP
 X<setpgrp> X<group>
@@ -10824,14 +10823,14 @@ C<POSIX::setsid()>.
 
 =end original
 
-指定した PID (C<0> を指定するとカレントプロセス) に
-対するプロセスグループを設定します。
-POSIX setpgrp(2) または BSD setpgrp(2) が実装されていないマシンでは、
-致命的エラーが発生します。
-引数が省略された場合は、C<0,0>が使われます。
-BSD 4.2 版の C<setpgrp> は引数を取ることができないので、
-C<setpgrp(0,0)> のみが移植性があることに注意してください。
-C<POSIX::setsid()> も参照してください。
+지정한 PID (C<0> 을 지정하면 Current Process) 에 대한 프로세스 그룹을 
+설정합니다.
+POSIX setpgrp(2) 또는 BSD setpgrp(2) 이 구성되지 않은 머신에서는 
+치명적인 에러가 됩니다.
+인수가 생략된 경우는 C<0,0> 이 사용됩니다.
+BSD 4.2 판의 C<setpgrp> 는 인수를 얻을 수 없기 때문에, 
+C<setpgrp(0,0)> 만이 이식성이 있는 것에 주의해주세요.
+C<POSIX::setsid()> 도 참조해주세요.
 
 =item setpriority WHICH,WHO,PRIORITY
 X<setpriority> X<priority> X<nice> X<renice>
@@ -10844,10 +10843,10 @@ that doesn't implement setpriority(2).
 
 =end original
 
-プロセス、プロセスグループ、ユーザに対する優先順位を設定します。
-(setpriority(2) を参照してください。)
-setpriority(2) が実装されていないマシンでは、
-致命的エラーが発生します。
+프로세스, 프로세스그룹, 유저에 대한 우선순위를 설정합니다.
+(setpriority(2) 를 참조해주세요)
+setpriority(2) 가 구성되지 않은 머신에서는 
+치명적인 에러가 발생합니다.
 
 =item setsockopt SOCKET,LEVEL,OPTNAME,OPTVAL
 X<setsockopt>
@@ -10862,12 +10861,12 @@ An integer OPTVAL is shorthand for pack("i", OPTVAL).
 
 =end original
 
-要求したソケットオプションを設定します。
-エラー時には、未定義値が返されます。
-LEVEL と OPNAME には C<Socket> モジュールが提供する整数定数を使います。
-LEVEL の値は getprotobyname から得ることもできます。
-OPTVAL は pack された文字列か整数です。
-整数の OPTVAL は pack("i", OPTVAL) の省略表現です。
+요구ㄴ 소켓 옵션을 설정합니다.
+에러시에는 미정의값이 반환됩니다.
+LEVEL 과 OPNAME 에는 C<Socket> 모듈이 제공하는 정수를 사용합니다.
+LEVEL 의 값은 getprotobyname 에서 얻을 수도 있습니다.
+OPTVAL 은 pack 된 문자열이 정수입니다.
+정수의 OPTVAL 은 pack("i", OPTVAL) 생략표현입니다.
 
 =begin original
 
@@ -10875,7 +10874,7 @@ An example disabling the Nagle's algorithm for a socket:
 
 =end original
 
-ソケットに対する Nagle のアルゴリズムを無効にする例です:
+소켓에 대한 Nagle 의 알고리즘을 무효화하는 예제입니다:
 
     use Socket qw(IPPROTO_TCP TCP_NODELAY);
     setsockopt($socket, IPPROTO_TCP, TCP_NODELAY, 1);
@@ -10897,14 +10896,14 @@ C<UNITCHECK {}> and C<END {}> constructs.
 
 =end original
 
-配列の最初の値を取り出して、その値を返し、配列を一つ
-短くして、すべての要素を前へずらします。
-配列に要素がなければ、未定義値を返します。
-ARRAY を省略すると、
-サブルーチンやフォーマットのレキシカルスコープでは C<@_> を、
-サブルーチンの外側で、C<eval STRING>, C<BEGIN {}>, C<INIT {}>, C<CHECK {}>,
-C<UNITCHECK {}>, C<END {}> で作成されたレキシカルスコープでは
-C<@ARGV> が用いられます。
+배열의 최초의 값을 얻어내서 그 값을 반환하고, 배열을 하나 줄여서, 
+모든 요소를 앞으로 미룹니다.
+배열에 요소가 없으면, 미정의값을 반환합니다.
+ARRAY 를 생략하면,
+서브루틴이나 포맷의 렉시컬 스코프에서는 C<@_> 를 
+서브루틴의 바깥쪽에서 C<eval STRING>, C<BEGIN {}>, C<INIT {}>, C<CHECK {}>,
+C<UNITCHECK {}>, C<END {}> 로 작성된 렉시컬 영역에서는 
+C<@ARGV> 가 사용됩니다.
 
 =begin original
 
@@ -10914,9 +10913,9 @@ right end.
 
 =end original
 
-C<unshift>、C<push>、C<pop> も参照してください。
-C<shift> と C<unshift> は、C<pop> と
-C<push> が配列の右端で行なうことを、左端で行ないます。
+C<unshift>, C<push>, C<pop> 도 참조하세요.
+C<shift> 와 C<unshift> 는 C<pop> 과 C<push> 가 배열의 오른쪽단에서 
+수행된 것을 왼쪽단에서 수행합니다.
 
 =item shmctl ID,CMD,ARG
 X<shmctl>
@@ -10927,7 +10926,7 @@ Calls the System V IPC function shmctl.  You'll probably have to say
 
 =end original
 
-System V IPC 関数 shmctl を呼び出します。正しい定数定義を得るために、まず
+System V IPC 함수 shmctl 을 호출합니다. 바른 정수정의를 얻기 위해서는 우선
 
     use IPC::SysV;
 
@@ -10941,12 +10940,12 @@ See also L<perlipc/"SysV IPC"> and C<IPC::SysV> documentation.
 
 =end original
 
-と宣言する必要があるでしょう。
-CMD が、C<IPC_STAT> ならば、ARG は、返される C<shmid_ds> 構造体を
-納める変数でなければなりません。
-ioctl と同じように、エラー時には未定義値、ゼロのときは "C<0> だが真"、
-それ以外なら、その値そのものを返します。
-L<perlipc/"SysV IPC"> と C<IPC::SysV> も参照してください。
+이라고 선언할 필요가 있습니다.
+CMD 가 C<IPC_STAT> 이라면 ARG 는 반환된 C<shmid_ds> 구조체를 
+넣는 변수가 아니면 안됩니다.
+ioctl 처럼 에러시에는 미정의값, 0 일때는 "C<0> 이지만 참", 
+그 이외라면, 그 값을 그대로 반환합니다.
+L<perlipc/"SysV IPC"> 와 C<IPC::SysV> 도 참조하세요.
 
 =item shmget KEY,SIZE,FLAGS
 X<shmget>
@@ -10959,9 +10958,9 @@ See also L<perlipc/"SysV IPC"> and C<IPC::SysV> documentation.
 
 =end original
 
-System V IPC 関数 shmget を呼び出します。
-共有メモリのセグメント ID か、エラー時には未定義値を返します。
-L<perlipc/"SysV IPC"> と C<IPC::SysV> も参照してください。
+System V IPC 함수 shmget 을 호출합니다.
+공유 메모리의 세그먼트 ID 나 에러시에는 미정의값을 반환합니다.
+L<perlipc/"SysV IPC"> 와 C<IPC::SysV> 도 참조해주세요.
 
 =item shmread ID,VAR,POS,SIZE
 X<shmread>
@@ -10982,18 +10981,17 @@ C<IPC::SysV> documentation, and the C<IPC::Shareable> module from CPAN.
 
 =end original
 
-System V 共有メモリセグメント ID に対し、アタッチして、
-コピーを行ない、デタッチするという形で、位置 POS から、
-サイズ SIZE だけ、読み込みか書き込みを行ないます。
-読み込み時には、VAR は読み込んだデータを納める
-変数でなければなりません。
-書き込み時には、STRING が長すぎても、SIZE バイトだけが使われます。
-STRING が短すぎる場合には、SIZE バイトを埋めるために、
-ヌル文字が書き込まれます。
-成功時には真を、エラー時には偽を返します。
-shmread() は変数を汚染します。
-L<perlipc/"SysV IPC"> と C<IPC::SysV> の文章と、
-CPAN の C<IPC::Shareable> も参照してください。
+System V 공유 메모리 세그먼트 ID 에 대해, Attach 해서 
+복사를 수행하고, detach 하는 형태로 위치 POS 에서 
+사이즈 SIZE 만, 읽기나 쓰기를 수행합니다.
+읽을 시에는 VAR 는 읽힌 데이터를 넣는 변수가 아니면 안됩니다.
+쓸 때에는 STRING 이 너무 길어도, SIZE 바이트만큼 사용됩니다.
+STRING 이 너무 짧은 경우에는 SIZE 바이트를 넣기 위해, 
+null 문자가 쓰여집니다.
+성공시에는 참을, 에러시에는 거짓을 반환합니다.
+shmread() 는 변수를 오염시킵니다.
+L<perlipc/"SysV IPC"> 와 C<IPC::SysV> 의 문장과 
+CPAN 의 C<IPC::Shareable> 도 참조해주세요.
 
 =item shutdown SOCKET,HOW
 X<shutdown>
