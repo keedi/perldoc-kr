@@ -11003,8 +11003,8 @@ has the same interpretation as in the system call of the same name.
 
 =end original
 
-同名のシステムコールと同じように解釈される HOW によって、
-指定された方法でソケット接続のシャットダウンを行ないます。
+같은 이름의 시스템 호출처럼 해석되는 HOW 에 의해, 
+지정된 방법으로 소켓 접속의 shutdown 을 수행합니다.
 
     shutdown(SOCKET, 0);    # I/we have stopped reading data
     shutdown(SOCKET, 1);    # I/we have stopped writing data
@@ -11020,10 +11020,10 @@ processes.
 
 =end original
 
-これは、こちらがソケットを書き終わったが読み終わっていない、
-またはその逆を相手側に伝えたいときに便利です。
-これはその他のプロセスでフォークしたファイル記述子のコピーも
-無効にするので、よりしつこい閉じ方です。
+이것은 이쪽이 소켓을 다 썼지만 다 읽지 않은,
+또는 그 반대를 상대편에 전하고 싶을 때 편리합니다.
+이것은 그 외의 프로세스로 fork 한 파일 기술자의 복사도 
+무효화하기때문에 보다 귀찮은 닫는 방법입니다.
 
 =item sin EXPR
 X<sin> X<sine> X<asin> X<arcsine>
@@ -11037,8 +11037,8 @@ returns sine of C<$_>.
 
 =end original
 
-(ラジアンで示した) EXPR の正弦を返します。
-EXPR が省略されたときには、C<$_> の正弦を返します。
+(라디안으로 표현한) EXPR 의 sine 을 반환합니다.
+EXPR 이 생략된 때에는 C<$_> 의 sine 을 반환합니다.
 
 =begin original
 
@@ -11047,8 +11047,8 @@ function, or use this relation:
 
 =end original
 
-逆正弦を求めるためには、C<Math::Trig::asin> 関数を使うか、
-以下の関係を使ってください:
+역 sine 을 우너하는 경우에는 C<Math::Trig::asin> 함수를 쓰거나, 
+아래의 관곌ㄹ 사용해 주세요:
 
     sub asin { atan2($_[0], sqrt(1 - $_[0] * $_[0])) }
 
@@ -11067,13 +11067,13 @@ using C<alarm>.
 
 =end original
 
-スクリプトを EXPR で指定した秒数 (省略時には、永久に)
-スリープさせます。
-そのプロセスには、C<SIGALRM>のようなシグナルを
-受信すると、割り込みがかかります。
-実際にスリープした秒数を返します。C<sleep> は、C<alarm> を
-使って実装されることが多いので、C<alarm> と
-C<sleep> は、おそらく混ぜて使用することはできません。
+스크립트를 EXPR 로 지정한 초수 ( 생략시에는 영원히)
+슬리프시킵니다.
+그 프로세스에게는 C<SIGALRM> 같은 신호를 수신하면 
+인터럽트가 걸립니다.
+실제로 슬리프한 초수를 반환합니다 C<sleep> 는 C<alarm> 을 
+사용해서 구성된 것이 많기 때문에 C<alarm> 과 C<sleep> 는 
+아마도 섞어서 사용할 수 없습니다.
 
 =begin original
 
@@ -11085,12 +11085,11 @@ busy multitasking system.
 
 =end original
 
-古いシステムでは、どのように秒を数えるかによって、要求した秒数に完全に
-満たないうちに、スリープから抜ける場合があります。
-最近のシステムでは、常に完全にスリープします。
-しかし、負荷の高いマルチタスクシステムでは
-正しくスケジューリングされないがために
-より長い時間スリープすることがあります。
+낡은 시스템에서는 어떻게 초를 구하는 가에 의해 요구한 초수를 완전히 
+채우지 않은 사이에 슬리프에서 빠지는 경우가 있습니다.
+최근의 시스템에서는 이미 완전히 슬리프합니다.
+그러나, 부하가 높은 멀티태스크 시스템에서는 바른 스케쥴링이 되지 않기 
+때문에 보다 긴 시간 슬리프 할 수 있습니다.
 
 =begin original
 
@@ -11103,13 +11102,13 @@ your system supports it. See L<perlfaq8> for details.
 
 =end original
 
-1 秒より精度の高いスリープを行なうには、
-Time::HiRes モジュール(CPAN から、また Perl 5.8 からは
-標準配布されています) が usleep() を提供します。
-Perl の 4 引数版 select() を最初の 3 引数を未定義にして使うか、
-setitimer(2) をサポートしているシステムでは、Perl の
-C<syscall> インタフェースを使ってアクセスすることもできます。
-詳しくは L<perlfaq8> を参照してください。
+1 초보다 정도가 높은 슬리프를 수행하기 위해서는 
+Time::HiRes 모듈(CPAN 에서 또는 Perl 5.8 에서는 표준배표되어 있습니다)
+이 usleep() 를 제공합니다.
+Perl 의 4 인수판 select() 를 맨처음의 3인수를 미정의해서 사용하거나,
+setitimer(2) 를 지원하는 시스템에서는 Perl 의 
+C<syscall> 인스턴스를 사용해서 접근할 수도 있습니다.
+자세한 내용은 L<perlfaq8> 을 참조해주세요.
 
 =begin original
 
@@ -11117,7 +11116,7 @@ See also the POSIX module's C<pause> function.
 
 =end original
 
-POSIX モジュールの C<pause> 関数も参照して下さい。
+POSIX 모듈의 C<pause> 함수도 참조해주세요.
 
 =item socket SOCKET,DOMAIN,TYPE,PROTOCOL
 X<socket>
@@ -11132,14 +11131,11 @@ L<perlipc/"Sockets: Client/Server Communication">.
 
 =end original
 
-指定した種類のソケットをオープンし、ファイルハンドル
-SOCKET にアタッチします。
-DOMAIN、TYPE、PROTOCOL は、
-同名のシステムコールと同じように指定します。
-適切な定義を import するために、まず、C<use Socket> と
-するとよいでしょう。
-例については L<perlipc/"Sockets: Client/Server Communication"> を
-参照してください。
+지정한 종류의 소켓을 열고, 파일핸들 SOCKET 에 attach 합니다.
+DOMAIN, TYPE, PROTOCOL 은 같은 이름의 시스템 호출처럼 지정합니다.
+적절한 정의를 import 하기 위해서는 우선 C<use Socket> 이라고 하면 좋겠죠?
+예제에 대해서는 L<perlipc/"Sockets: Client/Server Communication"> 을 
+참조해주세요.
 
 =begin original
 
@@ -11149,10 +11145,10 @@ value of $^F.  See L<perlvar/$^F>.
 
 =end original
 
-ファイルに対する close-on-exec フラグをサポートしているシステムでは、
-フラグは $^F の値で決定される、新しくオープンされたファイル記述子に対して
-セットされます。
-L<perlvar/$^F> を参照してください。
+파일에 대해 close-on-exec 플래그를 지우너하고 있는 시스템에서는 
+플래그는 $^F 의 값으로 결정되는 새롭게 오픈된 파일 기술자에 대해서 
+정의됩니다.
+L<perlvar/$^F> 를 참조해주세요.
 
 =item socketpair SOCKET1,SOCKET2,DOMAIN,TYPE,PROTOCOL
 X<socketpair>
@@ -11166,10 +11162,10 @@ error.  Returns true if successful.
 
 =end original
 
-指定した DOMAIN に、指定した TYPE で名前の無いソケットのペアを生成します。
-DOMAIN、TYPE、PROTOCOL は、同名のシステムコールと同じように指定します。
-実装されていない場合には、致命的エラーとなります。
-成功時には真を返します。
+지정한 DOMAIN 에 지정한 TYPE 으로 이름 없는 소켓의 쌍을 생성합니다.
+DOMAIN, TYPE, PROTOCOL 은 같은 이름의 시스템 호출처럼 지정합니다.
+구성되지 않은 경우에는 치명적 에러가 됩니다.
+성공시에는 참을 반환합니다.
 
 =begin original
 
@@ -11179,10 +11175,9 @@ of $^F.  See L<perlvar/$^F>.
 
 =end original
 
-ファイルに対する close-on-exec フラグをサポートしているシステムでは、
-フラグは $^F の値で決定される、新しくオープンされたファイル記述子に対して
-セットされます。
-L<perlvar/$^F> を参照してください。
+파일에 대해서 close-on-exec 플래그를 지원하고 있는 시스템에서는 
+플래그는 $^F 의 값으로 경정되는 새롭게 오픈된 파일기술자에 대해서 정의됩니다.
+L<perlvar/$^F> 를 참조해주세요.
 
 =begin original
 
@@ -11191,8 +11186,8 @@ to C<pipe(Rdr, Wtr)> is essentially:
 
 =end original
 
-C<pipe> を C<socketpair> を使って定義しているシステムもあります;
-C<pipe(Rdr, Wtr)> は本質的には以下のようになります:
+C<pipe> 를 C<socketpair> 를 사용해서 정의하고 있는 시스템도 있습니다;
+C<pipe(Rdr, Wtr)> 은 본질적으로는 아래와 같이 됩니:
 
     use Socket;
     socketpair(Rdr, Wtr, AF_UNIX, SOCK_STREAM, PF_UNSPEC);
@@ -11207,10 +11202,10 @@ sockets but not socketpair.
 
 =end original
 
-socketpair の使用例については L<perlipc> を参照してください。
-Perl 5.8 以降では、システムがソケットを実装しているが socketpair を
-実装していない場合、localhost に対して IP ソケットを使うことで
-socketpair をエミュレートします。
+socketpair 의 사용예제에 대해서는 L<perlipc> 를 참조해주세요.
+Perl 5.8 이후에서는 시스템이 소켓을 구성하고 있지만 socketpair 를 
+구성하지 않은 경우, localhost 에 대해서 IP 소켓을 사용하는 것으로 
+socketpair 를 에뮬레이트합니다.
 
 =item sort SUBNAME LIST
 X<sort> X<qsort> X<quicksort> X<mergesort>
