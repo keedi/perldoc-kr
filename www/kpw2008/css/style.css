@@ -242,6 +242,17 @@ div.footer_block span {
         font-size: 1.1em;
         color: #ddd;
 }
+div.footer_block a {
+  color: white;
+  text-decoration: none;
+}
+div.footer_block a:hover {
+  text-decoration: underline;
+}
+div.footer_block a.selected {
+  font-weight:bold;
+  color: yellow;
+}
 
 /* Widths */
 .widthsponsors {
