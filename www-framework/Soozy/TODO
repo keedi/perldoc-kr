@@ -1,0 +1,146 @@
+OK: viewの仕組
+
+OK: 過去のディスパッチャーを別クラスに
+OK: /foo/barのURLが来たら自動的に Foo.pmを読みこんでdo_barを実行する仕組
+exceptionの仕組充実
+
+OK: config
+
+forwardで、現在のhandle_classとhandle_methodを変更する仕組
+  $c->forward(localmethod)
+  $c->forward(localmethod, class)
+
+RequestはOK: Request/Responsのラッパを作成?
+
+OK: module_pathfixupで返すのは再度newせずに bless $self, $newclass;
+OK: 動的にコントローラクラス(Handlers::Hoge)を読みこむ仕組
+
+OK: Soozy::Pluginのベースクラス
+
+OK: O/Rまっぱ
+OK:  DBICでテーブル構成のBase Modelを作り、そのBase Modelをuse baseして拡張していく
+ CRUDごとにフックを登録出来るようにする 
+
+
+plugins:
+OK logをファイルに書き出すプラグイン
+OK log levelを増やすプラグイン
+OK: バリデータ
+OK sessionマネージャ
+OK 認証系
+OK: fillinform
+__PACKAGE__->plugin('mobileagent', 'HTTP::MobileAgent'); で代用できる: HTTP::MobileAgent
+OK: FormValidator:*Simple::Auto
+Flavour
+
+OK: M::DBIC
+V::JSON
+OK: V::TT
+
+OK: Projectを作成するヘルパースクリプト 下のヘルパースクリプトを動的作成
+OK: +コントローラーを作成するヘルパースクリプト
+OK: +Modelを作成するヘルパースクリプト (railsのように) primary keyの自動取得？
+OK: +Project専用のhttpd.confを作成するヘルパースクリプト
+OK: ++uidをユーザー毎、pidとかは、proje/logs/以下にportはオプション入力
+
+
+OK: soozy.pl
+
+
+OK: dispatchを転送させる
+OK:   同一Cのメソッド
+OK:   Cを超えて
+
+/AS-BS/ -> AsBs
+/AS_BS/ -> As_Bs
+/A/B/C/ -> A::B::C->Default
+/A/B/C/ -> A::B->C
+/A/B/C/ -> A::B->Default
+/A/B/C/ -> A->B
+/A/B/C/ -> A->Default
+/A/B/C/ -> Default->A
+/A/B/C/ -> A::B->C
+/A/B/C/ -> A::B->C
+
+
+
+OK: Session
+flash(リダイレクトしても1回だけ使える) 
+@session
+ stateからsession_idを取得して、storeからデータを読みだす
+ stateからsidが取れなければsidを新規作成する
+ 最後にsidをstateに渡す/storeに保存する (ただし、何も変更が無ければDBの操作は行わない Object::Signature::signature)
+
+ session_flash
+   hashref
+   load時にkey別にsignatureを憶えておく
+   save時にload時のsignatureと違うkeyのデータだけ残す
+
+Session
+ -> session : セッション情報の入出力
+ -> make_session_id;
+
+Session::Store::DBIC
+ -> get_session_data
+ -> store_session_data
+ -> delete_session_data
+
+Session::State::Cookie
+ -> get_session_id;
+ -> set_session_id;
+
+#config
+
+default:
+  session:
+    session_id: sid
+    expires: 0 # 0 is not expire
+    store: DBIC
+    store_dbic:
+      session_schema: Soozy::Session
+      session_field: id
+      data_field: session_data
+      expire_field: expires
+    state: Cookie
+    state_cooki:
+      session_key: sid
+
+#END
+create table sessions {
+  id           char(128) not null,
+  session_data text,
+  expires      int,
+}
+#
+$self->session->store(Soozy::Plugin::Session::Store::{$config->{store}}->new);
+$self->session->state(Soozy::Plugin::Session::Store::{$config->{state}}->new);
+
+
+
+@Authentication
+use_sessionがあれば
+  session->{auth_user}にユーザー名を入れる
+  logoutでsession->{auth_user}を消す
+  prepareでsession->{auth_user}からuserデータをロードする
+
+Authentication
+  -> login
+  -> logout
+  -> get_user
+  -> user_exists
+  {_user}
+Authentication::Store
+  -> get_usesr
+
+Authentication::Credential
+
+
+#config
+default:
+  authentication:
+    store: DBIC
+    store_dbic:
+      user_class: CatalystMyTest::Model::DBIC::Member
+      user_field: name
+      password_field: pass
+    use_session: 1
