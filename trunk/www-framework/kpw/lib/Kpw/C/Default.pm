@@ -8,6 +8,12 @@ sub do_default {
     my $self = shift;
 }
 
+sub do_schedule {}
+sub do_location {}
+sub do_faq {}
+sub do_links {}
+sub do_register {}
+
 1;
 
 =head1 NAME
