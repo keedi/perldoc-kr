@@ -7,7 +7,7 @@ body, input, select, td, th {
 body {
         margin: 0;
         padding: 0;
-        background-color: #777;
+        background-color: transparent;
 }
 p {
         margin: 0 20px;
