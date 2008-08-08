@@ -29,7 +29,7 @@ Ext.onReady(function(){
         groupTextTpl: '{text} ({[values.rs.length]} {[values.rs.length > 1 ? "Items" : "Item"]})',
         enableRowBody: true,
         getRowClass : function(record, rowIndex, p, store) {
-            p.body = '<table style="padding: 3px;margin: 5px;width:595px;display:table;border-collapse:collapse;border-bottom:1px solid blue;border-top:1px solid blue"><tr><td width="15%" align="center" rowspan="2" style="border-right:1px solid blue;vertical-align: middle"><b>' + record.data.period + '</b></td><td style="border-bottom: 1px solid blue;padding: 3px" width="65%"><b>' + record.data.subject + '</b></td><td style="padding:3px;border-bottom: 1px solid blue;border-left:1px solid blue" width="20%">' + record.data.speaker + '</td></tr><tr><td colspan="2"><div style="width:100%;padding:3px">' + record.data.desc + '</div></td></tr></table>';
+            p.body = '<table style="padding: 3px;margin: 5px;width:595px;display:table;border-collapse:collapse;border-bottom:1px solid #99BBE8;border-top:1px solid #99BBE8"><tr><td width="15%" align="center" rowspan="2" style="border-right:1px solid #99BBE8;vertical-align: middle"><b>' + record.data.period + '</b></td><td style="border-bottom: 1px solid #99BBE8;padding: 3px" width="65%"><b>' + record.data.subject + '</b></td><td style="padding:3px;border-bottom: 1px solid #99BBE8;border-left:1px solid #99BBE8" width="20%">' + record.data.speaker + '</td></tr><tr><td colspan="2"><div style="width:100%;padding:3px">' + record.data.desc + '</div></td></tr></table>';
             return 'x-grid3-row-expanded';
         }
     });
@@ -234,6 +234,5 @@ Ext.grid.dummyData = [
       'Javascript::Spidermonkey는 ECMA 스크립트 엔진인 SpiderMonkey를 Perl로 래핑한 CPAN 모듈이다. Javascript::Spidermonkey 모듈을 이용해서 Perl로 구현한 함수의 제어처리를 Javascript가 맡도록 위임하는 과정을 살펴본다.'
     ],
     ['Epilogue','김도형','20:30 ~ 20:50', '9. 정리하며 (Epilogue)','정리하며...']
-
 ];
 
