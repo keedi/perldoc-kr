@@ -1,6 +1,20 @@
 default:
   name: Kpw
 
+  static:
+    dirs:
+      - img
+      - css
+      - js
+    include_path:
+      - __path_to(./html)__
+    ignore_dirs:
+      - __path_to(./template)__
+    ignore_extensions:
+      - tmpl
+      - tt
+      - tt2
+
   V:
     DEFAULT: TT
 ---
