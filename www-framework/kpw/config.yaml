@@ -6,6 +6,7 @@ default:
       - images
       - css
       - js
+      - resources
     include_path:
       - __path_to(./html)__
     ignore_dirs:
