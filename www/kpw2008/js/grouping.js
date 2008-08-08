@@ -233,6 +233,13 @@ Ext.grid.dummyData = [
       '4. 짧은 발표 (Lightening Talk)',
       'Javascript::Spidermonkey는 ECMA 스크립트 엔진인 SpiderMonkey를 Perl로 래핑한 CPAN 모듈이다. Javascript::Spidermonkey 모듈을 이용해서 Perl로 구현한 함수의 제어처리를 Javascript가 맡도록 위임하는 과정을 살펴본다.'
     ],
-    ['Epilogue','김도형','20:30 ~ 20:50', '9. 정리하며 (Epilogue)','정리하며...']
+    [
+      'CPANning without Network Connection',
+      '김도형',
+      '20:30 ~ 20:35',
+      '4. 짧은 발표 (Lightening Talk)',
+      'Perl 커뮤니티면서 Perl 문화를 이끄는 한 주축인  CPAN은 단순한 저장소 이상의 의미를 갖는다. 프로그램을 작성해야 한다면 먼저 CPAN부터 살펴보라는 말이 있을 정도로 방대한 양의 Perl 모듈을 지니고 있는 것이 CPAN 의 특징이다. 하지만 CPAN은 네트워크를 사용하지 못하는 상황에서는 이용할 수 없는 문제가 있다. MiniCPAN을 이용해서 로컬 CPAN을 구축해 네트워크와 관련한 제약사항을 해결한다.'
+    ],
+    ['Epilogue','김도형','20:35 ~ 20:50', '9. 정리하며 (Epilogue)','정리하며...']
 ];
 
