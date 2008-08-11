@@ -1,31 +1,12 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8;" />
-    <link rel="stylesheet" href="/css/style.css" type="text/css" />
-    [% IF c.req.path_info.match('schedule') %]
-    <script type="text/javascript" src="/js/ext-base.js"></script>
-    <script type="text/javascript" src="/js/ext-all.js"></script>
-    <script type="text/javascript" src="/js/grouping.js"></script>
-    [% END %]
-    <title>2008 Korean Perl Workshop</title>
-  </head>
-  <body>
-    <div id="container">
       <div id="navigation">
         <div class="center">
           <ul>
-            <li><a href="/" [% 'class="seleted"' UNLESS c.req.path_info %]>새소식</a></li>
-            <li><a href="/schedule" [% 'class="selected"' IF c.req.path_info.match('schedule') %]>일정</a></li>
-            <li><a href="/location" [% 'class="selected"' IF c.req.path_info.match('location') %]>위치</a></li>
-            <li><a href="/faq" [% 'class="selected"' IF c.req.path_info.match('faq') %]>FAQ</a></li>
-            <li><a href="/links" [% 'class="selected"' IF c.req.path_info.match('links') %]>링크</a></li>
-            <li><a href="/register" [% 'class="selected"' IF c.req.path_info.match('register') %]>참가신청</a></li>
+            <li><a href="/"[% ' class="selected"' UNLESS c.req.path_info %]>새소식</a></li>
+            <li><a href="/schedule"[% ' class="selected"' IF c.req.path_info.match('schedule') %]>일정</a></li>
+            <li><a href="/location"[% ' class="selected"' IF c.req.path_info.match('location') %]>위치</a></li>
+            <li><a href="/faq"[% ' class="selected"' IF c.req.path_info.match('faq') %]>FAQ</a></li>
+            <li><a href="/links"[% ' class="selected"' IF c.req.path_info.match('links') %]>링크</a></li>
+            <li><a href="/register"[% ' class="selected"' IF c.req.path_info.match('register') %]>참가신청</a></li>
           </ul>
         </div>
       </div>
-      <div id="content">
-        <div class="box box_top center">
-        </div>
-        <div class="box box_middle center">
-
