@@ -149,7 +149,7 @@ div.box {
 }
 div.box_top {
         height: 30px;
-        background: transparent url(../images/box_top.gif) no-repeat scroll center bottom !important;
+        background: transparent url(../images/box_top.png) no-repeat scroll center bottom !important;
 }
 div.box_middle {
         background: transparent url(../images/box_middle.png) repeat-y scroll center top !important;
