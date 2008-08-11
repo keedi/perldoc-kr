@@ -156,7 +156,7 @@ div.box_middle {
 }
 div.box_bottom {
         height: 150px;
-        background: transparent url(../images/box_bottom.gif) no-repeat scroll center top !important;
+        background: transparent url(../images/box_bottom.png) no-repeat scroll center top !important;
 }
 
 /* Content Text */
