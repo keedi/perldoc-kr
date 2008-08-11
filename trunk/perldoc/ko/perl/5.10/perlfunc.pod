@@ -11653,10 +11653,10 @@ characters at each point it matches that way.  For example:
 
 =end original
 
-空文字列にマッチするパターン (ヌルパターン C<//> と混同しないでください。
-これは、空文字列にマッチするパターンの一つでしかありません) は、
-どの場所にもマッチし、EXPR の値を1 文字ずつに分割します。
-例えば:
+빈 문자열에 매치하는 패턴 (null 패턴 C<//> 과 혼동하지 말아주세요.
+이것은 빈문자열에 매치하는 패턴의 하나밖에 없습니다) 은 
+어느 장소에서도 매치하고, EXPR 의 값을 1문자씩 분할합니다.
+예를들면:
 
     print join(':', split(/ */, 'hi there'));
 
@@ -11666,7 +11666,7 @@ produces the output 'h:i:t:h:e:r:e'.
 
 =end original
 
-は、'h:i:t:h:e:r:e' という出力になります。
+는 'h:i:t:h:e:r:e' 라고 출력하게 됩니다.
 
 =begin original
 
@@ -11677,10 +11677,10 @@ the following:
 
 =end original
 
-C<split> に関する特別な場合として、特に空パターン C<//> は空文字列に
-マッチするので、「最後に成功したパターンマッチ」を意味する通常の C<//> の
-使用法と混乱しないようにしてください。
-それで、C<split> の場合は、以下のようにすると:
+C<split> 에 관한 특별한 경우로 특히 빈패턴 C<//> 는 빈문자열에 
+매치하기때문에 "마지막에 성공한 패턴매치" 를 의미하는 일반적인 C<//> 의
+사용법과 혼동하지 마세요.
+그리고, C<split> 의 경우는 아래처럼 하면:
 
     print join(':', split(//, 'hi there'));
 
@@ -11690,7 +11690,7 @@ produces the output 'h:i: :t:h:e:r:e'.
 
 =end original
 
-'h:i: :t:h:e:r:e' という出力になります。
+'h:i: :t:h:e:r:e' 라고 출력하게 됩니다.
 
 =begin original
 
@@ -11700,10 +11700,9 @@ the string does not produce an empty field. For example:
 
 =end original
 
-先頭の空フィールドは、文字列の先頭で 0 でない幅でマッチした場合は
-生成されます。
-幅 0 でマッチした場合は生成されません。
-例えば:
+맨앞의 빈필드는 문자열의 맨앞에서 0 이 아닌 폭으로 매치한 경우는 
+생성됩니다. 폭 0 으로 매치한 경우는 생성되지 않습니다.
+예를들면:
 
    print join(':', split(/(?=\w)/, 'hi there!'));
 
@@ -11716,11 +11715,10 @@ For example:
 
 =end original
 
-これの出力は 'h:i :t:h:e:r:e!' となります。
-一方、末尾の空フィールドは、マッチングの長さに関わらず、文字列の最後に
-マッチングした(そして LIMIT が与えられてそれが 0 でなかった)場合に
-生成されます。
-例えば:
+이것의 출력은 'h:i :t:h:e:r:e' 가 됩니다.
+한편, 끝단의 빈 필드는 매칭의 길이에 상관없이 문자열의 마지막에 
+매칭한(그리고 LIMIT 가 주어져 그것이 0이 아닌)경우에 생성됩니다.
+예를들면:
 
    print join(':', split(//,   'hi there!', -1));
    print join(':', split(/\W/, 'hi there!', -1));
@@ -11732,8 +11730,8 @@ both with an empty trailing field.
 
 =end original
 
-これの出力はそれぞれ 'h:i :t:h:e:r:e!' および 'hi:there:' となり、
-両方とも末尾に空フィールドが付きます。
+이것의 출력은 각각 'h:i :t:h:e:r:e!' 및 'hi:there:' 가 되고, 
+양쪽다 끝단에 빈 필드가 붙습니다.
 
 =begin original
 
@@ -11741,7 +11739,7 @@ The LIMIT parameter can be used to split a line partially
 
 =end original
 
-LIMIT を使うと、行を部分的に split することができます。
+LIMIT 를 사용하면, 행을 부분적으로 split 할 수 있습니다.
 
     ($login, $passwd, $remainder) = split(/:/, $_, 3);
 
@@ -11755,12 +11753,11 @@ into more fields than you really need.
 
 =end original
 
-リストへ代入するとき、LIMIT を省略するか 0 の場合、Perl は、
-無駄な仕事を避けるため、そのリストの変数の数より、1 つだけ大きい
-LIMIT が与えられたものとして処理を行ないます。
-上のリストの場合には、LIMIT はデフォルトで 4 になります。
-時間が問題となるアプリケーションでは、
-必要以上のフィールドに分けないようにする必要があります。
+리스트에 대입할 때, LIMIT 를 생략하거나 0인 경우, Perl 은 쓸데없는 
+일을 피하기 위해 그 리스트의 변수의 수보다 하나 큰 LIMIT 가 주어진 것으로
+처리를 수행합니다. 위의 리스트의 경우에는 LIMIT 는 기본값으로 4가 됩니다.
+시간이 문제가 되는 어플리케이션에서는 필요이상의 필드로 나누지 않도록 할 
+필요가 있습니다.
 
 =begin original
 
@@ -11769,8 +11766,8 @@ created from each matching substring in the delimiter.
 
 =end original
 
-PATTERN に括弧が含まれていると、デリミタ内の部分文字列にマッチするものも、
-リスト要素に含まれるようになります。
+PATTERN 에 괄호가 포함되어 있으면 구분자 안의 부분문자열에 매치하는 것도 
+리스트 요소에 포함되게 됩니다.
 
     split(/([,-])/, "1-10,20", 3);
 
@@ -11780,7 +11777,7 @@ produces the list value
 
 =end original
 
-は、以下のリスト値を生成します。
+는 아래의 리스트 값을 생성합니다.
 
     (1, '-', 10, ',', 20)
 
@@ -11791,8 +11788,8 @@ you could split it up into fields and their values this way:
 
 =end original
 
-$header に Unix E メールメッセージヘッダ全体が入っているとすると、
-以下のようにしてフィールドとその値に分割できます:
+$header 에 Unix E 메일메시징 헤더 전체가 들어 있다고 하면
+아래처럼해서 필드와 그 값으로 분할할 수 있습니다:
 
     $header =~ s/\n\s+/ /g;  # fix continuation lines
     %hdrs   =  (UNIX_FROM => split /^(\S*?):\s*/m, $header);
@@ -11805,8 +11802,8 @@ use C</$variable/o>.)
 
 =end original
 
-/PATTERN/ は、実行時に変わるパターンを指定する式で置き換えることができます。
-(実行時のコンパイルを 1 度にするために、/$variable/o を使ってください。)
+/PATTERN/ 은, 실행시에 변하는 패턴을 지정하는 식으로 바꿀 수 있습니다.
+(실행시의 컴파일을 한번만 하위해 /$variable/o 를 사용해주세요.)
 
 =begin original
 
@@ -11820,14 +11817,14 @@ really does a S<C<split(' ', $_)>> internally.
 
 =end original
 
-特別な場合として、PATTERN にスペース (S<C<' '>>) を指定すると、
-引数なしの C<split> のように空白で split を行ないます。
-つまり、S<C<split(' ')>> は B<awk> のデフォルトの動作をエミュレートするために
-使うことができ、S<C<split(/ /)>> は行頭のスペースの数に応じた空フィールドが
-できます。
-C<split /\s+/> は S<C<split(' ')>> と同様ですが、
-先頭の空白は先頭の空フィールドとなります。
-引数なしの C<split> は内部的には S<C<split(' ', $_)>> を実行します。
+특별한 경우로 PATTERN 에 스페이스 (S<C' '>>) 를 지정하면 
+인수없는 C<split> 처럼 공백으로 split 를 수행합니다.
+즉, S<C<split(' ')>> 은 B<awk> 의 기본 동작을 에뮬레이트 하기 위해 
+사용할 수 있고, S<C<split(/ /)>> 는 행의 맨앞의 스페이스의 수에 따라 
+빈 필드가 될 수 있습니다.
+C<split /\s+/> 은 S<C<split(' ')>> 와 같지만, 
+맨앞의 공백은 선두의 빈 필드가 됩니다.
+인수없는 C<split> 은 내부적으로는 S<C<split(' ', $_)>> 를 실행합니다.
 
 =begin original
 
@@ -11836,8 +11833,8 @@ much use otherwise.
 
 =end original
 
-PATTERN に C</^/> を指定すると C</^/m> として扱われます。
-他の意味に使われることはまずないからです。
+PATTERN 에 C</^/> 를 지정하면 C</^/m> 으로 취급됩니다.
+다른 의미로 사용되는 것은 없기때문입니다.
 
 =begin original
 
@@ -11845,7 +11842,7 @@ Example:
 
 =end original
 
-例:
+예제:
 
     open(PASSWD, '/etc/passwd');
     while (<PASSWD>) {
@@ -11862,8 +11859,8 @@ matched in a C<split()> will be set to C<undef> when returned:
 
 =end original
 
-通常のパターンマッチングで、C<split()> でマッチしない全てのかっこは
-返される時には C<undef> がセットされます。
+일반적인 패턴매칭에서 C<split()> 으로 매치하지 않은 모든 괄호는 
+반환될 때에는 C<undef> 가 설정됩니다.
 
     @fields = split /(A)|B/, "1A2B3";
     # @fields is (1, 'A', 2, undef, 3)
