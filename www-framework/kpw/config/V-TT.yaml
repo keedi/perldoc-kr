@@ -4,4 +4,5 @@ default:
     COMPILE_EXT: .ttc
 #    INCLUDE_PATH:
 #      - /Users/leejj/Work/Perl/perldoc-kr/kpw/template/tt
+    WRAPPER: '_include/wrapper.html'
 ---
