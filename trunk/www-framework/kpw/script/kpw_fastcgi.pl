@@ -1,19 +1,20 @@
+#!/usr/bin/perl -w
 
 use strict;
 use warnings;
 use Getopt::Long;
 use Pod::Usage;
 use FindBin;
-use lib "$FindBin::Bin/../lib";
+#use lib "$FindBin::Bin/../lib";
+use lib glob "$FindBin::Bin/../../*/lib";
 
 my $help = 0;
 my ( $listen, $nproc, $pidfile, $manager, $detach, $keep_stderr );
 
-
-my $debug             = 0;
-my $root              = "$FindBin::Bin/../";
-my $mode              = 'dev';
-my $max_requests      = 0;
+my $debug        = 0;
+my $root         = "$FindBin::Bin/../";
+my $mode         = 'dev';
+my $max_requests = 0;
 
 GetOptions(
     'debug'          => \$debug,
@@ -27,27 +28,28 @@ GetOptions(
     'daemon|d'       => \$detach,
     'keeperr|e'      => \$keep_stderr,
     'max-requests=s' => \$max_requests,
-    );
+);
 
 pod2usage(1) if $help;
 
-$ENV{SOOZY_ENGINE}  = 'FastCGI';
-$ENV{SOOZY_DEBUG}     = 1 if $debug;
-$ENV{KPW_ROOT}  ||= $root;
-$ENV{KPW_MODE}  ||= $mode;
+$ENV{SOOZY_ENGINE} = 'FastCGI';
+$ENV{SOOZY_DEBUG} = 1 if $debug;
+$ENV{KPW_ROOT} ||= $root;
+$ENV{KPW_MODE} ||= $mode;
 
 require Kpw;
 
 Kpw->run(
     $listen,
-    {   nproc        => $nproc,
+    {
+        nproc        => $nproc,
         pidfile      => $pidfile,
         manager      => $manager,
         detach       => $detach,
-	keep_stderr  => $keep_stderr,
+        keep_stderr  => $keep_stderr,
         max_requests => $max_requests,
     }
-    );
+);
 
 1;
 
