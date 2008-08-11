@@ -7,7 +7,7 @@ body, input, select, td, th {
 body {
         margin: 0;
         padding: 0;
-        background-color: transparent;
+        background-color: #eeeeee;
 }
 p {
         margin: 0 20px;
@@ -30,51 +30,52 @@ h4 {
         font-size: 110%;
 }
 a {
-        color: #22F;
+        color: #ff8080;
+}
+a:hover {
+        color: #388dd5;
 }
 
 /**
  * Sponsors
  */
 .sponsors {
-    margin: 0 10px 0 0;
-    background: white;
+        margin: 0 10px 0 0;
+        background: white;
 }
 .sponsors h2 {
-    background:transparent url(images/sponsors_bg.png) no-repeat scroll left top;
-    font-size:1.0em;
-    font-weight:normal;
-    color:#777;
-    padding:0.8em 0;
-    margin: 0;
-    text-align:center;
+        background: transparent url(/images/sponsors_bg.png) no-repeat scroll left top;
+        font-size: 1.0em;
+        font-weight: normal;
+        color: #777;
+        padding: 0.8em 0;
+        margin: 0;
+        text-align: center;
 }
 .sponsors h3 {
-    margin-bottom:3.5em;
-    border-color:#CCCCCC;
-    border-style:solid;
-    border-width:1px 1px 1px 1px;
-    color:#777;
-    font-size:0.8em;
-    font-weight:bold;
-    margin:0em 1em;
-    padding:0.5em;
-    text-align:center;
+        margin-bottom: 3.5em;
+        border: 1px solid #cccccc;
+        color: #777;
+        font-size: 0.8em;
+        font-weight: bold;
+        margin: 0em 1em;
+        padding: 0.5em;
+        text-align:center;
 }
 .sponsors ul {
-    margin:1em 0;
+        margin: 1em 0;
 }
 .sponsors ul, ol {
-    margin: 10px;
-    padding: 0px;
+        margin: 10px;
+        padding: 0px;
 }
 .sponsors ul li {
-    list-style-type:none;
-    margin:0 0 10px;
-    text-align:center;
+        list-style-type: none;
+        margin: 0 0 10px;
+        text-align: center;
 }
 .sponsors a {
-    color: #ffffff;
+        color: #ffffff;
 }
 
 /* Container */
@@ -104,8 +105,8 @@ a {
 }
 
 #navigation li {
-        margin:0;
-        float:left;
+        margin: 0;
+        float: left;
         list-style-image: none;
         list-style-position: outside;
         list-style-type: none;
@@ -121,14 +122,14 @@ a {
         text-decoration: underline;
 }
 #navigation ul li a.selected {
-  font-weight:bold;
+        font-weight: bold;
         color: yellow;
 }
 
 /* Content */
 #content {
         padding: 120px 0 0px;
-        background: #777 url(../images/kpw_horizontal.png) no-repeat scroll center 20px !important;
+        background: transparent url(/images/kpw_horizontal.png) no-repeat scroll center 20px !important;
         
 }
 
@@ -136,7 +137,7 @@ a {
 #footer {
         margin: 0;
         padding: 0;
-        background-color: #777;
+        background-color: #eeeeee;
 }
 
 /* Background Box */
@@ -149,14 +150,14 @@ div.box {
 }
 div.box_top {
         height: 30px;
-        background: transparent url(../images/box_top.png) no-repeat scroll center bottom !important;
+        background: transparent url(/images/box_top.png) no-repeat scroll center bottom !important;
 }
 div.box_middle {
-        background: transparent url(../images/box_middle.png) repeat-y scroll center top !important;
+        background: transparent url(/images/box_middle.png) repeat-y scroll center top !important;
 }
 div.box_bottom {
         height: 150px;
-        background: transparent url(../images/box_bottom.png) no-repeat scroll center top !important;
+        background: transparent url(/images/box_bottom.png) no-repeat scroll center top !important;
 }
 
 /* Content Text */
@@ -175,9 +176,9 @@ div.content_block .meta {
 }
 div.content_faq {
         margin: 20px 30px 0;
-  border-width: 1px;
-  border-color:#CCCCCC;
-  border-style: solid none none solid;
+        border-width: 1px;
+        border-color: #CCCCCC;
+        border-style: solid none none solid;
 }
 /*
 div.content_block .table_warpper {
@@ -207,12 +208,11 @@ div.content_block tr.alt td {
 div.content_block tr.last td {
         border-bottom: none;
 }
-
 */
 
 /* Footer Text */
 div.footer_logo {
-        background: transparent url(../images/kpw_footer.png) no-repeat scroll center top !important;
+        background: transparent url(/images/kpw_footer.png) no-repeat scroll center top !important;
         margin-top: 20px;
         color: #999;
         font-size: 0.9em;
@@ -246,12 +246,12 @@ div.footer_block span {
         color: #ddd;
 }
 div.footer_block a {
-  color: #999;
-  text-decoration: none;
+        color: #999;
+        text-decoration: none;
 }
 div.footer_block a:hover {
-  text-decoration: underline;
-  color: yellow;
+        text-decoration: underline;
+        color: yellow;
 }
 
 /* Widths */
@@ -285,25 +285,23 @@ div.footer_block a:hover {
         height: 0;
         clear: both;
 }
-
 #group-grid {
         margin: 15px 20px;
 }
-
 #register-form {
         margin: 15px 20px;
 }
-
 .banner {
-    margin: 15px 20px 5px;
-    padding: 0;
+        margin: 15px 20px 5px;
+        padding: 0;
 }
-
 .topic {
-       background:transparent url(/kpw2008/images/post.gif) no-repeat scroll 0 2px;
-       padding-left:20px;
+        background: transparent url(/kpw2008/images/post.gif) no-repeat scroll 0 2px;
+        padding-left: 20px;
 }
-
 .author {
-        color:#333333;
+        color: #333333;
+}
+.map-img {
+	text-align: center;
 }
