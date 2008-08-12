@@ -8,7 +8,7 @@ use DateTime::Format::Mail;
 use Encode;
 use MIME::Lite;
 use Template;
-use template::Provider::Encoding;
+use Template::Provider::Encoding;
 
 sub send {
     my($class, $context, $opt) = @_;
