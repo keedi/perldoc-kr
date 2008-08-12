@@ -1,0 +1,50 @@
+*   웹서버에서 alias 처리할 항목
+    -   css
+    -   images
+    -   favicon.ico
+    -   js
+    -   resourses
+
+*   apache 설정의 예
+
+    SetEnv PERL5LIB /home/www/event.perl.kr/framework/kpw2008/Soozy/lib
+    FastCgiExternalServer "/.../kpw/script/kpw_fastcgi.pl" -socket /tmp/kpw.socket
+    ScriptAlias /neo-kpw2008 "/.../kpw/script/kpw_fastcgi.pl"
+
+*   아파치에서 rewrite 룰의 예
+
+    RewriteEngine On
+    RewriteCond %{REQUEST_URI} !^/(kpw2008|favicon\.ico)/\w*$
+    RewriteRule ^/(.*)$ /neo-kpw2008/$1 [QSA,PT,L]
+
+*   FastCGI를 사용하는 경우 모듈 갱신시 처리할 작업
+    -   ps ux | grep perl-fcgi | grep -v grep | awk '{print $2}' | xargs kill
+    -   sudo perl ./kpw_fastcgi.pl -l /tmp/kpw.socket -d
+
+*   DB 파일 초기화해야 할 경우
+    -   rm kpw/db/database.db
+    -   sqlite3 kpw/db/database.db < kpw/sql/kpw.sql
+
+*   경로 문제로 DB 파일을 열지 못하는 경우
+    -   config/M-KpwDB.yaml 파일 수정
+    -   default -> connect_info: 부분을 절대 경로로 설정
+
+*   가입 확인 메일 보내기 설정
+
+    -   ssmtp 패키지 설치
+        -   sudo apt-get install ssmtp
+
+    -   /etc/ssmtp 를 다음과 같이 생성
+
+        # Config file for sSMTP sendmail
+        root=korean.perl.workshop@gmail.com # Your email address
+        mailhub=smtp.gmail.com:587          # Gmail details
+        UseSTARTTLS=YES                     # Send SSL/TLS messages to Gmail
+        AuthUser=your.mail@gmail.com        # Your Gmail Username
+        AuthPass=your.pass.word             # Your Gmail Password
+        rewriteDomain=gmail.com             # So the message appears to come from Gmail
+        FromLineOverride=YES                # So the message appears to come from Gmail
+        hostname=ataraxia                   # Hostname: use hostname -f in a Terminal
+
+    -   MIME::Lite::TT::HTML cpan 모듈 설치
+        -   sudo cpan MIME::Lite::TT::HTML
