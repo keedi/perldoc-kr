@@ -3,6 +3,7 @@ package Kpw::Mail;
 use strict;
 use warnings;
 
+use MIME::QuotedPrint qw(encode_qp);
 use DateTime;
 use DateTime::Format::Mail;
 use Encode;
@@ -27,8 +28,8 @@ sub raw_send {
         'Return-Path' => $opt->{from},
         From          => $opt->{from},
         To            => $opt->{to},
-        Subject       => $opt->{subject},
-	Charset       => 'utf8',
+        Subject       => encode_header( $opt->{subject} ),
+        Charset       => 'utf8',
         Encoding      => '8bit',
         Data          => $opt->{body},
 	);
@@ -64,7 +65,7 @@ sub templatize {
             COMPILE_DIR      => $context->path_to('template', 'tt_cache'),
             COMPILE_EXT      => '.ttc',
             INCLUDE_PATH     => $class->include_path($context),
-								}) ],
+        }) ],
     };
     my $t = Template->new($config) or die 'TT initialize error';
 
@@ -78,5 +79,7 @@ sub include_path {
     my($class, $context) = @_;
     $context->config->{mail}->{include_path} || $context->path_to('template', 'mail');
 }
+
+sub encode_header { '=?UTF-8?Q?' . encode_qp(shift, '') . '?=' } 
 
 1;
