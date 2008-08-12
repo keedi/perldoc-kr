@@ -13417,15 +13417,15 @@ X<O_EXCL>
 
 =end original
 
-多くのシステムではファイルを排他モードで開くために C<O_EXCL> が
-利用可能です。
-これはロック B<ではありません>: 排他性というのは既にファイルが
-存在していた場合、sysopen() が失敗することを意味します。
-C<O_EXCL> はネットワークファイルシステムでは動作せず、
-またC<O_CREAT> フラグも有効でない限りは効果がありません。
-C<O_CREAT|O_EXCL> をセットすると、これがシンボリックリンクだった場合は
-ファイルを開くことを妨げます。
-これはファイルパス中のシンボリックリンクは守りません。
+많은 시스템에서는 파일을 배타모드에서 열기 위해서는 C<O_EXCL> 을 
+이용할 수 있습니.
+이것은 락 B<이 아닙니다>: 배타성이라는 것은 이미 파일이 존재한 경우,
+sysopen() 이 실패하는 것을 의미합니다.
+C<O_EXECL> 은 네트워크 파일시스템에서는 동작하지 않고,
+또는 C<O_CREAT> 플래그도 유효하지 않은 한은 효과가 없습니다.
+C<O_CREAT|O_EXCL> 을 설정하면, 이것이 심볼릭링크인 경우는 
+파일을 여는 것을 방지합니다.
+이것은 파일 패스 안의 심볼릭 링크는 지킬 수 없습니다.
 X<O_EXCL>
 
 =begin original
@@ -13437,9 +13437,9 @@ X<O_TRUNC>
 
 =end original
 
-既に存在しているファイルを切り詰めたい場合もあるかもしれません。
-これは C<O_TRUNC> フラグを使うことで行えます。
-C<O_RDONLY> と C<O_TRUNC> を同時に指定したときの振る舞いは未定義です。
+이미 존재하는 파일을 잘르고 싶은 경우도 있을지 모르겠습니다.
+이것은 C<O_TRUNC> 플래그를 사용하는 것으로 수행할 수 있습니다.
+C<O_RDONLY> 와 C<O_TRUNC> 를 동시에 지정한 때의 행동은 미정의입니다.
 X<O_TRUNC>
 
 =begin original
@@ -13451,11 +13451,10 @@ on this.
 
 =end original
 
-めったなことでは C<sysopen> の引数に C<0644> を指定するべきではないでしょう:
-ユーザーがより寛大な umask を指定する選択肢を奪うからです。
-省略した方がいいです。
-これに関するさらなる情報については perlfunc(1) の C<umask> を
-参照してください。
+쓸데없는 일에서는 C<sysopen> 의 인수로 C<0644> 를 지정해야하는 것은 아니겠죠:
+유저가 보다 큰 umask 를 지정하는 선택지를 빼앗기 때문입니다.
+생략하는 편이 좋습니다.
+이것에 관한 자한 정보에 대해서는 perlfunc(1) 의 C<umask> 를 참조해주세요.
 
 =begin original
 
@@ -13467,12 +13466,11 @@ library, or perhaps using the POSIX::open() function.
 
 =end original
 
-C<sysopen> は C の fdopen() ライブラリ関数に依存していることに注意してください。
-多くの UNIX システムでは、fdopen() はファイル記述子がある値(例えば 255)を超えると
-失敗することが知られています。
-これより多くのファイル記述子が必要な場合は、
-Perl を C<sfio> ライブラリを使って再ビルドするか、
-POSIX::open() 関数を使うことを健闘してください。
+C<sysopen> 은 C 의 fdopen() 라이브러리 함수에 의존하고 있는 것에 주의해주세요.
+많은 UNIX 시스템에서는 fdopen() 은 파일 기술자가 있는 값(예를들면 255) 를 
+넘으면 실패하는 것을 알고 있습니다.
+이것보다 많은 파일 기술자가 필요한 경우는, Perl 을 C<sfio> 라이브러리를 
+사용해서 빌드하거나 POSIX::open() 함수를 사용하는 것은 어떨까요?
 
 =begin original
 
@@ -13480,7 +13478,7 @@ See L<perlopentut> for a kinder, gentler explanation of opening files.
 
 =end original
 
-ファイル操作に関するより親切な説明については L<perlopentut> を参照して下さい。
+파일 조작에 관한 보다 친절한 설명에 대해서는 L<perlopentut> 를 참조하세요.
 
 =item sysread FILEHANDLE,SCALAR,LENGTH,OFFSET
 X<sysread>
@@ -13501,18 +13499,17 @@ scalar after the read.
 
 =end original
 
-システムコール read(2) を用いて、指定した FILEHANDLE
-から、変数 SCALAR へ、LENGTH バイトのデータの読み込みを試みます。
-これは、バッファ付き IO ルーチンを通りませんから、
-他の入力関数, C<print>, C<write>,
-C<seek>, C<tell>, C<eof> と混ぜて使うと、入力がおかしくなるかも
-しれません。
-perlio 層や stdio 層は普通データをバッファリングするからです。
-ファイルの最後では C<0>が、エラー時には undef が、
-それ以外では実際に読み込まれたデータの長さが返されます
-(後者の場合は C<$!> もセットされます)。
-実際に読み込んだ最後のバイトが read した後の最後のバイトになるので、
-SCALAR は伸び縮みします。
+시스템 호출 read(2) 를 사용해서 지정한 FILEHANDLE 에서 
+변수 SCALAR 로, LENGTH 바이트의 데이터의 읽기를 시험합니다.
+이것은 버퍼붙은 IO 루틴을 통하지 않기 때문에, 
+다른 입력함수, C<print>, C<write>, C<seek>, C<tell>, C<eof> 와 
+섞어서 쓰면, 입력이 이상해질지도 모릅니다.
+perlio 층이나 stdio 층은 보통 데이터를 버퍼링하기 때문입니다.
+파일의 마지막에서는 C<0> 이나, 에러시에는 undef 가 
+그 이외에서는 실제로 읽혀진 데이터의 길이가 반환됩니다
+(후자의 경우는 C<$!> 도 설정됩니다).
+실제로 읽은 최후의 바이트가 read 한 뒤의 마지막의 바이트가 되기대문에,
+SCALAR 는 들쭉날쭉합니다.
 
 =begin original
 
@@ -13525,13 +13522,12 @@ bytes before the result of the read is appended.
 
 =end original
 
-OFFSET を指定すると、SCALAR の先頭以外の場所から、読み込みを行なうことが
-できます。
-OFFSET に負の値を指定すると、文字列の最後から逆向きに何文字目かで
-位置を指定します。
-OFFSET が正の値で、SCALAR の長さよりも大きかった場合、
-必要なサイズになるまで C<"\0"> でパッディングされ、その後に
-読み込み結果が追加されます。
+OFFSET 을 지정하면, SCALAR 의 맨앞 이외의 장소에서 읽기를 수행할 수가
+있습니다.
+OFFSET 에 음수를 지정하면 문자열의 마지막에서 역방향으로 몇 문자째인가로 
+위치를 지정합니다.
+OFFSET 에 정수로 SCALAR 의 길이보다도 큰 경우, 필요한 사이즈가 될때까지
+C<"\0"> 으로 패딩되어, 그 뒤에 일긱 결과가 추가됩니다.
 
 =begin original
 
@@ -13541,11 +13537,11 @@ for a return value for 0 to decide whether you're done.
 
 =end original
 
-syseof() 関数はありませんが、問題ありません。
-どちらにしろ eof() は(tty のような)デバイスファイルに対しては
-うまく動作しないからです。
-sysread() を使って、 返り値が 0 かどうかで最後まで読んだかを
-判断してください。
+syseof() 함수는 없지만, 문제없습니다.
+어느 쪽도, eof() 는(tty 같은) 디바이스 파일에 대해서는 
+잘 동작하지 않기때문입니다.
+sysread() 를 사용해서, 반환값이 0 인지 어떤지로 마지막까지 읽었는지를
+판단해주세요.
 
 =begin original
 
@@ -13557,11 +13553,11 @@ See L</binmode>, L</open>, and the C<open> pragma, L<open>.
 
 =end original
 
-ファイルハンドルが C<:utf8> であるとマークが付けられると、バイトではなく
-Unicode 文字が読み込まれます (sysread() の LENGTH, OFFSET および返り値は
-Unicode 文字になります)。
-C<:encoding(...)> 層は暗黙のうちに C<:utf8> 層が導入されます。
-L</binmode>, L</open>, C<open> プラグマ, L<open> を参照してください。
+파일핸들이 C<:utf8> 이라고 마크가 붙여지면 바이트가 아닌 Unicode 문자가
+읽혀집니다(sysread() 의 LENGTH, OFFSET 및 반환값은 
+Unicode 문자가 됩니다).
+C<:encoding(...)> 층은 암묵적으로 C<:utf8> 층이 도입됩니다.
+L</binmode>, L</open>, C<open> 프라그마, L<open> 을 참조하세요.
 
 =item sysseek FILEHANDLE,POSITION,WHENCE
 X<sysseek> X<lseek>
@@ -13577,13 +13573,13 @@ negative).
 
 =end original
 
-FILEHANDLE のシステム位置をバイト単位で lseek(2) システムコールを使って
-設定します。
-FILEHANDLE は式でも構いません。
-その場合はその値がファイルハンドルの名前となります。
-WHENCE の値が、C<0> ならば、新しい位置を POSITION の位置へ、C<1> ならば、
-現在位置から POSITION 加えた位置へ、C<2> ならば、EOF から POSITION だけ
-(普通は負の数です)加えた位置へ、新しい位置を設定します。
+FILEHANDLE 의 시스템 위치를 바이트 단위로 lseek(2) 시스템 호출을 사용해서
+설정합니다.
+FILEHANDLE 은 식이라도 상관없습니다.
+그 경우는 그 값이 파일핸들의 이름이 됩니다.
+WHENCE 의 값이 C<0> 라면 새로운 위치를 POSITION 의 위치로 C<1> 이면 
+현재위치에서 POSITION 붙은 위치로, C<2> 라면 EOF 에서 POSITION 만
+(보통은 음수입니다) 더한 위치로, 새로운 위치를 설정합니다.
 
 =begin original
 
@@ -13594,10 +13590,10 @@ implementing that would render sysseek() very slow).
 
 =end original
 
-I<バイト単位> に関する注意: 文字単位で扱うようにファイルハンドルが
-設定されている場合(C<:encoding(utf8)> I/O 層を使っている場合など)でも、
-tell() は文字のオフセットではなくバイトのオフセットを返します
-(なぜならこれを実装すると sysseek() がとても遅くなるからです)。
+I<바이트단위> 에 관한 주의: 문자단위로 취급하도록 파일핸들이 
+설정되어 있는 경우(C<:encoding(utf8)> I/O 층을 사용하고 있는 경우등)에서도
+tell() 은 문자의 오프셋이 아닌 바이트 오프셋을 반환합니다
+(왜냐면 이것을 구성하면 sysseek() 가 매우 느리기 때문입니다).
 
 =begin original
 
@@ -13607,10 +13603,10 @@ C<seek>, C<tell>, or C<eof> may cause confusion.
 
 =end original
 
-sysseek() は普通のバッファ付き IO をバイパスしますので、
-(C<sysread> 以外の、例えば C<< <> >> や read() の)読み込み、
-C<print>, C<write>, C<seek>, C<tell>, C<eof> と混ぜて使うと
-混乱を引き起こします。
+sysseek() 는 보통의 버퍼 붙은 IO 를 바이패스하기 때문에,
+(C<sysread> 이외의 예를들어 C<< <> >> 나 read() 의) 읽기,
+C<print>, C<write>, C<seek>, C<tell>, C<eof> 와 섞어서 사용하면 
+혼란을 일으킵니다.
 
 =begin original
 
@@ -13621,9 +13617,8 @@ than relying on 0, 1, and 2.  For example to define a "systell" function:
 
 =end original
 
-この値には、Fcntl モジュールで使われている C<SEEK_SET>、
-C<SEEK_CUR>、C<SEEK_END> 
-(ファイルの先頭、現在位置、ファイルの最後)という定数を使うこともできます。
+이 값에는 Fcntl 모듈로 사용된 C<SEEK_SET>, C<SEEK_CUR>, C<SEEK_END>
+(파일의 맨 앞, 현재 위치, 파일의 끝)이라는 정수를 사용할 수 있습니다.
 
 	use Fcntl 'SEEK_CUR';
 	sub systell { sysseek($_[0], 0, SEEK_CUR) }
@@ -13637,11 +13632,11 @@ the new position.
 
 =end original
 
-新しい位置を返します。
-失敗したときは未定義値を返します。
-位置がゼロの場合は、C<"0 but true"> の文字列として返されます。
-従って C<sysseek> は成功時に真を返し、失敗時に偽を返しますが、
-簡単に新しい位置を判定できます。
+새로운 위치ㄹ 반환합니다.
+실패한 때는 미정의값을 반환합니다.
+위치가 제로인 경우는 C<"0 이지만 참"> 의 문자열로 반환됩니다.
+따라서 C<sysseek> 는 성공시에는 참을 반환하고 실패시에는 거짓을 
+반환하지만, 간단히 새로운 위치를 판정할 수 있습니다.
 
 =item system LIST
 X<system> X<shell>
@@ -13666,21 +13661,20 @@ more efficient.
 
 =end original
 
-C<exec LIST> とほとんど同じですが、まず fork を行ない、
-親プロセスではチャイルドプロセスが終了するのを wait します。
-exec の項で述べたように、引数の処理は、引数の数によって異なることに
-注意してください。
-LIST に複数の引数がある場合、または LIST が複数の要素からなる配列の場合、
-リストの最初の要素で与えられるプログラムを、リストの残りの要素を
-引数として起動します。
-スカラの引数が一つだけの場合、
-引数はシェルのメタキャラクタをチェックされ、もしあれば
-パーズのために引数全体がシステムコマンドシェル
-(これは Unix プラットフォームでは C</bin/sh -c> ですが、
-他のプラットフォームでは異なります)に渡されます。
-シェルメタキャラクタがなかった場合、
-引数は単語に分解されて直接 C<execvp> に渡されます。
-この方がより効率的です。
+C<exec LIST> 와 거의 같지만, 우선 fork 를 수행하고, 
+부모 프로세스에서는 자식 프로세스가 종료하는 것을 wait 합니다.
+exec 의 항에서 기술한것 처럼, 인수의 처리는 인수의 수에 따라 다른
+것에 주의해주세요.
+LIST 에 복수의 인수가 있는 경우, 또는 LIST 가 복수의 요소에서 비롯된
+배열인 경우, 리스트의 최초의 요소로 주어진 프로그램을 리스트의 남은 요를 인수로
+기동합니다.
+스칼라의 인수가 하나뿐인 경우, 인수는 셸의 메타캐릭터를 체크,
+만약 있다면 파싱을 위해 인수전체가 시스템커맨드셸
+(이것은 Unix 플랫폼에서는 C</bin/sh -c> 이지만, 다른 플랫폼에서는 
+다릅니다)로 건네집니다. 
+셸 메타 캐릭터가 없는 경우, 인수는 단어로 분해된 직후 C<execvp> 에 
+건네집니다.
+이 편이 보다 효율적입니다.
 
 =begin original
 
