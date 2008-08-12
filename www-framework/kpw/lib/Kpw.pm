@@ -10,7 +10,6 @@ use Soozy qw(
   ConfigLoader
   ConfigPatch
   Static::Simple
-  FillInForm
 );
 
 our $VERSION = '0.01';
