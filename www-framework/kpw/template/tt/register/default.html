@@ -1,12 +1,24 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-    <head>
-        <meta http-equiv="Content-Language" content="en" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Kpw - Register on Soozy</title>
-    </head>
-    <body>
-        <h1>Hello! Kpw - Register default</h1>
-    </body>
-</html>
+
+  [% IF form_messages %]
+  <ul>
+  [% FOREACH msg IN form_messages %]
+  <li>[% c.config.messages.${msg.key}.${msg.value} %]</li>
+  [% END %]
+  </ul>
+  [% END %] 
+
+  <form action="/register/do" method="post">
+  eMail : <input type="text" name="email" size="30" /><br/>
+  비밀번호 : <input type="password" name="password" size="10" /><br/>
+  비밀번호(확인) : <input type="password" name="password_confirm" size="10" /><br/>
+  이름 : <input type="text" name="name" size="10" /><br/>
+  닉네임 : <input type="text" name="nick" size="10" /><br/>
+  휴대전화 : <input type="text" name="phone" size="20" /><br/>
+  티셔츠 사이즈: <select name="tshirt">
+      <option value="90">90
+      <option value="95">95
+      <option value="100">100
+      <option value="105">105
+  </select>
+  <br/>
+  <input type="submit" value="참가신청" />
