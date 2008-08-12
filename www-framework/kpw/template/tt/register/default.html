@@ -52,9 +52,10 @@
               <p>현재 <em>[% users.size || 0 %]</em>명 등록중입니다.</p>
 [% IF users.size %]
               <table cellpadding="0" cellspacing="1" border="0" summary="신청자">
-                <caption>신청자</cpation>
+                <caption>신청자</caption>
                 <thead>
                   <tr>
+                    <th>번호</th>
                     <th>이름</th>
                     <th>닉네임</th>
                     <th class="email">email</th>
@@ -64,6 +65,7 @@
                 <tbody>
 [% FOREACH user IN users %]
                   <tr>
+                    <td>[% loop.index + 1 | html %]</td>
                     <td>[% user.name | html %]</td>
                     <td>[% user.nick | html %]</td>
                     <td>[% user.email | html | truncate(10) %]</td>
