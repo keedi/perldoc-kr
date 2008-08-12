@@ -5,7 +5,7 @@
 [% IF c.req.path_info.match('schedule') %]
     <link rel="stylesheet" href="/resources/css/ext-all.css" type="text/css" />
 [% END %]
-    <link rel="stylesheet" href="/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="/css/import.css" type="text/css" />
 [% IF c.req.path_info.match('schedule') %]
     <script type="text/javascript" src="/js/ext-base.js"></script>
     <script type="text/javascript" src="/js/ext-all.js"></script>
@@ -14,19 +14,18 @@
     <title>2008 Korean Perl Workshop</title>
   </head>
   <body>
-    <div id="container">
 [% INCLUDE '_include/www_head.html' %]
+    <div id="container">
       <div id="content">
-        <div class="box box_top center">
-        </div>
-        <div class="box box_middle center clear_both">
-          <div class="width66 float_left">
+        <div class="box box_top"></div>
+        <div class="box box_middle clearfix">
+          <div id="main">
 [% content %]
           </div>
-          <div class="widthsponsors float_left">
+          <div id="sponsors">
 [% INCLUDE '_include/sponsors.html' %]
           </div>
-          <p class="clear_both_thin">&nbsp;</p>
+          <p></p>
         </div>
       </div>
 [% INCLUDE '_include/www_foot.html' %]

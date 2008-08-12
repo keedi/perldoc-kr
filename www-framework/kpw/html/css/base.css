@@ -1,0 +1,87 @@
+/* base */
+body, input, select, td, th {
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+h1, h2, h3, h4 {
+    padding: 0 0 5px;
+}
+h1 {
+    margin-bottom: 20px;
+    border-bottom: 2px solid #c00f0f;
+    font-weight: bold;
+}
+a {
+    color: #ff8080;
+}
+a:hover, a:active, a:focus {
+    color: #388dd5;
+}
+a img {
+    border: none;
+}
+table {
+    border:1px solid #AAAAAA;
+    font-size: inherit;
+    font: 100%;
+}
+tr {
+    background-color: #ffffff;
+}
+th, td {
+    border-color:#EFEFEF rgb(170, 170, 170) rgb(170, 170, 170) rgb(239, 239, 239);
+    border-style:solid;
+    border-width:1px;
+    font-weight: normal;
+    padding: 0.4em 0.7em;
+}
+th, tbody th {
+    background-color: #eeeeee;
+    vertical-align: middle;
+}
+thead th {
+    background-color: #eeeeff;
+    text-align: center;
+    font-weight: bold;
+    width: auto;
+}
+
+/* parts */
+
+#header, #footer {
+    color: white;
+}
+#header a, #footer a {
+    text-decoration: none;
+    color: white;
+}
+#header a:hover, #footer a:hover {
+    text-decoration: underline;
+    color: yellow;
+}
+#header ul, #header ol, #header dl, #footer ul, #footer ol, #footer dl, #sponsors ul, #sponsors ol, #sponsors dl {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#main h2, #main h3, #main h4 {
+    border-bottom: 1px dotted #777777;
+}
+#main p {
+    padding: 0.5em;
+}
+
+#footer #copyright {
+    color: black;
+}
+
+/* width */
+.short {
+    width: 20%;
+}
+.medium {
+    width: 40%;
+}
+.long {
+    width: 70%;
+}

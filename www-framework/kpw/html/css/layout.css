@@ -1,0 +1,96 @@
+/* container */
+#container {
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    background-color: #eeeeee;
+}
+
+/* header */
+#header {
+    clear: both;
+    margin: 0;
+    background-color: #c00f0f;
+}
+#header #navigation {
+    margin: 0 auto;
+    width: 860px;
+    height: 40px;
+}
+#header #navigation li {
+   float: left;
+   margin-right: 1em;
+   line-height: 40px;
+}
+
+/* content */
+#content {
+    clear: both;
+    margin: 0 auto;
+    padding-top: 120px;
+    width: 860px;
+    background: transparent url(/images/kpw_horizontal.png) no-repeat scroll center 20px !important;
+}
+.clearfix {
+    _height: 1px;
+    min-height: 1px;
+    /* Mac IE のみ有効 \*//*/
+    height: auto;
+    overflow: hidden;
+    /**/
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    visibility: hidden;
+    clear: both;
+    height: 0;
+}
+#content #main {
+    float: left;
+    display: inline;
+    margin: 0 20px;
+    width: 620px;
+}
+#content #sponsors {
+    float: right;
+    display: inline;
+    margin-right: 20px;
+    width: 180px;
+}
+
+/* footer */
+#footer {
+    clear: both;
+    margin: 0 auto;
+    width: 860px;
+}
+#footer .info {
+    float: left;
+    width: 33%;
+}
+#footer #copyright {
+    height: 40px;
+    line-height: 40px;
+}
+
+/* backgroun box */
+div.box {
+    clear: both;
+    margin: auto;
+    width: auto;
+    text-align: left;
+}
+div.box_top {
+    height: 30px;
+    background: transparent url(/images/box_top.png) no-repeat scroll center bottom !important;
+}
+div.box_middle {
+    padding-bottom: 20px;
+    background: transparent url(/images/box_middle.png) repeat-y scroll center top !important;
+}
+div.box_bottom {
+    padding-top: 20px;
+    height: 150px;
+    background: transparent url(/images/box_bottom.png) no-repeat scroll center top !important;
+}
