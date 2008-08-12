@@ -7,6 +7,8 @@ cp ssmtp.conf /etc/ssmtp
 # install perl module called MIME::Lite::TT::HTML
 sudo cpan MIME::Lite::TT::HTML
 
+make sure you update the path to the mail template files in mailer.pl
+
 usage:
 perl mailer.pl your@email.com
 
