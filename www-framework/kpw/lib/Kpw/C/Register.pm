@@ -84,7 +84,7 @@ sub do_complete {
     $user->confirm('reserv');
     $user->update;
     
-    $self->stash-{user} = $user;
+    $self->stash->{user} = $user;
 }
 
 sub do_error {}
