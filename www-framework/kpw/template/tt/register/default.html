@@ -2,25 +2,25 @@
               <h1>사전등록</h1>
               <p>blah</p>
               <h3>신청양식</h3>
-  [% IF form_messages %]
+              <p><span class="required">*</span>는 필수입니다.</p>
+[% IF form_messages %]
               <ul>
-  [% FOREACH msg IN form_messages %]
+[% FOREACH msg IN form_messages %]
                 <li>[% c.config.messages.${msg.key}.${msg.value} %]</li>
-  [% END %]
+[% END %]
               </ul>
-  [% END %] 
+[% END %] 
               <form action="/register/do" method="post" id="register-form">
                 <fieldset>
                   <legend>사전등록</legend>
                   <dl>
-		    <dt><label for="email">email</label>: </dt><dd><input type="text" name="email" size="30" id="email" /></dd>
-		    <dt><label for="password">비밀번호</label>: </dt><dd><input type="password" name="password" size="10" id="password" /></dd>
-		    <dt><label for="password_confirm">비밀번호(확인)</label>: </dt><dd><input type="password" name="password_confirm" size="10" id="password_confirm" /></dd>
-		    <dt><label for="name">이름</label>: </dt><dd><input type="text" name="name" size="10" id="name" /></dd>
-		    <dt><label for="nickname">닉네임</label>: </dt><dd><dd><input type="text" name="nick" size="10" id="nick" /></dd>
-		    <dt><label for="mobile">휴대전화</label>: </dt><dd><dd><input type="text" name="phone" size="20" id="mobile"/></dd>
+		    <dt><span class="required">*</span><label for="email">email</label>:&nbsp;</dt><dd><input type="text" name="email" size="30" id="email" /></dd>
+		    <dt><span class="required">*</span><label for="password">비밀번호</label>:&nbsp;</dt><dd><input type="password" name="password" size="10" id="password" /></dd>
+		    <dt><span class="required">*</span><label for="password_confirm">비밀번호(확인)</label>:&nbsp;</dt><dd><input type="password" name="password_confirm" size="10" id="password_confirm" /></dd>
+		    <dt><span class="required">*</span><label for="name">이름</label>:&nbsp;</dt><dd><input type="text" name="name" size="10" id="name" /></dd>
+		    <dt><span class="required">*</span><label for="mobile">휴대전화</label>:&nbsp;</dt><dd><dd><input type="text" name="phone" size="20" id="mobile"/></dd>
 		  
-                    <dt>티셔츠 사이즈: </dt>
+                    <dt><span class="required">*</span>티셔츠 사이즈:&nbsp;</dt>
                     <dd>
                       <select name="tshirt">
                         <option value="S(85)">S(85)</option>
@@ -31,16 +31,19 @@
                         <option value="XXXL(110)">XXXL(110)</option>
                       </select>
                     </dd>
-		    <dt>직업: </dt>
-		    <dd><select name="type">
+		    <dt>직업:&nbsp;</dt>
+		    <dd>
+                      <select name="type">
 			<option value="worker">직장인</option>
 			<option value="student">학생</option>
-		        </select>
+		      </select>
                     </dd>
-		    <dt>소속: </dt>
+		    <dt><label for="location">소속</label>:&nbsp;</dt>
 		    <dd><input type="text" name="location" size="50" id="location" /></dd>
                   </dl>
                   <div class="button"><input type="submit" value="신청" /></div>
                 </fieldset>
               </form>
+              <h3>신청자 현황</h3>
+              <p>현재 0명 등록중입니다.</p>
             </div>

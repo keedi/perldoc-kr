@@ -334,3 +334,7 @@ div.footer_block a: hover {
 .map-img {
     text-align: center;
 }
+.required {
+    margin-right: 0.5em;
+    color: #c00f0f;
+}
