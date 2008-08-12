@@ -28,6 +28,8 @@ __PACKAGE__->add_columns(
   { data_type => "VARCHAR", in_nullable => 0, size => 255 },
   "type",
   { data_type => "VARCHAR", in_nullable => 0, size => 8 },
+  "location",
+  { data_type => "VARCHAR", in_nullable => 1, size => 255 }, 
   "created_on", 
   { data_type => "DATETIME", in_nullable => 0, size => 19,
       default_value => "0000-00-00 00:00:00",

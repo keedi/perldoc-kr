@@ -10,6 +10,7 @@ CREATE TABLE regist_form (
    confirm  CHAR(32) NOT NULL,
    digest   VARCHAR(255),
    type     CHAR(8) NOT NULL,
+   location VARCHAR(255),
    created_on DATETIME NOT NULL,
    updated_on DATETIME NOT NULL,
    primary key(no),
