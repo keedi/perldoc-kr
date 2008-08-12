@@ -11877,9 +11877,9 @@ the general principles.
 
 =end original
 
-普通の C 言語の C<printf> 記法のフォーマットで、整形された文字列を返します。
-一般的な原則の説明については以下の説明と、システムの
-L<sprintf(3)> または L<printf(3)> の説明を参照してください。
+보통의 C 언어의 C<printf> 기법의 포맷ㅡ로 정형된 문자열을 반환합니다.
+일반적인 원칙의 설명에 대해서는 아래의 설명과 시스템의 L<sprintf(3)> 
+또는 L<printf(3)> 의 설명을 참고해주세요.
 
 =begin original
 
@@ -11887,7 +11887,7 @@ For example:
 
 =end original
 
-例:
+예제:
 
         # Format number with up to 8 leading zeroes
         $result = sprintf("%08d", $number);
@@ -11905,11 +11905,11 @@ available from Perl.
 
 =end original
 
-Perl は C<sprintf> フォーマット処理を自力で行います。
-これは C の C<sprintf> 関数をエミュレートしますが、
-C の関数は使いません(浮動小数点を除きますが、それでも標準の
-記述子のみが利用できます)。
-従って、ローカルな非標準の C<sprintf> 拡張機能は Perl では使えません。
+Perl 은 C<sprintf> 포맷처리를 자력으로 수행합빈다.
+이것은 C 의 C<sprintf> 함수를 에뮬레이트하지만, 
+C 의 함수는 사용하지 않습니다(부동소수점을 빼지만, 그래도 표준의 
+기술자만을 이용할 수 있습니다).
+따라, 로컬의 비표준의 C<sprintf> 확장기능은 Perl 에서는 사용할 수 없습니다.
 
 =begin original
 
@@ -11921,11 +11921,11 @@ useful.
 
 =end original
 
-C<printf> と違って、 C<sprintf> の最初の引数に配列を渡しても
-あなたが多分望むとおりには動作しません。
-配列はスカラコンテキストで渡されるので、配列の 0 番目の要素ではなく、
-配列の要素数をフォーマットとして扱います。
-これはほとんど役に立ちません。
+C<sprintf> 와는 달리, C<sprintf> 의 최초의 인수에 배열을 넘겨도 
+당신이 원하는 대로 동작하지 않습니다.
+배열은 스칼라 컨텍스트에서 건네지기때문에 배열의 0 번째의 요소가 아닌
+배열의 요소수를 패멋으로 취급합니다.
+이것은 쓸모없습니다.
 
 =begin original
 
@@ -11933,7 +11933,7 @@ Perl's C<sprintf> permits the following universally-known conversions:
 
 =end original
 
-Perl の C<sprintf> は以下の一般に知られている変換に対応しています:
+Perl 의 C<sprintf> 는 아래의 일반적으로 알려진 변수를 지원하고 있습니다:
 
    %%	a percent sign
    %c	a character with the given number
@@ -11952,7 +11952,7 @@ In addition, Perl permits the following widely-supported conversions:
 
 =end original
 
-さらに、Perl では以下のよく使われている変換に対応しています:
+거기에 Perl 에서는 아래의 자주쓰이는 변수도 지원합니다:
 
    %X	like %x, but using upper-case letters
    %E	like %e, but using an upper-case "E"
@@ -11970,8 +11970,8 @@ permits these unnecessary but widely-supported conversions:
 
 =end original
 
-最後に、過去との互換性(これは「過去」だと考えています)のために、
-Perl は以下の不要ではあるけれども広く使われている変換に対応しています。
+마지막에 과거와의 호환성(이것은 "과거"라고 생각하고 있습니다)을 위해서 
+Perl 은 아래의 쓸데없지만 널리 쓰이는 변수도 지원하고 있습니다.
 
    %i	a synonym for %d
    %D	a synonym for %ld
@@ -11989,12 +11989,12 @@ exponent less than 100 is system-dependent: it may be three or less
 
 =end original
 
-C<%e>, C<%E>, C<%g>, C<%G> において、指数部が 100 未満の場合の
-指数部の科学的な表記法はシステム依存であることに注意してください:
-3 桁かもしれませんし、それ以下かもしれません(必要に応じて 0 で
-パッディングされます)。
-言い換えると、 1.23 掛ける 10 の 99 乗は "1.23e99" かもしれませんし
-"1.23e099" かもしれません。
+C<%e>, C<%E>, C<%g>, C<%G> 에 대해서, 지수부가 100 미만일 경우 
+지수부의 과학적인 표기법은 시스템 의존인 것에 주의해주세요:
+3자리일지도 모르고, 그 이하일지도 모릅니다(필요에 따라서 0으로 
+패딩됩니다).
+바꿔 말하면, 1.23 곱하기 10의 99 승은 "1.23e99" 일지도 모고,
+"1.23e099" 일지도 모릅니다.
 
 =begin original
 
@@ -12004,9 +12004,9 @@ In order, these are:
 
 =end original
 
-C<%> とフォーマット文字の間に、フォーマットの解釈を制御するための、
-任意の数の追加の属性を指定できます。
-順番に、以下のものがあります:
+C<%> 와 포맷문자 사이에, 포맷의 해석을 제어하기 위해, 
+임의의 수의 추가 속성을 지정할 수 있습니다.
+순번으로 아래와 가튼 것이 있습니다:
 
 =over 4
 
@@ -12032,7 +12032,7 @@ one or more of:
 
 =end original
 
-以下のうちの一つまたは複数指定できます:
+아래 중의 하나 이상은 지수지정을 할 수 있습니다:
 
    space   prefix positive number with a space
    +       prefix positive number with a plus sign
@@ -12048,7 +12048,7 @@ For example:
 
 =end original
 
-例:
+예제:
 
   printf '<% d>',  12;   # prints "< 12>"
   printf '<%+d>',  12;   # prints "<+12>"
@@ -12068,8 +12068,8 @@ a plus sign is used to prefix a positive number.
 
 =end original
 
-空白とプラス記号がフラグとして同時に与えられると、プラス記号は正の数に
-前置するために使われます。
+공백과 플러스기호가 플래그로 동시에 주어지면, 플러스 기호는 정수로 
+전치하기 위해 사용됩니다.
 
   printf '<%+ d>', 12;   # prints "<+12>"
   printf '<% +d>', 12;   # prints "<+12>"
@@ -12081,8 +12081,8 @@ the precision is incremented if it's necessary for the leading "0".
 
 =end original
 
-%o 変換に # フラグと精度が与えられると、先頭の "0" が必要な場合は
-精度に 1 が加えられます。
+%o 변환에 # 플래그와 정도가 주어지면, 맨 앞의 "0" 이 필요한 경우는 
+정도에 1이 더해집니다.
 
   printf '<%#.5o>', 012;      # prints "<00012>"
   printf '<%#.5o>', 012345;   # prints "<012345>"
@@ -12100,11 +12100,9 @@ characters in arbitrary strings:
 
 =end original
 
-このフラグは perl に、与えられた文字列を、文字毎に一つの整数のベクタとして
-解釈させます。
-Perl は各数値をフォーマットし、それから結果の文字列をセパレータ
-(デフォルトでは C<.>)で連結します。
-これは任意の文字列の文字を順序付きの値として表示するのに便利です:
+이 플래그는 perl 에 주어진 문자열을 문자마다 한씩 정수의 벡터로써 해석시킵니다.
+Perl 은 각 수치를 포맷해서, 그리고 결과의 문자열을 구분자로(기본값으로는 C<.>) 로 연결합니다.
+이것은 임의의 문자열의 문자를 순서붙은 값으로 표시하기에 편리합니다:
 
   printf "%vd", "AB\x{100}";           # prints "65.66.256"
   printf "version is v%vd\n", $^V;     # Perl's version
@@ -12116,8 +12114,8 @@ use to separate the numbers:
 
 =end original
 
-アスタリスク C<*> を C<v> の前に置くと、数値を分けるために使われる文字列を
-上書きします:
+아스타리스크 C<*> 를 C<v> 의 앞에 놓으면 수치를 나누기 위해 사용되는 문자열을
+덮어씁니다:
 
   printf "address is %*vX\n", ":", $addr;   # IPv6 address
   printf "bits are %0*v8b\n", " ", $bits;   # random bitstring
@@ -12129,8 +12127,8 @@ the join string using e.g. C<*2$v>:
 
 =end original
 
-また、C<*2$v> のように、連結する文字列として使う引数の番号を明示的に
-指定できます。
+또, C<*2$v> 처럼 연결하는 문자열로 사용하는 인수의 번호를 명시적으로 
+지정할 수 있습니다.
 
   printf '%*4$vX %*4$vX %*4$vX', @addr[1..3], ":";   # 3 IPv6 addresses
 
@@ -12145,9 +12143,9 @@ or from a specified argument (with e.g. C<*2$>):
 
 =end original
 
-引数は、普通は値を表示するのに必要なちょうどの幅でフォーマットされます。
-ここに数値を置くか、(C<*> で)次の引数か(C<*2$> で)明示的に指定した引数で
-幅を上書きできます。
+인수는 보통은 값을 표시하기에 필요한 적당한 폭으로 포맷됩니다.
+이것으로 수치를 놓을까 (C<*> 로) 다음의 인수가 (C<*2$> 로) 명시적으로 
+지정한 인수로 폭을 덮어쓸 수 있습니다.
 
   printf '<%s>', "a";       # prints "<a>"
   printf '<%6s>', "a";      # prints "<     a>"
@@ -12162,8 +12160,8 @@ effect as the C<-> flag: left-justification.
 
 =end original
 
-C<*> を通して得られたフィールドの値が負数の場合、C<-> フラグと
-同様の効果 (左詰め) があります。
+C<*> 를 통해서 얻은 필드의 값이 음수인 경우 C<-> 플래와 같은 
+효과가 있습니다.
 
 =item precision, or maximum width
 X<precision>
@@ -12177,11 +12175,10 @@ the number of decimal places to show (the default being 6), e.g.:
 
 =end original
 
-C<.> の後に数値を指定することで、(数値変換の場合)精度や(文字列変換の場合)
-最大幅を指定できます。
-小数点数フォーマットの場合、'g' と 'G' を除いて、表示する小数点以下の
-桁数を指定します(デフォルトは 6 です)。
-例:
+C<.> 의 뒤에 수치를 지정하는 것으로 (수치변환인 경우) 정도나 (문자열변환인 경우) 최대폭을 지정할 수 있습니다.
+소수점수 포맷인 경우, 'g' 와 'G' 를 빼고, 표시하는 소수점이하의 
+자릿수를 지정합니다(기본값은 6 입니다).
+예제:
 
   # these examples are subject to system-specific variation
   printf '<%f>', 1;    # prints "<1.000000>"
@@ -12197,9 +12194,9 @@ including prior to the decimal point as well as after it, e.g.:
 
 =end original
 
-'g' と 'G' の場合、これは表示する数値の数を指定します;
-これには小数点の前の数値と後の数値を含みます。
-例:
+'g' 와 'G' 인 경우, 이것은 표시하는 숫자값의 수를 지정합니다;
+이것에는 소수점 앞의 수치와 뒤의 수치를 포함합니다.
+예제:
 
   # these examples are subject to system-specific variation
   printf '<%g>', 1;        # prints "<1>"
@@ -12218,9 +12215,8 @@ where the 0 flag is ignored:
 
 =end original
 
-整数変換の場合、精度を指定すると、数値自体の出力はこの幅に 0 で
-パッディングするべきであることを暗に示すことになり、0 フラグは
-無視されます:
+정수변환인 경우, 정도를 지정하면 수치자체의 출력은 이 폭에 0 으로 
+패딩해야하는 것을 암시적으로 나타내는 것으로 0 플래그는 무시됩니다.
 
   printf '<%.6d>', 1;      # prints "<000001>"
   printf '<%+.6d>', 1;     # prints "<+000001>"
@@ -12243,8 +12239,8 @@ to fit in the specified width:
 
 =end original
 
-文字列変換の場合、精度を指定すると、指定された幅に収まるように文字列を
-切り詰めます:
+문자열 변환의 경우, 정도를 지정하면, 지정된 폭에 맞도록 문자열을 
+자를 수 있습니다:
 
   printf '<%.5s>', "truncated";   # prints "<trunc>"
   printf '<%10.5s>', "truncated"; # prints "<     trunc>"
@@ -12255,7 +12251,7 @@ You can also get the precision from the next argument using C<.*>:
 
 =end original
 
-C<.*> を使って精度を次の引数から取ることも出来ます:
+C<.*> 를 사용해서 정도를 다음의 인수부터 얻을 수도 있습니다:
 
   printf '<%.6x>', 1;       # prints "<000001>"
   printf '<%.*x>', 6, 1;    # prints "<000001>"
