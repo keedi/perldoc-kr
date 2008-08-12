@@ -41,10 +41,53 @@ sub do_do {
     return $self->forward('default', $invalid) if $invalid;
 
     delete $param->{password_confirm};
+
     $param->{confirm} = 'wait';
+    my $digest = Digest::MD5->new;
+    $param->{digest} = $digest->add($param->{email})->hexdigest;
     $self->M('KpwDB::RegistForm')->create($param);
 
+    # 메일 슝 ~ 나중에 ... 
 }
+
+sub do_process {
+    my $self = shift;
+
+    my $ukey = $self->req->param('ukey');
+    
+    my $user = $self->M('KpwDB::RegistForm')->find({
+	'digest'  => $ukey,
+	'confirm' => 'wait',
+						   });
+
+
+    $self->stash->{ukey} = $ukey;
+    $self->stash->{user} = $user;
+
+}
+
+sub do_complete {
+    my $self = shift;
+
+    my $param = $self->req->parameters;
+
+    return $self->forward('error') unless $param;
+
+    my $user = $self->M('KpwDB::RegistForm')->find({
+	'digest' => $param->{ukey},
+	'confirm' => 'wait',
+						   });
+
+
+    return $self->forward('error') unless $user;
+
+    $user->confirm('reserv');
+    $user->update;
+    
+    $self->stash-{user} = $user;
+}
+
+sub do_error {}
 
 1;
 
