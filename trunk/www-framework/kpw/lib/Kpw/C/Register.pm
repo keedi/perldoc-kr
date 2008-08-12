@@ -5,10 +5,18 @@ use warnings;
 use base qw( Kpw );
 use Digest::MD5;
 
+use Data::Dumper;
+
 sub do_default {
     my $self = shift;
-
     $self->stash->{form_messages} = shift;
+    my @users =
+      $self->M('KpwDB::RegistForm')->search( undef, { order_by => ['name'] } )
+      ->all;
+    $self->stash->{users} = \@users;
+
+    $self->log->debug( Dumper @users );
+
 }
 
 sub do_do {
@@ -20,50 +28,52 @@ sub do_do {
     # FormValidator::Simple 이 이상해서.. 그냥 수동 Validation
 
     my $invalid;
-    while (my ($key, $row) = each %{ $param } ) {
-	unless ($row) {
-	    $invalid->{$key} = 'NOT_BLANK';
-	}
+    while ( my ( $key, $row ) = each %{$param} ) {
+        unless ($row) {
+            $invalid->{$key} = 'NOT_BLANK';
+        }
     }
 
-    if ($param->{password} && $param->{password} ne $param->{password_confirm}) {
-	$invalid->{diff_password} = 'NOT_CMP';
+    if (   $param->{password}
+        && $param->{password} ne $param->{password_confirm} )
+    {
+        $invalid->{diff_password} = 'NOT_CMP';
     }
 
-    if ($param->{email}) {
-	my $user = $self->M('KpwDB::RegistForm')->find({
-	    'email' => $param->{email},
-					   });
+    if ( $param->{email} ) {
+        my $user =
+          $self->M('KpwDB::RegistForm')
+          ->find( { 'email' => $param->{email}, } );
 
-	$invalid->{user_exist} = 'USER_EXIST' if $user;
+        $invalid->{user_exist} = 'USER_EXIST' if $user;
     }
 
-    return $self->forward('default', $invalid) if $invalid;
+    return $self->forward( 'default', $invalid ) if $invalid;
 
     delete $param->{password_confirm};
 
     $param->{confirm} = 'wait';
     my $digest = Digest::MD5->new;
-    $param->{digest} = $digest->add($param->{email})->hexdigest;
+    $param->{digest} = $digest->add( $param->{email} )->hexdigest;
     $self->M('KpwDB::RegistForm')->create($param);
 
-    # 메일 슝 ~ 나중에 ... 
+    # 메일 슝 ~ 나중에 ...
 }
 
 sub do_process {
     my $self = shift;
 
     my $ukey = $self->req->param('ukey');
-    
-    my $user = $self->M('KpwDB::RegistForm')->find({
-	'digest'  => $ukey,
-	'confirm' => 'wait',
-						   });
 
+    my $user = $self->M('KpwDB::RegistForm')->find(
+        {
+            'digest'  => $ukey,
+            'confirm' => 'wait',
+        }
+    );
 
     $self->stash->{ukey} = $ukey;
     $self->stash->{user} = $user;
-
 }
 
 sub do_complete {
@@ -73,21 +83,22 @@ sub do_complete {
 
     return $self->forward('error') unless $param;
 
-    my $user = $self->M('KpwDB::RegistForm')->find({
-	'digest' => $param->{ukey},
-	'confirm' => 'wait',
-						   });
-
+    my $user = $self->M('KpwDB::RegistForm')->find(
+        {
+            'digest'  => $param->{ukey},
+            'confirm' => 'wait',
+        }
+    );
 
     return $self->forward('error') unless $user;
 
     $user->confirm('reserv');
     $user->update;
-    
+
     $self->stash->{user} = $user;
 }
 
-sub do_error {}
+sub do_error { }
 
 1;
 
