@@ -4,6 +4,7 @@ use strict;
 use warnings;
 
 use MIME::QuotedPrint qw(encode_qp);
+use Encode qw(encode);
 use DateTime;
 use DateTime::Format::Mail;
 use Encode;
@@ -80,6 +81,6 @@ sub include_path {
     $context->config->{mail}->{include_path} || $context->path_to('template', 'mail');
 }
 
-sub encode_header { '=?UTF-8?Q?' . encode_qp(shift, '') . '?=' } 
+sub encode_header { '=?UTF-8?Q?' . encode_qp(encode('utf-8', shift), '') . '?=' } 
 
 1;
