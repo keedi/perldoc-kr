@@ -1,0 +1,13 @@
+# install smtp through the ubuntu pkg management 
+sudo apt-get install ssmtp
+
+# copy the ssmtp.conf to /etc/ssmtp
+cp ssmtp.conf /etc/ssmtp
+
+# install perl module called MIME::Lite::TT::HTML
+sudo cpan MIME::Lite::TT::HTML
+
+usage:
+perl mailer.pl your@email.com
+
+# you can also change template files for the new content
