@@ -83,8 +83,11 @@
 #main table {
     width: 100%;
 }
-#main table td.text {
-    width: 40%;
+#main table th.email {
+    width: 10%;
+}
+#main table th.text {
+    width: 50%;
 }
 
 /* sponsors */
