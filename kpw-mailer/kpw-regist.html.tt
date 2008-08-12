@@ -1,0 +1,22 @@
+<html>
+<body>
+
+<p>
+To: [% email %]
+<br />
+<br />
+Korean Perl Workshop 2008 등록 확인 전자우편 입니다.
+<br />
+아래 링크 주소를 클릭하셔서 등록 절차를 마무리해주세요. :-)
+<br />
+<br />
+http://event.perl.kr/kpw2008
+<br />
+고맙습니다!
+<br />
+Korean Perl Workshop 팀 일동
+<br />
+</p>
+
+</body>
+</html> 
