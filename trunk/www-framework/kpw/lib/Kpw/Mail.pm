@@ -25,14 +25,16 @@ sub send {
 sub raw_send {
     my($class, $context, $opt) = @_;
 
-    my $msg = MIME::Lite->new(
-        'Return-Path' => $opt->{from},
-        From          => $opt->{from},
-        To            => $opt->{to},
-        Subject       => encode_header( $opt->{subject} ),
-        Charset       => 'utf8',
-        Encoding      => '8bit',
-        Data          => $opt->{body},
+	my $msg = MIME::Lite->new(
+		'Return-Path'               => $opt->{from},
+		From                        => $opt->{from},
+		To                          => $opt->{to},
+		Subject                     => encode_header( $opt->{subject} ),
+		Charset                     => 'utf-8',
+		Encoding                    => '8bit',
+		'Content-Type'              => 'text/plain; charset=utf-8',
+		'Content-Transfer-Encoding' => '8bit',
+		Data                        => $opt->{body},
 	);
     $msg->replace('X-Mailer' => 'KPW Mailer');
     $msg->send;
