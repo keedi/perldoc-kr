@@ -173,7 +173,11 @@ div.content_block {
     color: #333;
 }
 div.content_block h1 {
+    margin-bottom: 1em;
     border-bottom: 2px solid #c00f0f;
+}
+div.content_block h1#top {
+    margin-bottom: 0;
 }
 div.content_block h2, div.content_block h3, div.content_block h4 {
     border-bottom: 1px dotted #777777;
@@ -181,6 +185,7 @@ div.content_block h2, div.content_block h3, div.content_block h4 {
 div.content_block .meta {
     margin: 0px 20px 0;
     padding: 2px 0 5px;
+    text-align: right;
     font-size: 0.8em;
     color: #555555;
 }
