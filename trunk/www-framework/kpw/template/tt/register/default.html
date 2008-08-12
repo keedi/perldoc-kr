@@ -66,7 +66,7 @@
                   <tr>
                     <td>[% user.name | html %]</td>
                     <td>[% user.nick | html %]</td>
-                    <td>[% user.email | html %]</td>
+                    <td>[% user.email | html | truncate(10) %]</td>
                     <td class="text">[% user.comment | html | html_line_break %]</td>
                   </tr>
 [% END %]
