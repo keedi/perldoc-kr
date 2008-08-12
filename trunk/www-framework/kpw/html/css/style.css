@@ -54,6 +54,32 @@
 #main .form .button input {
     width: 10em;
 }
+
+#main .registration table {
+    border:1px solid #AAAAAA;
+    font-size: inherit;
+    font: 100%;
+}
+#main .registration tr {
+    background-color: #ffffff;
+}
+#main .registration th, td {
+    border-color:#EFEFEF rgb(170, 170, 170) rgb(170, 170, 170) rgb(239, 239, 239);
+    border-style:solid;
+    border-width:1px;
+    font-weight: normal;
+    padding: 0.4em 0.7em;
+}
+#main .registration th, tbody th {
+    background-color: #eeeeee;
+    vertical-align: middle;
+}
+#main .registration thead th {
+    background-color: #eeffff;
+    text-align: center;
+    font-weight: bold;
+    width: auto;
+}
 #main table {
     width: 100%;
 }
