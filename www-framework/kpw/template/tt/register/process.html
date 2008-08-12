@@ -1,0 +1,18 @@
+
+  [% IF user %]
+
+   Kpw2008 예약 진행 페이지입니다.
+
+   아래의 버튼을 눌러서 참가확정! 하세요~  
+   
+   <form action="/regist/complete" method="post">
+   <input type="hidden" name="ukey" value="[% ukey %]">
+   <input type="hidden" name="action" value="regist">
+   <input type="submit" value="참가확정">
+   </form>
+  
+  [% ELSE %]
+  
+   MD5 값이 이상하자나요,... Kpw 관계자에게 문의해주세요.
+
+  [% END %]
