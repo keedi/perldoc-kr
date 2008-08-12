@@ -20,9 +20,9 @@ default:
     from: korean.perl.workshop@gmail.com
 
   status:
-    wait: 메일미확인
-    reserv: 참가비확인
-    complete: 사전등록완료
+    wait: 메일 미확인
+    reserv: 등록비 미확인
+    complete: 사전 등록 완료
 
   messages:
     email:
