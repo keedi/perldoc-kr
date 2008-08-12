@@ -3,6 +3,7 @@ package Kpw::C::Register;
 use strict;
 use warnings;
 use base qw( Kpw );
+use Digest::MD5;
 
 sub do_default {
     my $self = shift;
@@ -39,7 +40,10 @@ sub do_do {
 
     return $self->forward('default', $invalid) if $invalid;
 
-    
+    delete $param->{password_confirm};
+    $param->{confirm} = 'wait';
+    $self->M('KpwDB::RegistForm')->create($param);
+
 }
 
 1;
