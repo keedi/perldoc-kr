@@ -9,6 +9,7 @@ CREATE TABLE regist_form (
    tshirt   CHAR(4) NOT NULL,
    confirm  CHAR(32) NOT NULL,
    digest   VARCHAR(255),
+   type     CHAR(8) NOT NULL,
    created_on DATETIME NOT NULL,
    updated_on DATETIME NOT NULL,
    primary key(no),
