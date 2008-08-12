@@ -173,7 +173,7 @@ div.content_block {
     color: #333;
 }
 div.content_block h1 {
-    border-bottom: 1px solid #444444;
+    border-bottom: 2px solid #c00f0f;
 }
 div.content_block h2, div.content_block h3, div.content_block h4 {
     border-bottom: 1px dotted #777777;
