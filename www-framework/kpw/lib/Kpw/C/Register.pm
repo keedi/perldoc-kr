@@ -29,6 +29,7 @@ sub do_do {
 
     my $invalid;
     while ( my ( $key, $row ) = each %{$param} ) {
+	next if $key eq 'location';
         unless ($row) {
             $invalid->{$key} = 'NOT_BLANK';
         }
