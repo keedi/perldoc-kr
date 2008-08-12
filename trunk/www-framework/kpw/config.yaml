@@ -16,6 +16,9 @@ default:
       - tt
       - tt2
 
+  mail:
+    from: korean.perl.workshop@gmail.com
+
   status:
     wait: 메일미확인
     reserv: 참가비확인

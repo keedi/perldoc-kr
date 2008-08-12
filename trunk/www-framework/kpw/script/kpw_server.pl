@@ -1,11 +1,9 @@
-#!/opt/local/bin/perl -w
-
 use strict;
 use warnings;
 use Getopt::Long;
 use Pod::Usage;
 use FindBin;
-use lib glob "$FindBin::Bin/../../*/lib";
+use lib "$FindBin::Bin/../lib";
 
 my $debug             = 0;
 my $fork              = 0;
