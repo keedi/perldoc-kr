@@ -8,5 +8,9 @@ CREATE TABLE regist_form (
    phone    CHAR(16) NOT NULL,
    tshirt   CHAR(4) NOT NULL,
    confirm  CHAR(32) NOT NULL,
-   primary key(no, email)
+   digest   VARCHAR(255),
+   created_on DATETIME NOT NULL,
+   updated_on DATETIME NOT NULL,
+   primary key(no),
+   unique(email)
 );

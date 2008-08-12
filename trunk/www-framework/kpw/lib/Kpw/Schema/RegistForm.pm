@@ -5,7 +5,7 @@ use warnings;
 
 use base 'DBIx::Class';
 
-__PACKAGE__->load_components("Core");
+__PACKAGE__->load_components("+Kpw::DBIC::AutoStoreDateTime", "PK::Auto", "Core");
 __PACKAGE__->table("regist_form");
 __PACKAGE__->add_columns(
   "no",
@@ -24,9 +24,19 @@ __PACKAGE__->add_columns(
   { data_type => "CHAR", is_nullable => 0, size => 4 },
   "confirm",
   { data_type => "CHAR", in_nullable => 0, size => 8 },
+  "digest",
+  { data_type => "VARCHAR", in_nullable => 0, size => 255 },
+  "created_on", 
+  { data_type => "DATETIME", in_nullable => 0, size => 19,
+      default_value => "0000-00-00 00:00:00",
+  },
+  "updated_on",
+  { data_type => "DATETIME", in_nullable => 0, size => 19,
+      default_value => "0000-00-00 00:00:00",
+  },
 );
-__PACKAGE__->set_primary_key("no", "email");
-
+__PACKAGE__->set_primary_key("no");
+__PACKAGE__->add_unique_constraint("email", [ "email" ]);
 
 # Created by DBIx::Class::Schema::Loader v0.04005 @ 2008-08-12 12:31:36
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:rt/lq8lklh7w/md1Tvuvog
