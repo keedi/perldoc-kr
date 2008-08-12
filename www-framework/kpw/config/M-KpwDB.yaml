@@ -1,7 +1,7 @@
 default:
   schema_class: Kpw::Schema
   connect_info:
-    - 'dbi:SQLite:/Users/song/Project/private/perldoc-kr/www-framework/kpw/db/database.db'
+    - 'dbi:SQLite:./db/database.db'
 
 ---
 
