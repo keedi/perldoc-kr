@@ -6,6 +6,7 @@ use base qw( Kpw );
 use Digest::MD5;
 
 use Data::Dumper;
+use Kpw::Mail;
 
 sub do_default {
     my $self = shift;
