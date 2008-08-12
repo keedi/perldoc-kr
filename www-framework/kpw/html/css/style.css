@@ -111,11 +111,11 @@ legend {
 }
 
 #navigation li {
-        margin: 0;
-        float: left;
-        list-style-image: none;
-        list-style-position: outside;
-        list-style-type: none;
+    margin: 0;
+    float: left;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
 }
 #navigation li a {
     color: white;
@@ -129,15 +129,14 @@ legend {
     text-decoration: underline;
 }
 #navigation ul li a.selected {
-        font-weight: bold;
-        color: yellow;
+    font-weight: bold;
+    color: yellow;
 }
 
 /* Content */
 #content {
-        padding: 120px 0 0px;
-        background: transparent url(/images/kpw_horizontal.png) no-repeat scroll center 20px !important;
-        
+    padding: 120px 0 0px;
+    background: transparent url(/images/kpw_horizontal.png) no-repeat scroll center 20px !important;
 }
 
 /* Footer */
@@ -263,7 +262,7 @@ div.footer_block a {
     color: #ffffff;
     text-decoration: none;
 }
-div.footer_block a: hover {
+div.footer_block a:hover {
     text-decoration: underline;
     color: yellow;
 }
@@ -284,6 +283,15 @@ div.footer_block a: hover {
 }
 .width100 {
     width: 100%;
+}
+.short {
+    width: 20%;
+}
+.medium {
+    width: 40%;
+}
+.long {
+    width: 70%;
 }
 
 /* Float */
