@@ -16,6 +16,11 @@ default:
       - tt
       - tt2
 
+  status:
+    wait: 메일미확인
+    reserv: 참가비확인
+    complete: 사전등록완료
+
   messages:
     email:
       NOT_BLANK: eMail 을 입력해주세요
