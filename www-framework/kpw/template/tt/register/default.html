@@ -57,8 +57,8 @@
                   <tr>
                     <th>이름</th>
                     <th>닉네임</th>
-                    <th>email</th>
-                    <th>코멘트</th>
+                    <th class="email">email</th>
+                    <th class="text">코멘트</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -67,7 +67,7 @@
                     <td>[% user.name | html %]</td>
                     <td>[% user.nick | html %]</td>
                     <td>[% user.email | html | truncate(10) %]</td>
-                    <td class="text">[% user.comment | html | html_line_break %]</td>
+                    <td>[% user.comment | html | html_line_break %]</td>
                   </tr>
 [% END %]
                 </tbody>
