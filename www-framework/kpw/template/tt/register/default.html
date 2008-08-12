@@ -46,5 +46,24 @@
                 </fieldset>
               </form>
               <h3>신청자 현황</h3>
-              <p>현재 0명 등록중입니다.</p>
+              <p>현재 [% users.size || 0 %]명 등록중입니다.</p>
+              <table cellpadding="0" cellspacing="1" border="1" summary="신청자">
+                <caption>신청자</cpation>
+                <thead>
+                  <tr>
+                    <th>이름</th>
+                    <th>닉네임</th>
+                    <th>email</th>
+                  </tr>
+                </thead>
+                <tbody>
+[% FOREACH user IN users %]
+                  <tr>
+                    <td>[% user.name | html %]</td>
+                    <td>[% user.nick | html %]</td>
+                    <td>[% user.email | html %]</td>
+                  </tr>
+[% END %]
+                </tbody>
+              </table>
             </div>
