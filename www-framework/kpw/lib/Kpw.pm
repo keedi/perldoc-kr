@@ -3,12 +3,16 @@ package Kpw;
 use strict;
 use warnings;
 
+use FormValidator::Simple;
+
 use Soozy qw(
   -Engine=1 
   -Debug=1 
   DebugScreen 
-  ConfigLoader::ForceUTF8
+  ConfigLoader
+  ConfigPatch
   Static::Simple
+  FillInForm
 );
 
 our $VERSION = '0.01';

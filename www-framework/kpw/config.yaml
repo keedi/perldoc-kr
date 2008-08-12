@@ -16,6 +16,27 @@ default:
       - tt
       - tt2
 
+  messages:
+    email:
+      NOT_BLANK: eMail 을 입력해주세요
+      EMAIL: eMail 양식에 맞게 입력해주세요
+    password:
+      NOT_BLANK: 비밀번호 를 입력해주세요
+    password_confirm:
+      NOT_BLANK: 비밀번호_확인 을 입력해주세요
+    name:
+      NOT_BLANK: 이름 을 입력해주세요
+    nick:
+      NOT_BLANK: 닉네임 을 입력해주세요
+    phone:
+      NOT_BLANK: 휴대폰 을 입력해주세요
+    tshirt:
+      NOT_BLANK: 티셔츠사이즈 를 입력해주세요
+    diff_password:
+      DIFF: 비밀번호 와 비밀번호_확인 이 맞지않습니다
+    user_exist:
+      USER_EXIST: 이 eMail 은 이미 등록되어 있습니다
+
   V:
     DEFAULT: TT
 ---
