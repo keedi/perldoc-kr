@@ -172,9 +172,12 @@ div.content_block {
     margin-bottom: 20px;
     color: #333;
 }
-div.content_block h1, div.content_block h2, div.content_block h3, div.content_block h4 {
+div.content_block h1 {
     border-bottom: 1px solid #444444;
 }
+div.content_block h2, div.content_block h3, div.content_block h4 {
+    border-bottom: 1px dotted #777777;
+} 
 div.content_block .meta {
     margin: 0px 20px 0;
     padding: 2px 0 5px;
