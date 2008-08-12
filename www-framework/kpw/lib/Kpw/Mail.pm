@@ -65,7 +65,6 @@ sub templatize {
             COMPILE_EXT      => '.ttc',
             INCLUDE_PATH     => $class->include_path($context),
 								}) ],
-        STASH            => Template::Stash::ForceUTF8->new,
     };
     my $t = Template->new($config) or die 'TT initialize error';
 
