@@ -1,0 +1,8 @@
+
+
+  [% user.name %] 님, 등록해주셔서 감사합니다<br/>
+  현재 [% user.name %] 님의 등록상태는 [% c.config.status.${user.confirm} %] 입니다.<br/>
+  
+  # wait : 메일을 발송. 가등록 상태
+  # reserv : 메일 확인끝. 참가비 확인 상태
+  # complete : 참가비 확인 끝 - 참가티켓 양식 표시 

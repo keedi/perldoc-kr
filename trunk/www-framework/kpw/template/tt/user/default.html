@@ -1,0 +1,21 @@
+
+            <div class="content_block">
+              <h1>등록확인</h1>
+  [% IF form_messages %]
+              <ul>
+  [% FOREACH msg IN form_messages %]
+                <li>[% c.config.messages.${msg.key}.${msg.value} %]</li>
+  [% END %]
+              </ul>
+  [% END %] 
+              <form action="/user/do" method="post" id="register-form">
+                <fieldset>
+                  <legend>등록확인</legend>
+                  <dl>
+		    <dt><label for="email">email</label>: </dt><dd><input type="text" name="email" size="30" id="email" /></dd>
+		    <dt><label for="password">비밀번호</label>: </dt><dd><input type="password" name="password" size="10" id="password" /></dd>
+                  </dl>
+                  <div class="button"><input type="submit" value="등록확인" /></div>
+                </fieldset>
+              </form>
+            </div>
