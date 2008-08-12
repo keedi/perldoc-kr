@@ -79,7 +79,7 @@ Ext.onReady(function(){
         view: gview,
         autoHeight: true,
         frame:true,
-        width: 628,
+        width: 620,
         height: 600,
         collapsible: true,
         animCollapse: false,
