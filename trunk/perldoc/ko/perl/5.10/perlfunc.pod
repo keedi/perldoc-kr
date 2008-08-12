@@ -12263,8 +12263,8 @@ effect as no precision.
 
 =end original
 
-C<*> によって得られた精度が負数の場合、精度が指定されなかった場合と
-同じ効果となります。
+C<*> 에 의해서 얻어진 정도가 음수인 경우, 정도가 지정되지 않은 것과 
+같습니다.
 
   printf '<%.*s>',  7, "string";   # prints "<string>"
   printf '<%.*s>',  3, "string";   # prints "<str>"
@@ -12283,8 +12283,8 @@ e.g. C<.*2$>:
 
 =end original
 
-現在のところ精度を指定した数値から得ることはできませんが、
-将来は C<.*2$> のようにして可能にしようとしています:
+현재 정도를 지정한 수치에서 얻을 수는 없지만, 
+앞으로는 C<.*2$> 처럼 해서 가능하도록 하고 있습니다:
 
   printf '<%.*2$x>', 1, 6;   # INVALID, but in future will print "<000001>"
 
@@ -12301,12 +12301,12 @@ as supported by the compiler used to build Perl:
 
 =end original
 
-数値変換では、C<l>, C<h>, C<V>, C<q>, C<L>, C<ll> を使って解釈する数値の
-大きさを指定できます。
-整数変換 (C<d u o x X b i D U O>) では、数値は通常プラットフォームの
-デフォルトの整数のサイズ (通常は 32 ビットか 64 ビット) を仮定しますが、
-これを Perl がビルドされたコンパイラが対応している標準 C の型の一つで
-上書きできます:
+수치 변환에서는 C<l>, C<h>, C<V>, C<q>, C<L>, C<ll> 을 사용해서 해석하는 
+수치의 크기를 지정할 수 있습니다.
+정수변환 (C<d u o x X b i D U O>) 에서는 수치는 통상 플랫폼의 기본값의 
+정수의 사이즈(보통 32비트나 64비트) 를 가정합니다만, 
+이것을 Perl 이 빌드된 컴파일러가 지원하는 표준 C 의 형태의 하나로
+덮어쓸 수 있습니다:
 
 =begin original
 
@@ -12317,10 +12317,10 @@ as supported by the compiler used to build Perl:
 
 =end original
 
-   l           整数を C の "long" または "unsigned long" と解釈する
-   h           整数を C の "short" または "unsigned short" と解釈する
-   q, L or ll  整数を C の "long long", "unsigned long long",
-               "quads"(典型的には 64 ビット整数) のどれかと解釈する
+   l           정수를 C 의 "long" 또는 "unsinged long" 으로 해석함
+   h           정수를 C 의 "short" 또는 "unsinged short" 로 해석함 
+   q, L or ll  정수를 C 의 "long long", "unsinged long long ",
+               "quads"(전형적으로는 64비트 정수) 중 어느것으로 해석함
 
 =begin original
 
@@ -12331,12 +12331,11 @@ whether your Perl supports quads via L<Config>:
 
 =end original
 
-最後の例では、Perl が 64 ビット整数を理解しない場合はエラーになります。
-(このためにはプラットフォームがネイティブに 64 ビット整数に対応しているか、
-Perl が特に 64 ビット整数に対応するようにコンパイルされている
-必要があります。)
-Perl が 64 ビット整数に対応しているかどうかは L<Config> を使って
-調べられます:
+마지막의 에제에서 Perl 이 64비트 정수를 이해하지 않는 경우 에러가 됩니다.
+(이 때문에 플랫폼이 네이티브하게 64비트 정수를 지원하는 가 
+Perl 이 특히 64비트 정수를 지원하는 것처럼 컴파일될 필요가 있습니다.)
+Perl 이 64 비트 정수를 지원하는 지 어떤지는 L<Config> 를 사용해서 
+조사할 수 있습니다:
 
 	use Config;
 	($Config{use64bitint} eq 'define' || $Config{longsize} >= 8) &&
@@ -12352,10 +12351,10 @@ doubles via L<Config>:
 
 =end original
 
-浮動小数点数変換 (C<e f g E F G>) では、普通はプラットフォームのデフォルトの
-不動小数点数のサイズ (double か long double) を仮定します。
-Perl が long double に対応しているかどうかは L<Config> を使って
-調べられます:
+부동소수점 숫자변환 (C<e f g E F G>) 에서는 보통은 플랫폼의 기본값의 
+부동소수점 수의 사이즈(double 이나 long double) 을 가정합니다.
+Perl 이 long double 을 지원하는지 어떤지는 L<Config> 를 사용해서 
+조사할 수 있습니다.
 
 	use Config;
 	$Config{d_longdbl} eq 'define' && print "long doubles\n";
@@ -12367,8 +12366,8 @@ floating point size to use on your platform via L<Config>:
 
 =end original
 
-Perl が 'long double' をデフォルトの浮動小数点数として扱っているかどうかは
-L<Config> を使って調べられます:
+Perl 이 'long double' 을 기본값의 부동소수점 수로 취급하는지 어떤지는 
+L<Config>  를 사용해서 알 수 있습니다:
 
         use Config;
         ($Config{uselongdouble} eq 'define') &&
@@ -12380,7 +12379,7 @@ It can also be the case that long doubles and doubles are the same thing:
 
 =end original
 
-long double と double が同じ場合もあります:
+long double 과 double 이 같은 경우도 있습니다:
 
         use Config;
         ($Config{doublesize} == $Config{longdblsize}) &&
@@ -12395,10 +12394,10 @@ default for Perl code.
 
 =end original
 
-サイズ指定子 C<V> は Perl のコードには何の影響もありませんが、これは
-XS コードとの互換性のために対応しています; これは「Perl 整数 (または
-浮動小数点数) として標準的なサイズを使う」ことを意味し、これは Perl の
-コードでは既にデフォルトです。
+사이즈의 지정자 C<V> 는 Perl 의 코드에는 아무런 영향도 없지만, 이것은 
+XS 코드와의 호환성을 위해 지원고 있습니다; 이것은 "Perl 정수 (또는 
+부동소수점수" 로써 표준적인 사이즈를 사용하는" 것을 의미하고, 이것은 
+Perl 의 코드에서는 이미 기본값입니다.
 
 =item order of arguments
 
@@ -12415,14 +12414,14 @@ would have been the next argument in any case).
 
 =end original
 
-通常、sprintf は各フォーマット指定について、使われていない次の引数を
-フォーマットする値として使います。
-追加の引数を要求するためにフォーマット指定 C<*> を使うと、
-これらはフォーマットする値の I<前> のフォーマット指定に現れる順番に
-引数リストから消費されます。
-引数の位置が明示的なインデックスを使って指定された場合、
-(明示的に指定したインデックスが次の引数の場合でも)
-これは通常の引数の順番に影響を与えません。
+보통 sprintf 는 각 포맷지정에 대해서 사용되지 않은 다음의 인수를 
+포맷하는 값으로 사용합니다.
+추가의 인수를 요구하기 위해서 포맷 지정 C<*> 를 사용하면, 
+이것들은 포맷하는 값의 I<앞> 의 포맷지정에 나타나는 순서로 
+인수리스트에서 소비됩니다.
+인수의 위치가 명시적인 인덱스를 사용해서 지정된 경우, 
+(명시적으로 지정한 인덱스가 다음 인수일 경우에도)
+이것은 일반적인 인수의 순서에 영향을 주지 않습니다.
 
 =begin original
 
@@ -12430,7 +12429,7 @@ So:
 
 =end original
 
-それで:
+그래서:
 
   printf '<%*.*s>', $a, $b, $c;
 
@@ -12441,8 +12440,8 @@ as the value to format, while:
 
 =end original
 
-とすると C<$a> を幅に、C<$b> を精度に、C<$c> をフォーマットの値に
-使いますが、一方:
+라고 하면 C<$a> 를 폭으로 C<$b> 를 정도로 C<$c> 를 포맷의 값으로 
+사용합니다만, 한편으로:
 
   printf '<%*1$.*s>', $a, $b;
 
@@ -12453,7 +12452,7 @@ value to format.
 
 =end original
 
-とすると C<$a> を幅と精度に、C<$b> をフォーマットの値に使います。
+라고 하면 C<$a> 를 폭과 정도로, C<$b> 를 포맷의 값으로 사용합니다.
 
 =begin original
 
@@ -12462,8 +12461,8 @@ index, the C<$> may need to be escaped:
 
 =end original
 
-以下にさらなる例を示します - 明示的にインデックスを使う場合、C<$> は
-エスケープする必要があることに注意してください。
+아래에 보다 자세한 예제를 나타냅니다 - 명시적으로 인덱스를 사용하는 경우, 
+C<$> 는 이스케이프할 필요가 있는 것에 주의해주세요.
 
   printf "%2\$d %d\n",    12, 34;		# will print "34 12\n"
   printf "%2\$d %d %d\n", 12, 34;		# will print "34 12 34\n"
@@ -12481,10 +12480,10 @@ and L<POSIX>.
 
 =end original
 
-C<use locale> が有効で、POSIX::setlocale() が呼び出されている場合、
-フォーマットされた浮動小数点数の小数点として使われる文字は
-LC_NUMERIC ロケールの影響を受けます。
-L<perllocale> と L<POSIX> を参照してください。
+C<use locale> 이 유효하고, POSIX::setlocale() 이 호출된 경우, 
+포맷된 부동소수점수의 소수점으로 사용되는 문자는 
+LC_NUMERIC 로케일의 영향을 받습니다.
+L<perllocale> 과 L<POSIX> 를 참조해주세요.
 
 =item sqrt EXPR
 X<sqrt> X<root> X<square root>
@@ -12499,10 +12498,10 @@ loaded the standard Math::Complex module.
 
 =end original
 
-EXPR の平方根を返します。
-EXPR を省略すると、C<$_> の平方根を返します。
-標準の Math::Complex モジュールを使わない場合は、
-負の数の引数は扱えません。
+EXPR 의 평방근을 반환합니다.
+EXPR 을 생략하면 C<$_> 의 평방근을 반환합니다.
+표준의 Math::Complex 모듈을 사용하지 않는 경우는 
+음수의 인수는 취급할 수 없습니다.
 
     use Math::Complex;
     print sqrt(-2);    # prints 1.4142135623731i
@@ -12518,7 +12517,7 @@ Sets the random number seed for the C<rand> operator.
 
 =end original
 
-rand 演算子のためのシード値を設定します。
+rnad 여난자를 위해 시드 값을 설정합니다.
 
 =begin original
 
@@ -12528,8 +12527,8 @@ program.
 
 =end original
 
-この関数のポイントは、プログラムを実行するごとに C<rand> 関数が
-異なる乱数列を生成できるように C<rand> 関数の「種」を設定することです。
+이 함수의 포인트는 프로그램을 실행하는 것으로 C<rand> 함수가 
+다른 난수열을 생성할 수 있도록 C<rand> 함수의 "종류"를 설정하는 것입니다.
 
 =begin original
 
@@ -12540,10 +12539,10 @@ Perl versions, it should call C<srand>.
 
 =end original
 
-srand() が明示的に呼び出されなかった場合、最初に C<rand> 演算子を使った
-時点で暗黙に呼び出されます。
-しかし、これは Perl のバージョンが 5.004 より前では行われませんので、
-プログラムが古い Perl で実行される場合は、C<srand> を呼ぶべきです。
+srand() 가 명시적으로 호출되지 않은 경우, 최초에 C<rand> 연산자를 사용한 
+시점에서 암묵적으로 호출됩니다.
+그러나, 이것은 Perl 의 버젼이 5.004 보다 앞에서는 수행되지 않기때문에 
+프로그램이 낡은 Perl 로 실행되는 경우는 C<srand> 를 호출해야합니다.
 
 =begin original
 
@@ -12555,10 +12554,10 @@ if available.
 
 =end original
 
-ほとんどのプログラムはそもそも srand() を呼ぶ必要すらありません;
-例外は、時刻、プロセス ID、メモリ配置、(利用可能なら) F</dev/urandom>
-デバイスといった、一般的に受け入れられるデフォルトよりも暗号学的に
-強力な開始点が必要な場合です。
+대부분의 프로그램은 원래 srand() 를 부를 필요도 없습니다;
+예외는 시각, 프로세스 ID, 메모리 배치, (이용가능하다면) F</dev/urandom> 
+디바이스같은 일반적으로 받아들일 수 있는 기본값보다도 암호학적으로 
+강력한 개시점이 필요한 경우입니다.
 
 =begin original
 
@@ -12569,10 +12568,10 @@ Otherwise, don't call srand() more than once in your program.
 
 =end original
 
-同じ $seed を使って srand($seed) を呼び出すことで、rand() から I<同じ>
-乱数列を再現できますが、これは普通テストやデバッグのために予測された
-結果を生成するために使われます。
-それ以外では、srand() をプログラム内で 2 回以上呼び出さないでください。
+같은 $seed 를 사용해서 srand($seed) 를 호출하는 것으로 rand() 에서 I<같은>
+난수형을 재현할 수 있지만, 이것은 보통 테스트나 디버그를 위해서 예측되는 
+결과를 생성하기 위해 사용됩니다.
+그 이외에서는 srand() 를 프로그램 안에서 2 회 이상 호출하지 않도록 하세요.
 
 =begin original
 
@@ -12583,10 +12582,10 @@ srand() again actually I<loses> randomness.
 
 =end original
 
-srand() (引数なし)をプログラム中でI<複数回呼び出してはいけません>。
-乱数生成器の内部状態はどのような種によって提供されるものよりも
-高いエントロピーを持っているので、srand() を再び呼び出すと
-ランダム性が I<失われます>。
+srand() (인수없는)를 프로그램 안에서 I<여러번 호출해서는 안됩니다>.
+난수생성기의 내부상태는 어떤 종류에 의해 제공되는 것보다도 
+높은 엔트로피를 가지고 있기 때문에 srand() 를 다시 호출하면 
+랜덤성이 I<상실됩니다>.
 
 =begin original
 
@@ -12597,10 +12596,10 @@ C<srand> an integer.
 
 =end original
 
-C<srand> のほとんどの実装では整数を取り、小数を暗黙に切り捨てます。
-これは、C<srand(42)> は普通 C<srand(42.1)> と同じ結果になることを
-意味します。
-安全のために、C<srand> には常に整数を渡しましょう。
+C<srand> 의 대부분의 구성에서는 정수를 얻어서, 소수를 암묵적으로 내립니다.
+이것은 C<srand(42)> 는 보통 C<srand(42.1)> 과 같은 결과가 되는 것을 
+의미합니다.
+안전을위해서 C<srand> 에는 항상 정수를 건내도록 합시다.
 
 =begin original
 
@@ -12611,11 +12610,11 @@ programs supply their own seed value (often C<time ^ $$> or C<time ^
 
 =end original
 
-5.004 以前の Perl では、デフォルトのシード値は現在の C<time> でした。
-これは特によいシード値ではありませんでしたので、
-多くの古いプログラムは自力でシード値を指定しています
-(C<time ^ $$> または C<time ^ ($$ + ($$ << 15))> がよく使われました)が、
-もはやこれは必要ありません。
+5.004 이전의 Perl 에서는 기본값의 시드값은 현재의 C<time> 이었습니다.
+이것은 특히 좋은 시드값이 아니었기 때문에, 
+많은 낡은 프로그램은 자력으로 시드값을 설정하고 있습니다만(C<time ^ $$> 또는 
+C<time ^ ($$ + ($$ << 15)) 가 자주 사용됩니다), 
+이미 이것은 필요없습니다.
 
 =begin original
 
@@ -12626,10 +12625,10 @@ example:
 
 =end original
 
-しかし、暗号処理にはもっとランダムな値を使う必要があります。
-急激に変化するOS のステータス値プログラムの出力をひとつまたは複数用い、
-圧縮してチェックサムをとる、というようなことが普通行なわれます。
-例えば:
+그러나, 암호처리에는 보다 랜덤한 값을 사용할 필요가 있습니다.
+급격하게 변화하는 OS 의 상태값 프로그램의 출력을 하나 또는 복수를 이용해 
+압축해서 체크섬을 얻는 것 같은 것이 보통 수행됩니다.
+예를들면:
 
     srand (time ^ $$ ^ unpack "%L*", `ps axww | gzip -f`);
 
@@ -12640,8 +12639,8 @@ module in CPAN.
 
 =end original
 
-特にこのようなことに関心がある場合は、
-CPAN の C<Math::TrulyRandom> モジュールを参照して下さい。
+특히 이런 것에 관심이 있는 경우는 
+CPAN 의 C<Math::TrulyRandom> 모듈을 참조해주세요.
 
 =begin original
 
@@ -12649,7 +12648,7 @@ Frequently called programs (like CGI scripts) that simply use
 
 =end original
 
-(CGI スクリプトのような)頻繁に呼び出されるプログラムで単純に
+(CGI 스크립트처럼) 간결하게 호출되는 프로그램으로 단순히 
 
     time ^ $$
 
@@ -12659,7 +12658,7 @@ for a seed can fall prey to the mathematical property that
 
 =end original
 
-を種として使うと、3 回に 1 回は以下の数学特性
+를 시드로 사용하면 3 번에 한번은 아래의 수학특성 
 
     a^b == (a+1)^(b+1)
 
@@ -12669,8 +12668,8 @@ one-third of the time.  So don't do that.
 
 =end original
 
-の餌食になります。
-従ってこのようなことはしてはいけません。
+이 됩니다.
+따라서 이런 것은 해서는 안됩니다.
 
 =item stat FILEHANDLE
 X<stat> X<file, status> X<ctime>
@@ -12690,11 +12689,11 @@ used as follows:
 
 =end original
 
-FILEHANDLE か DIRHANDLE を通じてオープンされているファイルか、
-EXPR で指定されるファイルの情報を与える、13 要素のリストを返します。
-EXPR が省略されると、 C<$_> が用いられます。
-stat に失敗した場合には、空リストを返します。
-普通は、以下のようにして使います:
+FILEHANDLE 이 DIRHANDLE 을 통해서 오픈되는 파일이 
+EXPR 로 지정된 파일의 정보를 주는 13 요소의 리스트를 반환합니다.
+EXPR 이 생략되면 C<$_> 가 이용됩니다.
+stat 에 실패한 경우에는 빈 리스트를 반환합니다.
+보통은 아래처럼 해서 사용합니다:
 
     ($dev,$ino,$mode,$nlink,$uid,$gid,$rdev,$size,
        $atime,$mtime,$ctime,$blksize,$blocks)
@@ -12707,8 +12706,8 @@ meanings of the fields:
 
 =end original
 
-全てのファイルシステムで全てのフィールドに対応しているわけではありません。
-フィールドの意味は以下の通りです。
+모든 파일시스템에서 모든 필드를 지원하는 것은 아닙니다.
+필드의 의미는 아래와 같습니다.
 
 =begin original
 
@@ -12728,19 +12727,19 @@ meanings of the fields:
 
 =end original
 
-  0 dev      ファイルシステムのデバイス番号
-  1 ino      inode 番号
-  2 mode     ファイルモード (タイプとパーミッション)
-  3 nlink    ファイルへの(ハード)リンクの数
-  4 uid      ファイル所有者のユーザー ID の数値
-  5 gid      ファイル所有者のグループ ID の数値
-  6 rdev     デバイス識別子(特殊ファイルのみ)
-  7 size     ファイルサイズ(バイト単位)
-  8 atime    紀元から、最後にアクセスされた時刻までの秒数
-  9 mtime    紀元から、最後に修正(modify)された時刻までの秒数
- 10 ctime    紀元から、inode 変更(change)された時刻までの秒数 (*)
- 11 blksize  ファイルシステム I/O に適したブロックサイズ
- 12 blocks   実際に割り当てられているブロックの数
+  0 dev      파일시스템의 디바이스 번호
+  1 ino      inode 번호
+  2 mode     파일모드(타입과 퍼미션)
+  3 nlink    파일로의 (하드) 링크의 수
+  4 uid      파일 소유자의 유저 ID 수치 
+  5 gid      파일 소유자의 그룹 ID 수치 
+  6 rdev     디바이스 식별자(특수 파일만) 
+  7 size     파일사이즈(바이트 단위)
+  8 atime    기원에서 마지막에 접근된 시각까지의 초수
+  9 mtime    기원에서 최후에 수정(modify) 된 시각까지의 초수
+ 10 ctime    기원에서 inode 변경(change) 된 시각까지의 초(*)
+ 11 blksize  파일시스템 I/O 에 적합한 블록사이즈
+ 12 blocks   실제로 할당된 블록의 수 
 
 =begin original
 
@@ -12748,7 +12747,7 @@ meanings of the fields:
 
 =end original
 
-(紀元は GMT で 1970/01/01 00:00:00)
+(기원은 GMT 로 1970/01/01 00:00:00)
 
 =begin original
 
@@ -12758,11 +12757,10 @@ ctime field is non-portable.  In particular, you cannot expect it to be a
 
 =end original
 
-(*) 全てのフィールドが全てのファイルシステムタイプで対応しているわけでは
-ありません。
-明らかに、ctime のフィールドは移植性がありません。
-特に、これから「作成時刻」を想定することは出来ません。
-詳細については L<perlport/"Files and Filesystems"> を参照してください。
+(*) 모든 필드가 모든 파일시스템 타입에서 지원하고 있는 것은 아닙ㄴ디ㅏ.
+명백하게 ctime 의 필드는 이식성이 없습니다.
+특히, 이제부터의 "작성시각" 을 상정할 수는 없습니다.
+자세한 내용에 대해서는 L<perlport"Files and Filesystems"> 를 참조해주세요.
 
 =begin original
 
@@ -12772,10 +12770,10 @@ last C<stat>, C<lstat>, or filetest are returned.  Example:
 
 =end original
 
-下線だけの _ という特別なファイルハンドルを C<stat> に渡すと、
-実際には stat を行なわず、stat 構造体に残っている
-前回の stat やファイルテストの情報が返されます。
-例:
+밑줄 뿐인 _ 이라고 하는 특별한 파일핸들을 C<stat> 에 건내면 
+실제로는 stat 을 수행하지 않고 stat 구조체에 남아있는 
+앞의 stat 이나 파일테스트의 정보가 반환됩니다.
+예제:
 
     if (-x $file && (($d) = stat(_)) && $d < 0) {
 	print "$file is executable NFS file\n";
@@ -12788,8 +12786,7 @@ under NFS.)
 
 =end original
 
-(これは、NFS のもとでデバイス番号が負になるマシンで
-のみ動作します。)
+(이것은 NFS 을 기반으로 디바이스 번호가 음수가 되는 머신에서만 동작합니다.)
 
 =begin original
 
@@ -12799,9 +12796,9 @@ if you want to see the real permissions.
 
 =end original
 
-モードにはファイルタイプとその権限の両方が含まれているので、
-本当の権限を見たい場合は、(s)printf で C<"%"> を使うことで
-ファイルタイプをマスクするべきです。
+모드에는 파일타입과 그 권한의 양쪽이 포함되어 있기에 
+진짜 권한을 보고싶은 경우는 (s)printf로 C<"%"> 를 사용하는 것으로 
+파일타입을 마스크해야 합니다.
 
     $mode = (stat($filename))[2];
     printf "Permissions are %04o\n", $mode & 07777;
@@ -12814,9 +12811,8 @@ the special filehandle C<_>.
 
 =end original
 
-スカラコンテキストでは、C<stat> は成功か失敗を表す真偽値を返し、
-成功した場合は、特別なファイルハンドル C<_> に結び付けられた
-情報をセットします。
+스칼라 컨텍스트에서는 C<stat> 은 성공/실패를 나타내는 참거짓값을 반환하고,
+성공시에는 특별한 파일핸들 C<_> 에 결부된 정보를 설정합니.
 
 =begin original
 
@@ -12824,7 +12820,7 @@ The L<File::stat> module provides a convenient, by-name access mechanism:
 
 =end original
 
-L<File::stat> モジュールは、便利な名前によるアクセス機構を提供します。
+L<File::stat> 모듈은 편리한 이름으로 접근 기구를 제공합니다.
 
     use File::stat;
     $sb = stat($filename);
@@ -12839,8 +12835,8 @@ You can import symbolic mode constants (C<S_IF*>) and functions
 
 =end original
 
-モード定数 (C<S_IF*>) と関数 (C<S_IS*>) を Fcntl モジュールから
-インポートできます。
+모드 지정 (C<S_IF*>) 과 함수 (C<S_IS*>) 를 Fcntl 모듈에서 
+임포트할 수 있습니다.
 
     use Fcntl ':mode';
 
@@ -12862,8 +12858,8 @@ The commonly available C<S_IF*> constants are
 
 =end original
 
-最後の二つは C<-u> と C<-d> 演算子を使っても書けます。
-一般に利用可能な C<S_IF*> 定数は以下のものです。
+마지막의 두개는 C<-u> 와 C<-d> 연산자를 사용해서도 쓸 수 있습니다.
+일반적으로 이용가능한 C<S_IF*> 정수는 아래와 같습니다.
 
     # Permissions: read, write, execute, for user, group, others.
 
@@ -12890,7 +12886,7 @@ and the C<S_IF*> functions are
 
 =end original
 
-一般に利用可能な C<S_IF*> 関数は以下のものです。
+일반적으로 이용가능한 C<S_IF*> 함수는 아래와 같습니다.
 
     S_IMODE($mode)	the part of $mode containing the permission bits
 			and the setuid/setgid/sticky bits
@@ -12918,10 +12914,10 @@ instead of the target file behind the link, use the C<lstat> function.
 
 =end original
 
-C<S_*> 定数に関する詳細についてはネイティブの chmod(2) と stat(2) の
-ドキュメントを参照して下さい。
-リンクの先にあるファイルではなく、シンボリックリンクそのものの情報を
-得たい場合は、C<lstat> 関数を使ってください。
+C<S_*> 정수에 관한 자세한 내용에 대해서는 네이티브의 chmod(2) 와 
+stat(2) 의 문서를 참조해주세요.
+링크의 앞에 있는 파일이 아닌, 심볼릭 링크 그 것의 정보를 얻고 싶은 경우는 
+C<lstat> 함수를 사용해주세요.
 
 =item state EXPR
 X<state>
@@ -12941,9 +12937,9 @@ is entered.
 
 =end original
 
-C<state> は C<my> と同様に、レキシカルスコープの変数を宣言します。
-しかし、ブロックに入る毎に再初期化されるレキシカル変数と違って、
-これらの変数は決して再初期化されません。
+C<state> 는 C<my> 처럼 렉시컬 영역의 변수를 선언합니다.
+그러나 블록에 들어갈 때마다 재초기화 되는 렉시컬 변수와는 달리 
+이 변수들은 결코 재초기화되지 않습니다.
 
 =begin original
 
@@ -12952,8 +12948,8 @@ in effect.  See L<feature>.
 
 =end original
 
-C<state> 変数は C<feature 'state'> プラグマが有効の場合のみ有効です。
-L<feature> を参照してください。
+C<state> 벼누는 C<feature 'state'> 프라그마가 유효ㄴ 경우만 유효합니다.
+L<feature> 를 참조해주세요.
 
 =item study SCALAR
 X<study>
@@ -12980,26 +12976,24 @@ that contain this "rarest" character are examined.)
 
 =end original
 
-次に変更される前に、何回も文字列に対するパターンマッチを
-行なうアプリケーションで、
-そのような文字列 SCALAR(省略時には C<$_>) を予め学習しておきます。
-これは、検索のために、どのようなパターンを何回使うかによって、
-また、検索される文字列内の文字頻度の分布によって、
-時間を節約することになるかもしれませんし、逆に浪費する
-ことになるかもしれません。
-予習をした場合と、しない場合の実行時間を比較して、
-どちらが速いか調べることが、必要でしょう。
-短い固定文字列 (複雑なパターンの固定部分を含みます) をたくさん
-検索するループで、もっとも効果があるでしょう。
-同時には、一つの C<study>だけが有効です。
-別のスカラを study した場合には、以前に学習した内容は
-「忘却」されてしまいます。
-(この C<study> の仕組みは、まず、検索される文字列内の
-すべての文字のリンクされたリストが作られ、たとえば、
-すべての C<'k'> がどこにあるかがわかるようになります。
-各々の検索文字列から、C プログラムや英語のテキストから作られた
-頻度の統計情報に基づいて、もっとも珍しい文字が選ばれます。
-この「珍しい」文字を含む場所だけが調べられるのです。)
+다음에 변경되기 전에 몇 번이나 문자열에 대해서 패턴매치를 수행하는 
+어플리케이션에서 그런 문자열 SCALAR(생략시에는 C<$_>) 를 예습해둡니다.
+이것은 검색을 위해서 어떻게 패턴을 몇번 사용하는 가에 따라 
+또, 검색되는 문자열 안의 문자정도의 분포에 따라서 
+시간을 절약하는 것이 될지도 모르고, 거꾸로 낭비하게 될지도 모릅니다.
+예습을 한 경우와 하지 않는 경우의 실행시간을 비교해서 
+어느쪽이 빠른가르 ㄹ조사하는 것이 필요할 겁니다.
+짧은 고정문자열 (복잡하 패턴의 고정부분을 포함합니다)를 많이 검색하는 
+루프에서 제일 효과가 있을 겁니.
+동시에 하나의 C<study> 만이 유효합니다.
+별도의 스칼라를 study 한 경우에는 이전에 학습한 내용은 
+"망각"되어 버렸습니다.
+(이 C<study> 의 구성은 우선 검색되는 문자열 안의 모든 문자의 링크된 
+리스트가 만들어지, 예를들어, 모든 C<'k'> 가 어디에 있는 가 
+알 수 있게 됩니다.
+각각의 검색문자열에서 C 프로그램이나 영어의 텍스트에서 만들어진 
+정도의 통계정보에 기반해, 제일 바른 문자가 선택됩니다.
+이 "바른" 문자를 포ㅁ한 장소만이 조사되는 것입니다.)
 
 =begin original
 
@@ -13008,8 +13002,8 @@ before any line containing a certain pattern:
 
 =end original
 
-たとえば、特定のパターンを含む行の前にインデックスを
-付けるエントリを入れる例を示します。
+예를들어, 특정의 패턴을 포함한 줄의 앞에 인덱스를 붙이는 
+엔트리를 넣는 예제를 나타냅니다.
 
     while (<>) {
 	study;
@@ -13030,11 +13024,11 @@ first place.
 
 =end original
 
-C<f> は C<o> よりも珍しいので、C</\bfoo\b/> を探すとき、C<$_> で C<f> を
-含む場所だけが探されます。
-一般に、病的な場合を除いて、かなりの結果が得られます。
-唯一の問題は、節約できる時間が、最初にリンクリストを作る
-時間よりも多いかどうかです、
+C<f> 는 C<o> 보다도 바르기에, C</\bfoo\b/> 를 찾을 때, C<$_> 에서 C<f> 를 
+포함한 장소만이 검색됩니다.
+일반적으로 병적인 경우를 제외하고 상당한 결과를 얻을 수 있습니다.
+유일한 문제는 절약할 수 있는 시간이 최초에 링크리스트를 만드는 
+시간보다 많은지 어떤 지 입니다.
 
 =begin original
 
@@ -13048,14 +13042,13 @@ out the names of those files that contain a match:
 
 =end original
 
-実行時まで、探そうとする文字列がわからないときには、
-ループ全体を文字列として組み立てて、C<eval> すれば、
-いつも、すべてのパターンを再コンパイルするという事態は避けられます。
-ファイル全体を一つのレコードとして入力するために、
-C<$/> を未定義にすれば、かなり速くなり、
-多くの場合 fgrep(1) のような専用のプログラムより速くなります。
-以下の例は、ファイルのリスト (C<@files>) から単語のリスト (C<@words>) を
-探して、マッチするものがあったファイル名を出力します。
+실행 시까지, 찾으려고 하는 문자열을 모를 때에는 
+루프 전체를 문자열로 조립해서 C<eval> 하면 
+항상 모든 패턴을 재 컴파일 하는 사태를 피할 수 있습니다.
+파일 전체를 하나의 레코드로 입력하기 위해서 C<$/> 를 미정의하면 
+꽤 빨라지고, 많은 경우 fgrep(1) 같은 전용 프로그램보다 빨라 집니다.
+아래의 예제는 파일의 리스트 (C<@files>) 에서 단어의 리스트 (C<@words>) 를
+찾아서, 매치하는 것이 있는 파일이름을 출력합니다.
 
     $search = 'while (<>) { study;';
     foreach $word (@words) {
@@ -13088,9 +13081,9 @@ a value: the CODE ref of the closure you just created.
 
 =end original
 
-これはサブルーチン定義であり、I<本質的には> 実際の関数ではありません。
-NAME なしの場合は、無名関数定義であり、実際には値(作成したブロックの
-コードリファレンス)を返します。
+이것은 서브루틴 정의이고, I<본질적으로는> 실제의 함수가 아닙니다.
+NAME 없는 경우는 이름없는 함수선언이고 실제로ㄴ 값(작성한 블록의 
+코드 리퍼런스)를 반환합니다.
 
 =begin original
 
@@ -13100,9 +13093,9 @@ information about attributes.
 
 =end original
 
-サブルーチンとリファレンスに関する詳細については、L<perlsub> と
-L<perlref> を、属性に関する更なる情報については L<attributes> と
-L<Attribute::Handlers> を参照してください。
+서브루틴과 리퍼런스에 관한 자세한 정보에 대해서는 L<perlsub> 와 
+L<perlref> 를 속성에 관한 새로운 정보에 대해서는 L<attributes> 와 
+L<Attribute::Handlers> 를 참조해주세요.
 
 =item substr EXPR,OFFSET,LENGTH,REPLACEMENT
 X<substr> X<substring> X<mid> X<left> X<right>
@@ -13122,13 +13115,13 @@ many characters off the end of the string.
 
 =end original
 
-EXPR から、部分文字列を取り出して返します。
-最初の文字がオフセット C<0> もしくは、C<$[> に設定した値
-(しかしこれを使ってはいけません)となります。
-OFFSET に負の値(より厳密には、C<$[>より小さい値)を設定すると、
-EXPR の終わりからのオフセットとなります。
-LENGTH を省略すると、EXPR の最後まですべてが返されます。
-LENGTH が負の値だと、文字列の最後から指定された数だけ文字を取り除きます。
+EXPR 에서 부분문자열을 얻어내서 반환합니다.
+최초의 문자가 오프셋 C<0> 혹은 C<$[> 에 설정한 값(그러나 이것을 
+사용해서는 안됩니다)이 됩니다.
+OFFSET 에 음수(보다 엄밀하게 C<$[> 보다 작은 값)을 설정하면 
+EXPR 의 끝에서의 오프셋이 됩니다.
+LENGTH 를 생략하면 EXPR 의 마지막까지 모든 것이 반환됩니다.
+LENGTH 가 음수라면 문자열의 마지막에서 지ㅇ된 수만 문자를 뺍니다.
 
     my $s = "The black cat climbed the green tree";
     my $color  = substr $s, 4, 5;	# black
@@ -13147,13 +13140,13 @@ length you may need to pad or chop your value using C<sprintf>.
 
 =end original
 
-substr() を左辺値として使用することも可能で、その場合には、
-EXPR が自身左辺値でなければなりません。
-LENGTH より短いものを代入したときには、
-EXPR は短くなり、LENGTH より長いものを代入したときには、
-EXPR はそれに合わせて伸びることになります。
-EXPR の長さを一定に保つためには、C<sprintf> を使って、
-代入する値の長さを調整することが、必要になるかもしれません。
+substr() 을 좌변치로 사용하는 것도 가능하고, 그 경우에는 
+EXPR 이 자신좌변치가 아니면 안됩니다.
+LENGTH 보다 짧은 것을 대입한 때에는 
+EXPR 은 짧어지고, LENGTH 보다 긴 것을 대입한 때에는 
+EXPR 은 그에 맞춰서 늘어지게 됩니다.
+EXPR 의 길이를 일정하게 가지기 위해서는 C<sprintf> 를 사용해서 
+대입하는 값의 길이를 조정하는 것이 필요할 지도 모르겠습니다.
 
 =begin original
 
@@ -13166,13 +13159,13 @@ Here's an example showing the behavior for boundary cases:
 
 =end original
 
-OFFSET と LENGTH として文字列の外側を含むような部分文字列が指定されると、
-文字列の内側の部分だけが返されます。
-部分文字列が文字列の両端の外側の場合、substr() は未定義値を返し、
-警告が出力されます。
-左辺値として使った場合、文字列の完全に外側を部分文字列として指定すると
-致命的エラーになります。
-以下は境界条件の振る舞いを示す例です:
+OFFSET 과 LENGTH 로 문자열의 바깥쪽을 포함하도록 부분문자열이 지정되면 
+문자열의 안쪽 부분만이 반환됩니다.
+부분문자열이 문자열의 양쪽의 바깥 쪽일 경우 substr() 은 미정의값을 반환하고,
+경고가 출력됩니다.
+좌변값으로 사용한 경우, 문자열의 완전히 바깥쪽을 부분문자열로 지정하면 
+치명적인 에러가 됩니다.
+아래는 경계조건의 행동을 나타내는 예제입니다:
 
     my $name = 'fred';
     substr($name, 4) = 'dy';		# $name is now 'freddy'
@@ -13189,10 +13182,10 @@ just as you can with splice().
 
 =end original
 
-substr() を左辺値として使う代わりの方法は、置き換える文字列を 4 番目の
-引数として指定することです。
-これにより、EXPR の一部を置き換え、置き換える前が何であったかを返す、
-ということを(splice() と同様) 1 動作で行えます。
+substr() 을 좌변값으로 사용하는 대신의 방법은 치환하는 문자열을 4번째의 
+인수로 지정하는 것입니다.
+이것에 의해 EXPR 의 일부를바꾸고, 바꾸기 전이 뭐였는지를 반환하는 것을 
+(splice() 와 같은) 한동작으로 수행할 수 있습니다.
 
     my $s = "The black cat climbed the green tree";
     my $z = substr $s, 14, 7, "jumped from";	# climbed
@@ -13206,9 +13199,9 @@ of the original string is being modified; for example:
 
 =end original
 
-3 引数の substr() によって返された左辺値は「魔法の弾丸」のように振舞うことに
-注意してください; これが代入される毎に、元の文字列のどの部分が変更されたかが
-思い出されます; 例えば:
+3인수의 substr() 에 의해 반환된 좌변값은 "마법의 탄환" 처럼 행동하는 것에 
+주의하세요; 이것이 대입될 때마다 원래의 문자열의 어느 부분이 변경되는 가가 
+생각나게 됩니다; 예를들어:
 
     $x = '1234';
     for (substr($x,1,2)) {
@@ -13225,8 +13218,7 @@ unspecified.
 
 =end original
 
-バージョン 5.9.1 以前の Perl では、複数回左辺値を使った場合の結果は
-未定義でした。
+버젼5.9.1 이전의 Perl 에서는 여러번 좌변값을 사용한 경우의 결과는 미정의입니다.
 
 =item symlink OLDFILE,NEWFILE
 X<symlink> X<link> X<symbolic link> X<link, symbolic>
@@ -13240,11 +13232,11 @@ use eval:
 
 =end original
 
-NEWFILE として、OLDFILE へのシンボリックリンクを生成します。
-成功時には C<1> を返し、失敗時には C<0> を返します。
-シンボリックリンクをサポートしていないシステムでは、
-実行時に致命的エラーが発生します。
-これをチェックするには、eval を使用します:
+NEWFILE 로, OLDFILE로의 심볼릭 링크를 생성합니다.
+생성시에는 C<1> 을 반환하고, 실패시에는 C<0> 을 반환합니다.
+심볼릭 링크 링크를 지원하지 않는 시스템에서는 
+실행시에 치명적인 에러가 발생합니다.
+이것을 체크하기위해 eval 을 사용합니다;
 
     $symlink_exists = eval { symlink("",""); 1 };
 
