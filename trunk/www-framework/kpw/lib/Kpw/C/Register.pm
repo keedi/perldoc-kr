@@ -13,7 +13,7 @@ sub do_default {
     $self->stash->{form_messages} = shift;
 
     my @users =
-      $self->M('KpwDB::RegistForm')->search( undef, { order_by => ['name'] } )
+      $self->M('KpwDB::RegistForm')->search( undef, { order_by => ['created_on'] } )
       ->all;
     $self->stash->{users} = \@users;
 
