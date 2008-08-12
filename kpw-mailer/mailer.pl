@@ -12,7 +12,7 @@ my %params;
 $params{email}  = shift;
 
 my %options;
-$options{INCLUDE_PATH} = '/home/saillinux/perl/';
+$options{INCLUDE_PATH} = '/home/saillinux/kpw-mailer/';
 
 my $msg = MIME::Lite::TT::HTML->new(
                                     From        =>  'korean.perl.workshop@gmail.com',
