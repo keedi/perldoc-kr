@@ -59,7 +59,13 @@ sub do_do {
     $param->{digest} = $digest->add( $param->{email} )->hexdigest;
     $self->M('KpwDB::RegistForm')->create($param);
 
-    # 메일 슝 ~ 나중에 ...
+    # Mail
+    Kpw::Mail->send($self, { 
+	stash    => $self->stash,
+	template => 'regist.tt',
+	from     => $self->config->{mail}->{from},
+	to       => $param->{email},
+		    });
 }
 
 sub do_process {
