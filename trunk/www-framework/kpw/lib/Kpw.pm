@@ -3,8 +3,6 @@ package Kpw;
 use strict;
 use warnings;
 
-use FormValidator::Simple;
-
 use Soozy qw(
   -Engine=1 
   -Debug=1 
