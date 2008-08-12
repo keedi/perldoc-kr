@@ -10,6 +10,7 @@ use Data::Dumper;
 sub do_default {
     my $self = shift;
     $self->stash->{form_messages} = shift;
+
     my @users =
       $self->M('KpwDB::RegistForm')->search( undef, { order_by => ['name'] } )
       ->all;
@@ -29,7 +30,7 @@ sub do_do {
 
     my $invalid;
     while ( my ( $key, $row ) = each %{$param} ) {
-	next if $key eq 'location';
+	next if $key =~ /^(?:location|comment)$/;
         unless ($row) {
             $invalid->{$key} = 'NOT_BLANK';
         }

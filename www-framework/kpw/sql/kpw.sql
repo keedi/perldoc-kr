@@ -11,6 +11,7 @@ CREATE TABLE regist_form (
    digest   VARCHAR(255),
    type     CHAR(8) NOT NULL,
    location VARCHAR(255),
+   comment  TEXT,
    created_on DATETIME NOT NULL,
    updated_on DATETIME NOT NULL,
    primary key(no),
