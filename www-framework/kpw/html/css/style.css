@@ -83,10 +83,16 @@
 #main table {
     width: 100%;
 }
-#main table th.email {
+#main table tr.confirmed td {
+    background-color: #ffffee;
+}
+#main table td.number {
+    text-align: center;
+}
+#main table td.email {
     width: 10%;
 }
-#main table th.text {
+#main table td.text {
     width: 50%;
 }
 

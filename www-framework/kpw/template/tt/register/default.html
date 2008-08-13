@@ -58,18 +58,18 @@
                     <th>번호</th>
                     <th>이름</th>
                     <th>닉네임</th>
-                    <th class="email">email</th>
-                    <th class="text">코멘트</th>
+                    <th>email</th>
+                    <th>코멘트</th>
                   </tr>
                 </thead>
                 <tbody>
 [% FOREACH user IN users %]
-                  <tr>
-                    <td>[% loop.index + 1 | html %]</td>
+                  <tr[% ' class="confirmed"' IF user.confirm %]>
+                    <td class="number">[% loop.index + 1 | html %]</td>
                     <td>[% user.name | html %]</td>
                     <td>[% user.nick | html %]</td>
-                    <td>[% user.email | html | truncate(10) %]</td>
-                    <td>[% user.comment | html | html_line_break %]</td>
+                    <td class="email">[% user.email | html | truncate(10) %]</td>
+                    <td class="text">[% user.comment | html | html_line_break %]</td>
                   </tr>
 [% END %]
                 </tbody>
