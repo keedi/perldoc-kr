@@ -64,7 +64,7 @@
                 </thead>
                 <tbody>
 [% FOREACH user IN users %]
-                  <tr[% ' class="confirmed"' IF user.confirm %]>
+                  <tr[% ' class="confirmed"' IF user.confirm eq 'complete' %]>
                     <td class="number">[% loop.index + 1 | html %]</td>
                     <td>[% user.name | html %]</td>
                     <td>[% user.nick | html %]</td>
