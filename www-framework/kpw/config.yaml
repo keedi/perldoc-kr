@@ -19,7 +19,7 @@ default:
   mail:
     from: korean.perl.workshop@gmail.com
 
-  url: http://event.perl.kr/neo-kpw2008/
+  url: /
 
   status:
     wait: 메일 미확인
@@ -46,7 +46,8 @@ default:
       DIFF: 비밀번호 와 비밀번호_확인 이 맞지않습니다
     user_exist:
       USER_EXIST: 이 eMail 은 이미 등록되어 있습니다
-
+    not_exist;
+      NOT_EXIST: 입력하신 eMail 과 패스워드를 다시 한번 확인해주세요
   V:
     DEFAULT: TT
 ---
