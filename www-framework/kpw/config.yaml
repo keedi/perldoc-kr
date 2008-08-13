@@ -19,6 +19,8 @@ default:
   mail:
     from: korean.perl.workshop@gmail.com
 
+  url: http://event.perl.kr/neo-kpw2008/
+
   status:
     wait: 메일 미확인
     reserv: 등록비 미확인

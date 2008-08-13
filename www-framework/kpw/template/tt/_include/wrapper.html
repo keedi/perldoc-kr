@@ -3,13 +3,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8;" />
 [% IF c.req.path_info.match('schedule') %]
-    <link rel="stylesheet" href="/resources/css/ext-all.css" type="text/css" />
+    <link rel="stylesheet" href="[% c.config.url %]resources/css/ext-all.css" type="text/css" />
 [% END %]
-    <link rel="stylesheet" href="/css/import.css" type="text/css" />
+    <link rel="stylesheet" href="[% c.config.url %]css/import.css" type="text/css" />
 [% IF c.req.path_info.match('schedule') %]
-    <script type="text/javascript" src="/js/ext-base.js"></script>
-    <script type="text/javascript" src="/js/ext-all.js"></script>
-    <script type="text/javascript" src="/js/grouping.js"></script>
+    <script type="text/javascript" src="[% c.config.url %]js/ext-base.js"></script>
+    <script type="text/javascript" src="[% c.config.url %]js/ext-all.js"></script>
+    <script type="text/javascript" src="[% c.config.url %]js/grouping.js"></script>
 [% END %]
     <title>2008 Korean Perl Workshop</title>
   </head>
