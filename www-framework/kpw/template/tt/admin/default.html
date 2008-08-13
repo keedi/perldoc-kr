@@ -25,7 +25,7 @@
                     <td class="number">[% user.no %]</td>
                     <td>[% user.name | html %]</td>
                     <td>[% user.nick | html %]</td>
-		    <td><a href="mailto:[% user.email | html %]">[% user.email | html %]</a></td>
+		    <td class="email"><a href="mailto:[% user.email | html %]">[% user.email | html %]</a></td>
 		    <td>[% c.config.status.${user.confirm}.name || user.confirm %]</td>
 		    <td class="button">
  [% IF user.confirm == 'reserv' %]
@@ -35,10 +35,6 @@
  [% ELSE %]
                       -
  [% END %]
-<!--
-		      <button onClick="[% c.config.url %]admin/edit/?no=[% user.no %]&action=sponsor">스폰서</button>
-		      <button onClick="[% c.config.url %]admin/edit/?no=[% user.no %]&action=speaker">Speaker</button>
--->
 		    </td>
                   </tr>
 [% END %]
