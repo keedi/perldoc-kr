@@ -5,12 +5,15 @@ use warnings;
 use base qw( Kpw );
 
 sub do_default {
-    my $self = shift;
+    my ( $self, $modified, $invalid ) = @_;
 
-    my $@rs = $self->M('KpwDB::RegistForm')->search->all;
+    my @rs =
+      $self->M('KpwDB::RegistForm')
+      ->search( undef, { order_by => 'created_on' } )->all;
 
-    $self->stash->{rs} = \@rs;
-    $self->stash->{modified} = shift;
+    $self->stash->{rs}            = \@rs;
+    $self->stash->{modified}      = $modified;
+    $self->stash->{form_messages} = $invalid;
 }
 
 sub do_edit {
@@ -18,14 +21,35 @@ sub do_edit {
 
     my $param = $self->req->parameters;
 
-    my $user = $self->M('KpwDB::RegistForm')->find({
-	'no' => $param->{no},
-						   });
+    my $user = $self->M('KpwDB::RegistForm')->find( { 'no' => $param->{no}, } );
 
-    $user->confirm($param->{confirm});
+    $user->confirm( $param->{confirm} );
     $user->update;
-    return $self->forward('default', $user);
+
+    return $self->forward( 'default', $user );
 }
+
+sub do_do {
+    my $self = shift;
+
+    my $param = $self->req->parameters;
+    $self->fillinform($param);
+    $self->stash->{param} = $param;
+
+    my $invalid;
+    if ( $param->{email} ) {
+        my $user =
+          $self->M('KpwDB::RegistForm')
+          ->find( { 'email' => $param->{email}, } );
+
+        $invalid->{user_exist} = 'USER_EXIST' if $user;
+    }
+    return $self->forward( 'default', undef, $invalid ) if $invalid;
+
+    $self->M('KpwDB::RegistForm')->create($param);
+    return $self->res->redirect('/admin');
+}
+
 1;
 
 =head1 NAME

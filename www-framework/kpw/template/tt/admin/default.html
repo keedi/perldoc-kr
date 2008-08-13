@@ -1,8 +1,11 @@
-
+            <h1>keedi님을 위한 화면</h1>
+            <div class="registration">
+              <h3>신청자 status 갱신용</h3>
+              <p>일단은 스피커, 스폰서 포함 모든 신청자가 리스트가 표시되도록 하였습니다.</p>
 [% IF modified %]
- <li>  [% modified.name %] 님의 Status 를 [% c.config.status.${modified.confirm}.name %] 으로 수정했습니다.</li>
+ 	      <ul><li>[% modified.name %] 님의 status 를 [% c.config.status.${modified.confirm}.name %] 으로 수정했습니다.</li></ul>
 [% END %]
-
+              <p>현재인원: <em>[% rs.size || 0 %]</em>명</p>
 [% IF rs.size %]
               <table cellpadding="0" cellspacing="1" border="0" summary="신청자">
                 <caption>신청자</caption>
@@ -11,25 +14,86 @@
                     <th>번호</th>
                     <th>이름</th>
                     <th>닉네임</th>
-		    <th>eMail</th>
-                    <th>Status</th>
-		    <th>Action!</th>
+		    <th>email</th>
+                    <th>status</th>
+		    <th>action!</th>
                   </tr>
                 </thead>
                 <tbody>
 [% FOREACH user IN rs %]
-                  <tr[% ' class="confirmed"' IF user.confirm == 'complete' || user.confirm == 'speaker' || user.confirm == 'sponser' %]>
+                  <tr>
                     <td class="number">[% user.no %]</td>
                     <td>[% user.name | html %]</td>
                     <td>[% user.nick | html %]</td>
-		    <td>[% user.email | html %]</td>
-		    <td>[% c.config.status.${user.confirm}.name %]</td>
-		    <td>
-		      <button onClick="[% c.config.url %]admin/edit/?no=[% user.no %]&confirm=complete">등록확정</button>
+		    <td><a href="mailto:[% user.email | html %]">[% user.email | html %]</a></td>
+		    <td>[% c.config.status.${user.confirm}.name || user.confirm %]</td>
+		    <td class="button">
+ [% IF user.confirm == 'reserv' %]
+		      <button onClick="window.location='[% c.config.url %]admin/edit?no=[% user.no %]&amp;confirm=complete'">입급확인</button>
+ [% ELSIF user.confirm == 'wait' %]
+                      <button onClick="window.location='[% c.config.url %]admin/edit?no=[% user.no %]&amp;confirm=reserv'">등록확정</button>
+ [% ELSE %]
+                      -
+ [% END %]
+<!--
+		      <button onClick="[% c.config.url %]admin/edit/?no=[% user.no %]&action=sponsor">스폰서</button>
+		      <button onClick="[% c.config.url %]admin/edit/?no=[% user.no %]&action=speaker">Speaker</button>
+-->
 		    </td>
                   </tr>
 [% END %]
                 </tbody>
               </table>
 [% END %]
+            </div>
+            <div class="form">
+              <h3>쿼터 참석자 등록</h3>
+[% IF form_messages %]
+              <ul class="error">
+[% FOREACH msg IN form_messages %]
+                <li>[% c.config.messages.${msg.key}.${msg.value} %]</li>
+[% END %]
+              </ul>
+[% END %] 
+              <form action="[% c.config.url %]admin/do" method="post" id="register-form">
+                <fieldset>
+                  <legend>사전등록</legend>
+                  <dl>
+                    <dt><label for="email">email</label>:&nbsp;</dt><dd><input type="text" name="email" size="30" id="email" class="long" /></dd>
+                    <dt><label for="password">비밀번호</label>:&nbsp;</dt><dd><input type="password" name="password" size="10" id="password" class="medium" /></dd>
+                    <dt><label for="name">이름</label>:&nbsp;</dt><dd><input type="text" name="name" size="10" id="name" class="medium" /></dd>
+                    <dt><label for="nickname">닉네임</label>:&nbsp;</dt><dd><input type="text" name="nick" size="10" id="nickname" class="medium" /></dd>
+                    <dt><label for="mobile">휴대전화</label>:&nbsp;</dt><dd><dd><input type="text" name="phone" size="20" id="mobile" class="medium" /></dd>
+
+                    <dt>티셔츠 사이즈:&nbsp;</dt>
+                    <dd>
+                      <select name="tshirt" class="short">
+                        <option value="S(85)">S(85)</option>
+                        <option value="M(90)">M(90)</option>
+                        <option value="L(95)">L(95)</option>
+                        <option value="XL(100)">XL(100)</option>
+                        <option value="XXL(105)">XXL(105)</option>
+                        <option value="XXXL(110)">XXXL(110)</option>
+                      </select>
+                    </dd>
+                    <dt>직업:&nbsp;</dt>
+                    <dd>
+                      <select name="type" class="short">
+                        <option value="worker">직장인</option>
+                        <option value="student">학생 및 청소년</option>
+                      </select>
+                    </dd>
+                    <dt><label for="location">소속</label>:&nbsp;</dt>
+                    <dd><input type="text" name="location" size="50" id="location" class="long" /></dd>
+                    <dt>confirm:&nbsp;</dt>
+                    <dd>
+                      <select name="confirm" class="short">
+                        <option value="speaker">speaker</option>
+                        <option value="sponsor">sponsor</option>
+                      </select>
+                    </dd>
+                  </dl>
+                  <div class="button"><input type="submit" value="신청" /></div>
+                </fieldset>
+              </form>
             </div>
