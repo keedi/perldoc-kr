@@ -45,10 +45,6 @@
 #main .form dl dd {
     margin: 0 0 0.5em 0;
 }
-#main .form .required {
-    margin-right: 0.5em;
-    color: #c00f0f;
-}
 #main .form .button {
     margin: 0.5em auto;
     padding: 0.5em 0pt;
@@ -57,7 +53,10 @@
 #main .form .button input {
     width: 10em;
 }
-
+#main .required {
+    margin-right: 0.3em;
+    color: #c00f0f;
+}
 #main .registration table {
     border:1px solid #AAAAAA;
     font-size: inherit;
