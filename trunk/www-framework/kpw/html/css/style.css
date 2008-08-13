@@ -90,11 +90,11 @@
     background-color: #eeffff;
 }
 #main table td.number {
-    width: 10%;
+    width: 5%;
     text-align: center;
 }
 #main table td.email {
-    width: 10%;
+    width: 25%;
 }
 #main table td.text {
     width: 45%;
