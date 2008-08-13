@@ -78,7 +78,7 @@
     vertical-align: middle;
 }
 #main .registration thead th {
-    background-color: #eeffff;
+    background-color: #eeeeee;
     text-align: center;
     font-weight: bold;
     width: auto;
@@ -87,7 +87,7 @@
     width: 100%;
 }
 #main table tr.confirmed td {
-    background-color: #ffffee;
+    background-color: #eeffff;
 }
 #main table td.number {
     width: 10%;
