@@ -13686,12 +13686,12 @@ of C<IO::Handle> on any open handles.
 
 =end original
 
-v5.6.0 から、Perl は fork を行うようなあらゆる動作の前に
-出力用にオープンしていた全てのファイルをフラッシュしようとします。
-しかしこれをサポートしていないプラットフォームもあります(L<perlport> 参照)。
-安全のためには、C<$l>(English モジュールを使っているなら $AUTOFLUSH)を
-設定するか、あらゆるオープン済みハンドルにおいて C<IO::Handle> の C<autoflush()>
-メソッドが必要となるかもしれません。
+v5.6.0 부터 Perl 은 fork 를 수행하는 일련의 동작 이전에 출력용으로 오픈한
+모든 파일을 플러쉬하려고 합니다.
+그러나 이것을 지원하지 않는 플랫폼도 있습니다(L<perlport> 참조).
+안전을 위해서는 C<$|>(English 모듈을 사용한다면 $AUTOFLUSH) 를 
+설정하거나, 일련의 오픈이 끝난 핸들에 대해 C<IO::Handle> 의 
+C<autoflush()> 메소드가 필요할지도 모르겠습니다.
 
 =begin original
 
@@ -13705,15 +13705,15 @@ call (inspect $! for the reason).
 
 =end original
 
-返り値は、C<wait> が返すプログラムの exit 状態です。
-実際の exit 値を得るには 右に 8 ビットシフトしてください(後述)。
-L</exec> も参照してください。
-これはコマンドからの出力を捕らえるために使うものI<ではありません>。
-そのような用途には、L<perlop/"`STRING`"> に記述されている
-逆クォートや C<qx//> を使用してください。
--1 の返り値はプログラムを開始させることに失敗したか、wait(2) 
-システムコールがエラーを出したことを示します
-(理由は $! を調べてください)。
+반환값은 C<wait> 가 반환하는 프로그램의 exit 상태입니다.
+실제 exit 값을 얻기위해 오른쪽에 8비트 시프트해주세요(후술).
+L</exec> 도 참조해주세요.
+이것은 커맨드에서의 출력을 보호하기 위해 사용하는 것I<이 아닙니다>.
+그런 용도로는 L<perlop/" STRING "> 에 기술되어 있는 
+역따옴표 C<qw//> 를 사용해주세요.
+-1 의 반환값은 프로그램을 개시시키는 것에 실패했거나, wait(2) 
+시스템 호출이 에러를 낸 것을 나타냅니다.
+(이유는 $! 를 조사해주세요).
 
 =begin original
 
@@ -13722,9 +13722,9 @@ you use the C<system PROGRAM LIST> syntax.  Again, see L</exec>.
 
 =end original
 
-C<exec> と同様に、C<system> でも C<system PROGRAM LIST> の文法を
-使うことで、プログラムに対してその名前を嘘をつくことができます。
-再び、L</exec> を参照して下さい。
+C<exec> 와 마찬가지로 C<system> 에서 C<system PROGRAM LIST> 의 문법을 
+사용하는 것으로 프로그램에 대해서 그 이름을 거짓으로 만들 수 있습니다.
+다시 L</exec> 를 참조해주세요.
 
 =begin original
 
@@ -13735,9 +13735,9 @@ value.
 
 =end original
 
-C<SIGINT> と C<SIGQUIT> は C<system> の実行中は無視されるので、
-これらのシグナルを受信して終了させることを想定したプログラムの場合、
-返り値を利用するように変更する必要があります。
+C<SIGINT> 와 C<SIGQUIT> 는 C<system> 의 실행중은 무시되기에, 
+이 시그널들을 수신해서 종료시키는 것을 상정한 프록램의 경우
+반환값을 이용하도록 변경할 필요가 있습니다.
 
     @args = ("command", "arg1", "arg2");
     system(@args) == 0
@@ -13750,8 +13750,8 @@ C<$?> like this:
 
 =end original
 
-以下のように C<$?> を調べることで、全ての失敗の可能性を
-チェックすることができます:
+아래처럼 C<$?> 를 조사하는 것으로 모든 실패의 가능성을 
+체크할 수 있습니다:
 
     if ($? == -1) {
 	print "failed to execute: $!\n";
@@ -13771,8 +13771,8 @@ with the W*() calls of the POSIX extension.
 
 =end original
 
-または、POSIX 拡張の W*() 呼び出しを使って C<${^CHILD_ERROR_NATIVE}> の
-値を調べることもできます。
+또는 POSIX 확장의 W*() 호출을 사용해서 C<{^CHILD_ERROR_NATIVE}> 의 
+값을 조사할 수도 있습니다.
 
 =begin original
 
@@ -13782,9 +13782,9 @@ See L<perlop/"`STRING`"> and L</exec> for details.
 
 =end original
 
-引数がシステムシェル経由で実行された場合、
-結果と返り値はシェルの癖と能力によって変更されることがあります。
-詳細については L<perlop/"`STRING`"> と L</exec> を参照して下さい。
+인수가 시스템 셸 경유로 실행된 경우, 
+결과와 반환값은 셸의 버릇과 능력에 따라 변경될 수 있습니다.
+자세한 내용에 대해서는 L<perlop/" STRING "> 과 L</exec> 를 참조해주세요.
 
 =item syswrite FILEHANDLE,SCALAR,LENGTH,OFFSET
 X<syswrite>
@@ -13808,18 +13808,17 @@ available will be written.
 
 =end original
 
-write(2) システムコールを使って、指定した FILEHANDLEへ、
-変数 SCALAR から、LENGTH バイトのデータの書き込みを試みます。
-LENGTH が指定されなかった場合、 SCALAR 全体を書き込みます。
-これは、バッファ付き IO ルーチンを通りませんから、
-他の入力関数(C<sysread()> 以外), C<print>, C<write>,
-C<seek>, C<tell>, or C<eof>と混ぜて使うと、
-出力がおかしくなるかもしれません。
-perlio 層と stdio 層は普通データをバッファリングするからです。
-実際に読み込まれたデータの長さか、エラー時には C<undef> が返されます
-(この場合エラー変数 C<$!> もセットされます)。
-LENGTH が OFFSET 以降の SCALAR の利用可能なデータより大きかった場合、
-利用可能なデータのみが書き込まれます。
+write(2) 시스템 호출을 사용해서 설정한 FILEHANDLE 로 
+변수 SCALAR 에서 LENGTH 바이트의 데이터의 쓰기를 시험합니다.
+LENGTH 가 지정되지 않은 경우, SCALAR 전체를 씁니다.
+이것은 버퍼붙은 IO 루틴을 통하지 않기 때문에 
+다른 입력함수(C<sysread() 이외), C<print>, C<write>, C<seek>, 
+C<tell>, 또는 C<eof> 와 섞어서 사용하면 출력이 이상해질지도 모릅니다.
+perlio 층과 stdio 층은 보통 데이터를 버퍼링하기 때문입니다.
+실제로 읽어들인 데이터의 길이나 에러시에는 c<undef> 가 반환됩니다
+(이 경우 에러 변수 C<$!> 도 설정됩니다).
+LENGTH 가 OFFSET 이후의 SCALAR 의 이용가능한 데이터보다 큰 경우 
+이용가능한 데이터만이 써집니다.
 
 =begin original
 
@@ -13830,11 +13829,11 @@ In the case the SCALAR is empty you can use OFFSET but only zero offset.
 
 =end original
 
-OFFSET を指定すると、SCALAR の先頭以外の場所から、
-データを取り出して、書き込みを行なうことができます。
-OFFSET に負の値を指定すると、文字列の最後から逆向きに数えて
-何バイト目から書き込むかを示します。
-SCALAR が空の場合、OFFSET はゼロのみ使用できます。
+OFFSET 을 설정하면, SCALAR 의 맨앞이외의 장소에서 데이터를 뽑아내서,
+쓰기를 수행할 수 있습니다.
+OFFSET 에 음수를 지정하면 문자열의 끝에서 역방향으로 세서, 
+몇바이트째에서 썼는 가를 나타냅니다.
+SCALAR 가 빈 경우, OFFSET 은 제로만 이용가능합니다.
 
 =begin original
 
@@ -13846,11 +13845,11 @@ See L</binmode>, L</open>, and the C<open> pragma, L<open>.
 
 =end original
 
-ファイルハンドルが C<:utf8> であるとマークが付けられると、バイトではなく
-Unicode 文字が読み込まれます (syswrite() の LENGTH, OFFSET および返り値は
-Unicode 文字になります)。
-C<:encoding(...)> 層は暗黙のうちに C<:utf8> 層が導入されます。
-L</binmode>, L</open>, C<open> プラグマ, L<open> を参照してください。
+파일핸들이 C<:utf8> 이라고 마크가 붙으면, 바이트가 아닌 
+Unicode 문자가 읽혀집니다 (syswrite() 의 LENGTH, OFFSET 및 반환값은 
+Unicode 문자가 됩니다).
+C<:encoding(...)> 층은 암묵적으로 C<:utf8> 층이 도입됩니다.
+L</binmode>, L</open>, C<open> 프라그마, L<open> 을 참조해주세요.
 
 =item tell FILEHANDLE
 X<tell>
@@ -13866,11 +13865,11 @@ last read.
 
 =end original
 
-FILEHANDLE の現在の位置を I<バイト数で> 返します。
-エラーの場合は -1 を返します。
-FILEHANDLE は、実際のファイルハンドル名を示す式でもかまいません。
-FILEHANDLE が省略された場合には、
-最後に読み込みを行なったファイルについて調べます。
+FILEHANDLE 의 현재의 위치를 I<바이트 수로> 지정합니다.
+에러인 경우는 -1 을 반환합니다.
+FILEHANDLE 은 실제 파일핸들 이름을 나타내는 식이어도 상관없습니다.
+FILEHANDLE 이 생략된 경우에는 마지막으로 읽기를 수행한 파일에 
+대해서 조사합니다.
 
 =begin original
 
@@ -13881,11 +13880,11 @@ that would render seek() and tell() rather slow).
 
 =end original
 
-I<バイト単位> に関する注意: ファイルハンドルが (例えば
-C<:encoding(utf8)> 層を使って)
-文字を操作するように設定されていたとしても、tell() は文字の
-オフセットではなくバイトのオフセットを返すことに注意してください
-(なぜならこれは seek() と tell() が遅くなってしまうからです)。
+I<바이트 단위> 에 관한 주의: 파일핸들 (예를 들면
+C<:encoding(utf8)> 층을 사용해서)
+문자를 조작하도록 설정되어 있다고 해도, tell() 은 문자의 
+오프셋이 아닌 바이트의 오프셋을 반환하는 것에 주의해주세요
+(왜냐면 이것은 seek() 와 tell() 이 느려지기 때문입니다).
 
 =begin original
 
@@ -13895,9 +13894,9 @@ tell() on pipes, fifos, and sockets usually returns -1.
 
 =end original
 
-STDIN のような標準ストリームに対する tell() の返り値は OS に依存します。
--1 やその他の値が返ってくるかもしれません。
-パイプ、FIFO、ソケットに対して tell() を使うと、普通は -1 が返ります。
+STDIN 같은 표준 스트림에 대해서 tell() 의 반환값은 OS 에 의존합니다.
+-1 이나 그 외의 값이 반환될지도 모릅니다.
+파이프, FIFO, 소켓에 대해서 tell() 을 사용하면, 보통은 -1 이 반환됩니다.
 
 =begin original
 
@@ -13905,8 +13904,8 @@ There is no C<systell> function.  Use C<sysseek(FH, 0, 1)> for that.
 
 =end original
 
-C<systell> 関数はありません。
-代わりに C<sysseek(FH, 0, 1)> を使ってください。
+C<systell> 함수는 없습니다.
+대신에 C<sysseek(FH, 0, 1)> 을 사용해주세요.
 
 =begin original
 
@@ -13916,9 +13915,9 @@ Those functions ignore the buffering, while tell() does not.
 
 =end original
 
-sysread(), syswrite(), sysseek() で操作されたファイルハンドルに tell()
-(またはその他のバッファリング I/O 操作) を使わないでください。
-これらの関数はバッファリングを無視しますが、tell() は違います。
+sysread(), syswrite(), sysseek() 로 조작된 파일핸들에 tell() 
+(똔느 그 밖의 버퍼링 I/O 조작) 을 수행하지 말아주세요.
+이런 함수들은 버퍼링을 무시하지만, tell() 은 다릅니다.
 
 =item telldir DIRHANDLE
 X<telldir>
@@ -13932,11 +13931,10 @@ compaction as the corresponding system library routine.
 
 =end original
 
-DIRHANDLE 上の C<readdir> ルーチンに対する現在位置を返します。
-値は、そのディレクトリで特定の位置をアクセスするため、
-C<seekdir> に渡すことができます。
-C<telldir> は同名のシステムライブラリルーチンと同じく、
-ディレクトリ縮小時の問題が考えられます。
+DIRHANDLE 상의 C<readdir> 루틴에 대해서 현재위치를 반환합니다.
+C<seekdir> 에 넘길 수 있습니다.
+C<telldir> 은 같은 이름의 시스템 라이브러리 루틴과 마찬가지로
+디렉토리 축소시의 문제를 생각할 수 있습니다.
 
 =item tie VARIABLE,CLASSNAME,LIST
 X<tie>
