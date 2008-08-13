@@ -90,13 +90,14 @@
     background-color: #ffffee;
 }
 #main table td.number {
+    width: 10%;
     text-align: center;
 }
 #main table td.email {
     width: 10%;
 }
 #main table td.text {
-    width: 50%;
+    width: 45%;
 }
 
 /* sponsors */
