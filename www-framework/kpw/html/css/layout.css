@@ -83,7 +83,7 @@ div.box {
 }
 div.box_top {
     height: 30px;
-    background: transparent url(./../images/box_top.png) no-repeat scroll center bottom !important;
+    background: transparent url(./../images/box_top.gif) no-repeat scroll center bottom !important;
 }
 div.box_middle {
     padding-bottom: 20px;
@@ -92,5 +92,5 @@ div.box_middle {
 div.box_bottom {
     padding-top: 20px;
     height: 150px;
-    background: transparent url(./../images/box_bottom.png) no-repeat scroll center top !important;
+    background: transparent url(./../images/box_bottom.gif) no-repeat scroll center top !important;
 }
