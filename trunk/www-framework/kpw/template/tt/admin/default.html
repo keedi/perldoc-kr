@@ -25,11 +25,11 @@
                     <td class="number">[% user.no %]</td>
                     <td>[% user.name | html %]</td>
                     <td>[% user.nick | html %]</td>
-		    <td class="email"><a href="mailto:[% user.email | html %]">[% user.email | html %]</a></td>
+		    <td class="email"><a href="mailto:[% user.email | html %]">[% user.email | html %]</a><br>[% user.phone %]</td>
 		    <td>[% c.config.status.${user.confirm}.name || user.confirm %]</td>
 		    <td class="button">
  [% IF user.confirm == 'reserv' %]
-		      <button onClick="window.location='[% c.config.url %]admin/edit?no=[% user.no %]&amp;confirm=complete'">입급확인</button>
+		      <button onClick="window.location='[% c.config.url %]admin/edit?no=[% user.no %]&amp;confirm=complete'">입금확인</button>
  [% ELSIF user.confirm == 'wait' %]
                       <button onClick="window.location='[% c.config.url %]admin/edit?no=[% user.no %]&amp;confirm=reserv'">등록확정</button>
  [% ELSE %]
