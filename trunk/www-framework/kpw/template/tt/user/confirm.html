@@ -3,11 +3,30 @@
               <p><em>[% user.name %]</em> 님,</p> 
               <p>
                 등록해주셔서 감사합니다<br/>
-                현재 [% user.name %] 님의 등록상태는 [% c.config.status.${user.confirm} %] 입니다.
+                현재 [% user.name %] 님의 등록상태는 <strong>[% c.config.status.${user.confirm}.name %]</strong> 입니다.
               <p>
+		
               <ul>
-                <li><span class="property">wait</span>: 메일을 발송. 가등록 상태</li>
-                <li><span class="property">reserv</span>: 메일 확인끝. 참가비 확인 상태</li>
-                <li><span class="property">complete</span>: 참가비 확인 끝 - 참가티켓 양식 표시</li>
+                <li><span class="property">[% c.config.status.${user.confirm}.name %]</span>[% c.config.status.${user.confirm}.message %]</li>
               </ul> 
+	      <br/>
+	      [% IF user.confirm == 'reserv' %]
+              <p>
+                입금은 행사 3일 전인 8월 20일 수요일까지 완료해주셔야 [참가 확정]
+                상태가 되며, 8월 20일 이후까지 입금이 참가 확정을 못하실 경우에는
+                사전 등록 취소가 되어 대기자가 있다면 다음 대기자 분께로 기회가 넘어가며,
+                대기자가 없을 경우 행사 당일 현장 등록을 하실 분께로 기회가 넘어갑니다.
+              </p>
+              <p>입금 정보</p>
+              <ul>
+                <li><span class="property">은행</span>: 씨티은행</li>
+                <li><span class="property">계좌</span>: 188-01814-263-01</li>
+                <li><span class="property">예금주</span>: 김도형키디(KPW2008)</li>
+              </ul>
+
+	      <b>등록비 :</b>
+              <li> <b>사전등록</b>: [% IF user.type == 'student' %]청소년 및 학생(대학원생 포함)  5,000원[% ELSE %]직장인 10,000원[% END %] </li>
+
+	      [% END %]
+
             </div>
