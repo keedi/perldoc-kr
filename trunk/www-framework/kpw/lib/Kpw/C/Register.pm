@@ -14,8 +14,8 @@ sub do_default {
     $self->stash->{form_messages} = shift;
 
     my @users =
-      $self->M('KpwDB::RegistForm')->search( undef, { order_by => ['created_on'] } )
-      ->all;
+      $self->M('KpwDB::RegistForm')->search( { confirm => { '<>' => 'wait' } },
+        { order_by => ['created_on'] } )->all;
     $self->stash->{users} = \@users;
 
     $self->log->debug( Dumper @users );
@@ -32,7 +32,7 @@ sub do_do {
 
     my $invalid;
     while ( my ( $key, $row ) = each %{$param} ) {
-	next if $key =~ /^(?:location|comment)$/;
+        next if $key =~ /^(?:location|comment)$/;
         unless ($row) {
             $invalid->{$key} = 'NOT_BLANK';
         }
@@ -44,8 +44,8 @@ sub do_do {
         $invalid->{diff_password} = 'NOT_CMP';
     }
 
-    unless (Email::Valid->address($param->{email})) {
-	$invalid->{email} = 'EMAIL';
+    unless ( Email::Valid->address( $param->{email} ) ) {
+        $invalid->{email} = 'EMAIL';
     }
 
     if ( $param->{email} ) {
@@ -67,12 +67,15 @@ sub do_do {
     $self->stash->{param} = $param;
 
     # Mail
-    Kpw::Mail->send($self, { 
-	stash    => $self->stash,
-	template => 'regist.tt',
-	from     => $self->config->{mail}->{from},
-	to       => $param->{email},
-		    });
+    Kpw::Mail->send(
+        $self,
+        {
+            stash    => $self->stash,
+            template => 'regist.tt',
+            from     => $self->config->{mail}->{from},
+            to       => $param->{email},
+        }
+    );
 }
 
 sub do_process {
