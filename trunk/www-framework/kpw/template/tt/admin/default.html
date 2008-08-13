@@ -1,0 +1,34 @@
+
+
+[% IF rs.size %]
+              <table cellpadding="0" cellspacing="1" border="0" summary="신청자">
+                <caption>신청자</caption>
+                <thead>
+                  <tr>
+                    <th>번호</th>
+                    <th>이름</th>
+                    <th>닉네임</th>
+		    <th>eMail</th>
+                    <th>Status</th>
+		    <th>Action!</th>
+                  </tr>
+                </thead>
+                <tbody>
+[% FOREACH user IN users %]
+                  <tr[% ' class="confirmed"' IF user.confirm == 'complete' || user.confirm == 'speaker' || user.confirm == 'sponser' %]>
+                    <td class="number">[% user.no %]</td>
+                    <td>[% user.name | html %]</td>
+                    <td>[% user.nick | html %]</td>
+		    <td>[% user.email | html %]</td>
+		    <td>[% c.config.status.${user.confirm}.name %]</td>
+		    <td>
+		      <button onClick="[% c.config.url %]admin/edit/?no=[% user.no %]&action=complete">등록확정</button>
+		      <button onClick="[% c.config.url %]admin/edit/?no=[% user.no %]&action=sponsor">스폰서</button>
+		      <button onClick="[% c.config.url %]admin/edit/?no=[% user.no %]&action=speaker">Speaker</button>
+		    </td>
+                  </tr>
+[% END %]
+                </tbody>
+              </table>
+[% END %]
+            </div>
