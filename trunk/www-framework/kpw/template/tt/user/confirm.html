@@ -7,7 +7,7 @@
               <p>
 		
               <ul>
-                <li><span class="property">[% c.config.status.${user.confirm}.name %]</span>[% c.config.status.${user.confirm}.message %]</li>
+                <li>[% c.config.status.${user.confirm}.message %]</li>
               </ul> 
 	      <br/>
 	      [% IF user.confirm == 'reserv' %]
@@ -22,11 +22,6 @@
                 <li><span class="property">은행</span>: 씨티은행</li>
                 <li><span class="property">계좌</span>: 188-01814-263-01</li>
                 <li><span class="property">예금주</span>: 김도형키디(KPW2008)</li>
+		<li><span class="property">등록비</span>: [% IF user.type == 'student' %]청소년 및 학생(대학원생 포함)  5,000원[% ELSE %]직장인 10,000원[% END %]</li>
               </ul>
-
-	      <b>등록비 :</b>
-              <li> <b>사전등록</b>: [% IF user.type == 'student' %]청소년 및 학생(대학원생 포함)  5,000원[% ELSE %]직장인 10,000원[% END %] </li>
-
-	      [% END %]
-
             </div>
