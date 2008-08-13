@@ -1,35 +1,20 @@
-
-<h1> 사전 등록 진행 </h1>
-
+            <h1>사전 등록 진행</h1>
 [% IF user %]
-
-  <div>
-    <p>
-      Korean Perl Workshop 2008 : Rising Perl 사전 등록 진행 화면입니다.
-    </p>
-
-    <p>
-      아래의 버튼을 눌러서 참가확정! 하세요~ :-)
-    </p>
-
-    <form action="[% c.config.url %]register/complete" method="post">
-      <input type="hidden" name="ukey" value="[% ukey %]">
-      <input type="hidden" name="action" value="regist">
-      <input type="submit" value="참가확정">
-    </form>
-  </div>
-  
+            <div class="form">
+              <p>Korean Perl Workshop 2008 : Rising Perl 사전 등록 진행 화면입니다.<br />
+                아래의 버튼을 눌러서 참가확정! 하세요~ :-)
+              </p>
+              <form action="[% c.config.url %]register/complete" method="post">
+                <input type="hidden" name="ukey" value="[% ukey %]" />
+                <input type="hidden" name="action" value="regist" />
+                <div class="button"><input type="submit" value="참가확정" /></div>
+              </form>
+            </div>
 [% ELSE %]
-
-  <div>
-    <p>
-      죄송합니다. 전자우편으로 보내드린 고유 키 값에 문제가 있습니다.
-      이 문제를 해결하기 위해서 아래의 전자우편 주소로 연락을 주세요.
-    </p>
-
-    <p>
-      korean.perl.workshop@gmail.com
-    </p>
-  </div>
-
+            <div class="news">
+              <p>
+                죄송합니다. 전자우편으로 보내드린 고유 키 값에 문제가 있습니다.<br />이 문제를 해결하기 위해서 아래의 전자우편 주소로 연락을 주세요.
+              </p>
+              <p><a href="mailto:korean.perl.workshop@gmail.com">korean.perl.workshop@gmail.com</p>
+            </div>
 [% END %]
