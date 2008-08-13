@@ -7,10 +7,10 @@ use base qw( Kpw );
 sub do_default {
     my $self = shift;
 
-    my $rs = $self->M('KpwDB::RegistForm')->search;
+    my $@rs = $self->M('KpwDB::RegistForm')->search->all;
 
-    $self->stash->{rs} = $stash;
-    $self->stash->{user} = shift;
+    $self->stash->{rs} = \@rs;
+    $self->stash->{modified} = shift;
 }
 
 sub do_edit {
