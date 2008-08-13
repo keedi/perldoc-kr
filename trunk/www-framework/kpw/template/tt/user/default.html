@@ -1,14 +1,13 @@
-
-            <div class="content_block">
-              <h1>등록확인</h1>
-  [% IF form_messages %]
-              <ul>
-  [% FOREACH msg IN form_messages %]
+            <h1>등록확인</h1>
+            <div class="form">
+[% IF form_messages %]
+              <ul class="error">
+[% FOREACH msg IN form_messages %]
                 <li>[% c.config.messages.${msg.key}.${msg.value} %]</li>
-  [% END %]
+[% END %]
               </ul>
-  [% END %] 
-              <form action="[% c.config.url %]user/confirm" method="post" id="register-form">
+[% END %] 
+              <form action="[% c.config.url %]user/confirm" method="post" id="login-form">
                 <fieldset>
                   <legend>등록확인</legend>
                   <dl>
