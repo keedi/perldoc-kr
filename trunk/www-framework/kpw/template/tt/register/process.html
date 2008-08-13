@@ -1,18 +1,33 @@
 
-  [% IF user %]
+[% IF user %]
 
-   Kpw2008 예약 진행 페이지입니다.
+  <div>
+    <p>
+      Korean Perl Workshop 2008 : Rising Perl 사전 등록 진행 화면입니다.
+    </p>
 
-   아래의 버튼을 눌러서 참가확정! 하세요~  
-   
-   <form action="[% c.config.url %]register/complete" method="post">
-   <input type="hidden" name="ukey" value="[% ukey %]">
-   <input type="hidden" name="action" value="regist">
-   <input type="submit" value="참가확정">
-   </form>
+    <p>
+      아래의 버튼을 눌러서 참가확정! 하세요~ :-)
+    </p>
+
+    <form action="[% c.config.url %]register/complete" method="post">
+      <input type="hidden" name="ukey" value="[% ukey %]">
+      <input type="hidden" name="action" value="regist">
+      <input type="submit" value="참가확정">
+    </form>
+  </div>
   
-  [% ELSE %]
-  
-   MD5 값이 이상하자나요,... Kpw 관계자에게 문의해주세요.
+[% ELSE %]
 
-  [% END %]
+  <div>
+    <p>
+      죄송합니다. 전자우편으로 보내드린 고유 키 값에 문제가 있습니다.
+      이 문제를 해결하기 위해서 아래의 전자우편 주소로 연락을 주세요.
+    </p>
+
+    <p>
+      korean.perl.workshop@gmail.com
+    </p>
+  </div>
+
+[% END %]
