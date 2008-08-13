@@ -7,6 +7,7 @@ use Digest::MD5;
 
 use Data::Dumper;
 use Kpw::Mail;
+use Email::Valid;
 
 sub do_default {
     my $self = shift;
@@ -41,6 +42,10 @@ sub do_do {
         && $param->{password} ne $param->{password_confirm} )
     {
         $invalid->{diff_password} = 'NOT_CMP';
+    }
+
+    unless (Email::Valid->address($param->{email})) {
+	$invalid->{email} = 'EMAIL';
     }
 
     if ( $param->{email} ) {
