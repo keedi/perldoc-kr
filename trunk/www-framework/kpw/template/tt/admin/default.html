@@ -1,4 +1,7 @@
 
+[% IF modified %]
+ <li>  [% modified.name %] 님의 Status 를 [% c.config.status.${modified.confirm}.name %] 으로 수정했습니다.</li>
+[% END %]
 
 [% IF rs.size %]
               <table cellpadding="0" cellspacing="1" border="0" summary="신청자">
@@ -14,7 +17,7 @@
                   </tr>
                 </thead>
                 <tbody>
-[% FOREACH user IN users %]
+[% FOREACH user IN rs %]
                   <tr[% ' class="confirmed"' IF user.confirm == 'complete' || user.confirm == 'speaker' || user.confirm == 'sponser' %]>
                     <td class="number">[% user.no %]</td>
                     <td>[% user.name | html %]</td>
@@ -23,8 +26,6 @@
 		    <td>[% c.config.status.${user.confirm}.name %]</td>
 		    <td>
 		      <button onClick="[% c.config.url %]admin/edit/?no=[% user.no %]&confirm=complete">등록확정</button>
-		      <button onClick="[% c.config.url %]admin/edit/?no=[% user.no %]&confirm=sponsor">스폰서</button>
-		      <button onClick="[% c.config.url %]admin/edit/?no=[% user.no %]&confirm=speaker">Speaker</button>
 		    </td>
                   </tr>
 [% END %]
