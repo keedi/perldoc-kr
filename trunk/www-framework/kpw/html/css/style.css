@@ -99,6 +99,9 @@
 #main table td.text {
     width: 45%;
 }
+#main table td.button {
+    text-align: center;
+}
 
 /* sponsors */
 #sponsors {
