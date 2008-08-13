@@ -5,7 +5,7 @@
 }
 
 /* main */
-.news, .schedule, .location, .faq, .link, .form, .registration{
+.news, .schedule, .location, .faq, .link, .form, .registration {
     margin-bottom: 1.5em;
 }
 #main .meta {
