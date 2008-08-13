@@ -92,6 +92,10 @@ sub do_process {
 
     $self->stash->{ukey} = $ukey;
     $self->stash->{user} = $user;
+
+    $self->stash->{count} =
+      $self->M('KpwDB::RegistForm')
+      ->search( { confirm => { 'in' => [ 'complete', 'reserv' ] } } )->count;
 }
 
 sub do_complete {

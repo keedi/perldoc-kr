@@ -1,5 +1,5 @@
             <h1>사전 등록 진행</h1>
-[% IF user %]
+[% IF user && count < 50 %]
             <div class="form">
               <p>Korean Perl Workshop 2008 : Rising Perl 사전 등록 진행 화면입니다.<br />
                 아래의 버튼을 눌러서 참가확정! 하세요~ :-)
@@ -10,11 +10,17 @@
                 <div class="button"><input type="submit" value="참가확정" /></div>
               </form>
             </div>
+[% ELSIF !user %]
+            <div class="news">
+              <p>
+                죄송합니다. 전자우편으로 보내드린 고유키 값에 문제가 있습니다.<br />이 문제를 해결하기 위해서 아래의 전자우편 주소로 연락을 주세요.
+              </p>
+              <p><a href="mailto:korean.perl.workshop@gmail.com">korean.perl.workshop@gmail.com</p>
+            </div>
 [% ELSE %]
             <div class="news">
               <p>
-                죄송합니다. 전자우편으로 보내드린 고유 키 값에 문제가 있습니다.<br />이 문제를 해결하기 위해서 아래의 전자우편 주소로 연락을 주세요.
+                사전 등록 신청자가 정원에 도달했습니다.
               </p>
-              <p><a href="mailto:korean.perl.workshop@gmail.com">korean.perl.workshop@gmail.com</p>
             </div>
 [% END %]
