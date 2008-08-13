@@ -1,3 +1,11 @@
 Korean Perl Workshop 2008 등록 확인 전자우편
 
-하악 메일 발사!
+[% param.name %] 님,
+Korean Perl Workshop 2008 에 관심을 보여주셔서 감사합니다.
+
+아래의 링크를 통해서 사전등록을 진행해주세요.
+
+http://event.perl.kr/kpw2008/register/process/?ukey=[% param.digest %]
+
+_____
+ Korean Perl Workshop 2008 준비위원회

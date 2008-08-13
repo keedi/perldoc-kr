@@ -59,6 +59,7 @@ sub do_do {
     my $digest = Digest::MD5->new;
     $param->{digest} = $digest->add( $param->{email} )->hexdigest;
     $self->M('KpwDB::RegistForm')->create($param);
+    $self->stash->{param} = $param;
 
     # Mail
     Kpw::Mail->send($self, { 
