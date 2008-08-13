@@ -22,9 +22,9 @@
 		    <td>[% user.email | html %]</td>
 		    <td>[% c.config.status.${user.confirm}.name %]</td>
 		    <td>
-		      <button onClick="[% c.config.url %]admin/edit/?no=[% user.no %]&action=complete">등록확정</button>
-		      <button onClick="[% c.config.url %]admin/edit/?no=[% user.no %]&action=sponsor">스폰서</button>
-		      <button onClick="[% c.config.url %]admin/edit/?no=[% user.no %]&action=speaker">Speaker</button>
+		      <button onClick="[% c.config.url %]admin/edit/?no=[% user.no %]&confirm=complete">등록확정</button>
+		      <button onClick="[% c.config.url %]admin/edit/?no=[% user.no %]&confirm=sponsor">스폰서</button>
+		      <button onClick="[% c.config.url %]admin/edit/?no=[% user.no %]&confirm=speaker">Speaker</button>
 		    </td>
                   </tr>
 [% END %]
