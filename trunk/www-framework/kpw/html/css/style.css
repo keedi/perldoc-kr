@@ -32,6 +32,9 @@
 #main .faq .answer {
     margin-top: 1em;
 }
+#main .form dl {
+    line-height: 1.5em;
+}
 #main .form dl dt {
     float: left;
     margin: 0 0.5em 0 0;
