@@ -13,15 +13,45 @@ sub do_default {
     my $self = shift;
     $self->stash->{form_messages} = shift;
 
-    my @users =
-      $self->M('KpwDB::RegistForm')->search( { confirm => { '<>' => 'wait' } },
-        { order_by => ['created_on'] } )->all;
+    my @users
+        = $self
+            ->M('KpwDB::RegistForm')
+            ->search(
+                { confirm => { 'IN' => [ 'reserve', 'complete' ] } },
+                { order_by => ['created_on'] },
+            )
+            ->all;
     $self->stash->{users} = \@users;
 
-    my @waits =
-      $self->M('KpwDB::RegistForm')
-      ->search( { confirm => 'wait' }, { order_by => ['created_on'] } )->all;
+    my @waits
+    = $self
+        ->M('KpwDB::RegistForm')
+        ->search(
+            { confirm => 'wait' },
+            { order_by => ['created_on'] },
+        )
+        ->all;
     $self->stash->{waits} = \@waits;
+
+    my @sponsors
+        = $self
+            ->M('KpwDB::RegistForm')
+            ->search(
+                { confirm => 'sponsor' },
+                { order_by => ['created_on'] },
+            )
+            ->all;
+    $self->stash->{sponsors} = \@sponsors;
+
+    my @speakers
+        = $self
+            ->M('KpwDB::RegistForm')
+            ->search(
+                { confirm => 'speaker' },
+                { order_by => ['created_on'] },
+            )
+            ->all;
+    $self->stash->{speakers} = \@speakers;
 }
 
 sub do_do {
