@@ -1,11 +1,15 @@
       <div id="header">
-        <ul id="navigation">
-          <li><a href="[% c.config.url %]"[% ' class="selected"' UNLESS c.req.path_info %]>새소식</a></li>
-          <li><a href="[% c.config.url %]schedule"[% ' class="selected"' IF c.req.path_info.match('schedule') %]>일정</a></li>
-          <li><a href="[% c.config.url %]location"[% ' class="selected"' IF c.req.path_info.match('location') %]>위치</a></li>
-          <li><a href="[% c.config.url %]faq"[% ' class="selected"' IF c.req.path_info.match('faq') %]>FAQ</a></li>
-          <li><a href="[% c.config.url %]links"[% ' class="selected"' IF c.req.path_info.match('links') %]>링크</a></li>
-          <li><a href="[% c.config.url %]register"[% ' class="selected"' IF c.req.path_info.match('register') %]>참가신청</a></li>
-	  <li><a href="[% c.config.url %]user"[% 'class="selected"' IF c.req.path_info.match('user') %]>등록확인</a></li>
-        </ul>
+        <div id="navigation">
+          <ul class="global">
+            <li><a href="[% c.config.url %]"[% ' class="selected"' UNLESS c.req.path_info %]>새소식</a></li>
+            <li><a href="[% c.config.url %]schedule"[% ' class="selected"' IF c.req.path_info.match('schedule') %]>일정</a></li>
+            <li><a href="[% c.config.url %]location"[% ' class="selected"' IF c.req.path_info.match('location') %]>위치</a></li>
+            <li><a href="[% c.config.url %]faq"[% ' class="selected"' IF c.req.path_info.match('faq') %]>FAQ</a></li>
+            <li><a href="[% c.config.url %]links"[% ' class="selected"' IF c.req.path_info.match('links') %]>링크</a></li>
+            <li><a href="[% c.config.url %]register"[% ' class="selected"' IF c.req.path_info.match('register') %]>참가신청</a></li>
+          </ul>
+          <ul class="private">
+	    <li><a href="[% c.config.url %]user"[% ' class="selected"' IF c.req.path_info.match('user') %]>등록확인</a></li>
+          </ul>
+        </div>
       </div>
