@@ -88,6 +88,7 @@
 }
 #main table tr.confirmed td {
     background-color: #eeffff;
+    font-weight: bold;
 }
 #main table td.number {
     width: 5%;
