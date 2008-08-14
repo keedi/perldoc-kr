@@ -76,6 +76,8 @@
                 </fieldset>
               </form>
             </div>
+
+	    <!-- 신청자 명단 -->
             <div class="registration" id="status">
               <h3>신청자 명단</h3>
               <p>현재 <em>[% users.size || 0 %]</em>명 등록중입니다.</p>
@@ -103,6 +105,8 @@
               </table>
 [% END %]
             </div>
+
+	    <!-- 대기자 명단 -->
             <div class="registration" id="status">
               <h3>대기자 명단</h3>
               <p>현재 <em>[% waits.size || 0 %]</em>명이 등록 대기입니다.</p>
@@ -119,6 +123,64 @@
                 </thead>
                 <tbody>
 [% FOREACH user IN waits %]
+                  <tr>
+                    <td class="number">[% loop.count %]</td>
+                    <td>[% user.name | html %]</td>
+                    <td>[% user.nick | html %]</td>
+                    <td class="text">[% user.comment | html | html_line_break %]</td>
+                  </tr>
+[% END %]
+                </tbody>
+              </table>
+[% END %]
+            </div>
+
+	    <!-- 발표자 명단 -->
+            <div class="registration" id="status">
+              <h3>발표자 명단</h3>
+              <p>현재 <em>[% speakers.size || 0 %]</em>명의 발표자가 참석할 예정입니다.</p>
+[% IF speakers.size %]
+              <table cellpadding="0" cellspacing="1" border="0" summary="발표자">
+                <caption>발표자</caption>
+                <thead>
+                  <tr>
+                    <th>no</th>
+                    <th>이름</th>
+                    <th>닉네임</th>
+                    <th>코멘트</th>
+                  </tr>
+                </thead>
+                <tbody>
+[% FOREACH user IN speakers %]
+                  <tr>
+                    <td class="number">[% loop.count %]</td>
+                    <td>[% user.name | html %]</td>
+                    <td>[% user.nick | html %]</td>
+                    <td class="text">[% user.comment | html | html_line_break %]</td>
+                  </tr>
+[% END %]
+                </tbody>
+              </table>
+[% END %]
+            </div>
+
+	    <!-- 스폰서 참석 명단 -->
+            <div class="registration" id="status">
+              <h3>스폰서 참석 명단</h3>
+              <p>현재 <em>[% sponsors.size || 0 %]</em>명이 스폰서 쿼터로 참석합니다.</p>
+[% IF sponsors.size %]
+              <table cellpadding="0" cellspacing="1" border="0" summary="스폰서 참석자">
+                <caption>스폰서 참석자</caption>
+                <thead>
+                  <tr>
+                    <th>no</th>
+                    <th>이름</th>
+                    <th>닉네임</th>
+                    <th>코멘트</th>
+                  </tr>
+                </thead>
+                <tbody>
+[% FOREACH user IN sponsors %]
                   <tr>
                     <td class="number">[% loop.count %]</td>
                     <td>[% user.name | html %]</td>
