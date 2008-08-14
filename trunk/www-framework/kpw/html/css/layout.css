@@ -20,18 +20,23 @@
 #header #navigation ul {
     width: 50%;
 }
-#header #navigation .global {
+#header #navigation ul.global {
     float: left;
     text-align: left;
 }
-#header #navigation .private {
+#header #navigation ul.private {
     float: right;
     text-align: right;
 }
-#header #navigation li {
+#header #navigation ul li {
     display: inline;
-    margin-right: 1em;
     line-height: 40px;
+}
+#header #navigation ul.global li {
+    margin-right: 1em;
+}
+#header #navigation ul.private li {
+    margin-left: 1em;
 }
 
 /* content */
