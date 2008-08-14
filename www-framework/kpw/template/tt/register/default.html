@@ -58,7 +58,7 @@
               </form>
             </div>
             <div class="registration" id="status">
-              <h3>신청자 현황</h3>
+              <h3>신청자 명단</h3>
               <p>현재 <em>[% users.size || 0 %]</em>명 등록중입니다.</p>
 [% IF users.size %]
               <table cellpadding="0" cellspacing="1" border="0" summary="신청자">
@@ -74,6 +74,33 @@
                 <tbody>
 [% FOREACH user IN users %]
                   <tr[% ' class="confirmed"' IF user.confirm == 'complete' || user.confirm == 'speaker' || user.confirm == 'sponser' %]>
+                    <td class="number">[% loop.count %]</td>
+                    <td>[% user.name | html %]</td>
+                    <td>[% user.nick | html %]</td>
+                    <td class="text">[% user.comment | html | html_line_break %]</td>
+                  </tr>
+[% END %]
+                </tbody>
+              </table>
+[% END %]
+            </div>
+            <div class="registration" id="status">
+              <h3>대기자 명단</h3>
+              <p>현재 <em>[% waits.size || 0 %]</em>명이 등록 대기입니다.</p>
+[% IF waits.size %]
+              <table cellpadding="0" cellspacing="1" border="0" summary="대기자">
+                <caption>대기자</caption>
+                <thead>
+                  <tr>
+                    <th>no</th>
+                    <th>이름</th>
+                    <th>닉네임</th>
+                    <th>코멘트</th>
+                  </tr>
+                </thead>
+                <tbody>
+[% FOREACH user IN waits %]
+                  <tr>
                     <td class="number">[% loop.count %]</td>
                     <td>[% user.name | html %]</td>
                     <td>[% user.nick | html %]</td>
