@@ -5,13 +5,11 @@
               </p> 
               <p>
                 현재 [% user.name %] 님의 등록상태는
-                <strong>[% c.config.status.${user.confirm}.name %]</strong> 입니다.
+                <strong>[[% c.config.status.${user.confirm}.name %]]</strong> 입니다.
+              </p>
               <p>
-
-              <ul>
-                <li>[% c.config.status.${user.confirm}.message %]</li>
-              </ul> 
-
+                [% c.config.status.${user.confirm}.message %]
+              </p>
 [% IF user.confirm == 'reserv' %]
               <p>
                 입금은 행사 3일 전인 8월 20일 수요일까지 완료해주셔야 [참가 확정]
@@ -38,19 +36,19 @@
               </p>
 [% ELSIF user.confirm == 'complete' %]
               <p>
-                Korean Perl Workshop 2008 에 참가를 확정해주셔서 고맙습니다.
+                Korean Perl Workshop 2008 에 참가해주셔서 고맙습니다.
                 8월 23일 행사당일에 뵙겠습니다.
               </p>
 [% ELSIF user.confirm == 'speaker' %]
               <p>
                 Korean Perl Workshop 2008 에 발표자로써
-                참가를 확정해주셔서 고맙습니다.
+                참가해주셔서 고맙습니다.
                 8월 23일 행사당일에 뵙겠습니다.
               </p>
 [% ELSIF user.confirm == 'sponsor' %]
               <p>
                 Korean Perl Workshop 2008 에 스폰서 쿼터로써
-                참가를 확정해주셔서 고맙습니다.
+                참가해주셔서 고맙습니다.
                 8월 23일 행사당일에 뵙겠습니다.
               </p>
 [% END %]
