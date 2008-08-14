@@ -1,16 +1,18 @@
             <h1>등록확인</h1>
             <div class="news">
-              <p><em>[% user.name %]</em> 님,</p> 
               <p>
-                등록해주셔서 감사합니다<br/>
-                현재 [% user.name %] 님의 등록상태는 <strong>[% c.config.status.${user.confirm}.name %]</strong> 입니다.
+                <em>[% user.name %]</em> 님, 등록해주셔서 고맙습니다.
+              </p> 
               <p>
-		
+                현재 [% user.name %] 님의 등록상태는
+                <strong>[% c.config.status.${user.confirm}.name %]</strong> 입니다.
+              <p>
+
               <ul>
                 <li>[% c.config.status.${user.confirm}.message %]</li>
               </ul> 
-	      <br/>
-	      [% IF user.confirm == 'reserv' %]
+
+[% IF user.confirm == 'reserv' %]
               <p>
                 입금은 행사 3일 전인 8월 20일 수요일까지 완료해주셔야 [참가 확정]
                 상태가 되며, 8월 20일 이후까지 입금이 참가 확정을 못하실 경우에는
@@ -22,17 +24,34 @@
                 <li><span class="property">은행</span>: 씨티은행</li>
                 <li><span class="property">계좌</span>: 188-01814-263-01</li>
                 <li><span class="property">예금주</span>: 김도형키디(KPW2008)</li>
-		<li><span class="property">등록비</span>: [% IF user.type == 'student' %]청소년 및 학생(대학원생 포함)  5,000원[% ELSE %]직장인 10,000원[% END %]</li>
+                <li>
+                  <span class="property">등록비</span>:
+                  [% user.type == 'student'
+                    ? "청소년 및 학생(대학원생 포함) 5,000원"
+                    : "사회인 10,000원" %]
+                </li>
               </ul>
-              [% ELSIF user.confirm == 'wait' %]
-	      <p>
-		현재 등록대기자 명단에 올라있습니다. 
-		차후 공지를 참조하세요.
-	      </p>
-	      [% ELSIF user.confirm == 'complete' %]
-	      <p>
-		Korean Perl Workshop 2008 에 참가를 확정해주셔서 감사합니다.
-		8월 23일 행사당일에 뵙겠습니다.
-	      </p>
-	      [% END %]
-            </div>
+[% ELSIF user.confirm == 'wait' %]
+              <p>
+                현재 등록대기자 명단에 올라있습니다. 
+                차후 공지를 참조하세요.
+              </p>
+[% ELSIF user.confirm == 'complete' %]
+              <p>
+                Korean Perl Workshop 2008 에 참가를 확정해주셔서 고맙습니다.
+                8월 23일 행사당일에 뵙겠습니다.
+              </p>
+[% ELSIF user.confirm == 'speaker' %]
+              <p>
+                Korean Perl Workshop 2008 에 발표자로써
+                참가를 확정해주셔서 고맙습니다.
+                8월 23일 행사당일에 뵙겠습니다.
+              </p>
+[% ELSIF user.confirm == 'sponsor' %]
+              <p>
+                Korean Perl Workshop 2008 에 스폰서 쿼터로써
+                참가를 확정해주셔서 고맙습니다.
+                8월 23일 행사당일에 뵙겠습니다.
+              </p>
+[% END %]
+            </div> <!-- news -->
