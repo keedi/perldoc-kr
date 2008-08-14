@@ -18,8 +18,10 @@ sub do_default {
         { order_by => ['created_on'] } )->all;
     $self->stash->{users} = \@users;
 
-    $self->log->debug( Dumper @users );
-
+    my @waits =
+      $self->M('KpwDB::RegistForm')
+      ->search( { confirm => 'wait' }, { order_by => ['created_on'] } )->all;
+    $self->stash->{waits} = \@waits;
 }
 
 sub do_do {
