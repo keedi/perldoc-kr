@@ -22,7 +22,7 @@
                 <tbody>
 [% FOREACH user IN rs %]
                   <tr>
-                    <td class="number">[% loop.index | html %] (dbno: [% user.no | html %])</td>
+                    <td class="number">[% loop.index + 1 | html %] (db: [% user.no | html %])</td>
                     <td>[% user.name | html %] ([% user.nick | html %])</td>
                     <td>[% user.created_on | html %]</td>
 		    <td class="email"><a href="mailto:[% user.email | html %]">[% user.email | html %]</a><br>[% user.phone %]</td>
