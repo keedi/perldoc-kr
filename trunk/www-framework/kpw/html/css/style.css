@@ -90,6 +90,9 @@
     background-color: #eeffff;
     font-weight: bold;
 }
+#main table tr.confirmed td.text {
+    font-weight: normal;
+}
 #main table td.number {
     width: 5%;
     text-align: center;
