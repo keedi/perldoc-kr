@@ -17,10 +17,21 @@
     width: 860px;
     height: 40px;
 }
+#header #navigation ul {
+    width: 50%;
+}
+#header #navigation .global {
+    float: left;
+    text-align: left;
+}
+#header #navigation .private {
+    float: right;
+    text-align: right;
+}
 #header #navigation li {
-   float: left;
-   margin-right: 1em;
-   line-height: 40px;
+    display: inline;
+    margin-right: 1em;
+    line-height: 40px;
 }
 
 /* content */
