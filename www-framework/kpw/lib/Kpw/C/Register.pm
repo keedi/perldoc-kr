@@ -17,7 +17,7 @@ sub do_default {
         = $self
             ->M('KpwDB::RegistForm')
             ->search(
-                { confirm => { 'IN' => [ 'reserve', 'complete' ] } },
+                { confirm => { 'IN' => [ 'reserv', 'complete' ] } },
                 { order_by => ['created_on'] },
             )
             ->all;
