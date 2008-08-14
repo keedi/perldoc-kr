@@ -47,7 +47,7 @@ sub do_do {
     return $self->forward( 'default', undef, $invalid ) if $invalid;
 
     $self->M('KpwDB::RegistForm')->create($param);
-    return $self->res->redirect('/admin');
+    return $self->res->redirect( $self->config->{url} . 'admin' );
 }
 
 1;
