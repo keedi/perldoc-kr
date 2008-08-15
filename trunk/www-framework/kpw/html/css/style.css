@@ -59,9 +59,9 @@
     font-weight: bold;
 }
 #main .registration table {
+    margin-bottom: 1em;
     border:1px solid #AAAAAA;
-    font-size: inherit;
-    font: 100%;
+    /* font-size: inherit; */
 }
 #main .registration tr {
     background-color: #ffffff;
