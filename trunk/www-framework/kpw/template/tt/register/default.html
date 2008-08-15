@@ -77,10 +77,15 @@
               </form>
             </div>
 
-	    <!-- 신청자 명단 -->
+            <!-- 신청자 명단 -->
             <div class="registration" id="status">
               <h3>신청자 명단</h3>
               <p>현재 <em>[% users.size || 0 %]</em>명 등록중입니다.</p>
+              <table cellpadding="0" cellspacing="1" border="0">
+                <tr class="confirmed">
+                  <td class="text">입금 내역을 확인한 분의 색깔 입니다.</td>
+                </tr>
+              </table>
 [% IF users.size %]
               <table cellpadding="0" cellspacing="1" border="0" summary="신청자">
                 <caption>신청자</caption>
@@ -106,7 +111,7 @@
 [% END %]
             </div>
 
-	    <!-- 대기자 명단 -->
+            <!-- 대기자 명단 -->
             <div class="registration" id="status">
               <h3>대기자 명단</h3>
               <p>현재 <em>[% waits.size || 0 %]</em>명이 등록 대기입니다.</p>
@@ -135,7 +140,7 @@
 [% END %]
             </div>
 
-	    <!-- 발표자 명단 -->
+            <!-- 발표자 명단 -->
             <div class="registration" id="status">
               <h3>발표자 명단</h3>
               <p>현재 <em>[% speakers.size || 0 %]</em>명의 발표자가 참석할 예정입니다.</p>
@@ -152,7 +157,7 @@
                 </thead>
                 <tbody>
 [% FOREACH user IN speakers %]
-                  <tr>
+                  <tr[% ' class="confirmed"' IF user.confirm == 'complete' || user.confirm == 'speaker' || user.confirm == 'sponser' %]>
                     <td class="number">[% loop.count %]</td>
                     <td>[% user.name | html %]</td>
                     <td>[% user.nick | html %]</td>
@@ -164,7 +169,7 @@
 [% END %]
             </div>
 
-	    <!-- 스폰서 참석 명단 -->
+            <!-- 스폰서 참석 명단 -->
             <div class="registration" id="status">
               <h3>스폰서 참석 명단</h3>
               <p>현재 <em>[% sponsors.size || 0 %]</em>명이 스폰서 쿼터로 참석합니다.</p>
@@ -181,7 +186,7 @@
                 </thead>
                 <tbody>
 [% FOREACH user IN sponsors %]
-                  <tr>
+                  <tr[% ' class="confirmed"' IF user.confirm == 'complete' || user.confirm == 'speaker' || user.confirm == 'sponser' %]>
                     <td class="number">[% loop.count %]</td>
                     <td>[% user.name | html %]</td>
                     <td>[% user.nick | html %]</td>
