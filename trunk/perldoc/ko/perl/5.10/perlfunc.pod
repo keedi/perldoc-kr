@@ -13953,14 +13953,14 @@ if you want to access other methods in CLASSNAME.
 
 =end original
 
-この関数は、変数を、その変数の実装を行なうクラスと結び付けます。
-VARIABLE は、魔法をかける変数の名前です。
-CLASSNAME は、正しい型のオブジェクトを実装するクラスの名前です。
-他に引数があれば、そのクラスの C<new> メソッドに渡されます
-(つまり C<TIESCALAR>, C<TIEHANDLE>, C<TIEARRAY>, C<TIEHASH>)。
-通常、これらは、C の C<dbm_open> などの関数に渡す引数となります。
-C<new> メソッドで返されるオブジェクトはまた C<tie> 関数でも返されます。
-これは CLASSNAME の他のメソッドにアクセスしたいときに便利です。
+이 함수는 변수를 그 변수의 구성을 수행하는 클래스와 결부합니다.
+VARIABLE 은, 마법을 거는 변수의 이름입니다.
+CLASSNAME 은 바른 형태의 오브젝트를 구성하는 클래스의 이름입니다.
+다른 인수가 있다면, 그 클래스의 C<new> 메소드에 건네집니다
+(즉 C<TIESCALAR>, C<TIEHANDLE>, C<TIEARRAY>, C<TIEHASH>).
+보통, 이것들은 C 의 C<dbm_open> 등의 함수에 넘기는 인수가 됩니다.
+C<new> 메소드로 반환되는 오브젝트 또는 C<tie> 함수에서도 반환됩니다.
+이것은 CLASSNAME 의 다른 메소드에 접근하고 싶을 때에 편리합니다.
 
 =begin original
 
@@ -13970,11 +13970,11 @@ C<each> function to iterate over such.  Example:
 
 =end original
 
-DBM ファイルのような大きなオブジェクトでは、C<keys> や C<values> のような
-関数は、大きなリストを返す可能性があります。
-そのような場合では、C<each> 関数を使って繰り返しを行なった方が
-よいかもしれません。
-例:
+DBM 파일같은 큰 오브젝트에서는 C<keys> 나 C<values> 같은 
+함수는 큰 리스트를 반환할 가능성이 있습니다.
+그런 경우에서는 C<each> 함수를 사용해서 반환을 수행한 편이 좋을지도 
+모르겠습니다.
+예제:
 
     # print out history file offsets
     use NDBM_File;
@@ -13990,7 +13990,7 @@ A class implementing a hash should have the following methods:
 
 =end original
 
-ハッシュを実装するクラスでは、次のようなメソッドを用意します:
+해쉬를 구성하는 클래스에서는 다음같은 메소드를 준비하고 있습니다:
 
     TIEHASH classname, LIST
     FETCH this, key
@@ -14010,7 +14010,7 @@ A class implementing an ordinary array should have the following methods:
 
 =end original
 
-通常の配列を実装するクラスでは、次のようなメソッドを用意します:
+통상의 배열을 구성하는 클래스에서는 다음과 같은 메소드를 준비하고 있습니다:
 
     TIEARRAY classname, LIST
     FETCH this, key
@@ -14033,7 +14033,7 @@ A class implementing a file handle should have the following methods:
 
 =end original
 
-ファイルハンドルを実装するクラスでは、次のようなメソッドを用意します:
+파일핸들을 구성하는 클래스에서는 다음과 같은 메소드를 준비하고 있습니다:
 
     TIEHANDLE classname, LIST
     READ this, scalar, length, offset
@@ -14058,7 +14058,7 @@ A class implementing a scalar should have the following methods:
 
 =end original
 
-スカラ変数を実装するクラスでは、次のようなメソッドを用意します:
+스칼라 변수를 구성하는 클래스에서는 다음과 같은 메소드를 준비하고 있습니다:
 
     TIESCALAR classname, LIST
     FETCH this,
@@ -14073,9 +14073,9 @@ L<Tie::Hash>, L<Tie::Array>, L<Tie::Scalar>, and L<Tie::Handle>.
 
 =end original
 
-上記の全てのメソッドを実装する必要はありません。
+위의 모든 메소드를 구성할 필요는 없습니다.
 L<perltie>, L<Tie::Hash>, L<Tie::Array>, L<Tie::Scalar>,
-L<Tie::Handle> を参照して下さい。
+L<Tie::Handle> 을 참조해주세요.
 
 =begin original
 
@@ -14085,10 +14085,10 @@ or the F<Config> module for interesting C<tie> implementations.
 
 =end original
 
-C<dbmopen> と違い、C<tie> 関数はモジュールを use したり
-require したりしません -- 自分で明示的に行う必要があります。
-C<tie> の興味深い実装については L<DB_File> や F<Config> モジュールを
-参照して下さい。
+C<dbmopen> 과는 달리, C<tie> 함수는 모듈을 use 하거나 require 하지는 
+않습니다 -- 자신이 명시적으로 수행할 필요가 있습니다.
+C<tie> 의 흥미 깊은 구성에 대해서는 L<DB_File> 이나 F<Config> 모듈을
+참조해주세요.
 
 =begin original
 
@@ -14096,7 +14096,7 @@ For further details see L<perltie>, L<"tied VARIABLE">.
 
 =end original
 
-更なる詳細については L<perltie> や L<"tied VARIABLE"> を参照して下さい。
+보다 자세한 내용에 대해서는 L<perltie> 나 L<"tied VARIABLE"> 을 참조해주세요.
 
 =item tied VARIABLE
 X<tied>
@@ -14110,10 +14110,10 @@ package.
 
 =end original
 
-VARIABLE の基となるオブジェクトへのリファレンスを返します
-(変数をパッケージに結びつけるために C<tie> 呼び出しをしたときの
-返り値と同じものです)。
-VARIABLE がパッケージと結び付けられていない場合は未定義値を返します。
+VARIABLE 의 기반이 되는 오브젝트로의 리퍼런스를 반환합니다
+(변수를 패키지에 연결하기 위해서는 C<tie> 호출을 한 때의 
+반환값과 같은 것입니다).
+VARIABLE 이 패키지와 연결되지 않은 경우는 미정의값을 반환합니다.
 
 =item time
 X<time> X<epoch>
@@ -14128,11 +14128,11 @@ a prominent exception being Mac OS Classic which uses 00:00:00, January 1,
 
 =end original
 
-C<gmtime> や C<localtime> への入力形式に合っている、
-システムが紀元と考える時点からの連続秒数を返します。
-ほとんどのシステムでは紀元は UTC 1970 年 1 月 1 日 00:00:00 です;
-特徴的な例外としては、古い Mac OS ではローカルタイムゾーンの
-1904 年 1 月 1 日 00:00:00 を紀元として使います。
+c<gmtime> 이나 c<localtime> 으로의 입력형식에 맞는, 
+시스템ㅣ 기원이 되는 시점에서의 연속초수를 반환합니다.
+대부분의 시스템에서는 기원은 UTC 1970년 1월 1일 00:00:00 입니다:
+특징적인 예외로서는 낡은 Mac OS 에서는 로컬타임존의 
+1904 년 1월 1일 00:00:00 을 기원으로 사용하고 있습니다.
 
 =begin original
 
@@ -14144,11 +14144,11 @@ See L<perlfaq8> for details.
 
 =end original
 
-1 秒よりも細かい時間を計測するためには、L<Time::HiRes> モジュール(CPAN から、
-また Perl 5.8 からは標準配布の一部です)を使うか、
-gettimeofday(2) があるなら、Perl の C<syscall> インターフェースを
-使った方がよいでしょう。
-詳しくは L<perlfaq8> を参照して下さい。
+1초 보다도 자세한 시간을 계측하기 위해서는 L<Time::HiRes> 모듈(CPAN 에서
+또는 Perl 5.8 에서는 표준모듈의 일부입니다)를 사용하거나 
+gettimeofday(2) 가 있다면, Perl 의 C<syscall> 인터페이스를 사용하는 
+편이 좋겠죠.
+자세한 것은 L<perlfaq8> 을 참조해주세요.
 
 =begin original
 
@@ -14158,9 +14158,9 @@ L<DateTime> module.
 
 =end original
 
-日付と時刻の処理は、多くの関連するモジュールが CPAN にあります。
-包括的な日付と時刻の表現については、CPAN の L<DateTime> モジュールを
-参照してください。
+날짜와 시각의 처리에 관한 모듈은 CPAN 에 많이 있습니다.
+포괄적인 날짜와 시각의 표현에 대해서는 CPAN 의 L<DateTime> 모듈을 
+참조해주세요.
 
 =item times
 X<times>
@@ -14172,8 +14172,8 @@ seconds, for this process and the children of this process.
 
 =end original
 
-現プロセス及びその子プロセスに対する、ユーザ時間とシステム時間を
-秒で示した、4 要素のリスト値を返します。
+현재의 프로세스 및 그 자식 프로세스에 대해서 유저시간과 시스템 시간을
+초로 나타낸 4 요소의 리스트 값을 반환합니다.
 
     ($user,$system,$cuser,$csystem) = times;
 
@@ -14183,7 +14183,7 @@ In scalar context, C<times> returns C<$user>.
 
 =end original
 
-スカラコンテキストでは、C<times> は C<$user> を返します。
+스칼라 컨텍스트에서는 C<times> 는 C<$user> 를 반환합니다.
 
 =begin original
 
@@ -14191,8 +14191,8 @@ Note that times for children are included only after they terminate.
 
 =end original
 
-子プロセスに対する times は、それらが終了した後に含められることに
-注意してください。
+자식 프로세스에 대해 times 는 그것들이 종료한 뒤에 포함되는 것에 
+주의해주세요.
 
 =item tr///
 
@@ -14202,9 +14202,9 @@ The transliteration operator.  Same as C<y///>.  See L<perlop>.
 
 =end original
 
-変換演算子。
-C<y///> と同じです。
-L<perlop> を参照してください。
+변환연산자.
+C<y///> 와 같습니다.
+L<perlop> 를 참조해주세요.
 
 =item truncate FILEHANDLE,LENGTH
 X<truncate>
@@ -14220,10 +14220,10 @@ otherwise.
 
 =end original
 
-FILEHANDLE 上にオープンされたファイルか、EXPR で名前を表わしたファイルを、
-指定した長さに切り詰めます。
-システム上に truncate が実装されていなければ、致命的エラーとなります。
-成功すれば真を、さもなければ未定義値を返します。
+FILEHANDLE 상에 오픈된 파일이나 EXPR 로 이름을 나타낸 파일을 
+지정한 길이로 자릅니다.
+시스템 상에 truncate 가 구성되어 있지 않다면 치명적인 에러가 됩니다.
+성공하면 참을, 그렇지 않으면 미정의값을 반환합니다.
 
 =begin original
 
@@ -14232,7 +14232,7 @@ file.
 
 =end original
 
-LENGTH がファイルの長さより大きい場合の振る舞いは未定義です。
+LENGTH 가 파일의 길이보다 큰 경우의 행동은 미정의입니다.
 
 =begin original
 
@@ -14241,8 +14241,8 @@ call L<seek> before writing to the file.
 
 =end original
 
-FILEHANDLE のファイルの位置は変わりません。
-ファイルに書き込む前に L<seek> を呼び出したいかもしれません。
+FILEHANDLE 의 파일의 위치를 바꾸지 않습니다.
+파일에 쓰기전에 L<seek> 를 호출하고 싶을 지도 모르겠네요.
 
 =item uc EXPR
 X<uc> X<uppercase> X<toupper>
@@ -14260,14 +14260,13 @@ C<ucfirst> for that.
 
 =end original
 
-EXPR を大文字に変換したものを返します。
-これは、ダブルクォート文字列における、C<\U> エスケープを
-実装する内部関数です。
-C<use locale> が有効な場合は、現在の LC_CTYPE ロケールを参照します。
-ロケールと Unicode 対応に関する更なる詳細については L<perllocale> と
-L<perlunicode> を参照してください。
-元の文字の titlecase マッピングは試みません。
-このためには C<ucfirst> を参照してください。
+EXPR 을 대문자로 변환한 것을 반환합니다.
+이것은 쌍따옴표 문자열에서의 C<\U> 이스케이프를 구성하는 내부함수입니다.
+C<use locale> 이 유효한 경우는 현재의 LC_CTYPE 로케일을 참조합니다.
+로케일과 Unicode 대응에 관한 자세한 내용에 대해서는 L<perllocale> 과 
+L<perlunicode> 를 참조해주세요.
+원래의 문자의 titlecase 매핑을 시험하지 않습니다.
+이를 위해 C<ucfirst> 를 참조해주세요.
 
 =begin original
 
@@ -14275,7 +14274,7 @@ If EXPR is omitted, uses C<$_>.
 
 =end original
 
-EXPR が省略されると、C<$_> を使います。
+EXPR 이 생략되면 C<$_> 를 사용합니다.
 
 =item ucfirst EXPR
 X<ucfirst> X<uppercase>
@@ -14292,13 +14291,12 @@ for more details about locale and Unicode support.
 
 =end original
 
-最初の文字だけを大文字にした、EXPR を返します
-(Unicode では titlecase)。
-これは、ダブルクォート文字列における、C<\u> エスケープを
-実装する内部関数です。
-C<use locale> が有効な場合は、現在の LC_CTYPE ロケールを参照します。
-ロケールと Unicode 対応に関する更なる詳細については L<perllocale> と
-L<perlunicode> を参照してください。
+최초의 문자만을 대문자로 한, EXPR 을 반환합니다(Unicode 에서는 
+titlecase).
+이것은 쌍따옴표 문자열에서 C<\u> 이스케이프를 구성하는 내부함수입니다.
+C<use locale> 이 유효한 경우는 현재의 LC_CTYPE 로케일을 참조합니다.
+로케일과 Unicode 대응에 관한 자세한 내용에 대해서는 L<perllocale> 과 
+L<perlunicode> 를 참조해주세요.
 
 =begin original
 
@@ -14306,7 +14304,7 @@ If EXPR is omitted, uses C<$_>.
 
 =end original
 
-EXPR が省略されると、C<$_> を使います。
+EXPR 이 생략되면, C<$_> 를 사용합니다.
 
 =item umask EXPR
 X<umask>
@@ -14320,8 +14318,8 @@ If EXPR is omitted, merely returns the current umask.
 
 =end original
 
-現在のプロセスの umask を EXPR に設定し、以前の値を返します。
-EXPR が省略されると、単にその時点の umask の値を返します。
+현재의 프로세스의 umask 를 EXPR 에 설정해서 이전의 값을 반환합니다.
+EXPR 이 생략되면, 단순히 그 시점의 umask 의 값을 반환합니다.
 
 =begin original
 
@@ -14339,9 +14337,10 @@ C<sysopen> C<0666> would create a file with mode C<0640> (C<0666 &~
 
 =end original
 
-Unix パーミッション C<rwxr-x---> は 3 ビットの 3 つの組、
-または 3 桁の 8 進数として表現されます:
-C<0750> (先頭の 0 は 8 進数を意味し、実際の値ではありません)。
+Unix 퍼미션 C<rwxr-x---> 는 3비트의 3개의 쌍, 또는 세자리의 8진수로
+표현됩니다:
+C<0750> (맨앞의 0는 8진수를 의미하고, 실제의 값은 아닙니다).
+
 C<umask> の値は無効にするパーミッションビットのこのような数値表現です。
 C<mkdir> や C<sysopen> で渡されたパーミッション(または「モード」)の値は
 umask で修正され、たとえ C<sysopen> で C<0777> のパーミッションで
