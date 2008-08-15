@@ -24,7 +24,7 @@ default:
   status:
     wait:
       name: 메일 미확인
-      message: 사전 등록 절차가 제대로 끝나지 않았습니다.
+      message: 사전등록 절차가 제대로 끝나지 않았습니다.
     reserv:
       name: 등록비 미확인
       message: 사전 등록은 하셨으나 등록비 확인이 되지 않았습니다.
