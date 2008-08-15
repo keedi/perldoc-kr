@@ -99,7 +99,7 @@
                 </thead>
                 <tbody>
 [% FOREACH user IN users %]
-                  <tr[% ' class="confirmed"' IF user.confirm == 'complete' || user.confirm == 'speaker' || user.confirm == 'sponser' %]>
+                  <tr[% ' class="confirmed"' IF user.confirm == 'complete' || user.confirm == 'speaker' || user.confirm == 'sponsor' %]>
                     <td class="number">[% loop.count %]</td>
                     <td>[% user.name | html %]</td>
                     <td>[% user.nick | html %]</td>
@@ -157,7 +157,7 @@
                 </thead>
                 <tbody>
 [% FOREACH user IN speakers %]
-                  <tr[% ' class="confirmed"' IF user.confirm == 'complete' || user.confirm == 'speaker' || user.confirm == 'sponser' %]>
+                  <tr[% ' class="confirmed"' IF user.confirm == 'complete' || user.confirm == 'speaker' || user.confirm == 'sponsor' %]>
                     <td class="number">[% loop.count %]</td>
                     <td>[% user.name | html %]</td>
                     <td>[% user.nick | html %]</td>
@@ -186,7 +186,7 @@
                 </thead>
                 <tbody>
 [% FOREACH user IN sponsors %]
-                  <tr[% ' class="confirmed"' IF user.confirm == 'complete' || user.confirm == 'speaker' || user.confirm == 'sponser' %]>
+                  <tr[% ' class="confirmed"' IF user.confirm == 'complete' || user.confirm == 'speaker' || user.confirm == 'sponsor' %]>
                     <td class="number">[% loop.count %]</td>
                     <td>[% user.name | html %]</td>
                     <td>[% user.nick | html %]</td>
