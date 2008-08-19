@@ -14651,7 +14651,7 @@ Has no effect if the variable is not tied.
 
 =end original
 
-변수와 패키지의 사이의 결합을 해방합ㄴ디ㅏ.
+변수와 패키지의 사이의 결합을 해방합니다.
 (L<tie> 를 참조해주세요)
 결합되지 않은 경우는 아무것도 발생하지 않습니다.
 
@@ -14793,10 +14793,10 @@ features available in the requested version.  See L<feature>.
 
 =end original
 
-また、指定された perl のバージョンが 5.9.5 以上の場合、C<use VERSION> は
-C<feature> プラグマも読み込み、要求されたバージョンで利用可能な全ての機能を
-有効にします。
-L<feature> を参照してください。
+또, 지정된 perl 의 버ㄴ이 5.9.5 이상인 경우 C<use VERSION> 은 
+C<feature> 프라그마도 읽고, 요구된 버젼에서 이요가능한 모든 기능을 
+유효화합니다.
+L<feature> 를 참조해주세요.
 
 =begin original
 
@@ -14813,19 +14813,16 @@ method.
 
 =end original
 
-C<BEGIN> によって、C<require> や C<import> は、コンパイル時に
-実行されることになります。
-C<require> は、モジュールがまだメモリにロードされていなければ、ロードします。
-C<import> は、組込みの関数ではなく、さまざまな機能を現在のパッケージに
-インポートするように C<Module> パッケージに伝えるために呼ばれる、
-通常の静的メソッドです。
-モジュール側では、C<import> メソッドをどのようにでも実装することが
-できますが、多くのモジュールでは、C<Exporter> モジュールで定義された、
-C<Exporter> クラスからの継承によって、C<import> メソッドを行なうように
-しています。
-L<Exporter>モジュールを参照してください。
-C<import>メソッドが見つからなかった場合、AUTOLOAD メソッドがあったとしても
-呼び出しはスキップされます。
+C<BEGIN> 에 의해 C<require> 나 C<import> 는 컴파일 시에 실행되는 것이 됩니다.
+C<reuiqre> 는 모듈이 아직 메모리에 로드 되지 않았으면, 로드합니다.
+C<import> 는 내장 함수가 아닌 여러 기능을 현재의 패키지에 임포트하도록 
+C<Module> 패키지에 전달하기 위해 호출되는 일반적인 정적 메소드입니다.
+모듈 측에서는 C<import> 메소드를 어떻게라도 구성하는 것이 가능하지만, 
+많은 모듈에서는 C<Exporter> 모듈로 정의된 C<Exporter> 클래스에서의 
+계승에 의해 C<import> 메소드를 수행하도록 하고 있습니다.
+L<Exporter> 모듈을 참조해주세요.
+C<import> 메소드가 발견되지 않은 경우, AUTOLOAD 메소드가 있다고 해도 
+호출은 스킵됩니다.
 
 =begin original
 
@@ -14834,8 +14831,8 @@ to stop your namespace from being altered), explicitly supply the empty list:
 
 =end original
 
-パッケージの C<import> メソッドを呼び出したくない場合(例えば、名前空間を
-変更したくない場合など)は、明示的に空リストを指定してください:
+패키지의 C<import> 메소드를 호출하고 싶지 않은 경우(예를들면, 이름공간을 
+변경하고 싶지 않은 경우라든가)는 명시적으로 빈 리스트를 지정해주세요:
 
     use Module ();
 
@@ -14845,7 +14842,7 @@ That is exactly equivalent to
 
 =end original
 
-これは以下と完全に等価です:
+이것은 아래와 완전히 같습니다:
 
     BEGIN { require Module }
 
@@ -14859,11 +14856,11 @@ value of the variable C<$Module::VERSION>.
 
 =end original
 
-Module と LIST の間に VERSION 引数がある場合、C<use> は Module クラスの
-VERSION メソッドを、与えられたバージョンを引数として呼び出します。
-デフォルトの VERSION メソッドは、 UNIVERSAL クラスから継承したもので、
-与えられたバージョンが 変数 C<$Module::VERSION> の値より大きい場合に
-警告を出します。
+Module 과 LIST 사이 VERSION 인수가 있는 경우, C<use> 는 Module 클래스의 
+VERSION 메소드를 주어진 버젼을 인수로 호출합니다.
+기본값의 VERSION 메소드는 UNIVERSAL 클래스에서 계승한 것으로 
+주어진 버젼이 변수 C<$Module::VERSION> 의 값보다 큰 경우에 
+경고를 냅니다.
 
 =begin original
 
@@ -14873,10 +14870,10 @@ called).  Note that there is no comma after VERSION!
 
 =end original
 
-繰り返すと、LIST を省略する(C<import> が引数なしで呼び出される)ことと
-明示的に空の LIST C<()> を指定する (C<import> は呼び出されない)ことは
-違います。
-VERSION の後ろにカンマが不要なことに注意してください!
+반복하면, LIST 를 생략하는(C<import> 가 인수없이 호출되는) 것과 
+명시적으로 빈 리스트 C<()> 를 지정하는 (C<import> 는 호출되지 않음) 것은
+다릅니다.
+VERSION 의 뒤에 컴마가 불필요하는 것에 주의하세요.
 
 =begin original
 
@@ -14885,9 +14882,9 @@ are also implemented this way.  Currently implemented pragmas are:
 
 =end original
 
-これは、広く公開されているインタフェースですので、
-プラグマ (コンパイラディレクティブ) も、この方法で実装されています。
-現在実装されているプラグマには、以下のものがあります:
+이것은 널리 공개된 인터페이스이기에, 프라그마(컴파일 디렉토리)도 
+이 방법에으로 구성되어 있습니다.
+현재 구성되어 있는 프라그마에는 아래와 같은 것이 있습니다.
 
     use constant;
     use diagnostics;
@@ -14907,10 +14904,9 @@ through the end of the file).
 
 =end original
 
-通常のモジュールが、現在のパッケージにシンボルをインポートする
-(これは、ファイルの終わりまで有効です) のに対して、
-これらの擬似モジュールの一部(C<strict> や C<integer> など)は、
-現在のブロックスコープにインポートを行ないます。
+통상의 모듈이 현재의 패키지에 심볼을 임포트하는 (이것은 파일의 끝까지
+유효합니다) 것에 대해서 이 유소모듈들의 일부(C<strict>) 나 
+C<interger> 등)는 현재의 블록 영역에 임포트를 수행합니다.
 
 =begin original
 
@@ -14921,11 +14917,11 @@ omitted LIST, empty LIST, or no unimport method being found.
 
 =end original
 
-これに対して、C<no> コマンドという、C<use> によってインポートされたものを、
-インポートされていないことにするものがあります。
-つまり、C<import> の代わりに C<unimport Module LIST> を呼び出します。
-これは VERSION、省略された LIST、空の LIST、unimport メソッドが見つからない
-場合などの観点では、正確に C<import> と同様に振る舞います。
+이것에 대해서 C<no> 커맨드라는 C<use> 에 의해 임포트 되는 것을 
+임포트되지 않는 것으로 하는 것이 있습니다.
+즉, C<import> 대신에 c<unimport Module LIST> 를 호출합니다.
+이것은 VERSION, 생략된 LIST, 빈 LIST, unimport 메소드가 발견되지 않은
+경우 등의 관점에서는 정확하게 C<import> 처럼 행동합니다.
 
     no integer;
     no strict 'refs';
@@ -14939,9 +14935,9 @@ functionality from the command-line.
 
 =end original
 
-標準モジュールやプラグマの一覧は、L<perlmodlib> を参照してください。
-コマンドラインから C<use> 機能を指定するための C<-M> と C<-m> の
-コマンドラインオプションについては L<perlrun> を参照して下さい。
+표준모듈이 프라그마의 일람은 L<perlmodlib> 을 참조해주세요.
+커맨드라인에서 C<use> 기능을 지정하기 위한 C<-M> 과 C<-m> 의 
+커맨드라인옵션에 대해서는 L<perlrun> 을 참조하세요.
 
 =item utime LIST
 X<utime>
@@ -14958,15 +14954,15 @@ the user running the program:
 
 =end original
 
-ファイルのアクセス時刻と修正(modification) 時刻を変更します。
-LIST の最初の 2 つの要素に、数値で表わしたアクセス時刻と修正時刻を
-順に指定します。
-LIST の残りの要素が、変更の対象となるファイルです。
-変更に成功したファイルの数を返します。
-各ファイルの inode 変更(change)時刻には、その時点の時刻が設定されます。
-例えば、このコードはファイルが I<既に存在して> いて、ユーザーが
-実行しているプログラムに従っているなら、
-Unix の touch(1) コマンドと同じ効果があります。
+파일의 접근 시각과 수정(modification) 시각을 변경합니다.
+LIST 의 최초의 2가지 요소에 숫자값으로 나타난 접근시각과 수정시각을 
+순서대로 지정합니다.
+LIST 의 남은 요소가 변경 대상이 되는 파일입니다.
+변경에 성공한 파일의 수를 반환합니다.
+각 파일의 inode 변경(change) 시각에는 그 시점의 시각이 설정됩니다.
+예를 들면, 이 코드는 파일이 I<이미 존재하고> 있고, 유저가 
+실행하고 있는 프로그램에 따르고 있다면, 
+Unix 의 touch(1) 커맨드와 같은 효과가 있습니다.
 
     #!/usr/bin/perl
     $atime = $mtime = time;
@@ -14983,11 +14979,11 @@ permission:
 
 =end original
 
-perl 5.7.2 から、リストの最初の二つの要素が C<undef> である場合、
-C ライブラリの utime(2) 関数を、秒の引数を null として呼び出します。
-ほとんどのシステムでは、これによってファイルのアクセス時刻と修正時刻を
-現在の時刻にセットし(つまり、上記の例と等価です)、
-書き込み権限があれば他のユーザーのファイルに対しても動作します。
+perl 5.7.2 부터 리스트의 최초의 두개의 요소가 C<undef> 인 경우, 
+C 라이브러리의 utime(2) 함수를 초의 인수를 null 로 호출합니다.
+대부분의 시스템에서는 이ㅅ에 의해 파일의 접근시각과 수정시각을 
+현재의 시각으로 설정하고(즉, 위의 예제와 같습니다), 
+쓰기 권한이 있으면 다른 유저의 파일에 대해서도 동작합니다.
 
     utime undef, undef, @ARGV;
 
@@ -15001,12 +14997,11 @@ one shown in the first example.
 
 =end original
 
-NFS では、これはローカルマシンの時刻ではなく、NFS サーバーの時刻が
-使われます。
-時刻同期に問題がある場合、NFS サーバーとローカルマシンで違う時刻に
-なっている場合があります。
-実際のところ、Unix の touch(1) コマンドは普通、最初の例ではなく、
-この形を使います。
+NFS 에서는 이것은 로컬머신의 시각이 아닌, NFS 서버의 시각이 
+사용됩니다. 시각동기에 문제가 있는 경우, NFS 서버와 로컬머신에서 
+다른 시각이 된 경우가 있습니다.
+실제, Unix 의 touch(1) 커맨드는 보통 최초의 예가 아닌 
+이 형태를 사용합니다.
 
 =begin original
 
@@ -15017,10 +15012,10 @@ uninitialized warning.
 
 =end original
 
-最初の二つの要素のうち、一つだけに C<undef> を渡すと、その要素は 0 を
-渡すのと等価となり、上述の、両方に C<undef> を渡した時と同じ
-効果ではないことに注意してください。
-この場合は、未初期化の警告が出ます。
+최초의 두개의 요소 중에 하나만 C<undef> 를 건네면 , 그 요소는 0 을 
+넘기는 것과 같고, 위에 기술한 양쪽에 C<undef> 를 넘길 때와 같은 
+효과가 아니라는 것에 주의해주세요.
+이 경우는 미초기화의 경고가 나옵니다.
 
 =begin original
 
@@ -15032,12 +15027,12 @@ file names.
 
 =end original
 
-futimes に対応しているシステムでは、ファイルハンドルを引数として渡せます。
-futimes に対応していないシステムでは、ファイルハンドルを渡すと実行時に
-致命的エラーになります。
-ファイルハンドルを認識させるためには、グロブまたはリファレンスとして
-渡されなければなりません。
-裸の単語はファイル名として扱われます。
+futimes 를 지원하는 시스템에서는 파일핸들을 인수로 넘깁니다.
+futimes 를 지원하지 않는 시스템에서는 파일핸들을 넘기ㄴ 실행시에 
+치명적 에러가 됩니다.
+파일핸들을 인식시키기 위해서는 glob 혹은 리퍼런스로 건네지 않으면 
+안됩니다.
+bareword 는 파일이름으로 취급됩니다.
 
 =item values HASH
 X<values>
@@ -15049,8 +15044,8 @@ Returns a list consisting of all the values of the named hash.
 
 =end original
 
-指定したハッシュのすべての value からなるリストを返します。
-(スカラコンテキストでは、value の数を返します。)
+지정한 해쉬의 모든 value 에서 리스를 반환합니다.
+(스칼라 컨텍스트에서는 value 의 수를 반환합니다)
 
 =begin original
 
@@ -15063,13 +15058,12 @@ for security reasons (see L<perlsec/"Algorithmic Complexity Attacks">).
 
 =end original
 
-返される value の順序は、見た目にばらばらなものです。
-実際のランダムな順序は将来のバージョンの perl では変わる可能性が
-ありますが、同じ(変更されていない)ハッシュに対して、
-C<keys>関数や C<each>関数が返すものと同じ順序であることは保証されます。
-Perl 5.8.1 以降ではセキュリティ上の理由により、
-実行される毎に順番は変わります
-(L<perlsec/"Algorithmic Complexity Attacks"> を参照してください)。
+반환되는 value 의 순서는 보기에는 엉망진장입니다.
+실제 랜덤한 순서는 앞으로의 버젼의 perl dㅔ서는 바뀔 가능성이 있지만,
+같은(변경되지 않은) 해쉬에 대해서 C<keys> 함수나 함수가 반환하는 것과 
+같은 순서인 것은 보증됩니다.
+Perl 5.8.1 이후에서는 보안상의 이유에 의해 실행되는 때에 순서는 바뀝니다.
+(L<perlsec/"Algorithmic Complexity Attacks"> 를 참조해주세요)。
 
 =begin original
 
@@ -15079,10 +15073,10 @@ the iterator with no other overhead.)
 
 =end original
 
-副作用として、values() を呼び出すと HASH の内部イテレータをリセットします:
-C</each> を参照してください。
-(特に、values() を無効コンテキストで呼び出すとその他のオーバーヘッドなしで
-イテレータをリセットします。)
+부작용으로서 values() 를 호출하면 HASH 의 내부 반복자를 리셋합니다:
+C</each> 를 참조해주세요.
+(특히, values() 를 무효 컨텍스트에서 호출하면 그 외의 오버헤드없이 
+반복자를 리셋합니다).
 
 =begin original
 
@@ -15091,8 +15085,8 @@ modify the contents of the hash:
 
 =end original
 
-値はコピーされないので、返されたリストを変更すると
-ハッシュの中身が変更されることに注意してください。
+값은 복사되지 않기에 반환된 리스트를 변경하면 해쉬의 내용이 변경되는 
+것에 주의해주세요.
 
     for (values %hash) 	    { s/foo/bar/g }   # modifies %hash values
     for (@hash{keys %hash}) { s/foo/bar/g }   # same
@@ -15103,7 +15097,7 @@ See also C<keys>, C<each>, and C<sort>.
 
 =end original
 
-C<keys>, C<each>, C<sort> も参照してください。
+C<keys>, C<each>, C<sort> 도 참조해주세요.
 
 =item vec EXPR,OFFSET,BITS
 X<vec> X<bit> X<bit vector>
@@ -15119,12 +15113,11 @@ that).
 
 =end original
 
-文字列 EXPR を BITS 幅の要素からなるビットベクターとして扱い、
-OFFSET で指定される要素の値を返します。
-OFFSET で指定された要素を符号なし整数として返します。
-従って、 BITS はビットベクターの中の各要素について予約されるビット数です。
-BIT は、1 から 32 まで(プラットホームが
-対応していれば 64 まで) の 2 のべき乗でなければなりません。
+문자열 EXPR 을 BITS 폭의 요소로부터 비트벡터로 취급하고, 
+OFFSET 에서 지정된 요소의 값을 반환합니다.
+OFFSET 에서 지정한 요소를 부호없는 정수로 반환합니다.
+따라서 BITS 는 비트벡터의 안의 각요에 대해서 예약되는 비트수입니다.
+BIT 는 1에서 32까지(플랫폼이 지원하면 64까지) 2승이 아니면 안됩니다.
 
 =begin original
 
@@ -15132,7 +15125,7 @@ If BITS is 8, "elements" coincide with bytes of the input string.
 
 =end original
 
-BITS が 8 の場合、「要素」は入力文字列の各バイトと一致します。
+BITS 가 8인 경우 "요소"는 입력문자열의 각 바이트와 일치합니다.
 
 =begin original
 
