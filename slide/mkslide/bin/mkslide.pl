@@ -67,16 +67,8 @@ while ( my $line = <> ) {
         case qr/$TAG{code}/, sub {
             # 코드 태그 처리
             my @sub_lines;
-            my %opt;
             my $opt_str = (split / /, $line, 2)[1];
-            if ( $opt_str ) {
-                map {
-                    my ( $name, $val ) = split /=/, $_, 2;
-                    $val =~ s/^" //x;
-                    $val =~ s/ "$//x;
-                    $opt{$name} = $val;
-                } $opt_str =~ m/ ( \w+ = (?: "[^"]*" | \w* ) ) /gx;
-            }
+            my %opt = parse_options( $opt_str );
 
             if ( $opt{src} ) {
                 open my $fh, $opt{src}
@@ -116,14 +108,7 @@ while ( my $line = <> ) {
             my %opt;
             if ( $line =~ m/$TAG{ul}/ ) {
                 my $opt_str = (split / /, $line, 2)[1];
-                if ( $opt_str ) {
-                    map {
-                        my ( $name, $val ) = split /=/, $_, 2;
-                        $val =~ s/^" //x;
-                        $val =~ s/ "$//x;
-                        $opt{$name} = $val;
-                    } $opt_str =~ m/ ( \w+ = (?: "[^"]*" | \w* ) ) /gx;
-                }
+                %opt = ( %opt, parse_options( $opt_str ) );
             }
             else {
                 push @sub_lines, $line;
@@ -172,7 +157,7 @@ sub img_markup {
 
     my $img_str;
     if ( $name ) {
-        $img_str = qq{$name<br>\n<img src="$slide_info->{path}{images}/$file" alt="$name">};
+        $img_str = qq{<p>$name</p>\n<img src="$slide_info->{path}{images}/$file" alt="$name">};
     }
     else {
         $img_str = qq{<img src="$slide_info->{path}{images}/$file">};
@@ -292,6 +277,27 @@ sub apply_slide_info {
     }
 
     return $str;
+}
+
+sub parse_options {
+    my $opt_str = shift;
+
+    return unless $opt_str;
+
+    my %opt;
+    map {
+        my ( $name, $val ) = split /=/, $_, 2;
+        $val =~ s/^" //x;
+        $val =~ s/ "$//x;
+
+        $name = $name eq '제목' ? 'subject'
+              : $name eq '효과' ? 'effect'
+              : $name
+              ;
+        $opt{$name} = $val;
+    } $opt_str =~ m/ ( .+ = (?: "[^"]*" | \w* ) ) /gx;
+
+    return %opt;
 }
 
 sub start_slide {
