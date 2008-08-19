@@ -15621,9 +15621,9 @@ instead call C<die> again to change it).
 
 =end original
 
-この振る舞いは C<$SIG{__DIE__}> ハンドラ(エラーテキストは削除しませんが、
-代わりに C<die> をもう一度呼び出すことで変更できます)とは
-少し違うことに気付くことでしょう。
+이 행위는 C<$SIG{__DIE__}> 핸들러(에러 텍스트는 삭제하지않지만, 
+대신에 C<die> 를 한번 더 호출하는 것으로 변경할 수 있습니다) 와는 
+조금 다르다는 것을 눈치챌 겁니다.
 
 =begin original
 
@@ -15632,9 +15632,9 @@ warnings (even the so-called mandatory ones).  An example:
 
 =end original
 
-C<__WARN__> ハンドラを使うと、(いわゆる必須のものを含む)全ての
-警告を黙らせる強力な手段となります。
-例:
+C<__WARN__> 핸들러를 사용하면, (일련의 필수사항을 포함한) 모든 
+경고를 내지않게하는 강력한 수단이 됩니다.
+예제:
 
     # wipe out *all* compile-time warnings
     BEGIN { $SIG{'__WARN__'} = sub { warn $_[0] if $DOWARN } }
@@ -15655,10 +15655,10 @@ carp() and cluck() functions.
 
 =end original
 
-C<%SIG> エントリのセットに関する詳細とさらなる例に関しては
-L<perlvar> を参照して下さい。
-carp() 関数と cluck() 関数を用いた警告の方法に関しては
-Carp モジュールを参照して下さい。
+C<%SIG> 엔트리의 세트에 관한 자세한 내용과 예제에 관해서는 
+L<perlvar> 를 참조해주세요.
+carp() 함수와 cluck() 함수를 사용한 경고 방법에 대해서는 
+Carp 모듈을 참조해주세요.
 
 =item write FILEHANDLE
 X<write>
@@ -15677,13 +15677,11 @@ explicitly by assigning the name of the format to the C<$~> variable.
 
 =end original
 
-指定された FILEHANDLE に対して、そのファイルに対応させた
-フォーマットを使って、(複数行の場合もある) 整形された
-レコードを書き出します。
-デフォルトでは、ファイルに対応するフォーマットは、ファイルハンドルと
-同じ名前のものですが、その時点の出力チャネル (C<select> 関数の項を
-参照してください) のフォーマットは、その名前を明示的に変数 C<$~> に
-代入することで、変更が可能です。　
+지정된 FILEHADNLE 에 대해서 그 파일을 지원하는 포맷을 사용해서 (복수행의 
+경우도 있습니다) 고친 레코드를 써냅니다.
+기본값ㅂ에서는 파일을 지원하는 포맷은 파일핸들과 같은 이름이지만, 
+그 시점의 출력 채널 (C<select> 함수의 항을 참조해주세요) 의 포맷은 
+그 이름을 명시적으로 변수 C<$~> 에 대입하는 것으로 이용가능합니다.
 
 =begin original
 
@@ -15699,16 +15697,15 @@ variable C<$->, which can be set to C<0> to force a new page.
 
 =end original
 
-ページの先頭の処理は、自動的に行なわれます。
-現在のページに整形されたレコードを出力するだけのスペースがない場合には、
-改ページを行なってページを進め、新しいページヘッダを整形するため、
-ページ先頭フォーマットが使われ、その後でレコードが書かれます。
-デフォルトでは、ページ先頭フォーマットは、ファイルハンドルの名前に
-"_TOP" をつなげたものですが、ファイルハンドルが選択されている間に、
-変数 C<$^> に名前を設定すれば、動的にフォーマットを
-変更することができます。
-そのページの残り行数は、変数 C<$-> に入っており、この変数を 0 に
-設定することで、強制的に改ページを行なうことができます。
+페이지의 맨앞의 처리는 자동적으로 수행됩니다.
+현재의 페이지에 정형된 레코드를 출력하는 것만큼의 스페이스가 없는 경우에는 
+페이지 넘김을 수행해서 페이지를 진행하고, 새로운 페이지 헤더를 정형하기 위해,
+페이지 맨앞 포맷이 사용되어, 그 뒤에 레코드가 써집니다.
+기본값에서는 페이지 선두 포맷은 파일핸들의 이름에 
+"_TOP" 을 붙인 것이지만, 파일핸들이 선택되어 있는 사이에, 
+변수 C<$^A> 에 이름을 설정하면, 동적으로 포맷을 변경할 수 있습니다.
+그 페이지의 남은 행수는 변수 C<$-> 에 들어 있고, 그 변수를 0 으로 설정하는 
+것으로, 강제적으로 페이지넘김을 수행할 수 있습니다.
 
 =begin original
 
@@ -15720,13 +15717,12 @@ the FILEHANDLE at run time.  For more on formats, see L<perlform>.
 
 =end original
 
-FILEHANDLE を指定しないと、出力はその時点のデフォルト
-出力チャネルに対して行なわれます。
-これは、スクリプトの開始時点では STDOUT ですが、select() 演算子で
-変更することができます。
-FILEHANDLE が EXPR ならば、式が評価され、その結果の文字列が
-実行時に FILEHANDLE の名前として見られます。
-フォーマットについて、さらには、L<perlform> を参照してください。
+FILEHANDLE 을 지정하지 않으면 출력은 그 시점의 기본값 출력 채널에 대해서 
+수행됩니다. 이것은 스크립트의 개시시점에서는 STDOUT 입니다만, seelct() 연산자
+에서 변경할 수 있습니다.
+FILEHANDLE 이 EXPR 이라면 식이 평가되어 그 결과의 문자열이 실행시에 
+FILEHANDLE 의 이름으로 보입니다.
+포맷에 대한 자세한 내용은 L<perlform> 을 참조해주세요.
 
 =begin original
 
@@ -15734,8 +15730,7 @@ Note that write is I<not> the opposite of C<read>.  Unfortunately.
 
 =end original
 
-残念ながら、write は C<read> の反対のことをするもの
-I<ではありません>。
+아쉽게도 write 는 C<read> 의 반대되는 일을 하는 것이 I<아닙니다>.
 
 =item y///
 
@@ -15745,16 +15740,8 @@ The transliteration operator.  Same as C<tr///>.  See L<perlop>.
 
 =end original
 
-文字変換演算子です。
-C<tr///> と同じです。
-L<perlop> を参照してください。
+문자변환연산자입니다.
+C<tr///> 과 같습니다.
+L<perlop> 를 참조하세요.
 
 =back
-
-=begin meta
-
-Translate: 吉村 寿人 <JAE00534@niftyserve.or.jp>
-Update: Kentaro Shirakata <argrath@ub32.org>
-License: GPL or Artistic
-
-=end meta
