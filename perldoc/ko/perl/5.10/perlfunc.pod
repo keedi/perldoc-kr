@@ -15136,10 +15136,10 @@ for BITS==64).  See L<"pack"> for details.
 
 =end original
 
-BITS が 16 以上の場合、入力のバイト列は BITS/8 のサイズの固まりに
-グループ化され、各グループは pack()/unpack() のビッグエンディアン
-フォーマット C<n>/C<N> を用いて(BITS==64 の類似として)数値に変換されます。
-詳細は L<"pack"> を参照してください。
+BITS 가 16 이상인 경우, 입력의 바이트열은 BITS/8 의 사이즈의 덩어로 
+그룹화되고, 각 그룹은 pack()/unpack() 의 빅엔디안 포맷 C<n>/C<N> 을 
+사용해 (BITS == 64 의 유사치로) 수치로 변환되니다.
+자세한 내용은 L<"pack"> 을 참조해주세요.
 
 =begin original
 
@@ -15152,13 +15152,13 @@ C<(0x6, 0x3)>; breaking it into 4 groups gives C<(0x2, 0x1, 0x3, 0x0)>.
 
 =end original
 
-BITS が 4 以下の場合、文字列はバイトに分解され、バイトの各ビットは
-8/BITS 個のグループに分割されます。
-ビットはリトルエンディアン風に、C<0x01>, C<0x02>,
-C<0x04>, C<0x08>, C<0x10>, C<0x20>, C<0x40>, C<0x80> の順になります。
-例えば、入力バイト C<chr(0x36)> を 2 つのグループに分割すると、
-C<(0x6, 0x3)> になります。
-4 つに分割すると C<(0x2, 0x1, 0x3, 0x0)> になります。
+BITS 가 4 이하인 경우, 문자열은 바이트로 분해되고, 바이트의 각 비트는 
+8/BITS 개의 그룹으로 분할됩니다.
+비트는 리틀 엔디안 풍에 C<0x01>, C<0x02>, C<0x04>, C<0x08>, C<0x10>, 
+C<0x20>, C<0x40>, C<0x80> 의 순서가 됩니다.
+예를들면, 입력 바이트 C<chr(0x36)> 을 2개의 그룹으로 분할하면 
+C<0x6, 03)> 이 됩니다.
+4개로 분할하면 C<0x2, 0x1, 0x3, 0x0)> 가 됩니다.
 
 =begin original
 
@@ -15167,8 +15167,8 @@ to give the expression the correct precedence as in
 
 =end original
 
-左辺値として、代入の対象にすることもできます。
-この場合、式を正しく先行させるために以下のように括弧が必要です。
+좌변값으로 대입의 대상으로 할 수도 있습니다.
+이 경우, 식을 바로 선행시키기 위해 아래처럼 괄호가 필요합니다.
 
     vec($image, $max_x * $x + $y, 8) = 3;
 
@@ -15181,11 +15181,11 @@ to try to write off the beginning of the string (i.e. negative OFFSET).
 
 =end original
 
-選択された要素が文字列の外側だった場合、値 0 が返されます。
-文字列の最後よりも後ろの要素に書き込もうとした場合、
-Perl はまず文字列を必要な分だけ 0 のバイトで拡張します。
-文字列の先頭より前に書き込もうとした(つまり OFFSET が負の数だった)
-場合はエラーとなります。
+선택된 요소가 문자열의 바깥쪽인 경우, 값 0가 반환됩니다.
+문자열의 최후보다도 뒤의 요소에 쓸려고한 경우, 
+Perl 은 우선 문자열을 필요한 분만큼 0의 바이트로 확장합니다.
+문자열의 맨앞보다 앞에 쓸려고 한(즉 OFFSET 이 음수인) 
+경우는 에러가 됩니다.
 
 =begin original
 
@@ -15196,10 +15196,9 @@ only have characters with values less than 256.
 
 =end original
 
-文字列がなぜか内部で UTF-8 でエンコードされている場合(したがって UTF8 フラグが
-セットされている場合)、これは C<vec> では無視され、たとえ値が 256 未満の
-文字だけであったとしても、概念的な
-文字列ではなく内部バイト文字列で操作されます。
+문자열이 왠지모르게 내부에서 UTF-8 으로 인코드되는 경우( 따라서 UTF8 플래그가
+설정되어 있는 경우), 이것은 C<vec> 에서는 무시되고, 설령 값이 246 미만의 
+문자만이이었다고 해도 개념적인 문자열이 아닌 내부바이트 문자열로 조작됩니다.
 
 =begin original
 
@@ -15210,9 +15209,8 @@ See L<perlop/"Bitwise String Operators">.
 
 =end original
 
-vec() で作られた文字列は、論理演算子 C<|>、C<&>、C<^> で扱うこともできます。
-これらの演算子は、両方の被演算子に文字列を使うと、
-ビットベクター演算を行ないます。
+vec() 으로 조작된 문열은 논리연산자 C<|>, C<&>, C<^> 로 취급할 수도 있습니다.
+이 연산자들은 양쪽의 피연산자로 문자열을 사용하면, 비트벡터 연산을 수행합니다.
 
 =begin original
 
@@ -15222,10 +15220,10 @@ in the same way on big-endian or little-endian machines.
 
 =end original
 
-次のコードは C<'PerlPerlPerl'> という ASCII 文字列を作成します。
-コメントは各行の実行後の文字列を示します。
-このコードはビッグエンディアンでもリトルエンディアンでも同じように
-動作することに注意してください。
+다음의 코드는 C<'PerlPerlPerl'> 이라는 ASCII 문자열을 작성합니다.
+코멘트는 각 행의 실행수의 문자열을 표시합니다.
+이 코드는 빅엔디안에서도 리틀엔디안에서도 마찬가지로 동작하는 것에 
+주의하세요.
 
     my $foo = '';
     vec($foo,  0, 32) = 0x5065726C;	# 'Perl'
@@ -15251,8 +15249,7 @@ To transform a bit vector into a string or list of 0's and 1's, use these:
 
 =end original
 
-ビットベクターを、0 と 1 の文字列や配列に変換するには、
-以下のようにします。
+비트벡터를 0과 1 의 문자열이나 배열로 변환하려면 아래처럼 합니다.
 
     $bits = unpack("b*", $vector);
     @bits = split(//, unpack("b*", $vector));
@@ -15263,7 +15260,7 @@ If you know the exact length in bits, it can be used in place of the C<*>.
 
 =end original
 
-ビット長が分かっていれば、* の代わりにその長さを使うことができます。
+비트길이를 알고 있다면 *  대신에 그 길이를 사용할 수 있습니다.
 
 =begin original
 
@@ -15271,7 +15268,7 @@ Here is an example to illustrate how the bits actually fall in place:
 
 =end original
 
-これはビットが実際にどのような位置に入るかを図示する例です。
+이것은 비트가 실제 어떤 위치에 들어가는 가를 표시하는 예제입니다.
 
     #!/usr/bin/perl -wl
 
@@ -15308,8 +15305,7 @@ example should print the following table:
 
 =end original
 
-実行するマシンのアーキテクチャに関わらず、
-上記の例は以下の表を出力します。
+실행하는 머신의 아키텍쳐에 상관없이 위의 예제는 아래의 표를 출력합니다.
 
                                       0         1         2         3
                        unpack("V",$_) 01234567890123456789012345678901
@@ -15457,12 +15453,12 @@ being automatically reaped, as described in L<perlipc>.
 
 =end original
 
-wait(2) システムコールと同様に振る舞います。
-チャイルドプロセスが終了するのを待ち、消滅したプロセスの pid を返します。
-チャイルドプロセスが存在しないときには、C<-1> を返します。
-ステータスは C<$?> と C<{^CHILD_ERROR_NATIVE}> に返されます。
-L<perlpc> に書いているように、返り値が C<-1> の場合は子プロセスが
-自動的に刈り取られたことを意味するかもしれないことに注意してください。
+wait(2) 시스템 호출과 마찬가지로 행동합니다.
+자식 프로세스가 종료하는 것을 기다리고, 소멸한 프로세스의 pid 를 반환합니다.
+자식 프로세스가 존재하지 않은 때에는 C<-1> 을 반환합니다.
+상태는 C<$?> 와 C<{^CHILD_ERROR_NATIVE}> 로 반환됩니다.
+L<perlpc> 에 쓰여져 있듯, 반환값이 C<-1> 인 경우는 자식 프로세스가 
+자동적으로 없어진 것을 의미할 지도 모르는 것에 주의하세요.
 
 =item waitpid PID,FLAGS
 X<waitpid>
@@ -15476,11 +15472,11 @@ The status is returned in C<$?> and C<{^CHILD_ERROR_NATIVE}>.  If you say
 
 =end original
 
-特定のチャイルドプロセスが終了するのを待ち、消滅した
-プロセスの pid を返します。
-指定したチャイルドプロセスが存在しないときには、C<-1> を返します。
-値 0 がプロセスがまだ実行中であることを示すシステムもあります。
-ステータスは C<$?> と C<{^CHILD_ERROR_NATIVE}> に返されます。
+특정의 자식프로세스가 종료하는 것을 기다리고, 소멸ㄴ 프로세스의 pid 를 
+반환합니다.
+지정한 자식프로세스가 존재하지 않을 때에는 C<-1> 을 반환합니다.
+값 0 이 프로세스가 아직 실행중인 것을 나타내는 시스템도 있습니다.
+상태는 C<$?> 와 C<{^CHILD_ERROR_NATIVE}> 로 반환됩니다.
 
     use POSIX ":sys_wait_h";
     #...
@@ -15499,14 +15495,13 @@ exited but have not been harvested by the Perl script yet.)
 
 =end original
 
-とすると、ブロックが起こらないようにして、全ての待機中ゾンビプロセスを
-wait します。
-ブロックなしの wait は、システムコール wait_pid(2) か、
-システムコール wait4(2) をサポートしているマシンで利用可能です。
-しかしながら、特定の pid を C<0> の FLAGS での wait はどこでも
-実装されています。
-(exit したプロセスのステータス値を覚えておいて、Perl がシステムコールを
-エミュレートしますが、Perl スクリプトには取り入れられていません。)
+라고 하면, 블록이 발생되지 않도록 해서, 모든 대기중 좀비 프로세스를 wait
+합니다. 블록 없는 wait 는 시스템 호출 wait_pid(2) 나, 시스템 호출 wait4(2)를
+지원하는 머신에서 이용가능합니다.
+그렇지만, 특정의 pid 를 C<0> 의 FLAGS 에서의 wait 는 어디에서든 
+구성됩니다.
+(exit 한 프로세스의 상태값을 기억해두고, Perl 이 시스템호출을 에뮬레이트
+하지만, Perl 스크립트에는 들어가지 않습니다)
 
 =begin original
 
@@ -15516,9 +15511,9 @@ and for other examples.
 
 =end original
 
-システムによっては、返り値が C<-1> の場合は子プロセスが自動的に
-刈り取られたことを意味するかもしれないことに注意してください。
-詳細やその他の例については L<perlipc> を参照してください。
+시스템에 따라서는 반환값이 C<-1> 인 경우는 자식프로세스가 자동적으로 
+없어진 것을 의미할지도 모릅니다.
+자세한 내용이나 그외의 예제에 대해서는 L<perlipc> 를 참조해주세요.
 
 =item wantarray
 X<wantarray> X<context>
@@ -15532,10 +15527,10 @@ looking for no value (void context).
 
 =end original
 
-現在実行中のサブルーチンか eval() ブロックのコンテキストが、リスト値を
-要求するものであれば、真を返します。
-スカラを要求するコンテキストであれば、偽を返します。
-何も値を要求しない(無効コンテキスト)場合は未定義値を返します。
+현재 실행중인 서브루틴이나 eval() 블록의 컨텍스트가 리스트값을 
+요구하는 것이면 참을 반환합니다.
+스칼라를 요구하는 컨텍스트라면 거짓을 반환합니다.
+아무런 값을 요구하지 않는(무효 컨텍트) 경우는 미정의값을 반환합니다.
 
     return unless defined wantarray;	# don't bother doing more
     my @a = complex_calculation();
@@ -15549,8 +15544,8 @@ in a C<DESTROY> method.
 
 =end original
 
-ファイルのトップレベル、C<BEGIN>, C<UNITCHECK>, C<CHECK>, C<INIT>, C<END>
-ブロック内、C<DESTROY> メソッド内では C<wantarray()> の結果は未定義です。
+파일의 톱 레벨, C<BEGIN>, C<UNITCHECK>, C<CHECK>, C<INIT>, C<END>
+불록 안, C<DESTROY> 메소드 안에서는 C<wantarray()> 의 결과는 미정의입니다.
 
 =begin original
 
@@ -15558,7 +15553,7 @@ This function should have been named wantlist() instead.
 
 =end original
 
-この関数は wantlist() という名前にするべきでした。
+이 함수는 wantlist() 라는 이름으로 해야했었습니다.
 
 =item warn LIST
 X<warn> X<warning> X<STDERR>
@@ -15571,9 +15566,9 @@ does.
 
 =end original
 
-LIST の値を STDERR に出力します。
-LIST の最後の要素が改行で終わっていない場合、C<die> が行うのと同様の
-ファイル/行番号のテキストが追加されます。
+LIST 의 값을 STDERR 로 출력합니다.
+LIST 의 마지막의 요소가 개행으로 끝나지 않으면, C<die> 가 수행하는 것과 
+마찬가지로 파일/행번호의 텍스트가 추가됩니다.
 
 =begin original
 
@@ -15584,10 +15579,10 @@ C<die>.
 
 =end original
 
-LIST が空かつ、(典型的には以前の eval によって) C<$@> に既に値が入っている
-場合、C<$@> に C<"\t...caught"> を追加した値が用いられます。
-これはほとんどそのままにするときに便利ですが、
-C<die> と全体的に似ているわけではありません。
+LIST 가 비었거나, (전형적으로는 이전의 eval 에 의해) C<$@> 에 이미 값이 
+들어있는 경우, C<$@> 에 C<"\t...caught"> 을 추가한 값이 사용됩니다.
+이것은 대부분 그대로 하는 때에 편리하지만, C<die> 와 전체적으로 비슷하지는
+않습니다.
 
 =begin original
 
@@ -15595,8 +15590,7 @@ If C<$@> is empty then the string C<"Warning: Something's wrong"> is used.
 
 =end original
 
-C<$@> が空の場合は、C<"Warning: Something's wrong"> という文字列が
-使われます。
+C<$@> 가 빈 경우는 C<"Warning: Something's wrong"> 이라는 문자열이 사용됩니다.
 
 =begin original
 
@@ -15611,14 +15605,13 @@ inside one.
 
 =end original
 
-C<$SIG{__WARN__}> ハンドラが設定されている場合は何のメッセージも
-表示されません。
-メッセージをどう扱うか(例えば C<die> に変換するか)はハンドラの
-責任ということです。
-従ってほとんどのハンドラは、扱おうと準備していない警告を表示するために、
-ハンドラの中で C<warn> を再び呼び出します。
-C<__WARN__> フックはハンドラ内では呼び出されないので、これは十分安全で、
-無限ループを引き起こすことはないということに注意してください。
+C<$SIG{__WARN__}> 핸들러가 설정된 경우는 어떤 메시지도 표시되지 않습니다.
+메시지를 어떻게 취급하는 가(예를 들어 C<die> 로 변환하는가)는 핸들러의 
+책임이라는 겁니다.
+따라서 대부분의 핸들러는 다루려면 준비되지 않은 경고를 표시하기 때문에 
+핸들러 안에서 C<warn> 을 다시 호출합니다.
+C<__WARN__> 후크는 핸들러 안에서는 호출되지 않기에, 이것은 충분히 안전하고,
+무한 루프를 일으키는 일은 없다는 것을 주의하세요.
 
 =begin original
 
