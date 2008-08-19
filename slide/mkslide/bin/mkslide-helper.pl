@@ -21,7 +21,7 @@ my @src_files = qw(
 my $symlink_exists = eval { symlink("", ""); 1; };
 
 mkdir 'images';
-copy("$src_dir/$_", "$dest_dir/$_") for ( qw( index.txt sldie.conf ) );
+copy("$src_dir/$_", "$dest_dir/$_") for ( qw( index.txt slide.conf ) );
 
 for my $src_file ( @src_files ) {
 	my $src_path  = "$src_dir/$src_file";

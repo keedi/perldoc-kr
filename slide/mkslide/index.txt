@@ -1,72 +1,169 @@
-Design Pattern
-디자인 패턴
-핵심은...
-변화!
-유사한 문제점에 대한 해결책 또는 대안
-서로의 좋은 기법을 참조하고 사용할 방법
-훌륭한 프로그래머의 좋은 디자인 형태 배우기
+mkslide 란?
+HTML + JavaScript + CSS
+사실은?
+.text
+동경에서 열린
+YAPC::Asia 컨퍼런스 때
+Dan Kogai씨가 사용한
+발표물 형식
+.text
 
-디자인 패턴의 미덕
-변화를 대비한 설계 가능
-요구사항의 변화에
-최소한의 코드 변경
-
-어려운 점
-학습한 디자인 패턴을
-언제?
-어떻게?
-사용해야 하는가?
-(역시 경험치 필요...)
-
-Singleton
-싱글톤
-생성 관련 패턴 중 하나
-
-.ul subject="생성 관련 패턴?" effect="seq"
-* 싱글톤
-* 추상 팩토리
-* 팩토리 메소드
-* 빌더
-* 프로토타입
-
-그래서 싱글톤은?
-어디서든 접근이 가능한 단일 인스턴스
-오직 하나 뿐인 인스턴스(instance)를 구현
-광역적인 접근(global access) 제공
-
-싱글톤이 유용한 곳
-.ul subject="이럴 때 싱글톤을 쓰라!" effect="seq"
-* thread-pool
-* dialog box
-* cache
-* preference-configuration
-* registry-configuration
-* logging object
-* device-driver
-
-.code src="src/Counter.pm"
-.code src="src/counter.pl"
+초 간단 HTML
 .code
-The counters are the same!
-Count is now 1
-Count is now 2
-Count is now 3
-The counters are the same!
+<div>
+<h1> 내용 </h1>
+</div>
+.code
+오오!! :-)
+
+처음에는?
+vi에서 작업하다!
+헉...
+손가락 마비 증세가... :-(
+
+그래서?
+BlueFish Editor!
+.img bluefish.png BlueFish Editor
+오오!! :-)
+자동완성!
+단축키!
+So CooooOOL!!
+
+하지만,
+여전히 손가락이...
+T_T
+
+그래서?
+mkslide.pl
+
+엥? mkslide.pl?
+.text
+슬라이드 급조를
+도와주는
+초간단 스크립트
+.text
+전투력 상승! :-D
+
+어떻게 쓰나요?
+
+.ul effect=seq subject="만드는 순서"
+* index.txt 를 만드세요!
+* 텍스트를 입력, 엔터
+* 또 입력, 엔터, 입력, 엔터, ... (헉헉...)
+* 저장 -> 종료
+
+.code
+do {
+    insert_text();
+    insert_newline();
+} for @number_of_slides;
+save_it();
+quit_editor();
 .code
 
-.code src="src/DBI/Singleton.pm"
-.code src="src/using_dbi_singleton.pl"
+지원하는 기능
+* 헤딩: 기본
+* 텍스트: .text
+* 프로그램 코드: .code
+* 그림첨부: .img
+* 리스트: *
 
-일일이 싱글톤용 모듈을 만들기가 귀찮다면?
-CPAN 모듈!
-Class::Singleton
-.code src="src/DBI/NeoSingleton.pm"
-.code src="src/using_class_singleton.pl"
+코드를 넣으려면?
+.code
+  코드를 넣고 싶다면 .code로 시작
+  .code
+  #!/usr/bin/perl
+  use strict;
+  use warnings;
 
-Class::Singleton 의 내부는?
-.code src="/usr/local/share/perl/5.8.8/Class/Singleton.pm"
+  print "Hello, mkslide.pl";
+  .code
+  코드 넣기를 그만둔다면 첫 칸을 .code로 시작
+.code
 
-참조문헌
-* Head First Design Patterns, O'REILLY
-* The Singleton Design Pattern, brian d foy
+코드 파일을 넣으려면?
+.code
+  코드 파일의 내용을 넣고 싶다면 src 속성 사용
+  .code src="bin/hello_world.pl"
+.code
 
+많은 글자 넣기?
+.code
+  글자를 많이 넣고 싶다면 .text로 시작
+  .text
+  설명해야 할 내용이 많다면 이렇게
+  텍스트 태그안에 내용을 넣도록 합니다.
+  줄 바꿈은 그대로 유지합니다.
+  .text
+  글자 넣기를 그만둔다면 첫 칸을 .text로 시작
+.code
+
+그림을 넣으려면?
+.code
+  형식:
+  .img <파일이름>
+  .img <파일이름> <이름표>
+
+  사용:
+  .img photo_perlmania.jpg
+  .img photo_perlmania.jpg 펄매니아 사진
+.code
+
+목록을 넣으려면?
+.code
+  '*', '+', '-' 로 시작하면 목록이 만들어집니다.
+  * 리스트1
+  * 리스트2
+  * 리스트3
+.code
+
+목록을 넣는 또 다른 방법
+.code
+  제목 또는 효과를 넣고 싶다면 .ul로 시작
+  .ul subject="나의 리스트" effect=seq
+  * 리스트1
+  * 리스트2
+  * 리스트3
+.code
+
+이제 필요한건?
+Make It!
+.code
+$ make
+[C] index.html ...
+bin/mkslide.pl index.txt > index.html
+$ _
+.code
+:-)
+
+발표 자료 정보를 변경하려면?
+slide.conf 를 편집하세요!
+.code
+macro:
+    title:     mkslide 사용하기
+    link:      http://localhost/index.html
+    email:     keedi@naver.com
+    name:      keedi (김도형)
+    company:   Emstone
+    community: Perlmania
+.code
+macro 항목 하부 항목을 고치는 것으로 충분!
+
+기능이 너무 부족해요!
+기능이 마음에 안들어요!
+코드가 이상해요!
+(-_-)(_ _)
+미안합니다!
+
+mkslide.pl 을 마음껏 고쳐주세요! :-)
+Come and Join Us!
+.text
+http://code.google.com/p/perldoc-kr
+.text
+
+Check Out from SVN Now!
+.code
+# check it out! :-)
+$SVN=http://perldoc-kr.googlecode.com/svn/
+svn checkout $SVN/trunk/slide slide-perldoc
+.code
