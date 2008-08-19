@@ -81,7 +81,7 @@ while ( my $line = <> ) {
             if ( $opt{src} ) {
                 open my $fh, $opt{src}
                     or do {
-                        push @sub_lines, "Cannot open file [$opt{src}]: $!";
+                        push @sub_lines, "Cannot open file [$opt{src}]:\n  $!";
                         print "\n", code_markup(@sub_lines);
                         stop;
                     };
