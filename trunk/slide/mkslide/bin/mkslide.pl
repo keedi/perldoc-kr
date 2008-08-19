@@ -82,12 +82,12 @@ while ( my $line = <> ) {
                 open my $fh, $opt{src}
                     or do {
                         push @sub_lines, "Cannot open file [$opt{src}]:\n  $!";
-                        print "\n", code_markup(@sub_lines);
+                        print "\n", code_markup(\%opt, @sub_lines);
                         stop;
                     };
                 @sub_lines = <$fh>;
                 close $fh;
-                print "\n", code_markup(@sub_lines);
+                print "\n", code_markup(\%opt, @sub_lines);
                 stop;
             }
 
@@ -96,7 +96,7 @@ while ( my $line = <> ) {
                 last LOOP_CODE_LINES if $sub_line =~ m/$TAG{code}/;
                 push @sub_lines, $sub_line;
             }
-            print "\n", code_markup(@sub_lines);
+            print "\n", code_markup(\%opt, @sub_lines);
         };
         case qr/$TAG{text}/, sub {
             # 텍스트 태그 처리
@@ -214,7 +214,7 @@ sub ul_markup {
 sub ul_item_markup {
     my ( $opt_ref, @lines ) = @_;
 
-    my $subject = $opt_ref->{subject} || q{};
+    my $subject = $opt_ref->{subject} ? "<p>$opt_ref->{subject}</p>" : q{};
 
     @lines = map convert_escaped_char($_), @lines;
     my $concat_line = join "\n", map { s/$TAG{ul_item}//; "<li>$_</li>"; } @lines;
@@ -245,7 +245,9 @@ END_SECTION
 }
 
 sub code_markup {
-    my ( @lines ) = @_;
+    my ( $opt_ref, @lines ) = @_;
+
+    my $subject = $opt_ref->{subject} ? "<p>$opt_ref->{subject}</p>" : q{};
 
     @lines = map convert_escaped_char($_), @lines;
     my $concat_line = join q{}, @lines;
@@ -253,6 +255,7 @@ sub code_markup {
 
     my $str = <<"END_SECTION";
 <div>
+$subject
 <pre>
 $concat_line
 </pre>
