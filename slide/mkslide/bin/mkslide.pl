@@ -157,19 +157,20 @@ sub img_markup {
 
     my $img_str;
     if ( $name ) {
-        $img_str = qq{<p>$name</p>\n<img src="$slide_info->{path}{images}/$file" alt="$name">};
+        $img_str = "<p>$name</p>\n"
+                 . "<img src=\"$slide_info->{path}{images}/$file\" alt=\"$name\">"
+                 ;
     }
     else {
-        $img_str = qq{<img src="$slide_info->{path}{images}/$file">};
+        $img_str = "<img src=\"$slide_info->{path}{images}/$file\">";
     }
 
-    my $str = <<"END_SECTION";
-<div>
-<p>
-$img_str
-</p>
-</div>
-END_SECTION
+    my $str = "<div>\n"
+            . "<p>\n"
+            . "$img_str\n"
+            . "</p>\n"
+            . "</div>\n"
+            ;
 
     return $str;
 }
@@ -203,14 +204,13 @@ sub ul_item_markup {
 
     @lines = map convert_escaped_char($_), @lines;
     my $concat_line = join "\n", map { s/$TAG{ul_item}//; "<li>$_</li>"; } @lines;
-    my $str = <<"END_SECTION";
-<div>
-$subject
-<ul>
-$concat_line
-</ul>
-</div>
-END_SECTION
+    my $str = "<div>\n"
+            . "$subject\n"
+            . "<ul>\n"
+            . "$concat_line\n"
+            . "</ul>\n"
+            . "</div>\n"
+            ;
 
     return $str;
 }
@@ -220,16 +220,46 @@ sub normal_markup {
 
     $line = convert_escaped_char( $line );
 
-    my $str = <<"END_SECTION";
-<div>
-<h1>$line</h1>
-</div>
-END_SECTION
+    my $str = "<div>\n"
+            . "<h1>$line</h1>\n"
+            . "</div>\n"
+            ;
 
     return $str;
 }
 
 sub code_markup {
+    my ( $opt_ref, @lines ) = @_;
+
+    my $effect  = $opt_ref->{effect} || q{};
+
+    my $str;
+    if ( $effect eq 'seq' ) {
+        $str = effect_seq( \&code_item_markup, '#', $opt_ref, @lines );
+    }
+    else {
+        $str = code_item_markup($opt_ref, @lines);
+    }
+
+    return $str;
+}
+
+sub effect_seq {
+    my ( $func, $blank, $opt_ref, @lines ) = @_;
+
+    my $idx;
+    my $str;
+    $str .= $func->( $opt_ref, map("$blank\n", @lines) );
+    $str .= $func->(
+        $opt_ref,
+        @lines[0 .. $idx++],
+        map("$blank\n", $idx + 1 .. @lines)
+    ) for @lines;
+
+    return $str;
+}
+
+sub code_item_markup {
     my ( $opt_ref, @lines ) = @_;
 
     my $subject = $opt_ref->{subject} ? "<p>$opt_ref->{subject}</p>" : q{};
@@ -238,14 +268,13 @@ sub code_markup {
     my $concat_line = join q{}, @lines;
     chomp $concat_line;
 
-    my $str = <<"END_SECTION";
-<div>
-$subject
-<pre>
-$concat_line
-</pre>
-</div>
-END_SECTION
+    my $str = "<div>\n"
+            . "$subject\n"
+            . "<pre>\n"
+            . "$concat_line\n"
+            . "</pre>\n"
+            . "</div>\n"
+            ;
 
     return $str;
 }
@@ -253,16 +282,15 @@ END_SECTION
 sub text_markup {
     my ( @lines ) = @_;
 
-    @lines = map convert_escaped_char($_), @lines;
+    @lines = map convert_escaped_char($_) || q{}, @lines;
     my $concat_line = join "<br>\n", @lines;
 
-    my $str = <<"END_SECTION";
-<div>
-<p>
-$concat_line
-</p>
-</div>
-END_SECTION
+    my $str = "<div>\n"
+            . "<p>\n"
+            . "$concat_line\n"
+            . "</p>\n"
+            . "</div>\n"
+            ;
 
     return $str;
 }
@@ -287,15 +315,20 @@ sub parse_options {
     my %opt;
     map {
         my ( $name, $val ) = split /=/, $_, 2;
+
+        $name =~ s/^\s+ //x;
+        $name =~ s/ \s+$//x;
+
         $val =~ s/^" //x;
         $val =~ s/ "$//x;
 
         $name = $name eq '제목' ? 'subject'
               : $name eq '효과' ? 'effect'
+              : $name eq '파일' ? 'src'
               : $name
               ;
         $opt{$name} = $val;
-    } $opt_str =~ m/ ( .+ = (?: "[^"]*" | \w* ) ) /gx;
+    } $opt_str =~ m/ ( .+? = (?: "[^"]*" | \w* ) ) /gx;
 
     return %opt;
 }
@@ -321,12 +354,12 @@ class="screen" align="center" valign="center">
 </td>
 </tr>
 <tr>
-<td nowrap align="left"><a href="javascript:slide.prev()">prev</a>
-<input id="translate" type="checkbox" onclick="slide.go()">Translate</td>
+<td nowrap align="left"><a href="javascript:slide.prev()">prev</a></td>
 <td width="100%"></td>
 <td nowrap align="right">Page
 <input id="pagenum" type="text" size="2" value="0"
 onkeyup="slide.go(\$('pagenum').value)" onclick="\$('pagenum').select()">
+ / <span id="maxnum"></span>
 <a href="javascript:slide.next()">next</a></td>
 </tr>
 </table>
@@ -342,7 +375,9 @@ onkeyup="slide.go(\$('pagenum').value)" onclick="\$('pagenum').select()">
 by <a href="mailto:###EMAIL###">###NAME###</a>
 </p>
 <p>
-###COMPANY###<br>
+###COMPANY###
+</p>
+<p>
 ###COMMUNITY###
 </p>
 </div>
