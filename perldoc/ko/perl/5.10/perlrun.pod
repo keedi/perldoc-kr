@@ -1,5 +1,5 @@
 
-=encoding euc-jp
+=encoding utf-8
 
 =head1 NAME
 
@@ -9,7 +9,7 @@ perlrun - how to execute the Perl interpreter
 
 =end original
 
-perlrun - Perl インタプリタの起動方法
+perlrun - Perl 인터프리터의 기동방법
 
 =head1 SYNOPSIS
 
@@ -38,12 +38,12 @@ places:
 
 =end original
 
-Perl プログラムを実行する普通の方法は、直接実行できる形にするか、
-コマンドラインの引数としてソースファイルの名前を渡すことです。
-(対話的な Perl 環境もあります -- どのようにするかの詳細については
-L<perldebug> を参照して下さい。)
-実行にあたって、Perl は指定されたプログラムを以下に示す場所で
-探します:
+Perl 프록램을 실행하는 보통의 방법은 직접실행할 수 있는 형태로 하거나, 
+커맨드라인의 인수로써 소스 파일의 이름을 넘기는 것입니다.
+(대화적인 Perl 환경도 있습니다 -- 어떻게 하는 가의 자세한 설명에 대해서는
+L<perldebug> 를 참조해주세요)
+실행을 하면, Perl 은 설정된 프로그램을 아래에 나타난 장소에서 찾습니다;
+
 
 =over 4
 
@@ -55,7 +55,7 @@ Specified line by line via B<-e> or B<-E> switches on the command line.
 
 =end original
 
-コマンドライン上で B<-e> か B<-E> のスイッチで指定された行。
+커맨드라인 상에서 B<-e> 가 B<-E> 의 스위치로 지정된 줄.
 
 =item 2.
 
@@ -67,10 +67,10 @@ way. See L<Location of Perl>.)
 
 =end original
 
-コマンドライン上で最初のファイル名として示されたファイルの中。
-(#! 記法をサポートしているシステムでは、このようにして
-インタプリタを呼び出します。
-L<Location of Perl> を参照して下さい。)
+커맨드라인 상에서 최초의 파일이름으로 나타난 파일의 안.
+(#! 기법을 지원하는 시스템에서는 이렇게 해 
+인터프리터를 호출합니다.
+L<Location of Perl> 을 참조해주세요.)
 
 =item 3.
 
@@ -82,10 +82,10 @@ must explicitly specify a "-" for the program name.
 
 =end original
 
-標準入力から暗黙に渡される。
-ファイル名を示す引数が無い場合にのみうまくいきます。
-STDIN から読み込むプログラムに引数を渡すには、
-プログラム名として明示的に "-" を指定しなくてはなりません、
+표준입력에서 암묵적으로 넘겨받습니다.
+파일이름을 나타내는 인수가 없는 경우에만 잘 움직입니다.
+STDIN 에서 읽어들이는 프로그램에 인수를 넘길 때에는 
+프로그램 이름으로 명시적으로 "-" 를 설정하지 않으면 안됩니다.
 
 =back
 
