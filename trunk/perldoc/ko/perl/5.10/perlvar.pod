@@ -1294,14 +1294,14 @@ with C<@+>.
 
 =end original
 
-’½¾“ªÃ“ªÆ $_ “ªÎ“«Þ“«Ã“«Á“ªÎ“ý­“¡¢$& “ªÏ C<substr $_, $-[0], $+[0] - $-[0]> “ªÈ
-“ìé“öÈ“ª·“ªÞ“ª¹“¡£“ÔÒ’ÍÍ“ªË“¡¢$I<n> “ªÏ“¡¢C<$-[n]> “ª¬“ïÒ“ëù“ªµ“ªì“ªÆ“ª¤“ªì“ªÐ
-C<substr $_, $-[n], $+[n] - $-[n]> “ªÈ“ìé“öÈ“ª·“¡¢
-$+ “ªÏ C<substr $_, $-[$#-], $+[$#-] - $-[$#-]> “ªÈ“ìé“öÈ“ª·“ªÞ“ª¹“¡£
-C<$#-> “ªÏ“òÁ“îñ“ªË“à÷“Íí“ª·“ª¿“«Þ“«Ã“«Á“ªÇ“õÌ“ý­“ªÎ“«Þ“«Ã“«Á“ª·“ª¿“«µ“«Ö“«°“«ë’¡¼“«×“ªò
-“÷®“ª¹“ªÎ“ªË“ÞÅ“ª¨“ªÞ“ª¹“¡£
-“ïá“Ð®“øú“úÞ“ªÇ“ªÎ“«µ“«Ö“«°“«ë’¡¼“«×“ªÎ‘Êý“ªÇ“ª¢“ªë C<$#+> “ªÈ’ÂÐ“ðÎ“îÜ“ªÇ“ª¹“¡£
-C<@+> “ªÈ“Ýï“Îò“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
+“µû“¶ó“¼­ $_ “ÀÇ “¸Å“Ä¡ “ÈÄ, $& “´Â C<substr $_, $-[0], $+[0] - $-[0]> “°ú 
+“ÀÏ“Ä¡“ÇÕ“´Ï“´Ù. “¸¶“Âù“°¡“Áö“·Î $I<n> “Àº C<$-[n]> “ÀÌ “Á¤“ÀÇ“µÇ“¾î “ÀÖ“À¸“¸é 
+C<substr $_, $-[n], $+[n] - $-[n]> “°ú “ÀÏ“Ä¡“ÇÏ“°í, 
+$+ “´Â C<substr $_, $-[$#-], $+[$#-] - $-[$#-]> “°ú “ÀÏ“Ä¡“ÇÕ“´Ï“´Ù.
+C<$#-> “´Â “Á÷“Àü“¿¡ “¼º“°ø“ÇÑ “¸Å“Ä¡“¿¡“¼­ “¸¶“Áö“¸·“ÀÇ “¸Å“Ä¡“ÇÑ “¼­“ºê“·ç“ÇÁ“¸¦ “Ã£“´Â “°Í“¿¡ 
+“»ç“¿ë“ÇÒ “¼ö “ÀÖ“½À“´Ï“´Ù.
+“Á¤“±Ô“Ç¥“Çö“¿¡“¼­ “¼­“ºê“±×“·ì“ÀÇ “¼ö“ÀÎ c<$#+> “¿Í “´ë“Á¶“Àû“ÀÔ“´Ï“´Ù.
+C<@+> “¿Í “ºñ“±³“ÇØ“ÁÖ“¼¼“¿ä.
 
 =begin original
 
@@ -1314,12 +1314,12 @@ begins, C<$-[2]> the offset where $2 begins, and so on.
 
 =end original
 
-“ª³“ªÎ“ÛÕ“Öª“ªÏ“úÞ“î¤“«¢“«¯“«Æ“«£“«Ö“ªÊ“ÔÑ“îÜ“«¹“«³’¡¼“«×‘ÄÚ“ªÇ“õÌ“ý­“ªË“à÷“Íí“ª·“ª¿
-“«µ“«Ö“«Þ“«Ã“«Á“ªÎ“à»“Ôé“êÈ“öÇ“ªÎ“«ª“«Õ“«»“«Ã“«È“ªò“ÜÁ“ò¥“ª·“ªÞ“ª¹“¡£
-C<$-[0]> “ªÏ“«Þ“«Ã“«Á“îï‘Ìå“ªÎ“à»“Ôé“ªÎ“Ùþ“í®“Öª“ªØ“ªÎ“«ª“«Õ“«»“«Ã“«È“ªÇ“ª¹“¡£
-“ª³“ªÎ“ÛÕ“Öª“ªÎ I<n> “Ûã“ÙÍ“ªÎ“é©“áÈ“ªÏ I<n> “Ûã“ÙÍ“ªÎ“«µ“«Ö“«Þ“«Ã“«Á“ªØ“ªÎ
-“«ª“«Õ“«»“«Ã“«È“ªò“ÜÁ“ò¥“ª·“ªÞ“ª¹“ªÎ“ªÇ“¡¢C<$-[1]> “ªÏ $1 “ªÎ“à»“Ôé“ªØ“ªÎ
-“«ª“«Õ“«»“«Ã“«È“¡¢C<$-[2]> “ªÏ $2 “ªÎ“à»“Ôé“ªØ“ªÎ“«ª“«Õ“«»“«Ã“«È“¡¢“ªÊ“ªÉ“ªÈ“ªÊ“ªê“ªÞ“ª¹“¡£
+“ÀÌ “¹è“¿­“Àº “Çö“Àç “¾×“Æ¼“ºê“ÇÑ “µ¿“Àû “¿µ“¿ª “¾È“¿¡“¼­ “¸¶“Áö“¸·“À¸“·Î “¼º“°ø“ÇÑ 
+“¼­“ºê“¸Å“Ä¡“ÀÇ “¸Ç“Ã³“À½ “À§“Ä¡“ÀÇ “¿À“ÇÁ“¼Â“À» “°¡“Áý“´Ï“´Ù.
+C<$-[0]> “´Â “¸Å“Ä¡ “Àü“Ã¼“ÀÇ “¼±“µÎ“ÀÇ “¹®“ÀÚ“¿­“·Î“ÀÇ “¿À“ÇÁ“¼Â“ÀÔ“´Ï“´Ù.
+“ÀÌ “¹è“¿­“ÀÇ I<n> “¹ø“Â°“ÀÇ “¿ä“¼Ò“´Â I<n> “¹ø“Â°“ÀÇ “¼­“ºê“¸Å“Ä¡“·Î“ÀÇ 
+“¿À“ÇÁ“¼Â“À» “°¡“Áö“°í “ÀÖ“±â “¶§“¹®“¿¡, C<$-[1]> “´Â $1 “ÀÇ “¼±“µÎ“¿¡“¼­“ÀÇ 
+“¿À“ÇÁ“¼Â, C<$-[2]> “´Â $2 “ÀÇ “¼±“µÎ“¿¡“¼­“ÀÇ “¿À“ÇÁ“¼Â “µî“ÀÌ “µË“´Ï“´Ù.
 
 =begin original
 
@@ -1327,7 +1327,7 @@ After a match against some variable $var:
 
 =end original
 
-“ª¢“ªë’ÊÑ‘Êý $var “ªÇ“«Þ“«Ã“«Á“ª·“ª¿“ý­“¡¢“ì¤“ù»“ªÎ“ªè“ª¦“ªË“ªÊ“ªê“ªÞ“ª¹“¡£
+“¾î“¶² “º¯“¼ö $var “¿¡“¼­ “¸Å“Ä¡“ÇÑ “µÚ “¾Æ“·¡“Ã³“·³ “µË“´Ï“´Ù.
 
 =over 5
 
@@ -1347,17 +1347,17 @@ After a match against some variable $var:
 
 =end original
 
-=item C<$`> “ªÏ C<substr($var, 0, $-[0])> “ªÈ“ÔÒ“ª¸“ªÇ“ª¹“¡£
+=item C<$`> “Àº C<substr($var, 0, $-[0])> “¿Í “°°“½À“´Ï“´Ù.
 
-=item C<$&> “ªÏ C<substr($var, $-[0], $+[0] - $-[0])> “ªÈ“ÔÒ“ª¸“ªÇ“ª¹“¡£
+=item C<$&> “Àº C<substr($var, $-[0], $+[0] - $-[0])> “¿À “°°“½À“´Ï“´Ù.
 
-=item C<$'> “ªÏ C<substr($var, $+[0])> “ªÈ“ÔÒ“ª¸“ªÇ“ª¹“¡£
+=item C<$'> “Àº C<substr($var, $+[0])> “¿Í “°°“½À“´Ï“´Ù.
 
-=item C<$1> “ªÏ C<substr($var, $-[1], $+[1] - $-[1])> “ªÈ“ÔÒ“ª¸“ªÇ“ª¹“¡£
+=item C<$1> “Àº C<substr($var, $-[1], $+[1] - $-[1])> “¿Í “°°“½À“´Ï“´Ù.
 
-=item C<$2> “ªÏ C<substr($var, $-[2], $+[2] - $-[2])> “ªÈ“ÔÒ“ª¸“ªÇ“ª¹“¡£
+=item C<$2> “Àº C<substr($var, $-[2], $+[2] - $-[2])> “¿Í “°°“½À“´Ï“´Ù.
 
-=item C<$3> “ªÏ C<substr $var, $-[3], $+[3] - $-[3])> “ªÈ“ÔÒ“ª¸“ªÇ“ª¹“¡£
+=item C<$3> “Àº C<substr $var, $-[3], $+[3] - $-[3])> “¿Í “°°“½À“´Ï“´Ù.
 
 =back
 
@@ -1389,7 +1389,7 @@ Here's an example:
 
 =end original
 
-“ì¤“ù»“ªË“ÖÇ“ªò“ãÆ“ª·“ªÞ“ª¹:
+“¾Æ“·¡“ÀÇ “¿¹“¸¦ “Âü“Á¶“ÇØ“ÁÖ“¼¼“¿ä.
 
     if ('1234' =~ /(?<A>1)(?<B>2)(?<A>3)(?<B>4)/) {
         foreach my $bufname (sort keys %-) {
@@ -1408,7 +1408,8 @@ would print out:
 
 =end original
 
-“ªÈ“ª¹“ªë“ªÈ“¡¢“ì¤“ù»“ªÎ“ªâ“ªÎ“ª¬“øú“ãÆ“ªµ“ªì“ªÞ“ª¹:
+“ÀÌ“¶ó“°í “ÇÏ“¸é, “¾Æ“·¡“Ã³“·³ “Ç¥“½Ã“µË“´Ï“´Ù.
+
 
     $-{A}[0] : '1'
     $-{A}[1] : '3'
@@ -1469,9 +1470,9 @@ C<$^>.)
 
 =end original
 
-“ª½“ªÎ“ãÁ“ïÃ“ªÇ“àÔ’Âò“ªµ“ªì“ªÆ“ª¤“ªë“õó“Õô“«Á“«ã“«Í“«ë“ªÎ“¡¢“ª½“ªÎ“ãÁ“ïÃ“ªÇ“ªÎ“«Õ“«©’¡¼“«Þ“«Ã“«È“Ù£“¡£
-“«Ç“«Õ“«©“«ë“«È“ªÇ“ªÏ“¡¢“«Õ“«¡“«¤“«ë“«Ï“«ó“«É“«ë“ªÈ“ÔÒ“Ù£“ªÇ“ª¹“¡£
-(“ÑÀ“åã“Ûö: C<$^> “ªÎ“úü“ð©“¡£)
+“±× “½Ã“Á¡“¿¡“¼­ “¼±“ÅÃ“µÇ“¾î “ÀÖ“´Â “Ãâ“·Â “Ã¤“³Î“ÀÇ, “±× “½Ã“Á¡“¿¡“¼­“ÀÇ “Æ÷“¸Ë“ÀÌ“¸§.
+“±â“º»“°ª“¿¡“¼­“´Â “ÆÄ“ÀÏ“ÇÚ“µé“°ú “°°“Àº “ÀÌ“¸§“ÀÔ“´Ï“´Ù.
+(“±â“¾ï“¹ý: C<$^> “ÀÇ “Çü“Á¦ )
 
 =item HANDLE->format_top_name(EXPR)
 
@@ -1488,10 +1489,9 @@ appended.  (Mnemonic: points to top of page.)
 
 =end original
 
-“ª½“ªÎ“ãÁ“ïÃ“ªÇ“àÔ’Âò“ªµ“ªì“ªÆ“ª¤“ªë“õó“Õô“«Á“«ã“«Í“«ë“ªÎ“¡¢“ª½“ªÎ“ãÁ“ïÃ“ªÇ“ªÎ
-“«Ú’¡¼“«¸“à»“Ôé“«Õ“«©’¡¼“«Þ“«Ã“«È“Ù£“¡£
-“«Ç“«Õ“«©“«ë“«È“ªÇ“ªÏ“¡¢“«Õ“«¡“«¤“«ë“«Ï“«ó“«É“«ë“Ù£“ªË _TOP “ªò’Â³“ª±“ª¿“ªâ“ªÎ“¡£
-(“ÑÀ“åã“Ûö: “«Ú’¡¼“«¸“ªÎ“à»“Ôé“ªØ“ªÎ“«Ý“«¤“«ó“«¿“¡£)
+“±× “½Ã“Á¡“¿¡“¼­ “¼±“ÅÃ“µÈ “Ãâ“·Â“Ã¤“³Î“ÀÇ “±× “½Ã“Á¡“ÀÇ “Æä“ÀÌ“Áö “¼±“µÎ “Æ÷“¸Ë“ÀÌ“¸§.
+“±â“º»“°ª“¿¡“¼­“´Â “ÆÄ“ÀÏ“ÇÚ“µé“ÀÌ“¸§“¿¡ _TOP “¸¦ “ºÙ“ÀÎ “°Í.
+(“±â“¾ï“¹ý: “Æä“ÀÌ“Áö“ÀÇ “¸Ç“¾Õ“À¸“·Î“ÀÇ “Æ÷“ÀÎ“ÅÍ)
 
 =item IO::Handle->format_line_break_characters EXPR
 
@@ -1509,10 +1509,10 @@ poetry is a part of a line.)
 
 =end original
 
-“«Õ“«©’¡¼“«Þ“«Ã“«È“ªÎ“õö‘Ìî’·Ñ’Â³“«Õ“«£’¡¼“«ë“«É (^ “ªÇ“ã·“ªÞ“ªë“ªâ“ªÎ) “ªØ“ªÎ
-“Ùþ“í®“Öª“ªÇ“ú¼“ÝÂ“ùÜ“ªò“úÉ“ª¹“Ùþ“í®“ó¢“ùê“¡£
-“«Ç“«Õ“«©“«ë“«È“ªÏ S<" \n-"> “ªÇ“Íö“ÛÜ“ª«“ËÇ“ú¼“ªÎ“ý­“ªÇ“ú¼“ÝÂ“ùÜ“ª¬“Ê¦“Òö“ªÈ“ªÊ“ªÃ“ªÆ“ª¤“ªÞ“ª¹“¡£
-(“ÑÀ“åã“Ûö: “ãÌ“ªÇ“ªÏ“¡¸“«³“«í“«ó“¡¹“ªÏ“¡¢“ú¼“ªÎ“ìé“Ý»“¡£)
+“Æ÷“¸Ë“ÀÇ “°è“¼Ó“µÇ“´Â “ÇÊ“µå (^ “·Î “½Ã“ÀÛ“ÇÏ“´Â “°Í)“À¸“·Î“ÀÇ “¹®“ÀÚ“¿­“¿¡“¼­ “Çà“ºÐ“ÇÒ“À» 
+“Çã“¶ô“ÇÏ“´Â “¹®“ÀÚ“Áý“ÇÕ.
+“±â“º»“°ª“Àº S<" \n- "> “·Î “°ø“¹é“ÀÌ “°³“Çà“ÀÇ “µÚ“¿¡“¼­ “Çà“ºÐ“ÇÒ“ÀÌ “°¡“´É“ÇÏ“°Ô “µÇ“¾î “ÀÖ“½À“´Ï“´Ù.
+(“±â“¾ï“¹ý: “½Ã“¿¡“¼­“´Â "“ÄÝ“·Ð"“Àº “Çà“ÀÇ “ÀÏ“ºÎ)
 
 =item IO::Handle->format_formfeed EXPR
 
@@ -1527,8 +1527,8 @@ What formats output as a form feed.  Default is \f.
 
 =end original
 
-“«Õ“«©’¡¼“«Þ“«Ã“«È“õó“Õô“ªÇ“¡¢“ËÇ“«Ú’¡¼“«¸“ªÎ“ª¿“ªá“ªË“õó“Õô“ªµ“ªì“ªë“ªâ“ªÎ“¡£
-“«Ç“«Õ“«©“«ë“«È“ªÏ \f“¡£
+“Æ÷“¸Ë “Ãâ“·Â“¿¡“¼­ “Æä“ÀÌ“Áö“³Ñ“±è“À» “À§“ÇØ “Ãâ“·Â“µÈ “°Í.
+“±â“º»“°ª“Àº \f.
 
 =item $ACCUMULATOR
 
@@ -1546,13 +1546,12 @@ L<perlfunc/formline()>.
 
 =end original
 
-format() “ú¼“ªÎ“ª¿“ªá“ªÎ“¡¢“ª½“ªÎ“ãÁ“ïÃ“ªÇ“ªÎ write() “«¢“«­“«å“«à“«ì’¡¼“«¿“ªÎ“ö·“¡£
-format “ªË“ªÏ“¡¢C<$^A> “ªË“Ì¿“Íý“ªò‘²Ð“ª¹“¡¢formline() “û¼“ªÓ“õó“ª·“ª¬“ùß“ªÞ“ªì“ªÞ“ª¹“¡£
-“í»“ÝÂ“ªÎ“«Õ“«©’¡¼“«Þ“«Ã“«È“ªò“û¼“ªÓ“õó“ª·“ª¿“ý­“ªÇ“¡¢
-write() “ªÏ C<$^A> “ªÎ‘ÄÚ“é»“ªò“õó“Õô“ª·“ªÆ“ª«“ªé“á¼“ËÛ“ª·“ªÞ“ª¹“¡£
-“ª·“ª¿“ª¬“ªÃ“ªÆ“¡¢“í»“ÝÂ“ªÇ formline() “ªò“û¼“ªÓ“õó“ª¹“ªÎ“ªÇ“ªÊ“ª±“ªì“ªÐ“¡¢
-C<$^A> “ªÎ“ö·“ª¬“Ì¸“ª¨“ªë“ª³“ªÈ“ªÏ“ª¢“ªê“ªÞ“ª»“ªó“¡£
-L<perlform> “ªÈ L<perlfunc/formline()> “ªò‘²Î“ðÎ“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
+format() “Çà“À» “À§“ÇÑ “±× “½Ã“Á¡“¿¡“¼­“ÀÇ write() “¾î“Å¨“·¹“ÀÌ“ÅÍ“ÀÇ “°ª.
+format “¿¡“´Â C<$^A> “¿¡ “°á“°ú“¸¦ “³ª“¹Í“°í, formline() “È£“Ãâ“ÀÌ “Æ÷“ÇÔ“µË“´Ï“´Ù.
+“ÀÚ“½Å“ÀÇ “Æ÷“¸Ë“À» “È£“Ãâ“ÇÑ “µÚ“¿¡ write() “´Â C<$^A> “³»“¿ë“À» “Ãâ“·Â“ÇÏ“°í “¼Ò“°Å“ÇÕ“´Ï“´Ù.
+“µû“¶ó“¼­ “ÀÚ“½Å“ÀÌ formline() “À» “È£“Ãâ“ÇÏ“´Â “°Í“ÀÌ “¾Æ“´Ï“¸é, 
+C<$^A> “ÀÇ “°ª“ÀÌ “º¸“ÀÌ“´Â “°Í“Àº “¾Æ“´Õ“´Ï“´Ù.
+L<perlform> “°ú L<perlfunc/formline()> “¸¦ “Âü“Á¶“ÇØ“ÁÖ“¼¼“¿ä.
 
 =item $CHILD_ERROR
 
@@ -1572,14 +1571,14 @@ similar to B<sh> and B<ksh>.)
 
 =end original
 
-“õÌ“ý­“ªË close “ª·“ª¿“«Ñ“«¤“«×“¡¢“«Ð“«Ã“«¯“«¯“«©’¡¼“«È (C<``>) “«³“«Þ“«ó“«É“¡¢
-“à÷“Íí“ª·“ª¿ wait() “ªÞ“ª¿“ªÏ waitpid() “û¼“ªÓ“õó“ª·“¡¢system() “æÑ“ß©“í­“ª¬“Ú÷“ª·“ª¿“«¹“«Æ’¡¼“«¿“«¹“¡£
-“ª³“ªÎ“«¹“«Æ’¡¼“«¿“«¹“«ï’¡¼“«É“ªÏ™¡ó“÷Ö“îÜ“ªÊ Unix “ªÎ  wait() “«·“«¹“«Æ“«à“«³’¡¼“«ë“ª¬“Ú÷“ª·“ª¿
-16 “«Ó“«Ã“«È“ªÎ“«¹“«Æ’¡¼“«¿“«¹(“ªÞ“ª¿“ªÏ“ª½“ªÎ“ªè“ª¦“ªË“Ì¸“ª¨“ªë“ªâ“ªÎ)“ªÇ“ª¹“¡£
-’½¾“ªÃ“ªÆ“«µ“«Ö“«×“«í“«»“«¹“ªÎ exit “ö·“ªÏ“¡¢’¼Â“ð·“ªË“ªÏ (C<<< $? >> 8 >>>)
-“ªÇ“¡¢C<$? & 127> “ªÏ“¡¢“ªâ“ª·“ª¢“ªì“ªÐ“¡¢“ª½“ªÎ“«×“«í“«»“«¹“ªò“ò­“ªá“ª¿“«·“«°“«Ê“«ë“ªÇ“¡¢
-C<$? & 128> “ªÏ“«³“«¢“«À“«ó“«×“ª¬“ª¢“ªë“ª«“ªÉ“ª¦“ª«“ªò“ãÆ“ª·“ªÞ“ª¹“¡£
-(“ÑÀ“åã“Ûö: B<sh> “ªä B<ksh> “ªÈ“ÔÒ’ÍÍ“¡£)
+“¸¶“Áö“¸·“À¸“·Î close “ÇÑ “ÆÄ“ÀÌ“ÇÁ, “¿ª“µû“¿È“Ç¥ (C<``>) “Ä¿“¸Ç“µå,
+“¼º“°ø“ÇÑ wait() “¶Ç“´Â waitpid() “È£“Ãâ, system() “¿¬“»ê“ÀÚ“°¡ “¹Ý“È¯“ÇÑ “»ó“ÅÂ.
+“ÀÌ “»ó“ÅÂ“´Ü“¾î“´Â “Àü“Åë“Àû“ÀÎ Unix “ÀÇ wait() “½Ã“½º“ÅÛ “È£“Ãâ“ÀÌ “¹Ý“È¯“ÇÑ 
+16“ºñ“Æ®“ÀÇ “»ó“ÅÂ(“¶Ç“´Â “±×“·¸“°Ô “º¸“ÀÌ“´Â “°Í) “ÀÔ“´Ï“´Ù.
+“µû“¶ó“¼­ “¼­“ºê“ÇÁ“·Î“¼¼“½º“ÀÇ exit “°ª“Àº “½Ç“Á¦“·Î“´Â (C<<< $? >> 8 >>>) 
+“¿¡“¼­ C<$? & 127> “Àº “¸¸“¾à “ÀÖ“¤¿“¸é, “±× “ÇÁ“·Î“¼¼“½º“¸¦ “¸Ø“Ãß“´Â “½Ã“±×“³Î“¿¡“¼­ 
+C<$? & 128> “´Â “ÄÚ“¾î“´ý“ÇÁ“°¡ “ÀÖ“´Â“Áö “¾î“¶²“Áö“¸¦ “³ª“Å¸“³À“´Ï“´Ù.
+(“±â“¾ï“¹ý: B<sh> “³ª B<ksh> “¿Í “°°“½À“´Ï“´Ù)
 
 =begin original
 
@@ -1588,8 +1587,8 @@ is returned via $? if any C<gethost*()> function fails.
 
 =end original
 
-“ªµ“ªé“ªË“¡¢C “ªÇ C<h_errno> ’ÊÑ‘Êý“ªË’ÂÐ’±þ“ª·“ªÆ“ª¤“ªë“íÞ“ùê“ªÏ“¡¢
-C<gethost*()> “ª¬“ã÷“ø¨“ª·“ª¿“ªÈ“ª­“ªË $? “ªò“÷×“ª·“ªÆ“Ú÷“ªµ“ªì“ªÞ“ª¹“¡£
+“°Å“±â“¿¡ C “¿¡“¼­ C<h_errno> “º¯“¼ö“¿¡ “´ë“ÀÀ“ÇÏ“°í “ÀÖ“´Â “°æ“¿ì“´Â 
+C<gethost*()> “°¡ “½Ç“ÆÐ“ÇÑ “¶§“¿¡ $? “¸¦ “Åë“ÇØ“¼­ “¹Ý“È¯“µË“´Ï“´Ù.
 
 =begin original
 
@@ -1598,8 +1597,8 @@ value of C<$?> will usually be wrong outside that handler.
 
 =end original
 
-C<SIGCHLD> “ªÎ“«·“«°“«Ê“«ë“«Ï“«ó“«É“«é“ªò“àâ“ïÒ“ª·“ª¿“íÞ“ùê“¡¢
-C<$?> “ªÎ“ö·“ªÏ“÷×“ßÈ“«Ï“«ó“«É“«é“ªÎ“èâ“ö°“ªÇ“ªÏ“ïá“ª·“ª¯“ªÊ“ª¤“ö·“ªÈ“ªÊ“ªê“ªÞ“ª¹“¡£
+C<SIGCHLD> “ÀÇ “½Ã“±×“³Î “ÇÚ“µé“·¯“¸¦ “¼³“Á¤“ÇÑ “°æ“¿ì, 
+C<$?> “ÀÇ “°ª“Àº “º¸“Åë “ÇÚ“µé“·¯“ÀÇ “¹Ù“±ù“ÂÊ“¿¡“¼­“´Â “¹Ù“¸£“Áö “¾Ê“Àº “°ª“ÀÌ “µË“´Ï“´Ù.
 
 =begin original
 
@@ -1609,11 +1608,11 @@ change the exit status of your program.  For example:
 
 =end original
 
-C<END> “«µ“«Ö“«ë’¡¼“«Á“«ó“ªÎ‘ÄÚ“ö°“ªÇ“ªÏ C<$?> “ªË“ªÏ C<exit()> “ªË“Ô¤“ªµ“ªì“ªè“ª¦“ªÈ“ª·“ªÆ“ª¤“ªë
-“ö·“ªò“ùß“ªß“ªÞ“ª¹“¡£
-“«×“«í“«°“«é“«à“ªÎ“ðû“Öõ“«¹“«Æ’¡¼“«¿“«¹“ªò’ÊÑ“ÌÚ“ª¹“ªë“ª¿“ªá“ªË“¡¢C<END> “«µ“«Ö“«ë’¡¼“«Á“«ó ‘ÄÚ“ªÇ
-C<$?> “ªò’ÊÑ“ÌÚ“ªÇ“ª­“ªÞ“ª¹“¡£
-“ÖÇ“ª¨“ªÐ:
+C<END> “¼­“ºê“·ç“Æ¾“ÀÇ “¾È“ÂÊ“¿¡“¼­“´Â C<$?> “¿¡“´Â C<exit()> “¿¡ “³Ñ“±â“·Á“°í “ÇÏ“´Â 
+“°ª“À» “Æ÷“ÇÔ“ÇÕ“´Ï“´Ù.
+“ÇÁ“·Î“±×“·¥“ÀÇ “Á¾“·á “»ó“ÅÂ“¸¦ “º¯“°æ“ÇÏ“±â “À§“ÇØ C<END> “¼­“ºê“·ç“Æ¾ “¾È“¿¡“¼­ 
+C<$?> “¸¦ “º¯“°æ“ÇÒ “¼ö “ÀÖ“½À“´Ï“´Ù.
+“¿¹“¸¦“µé“¸é:
 
     END {
 	$? = 1 if $? == 255;  # die would make it 255
@@ -1627,10 +1626,10 @@ status; see L<perlvms/$?> for details.
 
 =end original
 
-VMS “ªÇ“ªÏ“¡¢C<use vmsish 'status'> “ªò“ò¦“ïÒ“ª¹“ªë“ªÈ“¡¢
-C<$?> “ªÏPOSIX “«¹“«Æ’¡¼“«¿“«¹“ªò“«¨“«ß“«å“«ì’¡¼“«È“ª·“ª¿“ªâ“ªÎ“ªÇ“ªÏ“ªÊ“ª¯“¡¢
-’¼Â“ð·“ªÎ VMS “ðû“Öõ“«¹“«Æ’¡¼“«¿“«¹“ªò“Úã“ç±“ª·“ªÞ“ª¹; “ßÙ“á¬“ªÏ L<perlvms/$?> “ªò
-‘²Î“ðÎ“ª·“ªÆ“ª¯“ªÀ“ªµ“ª¤“¡£
+VMS “¿¡“¼­“´Â C<use vmsish 'status'> “¸¦ “Áö“Á¤“ÇÏ“¸é, 
+C<$?> “´Â POSIX “»ó“ÅÂ“¸¦ “¿¡“¹Ä“·¹“ÀÌ“Æ®“ÇÑ “°Í“ÀÌ “¾Æ“´Ï“¶ó,
+“½Ç“Á¦ VMS “Á¾“·á“»ó“ÅÂ“¸¦ “¹Ý“¿µ“ÇÕ“´Ï“´Ù; “ÀÚ“¼¼“ÇÑ “³»“¿ë“Àº L<perlvms/$?> “¸¦ 
+“Âü“Á¶“ÇØ“ÁÖ“¼¼“¿ä.
 
 =begin original
 
@@ -1638,7 +1637,7 @@ Also see L<Error Indicators>.
 
 =end original
 
-L<Error Indicators> “ªâ‘²Î“ðÎ“ª·“ªÆ“ù»“ªµ“ª¤“¡£
+L<Error Indicators> “µµ “Âü“Á¶“ÇØ“ÁÖ“¼¼“¿ä.
 
 =item ${^CHILD_ERROR_NATIVE}
 X<$^CHILD_ERROR_NATIVE>
@@ -1667,9 +1666,9 @@ as $? when the pragma C<use vmsish 'status'> is in effect.
 
 =end original
 
-VMS “ªÇ“ªÏ“ª³“ªì“ªÏ’¼Â“ð·“ªÎ VMS “ªÎ“ðû“Öõ“«¹“«Æ’¡¼“«¿“«¹“ªò“Úã“ç±“ª·“ªÞ“ª¹;
-“åë“ª¤“üµ“ª¨“ªë“ªÈ“¡¢“ª³“ªì“ªÏ C<use vmsish 'status'> “«×“«é“«°“«Þ“ª¬“êó’¸ú“ªÊ“ªÈ“ª­“ªÎ $? “ªÈ
-“ÔÒ“ª¸“ªÇ“ª¹“¡£
+VMS “¿¡“¼­“´Â “ÀÌ“°Í“Àº “½Ç“Á¦ VMS “ÀÇ “Á¾“·á “»ó“ÅÂ“¸¦ “¹Ý“¿µ“ÇÕ“´Ï“´Ù;
+“¹Ù“²ã “¸»“ÇÏ“¸é “ÀÌ“°Í“Àº C<use vmsish 'status'> “ÇÁ“¶ó“±×“¸¶“°¡ “À¯“È¿“ÇÑ “¶§“ÀÇ $? “°ú 
+ë“½À“´Ï“´Ù.
 
 =item ${^ENCODING}
 X<$^ENCODING>
@@ -1705,9 +1704,9 @@ only I<immediately> after a B<failure>:
 
 =end original
 
-‘Êý“ö·“ªÈ“ª·“ªÆ“ÞÅ“ªï“ªì“ªë“ªÈ“¡¢“ª½“ªÎ“ãÁ“ïÃ“ªÎ C “ªÎ C<errno> ’ÊÑ‘Êý“ªÎ“ö·“ª¬“Ôð“ªé“ªì“ªÞ“ª¹;
-“åë“ª¤“üµ“ª¨“ªë“ªÈ“¡¢“ªâ“ª·“«·“«¹“«Æ“«à“«³’¡¼“«ë“ªä“«é“«¤“«Ö“«é“«ê“û¼“ªÓ“õó“ª·“ª¬“ã÷“ø¨“ª¹“ªë“ªÈ“¡¢
-“ª³“ªÎ’ÊÑ‘Êý“ª¬“«»“«Ã“«È“ªµ“ªì“ªÞ“ª¹“¡£
+“¼ö“Ä¡“·Î “»ç“¿ë“µÇ“¸é “±× “½Ã“Á¡“ÀÇ C dml C<errno> “º¯“¼ö“ÀÇ “°ª“À» “¾ò“À» “¼ö “ÀÖ“½À“´Ï“´Ù;
+“¹Ù“²ã“¸»“ÇØ “¸¸“¾à “½Ã“½º“ÅÛ “È£“Ãâ“ÀÌ“³ª “¶ó“ÀÌ“ºê“·¯“¸® “È£“Ãâ“ÀÌ “½Ç“ÆÐ“ÇÏ“¸é, “ÀÌ “º¯“¼ö“°¡ 
+“¼³“Á¤“µË“´Ï“´Ù.
 This means that the value of C<$!> is meaningful
 only I<immediately> after a B<failure>:
 (TBT)
@@ -1731,9 +1730,9 @@ the variable to zero.
 
 =end original
 
-“ß¾“ÑÀ“ªÎ I<meaningless> “ªÏ“ù¼“ªÇ“ªâ“ª¢“ªê“Ôð“ªÞ“ª¹: 0“¡¢“Þª 0“¡¢C<undef>“¡£
-“«·“«¹“«Æ“«à“«³’¡¼“«ë“ªä“«é“«¤“«Ö“«é“«ê“û¼“ªÓ“õó“ª·“ª¬“à÷“Íí“ª·“ª¿“íÞ“ùê“ªÏ“¡¢“ª³“ªÎ’ÊÑ‘Êý“ªÏ 0 “ªË
-“«»“«Ã“«È B<“ªµ“ªì“ªÞ“ª»“ªó>“¡£
+“À§“ÀÇ I<meaningless> “´Â “¾Æ“¹«“°Í“µµ “¾Æ“´Õ“´Ï“´Ù: 0, 0“ÀÌ “¾Æ“´Ô, C<undef>.
+“½Ã“½º“ÅÛ “È£“Ãâ“ÀÌ“³ª “¶ó“ÀÌ“ºê“·¯“¸® “È£“Ãâ“ÀÌ “¼º“°ø“ÇÑ “°æ“¿ì“´Â “ÀÌ“º¯“¼ö“´Â 0 “¿¡ 
+“Á¤“ÀÇ“µÇ“Áö B<“¾Ê“½À“´Ï“´Ù>.
 
 =begin original
 
@@ -1745,11 +1744,11 @@ went bang?)
 
 =end original
 
-“Ùþ“í®“Öª“ªÈ“ª·“ªÆ“ÞÅ“ªï“ªì“ªë“ªÈ“¡¢’ÂÐ’±þ“ª¹“ªë“«·“«¹“«Æ“«à“«¨“«é’¡¼“ªÎ“«á“«Ã“«»’¡¼“«¸“Ùþ“í®“Öª“ª¬“Ôð“ªé“ªì“ªÞ“ª¹“¡£
-“ª¿“ªÈ“ª¨“ªÐ“¡¢C<$!> “ªË“«¨“«é’¡¼“ªÎ“Ùþ“í®“Öª“ªò“Ú÷“ª·“ªÆ“é°“ª·“ª¤“ªÊ“ªé“ªÐ“¡¢“ª¢“ªë“ª¤“ªÏ“¡¢
-die() “æÑ“ß©“í­“ªÎ exit “ö·“ªò“àâ“ïÒ“ª¹“ªë“ª¿“ªá“ªË“¡¢I<errno> “ªò“àâ“ïÒ“ª¹“ªë“ª¿“ªá 
-C<$!> “ªØ“ÓÛ“ìý“ªò“ú¼“ªÊ“ª¦“ª³“ªÈ“ª¬“Ê¦“Òö“ªÇ“ª¹“¡£
-(“ÑÀ“åã“Ûö: “ù¼“ª¬ bang(!) “ª·“ª¿“ª«“¡£)
+“¹®“ÀÚ“¿­“·Î “»ç“¿ë“µÇ“¸é, “´ë“ÀÀ“ÇÏ“´Â “½Ã“½º“ÅÛ “¿¡“·¯“ÀÇ “¸Þ“½Ã“Áö “¹®“ÀÚ“¿­“À» “¾ò“À» “¼ö “ÀÖ“½À“´Ï“´Ù.
+“¿¹“¸¦“µé“¸é, C<$!> “¿¡ “¿¡“·¯ “¹®“ÀÚ“¿­“À» “¹Ý“È¯“ÇØ “ÁÖ“±æ “¿ø“ÇÏ“¸é, “¶Ç“´Â 
+die() “¿¬“»ê“ÀÚ“ÀÇ exit “°ª“À» “¼³“Á¤“ÇÏ“±â “À§“ÇØ I<errno> “¸¦ “¼³“Á¤“ÇÏ“±â “À§“ÇØ 
+C<$!> “¿¡ “´ë“ÀÔ“À» “¼ö“Çà“¤¿“´Â “°Í“ÀÌ “°¡“´É“ÇÕ“´Ï“´Ù.
+(“±â“¾ï“¹ý: “¹º“°¡ bang(!) “Çß“´Â“Áö )
 
 =begin original
 
@@ -1757,7 +1756,7 @@ Also see L<Error Indicators>.
 
 =end original
 
-L<Error Indicators> “ªâ‘²Î“ðÎ“ª·“ªÆ“ù»“ªµ“ª¤“¡£
+L<Error Indicators> “µµ “Âü“Á¶“ÇØ“ÁÖ“¼¼“¿ä.
 
 =item %OS_ERROR
 
@@ -1805,10 +1804,10 @@ the same as C<$!>.
 
 =end original
 
-“úÞ“î¤“ªÎ“«ª“«Ú“«ì’¡¼“«Æ“«£“«ó“«°“«·“«¹“«Æ“«à“ªË“÷å“ûù“ª·“ª¿“«¨“«é’¡¼“ï×“ÜÃ“ªÇ“ª¹“¡£
-“úÞ“î¤“ªÎ“ªÈ“ª³“ªí“¡¢VMS, OS/2, Win32 (“ªÈ MacPerl) “ªÎ“ªß“ªÇ
-C<$!> “ªÈ“ì¶“ªÊ“ªë“ö·“ªò“ªâ“ªÁ“ªÞ“ª¹“¡£
-“ª½“ªÎ“öâ“ªÎ“«×“«é“«Ã“«È“«Õ“«©’¡¼“«à“ªÇ“ªÏ“¡¢C<$^E> “ªÏ“ª¤“ªÄ“ªâ C<$!> “ªÈ“ÔÒ“ª¸“ªÇ“ª¹“¡£
+“Çö“Àç“ÀÇ OS “¿¡ “Æ¯“È­“µÈ “¿¡“·¯ “Á¤“º¸“ÀÔ“´Ï“´Ù.
+“Çö“Àç VMS, OS/", Win32(“¿Í MacPerl) “¿¡“¼­“¸¸ 
+C<$!> “°ú “´Ù“¸¥ “°ª“À» “°¡“Áý“´Ï“´Ù.
+“±× “¿Ü“ÀÇ “ÇÃ“·§“Æû“¿¡“¼­“´Â C<$E> “´Â “Ç×“»ó C<$!> “°ú “°°“½À“´Ï“´Ù.
 
 =begin original
 
@@ -1819,10 +1818,10 @@ important when C<$!> is set to B<EVMSERR>.
 
 =end original
 
-VMS “ªÇ“ªÏ“¡¢C<$^E> “ªÏ“õÌ“ý­“ªÎ“«·“«¹“«Æ“«à“«¨“«é’¡¼“ªÎ VMS “«¹“«Æ’¡¼“«¿“«¹“ö·“ªÇ“ª¹“¡£
-“ª³“ªì“ªÏ“¡¢“õÌ“ý­“ªÎ“«·“«¹“«Æ“«à“«¨“«é’¡¼“ªË“ªÄ“ª¤“ªÆ C<$!> “ªÇ“ð«“Íê“ªµ“ªì“ªë“ªâ“ªÎ“ªè“ªê
-“Îý‘Ìå“îÜ“ªÊ“ï×“ÜÃ“ªò“ãÆ“ª·“ªÞ“ª¹“¡£
-“ª³“ªì“ªÏ“÷å“ªË C<$!> “ª¬ B<EVMSERR> “ªË“«»“«Ã“«È“ªµ“ªì“ª¿“íÞ“ùê“ªË“ñì“é©“ªÇ“ª¹“¡£
+VMS “¿¡“¼­“´Â C<$^E> “´Â “¸¶“Áö“¸·“ÀÇ “½Ã“½º“ÅÛ “¿¡“·¯“ÀÇ VMS “»ó“ÅÂ“°ª“ÀÔ“´Ï“´Ù.
+“ÀÌ“°Í“Àº “¸¶“Áö“¸· “½Ã“½º“ÅÛ “¿¡“·¯“¿¡ “´ë“ÇØ“¼­ C<$!> “¿¡“¼­ “Á¦“°ø“µÈ “°Í“º¸“´Ù “±¸“Ã¼“Àû“ÀÎ 
+“Á¤“º¸“¸¦ “³ª“Å¸“³À“´Ï“´Ù.
+“ÀÌ“°Í“Àº “Æ¯“È÷ C<$!> “ÀÌ B<EVMSERR> “·Î “¼³“Á¤“µÈ “°æ“¿ì“¿¡ “Áß“¿ä“ÇÕ“´Ï“´Ù.
 
 =begin original
 
@@ -1831,8 +1830,8 @@ OS/2 API either via CRT, or directly from perl.
 
 =end original
 
-OS/2 “ªÇ“ªÏ“¡¢C<$^E> “ªÏ CRT ’·Ð“ë¦“¡¢“ªÞ“ª¿“ªÏ Perl “ª«“ªé“òÁ“ïÈ“û¼“ªÓ“õó“ªµ“ªì“ª¿
-“õÌ“ý­“ªÎ OS/2 API “ªÎ“«¨“«é’¡¼“«³’¡¼“«É“ª¬“«»“«Ã“«È“ªµ“ªì“ªÞ“ª¹“¡£
+OS/2 “¿¡“¼­“´Â C<$^E> “´Â CRT “°æ“À¯, “¶Ç“´Â Perl “¿¡“¼­ “Á÷“Á¢“È£“Ãâ“µÈ 
+“¸¶“Áö“¸·“ÀÇ OS/2 API “ÀÇ “¿¡“·¯ “ÄÚ“µå“°¡ “¼³“Á¤“µË“´Ï“´Ù.
 
 =begin original
 
@@ -1845,13 +1844,11 @@ via C<$!>.
 
 =end original
 
-Win32 “ªÇ“ªÏ“¡¢C<$^E> “ªÏ Win32 API “ªÇ“ªÎ“õÌ“ý­“ªÎ“«¨“«é’¡¼“ªÎ‘ÄÚ“é»“ªò“Ú÷“ª¹
-C<GetLastError()> Win32 “û¼“ªÓ“õó“ª·“ªÇ“ÜÃ“Í±“ªµ“ªì“ªë“õÌ“ãæ“ªÎ“«¨“«é’¡¼“ï×“ÜÃ“ªò
-“Ú÷“ª·“ªÞ“ª¹“¡£
-“ªÛ“ªÈ“ªó“ªÉ“ªÎ Win32 “Í³“êó“ªÎ“«³’¡¼“«É“ªÏ“«¨“«é’¡¼“ªò C<$^E> ’·Ð“ë¦“ªÇ“Ú÷“ª·“ªÞ“ª¹“¡£
-ANSI C “ªÈ Unix “ù¦“ªÎ“û¼“ªÓ“õó“ª·“ªÏ C<errno> “ªò“«»“«Ã“«È“ª¹“ªë“ªÎ“ªÇ“¡¢
-“ªÛ“ªÈ“ªó“ªÉ“ªÎ“ì¹“ãÕ“àõ“ªÎ“ª¢“ªë Perl “«³’¡¼“«É“ªÏ C<$!> ’·Ð“ë¦“ªÇ
-“«¨“«é’¡¼“ªò“ÜÃ“Í±“ª·“ªÞ“ª¹“¡£
+Win32 “¿¡“¼­“´Â C<$^E> “´Â Win32 API “¿¡“¼­“ÀÇ “¸¶“Áö“¸·“ÀÇ “¿¡“·¯ “³»“¿ë“À» “¹Ý“È¯“ÇÏ“´Â 
+C<GetLastError()> Win32 “È£“Ãâ“·Î “º¸“°í“µÇ“´Â “ÃÖ“½Å“ÀÇ “¿¡“·¯ “Á¤“º¸“¸¦ “¹Ý“È¯“ÇÕ“´Ï“´Ù.
+“´ë“ºÎ“ºÐ“ÀÇ Win32 “°í“À¯“ÀÇ “ÄÚ“µå“´Â “¿¡“·¯“¸¦ C<$^E> “°æ“À¯“·Î “¹Ý“È¯“ÇÕ“´Ï“´Ù.
+ANSI C “¿Í Unix “Ç³“ÀÇ “È£“Ãâ“Àº C<errno> “¸¦ “¼³“Á¤“ÇÏ“±â“¿¡ 
+“´ë“ºÎ“ºÐ“ÀÇ “ÀÌ“½Ä“¼º“ÀÌ “ÀÖ“´Â Perl “ÄÚ“µå“´Â C<$!> “°æ“À¯“·Î “¿¡“·¯“¸¦ “º¸“°í“ÇÕ“´Ï“´Ù.
 
 =begin original
 
