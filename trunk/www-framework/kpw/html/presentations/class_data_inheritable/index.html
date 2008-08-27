@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head profile="http://purl.org/net/ns/metaprof">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <meta name="description" content="The Secret of Class::Data::Inheritable" />
+  <meta name="generator" content="S5" />
+  <meta name="version" content="S5 1.2a2" />
+  <meta name="author" content="Eric A. Meyer" />
+  <meta name="company" content="Complex Spiral Consulting" />
+  <meta name="defaultView" content="slideshow" />
+  <meta name="controlVis" content="hidden" />
+  <title>The Secret of Class::Data::Inheritable : Korean Perl Workshop 2008</title>
+  <link rel="stylesheet" href="shared/css/slides.css" type="text/css" media="projection" id="slideProj" />
+  <link rel="stylesheet" href="shared/css/outline.css" type="text/css" media="screen" id="outlineStyle" />
+  <link rel="stylesheet" href="shared/css/print.css" type="text/css" media="print" id="slidePrint" />
+  <link rel="stylesheet" href="shared/css/opera.css" type="text/css" media="projection" id="operaFix" />
+  <!-- embedded styles -->
+  <style type="text/css" media="all">
+    .imgcon {width: 525px; margin: 0 auto; padding: 0; text-align: center;}
+    #anim {width: 270px; height: 320px; position: relative; margin-top: 0.5em;}
+    #anim img {position: absolute; top: 42px; left: 24px;}
+    img#me01 {top: 0; left: 0;}
+    img#me02 {left: 23px;}
+    img#me04 {top: 44px;}
+    img#me05 {top: 43px;left: 36px;}
+  </style>
+  <!-- S5 JS -->
+  <script src="shared/js/slides.js" type="text/javascript"></script>
+</head>
+
+<body>
+  <div class="layout">
+    <div id="controls">&nbsp;<!-- DO NOT EDIT --></div>
+    <div id="currentSlide">&nbsp;<!-- DO NOT EDIT --></div>
+    <div id="header">&nbsp;</div>
+    <div id="footer">&nbsp;</div>
+  </div>
+  <div class="presentation">
+    <!-- ****************************************************************************************** -->
+    <div class="slide">
+      <h1 style="margin-top: 1em;font-size: 250%;font-weight: bold; text-align: center;">The Secret of Class::Data::Inheritable</h1>
+      <p style="margin-top: 2em;font-size: 150%;text-align: right;">한송희<br />song @ #perl-kr<br />purewish1@gmail.com</p>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="section slide">
+      <h2>Class::Data::Inheritable</h2>
+      <ul class="incremental">
+	<li>http://search.cpan.org/~tmtm/Class-Data-Inheritable-0.08/lib/Class/Data/Inheritable.pm</li>
+      </ul>
+      <pre><code style="font-size:15px;">
+#
+# package Parent
+#
+package Parent;
+use base qw(Class::Data::Inheritable);
+
+Parxent->mk_classdata('suitcase');
+
+Parent->suitcase('Red');
+print "Parent->suitcase ", Parent->suitcase, "\n";
+
+#
+# package Child
+#
+package Child;
+use base Parent;
+
+print "Child->suitcase ", Child->suitcase, "\n\n";
+      </code></pre>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="section slide">
+      <h2>소스</h2>
+      <pre><code style="font-size:13px;">
+package Class::Data::Inheritable;
+
+use strict qw(vars subs);
+use vars qw($VERSION);
+$VERSION = '0.08';
+
+sub mk_classdata {
+    my ($declaredclass, $attribute, $data) = @_;
+
+    if( ref $declaredclass ) {
+        require Carp;
+        Carp::croak("mk_classdata() is a class method, not an object method");
+    }
+
+    my $accessor = sub {
+        my $wantclass = ref($_[0]) || $_[0];
+
+        return $wantclass->mk_classdata($attribute)->(@_)
+          if @_>1 && $wantclass ne $declaredclass;
+
+        $data = $_[1] if @_>1;
+        return $data;
+    };
+
+    my $alias = "_${attribute}_accessor";
+    *{$declaredclass.'::'.$attribute} = $accessor;
+    *{$declaredclass.'::'.$alias}     = $accessor;
+}
+
+1;
+
+__END__
+      </code></pre>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="section slide">
+      <h2>Parent</h2>
+      <pre><code>
+Parent->mk_classdata('suitcase');
+      </code></pre>
+      <ul>
+	<li>$declareclass = Parent</li>
+	<li>$attribute = suitcase</li>
+      </ul>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="section slide">
+      <h2>Parent</h2>
+      <pre><code>
+Parent->suitcate('Red')
+      </code></pre>
+      <ul>
+	<li>$wantclass = Parent</li>
+	<li>$declarclass = Parent</li>
+	<li>'Red'</li>
+      </ul>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="section slide">
+      <h2>Child</h2>
+      <pre><code>
+Child->suitcase
+      </code></pre>
+      <ul>
+	<li>$wantclass = Child</li>
+	<li>$declareclass = Parent</li>
+	<li>$wantclass->mk_classdata($attribute)->(@_)</li>
+    </div>
+    <!-- ****************************************************************************************** -->
+  </div>
+</body>
+</html>
