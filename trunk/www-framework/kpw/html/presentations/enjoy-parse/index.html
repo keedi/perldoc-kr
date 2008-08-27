@@ -1,0 +1,643 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/x html1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<link rel="stylesheet" href="slide.css" type="text/css" />
+<title>즐거운 펄<br />기억<br />남기기</title>
+<script language="javascript" src="slide.js"></script>
+</head>
+
+<body>
+<table id="frame" class="frame">
+<tr>
+<td colspan="3" id="screen" height="90%"
+class="screen" align="center" valign="center">
+</td>
+</tr>
+<tr>
+<td nowrap align="left"><a href="javascript:slide.prev()">prev</a>
+<input id="translate" type="checkbox" onclick="slide.go()">Translate</td>
+<td width="100%"></td>
+<td nowrap align="right">Page
+<input id="pagenum" type="text" size="2" value="0"
+onkeyup="slide.go($('pagenum').value)" onclick="$('pagenum').select()">
+<a href="javascript:slide.next()">next</a></td>
+</tr>
+</table>
+
+<div id="slides">
+
+<div>
+<h1>즐거운 펄<br />기억<br />남기기</h1>
+</div>
+
+<div>
+<p>
+by <a href="mailto:saillinux@gmail.com">saillinux (김희원)</a>
+</p>
+<p>
+Bizspring<br>
+Perlmania
+</p>
+</div>
+
+<div>
+<p>문서는 이곳에서도<br>볼 수 있습니다:</p>
+<p><a target="_blank" href="http://localhost/index.html">http://localhost/index.html</a></p>
+</div>
+
+<div>
+<p>
+<img src="images/001.jpg">
+</p>
+</div>
+
+<div>
+<h1>귀여운 파싱을 배워 봅시다!</h1>
+</div>
+
+<div>
+<p>파싱이란?</p>
+<ul>
+<li> 정의된 규칙을 이용한 텍스트 매칭</li>
+<li> 펄이 존재 하는 이유</li>
+<li> 펄을 위해 있는 존재</li>
+</ul>
+</div>
+
+<div>
+<p>
+<img src="images/006.jpg">
+</p>
+</div>
+
+<div>
+<p>궁극적인 목표?</p>
+<ul>
+<li> 구조없음에 구조를 부여 하기</li>
+<li> 의미없음에 의미를 부여 하기</li>
+<li> 귀염없음에 귀염를 ...</li>
+</ul>
+</div>
+
+<div>
+<h1>내 마음대로 입니다.</h1>
+</div>
+
+<div>
+<h1>주로 파싱에 대한 소개는...</h1>
+</div>
+
+<div>
+<p>
+너무 이론적이며 툴에 특화에 되어 있습니다.
+</p>
+</div>
+
+<div>
+<h1>그래서...</h1>
+</div>
+
+<div>
+<p>정규식을 아시는 분들께 </p>
+<ul>
+<li> 정규식으로는 어려운 파싱 문제 소개</li>
+<li> 문법을 이용한 파싱 소개</li>
+</ul>
+</div>
+
+<div>
+<h1>정규식의 다음단계로~</h1>
+</div>
+
+<div>
+<p>컴퓨터 공학 정규식은</p>
+<ul>
+<li> concatenation a.b</li>
+<li> alternation a|b</li>
+<li> repetition a*</li>
+<li> grouping (ab)</li>
+</ul>
+</div>
+
+<div>
+<p>Perl의 정규식은</p>
+<ul>
+<li> 컴퓨터 공학 정규식</li>
+<li> lookaround</li>
+<li> capturing groups and backreferences $&, $1..</li>
+<li> zero width assertions (like \b)</li>
+<li> 너무 커서 기타등등에도 안들어가요;;</li>
+</ul>
+</div>
+
+<div>
+<p>
+정규식은 짧고 고정된 문자열 패턴에는 좋지만
+</p>
+</div>
+
+<div>
+<p>
+여러 구조와 의미를 가지는 문자열 ( 언어 )
+</p>
+</div>
+
+<div>
+<p>
+중첩적인 문제에는 적합하지 않습니다.
+</p>
+</div>
+
+<div>
+<h1>예를 들면...</h1>
+</div>
+
+<div>
+<p>
+연산자에서 사용하는 괄호<br>
+(10 + (2*(3+4)))
+</p>
+</div>
+
+<div>
+
+<pre>
+# (10 + (2*(3+4)))
+# 정규식이 매칭한 값, 전혀 원하는 값이 아니다;;
+
+qr{\(.*?\)} # =&gt; 10 + (2*(3+4
+qr{\((.*)\)} # =&gt; 10 + (2*(3+4))
+
+while (/\((.*)\)/g) { ... }
+
+</pre>
+</div>
+
+<div>
+<p>이런 문제들을 위해</p>
+<ul>
+<li> Damian Conway경의 Text::Balanced</li>
+<li> Perl 5.8, 5.10 recursive regex</li>
+</ul>
+</div>
+
+<div>
+<p>
+ regular language를 준수 하는 문제가 아닙니다.
+</p>
+</div>
+
+<div>
+<h1>재귀적반복을 지원하는 문법</h1>
+</div>
+
+<div>
+<h1>Context Free Grammar</h1>
+</div>
+
+<div>
+
+<pre>
+term        -&gt; atom operator term
+term        -&gt; '(' term ')'
+term        -&gt; atom
+operator    -&gt; '*' | '/'| '+' | '-' 
+atom        -&gt; \d+
+</pre>
+</div>
+
+<div>
+<h1>(2 * (3 + 4))</h1>
+</div>
+
+<div>
+
+<pre>
+term    -&gt;
+atom operator term
+'2'  operator term
+'2'  '*'      term
+'2'  '*'      (atom operator term)
+'2'  '*'      ('3'  operator term)
+'2'  '*'      ('3'  '+'      term)
+'2'  '*'      ('3'  '+'      (atom))
+'2'  '*'      ('3'  '+'      ('4'))
+</pre>
+</div>
+
+<div>
+<h1>이를 구현할수 있는 모듈인</h1>
+</div>
+
+<div>
+<h1>Parse::RecDescent</h1>
+</div>
+
+<div>
+<p>
+<p>저녁은 주물럭~</p>
+<img src="images/duckling.jpg" alt="저녁은 주물럭~">
+</p>
+</div>
+
+<div>
+
+<pre>
+DuckTrain -&gt; Mummy Ducklings
+            | Mummy Ducklings Ugly
+            | Mummy Ducklings Ugly Ducklings
+            | Ducklings Mummy
+            | Ugly Ducklings Mummy
+            | Ducklings Ugly Duckling Mummy
+
+Ducklings   -&gt; Duckling Ducklings | Duckling
+
+Mummy    -&gt; mummy
+
+Duckling    -&gt; duck1 | duck2
+
+Ugly     -&gt; rune
+</pre>
+</div>
+
+<div>
+<p>
+<p>GraphViz::Parse::RecDescent</p>
+<img src="images/duckling.png" alt="GraphViz::Parse::RecDescent">
+</p>
+</div>
+
+<div>
+<h1>데모 #1</h1>
+</div>
+
+<div>
+<p>
+<img src="images/demo01.png">
+</p>
+</div>
+
+<div>
+<p>
+<img src="images/demo02.png">
+</p>
+</div>
+
+<div>
+<h1>파싱 매칭 예</h1>
+</div>
+
+<div>
+
+<pre>
+DuckTrain -&gt;
+
+Mummy Ducklings Ugly
+
+'mummy' Ducklings Ugly
+
+'mummy' Duckling Ducklings Ugly
+
+'mummy' 'duck1' Ducklings Ugly
+
+'mummy' 'duck1' Duckling Ugly
+
+'mummy' 'duck1' 'duck2' Ugly
+
+'mummy' 'duck1' 'duck2' 'rune'
+
+'mummy duck1 duck2 rune'
+</pre>
+</div>
+
+<div>
+<p>
+<p>파싱에러</p>
+<img src="images/002.jpg" alt="파싱에러">
+</p>
+</div>
+
+<div>
+<h1>"Recursive Descending"</h1>
+</div>
+
+<div>
+<p>
+룰을 이용한 재귀적 하강<br>
+Terminal Matching
+</p>
+</div>
+
+<div>
+<h1>"Predictive"</h1>
+</div>
+
+<div>
+<h1>다음에 처리 할 Token에 대한 예측</h1>
+</div>
+
+<div>
+<h1>!Top-Down Parser!</h1>
+</div>
+
+<div>
+<h1>perl++</h1>
+</div>
+
+<div>
+<h1>damian++</h1>
+</div>
+
+<div>
+<h1>emacs++</h1>
+</div>
+
+<div>
+<h1>emacs--</h1>
+</div>
+
+<div>
+<h1>duck++</h1>
+</div>
+
+<div>
+<h1>소셜 토크</h1>
+</div>
+
+<div>
+<h1>펄이 잼있는 점이 있는데..</h1>
+</div>
+
+<div>
+<h1>바로 문화가 있다는 점이 되겠죠?</h1>
+</div>
+
+<div>
+<h1>펄이라는 주제로 모인 동산</h1>
+</div>
+
+<div>
+<h1>IRC</h1>
+</div>
+
+<div>
+<p>
+perl-kr@freenode<br>
+perl@hanirc
+</p>
+</div>
+
+<div>
+<p>
+<p>IRC #1</p>
+<img src="images/005.jpg" alt="IRC #1">
+</p>
+</div>
+
+<div>
+<p>
+<p>IRC #2</p>
+<img src="images/004.jpg" alt="IRC #2">
+</p>
+</div>
+
+<div>
+<p>
+<p>IRC #3</p>
+<img src="images/003.jpg" alt="IRC #3">
+</p>
+</div>
+
+<div>
+<h1>진님과하얀고양이님</h1>
+</div>
+
+<div>
+<h1>객체화 프로젝트</h1>
+</div>
+
+<div>
+<p>거의 불가능한 자연어 처리;;</p>
+<ul>
+<li> 미중년의 배짱 - JEEN</li>
+<li> 야근야근 열매 먹었다능 - 하얀_고양이</li>
+<li> 손에 체중이 묵었... - saillinux</li>
+<li> a3r0님급의 펄 실력과 김태희급의 얼굴과 몸매를 가지는 펄 하악커 없나용? - JEEN</li>
+</ul>
+</div>
+
+<div>
+<h1>데모 #2</h1>
+</div>
+
+<div>
+<p>
+<p>실행코드 #1</p>
+<img src="images/jeenvswhite01.png" alt="실행코드 #1">
+</p>
+</div>
+
+<div>
+<p>
+<p>실행코드 #2</p>
+<img src="images/jeenvswhite02.png" alt="실행코드 #2">
+</p>
+</div>
+
+<div>
+<h1>진님스러운 말빨</h1>
+</div>
+
+<div>
+
+<pre>
+{
+  my %meat_level = ("한단" =&gt; 1, "두단" =&gt; 2, "삼단" =&gt; 3, "사단" =&gt; 4,
+		       "1" =&gt; "한단", "2" =&gt; "두단", "3" =&gt; "삼단", "4" =&gt; "사단" );
+}
+
+아왜욤: 진님스러운
+
+진님스러운: 뻘짓 /\Z/ { $item[1] }
+	    | 뭥미 /\Z/  { $item[1] }
+	    | 대연합하얀고양이 /\Z/ { $item[1] }
+	    | &lt;error: 아 왜욤! 한번 해보시겠다능?&gt;
+
+뻘짓: 뻘짓1 { 뻘짓랜덤(@진사마::quotes) }
+
+뻘짓1: ('하악하악' | '이제그만')
+
+대연합하얀고양이: 연합1 { $item[1] }
+		  | 연합2 { $item[1] }
+
+연합1: '사단고기' { "이제그만\n" }
+       | /(.*)고기/ { $meat_level{$meat_level{$1} + 1} . "고기" }
+
+연합2: /.*탓하십시오/ { '&#$&"#$!"#!"$23534%$%#$%' }
+       | '@#$!@%@#$%@#$%@#$%' { "오호라.. 한번 해보시자능\n" }
+
+뭥미: 뭥미1 { "...\n" }
+
+뭥미1: '라면 먹고 얼굴 퉁퉁 배도 통통'
+</pre>
+</div>
+
+<div>
+<h1>무한냐옹법전</h1>
+</div>
+
+<div>
+
+<pre>
+  my %meat_level = ("한단" =&gt; 1, "두단" =&gt; 2, "삼단" =&gt; 3, "사단" =&gt; 4,
+		       "1" =&gt; "한단", "2" =&gt; "두단", "3" =&gt; "삼단", "4" =&gt; "사단" );
+}
+
+냐옹: 하얀고양이님스러운
+
+하얀고양이님스러운: 카운터 /\Z/ { $item[1] }
+		    | 뻘짓 /\Z/ { $item[1] }
+                    | &lt;error: 그런 대화는 없었습니다만...&gt;
+
+카운터: 카운터1 { "라면 먹고 얼굴 퉁퉁 배도 통통" }
+	| 카운터2 { $item[1] }
+	| 카운터3 { $item[1] }
+
+카운터1: '라면 먹고 힘 짱짱'
+
+카운터2: '사단고기' { '이제그만' }
+         | /(.*)고기/ { $meat_level{$meat_level{$1} + 1} . "고기" }
+
+카운터3: '이게 다 하얀_고양이님때문' { '음... 저를 탓하십시오' }
+         | '&#$&"#$!"#!"$23534%$%#$%' { '@#$!@%@#$%@#$%@#$%' }
+
+뻘짓: 뻘짓1 { "하악하악\n" }
+
+뻘짓1: ( /\.{3,}/ | '이제그만' | /.*해보시자능/ )
+</pre>
+</div>
+
+<div>
+<p>파서내에서의</p>
+<ul>
+<li> 변수선언 (로컬, 전역)</li>
+<li> 함수선언 (로컬, 전역)</li>
+<li> Top-Down Parser</li>
+</ul>
+</div>
+
+<div>
+<h1>관심 있으신가요?</h1>
+</div>
+
+<div>
+<h1>그럼 Randal의..</h1>
+</div>
+
+<div>
+<h1>Random Sentence Generator</h1>
+</div>
+
+<div>
+<p>
+<p>데모실행</p>
+<img src="images/demo03.png" alt="데모실행">
+</p>
+</div>
+
+<div>
+<h1>펄6 에서의 문법구현하기</h1>
+</div>
+
+<div>
+<h1>Parse::RecDescent 구현</h1>
+</div>
+
+<div>
+
+<pre>
+my $parse_global = new Parse::RecDescent (q{
+  input:  blank | comment | class | section
+
+  comment: /^\s*/ '#' { 1; }
+  blank: /^\s*$/ { 1; }
+
+  section: /\w+/ ':'
+   { $::current_section = $item[1];
+     $::current_classes = 'any'; 1;
+   }
+
+  class: compound_class '::'
+   { $::current_classes = $item{compound_class}; 1; }
+
+  compound_class: /[-!.|\w]+/
+});
+
+$parse_global-&gt;input("TEXT GOES HERE");
+</pre>
+</div>
+
+<div>
+<h1>Perl 6 Grammar</h1>
+</div>
+
+<div>
+
+<pre>
+grammar Global
+{
+ rule input { &lt;blank&gt; | &lt;comment&gt; | &lt;class&gt; | &lt;section&gt; }
+
+ rule blank { ^^ \s* $$ }
+
+ rule comment { ^^ \s* \# }
+
+ rule section
+ { (\w+) \s* \:
+  {
+   $::current_section = $1;
+   $::current_classes = 'any';
+  }
+ }
+
+ rule class { (&lt;compound_class&gt;) \s* \:\:
+  {
+   $::current_classes = $1;
+  }
+ }
+
+ rule compound_class { &lt;[-!.|\w]&gt;+ }
+}
+</pre>
+</div>
+
+<div>
+<h1>펄7 에서는?</h1>
+</div>
+
+<div>
+<h1>이미지 하나가 펄 천 마디를 한다....</h1>
+</div>
+
+<div>
+<h1>더 짧아 지겠죠?</h1>
+</div>
+
+<div>
+<h1> '-')&lt; 끝났다!!!</h1>
+</div>
+
+<div>
+<h1>Any Question?</h1>
+</div>
+
+<div>
+<h1>Thank you!</h1>
+</div>
+
+</div><!--contents-->
+</body>
+</html>

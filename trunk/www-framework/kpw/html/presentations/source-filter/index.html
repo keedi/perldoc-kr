@@ -1,0 +1,296 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/x html1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<link rel="stylesheet" href="slide.css" type="text/css" />
+<title>당신은 이미 Perl 하고 있다</title>
+<script language="javascript" src="slide.js"></script>
+</head>
+
+<body>
+<table id="frame" class="frame">
+<tr>
+<td colspan="3" id="screen" height="90%"
+class="screen" align="center" valign="center">
+</td>
+</tr>
+<tr>
+<td nowrap align="left"><a href="javascript:slide.prev()">prev</a>
+<input id="translate" type="checkbox" onclick="slide.go()">Translate</td>
+<td width="100%"></td>
+<td nowrap align="right">Page
+<input id="pagenum" type="text" size="2" value="0"
+onkeyup="slide.go($('pagenum').value)" onclick="$('pagenum').select()">
+<a href="javascript:slide.next()">next</a></td>
+</tr>
+</table>
+
+<div id="slides">
+
+<div>
+<h1>당신은 이미 Perl 하고 있다</h1>
+</div>
+
+<div>
+<p>
+by <a href="mailto:saillinux@gmail.com">saillinux (김희원)</a>
+</p>
+<p>
+Bizspring<br>
+Perlmania
+</p>
+</div>
+
+<div>
+<p>문서는 이곳에서도<br>볼 수 있습니다:</p>
+<p><a target="_blank" href="http://localhost/index.html">http://localhost/index.html</a></p>
+</div>
+
+<div>
+<h1>펄을 사용중이시면</h1>
+</div>
+
+<div>
+<h1>여러 모로의 역경들</h1>
+</div>
+
+<div>
+<p>
+<p>친구들과의 거리감</p>
+<img src="images/010.jpg" alt="친구들과의 거리감">
+</p>
+</div>
+
+<div>
+<p>
+<p>가족과의 의사 소통</p>
+<img src="images/009.jpg" alt="가족과의 의사 소통">
+</p>
+</div>
+
+<div>
+<p>
+<p>절대 복종 충성</p>
+<img src="images/007.jpg" alt="절대 복종 충성">
+</p>
+</div>
+
+<div>
+<h1>이렇게 이겨 봅시다</h1>
+</div>
+
+<div>
+<h1>펄을 몰래 시켜서</h1>
+</div>
+
+<div>
+<h1>공범이 되는겁니다!</h1>
+</div>
+
+<div>
+<h1>'-') &lt; 자 어서!</h1>
+</div>
+
+<div>
+<h1>어떻게 해야 할까요?</h1>
+</div>
+
+<div>
+<h1>소스 필터</h1>
+</div>
+
+<div>
+<h1>'-') &lt; 자 더 어서!</h1>
+</div>
+
+<div>
+<h1>우선 평상시 주위 분들의 부탁을 잘 듣습니다.</h1>
+</div>
+
+<div>
+<h1>이것좀</h1>
+</div>
+
+<div>
+<h1>저것좀</h1>
+</div>
+
+<div>
+<h1>요것좀</h1>
+</div>
+
+<div>
+<h1>그것좀</h1>
+</div>
+
+<div>
+<h1>다 적어 봅니다</h1>
+</div>
+
+<div>
+<p>
+<p>test.고양이</p>
+<img src="images/code01.png" alt="test.고양이">
+</p>
+</div>
+
+<div>
+<p>
+<p>실행화면</p>
+<img src="images/code02.png" alt="실행화면">
+</p>
+</div>
+
+<div>
+<h1>우왕 칭찬</h1>
+</div>
+
+<div>
+<h1>기능 추가 요청</h1>
+</div>
+
+<div>
+<h1>소스를 엽니다~</h1>
+</div>
+
+<div>
+<h1>'-')/ &lt; TaDa~</h1>
+</div>
+
+<div>
+<p>
+<p>소스 #1</p>
+<img src="images/code03.png" alt="소스 #1">
+</p>
+</div>
+
+<div>
+<p>
+<p>소스 #2</p>
+<img src="images/code04.png" alt="소스 #2">
+</p>
+</div>
+
+<div>
+<p>
+<p>소스 #3</p>
+<img src="images/code05.png" alt="소스 #3">
+</p>
+</div>
+
+<div>
+<h1>어떻게 실행될까요?</h1>
+</div>
+
+<div>
+<h1>하얀 test.고양이</h1>
+</div>
+
+<div>
+
+<pre>
+alias 하얀='perl -M/home/saillinux/presentation/InfiniteMeowZen'
+</pre>
+</div>
+
+<div>
+<h1>기존의 방법</h1>
+</div>
+
+<div>
+<p>
+파일 -----&gt; 파서
+</p>
+</div>
+
+<div>
+<h1>소스 필터 모듈을 이용하면</h1>
+</div>
+
+<div>
+<p>
+파일 -----&gt; 필터 -----&gt; 파서
+</p>
+</div>
+
+<div>
+<h1>Filter::Simple</h1>
+</div>
+
+<div>
+<p>
+Filter {<br>
+       $_<br>
+}
+</p>
+</div>
+
+<div>
+<h1>$_ eq 우리가 작성한 코드</h1>
+</div>
+
+<div>
+<h1>열심히 치환 '-');</h1>
+</div>
+
+<div>
+<h1>그래서...</h1>
+</div>
+
+<div>
+
+<pre>
+고객님 계정이 saillinux신 분 전화번호 좀 부탁해요
+</pre>
+</div>
+
+<div>
+<h1>이렇게 바뀝니다.</h1>
+</div>
+
+<div>
+
+<pre>
+$db_conf-&gt;{'!Table'} = "customer";
+
+*set = DBIx::Recordset-&gt;Setup($db_conf);
+
+$set-&gt;Search({
+'cusId' =&gt; 'saillinux',
+'$fields' =&gt; 'phone',
+});
+
+print "
+[고객 정보]
+";
+while ($set-&gt;Next) {
+    print "해당 고객님의 전화번호"."은 $set{phone}가 되겠습니다.
+";
+}
+</pre>
+</div>
+
+<div>
+<p>
+<p>친해 졌나요?</p>
+<img src="images/008.jpg" alt="친해 졌나요?">
+</p>
+</div>
+
+<div>
+<h1>당신은 3초뒤에 펄~ 합니다!</h1>
+</div>
+
+<div>
+<h1>Any Question?</h1>
+</div>
+
+<div>
+<h1>Thank you!</h1>
+</div>
+
+</div><!--contents-->
+</body>
+</html>
