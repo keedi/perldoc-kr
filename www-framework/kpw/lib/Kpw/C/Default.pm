@@ -12,6 +12,7 @@ sub do_schedule {}
 sub do_location {}
 sub do_faq {}
 sub do_links {}
+sub do_presentations {}
 
 1;
 
