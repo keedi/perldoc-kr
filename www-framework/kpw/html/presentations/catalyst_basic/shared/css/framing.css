@@ -1,0 +1,55 @@
+@charset "utf-8";
+
+div#header,
+div#footer,
+.slide {
+	width: 100%;
+	top: 0;
+	left: 0;
+}
+
+div#header {
+	top: 0;
+	height: 3em;
+	z-index: 1;
+}
+
+div#footer {
+	top: auto;
+	bottom: 0;
+	height: 2.5em;
+	z-index: 5;
+}
+
+.slide {
+	padding: 3.5em 4% 4%;
+	top: 0;
+	z-index: 2;
+	width: 92%;
+	list-style: none;
+}
+
+div#controls {
+	bottom: 0;
+	left: 50%;
+	z-index: 100;
+	width: 50%;
+}
+
+div#controls form {
+	margin: 0;
+	width: 100%;
+	text-align: right;
+}
+
+#currentSlide {
+	position: absolute;
+	bottom: 1em;
+	left: 45%;
+	z-index: 10;
+	width: 10%;
+}
+
+html>body #currentSlide {
+	position: fixed;
+}

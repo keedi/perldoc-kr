@@ -1,0 +1,277 @@
+@charset "utf-8";
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: white;
+	color: #333;
+	font-size: 2em;
+}
+
+div.section p,
+div.section li {
+	font-size: 1.25em;
+}
+
+a,
+a:link,
+a:visited {
+	color: #888;
+	text-decoration: none;
+}
+
+a:hover,
+a:focus {
+	color: #333;
+	text-decoration: underline;
+}
+
+a img {
+	border: none;
+}
+
+del {
+	color: #aaa;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	margin: 0;
+	padding: 0;
+	font-weight: inherit;
+	font-size: 100%;
+}
+
+ul,
+pre {
+	line-height: 1;
+	margin: 0;
+}
+
+blockquote,
+q {
+	font-style: italic;
+}
+
+blockquote {
+	margin: 0 1.5em 0.5em;
+	padding: 0 2em 0.5em;
+	font-size: 1em;
+	text-align: center;
+}
+
+blockquote p {
+	margin: 0;
+}
+
+blockquote i {
+	font-style: normal;
+}
+
+blockquote b {
+	margin-top: 0.5em;
+	display: block;
+	font-style: normal;
+	font-weight: normal;
+	font-size: smaller;
+}
+
+blockquote b i {
+	font-style: italic;
+}
+
+kbd {
+	font-weight: bold;
+	font-size: 1em;
+}
+
+sup {
+	font-size: smaller;
+	line-height: 1px;
+}
+
+.slide code {
+	padding: 0 0.5em;
+	background-color: #efefef;
+	color: #666;
+	font-weight: bold;
+}
+
+.slide code.bad,
+code del {
+	color: #943a1a;
+}
+.slide code.old {
+	color: silver;
+}
+
+.slide pre {
+        margin: 0.5em auto;
+	padding: 0 0.5em;
+	background-color: #efefef;
+	color: #666;
+	font-size: 0.9em !important;
+}
+
+.slide pre code {
+	padding: 0;
+	display: block;
+}
+
+.slide ul {
+	margin-left: 5%;
+	margin-right: 7%;
+	list-style: disc;
+}
+
+.slide li {
+	margin-top: 0.75em;
+	margin-right: 0;
+}
+
+.slide ul ul {
+	line-height: 1;
+}
+
+.slide ul ul li {
+	margin: 0.2em;
+	font-size: 85%;
+	list-style: square;
+}
+
+.slide img.leader {
+	display: block;
+	margin: 0 auto;
+}
+
+div#header,
+div#footer {
+	background-color: #00a5df;
+	color: white;
+	font-family: Verdana, Helvetica, sans-serif;
+}
+
+div#header {
+	line-height: 1px;
+}
+div#footer {
+	font-size: 0.5em;
+	font-weight: bold;
+}
+
+div.long {
+	font-size: 0.75em;
+}
+
+.slide h2 {
+	margin: 0;
+	position: absolute;
+	top: 0.4em;
+	left: 30px;
+	z-index: 1;
+	color: white;
+	font-family: Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 150%;
+	white-space: nowrap;
+}
+
+.slide h3 {
+	font-size: 130%;
+}
+
+h1 abbr {
+	font-variant: small-caps;
+}
+
+div#controls {
+	position: absolute;
+	left: 60%;
+	bottom: 10px;
+	width: 40%;
+	text-align: right;
+	font-weight: bold;
+	font-size: 0.9em;
+	font-family: Verdana, Helvetica, sans-serif;
+}
+
+html>body div#controls {
+	padding: 0;
+	position: fixed;
+	top: auto;
+}
+
+#controls #navLinks a {
+	margin: 0 0.5em; 
+	padding: 0;
+	border: none;
+	cursor: pointer;
+}
+
+#currentSlide {
+	font-size: 0.5em;
+	text-align: center;
+}
+
+#currentSlide a {
+	color: #ccc;
+}
+
+#currentSlide a:hover,
+#currentSlide a:focus {
+	color: white;
+}
+
+#slide0 {
+	padding-top: 3.5em;
+	font-size: 90%;
+}
+
+#slide0 h1 {
+	margin: 1em 0 0;
+	padding: 0;
+	position: static;
+	font-weight: bold;
+	font-size: 2em;
+	font-family: Helvetica, sans-serif;
+	white-space: normal;
+}
+
+ul.urls {
+	margin: 0;
+	display: inline;
+	list-style: none;
+}
+
+.urls li {
+	margin: 0;
+	display: inline;
+}
+.note {
+	display: none;
+}
+
+.incremental,
+.incremental *,
+.incremental *:after {
+	color: #ddd;
+	visibility: visible;
+}
+
+img {
+	margin: 0.5em auto;
+}
+
+img.incremental {
+	visibility: hidden;
+}
+
+.slide .current {
+	color: #00a5df;
+}

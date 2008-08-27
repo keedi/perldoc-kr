@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head profile="http://purl.org/net/ns/metaprof">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="description" content="Introduction to Catalyst for Rapid Web Development" />
+<meta name="generator" content="S5" />
+<meta name="version" content="S5 1.2a2" />
+<meta name="author" content="Eric A. Meyer" />
+<meta name="company" content="Complex Spiral Consulting" />
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<title>Introduction to Catalyst for Rapid Web Development : Korean Perl Workshop 2008</title>
+<link rel="stylesheet" href="shared/css/slides.css" type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="shared/css/outline.css" type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="shared/css/print.css" type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="shared/css/opera.css" type="text/css" media="projection" id="operaFix" />
+<!-- embedded styles -->
+<style type="text/css" media="all">
+  .imgcon {width: 525px; margin: 0 auto; padding: 0; text-align: center;}
+  #anim {width: 270px; height: 320px; position: relative; margin-top: 0.5em;}
+  #anim img {position: absolute; top: 42px; left: 24px;}
+  img#me01 {top: 0; left: 0;}
+  img#me02 {left: 23px;}
+  img#me04 {top: 44px;}
+  img#me05 {top: 43px;left: 36px;}
+</style>
+<!-- S5 JS -->
+<script src="shared/js/slides.js" type="text/javascript"></script>
+</head>
+
+<body>
+  <div class="layout">
+    <div id="controls">&nbsp;<!-- DO NOT EDIT --></div>
+    <div id="currentSlide">&nbsp;<!-- DO NOT EDIT --></div>
+    <div id="header">&nbsp;</div>
+    <div id="footer">&nbsp;</div>
+  </div>
+  
+  <div class="presentation">
+    <!-- ****************************************************************************************** -->
+    <div class="slide">
+      <h1 style="margin-top: 1em;font-size: 300%;font-weight: bold; text-align: center;">Introduction to Catalyst for Rapid Web Development</h1>
+      <p style="margin-top: 2em;font-size: 150%;text-align: right;">한송희<br />song @ #perl-kr<br />purewish1@gmail.com</p>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="section slide">
+      <h2>Catalyst</h2>
+      <ul class="incremental">
+	<li>Web Framework</li>
+	<li>MVC 
+	  <ul class="incremental">
+	    <li>Model<br />데이터</li>
+	    <li>View<br />페이지생성</li>
+	    <li>Controller<br />모델에서 데이터를 가져와서 처리<br />처리한 데이터를 뷰로 넘김</li>
+	  </ul>
+	</li>
+      </ul>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="section slide">
+      <h2>Install</h2>
+      <ul class="incremental">
+	<li>CPAN</li>
+	<li>install Task::Catalyst
+	  <ul class="incremental">
+	    <li><a href="http://search.cpan.org/~mramberg/Catalyst-Runtime-5.7099_03/"
+	    target="_blank">Catalyst::Runtime</a></li>
+	    <li><a href="http://search.cpan.org/~mramberg/Catalyst-Devel-1.08/" target="_blank">Catalyst::Devel</a></li>
+	  </ul>
+	</li>
+	<li>Repository
+	  <ul class="incremental">
+	    <li>http://dev.catalyst.perl.org/repos/Catalyst</li>
+	  </ul>
+	</li>
+      </ul>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="slide">
+      <p style="margin-top: 1em;font-size: 200%;font-weight: bold; text-align: center;">The Simplest Web Application<br />by Catalyst</p>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="section slide">
+      <h2>How to (1)</h2>
+      <ul>
+	<li>catalyst.pl MyApp</li>
+	<pre><code>
+created "MyApp"
+created "MyApp/script"
+created "MyApp/lib"
+created "MyApp/root"
+...
+created "MyApp/t"
+created "MyApp/lib/MyApp"
+created "MyApp/lib/MyApp/Model"
+created "MyApp/lib/MyApp/View"
+created "MyApp/lib/MyApp/Controller"
+created "MyApp/myapp.conf"
+created "MyApp/lib/MyApp.pm"
+created "MyApp/lib/MyApp/Controller/Root.pm"
+...
+created "MyApp/script/myapp_server.pl"
+created "MyApp/script/myapp_test.pl"
+created "MyApp/script/myapp_create.pl"
+        </code></pre>
+      </ul>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="section slide">
+      <h2>How to (1)</h2>
+      <p style="text-align:center;"><img src="shared/img/catalyst_1.png" /></p>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="section slide">
+      <h2>How to (1)</h2>
+      <ul class="incremental">
+	<li>MyApp/lib<br />모듈군</li>
+	<li>MyApp/root<br />이미지 파일, css등의 정적파일</li>
+	<li>MyApp/script<br />각종 기동스크립트</li>
+	<li>MyApp/t<br />테스트용</li>
+      </ul>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="section slide">
+      <h2>How to (2)</h2>
+      <ul>
+	<li>./script/mysql_server.pl<br /><img src="shared/img/catalyst_2.png" />
+	</li>
+      </ul>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="slide">
+      <p style="margin-top: 1em;font-size: 200%;font-weight: bold; text-align: center;">Welcome to Catalyst<br /><a href="http://localhost:3000/" target="_blank">http://localhost:3000/</a></p>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="section slide">
+      <h2>Welcome Message</h2>
+      <ul>
+	<li>./lib/MyApp/Controller/Root.pm</li>
+	<pre><code>
+sub index :Path :Args(0) {
+    my ( $self, $c ) = @_;
+
+    # Hello World
+    $c->response->body( $c->welcome_message );
+}
+	</code></pre>
+      <ul>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="slide">
+      <p style="margin-top: 1em;font-size: 200%;font-weight: bold; text-align: center;">Add Up to Your Application</p>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="section slide">
+      <h2>Add Controllers</h2>
+      <ul>
+	<li>./script/myapp_create.pl controller Foo</li>
+	<pre><code>
+ exists "/Users/song/Project/workshop/MyApp/script/../lib/MyApp/Controller"
+ exists "/Users/song/Project/workshop/MyApp/script/../t"
+created "/Users/song/Project/workshop/MyApp/script/../lib/MyApp/Controller/Foo.pm"
+created "/Users/song/Project/workshop/MyApp/script/../t/controller_Foo.t"
+	</code></pre>
+	<li>./lib/MyApp/Controller/Foo.pm</li>
+	<pre><code>
+sub index :Path :Args(0) {
+    my ( $self, $c ) = @_;
+
+    $c->response->body('Matched MyApp::Controller::Foo in Foo.');
+}
+	</code></pre>
+	<li><a href="http://localhost:3000/foo" target="_blank">http://localhost:3000/foo</a></li>
+      </ul>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="section slide">
+      <h2>Action Type</h2>
+      <ul>
+	<li>Path<br />argument로 받은 값과 매치</li>
+	<pre><code>
+package Foo;
+
+sub bar : Path('bar') {..}
+http://localhost:3000/foo/bar
+
+sub bar : Path('/bar') {..}
+http://localhost:3000/bar
+	</code></pre>
+      </ul>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="section slide">
+      <h2>Action Type</h2>
+      <ul class="incremental">
+	<li>Local<br />action명에 매치</li>
+	<pre><code>
+package Foo;
+
+sub bar : Local {..}
+http://localhost:3000/foo/bar
+	</code></pre>
+	<li>Global<br />controller의 namespace와 관계없이 action명에 매치</li>
+	<pre><code>
+package Foo;
+
+sub bar : Global {..}
+http://localhost:3000/bar
+	</code></pre>
+      </ul>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="section slide">
+      <h2>Action Type</h2>
+      <ul class="incremental">
+	<li>Regex<br />정규표현 매치</li>
+	<pre><code>
+package Foo;
+
+sub bar : Regex('^bar') {..}
+http://localhost:3000/bar
+http://localhost:3000/bar_baz
+	</code></pre>
+	<li>LocalRegex<br />controller의 namespace 이후의 정규표현 매치</li>
+	<pre><code>
+package Foo;
+
+sub bar : LocalRegex('^bar') {..}
+http://localhost:3000/foo/bar
+http://localhost:3000/foo/bar_baz
+	</pre></code>
+      </ul>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="section slide">
+      <h2>Action Type</h2>
+      <ul class="incremental">
+	<li>Chained</li>
+	<pre><code>
+package Foo;
+
+sub setup : Chained('/') PathPart('foo') Args(1) {..}
+sub bar : Chanied('/setup') Args(0) {..}
+http://localhost:3000/setup/*/bar
+	</code></pre>
+	<li>Private<br />내부액션
+	  <ul class="incremental">
+	    <li>default</li>
+	    <li>auto</li>
+	    <li>end</li>
+	  </ul>
+	</li>
+      </ul>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="section slide">
+      <h2>Add View</h2>
+      <ul>
+	<li>./script/myapp_create.pl view TT TT</li>
+	<pre><code>
+ exists "/Users/song/Project/workshop/MyApp/script/../lib/MyApp/View"
+ exists "/Users/song/Project/workshop/MyApp/script/../t"
+created "/Users/song/Project/workshop/MyApp/script/../lib/MyApp/View/TT.pm"
+created "/Users/song/Project/workshop/MyApp/script/../t/view_TT.t"
+	</code></pre>
+	<li>./lib/MyAPP/View/TT.pm</li>
+	<pre><code>
+package MyApp::View::TT;
+
+use strict;
+use base 'Catalyst::View::TT';
+
+__PACKAGE__->config(TEMPLATE_EXTENSION => '.tt');
+	</code></pre>
+      </ul>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="section slide">
+      <h2>Add Model</h2>
+      <ul>
+	<li>./script/myapp_create.pl model DB DBIC::Schema MyApp::Schema create=static [database_connection]</li>
+	<pre><code>
+ exists "/Users/song/Project/workshop/MyApp/script/../lib/MyApp/DB"
+ exists "/Users/song/Project/workshop/MyApp/script/../t"
+created "/Users/song/Project/workshop/MyApp/script/../lib/MyApp/DB.pm"
+created "/Users/song/Project/workshop/MyApp/script/../t/view_DB.t"
+	</code></pre>
+	<li>./lib/MyApp/Model/DB.pm</li>
+	<pre><code>
+package MyApp::Model::DB;
+
+use strict;
+use base 'Catalyst::Model::DBIC::Schema';
+
+1;
+	</code></pre>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="slide">
+      <p style="margin-top: 1em;font-size: 200%;font-weight: bold; text-align: center;">Flows</p>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="section slide">
+      <h2>Standalone 서버 기동</h2>
+      <ul>
+	<li>./script/myapp_server.pl -r</li>
+	<pre><code>
+require MyApp;
+
+MyApp->run( $port, $host, {
+    argv              => \@argv,
+    'fork'            => $fork,
+    keepalive         => $keepalive,
+    restart           => $restart,
+    restart_delay     => $restart_delay,
+    restart_regex     => qr/$restart_regex/,
+    restart_directory => $restart_directory,
+    follow_symlinks   => $follow_symlinks,
+} );
+	</code></pre>
+      </ul>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="section slide">
+      <h2>require MyApp</h2>
+      <ul>
+	<li>Catalyst->import</li>
+	<li>MyApp->config</li>
+	<li>MyApp->setup</li>
+      </ul>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="section slide">
+      <h2>MyApp->run</h2>
+      <ul class="incremental">
+	<li>MyApp->prepare</li>
+	<li>$c->dispatch</li>
+	<li>$c->finalize</li>
+      </ul>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="section slide">
+      <h2>$c->dispatch</h2>
+      <ul>
+	<li>Catalyst::Controller</li>
+	<pre><code>
+__PACKAGE__->_dispatch_steps( [qw/_BEGIN _AUTO _ACTION/] );
+
+sub _DISPATCH : Private {
+    my ( $self, $c ) = @_;
+
+    foreach my $disp ( @{ $self->_dispatch_steps } ) {
+        last unless $c->forward($disp);
+    }
+
+    $c->forward('_END');
+}
+	</code></pre>
+      </ul>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="section slide">
+      <h2>$c->dispatch</h2>
+      <ul class="incremental">
+	<li>_BEGIN</li>
+	<li>_AUTO</li>
+	<li>_ACTION</li>
+	<li>_END</li>
+      </ul>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="slide">
+      <p style="margin-top: 1em;font-size: 200%;font-weight: bold; text-align: center;">Use Plugins</p>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="section slide">
+      <h2>Plugins</h2>
+      <ul class="incremental">
+	<li>context를 확장</li>
+	<li>Add Plugins to MyApp.pm
+	  <pre><code>
+use Catalyst qw/
+  -Debug
+  ConfigLoader
+  Static::Simple
+  Authentication
+/;
+	  </code></pre>
+	  <pre><code>
+$c->user;
+$c->user_exist;
+	  </code></pre>
+	</li>
+      </ul>
+    </div>
+    <!-- ****************************************************************************************** -->
+    <div class="section slide">
+      <h2>Further More</h2>
+      <ul>
+	<li>Catatlyst::Manual:<br />http://search.cpan.org/~zarquon/Catalyst-Manual-5.7013/</li>
+	<li>Wiki:<br />http://dev.catalyst.perl.org/wiki/</li>
+      </ul>
+    </div>
+    <!-- ****************************************************************************************** -->
+  </div>
+</body>
+</html>
