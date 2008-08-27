@@ -1,0 +1,2013 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/x html1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<link rel="stylesheet" href="slide.css" type="text/css" />
+<title>Gtk2-Perl을 사용한 크로스플랫폼 GUI 환경</title>
+<script language="javascript" src="slide.js"></script>
+</head>
+
+<body>
+<table id="frame" class="frame">
+<tr>
+<td colspan="3" id="screen" height="90%"
+class="screen" align="center" valign="center">
+</td>
+</tr>
+<tr>
+<td nowrap align="left"><a href="javascript:slide.prev()">prev</a></td>
+<td width="100%"></td>
+<td nowrap align="right">Page
+<input id="pagenum" type="text" size="2" value="0"
+onkeyup="slide.go($('pagenum').value)" onclick="$('pagenum').select()">
+ / <span id="maxnum"></span>
+<a href="javascript:slide.next()">next</a></td>
+</tr>
+</table>
+
+<div id="slides">
+
+<div>
+<h1>Gtk2-Perl을 사용한 크로스플랫폼 GUI 환경</h1>
+</div>
+
+<div>
+<p>
+by <a href="mailto:keedi@naver.com">keedi (김도형)</a>
+</p>
+<p>
+Emstone Lab.
+</p>
+<p>
+Seoul.pm
+</p>
+</div>
+
+<div>
+<p>문서는 이곳에서도<br>볼 수 있습니다:</p>
+<p><a target="_blank" href="http://sorry.not.yet">http://sorry.not.yet</a></p>
+</div>
+
+<div>
+<h1>What is GTK+?</h1>
+</div>
+
+<div>
+<p>
+G<br>
+T<br>
+K
+</p>
+</div>
+
+<div>
+<p>
+Gimp<br>
+T<br>
+K
+</p>
+</div>
+
+<div>
+<p>
+Gimp<br>
+Tool<br>
+K
+</p>
+</div>
+
+<div>
+<p>
+Gimp<br>
+Tool<br>
+Kit
+</p>
+</div>
+
+<div>
+<h1>GTK+의 장점</h1>
+</div>
+
+<div>
+<p>GTK+의 장점</p>
+<ul>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>GTK+의 장점</p>
+<ul>
+<li> GNU Lesser General Public License</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>GTK+의 장점</p>
+<ul>
+<li> GNU Lesser General Public License</li>
+<li> 이식성이 높음</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>GTK+의 장점</p>
+<ul>
+<li> GNU Lesser General Public License</li>
+<li> 이식성이 높음</li>
+<li> 크로스플랫폼 GUI 라이브러리</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>GTK+의 장점</p>
+<ul>
+<li> GNU Lesser General Public License</li>
+<li> 이식성이 높음</li>
+<li> 크로스플랫폼 GUI 라이브러리</li>
+<li> 수많은 언어 바인딩</li>
+</ul>
+</div>
+
+<div>
+<h1>언어 바인딩</h1>
+</div>
+
+<div>
+<p>언어 바인딩</p>
+<ul>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>언어 바인딩</p>
+<ul>
+<li> Perl - Gtk2-Perl</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>언어 바인딩</p>
+<ul>
+<li> Perl - Gtk2-Perl</li>
+<li> PHP - PHP-GTK</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>언어 바인딩</p>
+<ul>
+<li> Perl - Gtk2-Perl</li>
+<li> PHP - PHP-GTK</li>
+<li> Python - PyGTK</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>언어 바인딩</p>
+<ul>
+<li> Perl - Gtk2-Perl</li>
+<li> PHP - PHP-GTK</li>
+<li> Python - PyGTK</li>
+<li> Ruby - Ruby/GTK</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>언어 바인딩</p>
+<ul>
+<li> Perl - Gtk2-Perl</li>
+<li> PHP - PHP-GTK</li>
+<li> Python - PyGTK</li>
+<li> Ruby - Ruby/GTK</li>
+<li> C++ - Gtkmm</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>언어 바인딩</p>
+<ul>
+<li> Perl - Gtk2-Perl</li>
+<li> PHP - PHP-GTK</li>
+<li> Python - PyGTK</li>
+<li> Ruby - Ruby/GTK</li>
+<li> C++ - Gtkmm</li>
+<li> C# - Gtk#</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>언어 바인딩</p>
+<ul>
+<li> Perl - Gtk2-Perl</li>
+<li> PHP - PHP-GTK</li>
+<li> Python - PyGTK</li>
+<li> Ruby - Ruby/GTK</li>
+<li> C++ - Gtkmm</li>
+<li> C# - Gtk#</li>
+<li> Java - Java-Gnome</li>
+</ul>
+</div>
+
+<div>
+<h1>GTK+ 관련 Lib</h1>
+</div>
+
+<div>
+<p>GTK+ 관련 라이브러리</p>
+<ul>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>GTK+ 관련 라이브러리</p>
+<ul>
+<li> GLib - 범용 C 라이브러리</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>GTK+ 관련 라이브러리</p>
+<ul>
+<li> GLib - 범용 C 라이브러리</li>
+<li> GObject - C로 구현한 객체 시스템</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>GTK+ 관련 라이브러리</p>
+<ul>
+<li> GLib - 범용 C 라이브러리</li>
+<li> GObject - C로 구현한 객체 시스템</li>
+<li> GDK - GIMP Drawing Kit</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>GTK+ 관련 라이브러리</p>
+<ul>
+<li> GLib - 범용 C 라이브러리</li>
+<li> GObject - C로 구현한 객체 시스템</li>
+<li> GDK - GIMP Drawing Kit</li>
+<li> GdkPixbuf - 이미지 생성</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>GTK+ 관련 라이브러리</p>
+<ul>
+<li> GLib - 범용 C 라이브러리</li>
+<li> GObject - C로 구현한 객체 시스템</li>
+<li> GDK - GIMP Drawing Kit</li>
+<li> GdkPixbuf - 이미지 생성</li>
+<li> Pango - 텍스트와 폰트 처리 </li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>GTK+ 관련 라이브러리</p>
+<ul>
+<li> GLib - 범용 C 라이브러리</li>
+<li> GObject - C로 구현한 객체 시스템</li>
+<li> GDK - GIMP Drawing Kit</li>
+<li> GdkPixbuf - 이미지 생성</li>
+<li> Pango - 텍스트와 폰트 처리 </li>
+<li> ATK - Accessibility Toolkit</li>
+</ul>
+</div>
+
+<div>
+<h1>현재 GTK+ 버전</h1>
+</div>
+
+<div>
+<h1>GTK+-2.0</h1>
+</div>
+
+<div>
+<p>현재 GTK+ 안정 버전</p>
+<ul>
+<li> 2008년 7월 1일</li>
+<li> -&gt; GLib 2.16.4 Stable Release</li>
+<li> -&gt; GTK+ 2.12.11 Stable Release</li>
+</ul>
+</div>
+
+<div>
+<p>현재 GTK+ 개발 버전</p>
+<ul>
+<li> 2008년 8월 19일</li>
+<li> -&gt; GLib 2.17.7 Unstable Release</li>
+<li> -&gt; GTK+ 2.13.7 Unstable Release</li>
+</ul>
+</div>
+
+<div>
+<p>우분투 Hardy의 GTK+ 버전</p>
+<pre>
+keedi@x40:~$ pkg-config --modversion glib-2.0
+2.16.4
+keedi@x40:~$ pkg-config --modversion gtk+-2.0
+2.12.9
+keedi@x40:~$
+</pre>
+</div>
+
+<div>
+<p>
+최신 소식은<br>
+<br>
+http://www.gtk.org
+</p>
+</div>
+
+<div>
+<p>
+<p>GTK+ 공식 홈페이지</p>
+<img src="images/gtk-home.png" alt="GTK+ 공식 홈페이지">
+</p>
+</div>
+
+<div>
+<p>
+GTK2-Perl 공식 홈페이지<br>
+<br>
+http://gtk2-perl.sf.net/
+</p>
+</div>
+
+<div>
+<p>
+<p>GTK2-Perl 공식 홈페이지</p>
+<img src="images/gtk2-perl-home.png" alt="GTK2-Perl 공식 홈페이지">
+</p>
+</div>
+
+<div>
+<h1>GTK2-Perl 구성</h1>
+</div>
+
+<div>
+<p>GTK2-Perl 구성</p>
+<ul>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>GTK2-Perl 구성</p>
+<ul>
+<li> Gtk2-1.183 Stable Release</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>GTK2-Perl 구성</p>
+<ul>
+<li> Gtk2-1.183 Stable Release</li>
+<li> -&gt; 2008년 6월 2일</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>GTK2-Perl 구성</p>
+<ul>
+<li> Gtk2-1.183 Stable Release</li>
+<li> -&gt; 2008년 6월 2일</li>
+<li> Glib-1.183 Stable Release</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>GTK2-Perl 구성</p>
+<ul>
+<li> Gtk2-1.183 Stable Release</li>
+<li> -&gt; 2008년 6월 2일</li>
+<li> Glib-1.183 Stable Release</li>
+<li> -&gt; 2008년 6월 2일</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>GTK2-Perl 구성</p>
+<ul>
+<li> Gtk2-1.183 Stable Release</li>
+<li> -&gt; 2008년 6월 2일</li>
+<li> Glib-1.183 Stable Release</li>
+<li> -&gt; 2008년 6월 2일</li>
+<li> Cairo-1.060 Stable Release</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>GTK2-Perl 구성</p>
+<ul>
+<li> Gtk2-1.183 Stable Release</li>
+<li> -&gt; 2008년 6월 2일</li>
+<li> Glib-1.183 Stable Release</li>
+<li> -&gt; 2008년 6월 2일</li>
+<li> Cairo-1.060 Stable Release</li>
+<li> -&gt; 2008년 4월 19일</li>
+</ul>
+</div>
+
+<div>
+<p>
+<p>Gtk2 in CPAN</p>
+<img src="images/cpan-gtk2.png" alt="Gtk2 in CPAN">
+</p>
+</div>
+
+<div>
+<p>
+<p>Glib in CPAN</p>
+<img src="images/cpan-glib.png" alt="Glib in CPAN">
+</p>
+</div>
+
+<div>
+<p>
+<p>Cairo in CPAN</p>
+<img src="images/cpan-cairo.png" alt="Cairo in CPAN">
+</p>
+</div>
+
+<div>
+<h1>Gtk2-Perl 설치</h1>
+</div>
+
+<div>
+<p>Gtk2-Perl 설치</p>
+<ul>
+<li> Linux</li>
+<li> MS Windows</li>
+</ul>
+</div>
+
+<div>
+<h1>Linux</h1>
+</div>
+
+<div>
+<h1>패키지 관리자 이용</h1>
+</div>
+
+<div>
+<h1>Ubuntu Linux</h1>
+</div>
+
+<div>
+<p>Ubuntu Linux에서 설치</p>
+<ul>
+<li> libgtk2-perl</li>
+<li> libglib-perl</li>
+<li> libcairo-perl</li>
+</ul>
+</div>
+
+<div>
+<h1>Fedora Linux</h1>
+</div>
+
+<div>
+<p>Fedora Linux에서 설치</p>
+<ul>
+<li> perl-gtk2</li>
+<li> perl-glib</li>
+<li> perl-cairo</li>
+</ul>
+</div>
+
+<div>
+<h1>패키지 관리자를 이용하지 않는다면</h1>
+</div>
+
+<div>
+<h1>CPAN을 이용한 설치</h1>
+</div>
+
+<div>
+<p>CPAN 이용시 필요한 파일</p>
+<ul>
+<li> Ubuntu</li>
+<li> -&gt; libgtk2.0-dev</li>
+<li> -&gt; libglib2.0-dev</li>
+<li> -&gt; libcairo2-dev</li>
+</ul>
+</div>
+
+<div>
+<p>CPAN 이용시 필요한 파일 (contd.)</p>
+<ul>
+<li> Fedora</li>
+<li> -&gt; gtk2-devel</li>
+<li> -&gt; glib2-devel</li>
+<li> -&gt; cairo-devel</li>
+</ul>
+</div>
+
+<div>
+<p>CPAN을 이용한 설치</p>
+<pre>
+keedi@x40:~$ sudo cpan Gtk2
+</pre>
+</div>
+
+<div>
+<h1>MS Windows</h1>
+</div>
+
+<div>
+<p>MS Windows에서 설치</p>
+<ul>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>MS Windows에서 설치</p>
+<ul>
+<li> 어려운 방법</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>MS Windows에서 설치</p>
+<ul>
+<li> 어려운 방법</li>
+<li> 쉬운 방법</li>
+</ul>
+</div>
+
+<div>
+<h1>어려운 방법</h1>
+</div>
+
+<div>
+<h1>Gtk2+ From Scratch!!</h1>
+</div>
+
+<div>
+<p>
+윈도우즈에 설치한 Perl을<br>
+<br>
+컴파일한 컴파일러 필요
+</p>
+</div>
+
+<div>
+<p>
+gtk.org에서 제공하는<br>
+<br>
+윈도우즈용<br>
+<br>
+Gtk+/Glib/Cairo 관련<br>
+<br>
+개발용 파일(SDK) 설치
+</p>
+</div>
+
+<div>
+<p>
+gtk.org에서 제공하는<br>
+<br>
+바이너리 이외의<br>
+<br>
+파일 및 유틸리티도 필요
+</p>
+</div>
+
+<div>
+<p>
+Tor Lillqvist (tml)<br>
+<br>
+Misc GIMP-related<br>
+packages for Windows
+</p>
+</div>
+
+<div>
+
+<pre>
+# Visit Here!
+http://www.gimp.org/~tml/gimp/win32/downloads.html
+</pre>
+</div>
+
+<div>
+<p>
+<p>tml's Misc GIMP-related packages</p>
+<img src="images/gtk-tml.png" alt="tml's Misc GIMP-related packages">
+</p>
+</div>
+
+<div>
+<h1>쉬운 방법</h1>
+</div>
+
+<div>
+<p>쉬운 방법</p>
+<ul>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>쉬운 방법</p>
+<ul>
+<li> Cygwin</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>쉬운 방법</p>
+<ul>
+<li> Cygwin</li>
+<li> ActivePerl</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>쉬운 방법</p>
+<ul>
+<li> Cygwin</li>
+<li> ActivePerl</li>
+<li> Camelbox</li>
+</ul>
+</div>
+
+<div>
+<h1>Cygwin</h1>
+</div>
+
+<div>
+<p>
+Cygwin<br>
+<br>
+Linux와 동일 :-)
+</p>
+</div>
+
+<div>
+<h1>ActivePerl</h1>
+</div>
+
+<div>
+<p>
+Paul의 ActiveState<br>
+<br>
+저장소를 추가!<br>
+<br>
+http://voltar.org/active/5.8/
+</p>
+</div>
+
+<div>
+<p>
+<p>Paul's ActiveState Repo</p>
+<img src="images/gtk-paul.png" alt="Paul's ActiveState Repo">
+</p>
+</div>
+
+<div>
+
+<pre>
+# Paul's ActiveState 저장소를 추가하세요!
+ppm rep add "Paul's Repo" http://voltar.org/active/5.8/
+
+# Gtk2 설치
+ppm install Gtk2
+</pre>
+</div>
+
+<div>
+<h1>Camelbox</h1>
+</div>
+
+<div>
+<p>
+Camelbox 공식 홈페이지<br>
+<br>
+http://code.google.com /p/camelbox/
+</p>
+</div>
+
+<div>
+<p>
+<p>Camelbox Home</p>
+<img src="images/camelbox-home.png" alt="Camelbox Home">
+</p>
+</div>
+
+<div>
+<h1>위에서 언급한 다른 모든 방법은 잊어버리세요!</h1>
+</div>
+
+<div>
+<h1>윈도우즈 사용자라면 Camelbox로 대동단결!</h1>
+</div>
+
+<div>
+<p>
+<p>Camelbox 인스톨러</p>
+<img src="images/camelbox-install.png" alt="Camelbox 인스톨러">
+</p>
+</div>
+
+<div>
+<h1>Why Camelbox is so special?</h1>
+</div>
+
+<div>
+<p>Why Camelbox is so special?</p>
+<ul>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Why Camelbox is so special?</p>
+<ul>
+<li> Gtk+ 모듈 제공</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Why Camelbox is so special?</p>
+<ul>
+<li> Gtk+ 모듈 제공</li>
+<li> 윈도우즈에서 펄을 쓰기위한 수많은 옵션/CPAN 모듈 제공</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Why Camelbox is so special?</p>
+<ul>
+<li> Gtk+ 모듈 제공</li>
+<li> 윈도우즈에서 펄을 쓰기위한 수많은 옵션/CPAN 모듈 제공</li>
+<li> 거의 완벽한 바이너리 패키지</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Why Camelbox is so special?</p>
+<ul>
+<li> Gtk+ 모듈 제공</li>
+<li> 윈도우즈에서 펄을 쓰기위한 수많은 옵션/CPAN 모듈 제공</li>
+<li> 거의 완벽한 바이너리 패키지</li>
+<li> 게다가 펄 버전 5.10!</li>
+</ul>
+</div>
+
+<div>
+<h1>Camelbox의 특징</h1>
+</div>
+
+<div>
+<p>Camelbox의 특징</p>
+<ul>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Camelbox의 특징</p>
+<ul>
+<li> 깔끔한 윈도우즈용 인스톨러</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Camelbox의 특징</p>
+<ul>
+<li> 깔끔한 윈도우즈용 인스톨러</li>
+<li> -&gt; 자동으로 다운로드/설치</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Camelbox의 특징</p>
+<ul>
+<li> 깔끔한 윈도우즈용 인스톨러</li>
+<li> -&gt; 자동으로 다운로드/설치</li>
+<li> 완전한 Gtk2-Perl 코어 모듈</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Camelbox의 특징</p>
+<ul>
+<li> 깔끔한 윈도우즈용 인스톨러</li>
+<li> -&gt; 자동으로 다운로드/설치</li>
+<li> 완전한 Gtk2-Perl 코어 모듈</li>
+<li> -&gt; Gtk2, Glib, Cairo</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Camelbox의 특징</p>
+<ul>
+<li> 깔끔한 윈도우즈용 인스톨러</li>
+<li> -&gt; 자동으로 다운로드/설치</li>
+<li> 완전한 Gtk2-Perl 코어 모듈</li>
+<li> -&gt; Gtk2, Glib, Cairo</li>
+<li> -&gt; Win32용 컴파일 C lib도 같이 배포</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Camelbox의 특징</p>
+<ul>
+<li> 깔끔한 윈도우즈용 인스톨러</li>
+<li> -&gt; 자동으로 다운로드/설치</li>
+<li> 완전한 Gtk2-Perl 코어 모듈</li>
+<li> -&gt; Gtk2, Glib, Cairo</li>
+<li> -&gt; Win32용 컴파일 C lib도 같이 배포</li>
+<li> 수많은 Perl/GTK HTML 문서</li>
+</ul>
+</div>
+
+<div>
+<p>Camelbox의 특징 (contd.)</p>
+<ul>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Camelbox의 특징 (contd.)</p>
+<ul>
+<li> CPAN 모듈 사용 가능</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Camelbox의 특징 (contd.)</p>
+<ul>
+<li> CPAN 모듈 사용 가능</li>
+<li> 보너스 펄 모듈</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Camelbox의 특징 (contd.)</p>
+<ul>
+<li> CPAN 모듈 사용 가능</li>
+<li> 보너스 펄 모듈</li>
+<li> -&gt; DBI/DBD + alpha</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Camelbox의 특징 (contd.)</p>
+<ul>
+<li> CPAN 모듈 사용 가능</li>
+<li> 보너스 펄 모듈</li>
+<li> -&gt; DBI/DBD + alpha</li>
+<li> CPAN에서 컴파일용 모듈 설치 지원</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Camelbox의 특징 (contd.)</p>
+<ul>
+<li> CPAN 모듈 사용 가능</li>
+<li> 보너스 펄 모듈</li>
+<li> -&gt; DBI/DBD + alpha</li>
+<li> CPAN에서 컴파일용 모듈 설치 지원</li>
+<li> -&gt; 추가 bin, util, 개발 lib 및 헤더</li>
+</ul>
+</div>
+
+<div>
+<p>
+Camelbox가 설치하는 모듈<br>
+<br>
+XML::Parser, YAML, LWP,<br>
+Moose, PAR, PAR::Packer,<br>
+JSON, Log::Log4perl,<br>
+Date::Format, Win32::API 등
+</p>
+</div>
+
+<div>
+<h1>Ok!</h1>
+</div>
+
+<div>
+<h1>Finally we got Gtk2 & Gtk2-Perl!!</h1>
+</div>
+
+<div>
+<h1>Hello World!?</h1>
+</div>
+
+<div>
+<p>Hello World!</p>
+<pre>
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use Gtk2 -init;
+
+#...
+</pre>
+</div>
+
+<div>
+<p>Hello World! (contd.)</p>
+<pre>
+#...
+
+my $window = Gtk2::Window-&gt;new('toplevel');
+my $button = Gtk2::Button-&gt;new('Hello World!');
+$button-&gt;signal_connect(
+    clicked =&gt; sub { Gtk2-&gt;main_quit }
+);
+
+$window-&gt;add($button);
+$window-&gt;show_all;
+
+Gtk2-&gt;main;
+</pre>
+</div>
+
+<div>
+<h1>Run It</h1>
+</div>
+
+<div>
+<p>Run It!</p>
+<pre>
+$ ./hello-world.pl
+</pre>
+</div>
+
+<div>
+<p>
+<img src="images/gtk-hello-world.png">
+</p>
+</div>
+
+<div>
+<h1>use Gtk2 -init;</h1>
+</div>
+
+<div>
+<p>use Gtk2 -init;</p>
+<ul>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>use Gtk2 -init;</p>
+<ul>
+<li> gtk_init() 함수</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>use Gtk2 -init;</p>
+<ul>
+<li> gtk_init() 함수</li>
+<li> gtk 관련 함수 호출전에 최초 호출</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>use Gtk2 -init;</p>
+<ul>
+<li> gtk_init() 함수</li>
+<li> gtk 관련 함수 호출전에 최초 호출</li>
+<li> -&gt; GUI 로드할 준비가 되었는지 검사</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>use Gtk2 -init;</p>
+<ul>
+<li> gtk_init() 함수</li>
+<li> gtk 관련 함수 호출전에 최초 호출</li>
+<li> -&gt; GUI 로드할 준비가 되었는지 검사</li>
+<li> 표준 옵션에 대한 매개변수 파싱</li>
+</ul>
+</div>
+
+<div>
+<h1>Gtk2::Window</h1>
+</div>
+
+<div>
+<p>Gtk2::Window</p>
+<pre>
+GObject
+ +----GInitiallyUnowned
+       +----GtkObject
+             +----GtkWidget
+                   +----GtkContainer
+                         +----GtkBin
+                               +----GtkWindow
+</pre>
+</div>
+
+<div>
+<h1>잠깐!  위젯 구조를 설명하는 이유?</h1>
+</div>
+
+<div>
+<p>
+위젯 구조를 설명하는 이유?<br>
+<br>
+상속받은 자식 위젯은<br>
+부모 위젯의 메소드를<br>
+사용할 수 있다!
+</p>
+</div>
+
+<div>
+<p>Gtk2::Window</p>
+<ul>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Gtk2::Window</p>
+<ul>
+<li> GtkWindow* 구조체</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Gtk2::Window</p>
+<ul>
+<li> GtkWindow* 구조체</li>
+<li> Gtk2::Window-&gt;new()</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Gtk2::Window</p>
+<ul>
+<li> GtkWindow* 구조체</li>
+<li> Gtk2::Window-&gt;new()</li>
+<li> -&gt; gtk_window_new()</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Gtk2::Window</p>
+<ul>
+<li> GtkWindow* 구조체</li>
+<li> Gtk2::Window-&gt;new()</li>
+<li> -&gt; gtk_window_new()</li>
+<li> $window-&gt;*()</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Gtk2::Window</p>
+<ul>
+<li> GtkWindow* 구조체</li>
+<li> Gtk2::Window-&gt;new()</li>
+<li> -&gt; gtk_window_new()</li>
+<li> $window-&gt;*()</li>
+<li> -&gt; gtk_window_*() 함수</li>
+</ul>
+</div>
+
+<div>
+<p>Gtk2::Window (contd.)</p>
+<ul>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Gtk2::Window (contd.)</p>
+<ul>
+<li> $window-&gt;add($widget)</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Gtk2::Window (contd.)</p>
+<ul>
+<li> $window-&gt;add($widget)</li>
+<li> -&gt; gtk_container_add(win, wid)</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Gtk2::Window (contd.)</p>
+<ul>
+<li> $window-&gt;add($widget)</li>
+<li> -&gt; gtk_container_add(win, wid)</li>
+<li> $window-&gt;show_all</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Gtk2::Window (contd.)</p>
+<ul>
+<li> $window-&gt;add($widget)</li>
+<li> -&gt; gtk_container_add(win, wid)</li>
+<li> $window-&gt;show_all</li>
+<li> -&gt; gtk_widget_show_all(widget)</li>
+</ul>
+</div>
+
+<div>
+<h1>Gtk2::Button</h1>
+</div>
+
+<div>
+<p>Gtk2::Button</p>
+<pre>
+GObject
+ +----GInitiallyUnowned
+       +----GtkObject
+             +----GtkWidget
+                   +----GtkContainer
+                         +----GtkBin
+                               +----GtkButton
+</pre>
+</div>
+
+<div>
+<p>Gtk2::Button</p>
+<ul>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Gtk2::Button</p>
+<ul>
+<li> GtkButton* 구조체</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Gtk2::Button</p>
+<ul>
+<li> GtkButton* 구조체</li>
+<li> Gtk2::Button-&gt;new($text)</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Gtk2::Button</p>
+<ul>
+<li> GtkButton* 구조체</li>
+<li> Gtk2::Button-&gt;new($text)</li>
+<li> -&gt; gtk_button_new_with_label(...)</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Gtk2::Button</p>
+<ul>
+<li> GtkButton* 구조체</li>
+<li> Gtk2::Button-&gt;new($text)</li>
+<li> -&gt; gtk_button_new_with_label(...)</li>
+<li> $button-&gt;*()</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Gtk2::Button</p>
+<ul>
+<li> GtkButton* 구조체</li>
+<li> Gtk2::Button-&gt;new($text)</li>
+<li> -&gt; gtk_button_new_with_label(...)</li>
+<li> $button-&gt;*()</li>
+<li> -&gt; gtk_button_*() 함수</li>
+</ul>
+</div>
+
+<div>
+<h1>$button-&gt; signal_connect()</h1>
+</div>
+
+<div>
+<p>$button->signal_connect()</p>
+<ul>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>$button->signal_connect()</p>
+<ul>
+<li> g_signal_connect(a, b, c, d)</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>$button->signal_connect()</p>
+<ul>
+<li> g_signal_connect(a, b, c, d)</li>
+<li> -&gt; a: instance</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>$button->signal_connect()</p>
+<ul>
+<li> g_signal_connect(a, b, c, d)</li>
+<li> -&gt; a: instance</li>
+<li> -&gt; b: detailed_signal</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>$button->signal_connect()</p>
+<ul>
+<li> g_signal_connect(a, b, c, d)</li>
+<li> -&gt; a: instance</li>
+<li> -&gt; b: detailed_signal</li>
+<li> -&gt; c: c_handler</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>$button->signal_connect()</p>
+<ul>
+<li> g_signal_connect(a, b, c, d)</li>
+<li> -&gt; a: instance</li>
+<li> -&gt; b: detailed_signal</li>
+<li> -&gt; c: c_handler</li>
+<li> -&gt; d: user_data</li>
+</ul>
+</div>
+
+<div>
+<p>$button->signal_connect() (contd.)</p>
+<ul>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>$button->signal_connect() (contd.)</p>
+<ul>
+<li> $button-&gt;signal_connect(a, b, c)</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>$button->signal_connect() (contd.)</p>
+<ul>
+<li> $button-&gt;signal_connect(a, b, c)</li>
+<li> -&gt; a: detailed_signal</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>$button->signal_connect() (contd.)</p>
+<ul>
+<li> $button-&gt;signal_connect(a, b, c)</li>
+<li> -&gt; a: detailed_signal</li>
+<li> -&gt; b: c_handler</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>$button->signal_connect() (contd.)</p>
+<ul>
+<li> $button-&gt;signal_connect(a, b, c)</li>
+<li> -&gt; a: detailed_signal</li>
+<li> -&gt; b: c_handler</li>
+<li> -&gt; c: user_data (option)</li>
+</ul>
+</div>
+
+<div>
+<p>$button->signal_connect() (contd.)</p>
+<pre>
+$widget-&gt;signal_connect(
+    event =&gt; \&event_handler,
+    $user_data
+);
+
+$button-&gt;signal_connect(
+    clicked =&gt; sub {
+        warn "hi!\n"
+    },
+);
+</pre>
+</div>
+
+<div>
+<p>$button->signal_connect() (contd.)</p>
+<ul>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>$button->signal_connect() (contd.)</p>
+<ul>
+<li> Gtk+-1.x 바인딩과 가장 큰 차이</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>$button->signal_connect() (contd.)</p>
+<ul>
+<li> Gtk+-1.x 바인딩과 가장 큰 차이</li>
+<li> 콜백함수가 취하는 매개변수 순서</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>$button->signal_connect() (contd.)</p>
+<ul>
+<li> Gtk+-1.x 바인딩과 가장 큰 차이</li>
+<li> 콜백함수가 취하는 매개변수 순서</li>
+<li> -&gt; C에서의 명시 순서와 동일</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>$button->signal_connect() (contd.)</p>
+<ul>
+<li> Gtk+-1.x 바인딩과 가장 큰 차이</li>
+<li> 콜백함수가 취하는 매개변수 순서</li>
+<li> -&gt; C에서의 명시 순서와 동일</li>
+<li> $user_data</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>$button->signal_connect() (contd.)</p>
+<ul>
+<li> Gtk+-1.x 바인딩과 가장 큰 차이</li>
+<li> 콜백함수가 취하는 매개변수 순서</li>
+<li> -&gt; C에서의 명시 순서와 동일</li>
+<li> $user_data</li>
+<li> -&gt; 옵션이며 하나의 값만 사용가능</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>$button->signal_connect() (contd.)</p>
+<ul>
+<li> Gtk+-1.x 바인딩과 가장 큰 차이</li>
+<li> 콜백함수가 취하는 매개변수 순서</li>
+<li> -&gt; C에서의 명시 순서와 동일</li>
+<li> $user_data</li>
+<li> -&gt; 옵션이며 하나의 값만 사용가능</li>
+<li> -&gt; 클로져 이용시 보통 필요 없음</li>
+</ul>
+</div>
+
+<div>
+<h1>이름공간과 객체</h1>
+</div>
+
+<div>
+<p>
+이름공간과 객체<br>
+<br>
+C lib의 이름 공간은<br>
+펄의 패키지로 맵핑
+</p>
+</div>
+
+<div>
+<p>이름공간과 객체</p>
+<pre>
+g_          =&gt; Glib
+gtk_        =&gt; Gtk2
+gdk_        =&gt; Gtk2::Gdk
+gdk_pixbuf_ =&gt; Gtk2::Gdk::Pixbuf
+pango_      =&gt; Gtk2::Pango
+</pre>
+</div>
+
+<div>
+<p>이름공간과 객체 (contd.)</p>
+<pre>
+GtkButton            =&gt; Gtk2::Button
+GdkPixbuf            =&gt; Gtk2::Gdk::Pixbuf
+GtkScrolledWindow    =&gt; Gtk2::ScrolledWindow
+PangoFontDescription =&gt; Gtk2::Pango::FontDescription
+</pre>
+</div>
+
+<div>
+<p>이름공간과 객체 (contd.)</p>
+<pre>
+in C:
+  GtkWidget * b;
+  b = gtk_check_button_new_with_mnemonic("_Something");
+  gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(b), TRUE);
+  gtk_widget_show(b);
+
+in perl:
+  my $b = Gtk2::CheckButton-&gt;new('_Something');
+  $b-&gt;set_active(1);
+  $b-&gt;show;
+</pre>
+</div>
+
+<div>
+<h1>Win32 사용자를 위한 Tip!</h1>
+</div>
+
+<div>
+<h1>Gtk2와 유니코드</h1>
+</div>
+
+<div>
+<p>Gtk2와 유니코드</p>
+<ul>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Gtk2와 유니코드</p>
+<ul>
+<li> Gtk2는 문자열로 유니코드를 받음</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Gtk2와 유니코드</p>
+<ul>
+<li> Gtk2는 문자열로 유니코드를 받음</li>
+<li> 리눅스의 경우</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Gtk2와 유니코드</p>
+<ul>
+<li> Gtk2는 문자열로 유니코드를 받음</li>
+<li> 리눅스의 경우</li>
+<li> -&gt; 보통 utf-8을 사용해 큰 문제없음</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Gtk2와 유니코드</p>
+<ul>
+<li> Gtk2는 문자열로 유니코드를 받음</li>
+<li> 리눅스의 경우</li>
+<li> -&gt; 보통 utf-8을 사용해 큰 문제없음</li>
+<li> -&gt; 혹시 깨진다면 Win32와 동일하게 해결</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Gtk2와 유니코드</p>
+<ul>
+<li> Gtk2는 문자열로 유니코드를 받음</li>
+<li> 리눅스의 경우</li>
+<li> -&gt; 보통 utf-8을 사용해 큰 문제없음</li>
+<li> -&gt; 혹시 깨진다면 Win32와 동일하게 해결</li>
+<li> Win32의 경우</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Gtk2와 유니코드</p>
+<ul>
+<li> Gtk2는 문자열로 유니코드를 받음</li>
+<li> 리눅스의 경우</li>
+<li> -&gt; 보통 utf-8을 사용해 큰 문제없음</li>
+<li> -&gt; 혹시 깨진다면 Win32와 동일하게 해결</li>
+<li> Win32의 경우</li>
+<li> -&gt; 영어는 문제 없음</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>Gtk2와 유니코드</p>
+<ul>
+<li> Gtk2는 문자열로 유니코드를 받음</li>
+<li> 리눅스의 경우</li>
+<li> -&gt; 보통 utf-8을 사용해 큰 문제없음</li>
+<li> -&gt; 혹시 깨진다면 Win32와 동일하게 해결</li>
+<li> Win32의 경우</li>
+<li> -&gt; 영어는 문제 없음</li>
+<li> -&gt; 한글은 깨져보임</li>
+</ul>
+</div>
+
+<div>
+<h1>한글 깨짐 해결방법</h1>
+</div>
+
+<div>
+<p>한글 깨짐 해결방법</p>
+<ul>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>한글 깨짐 해결방법</p>
+<ul>
+<li> Use Encode; (간단함)</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>한글 깨짐 해결방법</p>
+<ul>
+<li> Use Encode; (간단함)</li>
+<li> -&gt; 디코딩 래퍼 함수 제작</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>한글 깨짐 해결방법</p>
+<ul>
+<li> Use Encode; (간단함)</li>
+<li> -&gt; 디코딩 래퍼 함수 제작</li>
+<li> -&gt; 모든 문자열에 적용</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>한글 깨짐 해결방법</p>
+<ul>
+<li> Use Encode; (간단함)</li>
+<li> -&gt; 디코딩 래퍼 함수 제작</li>
+<li> -&gt; 모든 문자열에 적용</li>
+<li> 메시지 파일을 따로 보관 (정석)</li>
+<li>...</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>한글 깨짐 해결방법</p>
+<ul>
+<li> Use Encode; (간단함)</li>
+<li> -&gt; 디코딩 래퍼 함수 제작</li>
+<li> -&gt; 모든 문자열에 적용</li>
+<li> 메시지 파일을 따로 보관 (정석)</li>
+<li> -&gt; 메시지 파일의 인코딩을 utf-8로</li>
+<li>...</li>
+</ul>
+</div>
+<div>
+<p>한글 깨짐 해결방법</p>
+<ul>
+<li> Use Encode; (간단함)</li>
+<li> -&gt; 디코딩 래퍼 함수 제작</li>
+<li> -&gt; 모든 문자열에 적용</li>
+<li> 메시지 파일을 따로 보관 (정석)</li>
+<li> -&gt; 메시지 파일의 인코딩을 utf-8로</li>
+<li> -&gt; 모든 문자열에 적용</li>
+</ul>
+</div>
+
+<div>
+<p>Use Encode;</p>
+<pre>
+use Encode qw(decode);
+
+my $DECODING = 'cp949';
+sub _d { decode($DECODING, shift) }
+
+# Gtk2::Button-&gt;new("눌러주세요!")
+Gtk2::Button-&gt;new(_d("눌러주세요!"));
+</pre>
+</div>
+
+<div>
+<h1>마지막 예제</h1>
+</div>
+
+<div>
+<h1>경품!</h1>
+</div>
+
+<div>
+<h1>(+_+)</h1>
+</div>
+
+<div>
+<p>mknametag.pl</p>
+<pre>
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+use GD;
+
+die "Usage: $0 &lt;no&gt; &lt;name&gt; &lt;type&gt; &gt; file.png\n"
+    unless @ARGV &gt;= 2;
+my ( $no, $name, $type ) = @ARGV;
+
+# create a new image
+my $bg = newFromPng GD::Image('name-tag-template.png');
+my $gd = new GD::Image( 283, 198 );
+
+my $white = $gd-&gt;colorAllocate( 255, 255, 255 );
+my $black = $gd-&gt;colorAllocate( 0,   0,   0 );
+my $red   = $gd-&gt;colorAllocate( 255, 0,   0 );
+my $blue  = $gd-&gt;colorAllocate( 0,   0,   255 );
+
+$gd-&gt;transparent($white);
+$gd-&gt;interlaced('true');
+$gd-&gt;setAntiAliased($black);
+
+if ( $type ) {
+    $gd-&gt;stringFT(
+        $black,
+        '/home/moonpfe/.fonts/SeoulNamsanEB.ttf',
+        25, 0, 20, 50,
+        $type,
+        {
+            linespacing =&gt; 1.0,
+            charmap     =&gt; 'Unicode',
+        }
+    );
+
+    $gd-&gt;stringFT(
+        $black,
+        '/home/moonpfe/.fonts/SeoulNamsanEB.ttf',
+        35, 0, 70, 105,
+        $name,
+        {
+            linespacing =&gt; 1.0,
+            charmap     =&gt; 'Unicode',
+        }
+    );
+}
+else {
+    $gd-&gt;stringFT(
+        $black,
+        '/home/moonpfe/.fonts/SeoulNamsanEB.ttf',
+        35, 0, 30, 80,
+        $name,
+        {
+            linespacing =&gt; 1.0,
+            charmap     =&gt; 'Unicode',
+        }
+    );
+}
+
+$gd-&gt;stringFT(
+    $black,
+    '/home/moonpfe/.fonts/SeoulNamsanEB.ttf',
+    16, 0, 240, 30,
+    $no,
+    {
+        linespacing =&gt; 1.0,
+        charmap     =&gt; 'Unicode',
+    }
+);
+
+binmode STDOUT;
+
+$bg-&gt;copyResampled($gd, 0, 0, 0, 0, 283, 198, 283, 198);
+print $bg-&gt;png;
+
+</pre>
+</div>
+
+<div>
+<p>gui.pl</p>
+<pre>
+#!/usr/bin/perl 
+
+use strict;
+use warnings;
+
+use Encode qw(decode);
+use Gtk2 -init;
+
+my $DECODING = 'utf-8';
+sub _d { decode($DECODING, shift) }
+
+my %widget_of;
+
+my $window = Gtk2::Window-&gt;new('toplevel');
+$window-&gt;signal_connect(destroy =&gt; sub { Gtk2-&gt;main_quit });
+$widget_of{window} = $window;
+
+my $vbox = Gtk2::VBox-&gt;new(0, 5);
+
+my ( $hbox, $label, $entry );
+
+    $hbox = Gtk2::HBox-&gt;new(0, 5);
+    $label = Gtk2::Label-&gt;new(_d('이름:'));
+    $entry = Gtk2::Entry-&gt;new();
+    $hbox-&gt;pack_start_defaults($label);
+    $hbox-&gt;pack_start_defaults($entry);
+    $vbox-&gt;pack_start_defaults($hbox);
+    $widget_of{name} = $entry;
+
+    $hbox = Gtk2::HBox-&gt;new(0, 5);
+    $label = Gtk2::Label-&gt;new(_d('번호:'));
+    $entry = Gtk2::Entry-&gt;new();
+    $hbox-&gt;pack_start_defaults($label);
+    $hbox-&gt;pack_start_defaults($entry);
+    $vbox-&gt;pack_start_defaults($hbox);
+    $widget_of{no} = $entry;
+
+    $hbox = Gtk2::HBox-&gt;new(0, 5);
+    $label = Gtk2::Label-&gt;new(_d('상태:'));
+    $entry = Gtk2::Entry-&gt;new();
+    $hbox-&gt;pack_start_defaults($label);
+    $hbox-&gt;pack_start_defaults($entry);
+    $vbox-&gt;pack_start_defaults($hbox);
+    $widget_of{type} = $entry;
+
+my $button;
+    $hbox = Gtk2::HBox-&gt;new(0, 5);
+
+    $button = Gtk2::Button-&gt;new(_d('초기화'));
+    $button-&gt;signal_connect(clicked =&gt; \&reset_text_entry);
+    $hbox-&gt;pack_start_defaults($button);
+
+    $button = Gtk2::Button-&gt;new(_d('생성'));
+    $button-&gt;signal_connect(clicked =&gt; \&generate_name_tag);
+    $hbox-&gt;pack_start_defaults($button);
+
+    $vbox-&gt;pack_start_defaults($hbox);
+
+$window-&gt;add($vbox);
+$window-&gt;show_all;
+
+Gtk2-&gt;main;
+
+sub reset_text_entry {
+    my $self = shift;
+
+    $widget_of{no}-&gt;set_text(q{});
+    $widget_of{name}-&gt;set_text(q{});
+    $widget_of{type}-&gt;set_text(q{});
+
+    $widget_of{window}-&gt;set_focus($widget_of{name});
+}
+
+sub generate_name_tag {
+    my $self = shift;
+
+    my $no   = $widget_of{no}-&gt;get_text;
+    my $name = $widget_of{name}-&gt;get_text;
+    my $type = $widget_of{type}-&gt;get_text;
+
+    print STDERR "$no - $name - $type\n";
+
+    my $cmd = "./mknametag.pl '$no' '$name' '$type' &gt; tmp.png\n";
+    print STDERR $cmd;
+    system $cmd;
+    system 'eog tmp.png';
+}
+</pre>
+</div>
+
+<div>
+<h1>Gtk2-Perl을 빨리 익히기</h1>
+</div>
+
+<div>
+<p>Gtk2-Perl을 빨리 익히기</p>
+<ul>
+<li> Gtk2::Window</li>
+<li> Gtk2::Box</li>
+<li> -&gt; Gtk2::VBox</li>
+<li> -&gt; Gtk2::HBox</li>
+<li> Gtk2::Label</li>
+<li> Gtk2::Entry</li>
+</ul>
+</div>
+
+<div>
+<p>Gtk2-Perl을 빨리 익히기 (contd.)</p>
+<ul>
+<li> Gtk2::Button</li>
+<li> Gtk2::ComboBox</li>
+<li> Gtk2::RadioButton</li>
+<li> Gtk2::Tooltip (not Gtk2::Tooltips)</li>
+<li> Gtk2::TextView</li>
+<li> Gtk2::Dialog</li>
+</ul>
+</div>
+
+<div>
+<p>알아두면 편리한 Gtk2-Perl 위젯</p>
+<ul>
+<li> Gtk2::ColorButton</li>
+<li> Gtk2::FileChooserButton</li>
+<li> Gtk2::FontButton</li>
+<li> Gtk2::ScaleButton</li>
+<li> Gtk2::SpinButton</li>
+<li> Gtk2::VolumeButton</li>
+</ul>
+</div>
+
+<div>
+<p>알아두면 편리한 Gtk2-Perl 위젯 (contd.)</p>
+<ul>
+<li> Gtk2::ColorSelectionDialog</li>
+<li> Gtk2::FileChooserDialog</li>
+<li> Gtk2::FontSelectionDialog</li>
+<li> Gtk2::RecentChooserDialog</li>
+<li> Gtk2::Calendar</li>
+</ul>
+</div>
+
+<div>
+<h1>The End.</h1>
+</div>
+
+<div>
+<h1>Any Question?</h1>
+</div>
+
+<div>
+<h1>Thank you!</h1>
+</div>
+
+</div><!--contents-->
+</body>
+</html>

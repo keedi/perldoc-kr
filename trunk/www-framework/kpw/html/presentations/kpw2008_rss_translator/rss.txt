@@ -1,0 +1,151 @@
+﻿TITLE::RSS번역기 만들기
+
+RSS 번역기 만들기
+
+     Korean Perl Workshop 2008     
+aero
+----
+일본 RSS를
+구독하고 싶다.
+----
+일본어는
+모른다.
+----
+일본어를
+공부한다?
+----
+NO
+----
+한일번역
+서비스를
+이용한다.
+----
+웹은
+번역해준다.
+----
+[[http://j2k.naver.com/k2j_frame.php/korean/http://blog.livedoor.jp/dankogai/]]
+----
+RSS는
+안된다.
+----
+번역전:[[http://blog.livedoor.jp/dankogai/atom.xml]]
+번역후:[[http://j2k.naver.com/k2j_frame.php/korean/http://blog.livedoor.jp/dankogai/atom.xml]]
+----
+그럼
+만들어보자!
+----
+지금
+필요한 건
+뭐?
+----
+SPEED
+----
+Perl + [CPAN]
+
+=[진짜 Perl]
+----
+번역서비스
+
+네이버 enjoyjapan
+일본 excite
+
+----
+번역서비스 접근
+
+[LWP]
+----
+[[PRE:
+my $translator = 'http://j2k.naver.com/j2k.php/korean/';
+
+sub translate {
+    my $url = shift;
+
+    my $agent = LWP::UserAgent->new();
+
+    my ($start, $end);
+    my $res = $agent->get($url);
+    if ($res->is_success) {
+        my $RSS = $res->content;
+        ($start,$end) = $RSS =~ m/(<.*?>).+(<\/.*?>)/sm;
+    }
+
+    my $res2 = $agent->get($translator.$url);
+
+    if ($res2->is_success) {
+        my $trans = $res2->content;
+        my ($RSS2) = $trans =~ m/(\Q$start\E.+\Q$end\E)/sm;
+...
+}
+]]
+----
+RSS 구성/수정
+
+[XML::FeedPP]
+----
+[[PRE:
+my $feed = XML::FeedPP->new($RSS2);
+
+$feed->link( $translator2.$feed->link() );
+
+foreach my $item ( $feed->get_item() ) {
+    $item->link( $translator2.$item->link() );
+}
+
+print $feed->to_string("utf-8");
+]]
+----
+RSS를 제공할 Web server
+
+[HTTP::Server::Simple]
+----
+[[PRE:
+package RSSserver;
+
+use strict;
+use warnings;
+use base qw(HTTP::Server::Simple::CGI);
+use Translate::JP2KR;
+
+sub handle_request {
+    my ($self, $cgi) = @_;
+
+    my $REQUEST_URI = $ENV{REQUEST_URI};
+    my ( $target, $url) = $REQUEST_URI =~ m|/(.*?)/(.+)|;
+
+    eval {
+        no strict 'refs';
+        *{"Translate::$target\::translate"}->($url);
+...
+}
+1;
+]]
+----
+[[PRE:
+#!/usr/bin/perl
+use strict;
+use warnings;
+use FindBin;
+use lib "$FindBin::Bin/lib";
+use RSSserver;
+
+my $server = RSSserver->new(8080);
+$server->run();
+]]
+----
+일본어 RSS
+[[http://blog.livedoor.jp/dankogai/atom.xml]]
+
+번역된 RSS
+[[http://127.0.0.1:8080/JP2KR/http://blog.livedoor.jp/dankogai/atom.xml]]
+----
+ALIGN::left
+개선가능한 사항
+
+- 여러가지 언어 추가
+
+- Cache기능 추가
+
+- 고성능 웹서버와 결합
+----
+[[rss_translator소스|./rss_translator.zip]]
+----
