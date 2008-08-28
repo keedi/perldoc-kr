@@ -23,7 +23,7 @@ __PACKAGE__->add_columns(
 );
 __PACKAGE__->set_primary_key("id");
 
-__PACKAGE__->has_one( user => 'Kpw::Schema::Epilogue', { 'foreign.no' => 'self.user_id' });
+__PACKAGE__->has_one( user => 'Kpw::Schema::RegistForm', { 'foreign.no' => 'self.user_id' });
 
 # Created by DBIx::Class::Schema::Loader v0.04005 @ 2008-08-28 12:09:24
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Hg5juP31f4vjKmAT/Qy4Dw
