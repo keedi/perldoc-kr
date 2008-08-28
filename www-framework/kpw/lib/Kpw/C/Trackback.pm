@@ -14,7 +14,8 @@ sub do_default {
     for (qw/blog_name title url/) {
 	return $self->tb_failure unless $self->req->param($_);
     }
-    
+
+    warn Dumper $self->req->parameters;
     my $tb = $self->M('KpwDB::Trackback')->find({
 	'url' => $self->req->param('url'),
 						});
