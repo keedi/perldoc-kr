@@ -22,6 +22,7 @@ CREATE TABLE epilogue (
    id  	     INTEGER NOT NULL,
    user_id   INTEGER,
    name      TEXT NOT NULL,
+   email     CHAR(128),
    password  CHAR(16) NOT NULL,
    title     TEXT NOT NULL,
    content   LONGTEXT NOT NULL,
