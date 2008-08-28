@@ -27,3 +27,17 @@ CREATE TABLE epilogue (
    updated_on DATETIME NOT NULL,
    primary key(id)
 );
+
+CREATE TABLE trackback (
+   no      INTEGER NOT NULL,
+   type    CHAR(32) NOT NULL,
+   code    CHAR(32) NOT NULL,
+   name    TEXT NOT NULL,
+   title   TEXT NOT NULL,
+   excerpt TEXT NOT NULL,
+   url     TEXT NOT NULL,
+   status  CHAR(4) NOT NULL,
+   created_on DATETIME NOT NULL,
+   updated_on DATETIME NOT NULL,
+   primary key(no)
+);
