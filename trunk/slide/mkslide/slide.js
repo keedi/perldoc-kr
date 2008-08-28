@@ -1,6 +1,6 @@
 function $(id){ return document.getElementById(id) }
 
-function Slide(frame, screen, slides, pagenum){
+function Slide(frame, screen, slides, pagenum, maxnum){
     var cur  = 0;
     var max  = 0;
     this.init = function(){
@@ -38,7 +38,7 @@ function Slide(frame, screen, slides, pagenum){
     return this;
 }
 
-var slide = new Slide('frame', 'screen', 'slides', 'pagenum');
+var slide = new Slide('frame', 'screen', 'slides', 'pagenum', 'maxnum');
 
 window.onload = function(e){
     slide.init()
@@ -50,6 +50,10 @@ window.onkeydown = function(e){
             { slide.end(); break; }
         case 36:  // Home
             { slide.home(); break; }
+        case 61:  // '+'
+            { slide.next(10); break; }
+        case 109: // '-'
+            { slide.prev(10); break; }
         case 221: // ']'
             { slide.next(5); break; }
         case 219: // '['

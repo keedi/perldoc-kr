@@ -157,7 +157,9 @@ sub img_markup {
 
     my $img_str;
     if ( $name ) {
-        $img_str = qq{<p>$name</p>\n<img src="$slide_info->{path}{images}/$file" alt="$name">};
+        $img_str = "<p>$name</p>\n"
+                 . "<img src=\"$slide_info->{path}{images}/$file\" alt=\"$name\">"
+                 ;
     }
     else {
         $img_str = "<img src=\"$slide_info->{path}{images}/$file\">";
@@ -229,20 +231,50 @@ sub normal_markup {
 sub code_markup {
     my ( $opt_ref, @lines ) = @_;
 
+    my $effect  = $opt_ref->{effect} || q{};
+
+    my $str;
+    if ( $effect eq 'seq' ) {
+        $str = effect_seq( \&code_item_markup, '#', $opt_ref, @lines );
+    }
+    else {
+        $str = code_item_markup($opt_ref, @lines);
+    }
+
+    return $str;
+}
+
+sub effect_seq {
+    my ( $func, $blank, $opt_ref, @lines ) = @_;
+
+    my $idx;
+    my $str;
+    $str .= $func->( $opt_ref, map("$blank\n", @lines) );
+    $str .= $func->(
+        $opt_ref,
+        @lines[0 .. $idx++],
+        map("$blank\n", $idx + 1 .. @lines)
+    ) for @lines;
+
+    return $str;
+}
+
+sub code_item_markup {
+    my ( $opt_ref, @lines ) = @_;
+
     my $subject = $opt_ref->{subject} ? "<p>$opt_ref->{subject}</p>" : q{};
 
     @lines = map convert_escaped_char($_), @lines;
     my $concat_line = join q{}, @lines;
     chomp $concat_line;
 
-    my $str = <<"END_SECTION";
-<div>
-$subject
-<pre>
-$concat_line
-</pre>
-</div>
-END_SECTION
+    my $str = "<div>\n"
+            . "$subject\n"
+            . "<pre>\n"
+            . "$concat_line\n"
+            . "</pre>\n"
+            . "</div>\n"
+            ;
 
     return $str;
 }
@@ -283,15 +315,20 @@ sub parse_options {
     my %opt;
     map {
         my ( $name, $val ) = split /=/, $_, 2;
+
+        $name =~ s/^\s+ //x;
+        $name =~ s/ \s+$//x;
+
         $val =~ s/^" //x;
         $val =~ s/ "$//x;
 
         $name = $name eq '제목' ? 'subject'
               : $name eq '효과' ? 'effect'
+              : $name eq '파일' ? 'src'
               : $name
               ;
         $opt{$name} = $val;
-    } $opt_str =~ m/ ( .+ = (?: "[^"]*" | \w* ) ) /gx;
+    } $opt_str =~ m/ ( .+? = (?: "[^"]*" | \w* ) ) /gx;
 
     return %opt;
 }
