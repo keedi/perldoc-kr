@@ -20,7 +20,9 @@ CREATE TABLE regist_form (
 
 CREATE TABLE epilogue (
    id  	     INTEGER NOT NULL,
-   user_id   INTEGER NOT NULL,
+   user_id   INTEGER,
+   name      TEXT NOT NULL,
+   password  CHAR(16) NOT NULL,
    title     TEXT NOT NULL,
    content   LONGTEXT NOT NULL,
    created_on DATETIME NOT NULL,
