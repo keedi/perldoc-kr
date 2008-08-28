@@ -1,12 +1,78 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-    <head>
-        <meta http-equiv="Content-Language" content="en" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Kpw - Epilogue on Soozy</title>
-    </head>
-    <body>
-        <h1>Hello! Kpw - Epilogue default</h1>
-    </body>
-</html>
+            <h1>후기</h1>
+	    <div class="news">
+	      <h2>후기를 모집합니다!</h2>
+	      <p>
+		후기를 모집합니다!
+	      </p>
+	    </div>
+	    <div>
+	      <h3>리스트</h3>
+	      <p>아직 레이아웃 미정</p>
+	    </div>
+	    <div class="link">
+              <h3>링크</h3>
+	      <ul>
+		<li><a href="http://jin6093.egloos.com/4569886">http://jin6093.egloos.com/4569886</a></li>
+		<li><a href="http://iklo.egloos.com/4570027">http://iklo.egloos.com/4570027</a></li>
+		<li><a href="http://lieps.tistory.com/2511313">http://lieps.tistory.com/2511313</a></li>
+		<li><a href="http://www.perlmania.or.kr/bbs/bbs.html?mode=read&table=free&article=6596&page=1">후기입니다 발표하신분들 정말 수고하셨습니다.</a></li>
+		<li><a href="http://www.perlmania.or.kr/bbs/bbs.html?mode=read&table=free&article=6598&page=1">어제 정말 즐거웠습니다.</a></li>
+		<li><a href="http://www.perlmania.or.kr/bbs/bbs.html?mode=read&table=free&article=6599&page=1">[워크샵] 진흙 속에서 진주를 찾아낸 듯한! 세미나!</a></li>
+		<li><a href="http://www.perlmania.or.kr/bbs/bbs.html?mode=read&table=free&article=6600&page=1">워크샵 준비에 수고가 많으셨습니다.</a></li>
+		<li><a href="http://www.perlmania.or.kr/bbs/bbs.html?mode=read&table=free&article=6602&page=1">저도 웍썁 너무 좋았습니다.</a></li>
+		<li><a href="http://www.perlmania.or.kr/bbs/bbs.html?mode=read&table=free&article=6603&page=1">늦었지만 펄워크샾 잼있었습니다.</a></li>
+		<li><a href="http://www.perlmania.or.kr/bbs/bbs.html?mode=read&table=free&article=6604&page=1">워크샵 많이 배웠습니다.</a></li>
+		<li><a href="http://www.perlmania.or.kr/bbs/bbs.html?mode=read&table=free&article=6612&page=1">펄 워크샵 재밌게 들었습니다.</a></li>
+		<li><a href="http://blog.naver.com/dekaf/40054438873">http://blog.naver.com/dekaf/40054438873</a></li>
+	      </ul>
+	    </div>
+            <div class="form">
+              <h3>신청양식</h3>
+              <p><span class="required">*</span>는 필수입니다.</p>
+[% IF form_messages %]
+              <ul class="error">
+[% FOREACH msg IN form_messages %]
+                <li>[% c.config.messages.${msg.key}.${msg.value} %]</li>
+[% END %]
+              </ul>
+[% END %] 
+              <form action="[% c.config.url %]register/do" method="post" id="register-form">
+                <fieldset>
+                  <legend>사전등록</legend>
+                  <dl>
+                    <dt><span class="required">*</span><label for="email">email</label>:&nbsp;</dt><dd><input type="text" name="email" size="30" id="email" class="long" /></dd>
+                    <dt><span class="required">*</span><label for="password">비밀번호</label>:&nbsp;</dt><dd><input type="password" name="password" size="10" id="password" class="medium" /></dd>
+                    <dt><span class="required">*</span><label for="password_confirm">비밀번호(확인)</label>:&nbsp;</dt><dd><input type="password" name="password_confirm" size="10" id="password_confirm" class="medium" /></dd>
+                    <dt><span class="required">*</span><label for="name">이름</label>:&nbsp;</dt><dd><input type="text" name="name" size="10" id="name" class="medium" /></dd>
+                    <dt><span class="required">*</span><label for="nickname">닉네임</label>:&nbsp;</dt><dd><input type="text" name="nick" size="10" id="nickname" class="medium" /></dd>
+                    <dt><span class="required">*</span><label for="mobile">휴대전화</label>:&nbsp;</dt><dd><dd><input type="text" name="phone" size="20" id="mobile" class="medium" /></dd>
+
+                    <dt><span class="required">*</span>티셔츠 사이즈:&nbsp;</dt>
+                    <dd>
+                      <select name="tshirt" class="short">
+                        <option value=""></option>
+                        <option value="S(85)">S(85)</option>
+                        <option value="M(90)">M(90)</option>
+                        <option value="L(95)">L(95)</option>
+                        <option value="XL(100)">XL(100)</option>
+                        <option value="XXL(105)">XXL(105)</option>
+                        <option value="XXXL(110)">XXXL(110)</option>
+                      </select>
+                    </dd>
+                    <dt><span class="required">*</span>직업:&nbsp;</dt>
+                    <dd>
+                      <select name="type" class="short">
+                        <option value=""></option>
+                        <option value="worker">사회인</option>
+                        <option value="student">학생 및 청소년</option>
+                      </select>
+                    </dd>
+                    <dt><label for="location">소속</label>:&nbsp;</dt>
+                    <dd><input type="text" name="location" size="50" id="location" class="long" /></dd>
+                    <dt><label for="comment">코멘트</label>:&nbsp;</dt>
+                    <dd><textarea rows="5" id="comment" name="comment" class="long"></textarea></dd>
+                  </dl>
+                  <div class="button"><input type="submit" value="신청" /></div>
+                </fieldset>
+              </form>
+            </div>
