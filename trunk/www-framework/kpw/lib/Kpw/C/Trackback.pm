@@ -13,6 +13,10 @@ sub do_default {
 
     my $param = $self->req->parameters;
 
+    for (qw/blog_name title url/) {
+	return $self->tb_failure unless $param->{$_};
+    }
+
     my $tb = $self->M('KpwDB::Trackback')->find({
 	'url' => $param->{url},
 						});
