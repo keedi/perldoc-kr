@@ -10,12 +10,11 @@ sub do_default {
     my $type = $self->path_args->[0];
     return $self->tb_failure unless $type;
     return $self->tb_failure unless $type eq $self->config->{trackback}->{type};
-
+    
     for (qw/blog_name title url/) {
 	return $self->tb_failure unless $self->req->param($_);
     }
-
-    warn Dumper $self->req->parameters;
+    
     my $tb = $self->M('KpwDB::Trackback')->find({
 	'url' => $self->req->param('url'),
 						});
@@ -29,6 +28,7 @@ sub do_default {
 	title => $self->req->param('title'),
 	url  => $self->req->param('url'),
 	excerpt => $self->req->param('excerpt') || 'blah',
+	status => "open",
     };
 
     $self->M('KpwDB::Trackback')->create($data);
