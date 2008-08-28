@@ -20,6 +20,8 @@ default:
     from: korean.perl.workshop@gmail.com
 
   url: /
+  trackback:
+    type: kpw2008
 
   status:
     wait:
