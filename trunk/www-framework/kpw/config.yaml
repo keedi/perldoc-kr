@@ -42,8 +42,8 @@ default:
 
   messages:
     email:
-      NOT_BLANK: eMail 을 입력해주세요
-      EMAIL: eMail 양식에 맞게 입력해주세요
+      NOT_BLANK: email 을 입력해주세요
+      EMAIL: email 양식에 맞게 입력해주세요
     password:
       NOT_BLANK: 비밀번호 를 입력해주세요
     password_confirm:
@@ -59,9 +59,11 @@ default:
     diff_password:
       DIFF: 비밀번호 와 비밀번호_확인 이 맞지않습니다
     user_exist:
-      USER_EXIST: 이 eMail 은 이미 등록되어 있습니다
+      USER_EXIST: 이 email 은 이미 등록되어 있습니다
     not_exist:
-      NOT_EXIST: 입력하신 eMail 과 패스워드를 다시 한번 확인해주세요
+      NOT_EXIST: 입력하신 email 과 패스워드를 다시 한번 확인해주세요
+    content:
+      NOT_BLANK: 코멘트 를 입력해주세요
   V:
     DEFAULT: TT
 ---
