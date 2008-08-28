@@ -5,7 +5,7 @@
 }
 
 /* main */
-.news, .schedule, .location, .faq, .link, .form, .registration {
+.news, .schedule, .location, .faq, .link, .form, .registration, .list {
     margin-bottom: 1.5em;
 }
 #main .meta {
@@ -105,6 +105,14 @@
 }
 #main table td.button {
     text-align: center;
+}
+
+#main .list dl {
+    padding: 0 0.5em;
+}
+
+#main .list dt.title {
+   font-weight: bold;
 }
 
 /* sponsors */

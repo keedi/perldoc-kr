@@ -4,8 +4,51 @@ use strict;
 use warnings;
 use base qw( Kpw );
 
+use Email::Valid;
+use Data::Dumper;
+
 sub do_default {
     my $self = shift;
+    $self->stash->{form_messages} = shift;
+
+    my $epilogues =
+      $self->M('KpwDB::Epilogue')
+      ->search( {}, { order_by => 'created_on desc' } );
+    $self->stash->{epilogues} = [ $epilogues->all ];
+}
+
+sub do_do {
+    my $self = shift;
+
+    my $param = $self->req->parameters;
+
+    # validation from register.pm
+    my $invalid;
+    while ( my ( $key, $row ) = each %{$param} ) {
+        next unless $key =~ /^(?:email|content)$/;
+        unless ($row) {
+            $invalid->{$key} = 'NOT_BLANK';
+        }
+    }
+    unless ( Email::Valid->address( $param->{email} ) ) {
+        $invalid->{email} = 'EMAIL';
+    }
+
+    return $self->forward( 'default', $invalid ) if $invalid;
+
+    my $user =
+      $self->M('KpwDB::RegistForm')->find( { 'email' => $param->{email} } );
+
+    $self->log->debug( Dumper $user);
+
+    if ($user) {
+        $param->{user_id} = $user->id;
+        $param->{name}     ||= $user->name;
+        $param->{password} ||= $user->password;
+    }
+    $self->M('KpwDB::Epilogue')->create($param);
+
+    $self->res->redirect( $self->config->{url} . 'epilogue' );
 }
 
 1;
