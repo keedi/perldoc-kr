@@ -5,7 +5,7 @@ use warnings;
 
 use base 'DBIx::Class';
 
-__PACKAGE__->load_components("Core");
+__PACKAGE__->load_components("PK::Auto", "+AutoStoreDateTime", "Core");
 __PACKAGE__->table("trackback");
 __PACKAGE__->add_columns(
   "no",
