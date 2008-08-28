@@ -3,6 +3,7 @@ package Kpw::C::Trackback;
 use strict;
 use warnings;
 use base qw( Kpw );
+use Data::Dumper;
 
 sub do_default {
     my $self = shift;
@@ -13,6 +14,7 @@ sub do_default {
 
     my $param = $self->req->parameters;
 
+    warn Dumper $param;
     for (qw/blog_name title url/) {
 	return $self->tb_failure unless $param->{$_};
     }
