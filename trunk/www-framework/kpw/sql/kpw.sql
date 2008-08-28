@@ -17,3 +17,13 @@ CREATE TABLE regist_form (
    primary key(no),
    unique(email)
 );
+
+CREATE TABLE epilogue (
+   id  	     INTEGER NOT NULL,
+   user_id   INTEGER NOT NULL,
+   title     TEXT NOT NULL,
+   content   LONGTEXT NOT NULL,
+   created_on DATETIME NOT NULL,
+   updated_on DATETIME NOT NULL,
+   primary key(id)
+);
