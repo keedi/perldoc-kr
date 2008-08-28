@@ -45,7 +45,7 @@ sub tb_failure {
     $self->res->body(<<END);
 <?xml version="1.0" encoding="utf-8"?>
 <response>
-  <error>0</error>
+  <error>1</error>
 </response>
 END
 
@@ -58,7 +58,7 @@ sub tb_success {
     $self->res->body(<<END);
 <?xml version="1.0" encoding="utf-8"?>
 <response>
-  <error>1</error>
+  <error>0</error>
 </response>
 END
     
