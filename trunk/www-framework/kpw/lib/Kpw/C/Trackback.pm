@@ -30,7 +30,7 @@ sub do_default {
 	excerpt => $param->{excerpt} || 'blah',
     };
 
-    $self->M('Kpw::Trackback')->create($data);
+    $self->M('KpwDB::Trackback')->create($data);
 
     return $self->tb_success;
 	
