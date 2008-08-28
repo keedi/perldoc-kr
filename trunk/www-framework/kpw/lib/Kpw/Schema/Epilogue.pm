@@ -5,7 +5,7 @@ use warnings;
 
 use base 'DBIx::Class';
 
-__PACKAGE__->load_components("Core");
+__PACKAGE__->load_components("PK::Auto", "+Kpw::DBIC::AutoStoreDateTime", "Core");
 __PACKAGE__->table("epilogue");
 __PACKAGE__->add_columns(
   "id",
@@ -16,6 +16,8 @@ __PACKAGE__->add_columns(
   { data_type => "TEXT", is_nullable => 0, size => undef },
   "password",
   { data_type => "CHAR", is_nullable => 0, size => undef },
+  "email",
+  { data_type => "CHAR", is_nullable => 1, size => undef },
   "title",
   { data_type => "TEXT", is_nullable => 0, size => undef },
   "content",
@@ -27,7 +29,7 @@ __PACKAGE__->add_columns(
 );
 __PACKAGE__->set_primary_key("id");
 
-__PACKAGE__->has_one( user => 'Kpw::Schema::RegistForm', { 'foreign.no' => 'self.user_id' });
+__PACKAGE__->might_have( user => 'Kpw::Schema::RegistForm', { 'foreign.no' => 'self.user_id' });
 
 # Created by DBIx::Class::Schema::Loader v0.04005 @ 2008-08-28 12:09:24
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Hg5juP31f4vjKmAT/Qy4Dw
