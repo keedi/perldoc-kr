@@ -3,7 +3,6 @@ package Kpw::C::Trackback;
 use strict;
 use warnings;
 use base qw( Kpw );
-use Data::Dumper;
 
 sub do_default {
     my $self = shift;
@@ -17,7 +16,7 @@ sub do_default {
     }
     
     my $tb = $self->M('KpwDB::Trackback')->find({
-	'url' => $param->{url},
+	'url' => $self->req->param('url'),
 						});
 
     return $self->tb_failure if $tb;
