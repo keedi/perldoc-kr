@@ -14,7 +14,11 @@ sub do_default {
 
     my $param = $self->req->parameters;
 
-    warn Dumper $param;
+    open my $fh, ">", $self->path_to. "/logs/blah.log";
+    print $fh Dumper $param;
+    close $fh;
+#    warn Dumper $param;
+
     for (qw/blog_name title url/) {
 	return $self->tb_failure unless $param->{$_};
     }
