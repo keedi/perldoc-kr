@@ -57,12 +57,21 @@
 [% END %]
               </dl>
             </div>
-            <div class="link" style="display: none">
-              <h3>kpw2008 후기 모음</h3>
+	    <div class="list">
+	      <h3>트랙백</h3>
+	      <p>총 [% trackbacks.size %]개의 트랙백을 받았습니다.</p>
+	      <dl>
+[% FOREACH trackback IN trackbacks %]
+		<dt><a href="[% trackback.url %]">[% trackback.title | html %]</a></dt>
+		<dd>[% trackback.excerpt | html %]</dd>
+		<dd class="meta">[% trackback.created_on %]</dd>
+		<dd class="meta">From&nbsp;[% trackback.name | html %]</dd>
+[% END %]
+	      </dl>
+	    </div>
+            <div class="link">
+              <h3>펄마니아에 등록된 후기모음</h3>
               <ul>
-                <li><a href="http://jin6093.egloos.com/4569886">http://jin6093.egloos.com/4569886</a></li>
-                <li><a href="http://iklo.egloos.com/4570027">http://iklo.egloos.com/4570027</a></li>
-                <li><a href="http://lieps.tistory.com/2511313">http://lieps.tistory.com/2511313</a></li>
                 <li><a href="http://www.perlmania.or.kr/bbs/bbs.html?mode=read&table=free&article=6596&page=1">후기입니다 발표하신분들 정말 수고하셨습니다.</a></li>
                 <li><a href="http://www.perlmania.or.kr/bbs/bbs.html?mode=read&table=free&article=6598&page=1">어제 정말 즐거웠습니다.</a></li>
                 <li><a href="http://www.perlmania.or.kr/bbs/bbs.html?mode=read&table=free&article=6599&page=1">[워크샵] 진흙 속에서 진주를 찾아낸 듯한! 세미나!</a></li>
@@ -70,9 +79,8 @@
                 <li><a href="http://www.perlmania.or.kr/bbs/bbs.html?mode=read&table=free&article=6602&page=1">저도 웍썁 너무 좋았습니다.</a></li>
                 <li><a href="http://www.perlmania.or.kr/bbs/bbs.html?mode=read&table=free&article=6603&page=1">늦었지만 펄워크샾 잼있었습니다.</a></li>
                 <li><a href="http://www.perlmania.or.kr/bbs/bbs.html?mode=read&table=free&article=6604&page=1">워크샵 많이 배웠습니다.</a></li>
-                <li><a href="http://park1020.tistory.com/298">http://park1020.tistory.com/298</a></li>
                 <li><a href="http://www.perlmania.or.kr/bbs/bbs.html?mode=read&table=free&article=6612&page=1">펄 워크샵 재밌게 들었습니다.</a></li>
-                <li><a href="http://blog.naver.com/dekaf/40054438873">http://blog.naver.com/dekaf/40054438873</a></li>
+		<li><a href="http://www.perlmania.or.kr/bbs/bbs.html?mode=read&table=free&article=6616&page=1">KPW2008 참석 후기..</a></li>
               </ul>
             </div>
             <div class="link" style="display: none">

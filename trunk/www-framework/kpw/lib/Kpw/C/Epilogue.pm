@@ -15,6 +15,11 @@ sub do_default {
       $self->M('KpwDB::Epilogue')
       ->search( {}, { order_by => 'created_on desc' } );
     $self->stash->{epilogues} = [ $epilogues->all ];
+
+    my $trackbacks =
+      $self->M('KpwDB::Trackback')
+      ->search( {}, { order_by => 'created_on desc' } );
+    $self->stash->{trackbacks} = [ $trackbacks->all ];
 }
 
 sub do_do {
