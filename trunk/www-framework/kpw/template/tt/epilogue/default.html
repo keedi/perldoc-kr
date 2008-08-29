@@ -48,6 +48,7 @@
             </div>
             <div class="list"> 
               <h3>등록된 후기</h3>
+	      <p>총 [% epilogues.size %]개의 후기가 등록되어 있습니다.</p>
               <dl>
 [% FOREACH epilogue IN epilogues %]
                 <dt class="title">[% epilogue.title ? epilogue.title : '제목없음' %]</dt>
