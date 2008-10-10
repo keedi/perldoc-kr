@@ -1,5 +1,5 @@
 
-=encoding euc-jp
+=encoding utf-8
 
 =head1 NAME
 
@@ -9,7 +9,7 @@ perluniintro - Perl Unicode introduction
 
 =end original
 
-perluniintro - Perl Unicode の手引き
+perluniintro - Perl Unicode 안내
 
 =head1 DESCRIPTION
 
@@ -20,8 +20,8 @@ in Perl.
 
 =end original
 
-このドキュメントは、Unicode の一般的な考えと、
-Perl で Unicode をどのように使うかを書いています。
+이 문서는 Unicode 의 일반적인 생각과 
+Perl 에서 Unicode 를 어떻게 사용하는 가를 다룹니다.
 
 =head2 Unicode
 
@@ -32,9 +32,9 @@ writing systems of the world, plus many other symbols.
 
 =end original
 
-Unicode は、文字セットの標準です。
-世界の全ての書記体系と、それに加えて、
-他の多くのシンボルを体系化することを計画しています。
+Unicode 는 문자셋의 표준입니다.
+세계 모든 문자체계와 그에 더해서, 
+많은 심볼을 체계화하는 것을 계획하고 있습니다.
 
 =begin original
 
@@ -49,17 +49,15 @@ Unicode 1.0 was released in October 1991, and 4.0 in April 2003.
 
 =end original
 
-Unicode と、ISO/IEC 10646 は、よく調整された、コードポイントを提供する
-標準です。
-Unicode は、ほとんど全ての現代の文字セット標準、30 以上の書記体系と、
-100 以上の言語を網羅します。
-全ての商業的に重要な現代の言語を含みます。
-もっとも大きい中国語、日本語、韓国語、それぞれの辞書の全ての文字もまた、
-符号化されています。
-この標準は、最終的には、250 の書記体系と、1000 以上の言語のほとんどすべての
-文字を網羅する予定です。
-Unicode 1.0 は、1991 年 10 月にリリースされ、Unicode 4.0 は、
-2003 年 4 月にリリースされました。
+Unicode 와 ISO/IEC 10646 ㅇㄴ 잘 조정된 코드포인트를 제공하는 표준입니다.
+Unicode 는 거의 모든 현대 문자셋표준, 30이상의 글자체계와, 100가지 이상의
+언어를 망라합니다.
+모든 상업적으로 중요한 현대의 언어를 포함합니다.
+제일 큰 중국어, 일본어, 한국어, 각각의 사전의 모든 문자도 부호화되어 있습니다.
+이 표준은 최종적으로는 250 가지 글자체계와 1000 개 이상의 언어의 거의 모든 
+문자를 망라할 예정입니다.
+Unicode 1.0 은 1991년 10월에 릴리즈되어, Unicode 4.0 은 
+2003년 4월에 릴리즈되었습니다.
 
 =begin original
 
@@ -72,13 +70,13 @@ those characters.
 
 =end original
 
-Unicode の I<文字> は、抽象的な存在です。
-Unicode の文字は、どんな特定の整数幅にも、特に、C 言語の C<char> にも
-束縛されません。
-Unicode は、言語中立で、表示中立です:
-Unicode は、テキストの言語をエンコードしませんし、
-フォントや他のグラフィカルなレイアウトの詳細を定義しません。
-Unicode は、文字と、それらの文字からなるテキストを操作します。
+Unicode 의 I<문자>는 추상적인 존재입니다.
+Unicode 의 문자는 어떤 특정 너비에도 특히, C 언어의 C<char> 에도 
+속박되지 않습니다.
+Unicode 는 언어중립이고 표시중립입니다:
+Unicode 는 텍스트 언어를 인코딩할 수 없고, 폰트나 다른 그래피컬한 
+레이아웃의 자세한 내용을 정의할 수 없습니다.
+Unicode 는 문자와 그 문자들에서 비롯된 텍스트를 조작합니다.
 
 =begin original
 
@@ -89,10 +87,10 @@ I<code points>.
 
 =end original
 
-Unicode は、C<LATIN CAPITAL LETTER A> や C<GREEK SMALL LETTER ALPHA> のような
-文字と、その文字について固有の番号を定義します。
-この場合は、それぞれ、0x0041 と、0x03B1 になります。
-このような固有の番号は、I<コードポイント> と呼ばれます。
+Unicode 는 C<LATIN CAPITAL LETTER A> 나 C<GREEK SMALL LETTER ALPHA> 같은 
+문자와, 그 문자에 대한 고유한 번호를 정의합니다.
+이 경우는 각각 0x0041 과 0x03B1 이 됩니다.
+이런 고유 번호는 I<코드포인트> 라고 부릅니다.
 
 =begin original
 
@@ -104,11 +102,11 @@ hexadecimal code point and the normative name of the character.
 
 =end original
 
-Unicode 標準は、コードポイントに 16 進記法を使うのを好みます。
-C<0x0041> のような番号に馴染みがなければ、後のセクション、
-L</"Hexadecimal Notation"> を覗いて見て下さい。
-Unicode 標準は、C<U+0041 LATIN CAPITAL LETTER A> という表記を使って、
-16 進法のコードポイントと標準的な文字の名前を書きます。
+Unicode 표준은 코드 포인트에 16진 기법을 사용하는 것을 선호합니다.
+C<0x0041> 같은 번호에 ... 가 아니라면, 뒤의 섹션,
+L</"Hexadecimal Notation"> 을 ...
+Unicode 표준은 C<U+0041 LATIN CAPITAL LETTER A> 라는 표기를 사용해서,
+16진 기법의 코드 포인트와 표준적인 문자의 이름을 씁니다.
 
 =begin original
 
@@ -120,11 +118,11 @@ lowercasing, and collating (sorting) are defined.
 
 =end original
 
-Unicode はまた、様々な文字の I<性質> を定義します。
-"大文字"、"小文字"、"10進数字"、"句読点" など;
-これらの性質は、文字の名前と独立です。
-更に、様々な文字に対する操作、大文字化や小文字化や並び替えが
-定義されています。
+Unicode 는 또, 여러가지 문자의 I<성질>을 정의합니다.
+"대문자", "소문자",  "10진수", "구독점" 등; 
+이 성질들은 문자의 이름과 독립적입니다.
+거기에, 여러가지 문자에 대해 조작, 대문자화나 소문자화나 자리바꿈이 
+정의되어 있습니다.
 
 =begin original
 
@@ -136,12 +134,10 @@ sequence>.
 
 =end original
 
-Unicode 文字は、1 つのコードポイントか、または、
-(C<LATIN CAPITAL LETTER A> のような)、I<基本文字> に続いて、
-1つ以上の(C<COMBINING ACUTE ACCENT> のような) I<修飾語句> の、
-どちらか一方から成っています。
-この基本文字と修飾語句の順番は、I<combining character sequence> と
-呼ばれます。
+Unicode 문자는 하나의 코드 포인트나 (C<LATIN CAPITAL LETTER A> 처럼),
+I< 기본문자> 로 읽어서, 하나 이상의 (C<COMBINING ACUTE ACCENT> 같은) 
+I<수식어> 어느쪽 한쪽으로 성립됩니다.
+이 기본문자와 수식어구의 순서는 I<comining character sequence> 라고 부릅니다.
 
 =begin original
 
@@ -154,13 +150,12 @@ looks like in the context of the user's language.
 
 =end original
 
-これらの combining character sequence を "複数の文字" と呼ぶかどうかは、
-考え方によります。
-プログラマならば、おそらく、この順番のそれぞれの要素を、
-1 つの単位か "文字" として、見ようとするでしょう。
-全ての順番を一つの"文字"として見ることができます。
-ですが、ユーザの考え方からは、おそらくユーザの言語の文脈でみえるような
-ものでしょう。
+이 comining character sequence 를 "복수의 문자" 라고 부를지는 
+생각에 따라 다릅니다.
+프로그래머라면, 아마도 이 순서 각각의 요소를 하나의 단위나 "문자"로써 
+보려고 할겁니다. 
+모든 순서를 하나의 "문자"로 볼 수 있습니다.
+하지만, 유저가 생각하기에는 아마도 유저의 언어의 문맥으로 보이는 것이겠죠.
 
 =begin original
 
