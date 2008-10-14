@@ -737,9 +737,9 @@ applicable) is assumed.
 
 =end original
 
-レガシーデータと Unicode とを組み合わせる時は、
-レガシーデータを Unicode にアップグレードしなければなりません。
-通常、ISO 8859-1 (か、必要なら EBCDIC)が仮定されます。
+레거시 데이터와 Unicode 를 조합할 때는 
+레거시 데이터를 Unicode 로 업그레이트하지 않으면 안됩니다.
+보통 ISO 8859-1(이나 필요하다면 EBCDIC)를 가정합니다.
 
 =begin original
 
@@ -748,8 +748,8 @@ for doing conversions between those encodings:
 
 =end original
 
-C<Encode> モジュールは多くのエンコーディングを知っており、
-それらのエンコーディングの間の変換をするインターフェースを持っています。
+C<Encode> 모듈은 많은 인코ㅇ을 알고 있고, 
+그 인코딩들 사이의 변환을 하는 인터페이스를 가지고 있습니다.
 
     use Encode 'decode';
     $data = decode("iso-8859-3", $data); # convert from legacy to utf-8
@@ -762,7 +762,7 @@ Normally, writing out Unicode data
 
 =end original
 
-通常、Unicode データを書き出すことは、
+보통, Unicode 데이터를 써내는 것은,
 
     print FH $some_string_with_unicode, "\n";
 
@@ -778,15 +778,15 @@ the desired encoding. Some examples:
 
 =end original
 
-Unicode 文字列を内部的にエンコードするのにたまたまつかわれている、
-生のバイト列を生成することです。
-Perl の内部エンコーディングは、そのときに、文字列にたまたまある文字と
-同じように、システム依存です。
-どの文字も、コードポイントが C<0x100> 以上なら、警告がでます。
-出力が明示的に、望んでいるエンコーディングにレンダリングされていることを
-保証し、警告を避けるために、望んでいるエンコーディングでストリームを
-open してください。
-いくつか例示します:
+Unicode 문자열을 내부적으로 인코드 하는 것에 가끔 사용되고 있는 
+raw bytes 를 생성하는 것입니다.
+Perl 의 내부 인코딩은 그 때에 문자열에 드문드문 있는 어떤 문자와 
+마찬가지로 시스템 의존입니다.
+어느 문자도, 코으포인트가 C<0x100> 이상이라면, 경고가 나옵니다.
+출력이 명시적으로 원하는 인코딩으로 렌더링 되는 것을 
+보증하고, 경고를 피하기 위해서는 원하는 인코딩으로 스트림을
+open 해주세요.
+몇가지 예를 나타내겠습니다:
 
     open FH, ">:utf8", "file";
 
@@ -800,7 +800,7 @@ and on already open streams, use C<binmode()>:
 
 =end original
 
-すでに開かれているストリームに関しては、C<binmode()> を使います:
+이미 열려있는 스트림에 관해서는 C<binmode()> 를 사용합니다:
 
     binmode(STDOUT, ":utf8");
 
@@ -819,12 +819,12 @@ UTF8.
 
 =end original
 
-エンコーディング名のマッチングはルーズです: 大文字小文字は重要ではなく、
-多くのエンコーディングでは、いくつかの別名があります。
-C<:utf8> 層は、常に、きっちりとそのように指定される必要があります。
-このことは、エンコーディング名のルーズなマッチングの対象では I<ありません>。
-データが妥当な UTF8 であるかどうかを検証せずに受け入れるので、入力に
-対しては C<:utf8> は安全ではないことにも注意してください。
+인코딩이름의 매칭은 루즈합니다: 대문자소문자는 중요하지 않고,
+다른 인코딩에서는 몇가지 별명이 있습니다.
+C<:utf8> 층은 항상 제대로 지정해줘야 할 필요가 있습니다.
+이것은 인코딩 이름의 루즈한 매칭의 대상이 I<아닙니다>.
+데이터가 타당한 UTF8 인지를 검증하지 않고 받아들이기 때문에, 
+입력에 대해서는 C<:utf8> 은 안전하지 않다는 것에도 주의해주세요.
 
 =begin original
 
@@ -835,10 +835,10 @@ module.
 
 =end original
 
-C<:utf8> 層に関しては、L<PerlIO> を参照してください;
-C<:encoding()> に関しては、L<Encode::PerlIO> を参照してください;
-C<Encode> モジュールでサポートされている、多くのエンコーディングに関しては、
-L<Encode::Supported> を参照してください。
+C<:utf8> 층에 관해서는 L<PerlIO> 를 참조해주세요;
+C<:encoding()> 에 관해서는 L<Encode::PerlIO> 를 참조해주세요;
+C<Encode> 모듈에서 지원하고 있는 많은 인코딩에 관해서는 
+L<Encode::Supported> 를 참조해주세요.
 
 =begin original
 
@@ -849,10 +849,9 @@ layer when opening files
 
 =end original
 
-Unicode かレガシーのエンコーディングどちらかでたまたまエンコードされている
-ファイルを読み込んでも、Perl の目で、魔法のように、データが Unicode に
-変わったりしません。
-そうするためには、ファイルを開くときに、適切な層を指定します。
+Unicode 나 레거시의 인코딩 어느쪽에서 가끔 인코드된 파일을 읽어들여도,
+Perl 의 눈으로 마법처럼 데이터가 Unicode 로 바뀌거나 하지 않습니다.
+그렇게 하기 위해서는 파일을 열 때에 적절한 레이어를 지정합니다.
 
     open(my $fh,'<:encoding(utf8)', 'anything');
     my $line_of_unicode = <$fh>;
@@ -867,8 +866,8 @@ the C<open> pragma.  See L<open>, or look at the following example.
 
 =end original
 
-I/O 層は、もっと柔軟に、C<open> プラグマでもまた、指定することが出来ます。
-L<open> を参照するか、次の例を見て下さい。
+I/O 레이어는 제일 유연하게 C<open> 프라그마에서도 지정할 수 있습니다.
+L<open> 을 참조하거나 다음의 예제를 봐주세요.
 
     use open ':encoding(utf8)'; # input/output default encoding will be UTF-8
     open X, ">file";
@@ -884,7 +883,7 @@ With the C<open> pragma you can use the C<:locale> layer
 
 =end original
 
-C<open> プラグマで、C<:local> 層も使えます:
+C<open> 프라그마에서 C<:local> 레이어도 사용할 수 있습니다.
 
     BEGIN { $ENV{LC_ALL} = $ENV{LANG} = 'ru_RU.KOI8-R' }
     # the :locale will probe the locale environment variables like LC_ALL
@@ -904,9 +903,9 @@ stream.  The result is always Unicode.
 
 =end original
 
-ストリームからファイルが読まれるときに、特定のエンコーディングから、
-データを変換する I/O ストリーム上の透過的な層です。
-その結果は常に Unicode です。
+스트림에서 파일이 읽어질 때에 특정 인코딩에서 데이터를 변환하는 I/O
+스트림 상의 투과적인 레이어입니다.
+그 결과는 항상 Unicode 입니다.
 
 =begin original
 
@@ -916,10 +915,10 @@ streams, use explicit layers directly in the C<open()> call.
 
 =end original
 
-L<open> プラグマは、デフォルトの層を設定することで、プラグマの後の
-全ての C<open()> 呼び出しに影響します。
-あるストリームだけに影響を限定したいなら、C<open()> 呼び出しで明示的な
-層を使って下さい。
+L<open> 프라그마는 기본 레이어를 지정하는 것으로 프라그마 뒤의 모든 
+C<open()> 호출에 영향을 줍니다.
+어떤 스트림에만 영향을 주고싶다면, C<open()> 호출로 명시적인 레이어를 
+사용해주세요.
 
 =begin original
 
@@ -928,8 +927,8 @@ C<binmode()>; see L<perlfunc/binmode>.
 
 =end original
 
-C<binmode()> を使って、すでに開かれているストリームのエンコーディングを
-変えることが出来ます; L<perlfunc/binmode> を参照してください。
+C<binmode()> 를 사용해서, 이미 열려있는 스트림의 인코딩을 
+바꿀 수 있습니다; L<perlfunc/binmode> 를 참조해주세요.
 
 =begin original
 
@@ -940,11 +939,11 @@ C<binmode()>, and the C<open> pragma.
 
 =end original
 
-C<:locale> は、現在(Perl 5.8.0 の時点で)、C<open()> と C<binmode()> では
-動きません。
-C<open> プラグマでのみ動きます。
-C<:utf8> と C<:encoding(...)> メソッドは、全ての C<open()>、C<binmode()>、
-C<open> プラグマで動きます。
+C<:locale> 은, 현재(Perl 5.8.0 의 시점에서), C<open()> 과 C<binmode()> 에서는
+움직이지 않습니다.
+C<open> 프라그마에서만 움직입니다.
+C<:utf8> 과 C<:encoding(...)> 메소드는 모든 C<open()>, C<binmode()>, 
+C<open> 프라그마에서 움직입니다.
 
 =begin original
 
@@ -956,12 +955,11 @@ the file "text.utf8", encoded as UTF-8:
 
 =end original
 
-似たようなものに、ストリームに書き出すときに、自動的に Unicode を
-特定のエンコーディングに変換する、出力ストリームの I/O 層を使うかも
-知れません。
-例えば、次のようなコードの断片は、(ISO-2022-JP, またの名を JIS として
-エンコードされている)" text.jis" ファイルの内容を、UTF-8 として
-エンコードされる "text.utf8" ファイルにコピーします。
+비슷하게 스트림에 써낼 때에, 자동적으로 Unicode 를 특정의 인코딩으로 
+변환하는 출력 스트림의 I/O 레이어를 사용할지도 모릅니다.
+예를들면, 다음과 같은 코드의 단편은 (ISO-2022-JP, 또는 JIS 로 
+인코드되어 있는) "test.jis" 파일의 내용을 UTF-8 으로
+인코드된 "text.utf8" 파일로 복사합니다.
 
     open(my $nihongo, '<:encoding(iso-2022-jp)', 'text.jis');
     open(my $unicode, '>:utf8',                  'text.utf8');
@@ -975,9 +973,9 @@ understood.
 
 =end original
 
-C<open()> と、C<open> プラグマの両方で使われているエンコーディングの
-名前は、フレキシブルな名前でも使えます: C<koi8-r>と、C<KOI8R> は、
-両方とも理解されます。
+C<open()> 와 C<open> 프라그마 양쪽에서 사용되는 인코딩의 이름은 
+플렉시블한 이름에서도 사용할 수 있습니다: C<koi8-r> 과, C<KOI8R> 은 
+양쪽모두 이해됩니다.
 
 =begin original
 
@@ -987,9 +985,9 @@ list see L<Encode::Supported>.
 
 =end original
 
-ISO、MIME、IANA、様々な他の標準化機関が認識している、一般的な
-エンコーディングが認識されます; より詳細なリストは、
-L<Encode::Supported> を参照してください。
+ISO、MIME、IANA、 여러가지 다른 표준화 기관이 인식하고 있는 
+일반적인 인코딩이 인식됩니다; 보다 자세한 리스트는 
+L<Encode::Supported> 를 참조해주세요.
 
 =begin original
 
@@ -999,9 +997,9 @@ and C<sysseek()>.
 
 =end original
 
-C<read()> は、文字を読み、文字の数を返します。
-C<seek()> と C<tell()> は、バイトカウントに関して操作します。
-C<sysread> と C<sysseek()> も同様です。
+C<read()> 는 문자를 일고, 문자수를 반환합니다.
+C<seek()> 와 C<tell()> 은 바이트 카운트에 관해서 조작합니다.
+C<sysread> 와 C<sysseek()> 도 마찬가지입니다.
 
 =begin original
 
