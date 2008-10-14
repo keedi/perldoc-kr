@@ -285,16 +285,16 @@ and UCS-4 encoding forms.
 
 =end original
 
-Unicode のコードポイントは、抽象的な数字です。
-この抽象的な数字を入出力するために、数字は、I<エンコードされる> 必要が
-あるか、I<シリアライズされる> か、どうか、しなければなりません。
-Unicode は、複数の I<character encoding forms> を定義していますが、
-その中で、I<UTF-8> は、たぶん、もっとも有名です。
-UTF-8 は、可変長のエンコーディングで、Unicode 文字を 1 から 6 バイト
-(現在定義されている文字では 4 バイトまでです)。
-他のエンコーディングは、UTF-16 と UTF-32 と、それらの大小のエンディアンの
-変形(UTF-8 は、バイトオーダーと独立です)を含みます。
-ISO/IEC 10646 は、UCS-2 と UCS-4 の encoding forms を定義しています。
+Unicode 의 코드포인트는 추상적인 숫자입니다.
+이 추상적인 숫자를 입출력하기 위해, 숫자는 I<인코드되어 있을> 필요가
+있거나 I<시리얼라이즈>되었거나 하지 않으면 안됩니다.
+Unicode 는 복수의 I<character encoding forms> 를 정의하고 있지만, 
+그 중에서 I<UTF-8> 은 아마도 제일 유명할 것입니다.
+UTF-8 은 가변길이의 인코딩으로 Unicode 문자를 1에서 6바이트
+(현재 정의되어 있는 숫자에서는 4바이트까지입니다).
+다른 인코딩은 UTF-16 과 UTF-32 와 그것들의 크고 작은 에디안의 
+변형(UTF-8 은 바이트 오더와 독립적입니다)을 포함합니다.
+ISO/IEC 10646 는 UCS-2 와 UCS-4 의 encoding forms 를 정의하고 있습니다.
 
 =begin original
 
@@ -303,13 +303,13 @@ I<surrogates> and I<byte order marks> (BOMs) are--see L<perlunicode>.
 
 =end original
 
-エンコーディングについて -- たとえば、I<surrogates> と
-I<byte order marks>(BOMs) -- もっと知りたければ L<perlunicode> を
-見て下さい。
+인코딩에 대해서 -- 예를들면 I<surrogates> 와 
+I<byte order marks>(BOMs) -- 더욱 알고 싶다면 L<perlunicode> 를 
+봐주세요.
 
 =head2 Perl's Unicode Support
 
-(Perl の Unicode サポート)
+(Perl 의 Unicode 지원)
 
 =begin original
 
@@ -321,11 +321,11 @@ regular expressions still do not work with Unicode in 5.6.1.
 
 =end original
 
-Perl 5.6.0 から、Perl は、Unicode をネイティブに扱う能力を持っていました。
-しかし、Perl 5.8.0 の最初の RC リリースは、重大な Unicode の仕事です。
-メンテナンスリリースの 5.6.1 は、最初の Unicode 実装の多くの問題を
-修正しました。
-ですが、たとえば、5.6.1 で、Unicode での正規表現はまだ働きません。
+Perl 5.6.0 부터 Perl 은 Unicode 를 네이티브하게 다루는 능력을 가지고 
+있었습니다. 그러나 Perl 5.8.0 의 처음의 RC 릴리즈는 중대한 Unicode 의 
+일입니다. 유지보수된 릴리즈 5.6.1 은 최초의 Unicode 구성에서 많은 문제를 
+수정했습니다.
+그렇지만, 5.6.1에서 Unicode 로의 정규표현은 아직 움직이지 않습니다.
 
 =begin original
 
@@ -342,21 +342,21 @@ scripts with legacy 8-bit data in them would break.  See L<utf8>.
 
 =end original
 
-B<Perl5.8.0 から、C<use utf8> の使用は、もはや必要ではありません>。
-初期のリリースでは、C<utf8> プラグマは、現在のブロックやファイルの操作が、
-Unicode であると明示するのを宣言するために使われました。
-このモデルは間違いが見つけられるか、少なくとも、不格好です:
-操作に添付するかわりに、"Unicodeness" は、今や、データに持ち込まれています。
-唯一残されている、明示的に C<use utf8> をする必要がある場所は:
-Perl スクリプト自身が UTF-8 でエンコードされていれば、
-識別子の名前、文字の中と、正規表現のリテラルに、UTF-8 を使うことができます。
-これは、デフォルトではありません。
-なぜなら、レガシーの 8-bit データのスクリプトが壊れるからです。
-L<utf8> を参照してください。
+B<Perl 5.8.0 에서 C<use utf8> 의 사용은 이제는 필요하지 않습니다>.
+처음의 릴리즈에서는 C<utf8> 프라그마는 현재의 블록이나 파일의 조작이
+Unicode 이라고 명시하는 것을 선언하기 위해 사용되었습니다.
+이 모델은 문제가 발견되었고, 모양새도 좋지 않았습니다.
+조작에 첨부하는 대신에 "Unicodeness" 는 지금은 데이터로 가지고 있습니다.
+유일하게 남아있는 명시적으로 C<use utf8> 을 사용할 필요가 있는 곳은:
+Perl 스크립트 자신이 UTF-8 으로 인코딩되어 있다면, 
+식별자의 이름, 문자의 안과 정규표현의 리터럴에 UTF-8 을 사용할 수 있습니다.
+이것은 기본값은 아닙니다.
+왜냐면, 레거시 8-bit 데이터의 스크립트가 문제가 되기 때문입니다.
+L<utf8> 을 참조해주세요.
 
 =head2 Perl's Unicode Model
 
-(Perl の Unicode モデル)
+(Perl 의 Unicode 모델)
 
 =begin original
 
@@ -368,12 +368,12 @@ to Unicode.
 
 =end original
 
-Perl は、Perl 5.6 より前での 8 ビットネイティブのバイト列の文字列と、
-Unicode 文字の文字列の両方をサポートします。
-方針は、Perl は、可能な限り長く 8 ビットバイト列としてデータを
-保とうとします。
-ですが、Unicodeness が避けられなくなるとすぐに、
-データは透過的に Unicode にアップグレードされます。
+Perl 은 Perl 5.6 보다 앞에서 8비트 네이티브 바이트열의 문자열과 
+Unicode 문자의 문자열의 양쪽을 지원합니다.
+방침은 Perl 은 가능한한 길게 8비트바이트열로써 데이터를 
+가지는 것입니다.
+그렇지만 Unicodeness 는 피할수 없게 되면 곧, 
+데이터는 투과적으로 Unicode 로 업그레이드 됩니다.
 
 =begin original
 
@@ -385,12 +385,11 @@ character set.  Otherwise, it uses UTF-8.
 
 =end original
 
-内部的には、Perl は、プラットフォームの 8 ビット文字セット
-(例えば、Latin-1)は、デフォルトは UTF-8 ですが、Unicode 文字列に
-エンコードします。
-特に、文字列中の、全てのコードポイントは、C<0xFF> 以下であれば、
-Perl は、ネイティブの 8 ビットの文字セットを使います。
-そうでなければ、UTF-8 を使います。
+내부적으로는 Perl 은 플랫폼의 8비트 문자셋(예를들면 Latin-1) 은 
+기본값은 UTF-8 이지만, Unicode 문자열로 인코드합니다.
+특히, 문자열안의 모든 코드포인트는 C<0xFF> 아래라면, 
+Perl 은 네이티브의 8비트 문자셋을 사용합니다.
+그렇지 않으면 UTF-8 을 사용합니다.
 
 =begin original
 
@@ -404,14 +403,14 @@ strings contain a character beyond 0x00FF.
 
 =end original
 
-Perlのユーザは普通は、Perl がその内部文字列をたまたま、どのように
-エンコードするかを、知る必要も、気にする必要もありませんが、Unicode 文字列を
-PerlIO 層なしに -- 「デフォルトの」エンコーディングで -- ストリームに
-出力しようとすると、関係するようになります。
-このようなケースでは、内部的に使われている生のバイト列(それぞれの
-文字列の必要に応じて、ネイティブの文字セットか、UTF-8)が使われます。
-それらの文字列に、0x00FF を超える文字があれば、"Wide character" の警告が
-出されます。
+Perl 유저는 보통은 Perl 이 그 내부문자열을 때로 어떻게 
+인코드하는 가를 알 필요도 신경쓸 필요도 없지만, Unicode 문자열을 
+PerlIO 층 없이 -- "기본값의" 인코딩으로 -- 스트림에 
+출력하려고 하면 신경을 써야합니다.
+이런 케이스에서는 내부적으로 사용되는 바이트열(각각의 문자열의 필요에 
+따라, 네이티브의 문자셋이나 UTF-8) 이 사용됩니다.
+그 문자열들에 0x00FF 를 넘는 문자가 있다면 "Wide character" 의 경고가 
+출력됩니다.
 
 =begin original
 
@@ -419,7 +418,7 @@ For example,
 
 =end original
 
-たとえば、
+예를들면,
 
       perl -e 'print "\x{DF}\n", "\x{0100}\x{DF}\n"'
 
@@ -430,8 +429,8 @@ as a warning:
 
 =end original
 
-ネイティブのバイト列と UTF-8 の、まったく役に立たない混合もまた、
-同様に警告を出します:
+네이티브 바이트열과 UTF-8 의 전혀 도움되지 않는 섞어쓰기도 
+마찬가지로 경고를 냅니다:
 
      Wide character in print at ...
 
@@ -441,8 +440,8 @@ To output UTF-8, use the C<:encoding> or C<:utf8> output layer.  Prepending
 
 =end original
 
-UTF-8 を出力するために、C<:encoding> か C<:utf8> 出力層を使います。
-先頭にこれを追加することで:
+UTF-8 을 출력하 위해서 C<:encoding> 이나 C<:utf8> 출력층을 사용합니다.
+앞에서 이것을 추가하는 것으로:
 
       binmode(STDOUT, ":utf8");
 
@@ -453,8 +452,8 @@ and removes the program's warning.
 
 =end original
 
-このサンプルプログラムが、出力が完全に UTF-8 であることを保証し、
-プログラムの警告を削除します。
+이 샘플 프로그램이 출력이 완전하게 UTF-8 인 것을 보증하고, 
+프로그램의 경고를 삭제합니다.
 
 =begin original
 
@@ -465,10 +464,10 @@ variable, see L<perlrun> for the documentation of the C<-C> switch.
 
 =end original
 
-C<-C> コマンドラインスイッチか、C<PERL_UNICODE> 環境変数のどちらか一方を
-使うことで、標準ファイルハンドルと、デフォルトの C<open()> 層と、
-C<@ARGV> の UTF-8 化を自動的に有効に出来ます;
-L<perlrun> の C<-C> スイッチのドキュメントを見て下さい。
+C<-C> 커맨드라인스위치나, C<PERL_UNICODE> 환경변수 어느쪽 하나를 
+사용하는 것으로 표준 파일핸들과 기본 C<open()> 층과,
+C<@ARGV> 의 UTF-8 화를 자동적으로 유효하게 할 수 있습니다;
+L<perlrun> 의 C<-C> 스위치의  문서를 봐주세요.
 
 =begin original
 
@@ -479,11 +478,10 @@ about the malformed UTF-8.
 
 =end original
 
-このことは、Perl が他のソフトウェアの動きを予測することを意味するのに
-気をつけて下さい:
-Perl が STDIN が UTF-8 であるべきと信じるように主導されていて、
-他のコマンドからくる STDIN が UTF-8 でなければ、
-Perl は、不正な UTF-8 であると文句を言います。
+이 것은 Perl 이 다른 소프트웨어의 움직임을 예측하는 것을 의미하는 것입니다:
+Perl 이 STDIN 이 UTF-8 이어야 한다고 믿도록 주도되었고, 
+다른 커맨드에서 오는 STDIN 이나UTF-8 이 아니라면, 
+Perl 은 바르지 않은 UTF-8 이라고 경고를 냅니다.
 
 =begin original
 
@@ -494,12 +492,12 @@ C<useperlio=define>.
 
 =end original
 
-Unicode と、I/O の結合の特徴もまた、新しい PerlIO の特徴を使うことを
-必要とします。
-ほとんど全ての Perl5.8 プラットフォームは、PerlIO を使います。
-ですが:
-"perl -V" を動かして、C<useperlio=define> を見れば、PerlIO を
-使っているかどうか、わかります。
+Unicode 와 I/O 의 결합의 특징도 또, 새로운 PerlIO 의 특징을 사용하는 것을
+필요로 합니다.
+대부분 모든 Perl 5.8 플랫폼은 PerlIO 를 사용합니다.
+:
+"perl -V" 를 돌려서 C<useperlio=define> 을 보게되면, PerlIO를 
+사용하고 있는 지 알 수 있습니다.
 
 =head2 Unicode and EBCDIC
 
@@ -514,10 +512,10 @@ remain, see L<perlebcdic> for details.
 
 =end original
 
-Perl 5.8.0 は、EBCDIC プラットフォームでもまた、Unicode をサポートします。
-ここでは、各ステップで追加の変換が必要になるので、Unicode サポートは
-実装が若干より複雑になります。
-いくつかの問題が残っています; 詳しくは L<perlebcdic> を参照してください。
+Perl 5.8.0 은 EBCDIC 플랫폼에서도 Unicode 를 지원합니다.
+여기에서는 각 스텝에서 추가 변수가 필요로 하기 때문에 Unicode 지원은 
+구성이 약간 복잡하게 됩니다.
+몇가지 문제가 남아 있습니다; 자세한 내용은 L<perlebcdic> 를 참조해주세요.
 
 =begin original
 
@@ -530,16 +528,16 @@ that ASCII characters encode to UTF-8 as-is, while UTF-EBCDIC is
 
 =end original
 
-ともかく、EBCDIC プラットフォームでの Unicode 対応は、EBCDIC
-プラットフォームではうまく動かなかった 5.6 シリーズよりは改善しています。
-EBCDIC プラットフォームでは、内部 Unicode エンコーディング形式は
-UTF-8 ではなく UTF-EBCDIC です。
-この違いは、ASCII 文字はそのまま UTF-8 にエンコードされるという点において
-"ASCII セーフ" ですが、一方 UTF-EBCDIC は "EBCDIC セーフ" です。
+어쨌든 EBCDIC 플랫폼에서의 Unicode 대응은 EBCDIC 플랫폼에서는
+잘 움직이지 않는 5.6 시리즈보다는 개선되어 있습니다.
+EBCDIC 플랫폼에서는 내부 Unicode 인코딩 형식은 
+UTF-8 이 아닌 UTF-EBCDIC 입니다.
+이 차이는 ASCII 문자는 그대로 UTF-8 에 인코드되는ㄴ 점에 대해서
+"ASCII 세이프"이지만, 한편 UTF-EBCDIC 는 "EBCDIC 세이프"입니다.
 
 =head2 Creating Unicode
 
-(Unicode の作成)
+(Unicode 의 작성)
 
 =begin original
 
@@ -548,8 +546,8 @@ use the C<\x{...}> notation in double-quoted strings:
 
 =end original
 
-C<0xFF> を超えるコードポイントのリテラルで Unicode 文字を作るためには、
-C<\x{...}> 記法をダブルクォートされた文字列の中で使います。
+C<0xFF> 를 넘은 코드포인트의 리터럴에서 Unicode 문자를 만들기 위해서는 
+C<\x{...}> 표기법을 쌍따옴표로 묶은 문자열 안에서 사용합니다.
 
     my $smiley = "\x{263a}";
 
@@ -559,7 +557,7 @@ Similarly, it can be used in regular expression literals
 
 =end original
 
-同様に、正規表現の中でも使えます。
+마찬가지로, 정규표현안에서도 사용할 수 있습니다.
 
     $smiley =~ /\x{263a}/;
 
@@ -569,7 +567,7 @@ At run-time you can use C<chr()>:
 
 =end original
 
-C<chr()> を使って、実行時に:
+C<chr()> 를 사용해서 실행시에는:
 
     my $hebrew_alef = chr(0x05d0);
 
@@ -579,8 +577,8 @@ See L</"Further Resources"> for how to find all these numeric codes.
 
 =end original
 
-全てのこれらの数字のコードを見つける方法は、L</"Further Resources"> を
-参照してください。
+모든 이 문자 코드들을 발견하는 방법은 L</"Further Resources"> 를 
+참조해주세요.
 
 =begin original
 
@@ -589,8 +587,8 @@ a code point.
 
 =end original
 
-当然、C<ord()> は、逆を行います:
-文字をコードポイントに変えます。
+당연히, C<ord()> 는 거꾸로 실행해주세요:
+문자의 코드포인트 바꿉니다.
 
 =begin original
 
@@ -604,12 +602,12 @@ instead of C<\x..>, C<\x{...}>, or C<chr()>.
 
 =end original
 
-C<0x100>(10 進の 256)未満の引数の、C<\x..> (C<{}> なしで、
-2 つの 16 進数の数字のみです)と、C<\x{...}> と、C<chr(...)> は、古い
-Perl との互換性のために、8 ビットの文字列を生成します。
-C<x100> かそれ以上の引数では、常に Unicode 文字が生成されます。
-何が何でも、数字の値の Unicode 文字を、強制的に生成したければ、
-C<\x..>、C<\x{...}>、C<chr()> の代わりに、C<pack("U", ...)> を使って下さい。
+C<0x100>(10 진수의 256) 미만의 인수인 C<^x..> (C<{} 없이 
+두개이 16진수의 숫자만입니다)와 C<\x{...}> 과 C<chr(...)> 은 
+옛날 Perl 과의 호환성을 위 8비트의 문자열을 생성합니다.
+C<x100> 이나 그 이상의 인수에서는 항상 Unicode 문자가 생성됩니다.
+어쨌든, 숫자값인 Unicode 문자를 강제적으로 생성하고 싶었다면,
+C<\x..>, C<\x{...}>, C<chr()> 대신에 C<pack("U", ...)> 를 사용해주세요.
 
 =begin original
 
@@ -618,8 +616,8 @@ by name in double-quoted strings:
 
 =end original
 
-ダブルクォートされた文字列内で、名前で文字を呼び出すために、
-C<charnames> プラグマを使うこともできます:
+쌍따옴표로 묶인 문자열안에서 이름으로 문자를 호출하기 위해서는,
+C<chrnames> 프라그마를 사용할 수 도 있습니다:
 
     use charnames ':full';
     my $arabic_alef = "\N{ARABIC LETTER ALEF}";
@@ -631,7 +629,7 @@ characters:
 
 =end original
 
-そして、上述のように、数字を Unicode 文字に、C<pack()> できます:
+그리고 위에서 기술한 대로, 숫자를 Unicode 숫자로, C<pack()> 할 수 있습니다.
 
    my $georgian_an  = pack("U", 0x10a0);
 
@@ -643,10 +641,10 @@ run-time functionality, use C<chr()> and C<charnames::vianame()>.
 
 =end original
 
-C<\x{...}> と、C<\N{...}> の両方は、コンパイル時の文字列定数です:
-その中に変数を使うことはできません。
-類似のことを実行時にしたいなら、c<chr()> と、C<charnames::vianame()> を
-使ってください。
+C<\x{...}> 와 C<\N{...}> 양쪽은 컴파일 시의 문자열정수입니다:
+이 안에 변수를 사용할 수는 없습니다.
+유사한 것을 실행하고 싶다면, C<chr()> 과, C<charnames::vianame()> 을 
+사용해주세요.
 
 =begin original
 
@@ -656,9 +654,9 @@ to be interpreted as the UTF-8 encoding of Unicode characters:
 
 =end original
 
-結果を Unicode 文字に強制したいなら、特別な、C<"U0"> 接頭辞を使って下さい。
-これは引数を消費しませんが、引き続くバイト列を Unicode 文字の
-UTF-8 エンコーディングとして解釈させます:
+결과를 Unicode 문자로 강제하고 싶다면, 특별한 C<"U0"> 접두사를 사용해주세요.
+이것은 인수를 소비하지 않지만, 계속되는 바이트열을 Unicode 문자의 
+UTF-8 인코딩으로 해석합니다:
 
    my $chars = pack("U0W*", 0x80, 0x42);
 
@@ -669,12 +667,12 @@ C<"C0"> prefix.
 
 =end original
 
-同様に、特殊な C<"C0"> 接頭辞を使うことによって、このような UTF-8 の解釈を
-停止させることができます。
+마찬가지로, 특수한 C"C0"> 접두사를 사용하는 것으로, 이런 UTF-8 의 해석을 
+정지시킬 수가 있습니다.
 
 =head2 Handling Unicode
 
-(Unicode を扱う)
+(Unicode 다루기)
 
 =begin original
 
@@ -685,12 +683,12 @@ will work on the Unicode characters (see L<perlunicode> and L<perlretut>).
 
 =end original
 
-Unicode を扱うことは、多くの部分にとって、透過的です:
-文字列をいつものように使うだけです。
-C<index()>、C<length()>、C<substr()> のような関数は Unicode 文字列で
-動きます;
-正規表現も Unicode 文字列で動きます(L<perlunicode> と L<perlretut> を
-参照してください)。
+Unicode 를 다루는 것은 많은 부분에 있어서 투과적입니다:
+문자열을 늘 그렇듯 사용하는 것 뿐입니다.
+C<index()>, C<length()>, C<substr()> 같은 함수는 Unicode 문자열로 
+움직입니다;
+정규표현도 Unicode 문자열로 움직입니다(L<perlunicode> 와 L<perlretut> 를 
+참조해주세요).
 
 =begin original
 
@@ -699,9 +697,9 @@ separate characters, so for example
 
 =end original
 
-Perl は combining character sequences を別々の文字と考えていることに
-注意して下さい。
-ですので、例えば
+Perl 은 combining character sequences 를 다른 문자로 생각하는 것에
+주의해주세요.
+그렇기에, 예를들면
 
     use charnames ':full';
     print length("\N{LATIN CAPITAL LETTER A}\N{COMBINING ACUTE ACCENT}"), "\n";
@@ -713,9 +711,9 @@ have C<\X> for matching a combining character sequence.
 
 =end original
 
-これは 1 ではなく、2 を表示します。
-唯一の例外は、正規表現に、combining character sequence に
-マッチするために、C<\X> がある場合です。
+이것은 1이 아니라, 2를 표시합니다.
+유일한 예외는 정규표현으로 combining character sequence 에 
+매치하기 위해서 C<\X> 가 있는 경우입니다.
 
 =begin original
 
@@ -724,12 +722,12 @@ encodings, I/O, and certain special cases:
 
 =end original
 
-しかし、レガシーエンコーディング、I/O、そしてある種の特殊な状況では、
-人生はそれほど透過的ではありません:
+그러나, 레거시 인코딩, I/O, 그리고 어떤 종류의 특수한 상황에서는 
+인생은 그렇게 투과적이지 않습니다;
 
 =head2 Legacy Encodings
 
-(レガシーエンコーディング)
+(레거시 인코딩)
 
 =begin original
 
