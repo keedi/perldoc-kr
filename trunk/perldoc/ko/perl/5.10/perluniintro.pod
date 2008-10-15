@@ -1010,9 +1010,9 @@ by repeatedly encoding the data:
 
 =end original
 
-デフォルト層がなければ、入力になんの変換もしないのがデフォルトの
-振る舞いなので、繰り返しデータをエンコーディングすることで、
-ファイルを展開し続けるコードを誤って書きやすいです。
+기본 레이어가 없으면, 입력에 어떤 변환도 하지 않은 것이 기본 행동이
+되기 때문에, 반복 데이터를 인코딩하는 것으로, 
+파일을 계속 전개하는 코드를 잘못 쓰기 쉽습니다.
 
     # BAD CODE WARNING
     open F, "file";
@@ -1031,10 +1031,9 @@ bug, or explicitly opening also the F<file> for input as UTF-8.
 
 =end original
 
-このコードを 2 回実行すると、F<file> の内容は、UTF-8 に、2 回
-エンコードされます。
-C<use open 'encoding(utf8)'> は、バグを避けるでしょう;
-もしくは、UTF-8 として入力するために、F<File> を、明示的に開くことです。
+이 코드를 2번 실행하면, F<file> 의 내용은, UTF-8 에 , 2번 인코딩됩니다.
+C<use open 'encoding(utf8)'> 은 버그를 피할 것입니다;
+혹은, UTF-8 으로 입력하기 위해서는 F<File> 을 명시적으로 여는 것입니다.
 
 =begin original
 
@@ -1044,13 +1043,13 @@ on most systems).
 
 =end original
 
-B<注意>: C<:utf8> と C<:encoding> の機能は、Perl が新しい PerlIO の機能で
-ビルドされている場合(ほとんどのシステムで、それがデフォルトです)にのみ
-動作します。
+B<주의>: C<:utf8> 와 C<:encoding> 의 기능은 Perl 이 새로운 PerlIO 의 기능으로
+빌드되어 있는 경우(대부분의 시스템에서 그것이 기본값입니다)에만 
+동작합니다.
 
 =head2 Displaying Unicode As Text
 
-(Unicode をテキストとして表示する)
+(Unicode 를 텍스트로 표시하기)
 
 =begin original
 
@@ -1062,12 +1061,12 @@ displayed as C<\x..>, and the rest of the characters as themselves:
 
 =end original
 
-Unicode を含んでいる Perl のスカラを、単純な ASCII(か、EBCDIC)の
-テキストとして、表示したいかもしれません。
-下のサブルーチンは、引数を変換して、255 より大きいコードポイントの
-Unicode 文字を、C<\x{...}> として表示し、(C<\n> のような)制御文字は、
-C<\x..> として表示します。
-残りの文字は、そのまま表示します:
+Unicode 를 포함한 Perl 의 스칼라를 단순한 ASCII(나 EBCDIC) 의 
+텍스트로써 표시하고 싶을지도 모릅니다.
+아래의 서브루틴은 인수를 변환해서 255보다 큰 코드포인트의 
+Unicode 문자를 C<\x{...}> 로 표시하, (C<\n> 같은) 제어문자는 
+C<\x..> 로 표시합니다.
+남은 문자는 그대로 표시합니다:
 
    sub nice_string {
        join("",
@@ -1085,7 +1084,7 @@ For example,
 
 =end original
 
-たとえば、
+예를들면,
 
    nice_string("foo\x{100}bar\n")
 
@@ -1095,7 +1094,7 @@ returns the string
 
 =end original
 
-は、次のような文字列になり:
+은 다음과 같은 문자열이 되고:
 
    'foo\x{0100}bar\x0A'
 
@@ -1105,11 +1104,11 @@ which is ready to be printed.
 
 =end original
 
-表示可能になります。
+표시가능하게 됩니다.
 
 =head2 Special Cases
 
-(特殊な状況)
+(특수한 상황)
 
 =over 4
 
@@ -1121,7 +1120,7 @@ Bit Complement Operator ~ And vec()
 
 =end original
 
-演算子 ~ と、vec() についてのちょっとした補足
+연산자 ~ 와, vec() 에 대한 보충
 
 =begin original
 
@@ -1135,15 +1134,14 @@ the code point values, which is very probably not what you want.
 
 =end original
 
-演算子 C<~> は、255 を超える序数の値の文字を含んでいる文字列で、
-使われると、驚くべき結果になるでしょう。
-そのようなケースでは、その結果は文字の内部的なエンコーディングで一貫性が
-あります。
-しかし、他の多くでは違います。
-ですので、そのようなことはしないでください。
-C<vec()> も同様です: コードポイントの値ではなく、内部的にエンコードされた、
-Unicode 文字列のビットパターンを操作することになります;
-おそらく、それは望んだことではないでしょう。
+연산자 C<~> 는 255를 넘은 서수의 값의 문자를 포함한 문자열로 사용되면, 
+놀랄만한 결과가 될겁니다.
+그런 케이스에서는 그 결과는 문자의 내부적인 인코딩에서 일관성이 있습니다.
+그러나, 다른 많은 것과는 다릅니다.
+그렇기에, 그런 것은 하지 말아주세요.
+C<vec()> 도 마찬가지입니다: 코드 포인트의 값이 아니라, 내부적으로 인코드된
+Unicode 문자열의 비트패턴을 조작하게 됩니다:
+아마도, 그것을 바라는 것이 아니겠죠.
 
 =item *
 
@@ -1153,7 +1151,7 @@ Peeking At Perl's Internal Encoding
 
 =end original
 
-Perl の内部エンコーディングをのぞき見る
+Perl 의 내부 인코딩을 훔쳐보기
 
 =begin original
 
@@ -1165,11 +1163,11 @@ ways of looking behind the scenes.
 
 =end original
 
-Perl がどのように、特定の Unicode 文字列をエンコードしているかを、
-Perl の普通のユーザは気にするべきではありません
-(Unicode で文字列の内容に達する普通の方法 -- 入出力によって -- は、常に
-明示的に定義された I/O 層を経由すべきだからです)。
-ですが、もし必要なら、隠れている裏側を見る 2 つの方法があります。
+Perl 이 어떻게 특정 Unicode 문자열을 인코드하고 있는가를 
+Perl 의 보통 유저는 신경쓰지 않아도 됩니다
+(Unicode 로 문자열의 내용에 달하는 보통의 방법 -- 입출력에 의해 -- 은 ,
+항상 명시적으로 정의된 I/O 층을 경유해야하기 때문입니다).
+그렇지만, 만약 필요하다면, 숨겨진 안쪽을 보는 2가지 방법이 있습니다.
 
 =begin original
 
@@ -1180,10 +1178,10 @@ UTF-8 encoding:
 
 =end original
 
-Unicode 文字の内部エンコーディングの内側を覗き見る方法の 1 つは、
-エンコーディングが何であろうとも文字列のバイト列を得るために
-C<unpack("C*", ...> を使うか、UTF-8 エンコーディングのバイト列を得るために
-C<unpack("U0..", ...)> を使うことです:
+Unicode 문자의 내부 인코딩의 안쪽을 보는 방법 중 하나는 
+인코딩이 무엇이어도 문자열의 바이트열을 얻기 위해서 
+C<unpack("C*", ...> 를 사용하거나, UTF-8 인코딩의 바이트열을 얻기 위해
+C<unpack("U0..", ...)> 를 사용하는 것입니다:
 
     # this prints  c4 80  for the UTF-8 bytes 0xc4 0x80
     print join(" ", unpack("U0(H2)*", pack("U", 0x100))), "\n";
@@ -1194,7 +1192,7 @@ Yet another way would be to use the Devel::Peek module:
 
 =end original
 
-もう一つの方法は、Dvel::Peek モジュールを使うことです:
+다른 하나의 방법은 Devel::Peek 모듈을 사용하는 것입니다:
 
     perl -MDevel::Peek -e 'Dump(chr(0x100))'
 
@@ -1206,16 +1204,16 @@ the discussion about the C<utf8::is_utf8()> function.
 
 =end original
 
-これは、FLAGS の C<UTF8> フラグと、UTF-8 バイトと、C<PV> の中の
-Unicode 文字の両方を見せます。
-このドキュメントの後にある、C<utf8::is_utf8()> 機能についての議論も
-参照してください。
+이것은 FLAGS 의 C<UTF8> 플래그와 UTF-8 바이트와 C<PV> 안의 
+Unicode 문자의 양쪽을 볼 수 있습니다.
+이 문서의 뒤에 있는 C<utf8::is_utf8()>  기능에 대한 의논도 
+참조해주세요.
 
 =back
 
 =head2 Advanced Topics
 
-(発展した話題)
+(발전한 화제)
 
 =over 4
 
@@ -1227,7 +1225,7 @@ String Equivalence
 
 =end original
 
-文字列の等価性
+문자열의 등가성 
 
 =begin original
 
@@ -1236,8 +1234,8 @@ in Unicode: what do you mean by "equal"?
 
 =end original
 
-文字列の等価性の疑問は、Unicode でいくぶん複雑になります。
-"等価" で、何を意味していますか?
+문자열의 등가성의 의문은 Unicode 로 꽤 복잡하게 됩니다.
+"등가" 란 무엇을 의미할까요?
 
 =begin original
 
@@ -1246,8 +1244,8 @@ C<LATIN CAPITAL LETTER A>?)
 
 =end original
 
-(IS C<LATIN CAPITAL LETTER A WITH ACCUTE> と
-C<LATIN CAPITAL LETTER A>は、等しいでしょうか?)
+(IS C<LATIN CAPITAL LETTER A WITH ACCUTE> 와
+C<LATIN CAPITAL LETTER A>는 같은 것일까요?)
 
 =begin original
 
@@ -1258,12 +1256,12 @@ CAPITAL LETTER As should be considered equal, or even As of any case.
 
 =end original
 
-短く答えれば次のようになります。
-デフォルトでは、Perl は(C<eq> と、C<ne> で)等価性を
-比較しますが、これらは、文字のコードポイントでのみに基づいています。
-上のケースでは、答えはいいえです(0x00C1 != 0x0041 ですから)。
-しかし、どんな CAPITAL LETTER A も等しいと考えるべき時や、大文字小文字に
-関わらずどんな A も等しいと考えるべき時もあります。
+짧게 답하면 다음과 같습니다.
+기본값에서는 Perl 은(C<eq> 와 C<ne> 로) 등가성을 
+비교하지만, 이것들은 문자의 코드포인트에만 기반합니다.
+위의 케이스에서는 답은 "아니오"입니다(0x00C1 != 0x0041 이기에).
+그러나 어떤 CAPITAL LETTER A 도 같다고는 생각해야할 때랑 
+대문자 소문자에 상관없이 어떤 A 도 같다고 생각해야할 때도 있습니다.
 
 =begin original
 
@@ -1275,11 +1273,11 @@ http://www.unicode.org/unicode/reports/tr21/
 
 =end original
 
-長く答えるなら、文字の正規化と大文字小文字の問題を考える必要があります:
-L<Unicode::Normalize>、Unicode テクニカルレポート #15 と #21 である
-I<Unicodde Normalization Forms> と I<Case Mappings>
+길게 답하면, 문자의 정규화와 대문자소문자의 문제를 생각할 필요가 있습니다:
+L<Unicode::Normalize>, Unicode 테크니컬 레포트 #15 와 #21 에 있는 
+I<Unicodde Normalization Forms> 와 I<Case Mappings>
 ( http://www.unicode.org/unicode/reports/tr15/,
-http://www.unicode.org/unicode/reports/tr21/ ) を参照してください。
+http://www.unicode.org/unicode/reports/tr21/ ) 을 참조해주세요.
 
 =begin original
 
@@ -1288,8 +1286,8 @@ Mappings/SpecialCasing> is implemented.
 
 =end original
 
-Perl 5.8.0 から、I<Case Mappings/SpecialCasing> の、
-"Full" ケースフォールディングが実装されています。
+Perl 5.8.0 에서 I<Case Mappings/SpecialCasing> 의 
+"Full" 케이스 폴딩이 구성되어 있습니다.
 
 =item *
 
@@ -1299,7 +1297,7 @@ String Collation
 
 =end original
 
-文字列の照合(Collation)
+문자열의 조합(Collation)
 
 =begin original
 
@@ -1308,9 +1306,9 @@ parlance goes, collated.  But again, what do you mean by collate?
 
 =end original
 
-文字列がうまくソートされている(あるいは Unicode の業界用語を使えば、
-照合されている(collated))のを好みます。
-ですが、再び、照合で何を意味していますか?
+문자열이 잘 정렬되어있는(혹은 Unicode 업계용어를 사용하면,
+조합되어있는(collated)) 것을 선호합니다.
+그런데 조합이란 무슨 의미일까요?
 
 =begin original
 
@@ -1319,9 +1317,9 @@ C<LATIN CAPITAL LETTER A WITH GRAVE>?)
 
 =end original
 
-(C<LATIN CAPITAL LETTER A WITH ACUTE> は、
-C<LATIN CAPITAL LETTER A WITH GRAVE> より、
-前でしょうか後でしょうか?)
+(C<LATIN CAPITAL LETTER A WITH ACUTE> 는
+C<LATIN CAPITAL LETTER A WITH GRAVE> 보다
+앞일까요 뒤일까요?)
 
 =begin original
 
@@ -1332,10 +1330,10 @@ C<0x00C1> > C<0x00C0>.
 
 =end original
 
-短く答えれば次のようになります。
-Perl は、文字列を、(C<lt>、C<le>、C<cmp>、C<ge>、C<gt>)で比較しますが、
-これらは、文字のコードポイントでのみに基づいています。
-上のケースでは、答えは、C<0x00C1> > C<0x00C0> ですので、"後"になります。
+짧게 답하면 다음과 같습니다.
+Perl 은 문자열을 (C<lt>, C<le>, C<cmp>, C<ge>, C<gt>) 로 비교하지만, 
+이것들은 문자의 코드포인트에만 기반되어 있습니다.
+위의 케이스에서는 답은 C<0x001> > <0x00C0> 이기에 "뒤"가 됩니다.
 
 =begin original
 
@@ -1346,17 +1344,16 @@ http://www.unicode.org/unicode/reports/tr10/
 
 =end original
 
-長く答えるなら、"依存して"います。
-良い答えは、(とても少なくとも)言語のコンテキストを知らずには、
-与えられません。
+길게 답하면 "의존하고" 있습니다.
+좋은 답은 (아주 적어도) 언어의 컨텍스트를 알지 못하고는 줄 수 없습니다.
 L<Unicode::Collate>, I<Unicode Collation Algorithm>
-http://www.unicode.org/unicode/reports/tr10/ を参照してください。
+http://www.unicode.org/unicode/reports/tr10/ 를 참조해주세요.
 
 =back
 
 =head2 Miscellaneous
 
-(その他)
+(그 외)
 
 =over 4
 
@@ -1368,7 +1365,7 @@ Character Ranges and Classes
 
 =end original
 
-文字の範囲とクラス
+문자의 범위와 클래스 
 
 =begin original
 
@@ -1380,11 +1377,11 @@ to mean "all alphabetic letters"; not that it does mean that even for
 
 =end original
 
-正規表現の文字クラス(C</[a-z]/>)内と、C<tf///>(C<y///> としても知られる)
-演算子内では、自動的には Unicode 対応にはなりません。
-これが意味することは、C<[A-Za-z]> は、自動的に "全てのアルファベット文字"を
-意味するようにはなりません; 8 ビットの文字で意味します;
-このケースでは、C</[[:alpha:]]/> を使うべきです。
+정규표현의 문자클래스(C</[a-z]/>) 안과 C<tr///><C<y///> 로도 알려진) 
+연산자 안에서는 자동적으로는 Unicode 대응이 되지 않습니다.
+이것이 의미하는 것은 C<[A-Za-z]> 는 자동적으로 "모든 알파벳 문자"를 의미하는
+것이 아닙니다; 8비트의 문자를 의미합니다;
+이 케이스에서는 C</[[:alpha:]]/> 를 사용해야합니다.
 
 =begin original
 
@@ -1398,14 +1395,14 @@ L<perlunicode>.
 
 =end original
 
-正規表現内のこのような特定の文字クラスに、様々な Unicode プロパティ --
-C<\pL>、または、この特別なケースでは、たぶん、C<\p{Alphabetic}> を
-使うことができます。
-文字の範囲の終わりのポイントとして、Unicode のコードポイントを
-使うことが出来ます。
-ですが、ある範囲を特定するのに結びつける何の魔法もありません。
-詳しいことは--数ダースの Unicode 文字クラスがあります--
-L<perlunicode> を見て下さい。
+정규표현의 이런 특정 문자 클래스에 여러 Unicode 속성 --
+C<\pL> 또는 이 특별한 케이스에서는 아마 C<\p{Alphabetic}> 을 
+사용할 수 있습니다.
+문자의 범위의 끝의 포인트로, Unicode 의 코드포인트를 
+사용할 수 있습니다.
+그러나, 어느 범위를 특정하는 것에 연결된 어떤 마법도 필요없습니다.
+자세한 것은 -- 여러 다스의 Unicode 문자 클래스가 있습니다 --
+L<perlunicode> 를 봐주세요.
 
 =item *
 
@@ -1415,7 +1412,7 @@ String-To-Number Conversions
 
 =end original
 
-文字列から数字への変換
+문자열에서 숫자로의 변환
 
 =begin original
 
@@ -1426,16 +1423,16 @@ than ASCII 0 to 9 (and ASCII a to f for hexadecimal).
 
 =end original
 
-Unicode は、なじみのある、アラビアやインドの数字のような 0 から 9 に加えて、
-複数の他の 10 進数--と数字の--文字を、定義します。
-Perl は、ASCII の 0 から 9(と、16 進法の ASCII の a から f)以外の数字の、
-文字列から数への変換をサポートしません。
+Unicode 는 아라비아나 인도의 숫자같은 0 에서 9에 붙여 
+복수의 다른 10진수 --와 숫자의--문자를 정의합니다.
+Perl 은 ASCII 의 0 에서 9(와 16진수의 ASCII 의 a 에서 f)이외의 숫자인 
+문자열에서 수로의 변환을 지원하지 않습니다.
 
 =back
 
 =head2 Questions With Answers
 
-(質問と回答)
+(질문과 답변)
 
 =over 4
 
@@ -1447,7 +1444,7 @@ Will My Old Scripts Break?
 
 =end original
 
-古いスクリプトは壊れるでしょうか?
+낡은 스크립트는 깨질까요?
 
 =begin original
 
@@ -1461,13 +1458,12 @@ BREVE.
 
 =end original
 
-たぶん、壊れません。
-どうにかして、Unicode 文字を生成していなければ、古い挙動は保護されます。
-振る舞いが変更され、Unicode を生成し始める唯一のものは、古い C<chr()> は
-引数として 255 を超える値が指定されると、255 を法とした文字が生成される
-というものです。
-例えば、C<chr(300)> は、C<chr(45)> あるいは (ASCII の)"-" と同じでした。
-現在ではそれは、LATIN CAPITAL LETTER I WITH BREVE です。
+아마, 깨지지 않습니다.
+어떻게 해서, Unicode 문자를 생성하지 않는 다면, 낡은 움직임은 보호됩니다.
+행동이 변경되고, Unicode 를 생성하기 시작하는 유일한 것은 옛 C<chr()> 은
+인수로써 255를 넘는 값이 정의되면, 255를 법으로한 문자가 생성되는 것입니다.
+예를들면 C<chr(300)>은 C<chr(45)> 혹은 (ASCII 의) "-" 과 같았습니.
+지금은 그것은 LATIN CAPITAL LETTER I WITH BREVE 입니다.
 
 =item *
 
@@ -1477,7 +1473,7 @@ How Do I Make My Scripts Work With Unicode?
 
 =end original
 
-私のスクリプトを Unicode で動かすには?
+제 스크립트를 Unicode 로 움직이기 위해서는?
 
 =begin original
 
@@ -1487,9 +1483,9 @@ Unicode; for that, see the earlier I/O discussion.
 
 =end original
 
-Unicode データを生成するまで、ほとんど何もする必要はありません。
-もっとも重要なものは、Unicode として、入力を得ることです;
-なので、以前の I/O の議論を見て下さい。
+Unicode 데이터를 생성하기까지 거의 아무것도 할 필요는 없습니다.
+제일 중요한 것은 Unicode 로써 입력을 얻는 것입니다;
+그렇기에, 이전의 I/O 의논을 봐주세요.
 
 =item *
 
@@ -1499,7 +1495,7 @@ How Do I Know Whether My String Is In Unicode?
 
 =end original
 
-Unicode の文字列かどうかを知るには?
+Unicode 의 문자열인지 어떤지를 알기 위해서는?
 
 =begin original
 
@@ -1509,11 +1505,10 @@ didn't get the transparency of Unicode quite right.
 
 =end original
 
-気にすることはありません。
-ええ、本当に、気にするべきではありません。
-ええ、本当に。
-気にする必要があるなら -- このケースは上で書いています --
-本当に正しく、Unicode の透過性を得ていないことを意味します。
+신경쓸 필요 없습니다.
+정말로 신경써야하는 것도 아닙니다.
+신경쓸 필요가 있다면 -- 이 케이스는 위에 쓰여있습니다 --
+정말 바르게 Unicode 의 투과성을 얻지 않은 것을 의미합니다.
 
 =begin original
 
@@ -1521,7 +1516,7 @@ Okay, if you insist:
 
 =end original
 
-オーケー、どうしてもというなら:
+뭐, 어떻게든 상관없다면:
 
     print utf8::is_utf8($string) ? 1 : 0, "\n";
 
