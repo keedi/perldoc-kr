@@ -556,10 +556,9 @@ then passes both to the subroutine and the caller.
 
 =end original
 
-C<create()> メソッドはサブルーチンへのリファレンスを引数にとって新しい
-スレッドを生成します。
-このスレッドはリファレンスされたサブルーチンの実行を開始します。
-このとき制御はサブルーチンと呼び出し側との両方に渡されます。
+C<create()> 메소드는 서브루틴으로의 리퍼런스를 인수로써 새로운 스레드를 생성합니다.
+이 스레드는 리퍼런스된 서브루틴의 실행을 시작합니다.
+이 때, 제어는 서브루틴과 호출 측 양쪽에 넘깁니다.
 
 =begin original
 
@@ -569,9 +568,8 @@ part of the C<threads-E<gt>create()> call, like this:
 
 =end original
 
-もし必要ならばスレッド開始時のサブルーチンにパラメータを渡せます。
-以下のように、C<threads-E<gt>create()> の呼び出しにパラメータのリストを
-含めます:
+만약 필요하다면 스레드 시작시의 서브루틴에 파라메터를 넘길 수 있습니다.
+아래처럼, C<threads-E<gt>create()> 호출로 파라메터의 리스트를 포함합니다:
 
     use threads;
 
@@ -596,10 +594,10 @@ environment and potentially separate arguments.
 
 =end original
 
-最後の例はスレッドのもう一つの特徴を示しています。
-同じサブルーチンを利用するいくつものスレッドを生成することができます。
-それぞれのスレッドは同一のサブルーチンを実行するが、それぞれのスレッドは
-それぞれ別々の環境と引数をとることができます。
+마지막 예제는 스레드의 다른 하나의 특징을 나타내고 있습니다.
+같은 서브루틴을 이용하는 몇가지 스레드를 생성할 수 있습니다.
+각각의 스레드는 동일 서브루틴을 실행하지만, 각각의 스레드는 
+각각 별도의 환경과 인수를 얻을 수 있습니다.
 
 =begin original
 
@@ -607,11 +605,11 @@ C<new()> is a synonym for C<create()>.
 
 =end original
 
-C<new()> は C<create()> の言い換えです。
+C<new()> 는 C<create()> 를 바꾼 말입니다.
 
 =head2 Waiting For A Thread To Exit
 
-(スレッド終了の待機)
+(스레드 종료대기)
 
 =begin original
 
@@ -621,8 +619,8 @@ use the C<join()> method:
 
 =end original
 
-スレッドはサブルーチンでもあるので、値を返せます。
-スレッドが終了して何らかの戻り値を得るのを待つために、C<join()> を使えます:
+스레드는 서브루틘이기도 하기에, 값을 넘길 수 있습니다.
+스레드가 종료해서 뭔가의 반환값을 얻는 것을 기다리기 위해서 C<join()> 을 사용할 수 있습니다:
 
     use threads;
 
@@ -646,13 +644,13 @@ instead, as described next.
 
 =end original
 
-上の例では、スレッドが終了するとすぐに C<join()> メソッドが戻ります。
-スレッドの終了と、返すべき値を収集するための待機に加えて、C<join()> は
-スレッドが必要とする OS レベルのクリーンナップを実行します。
-このクリーンナップは重要です; 特に長時間にわたって実行されるプログラムが
-大量のスレッドを生成する場合には。
-もしも戻り値を必要とせず、スレッドの終了を待つ必要もなければ、かわりに
-次に説明する C<detach()> メソッドを呼び出すべきです。
+위에 의제에서는 스레드가 종료하면 곧장 C<join()> 메소드가 반환됩니다.
+스레드의 종료와, 반환되어야하는 값을 수집하기 위한 대기에 더해서, C<join()> 는 
+스레드가 필요로하는 OS 레벨의 클린업을 실행합니다.
+이 클린업은 중요합니다; 특히 긴 시간에 걸쳐서 실행되는 프로그램이 대량의 스레드를 
+생성하는 경우에는,
+만약 반환값을 필요로 하지 않고, 스레드의 종료를 기다리는 필요도 없으면, 대신에 
+다음에 설명할 C<detach()> 메소드를 호출해야 합니다.
 
 =begin original
 
@@ -663,14 +661,14 @@ details on thread context and return values.
 
 =end original
 
-注意: 上記の例では、スレッドはリストを返すので、スレッド作成呼び出しは
-(C<my ($thr)> のように)リストコンテキストで行われる必要があります。
-スレッドのコンテキストと返り値に関する更なる詳細については
-L<threads/"$thr->join()"> と L<threads/"THREAD CONTEXT"> を参照してください。
+주의: 위의 예제에서는 스레드는 리스트를 반환하기 때문에, 스레드 작성 호출은
+C<my ($thr)> 처럼) 리스트 컨텍스트에서 수행될 필요가 있습니다.
+스레드의 컨텍스트와 반환값에 관한 보다 자세한 내용에 대해서는
+L<threads/"$thr->join()"> 과 L<threads/"THREAD CONTEXT"> 를 참조해주세요.
 
 =head2 Ignoring A Thread
 
-(スレッドを無視する)
+(스레드를 무시한다)
 
 =begin original
 
@@ -682,12 +680,10 @@ to get cleaned up after when it's done.
 
 =end original
 
-C<join()> は三つのことを行います。
-スレッド終了の待機、その後のクリーンナップ、そしてスレッドが生み出したで
-あろうデータを返すことです。
-しかし、スレッドの返す値に関心がなく、いつスレッドが終了するのかを本当に
-気にしない場合には?
-必要なのは仕事がなされた後にスレッドがクリーンナップされることです。
+C<join()> 는 두가지 일을 수행합니다.
+스레드 종료 대기, 그 뒤의 클린업, 그리고 스레드가 뽑아낸 데이터를 반환하는 일입니다.
+그러나, 스레드의 반환값에 관심이 없고, 언제 스레드가 끝나는 가를 신경쓰는 경우에는?
+필요한 것은 일이 없어진 뒤에 스레드가 클린업되는 것입니다.
 
 =begin original
 
@@ -697,9 +693,9 @@ automatically.
 
 =end original
 
-このような場合、C<detach()> メソッドを使います。
-ひとたびスレッドが detach されると、スレッドは終了するまで実行し続け、
-そのあと Perl が自動的にクリーンナップを行います。
+이런 경우, C<detach()> 메소드를 사용합니다.
+하나의 메소드마다 detach 되면, 스레든느 종료하기 까지 실행을 계속하고, 
+그 뒤에 Perl 이 자동적으로 클린업을 수행합니다.
 
     use threads;
 
@@ -726,8 +722,8 @@ lost.
 
 =end original
 
-一度あるスレッドが detach されたら、そのスレッドは join されないでしょう。
-(join のために待機しても)スレッドが生成したであろうデータは失われます。
+한번 어떤 스레드가 detach 되었다면, 그 스레드는 join되지 않을 겁니다.
+(join을 위해서는 대기해도) 스레드가 생성했을 데이터는 잃어버립니다.
 
 =begin original
 
@@ -736,8 +732,7 @@ detach itself:
 
 =end original
 
-C<detach()> はスレッドが自分自身を detach するためにクラスメソッドとしても
-呼び出されます:
+C<detach()> 는 스레드가 자기 자신을 detach 하기 위해서 클래스 메소드로써 호출됩니다:
 
     use threads;
 
@@ -750,7 +745,7 @@ C<detach()> はスレッドが自分自身を detach するためにクラスメ
 
 =head2 Process and Thread Termination
 
-(プロセスとスレッドの終了)
+(프로세스와 스레드의 종료)
 
 =begin original
 
@@ -759,8 +754,8 @@ run to completion, assuming that is what you want.
 
 =end original
 
-スレッドを使う場合は、全てのスレッドが確実に完全に実行される(それが
-あなたの望むもののはずです)ように注意しなければなりません。
+스레드를 사용하는 경우는, 모든 스레드가 확실하게 완전히 실행되도록(그것이 당신이 
+원하는 것일 겁니다) 주의하지 않으면 안됩니다.
 
 =begin original
 
@@ -772,10 +767,10 @@ even if that's not what you want.
 
 =end original
 
-プロセスを終了させる行動は実行中の I<全ての> スレッドを終了させます。
-die() と exit() はこの性質を持ち、(あなたが望んでいないとしても)
-おそらくは暗黙のうちにコードの最後に到達することによってメインスレッドが
-終了すると、perl は終了します。
+프로세스를 종료시키는 행동은 실행중의 I<모든> 스레드를 종료시킵니다.
+die() 와 exit() 는 이 성질을 갖지고 (ㄷ아신이 원하지 않는다고 해도)
+아마도 암묵적인 코드의 최후에 도달함에 따라 메인 스레드가 
+종료하면 perl 은 종료합니다.
 
 =begin original
 
@@ -784,9 +779,9 @@ As an example of this case, this code prints the message
 
 =end original
 
-この場合の例として、このコードは
-"Perl exited with active threads: 2 running and unjoined" というメッセージを
-表示します:
+이 경우의 예제로써, 이 코드는 
+"Perl exited with active threads: 2 running and unjoined" 이라는 메시지를 
+표시합니다:
 
     use threads;
     my $thr1 = threads->new(\&thrsub, "test1");
@@ -803,7 +798,7 @@ But when the following lines are added at the end:
 
 =end original
 
-しかし以下の行が最後に追加されると:
+그러나 아래의 줄이 마지막으로 추가되면:
 
     $thr1->join;
     $thr2->join;
@@ -813,12 +808,12 @@ But when the following lines are added at the end:
 it prints two lines of output, a perhaps more useful outcome.
 
 =end original
-
-2 行の出力があり、おそらくより有用な成果となります。
+ 
+2 줄의 출력이 있고, 아마도 보다 유용한 성과가 됩니다.
 
 =head1 Threads And Data
 
-(スレッドとデータ)
+(스레드와 데이터)
 
 =begin original
 
@@ -828,14 +823,14 @@ access that non-threaded programs never need to worry about.
 
 =end original
 
-これでスレッドの基本部分については見終わりました。
-次の話題はデータです。
-スレッドを扱うと、非スレッドプログラムが決して心配することのなかった
-データアクセスに対する二つの複雑さを導入することになります。
+이것으로 스레드의 기본부분에 대해서는 끝입니다.
+다음 화제는 데이터입니다.
+스레드를 다루면, 비 스레드 프로그램이 결코 걱정할 일이 없는 데이터 접근에 대한 
+두가지 복잡함을 도입하게 됩니다.
 
 =head2 Shared And Unshared Data
 
-(共有データと非共有データ)
+(공유데이터와 비공유데이터)
 
 =begin original
 
@@ -850,16 +845,14 @@ memory within the same process rather than a real fork taking place.
 
 =end original
 
-I<iスレッド> と古い 5.005 型スレッドの間の(もっといえば、そこから外れる
-多くのスレッドシステムにとっての)最大の違いは、デフォルトではデータが
-共有されないという点です。
-新しい Perl スレッドが生成されるとき、現在のスレッドに関連する全てのデータは
-新しいスレッドにコピーされます。
-続いてそのデータは新しいスレッド内でプライベートなものとなります!
-これは UNIX のプロセスが fork するときに起きることと似ています。
-ただしこの場合、実際の fork ではメモリ上での置き換えが起こるのに対して、この
-データは同一プロセッサ内の違うメモリ部分にコピーされるだけであるという点が
-除かれます。
+I<i스레드> 와 옛 5.005 형 스레드 사이의(자세하게 말하면, 거기에서 벗어나는 많은
+스레드 시스템에 있어서) 가장 큰 차이는, 기본값으로는 데이터가 공유되지 않는다는 점입니다.
+새로운 Perl 스레드가 생성될 때, 현재의 스레드에 관련한 모든 데이터는 새로운 스레드에 
+복사됩니다.
+계속해서 그 데이터는 새로운 스레드 안에서 프라이베이트한 것이 됩니다.
+이것은 UNIX 의 프로세스가 fork 할 때에 일어나는 것과 비슷합니다.
+단, 이경우는 실제 fork 에서는 메모리 상에서의 치환이 일어나는 것에 대해서, 
+이 데이터는 같은 프로세서 안의 다른 메모리 부분에 복사되는 것 뿐이라는 점이 다릅니다.
 
 =begin original
 
@@ -869,9 +862,9 @@ L<threads::shared> module and the C<:shared> attribute:
 
 =end original
 
-しかしスレッド機能を利用するならば、通常はスレッド間で少なくともいくつかの
-データを共有したいものです。
-これは L<threads::shared> モジュールと C<:shared> 属性によって行われます:
+그러나 스레드 기능을 이용한다면, 보통은 스레드 사이에서 적어도 몇가지의 데이터를 
+공유하고 싶을 겁니다.
+이것은 L<threads::shared> 모듈과 C<:shared> 속송에 의해 수행됩니다:
 
     use threads;
     use threads::shared;
@@ -894,13 +887,13 @@ assignment will cause the thread to die. For example:
 
 =end original
 
-共有化された配列の場合は、配列の要素全てが共有化されます。
-共有化されたハッシュの場合、全てのキーと値が共有されます。
-共有化された配列やハッシュの要素に代入するものに対しては制限があります:
-単純な値や共有化された変数へのリファレンスは可能です。
-これは、プライベート変数が図らずも共有化されることがないからです。
-不正な代入はスレッドを殺してしまうでしょう。
-例えば:
+공유화된 배열의 경우는 배열의 요소 모두가 공유화됩니다.
+공유화된 해쉬의 경우, 모든 키와 값이 공유됩니다.
+공유화 된 배열이나 해쉬의 요소에 대입하는 것에 대해서는 제한이 있습니다:
+단순한 값이나 공유화된 변수에 리퍼런스는 가능합니다.
+이것은 프라이베이트 변수가 공유되는 일이 없기 때문입니다.
+부정한 대입은 스레드를 죽여버릴 겁니다.
+예를 들면:
 
     use threads;
     use threads::shared;
@@ -922,12 +915,12 @@ assignment will cause the thread to die. For example:
 
 =end original
 
-    $hash{a} = 1;	# どのスレッドからも exists($hash{a}) and $hash{a} == 1
-    $hash{a} = $var;	# OK、値のコピー。効果は上に同じ。
-    $hash{a} = $svar;	# OK、値のコピー。効果は上に同じ。
-    $hash{a} = \$svar;	# OK、共有変数へのリファレンス。
-    $hash{a} = \$var;	# これは die する
-    delete($hash{a});	# OK、どのスレッドからも !exists($hash{a})
+    $hash{a} = 1;	# 어느 스레드에서도  exists($hash{a}) and $hash{a} == 1
+    $hash{a} = $var;	# OK、값의 복사. 효율은 위와 같음
+    $hash{a} = $svar;	# OK、값의 복사. 효율은 위와 같음
+    $hash{a} = \$svar;	# OK、공유변수로의 리퍼런스
+    $hash{a} = \$var;	# 이것은 die
+    delete($hash{a});	# OK、어느 스레드에서도 !exists($hash{a})
 
 =begin original
 
@@ -938,14 +931,13 @@ explained in the next section.
 
 =end original
 
-共有変数が、複数のスレッドが同時にその変数に変更を加えようとしても、
-変数の内部状態は破壊されないことを保証していることに注意してください。
-しかし次のセクションで説明するように、ここを超えてしまうと保証は
-なくなってしまいます。
+공유변수가 여러개의 스레드가 동시에 그 변수에 변경을 수행하려고 해도, 
+변수의 내부 상태는 파괴되지 않는 것을 보증한다는 것에 주의해주세요.
+그러나, 다음 섹션에서 설명하는 것 처럼, 여기를 넘어버리면 보증은 잃어버리게 됩니다.
 
 =head2 Thread Pitfalls: Races
 
-(スレッドの落とし穴: 競合)
+(스레드의 함정: 경합)
 
 =begin original
 
@@ -954,9 +946,8 @@ number of pitfalls.  One pitfall is the race condition:
 
 =end original
 
-スレッドは新しい便利なツールを一揃いもたらしてくれる一方で、たくさんの
-落とし穴ももたらします。
-その一つは競合条件です:
+스레드는 새로운 편리한 툴을 한번에 가지게 해주는 반면, 많은 함정도 가지고 있습니다.
+그 하나는 경합조건입니다:
 
     use threads;
     use threads::shared;
@@ -982,12 +973,12 @@ C<$a> can be 2 or 3.
 
 =end original
 
-C<$a> はどうなるでしょうか?
-残念ながら、その答えは I<場合によりけり> です。
-C<sub1()> と C<sub2()> はどちらも一度だけ読み込み、一度だけ書き込むために
-グローバル変数 C<$a> にアクセスします。
-あなたの使っているスレッド実装のスケジューリングアルゴリズムから月の
-満ち欠けまでの種々の要因によって、C<$a> は 2 にも 3 にもなりえます。
+C<$a> 는 어떻게 될까요?
+아쉽게도, 그 답은 I<상황에 따라> 다릅니다.
+C<sub1()> 과  C<sub2()> 는 어느쪽도 한번만 읽어들이고, 한번만 쓰기 위해서 
+글로벌 변수 C<$a> 에 접근합니다.
+당신이 사용하고 있는 스레드 구성의 스케쥴링 알고리즘에서 
+달의 주기 요인에 대해서는 C<$a> 는 2도 되고 3도 될 수 있습니다.
 
 =begin original
 
