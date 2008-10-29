@@ -2014,12 +2014,11 @@ include most system calls, most I/O, and things like C<sleep()>.
 
 =end original
 
-これは最も簡単なスレッドの実装であり、ほとんどの OS が最初にとった方法です。
-この方法の大きな欠点は、OS がスレッドに関知していないために、
-もしも一つのスレッドがブロックをしたら、全てのスレッドがブロックしてしまう
-ということです。
-典型的なブロック行為には、ほとんどのシステムコール、ほとんどの
-I/O、そして C<sleep()> のようなものが含まれます。
+이것은 가장 단순한 스레드 구성이고, 대부분의 OS 가 맨처음으로 취한 방법입니다.
+이 방법의 가장 큰 결점은 OS 가 스레드에 관해서 알지 않기 위해서 
+하나의 스레드가 블록을 했다면, 모든 스레드가 블록해버린다는 것입니다.
+전형적인 블록 행위에는 대부분의 시스템 콜, 대부분의 I/O 그리고 
+C<sleep()> 같은 것이 포함되어 있습니다.
 
 =begin original
 
@@ -2032,15 +2031,15 @@ where the kernel blocks at the process level and not the thread level.
 
 =end original
 
-カーネルスレッドは進化の第二段階です。
-OS はカーネルスレッドについて知っていて、その許可を出します。
-カーネルスレッドとユーザーモードスレッドの主要な違いは、
-ブロッキングについてです。
-カーネルスレッドでは、一つのスレッドをブロックした事で他のスレッドまで
-ブロックすることはありません。
-これはユーザーモードスレッドにおいては成り立ちません。
-ユーザーモードでは、カーネルがブロックするのはプロセスレベルであって、
-スレッドレベルではないからです。
+커널 스레드는 진화의 제 2단계입니다.
+OS 는 커널 스렏으ㅔ 대해서 알고 있고, 그 허가를 냅니다.
+커널  스레드와 유저 모드 스레드의 주요한 차이는 
+블록킹에 대한 것입니다.
+커널 스레드에서는 하나의 스레드를 블록한 것에서 다른 스레드까지 
+블록하는 일은 없습니다.
+이것은 유저 모드 스레드에서는 성립하지 않습니다.
+유저모드에서는 커널이 블록하는 것은 프로세스 레벨이지,
+스레드 레벨이 아니기 때문입니다.
 
 =begin original
 
@@ -2052,12 +2051,12 @@ though, regardless of how many CPUs a system might have.
 
 =end original
 
-これは大きな前進であり、非スレッドプログラムに対し、スレッドプログラムが
-大きなパフォーマンスの向上を得ることを可能にしています。
-例えば、I/O の実行をブロックするスレッドは、他のことを行うスレッドを
-ブロックしないでしょう。
-しかし、システムがいくつ CPU を備えているかに関係なく、それぞれのプロセスは
-いまだに一度に一つのスレッドしか走らせません。
+이것은 큰 전진이고, 비 스레드 프로그램에 대해서, 스레드 프로그램이 
+큰 퍼포먼스의 향상을 얻을 수 있는 가능하게 합니다.
+예를들어, I/O 실행을 블록하는 스레드는 다른 일을 수행하는 스레드를 
+블록하지 않을 겁니다.
+그러나, 시스템이 몇 개의 CPU를 가지고 있는 것과 관계없이, 각각의 프로세스는 
+한번에 하나의 스레드밖에 움직일 수 없습니다.
 
 =begin original
 
@@ -2071,12 +2070,12 @@ stored.
 
 =end original
 
-カーネルのスレッド制御がいつでも割り込めるので、あなたがプログラム中に
-つくった暗黙のロックの前提が白日の下にさらけ出してしまうでしょう。
-例えば、C<$a = $a + 2>のような単純なものでも、C<$a> が他のスレッドから
-見えるならば、右辺の値を取り出す時間と新しい値を格納する時間の間に、他の
-スレッドが C<$a> を変えてしまって、あなたの予期しない振る舞いをする
-可能性があります。
+커널의 스레드 제어가 항상 들어가기 때문에, 당신이 프로그램 안에 
+만든 암묵의 락의 전제가 드러나 버릴겁니다.
+예를들어, C<$a = $a + 2> 같은 단순한 것이어도, C<$a> 가 다른 스레드에서 
+보인다면, 좌변치를 얻어내는 시간과 새로운 값을 넣는 시간 사이에 
+다른 스레드가 C<$a> 를 바꾸어버리고, 당신이 예상하지 않는 행동을 할 
+가능성이 있습니다.
 
 =begin original
 
@@ -2087,10 +2086,9 @@ different CPUs.
 
 =end original
 
-マルチプロセッサカーネルスレッドは、スレッドのサポートにおける最終段階です。
-一台のマシンが複数の CPU を持っているマルチプロセッサカーネルスレッドでは、
-OS は別々の CPU 上で同時に一つ以上のスレッドを走らせるようにスケジュール
-管理をします。
+멀티 프로세서 커널 스레드는 스레드의 지원에서의 최종단계입니다.
+한대의 머신이 복수의 CPU 를 가지고 있는 멀티 프로세서 커널 스레드에서는 
+OS 는 각각의 CPU 상에서 동시에 하나 이상의 스레드를 움직이도록 스케쥴 관리를 합니다.
 
 =begin original
 
@@ -2102,10 +2100,10 @@ vengeance.
 
 =end original
 
-一つ以上のスレッドが同時に実行するので、これによりスレッドプログラムは
-飛躍的なパフォーマンスの向上を得ることができます。
-しかし、引き換えに、基本的なカーネルスレッドでは現れなかったであろう
-イライラするような同期性の問題が一気に姿を現します。
+하나 이상의 스레드가 동시에 실행하기 때문에, 이것에 의해 스레드 프로그램은 
+비약적인 퍼포먼스 향상을 얻을 수 있습니다.
+그러나, 바꿔생각하면, 기본적인 커널 스레드에서는 발생하지 않을 
+동기성 문제가 한번에 모습을 드러냅니다.
 
 =begin original
 
@@ -2115,9 +2113,8 @@ OS) allocate CPU cycles to threads in different ways.
 
 =end original
 
-スレッドを備える OS の違いというレベルに加えて、それぞれの OS は(そして
-それぞれのスレッド実装は)それぞれの方法でもって CPU サイクルをスレッドに
-割り当てます。
+스레드를 갖춘 OS 의 차이라는 레벨에 더해서, 각각의 OS 는(그리고 
+각각의 스레드 구성은) 각각의 방법으로 가지고 CPU 사이클을 스레드에 할당합니다.
 
 =begin original
 
@@ -2130,13 +2127,13 @@ others for CPU time if it so chooses.
 
 =end original
 
-次の二つのうちの一つが起こる場合、協調的マルチタスクシステムは実行中の
-スレッドに制御を明け渡させます。
-あるスレッドがyield関数を呼び出すと、制御を明け渡します。
-また、スレッドがI/Oの実行などのブロックを引き起こすような何かを行う場合も、
-制御を明け渡します。
-協調的マルチタスクシステムの実装においては、そのように選択するならば、
-一つのスレッドが他の全てのスレッドの CPU 時間を食い尽くすことができます。
+다음의 두가지 중 하나가 발생하는 경우 협조적 멀티 태스크 시스템은 실행중인 
+스레드에 제어를 넘깁니다.
+어떤 스레드가 yield 함수를 호출하면, 제어를 넘깁니다.
+또, 스레드가 I/O 실행 등의 블록을 일으키도록 뭔가를 수행하는 경우도, 
+제어를 넘깁니다.
+협조적 멀티태스크 시스템의 구성에서는 그렇게 선택한다면, 
+하나의 스레드가 다른 모든 스레드의 CPU 시간을 잡아먹을 수 있습니다.
 
 =begin original
 
@@ -2146,10 +2143,10 @@ multitasking system, one thread usually won't monopolize the CPU.
 
 =end original
 
-プリエンティブなマルチタスクシステムは、次にどのスレッドを実行するか
-決めながら、一定の間隔でスレッドに割り込みを入れます。
-プリエンティブなマルチタスクシステムにおいて、通常一つのスレッドが CPU を
-独占することはありません。
+프리엠티브 한 멀티 태스크 시스템은 다음에 어느 스레드를 실행하는 지 
+결정하면서, 일정 간격으로 스레드에 집어넣습니다.
+프리엠티브한 멀티태스크 시스템에서 통상 하나의 스레드가 CPU 를 
+독접하는 일은 없습니다.
 
 =begin original
 
@@ -2158,12 +2155,11 @@ running simultaneously. (Threads running with realtime priorities
 often behave cooperatively, for example, while threads running at
 normal priorities behave preemptively.)
 
-=end original
+=end original 
 
-いくつかのシステムでは、協調的スレッドとプリエンティブなスレッドを同時に
-実行することができます(例えば、通常のプライオリティを持ったスレッドが
-プリエンディブに振舞うのに対して、リアルタイムのプライオリティを持った
-スレッドはしばしば協調的に振舞います)。
+몇가지의 시스템에서는 협조적 스레드와 프리엠티브한 스레드를 동시에 
+실행할 수 있습니다(예를들어, 일반적인 우선도를 가진 스레드가 프리엠티브하게 
+움직이는 것에 대해서 리얼 타임 우선도를 가진 스레드는 잠시 협조적으로 움직입니다).
 
 =begin original
 
@@ -2171,12 +2167,11 @@ Most modern operating systems support preemptive multitasking nowadays.
 
 =end original
 
-今では、ほとんどの近代的なOSでプリエンティブなマルチタスクを
-サポートしています。
+지금은 대부분의 근대적인 OS 에서 프리엠티브한 멀티 태스크를 지원하고 있습니다.
 
 =head1 Performance considerations
 
-(パフォーマンスの考慮)
+(퍼포먼스의 고려)
 
 =begin original
 
@@ -2193,18 +2188,17 @@ be little different than ordinary code.
 
 =end original
 
-Perl の I<iスレッド> と他のスレッドモデルを比較する際に忘れてならないのが、
-新しいスレッドはみな、親スレッドの変数とデータを全て完全にコピーして
-引き渡されるという事実です。
-そのため、メモリ使用量と実行時間の両方の点で、スレッドの生成は非常に
-高くつきます。
-このコストを減らす理想的な方法は、長生きなスレッドを比較的少なめに
-持つことです。
-このスレッドは全て、ベースとなるスレッドが非常に多くのデータを蓄積する前に、
-適切に早い段階で生成されます。
-もちろん、これはいつも可能というわけではないでしょうから、妥協も必要です。
-しかし、スレッドが生成された後は、そのパフォーマンスと追加のメモリ使用量は、
-普通のコードのそれとほとんど違いはありません。
+Perl 의 I<i스레드> 와 다른 스레등 모델을 비교할 때에 잊어서는 안되는 것이 
+새로운 스레드는 모두, 부모 스레드의 변수와 데이터를 모두 완전하게 복사해서 
+넘겨진다는 사실입니다.
+그 때문에, 메모리 사용률과 실행시간의 양쪽에서 스레드의 생성은 꽤 높아집니다.
+이 비용을 줄이는 이상적인 방법은 오래 살아있는 스레드를 비교적 짧게 
+가지는 것입니다.
+이 스레드는 모두, 베이스가 되는 스레드가 매우 많은 데이터를 축적하기 전에 
+적절하게 이른 단계에서 생성됩니다.
+물론, 이것은 항상 가능하다는 것은 아닙니다.
+그러나, 스레드가 생성된 다음은 그 퍼포먼스와 추가 메모리 사용량은 
+보통 코드의 그것과 큰 차이는 없습니다.
 
 =begin original
 
@@ -2213,12 +2207,12 @@ use a little more memory and are a little slower than ordinary variables.
 
 =end original
 
-また、現在の実装下では、共有変数は通常の変数に比べて少し余計にメモリを
-使用し、スピードも少し遅いことにも注意してください。
+또, 현재의 구성 아래에서는 공유 변수는 통상의 변수에 비교해서 조금 쓸데없이 메모리를 
+사용하고, 스피드도 조금 느리다는 것에도 주의해주세요.
 
 =head1 Process-scope Changes
 
-(プロセススコープの変更)
+(프로세스 스코프 변경)
 
 =begin original
 
@@ -2228,10 +2222,10 @@ affect process-scope state, affecting all the threads.
 
 =end original
 
-スレッドそれ自身は別々に実行され、Perl のデータは明示的に共有化しない限りは
-スレッド内でプライベートなものです;
-その一方、スレッドは全てのスレッドに影響を与えながら、プロセススコープの
-状態に影響を与えてしまうことに注意してください。
+스레드 그 자신은 별도로 실행되고, Perl 의 데이터는 명시적으로 공유하지 않는 한은 
+스레드 안에서 프라이베이트한 것입니다;
+한편, 스레드는 모든 스레드에 영향을 주면서, 프로세스 영역의 
+상태에 영향을 줘버리는 것에 주의해주세요.
 
 =begin original
 
@@ -2241,10 +2235,9 @@ directory of all the threads changes.
 
 =end original
 
-この最も一般的な例は C<chdir()> を使ったときに現在作業中のディレクトリが
-変更されてしまうことです。
-一つのスレッドが C<chdir()> を呼ぶと、全てのスレッドの作業ディレクトリが
-変更されます。
+이 제일 일반적인 예는 C<chdir()> 을 사용할 때에 현재 작업중인 디렉토리가 
+변경되어버린 다는 것입니다.
+하나의 스레드가 C<chdir()> 을 호출하면, 모든 스레드의 작업 디렉토리가 변경됩니다.
 
 =begin original
 
@@ -2254,9 +2247,9 @@ undo it (as opposed to C<chdir()>).
 
 =end original
 
-さらに劇的なプロセススコープの変更例は C<chroot()> です。
-全部のスレッドのルートディレクトリが変更されます。
-スレッドはそれを元に戻すことはできません(C<chdir()> の場合は可能です)。
+거기에 극적인 프로세스 영역의 변경 예제는 C<chroot()> 입니다.
+모든 스레드의 루트 디렉토리가 변경됩니다.
+스레드는 그것을 기반으로 되돌릴 수는 없습니다(C<chdir()> 의 경우는 가능합니다).
 
 =begin original
 
@@ -2265,7 +2258,7 @@ changing uids and gids.
 
 =end original
 
-さらなるプロセススコープ変化の例は、C<umask()> および uid や gid の変更です。
+보다 자세한 프로세스 영역 변화의 예제는 C<umask()> 및 uid 나 gid 의 변경입니다.
 
 =begin original
 
@@ -2277,13 +2270,13 @@ called C<fork()>. You have been warned!
 
 =end original
 
-C<fork()> とスレッドを混在させたらどうなるかって?
-そんな気分が失せるまで、横になって休んでいてください。
-C<fork()> の動作はプラットフォームによって異なることに注意してください。
-例えば、UNIX システムには現状の全てのスレッドを子プロセスに
-コピーするものもありますが、C<fork()> を呼び出したスレッドのみを
-コピーするものもあります。
-あなたは警告されました!
+C<fork()> 와 스레드를 혼재시키면 어떻게될까요?
+그런 기분이 없어지기 까지, 누워서 쉬어주세요.
+C<fork()> 의 동작은 플랫폼에 의해 다르다는 것에 주읳주세요.
+예를들어, UNIX 시스템에는 현재의 모든 스레드를 자식 프로세스에 
+복사하는 것도 있지만, C<fork()> 를 호출한 스레드만을 
+복사하는 것도 있습니다.
+당신은 경고를 받았습니다!
 
 =begin original
 
@@ -2298,18 +2291,18 @@ threads.  See L<threads/"THREAD SIGNALLING> for more details.)
 
 =end original
 
-同じように、シグナルとスレッドを混ぜるのもするべきではありあません。
-実装はプラットフォーム依存だし、POSIX のセマンティクスでさえ、あなたの
-期待通りにはならないかもしれません
-(そして Perl はフルセットの POSIX API を提供することさえできません)。
-例えば、マルチスレッド Perl アプリケーションに送られたシグナルが、
-特定のスレッドによって受信されることを保証する方法はありません。
-(しかし、最近追加された機能はスレッド間でシグナルを送る能力を提供します。
-更なる詳細については L<threads/"THREAD SIGNALLING> を参照してください。)
+마찬가지로 시그널과 스레드를 섞는 것도 해서는 안됩니다.
+구성은 플랫폼 의존이고, POSIX 의 세만틱스 에서도 당신의 
+기대대로는 되지 않을지도 모릅니다.
+(그리고 Perl 은 풀셋의 POSIX API 를 제공하는 것마저 불가능합니다).
+예를들어, 멀티스레드 Perl 어플리케이션에 보내진 시그널이 
+특정 스레드에 의해 수신되는 것을 보증하는 방법은 없습니다.
+(그러나, 최근 추가된 기능은 스레드 사이에 시그널을 보내는 능력을 제공합니다.
+보다 자세한 내용에 대해서는 L<threads/"THREAD SIGNALLING> 를 참조해주세요)
 
 =head1 Thread-Safety of System Libraries
 
-(システムライブラリにおけるスレッドの安全性)
+(시스템 라이브러리에서 스레드 안전성)
 
 =begin original
 
@@ -2323,15 +2316,14 @@ external state.
 
 =end original
 
-様々なライブラリの関数呼び出しがスレッドにとって安全かどうかということは、
-Perlのコントロールの埒外です。
-しばしばスレッドセーフではないものに
-よって問題の生じる呼び出しには以下のようなものです:
+여러가지 라이브러리의 함수호출이 스레드에 의해 안전한지 어떤지 하는 것은 
+Perl 의 컨트롤의 논외입니다. 당분간 스레드 세마포어가 아닌 것에 의해 
+문제 있는 호출에는 아래와 같은 것이 있습니다;
 C<localtime()>, C<gmtime()>,
-(C<getgrent()>, C<gethostent()>, C<getnetent()> などのような)ユーザー、
-グループ、ネットワークの情報を取り出す関数、C<readdir()>,
-C<rand()>, C<srand()> -- 一般的に言って、グローバルな外部状況に依存する
-呼び出しが含まれます。
+(C<getgrent()>, C<gethostent()>, C<getnetent()> 등과 같은)유저、
+그룹, 네트워크의 정보를 얻어내는 함수, C<readdir()>,
+C<rand()>, C<srand()> -- 일반적으로 말해서, 글로벌한 외부상황에 의존하는 
+호출만 포함됩니다.
 
 =begin original
 
@@ -2342,11 +2334,10 @@ C library call documentation.
 
 =end original
 
-Perl がコンパイルされたシステムが、そういった呼び出しのスレッドセーフな
-バージョンを持っているなら、そちらが使われます。
-それを超えると、Perl は呼び出しがスレッドセーフかどうかのなすがままに
-なります。
-C ライブラリのドキュメントをよく吟味してください。
+Perl 이 컴파일된 시스템이 그런 호출의 스레드 세이프한 버젼을 가지고 있다면, 
+그것이 사용됩니다.
+그것을 넘으면, Perl 은 호출이 스레드 세이프한지 어떤지 그대로 사용됩니다.
+C 라이브러리의 문서를 잘 참조해주세요.
 
 =begin original
 
@@ -2362,20 +2353,20 @@ allow.
 
 =end original
 
-いくつかのプラットフォームでは、結果バッファが小さすぎる場合に
-スレッドセーフなライブラリのインターフェースが失敗を起こすかもしれません
-(例えば、ユーザーグループのデータベースがかなり大きく、リエントラントな
-インターフェースがこれらのデータベースの完全なスナップショットを
-もたらさなければならないような場合)。
-Perl は小さなバッファでスタートします。
-しかし結果が適合するまで結果バッファの確保を再試行し、大きくしようとします。
-この無制限な成長がセキュリティやメモリ消費の理由から好ましくないもので
-あるなら、C<PERL_REENTRANT_MAXSIZE> であなたの許す最大バイト数を定義して
-Perl を再コンパイルできます。
+몇가지 플랫폼에서는 결과 버퍼가 너무 작은 경우에 
+스레드 세이프한 라이브러리의 인터페이스가 실패를 발생시킬 지도 모릅니다
+(예를들어, 유저 그룹의 데이터베이스가 꽤 크고, 리엔트런트한 
+인터페이스가 이 데이터베이스들의 완전한 스냅샷을 얻지 않으면 
+안되는 경우).
+Perl 은 작은 버퍼에서 시작합니다.
+그러나 결과를 적합하게 하기 까지 결과 버퍼의 확보를 다시 실행하고, 
+크게하려고 합니다. 이 무제한 성장이 보안이나 메모리 소비의 이유에서 
+선호되지 않는 다면, C<PERL_REENTRANT_MAXSIZE> 에서 
+당신이 허가하는 최대 바이트 수를 정의해서 Perl 을 다시 컴파일 할 수 있습니다.
 
 =head1 Conclusion
 
-(おわりに)
+(끝으로)
 
 =begin original
 
@@ -2385,9 +2376,9 @@ on your way to becoming a threaded Perl expert.
 
 =end original
 
-完全なスレッドのチュートリアルをつくると一冊の本になってしまいます。
-しかしこの導入でカバーしてきたことを使って、あなたなりの方法で
-スレッド Perl のエキスパートになっていってください。
+완전한 스레드 튜토리얼을 만들면 한권의 책이 되어버립니다.
+그러나, 이 도입에서 커버한 것을 사용해서, 당신 나름대로의 방법으로 
+스레드 Perl 의 전문가가 되어보세요.
 
 =head1 SEE ALSO
 
@@ -2408,7 +2399,7 @@ L<http://lists.cpan.org/showlist.cgi?name=iThreads>
 
 =head1 Bibliography
 
-(参考文献)
+(참고문헌)
 
 =begin original
 
@@ -2416,11 +2407,11 @@ Here's a short bibliography courtesy of J?gen Christoffel:
 
 =end original
 
-Jurgen Christoffel の提供による簡潔な参考文献集：
+Jurgen Christoffel 의 제공에 의한 간결한 참고문헌집
 
 =head2 Introductory Texts
 
-(導入テキスト)
+(도입 텍스트)
 
 Birrell, Andrew D. An Introduction to Programming with
 Threads. Digital Equipment Corporation, 1989, DEC-SRC Research Report
@@ -2445,7 +2436,7 @@ Pthreads Programming. O'Reilly & Associates, 1996, ISBN 156592-115-1
 
 =head2 OS-Related References
 
-(OS関連のリファレンス)
+(OS관련 리퍼런스)
 
 Boykin, Joseph, David Kirschen, Alan Langerman, and Susan
 LoVerso. Programming under Mach. Addison-Wesley, 1994, ISBN
@@ -2459,7 +2450,7 @@ Silberschatz, Abraham, and Peter B. Galvin. Operating System Concepts,
 
 =head2 Other References
 
-(その他のリファレンス)
+(그 외의 리퍼런스)
 
 Arnold, Ken and James Gosling. The Java Programming Language, 2nd
 ed. Addison-Wesley, 1998, ISBN 0-201-31006-6.
@@ -2478,8 +2469,6 @@ L<http://www.perl.com/pub/a/2002/06/11/threads.html>
 
 =head1 Acknowledgements
 
-(謝辞)
-
 Thanks (in no particular order) to Chaim Frenkel, Steve Fink, Gurusamy
 Sarathy, Ilya Zakharevich, Benjamin Sugars, J?gen Christoffel, Joshua
 Pritikin, and Alan Burlison, for their help in reality-checking and
@@ -2487,8 +2476,6 @@ polishing this article.  Big thanks to Tom Christiansen for his rewrite
 of the prime number generator.
 
 =head1 AUTHOR
-
-(著者)
 
 Dan Sugalski E<lt>dan@sidhe.org<gt>
 
@@ -2498,8 +2485,7 @@ Slightly modified by Arthur Bergman to fit the new thread model/module.
 
 =end original
 
-新しいスレッドモデル・モジュールに対応するように Arthur Bergman によって
-若干の修正がなされました。
+새로운 스레드 모델, 모듈에 대응하도록 Arthur Bergman 에 의해 약간 수정되었습니다.
 
 =begin original
 
@@ -2508,8 +2494,8 @@ about thread-safety of Perl code.
 
 =end original
 
-Perl コードのスレッドセーフティについてより簡明になるよう
-Jorg Walter E<lt>jwalt@cpan.org<gt> によって改訂されました。
+Perl 코드의 스레드 세이프티에 대해서 보다 알기 쉽도록
+Jorg Walter E<lt>jwalt@cpan.org<gt> 에 의해 개정되었습니다.
 
 =begin original
 
@@ -2518,12 +2504,10 @@ less emphasis on yield().
 
 =end original
 
-Elizabeth Mattijsen E<lt>liz@dijkmat.nl<gt> によって、yield() を以前より
-強調しないよう若干アレンジされました。
+Elizabeth Mattijsen E<lt>liz@dijkmat.nl<gt> 에 의해 yield() 를 이전보다 
+강조하지 않도록 약간 바꾸었습니다.
 
 =head1 Copyrights
-
-(著作権)
 
 The original version of this article originally appeared in The Perl
 Journal #10, and is copyright 1998 The Perl Journal. It appears courtesy
