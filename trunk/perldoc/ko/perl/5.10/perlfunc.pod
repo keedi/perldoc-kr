@@ -638,7 +638,7 @@ Example:
     }
 
 =begin original
- 
+
 The interpretation of the file permission operators C<-r>, C<-R>,
 C<-w>, C<-W>, C<-x>, and C<-X> is by default based solely on the mode
 of the file and the uids and gids of the user.  There may be other
@@ -1777,7 +1777,7 @@ If NUMBER is omitted, uses C<$_>.
 =end original
 
 NUMBER 가 생략된 경우, C<$_> 를 사용합니다.
- 
+
 =begin original
 
 For the reverse, use L</ord>.
@@ -4502,7 +4502,7 @@ machine that doesn't implement getpriority(2).
 =end original
 
 프로세스, 프로세스그룹, 유저에 대한 현재의 우선도를 반환합니다.
-(L<getpriority(2)> 를 참조해주세요)
+( L<getpriority(2)> 를 참조해주세요.)
 getpriority(2) 를 구성하지 않는 
 머신에서 실행한 경우에는 치명적 예외가 발생합니다.
 
@@ -7522,6 +7522,7 @@ LIST 의 값을 TEMPLATE 로 주어진 룰을 사용해 문자열로 변환합�
 전형적으로는 각각의 변환된 값은 머신 레벨의 표현처럼 보입니다.
 예를들어, 32-bit 머신에서는 4 바이트로 표현되는 정수를 변환하면 
 4문자의 문자열로 변환됩니다.
+
 =begin original
 
 The TEMPLATE is a sequence of characters that give the order and type
@@ -10700,7 +10701,7 @@ documentation.
 이라고 선언할 필요가 있습니다.
 CMD 가 IPC_STAT 이나 GETALL 일 때에는 ARG 는 반환되는 
 semid_ds 구조체나 세마포어 값의 배열을 넣는 변수가 아니면 안됩니다.
-C<ioctl> 처럼 에러시에는 미정의값, 0 일때는 C<"0 이지만 참">, 
+C<ioctl> 처럼 에러시에는 미정의값, 0 일때는 "C< 0 but true>", 
 그 이외라면 그 값 그대로 반환합니다.
 ARG 는 네이티브한 short int 의 벡터에서 성립되지 않으면 안됩니다.
 이것은 C<pack("s!", (0)x$nsem) 으로 작성할 수 있습니다.
@@ -12612,7 +12613,7 @@ programs supply their own seed value (often C<time ^ $$> or C<time ^
 
 5.004 이전의 Perl 에서는 기본값의 시드값은 현재의 C<time> 이었습니다.
 이것은 특히 좋은 시드값이 아니었기 때문에, 
-많은 낡은 프로그램은 자력으로 시드값을 설정하고 있습니다만(C<time ^ $$> 또는 
+많은 낡은 프로그램은 자력으로 시드값을 설정하고 있습니다만(C< time ^ $$ > 또는 
 C<time ^ ($$ + ($$ << 15)) 가 자주 사용됩니다), 
 이미 이것은 필요없습니다.
 

@@ -211,7 +211,7 @@ This method provides the constant text for the sound itself.
 C<Cow>라는  C<$class>를 얻는다.
 Now, when we call C<< Cow->speak >>, we get a C<$class> of C<Cow> in
 C<speak>.  
-이로부터 C<mooo>를 반환하는 C<< Cow->Sound>> 메소드가 선택된다.
+이로부터 C<mooo>를 반환하는 C<< Cow->Sound >> 메소드가 선택된다.
 This in turn selects the C<< Cow->sound >> method, which
 returns C<moooo>.  
 그러면 C<Horse>에서는 어떻게 달라지는가?
@@ -1028,7 +1028,7 @@ method or two to get and set the color.
   }
 
 매개변수 인자에 접근하기 위해서 C<shift>를 사용하지 않고
-다른 방법으로 C<$_[0]을 직접 사용한 것에 주목하라.
+다른 방법으로 C<$_[0]>을 직접 사용한 것에 주목하라.
 (이것은 자주 호출되는 경우 실행 시간을 조금 줄여준다.)
 이제 Mr. Ed 의 색깔을 바꿀 수 있다.
 Note the alternate way of accessing the arguments: C<$_[0]> is used
