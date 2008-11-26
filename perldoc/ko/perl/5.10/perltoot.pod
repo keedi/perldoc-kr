@@ -733,7 +733,7 @@ is not enforced by Perl itself.  It's up to the programmer to behave.
 
 Perl 은, 누군가가 어느 메소드를 사용할 수 있는 가의 제한을 둘 수 없습니다.
 퍼블릭 과 프라이베이트 의 차이는 관례에 따른 는 것으로 구문에 따르지 않습니다.
-(아마도, L<변수로써의 데이터멤버>에, 아래처럼 기술하는 Alias 모듈을 
+(아마도, L<Data Members as Variables>에, 아래처럼 기술하는 Alias 모듈을 
 사용하지 않는 경우는).
 메소드의 이름이 하나, 2개의 언더바로 시작되거나 끝나는 것을 본 적이 있을겁니다.
 그 메소드가 그 클래스만, 그리고, 밀접한 그 사이에, 즉 서브클래스의 
@@ -3427,7 +3427,7 @@ User::pwent 에서 Perl 의 5.004 릴리즈의 코어한 함수의 구조체같�
 
 =head2 Data Members as Variables
 
-(변수로써의 데이터 멤버)
+(변수로써의 데이터멤버)
 
 =begin original
 
