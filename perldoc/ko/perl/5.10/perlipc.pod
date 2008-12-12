@@ -1,5 +1,5 @@
 
-=encoding euc-jp
+=encoding utf8
 
 =head1 NAME
 
@@ -9,7 +9,7 @@ perlipc - Perl interprocess communication (signals, fifos, pipes, safe subproces
 
 =end original
 
-perlipc - Perl $B$N%W%m%;%94VDL?.(B ($B%7%0%J%k(B, fifo, $B%Q%$%W(B, $B0BA4$JI{%W%m%;%9(B, $B%=%1%C%H(B, $B%;%^%U%)(B)
+perlipc - Perl 의 프로세스간 통신(시그널, fifo, 파이프, 안전한 서브프로세스, 소켓, 세마포어)
 
 =head1 DESCRIPTION
 
@@ -21,13 +21,13 @@ IPC calls.  Each is used in slightly different situations.
 
 =end original
 
-Perl $B$N4pK\E*$J(B IPC $B5!G=$O!"8E$-$h$-(B UNIX $B$N%7%0%J%k!"L>A0IU$-%Q%$%W!"(B
-$B%Q%$%W!"(BBerkeley $B%=%1%C%H%k!<%A%s!"(B SysV IPC $B%3!<%k$+$i9=@.$5$l$F$$$^$9!#(B
-$B$3$l$i3F!9$O$O$C$-$j$H0[$J$k>u67$G;H$o$l$^$9!#(B
+Perl 의 기본적인 IPC 기능은 옛날 좋은 UNIX 시그널, 이름붙은 파이프, 파이프 오픈,
+Berkeley 소켓루틴, SysV IPC 콜로 구성되어 있습니다.
+이 구성요소들은 각각 다른 상황에 맡게 제대로 이용됩니다.
 
 =head1 Signals
 
-($B%7%0%J%k(B)
+(시그널)
 
 =begin original
 
@@ -42,16 +42,15 @@ running out of stack space, or hitting file size limit.
 
 =end original
 
-Perl $B$OC1=c$J%7%0%J%k%O%s%I%j%s%0%b%G%k$r;H$C$F$$$^$9(B: %SIG $B$H$$$&(B
-$B%O%C%7%e$O!"%f!<%6!<$,%$%s%9%H!<%k$7$?%7%0%J%k%O%s%I%i$NL>A0!"(B
-$B$b$7$/$O%O%s%I%i$KBP$9$k%j%U%!%l%s%9$rJ];}$7$^$9!#(B
-$B$3$l$i$N%O%s%I%i$O!"5/F0$5$l$?%7%0%J%k$NL>A0$r0z?t$H$7$F8F$S=P$5$l$^$9!#(B
-$B%7%0%J%k$O(B control-C $B$d(B control-Z $B$N$h$&$JFCDj$N%-!<%\!<%I%7!<%1%s%9$G(B
-$B0U<1E*$K@8@.$9$k$3$H$b$G$-$^$9$7!"B>$N%W%m%;%9$,%7%0%J%k$r(B
-$BAw$k$3$H$b$"$j$^$9!#(B
-$B$"$k$$$O;R%W%m%;%9$,=*N;$7$?$H$+!"%W%m%;%9$,%9%?%C%/$r;H$$$-$C$?!"(B
-$B%U%!%$%k%5%$%:@)8B$K0z$C3]$+$C$?$H$$$C$?FC<l$J%$%Y%s%H$,H/@8$7$?$H$-$K!"(B
-$B%+!<%M%k$,<+F0E*$K%7%0%J%k$rH/@8$5$;$k$3$H$b$"$j$^$9!#(B
+Perl 은 간단한 시그널 핸들링 모델을 사용하고 있습니다: %SIG 라는 
+해쉬는 유저가 인스톨한 시그널핸들러의 이름,
+혹은 핸들러에 대한 리퍼런스를 가집니다.
+이 핸들러들은 기동한 시그널의 이름을 인수로 호출됩니다.
+시그널은 control-C 나 control-Z 같은 특정 키보트 시퀀스로 의식적으로 
+생성할 수 있고, 다른 프로세스가 시그널을 보낼 수도 있습니다.
+혹은 자식 프로세스가 종료했다거나, 프로세스가 스택을 모조리 써버리거나,
+파일 사이즈 제한에 걸렸거나 하는 특수한 이벤트가 발생한 때에 
+커널이 자동적으로 시그널을 발생시킬 수도 있습니다.
 
 =begin original
 
@@ -59,8 +58,8 @@ For example, to trap an interrupt signal, set up a handler like this:
 
 =end original
 
-$BNc$($P3d$j9~$_%7%0%J%k(B(interrupt signal)$B$r%H%i%C%W$9$k$K$O!"(B
-$B0J2<$NNc$N$h$&$K%O%s%I%i$r@_Dj$7$^$9(B:
+예를들어, 인터럽트 시그널을 트랩하기 위해서는,
+아래의 예제처럼 핸들러를 설정합니다:
 
     sub catch_zap {
 	my $signame = shift;
@@ -82,15 +81,14 @@ dump - see L</Deferred Signals (Safe Signals)> below.
 
 =end original
 
-Perl 5.7.3 $B0JA0$G$O!"<+J,$N%O%s%I%i$NCf$r;H$&$3$H$,$G$-$^$9!#(B
-$B;d$?$A$,G'<1$7$F$$$k$3$H$O!"%0%m!<%P%kJQ?t$K@_Dj$7$?8e$GNc30$r(B
-$B0z$-5/$3$9$H$$$&$3$H$@$1$G$"$k$3$H$KCm0U$7$F$/$@$5$$!#(B
-$B$3$l$O!"$[$H$s$I$N%7%9%F%`>e$G$O%i%$%V%i%j!"$H$/$K%a%b%j3d$jIU$1$d(B
-$BF~=PNO$K4X$9$k$b$N$O:FF~2DG=$G$O$J$$$?$a$G$9!#(B
-$B$3$l$O!"$"$J$?$N%O%s%I%iFb$N$[$H$s$I(B I<$B$"$i$f$k$3$H(B> $B$,M}O@E*$K$O(B
-$B%a%b%j%U%)!<%k%H$d$=$l$KB3$/%3%"%@%s%V$r0z$-5/$3$92DG=@-$,(B
-$B$"$k$H$$$&$3$H$G$9(B - $B0J2<$N(B L</Deferred Signals (Safe Signals)> $B$r(B
-$B;2>H$7$F$/$@$5$$!#(B
+Perl 5.7.3 이전에서는 자신의 핸들러 안을 사용할 수 있습니다.
+우리들이 인식하고 있는 것은, 글로벌 변수로 설정한 다음에 예외를 
+발생시키는 것뿐이라는 것에 주의해주세요.
+이것은 대부분의 시스템상에서는 라이브러리, 특히 메모리 할당이나 
+입출ㄹ력에 관한 것은 재입력이 불가능하기 때문입니다.
+이것은 당신의 핸들러 안의 대부분의 I<모든 상황>이 이론적으로는 
+메모리 폴트나 그에 이은 코어덤프를 일으ㅡ킬 가능성이 있다는 겁니다.
+-아래의 L</Deferred Signals (Safe Signals)> 을 참조해주세요.
 
 =begin original
 
@@ -101,12 +99,12 @@ indexed by name to get the number:
 
 =end original
 
-$B$"$J$?$N;H$C$F$$$k%7%9%F%`$K$*$1$k%7%0%J%k$NL>>N$O(B C<kill -l> $B$K(B
-$B$h$C$F%j%9%H%"%C%W$5$l$^$9!#(B
-$B$"$k$$$O%3%s%U%#%0%b%8%e!<%k$+$i<hF@$9$k$3$H$b$G$-$^$9!#(B
-$BL>A0$rF@$k$?$a$NHV9f$K$h$C$FE:$(;z$E$1$5$l$k(B @signame $B$H$$$&%j%9%H$H(B
-$BHV9f$rF@$k$?$a$NL>A0$K$h$C$FE:$(;z$E$1$5$l$k(B %signo $B$H$$$&%F!<%V%k$r(B
-$B%;%C%H%"%C%W$7$^$9!#(B
+당신이 사용하는 시스템에서 시그널의 명칭은  C<kill -l>에 의해 
+리스트업됩니다.
+혹은 컨피그 모듈에서 얻을 수도 있습니다.
+이름을 얻기 위한 번호에 의해 첨자가 붙은 @signame 이라는 리스트와 
+번호를 얻기 위한 이름에 의해 첨자가 붙은 %signo 라는 테이블을 
+셋업합니다.
 
     use Config;
     defined $Config{sig_name} || die "No sigs?";
@@ -122,8 +120,7 @@ So to check whether signal 17 and SIGALRM were the same, do just this:
 
 =end original
 
-$B$G$9$+$i!"(B17 $BHV$N%7%0%J%k$H(B SIGALRM $B$,F10l$G$"$k$+$I$&$+$O0J2<$N$h$&$K$7$F(B
-$B%A%'%C%/$G$-$^$9(B:
+그래서, 17 번의 시그널과 SIGALRM 이 동일한지 어떤지는 아래처럼 해서 체크할 수 있습니다:
 
     print "signal #17 = $signame[17]\n";
     if ($signo{ALRM}) {
@@ -138,10 +135,8 @@ default thing.
 
 =end original
 
-$B%O%s%I%i$H$7$F(B C<'IGNORE'> $B$d(B C<'DEFAULT'> $B$H$$$C$?J8;zNs$r(B
-$BBeF~$9$k$3$H$bA*Br$G$-$^$9!#(B
-$B$3$l$i$N%O%s%I%i$O!"(Bperl $B$,%7%0%J%k$rGK4~$5$;$k$h$&$K$7$?$j(B
-$B%G%U%)%k%H$NF0:n$r9T$&$h$&$K$5$;$k$b$N$G$9!#(B
+핸들러로써 C<'IGNORE'> 나 C<'DEFAULT'> 같은 문자열을 대입하는 것도 선택할 수 있습니다.
+이 핸들러들은 perl 이 시그널을 파괴시키도록 하거나, 기본 동작을 수행하도록 할 수 있습니다.
 
 =begin original
 
@@ -155,14 +150,13 @@ C<-1> on such platforms.
 
 =end original
 
-$B$[$H$s$I$N(B UNIX $B%W%i%C%H%U%)!<%`$G$O!"(BC<CHLD>(C<CLD> $B$N>l9g$b$"$j(B)
-$B%7%0%J%k$O(B C<'IGNORE'> $B$NCM$KBP1~$9$k$h$&$JFCJL$J?6$kIq$$$r$7$^$9!#(B
-$B$=$N$h$&$J%W%i%C%H%U%)!<%`$G$O(B C<'IGNORE'> $B$K(B C<$SIG{CHLD}> $B$r(B
-$B@_Dj$9$k$3$H$K$h$C$F!"?F%W%m%;%9$,(B C<wait()> $B$K<:GT$7$?$h$&$J$H$-$K(B
-$B%>%s%S%W%m%;%9$,$G$-$k$3$H$rKI$.$^$9(B($B;R%W%m%;%9$O<+F0E*$K(B
-$B4"$j<h$i$l$^$9(B)$B!#(B
-C<$SIG{CHLD}> $B$r(B C<'IGNORE'> $B$r@_Dj$7$F(B C<wait()> $B$r8F$S=P$9$3$H$K$h$C$F!"(B
-$B$3$N$h$&$J%W%i%C%H%U%)!<%`$G$O(B C<-1> $B$,DL>oJV$5$l$^$9!#(B
+대부분의 UNIX 플랫폼에서는 C<CHLD>(C<CLD> 인 경우도 있음) 시그널은 
+ C<'IGNORE'> 의 값에 대응하는 특별한 행동을 합니다.
+ 그런 플랫폼에서는  C<'IGNORE'> 에 C<$SIG{CHLD}> 를 
+설정하는 것에 의해, 부모 프로세스가 C<wait()> 에 실패한 때에 
+좀비 프로세스가 되는 것을 방지합니다(자식 프로세스는 자동적으로 없어집니다).
+C<$SIG{CHLD}> 를 C<'IGNORE'> 를 설정해서 C<wait()> 를 호출함에 의해
+이런 플랫폼에서는 C<-1> 를 통상적으로 반환합니다.
 
 =begin original
 
@@ -174,13 +168,12 @@ values are "inherited" by functions called from within that block.)
 
 =end original
 
-KILL $B%7%0%J%k$d(B STOP $B%7%0%J%k(B(TSTP $B$G$O$J$$(B)$B$N$h$&$J4v$D$+$N%7%0%J%k$O!"(B
-$B%H%i%C%W$9$k$3$H$bL5;k$9$k$3$H$b$G$-$^$;$s!#(B
-$B0l;~E*$K%7%0%J%k$rL5;k$9$k$?$a$N@oN,$O(B local() $BJ8$r;H$&$H$$$&$b$N$G$9!#(B
-$B$3$l$O$=$N(B local() $BJ8$r0O$`%V%m%C%/$+$i=P$?$H$-$K!"<+F0E*$K85$N>uBV$K(B
-$BI|5"$7$^$9!#(B
-(local() $B$K$h$kCM$O(B $B%V%m%C%/$NFbB&$+$i8F$S=P$5$l$?4X?t$K(B
-$B!H0z$-7Q$,$l$k!I(B(inherited) $B$3$H$rK:$l$J$$$G$/$@$5$$(B)$B!#(B
+KILL 시그널이나 STOP 시그널(TSTP 가 아닌) 같은 몇가지의 시그널은 
+트랩하는 것도 무시할 수 없습니다.
+일시적으로 시그널을 무시하기 위한 전략은 local() 문을 사용하는 것입니다.
+이것은 그 local() 문을 감싼 블록에서 나갔을 때에, 자동적으로 원래의 상태로 
+복귀합니다.
+(local() 에 의한 값은 블록의 안쪽에서 호출된 함수에 "상속되는" 것을 잊지 말아주세요)
 
     sub precious {
 	local $SIG{INT} = 'IGNORE';
@@ -199,11 +192,11 @@ it doesn't kill itself):
 
 =end original
 
-$BIi$N%W%m%;%9(B ID $B$KBP$7$F%7%0%J%k$rAw$k$3$H$O!"(BUNIX $B%W%m%;%9%0%k!<%W(B
-$BA4BN$K%7%0%J%k$rAw$k$3$H$K$J$j$^$9!#(B
-$B0J2<$N%3!<%I$O!"%+%l%s%H$N%W%m%;%9%0%k!<%W$KB0$9$kA4$F$N%W%m%;%9$K(B
-hang-up $B%7%0%J%k$rAw=P$7$^$9(B($B$=$7$F!"(B$SIG{HUP} $B$K(B IGNORE $B$r@_Dj$9$k$N$G!"(B
-$B<+J,<+?H$r(B kill $B$9$k$3$H$O$"$j$^$;$s(B)$B!#(B
+음수의 프로세스 ID 에 대해서 시그널을 보내는 것은 UNIX 프로세스 루프 전체에 
+시그널을 보내는 것이 됩니다.
+아래의 코드는 최근의 프로세스 그룹에 속한 모든 프로세스에 hang-up 시그널을 
+송출합니다(그리고 $SIG{HUP} 에 IGNORE 를 설정하기 때문에 자기 자신을 kill 할 수는
+없습니다).
 
     {
 	local $SIG{HUP} = 'IGNORE';
@@ -219,9 +212,9 @@ or has changed its UID.
 
 =end original
 
-$B$3$NB>$N6=L#?<$$%7%0%J%k$O!"%7%0%J%kHV9f(B 0 $B$G$9!#(B
-$B$3$l$O<B:]$K$O;R%W%m%;%9$K1F6A$r5Z$\$9$3$H$O$"$j$^$;$s$,!"(BUID $B$,(B
-$B@8$-$F$$$k$N$+!"$"$k$$$OJQ99$5$l$?$N$+$N%A%'%C%/$r9T$$$^$9!#(B
+다른 흥미깊은 시그널은 시그널 번호 0입니다.
+이것은 실제로는 자식 프로세스에 영향을 끼치는 일은 없지만, UID 가 
+생기거나, 혹은 변경되는 가 하는 체크를 ㅜ행합니다.
 
     unless (kill 0 => $kid_pid) {
 	warn "something wicked happened to $kid_pid";
@@ -236,9 +229,9 @@ You may be able to determine the cause of failure using C<%!>.
 
 =end original
 
-$BAw$j@h$N%W%m%;%9$N(B UID $B$,!"Aw$j85$HF1$8$G$O$J$$>l9g!"$?$H$(%W%m%;%9$,(B
-$B@8$-$F$$$F$b!"%7%0%J%k$rAw$k8"8B$,$J$$$N$G!"%7%0%J%kHV9f(B 0 $B$O<:GT$7$^$9!#(B
-$B<:GT$N860x$O!"(BC<%!> $B$r;H$C$F7hDj$G$-$^$9!#(B
+보낼 곳의 프로세스의 UID 가 보내는 곳과 같지 않은 경우, 예를들어 프로세스가 
+생겨도 시그널을 보내는 권한이 없기 때문에 시그널 번호 0 은 실패합니다.
+실패의 원인은 C<%!> 을 사용해서 결정할 수 있습니다.
 
     unless (kill 0 => $pid or $!{EPERM}) {
 	warn "$pid looks dead";
@@ -251,7 +244,7 @@ handlers:
 
 =end original
 
-$BC1=c$J%7%0%J%k%O%s%I%i$K$OL5L>4X?t$r;H$$$?$/$J$k$+$b$7$l$^$;$s(B:
+단순한 시그널 핸들러에는 이름없는 함수를 사용하려고 할지도 모르겠죠:
 
     $SIG{INT} = sub { die "\nOutta here!\n" };
 
@@ -267,14 +260,13 @@ signal handlers like this:
 
 =end original
 
-$B$7$+$7$3$l$O!"<+J,<+?H$r:F%$%s%9%H!<%k$9$kI,MW$,$"$k$h$&$J!"$b$C$HJ#;($J(B
-$B%O%s%I%i$KBP$7$F$OLdBj$K$J$k2DG=@-$,$"$j$^$9!#(B
-Perl $B$N%7%0%J%k5!9=$O8=:_$N$H$3$m(B C $B%i%$%V%i%j$N(B  signal(3) $B4X?t$K4p$E$$$?(B
-$B$b$N$J$N$G!"4X?t$,!H$V$C2u$l$?!I$h$&$J!"$D$^$j!"$h$j?7$7$/$F?.Mj@-$N$"$k(B
-BSD $B7A<0$d(B POSIX $B7A<0$G$O$J$/8E$/$F?.MQ$G$-$J$$(B SysV $BJ}<0$N?6$kIq$$$r(B
-$B$9$k$h$&$J$b$N%7%9%F%`$G<B9T$9$k$h$&$JIT1?$JN)>l$K$J$k$+$b$7$l$^$;$s!#(B
-$B$=$N$?$a!"0J2<$N$h$&$K%7%0%J%k%O%s%I%i$r=q$$$F?M$r<i$C$F$$$k$b$N$r(B
-$B8+$k$G$7$g$&(B:
+그러나 이것은 자기 자신을 재인스톨할 필요가 있는 더욱 복잡한 핸들러에 대해서는 
+문제가 될 가능성이 있습니다.
+Perl 의 시그널 기구는 현재 C 라이브러리의 signal(3) 함수에 기반한 것이기에 
+함수가 "망가졌다" 같은 즉, 보다 새롭고 신뢰성있는 BSD 형식이나 POSIX 형식이 아닌 
+낡고 신용할 수 없는 SysV 방식의 행동을 하는 시스템에서 실행하려는 것은 불운한 
+입장에 놓여질지도 모릅니다.
+그 때문에, 아래처럼 시그널 핸들러를 써서 사람을 구하는 것을 보겠죠:
 
     sub REAPER {
 	$waitedpid = wait;
@@ -291,7 +283,7 @@ or better still:
 
 =end original
 
-$B$"$k$$$O$b$C$H$^$7$J$h$&$K(B:
+혹은 더욱 제대로:
 
     use POSIX ":sys_wait_h";
     sub REAPER {
@@ -320,15 +312,13 @@ using longjmp() or throw() in other languages.
 
 =end original
 
-UNIX $B$G$O!"%7%0%J%k%O%s%I%i$O%?%$%`%"%&%H$N$?$a$K$b;H$o$l$^$9!#(B
-C<eval{}> $B%V%m%C%/$NCf$G$O0BA4$KJ]8n$5$l$$$k4V$K!"(Balarm $B%7%0%J%k$r(B
-$B%H%i%C%W$9$k$?$a$K%7%0%J%k%O%s%I%i$r@_Dj$7$F!"$=$N8e$G2rJ|$5$l$k(B
-$BIC?t$r%9%1%8%e!<%j%s%0$7$^$9!#(B
-$B$=$l$+$i%V%m%C%-%s%0A`:n$r;n$7$F!"(B
-$B$=$l$,40N;$7$?$i(B C<eval{}> $B%V%m%C%/$rH4$1$kA0$K(B alarm $B$r%/%j%"!<$7$^$9!#(B
-$B@_Dj$7$?;~4V$,7P$C$F$7$^$C$?>l9g$K$O!"B>$N8@8l$K$*$1$k(B longjmp() $B$d(B
-throw() $B$r;H$C$?$H$-$HF1$8$h$&$K%V%m%C%/$rH4$1$k$?$a$K(B die() $B$r(B
-$B;H$$$^$9!#(B
+UNIX 에서는 시그널 핸들러는 타임아웃을 위해서도 사용됩니다.
+C<eval {}> 블록 안에서는 안전하게 보호되는 사이에, alarm 시그널을 
+트랩하기 위해 시그널핸들러를 설정해서, 그 뒤에 해방되는 초수를 스케쥴링합니다.
+그리고 블록킹 조작을 시험해서, 그것이 완료하면 C<eval{}> 블록을 빼기 전에 
+alarm 을 클리어합니다.
+설정한 시간이 지난 경우에는 다른 언어에 의해 longjmp()나 throw() 를 
+사용한 때와 같은 블록을 빼기 위해 die 를 사용합니다.
 
 =begin original
 
@@ -336,7 +326,7 @@ Here's an example:
 
 =end original
 
-$BNc$r5s$2$^$7$g$&(B:
+例を挙げましょう:
 
     eval {
         local $SIG{ALRM} = sub { die "alarm clock restart" };
@@ -354,10 +344,9 @@ need to do your own fork() and exec(), and kill the errant child process.
 
 =end original
 
-$B;~4V@Z$l$r5/$3$7$?A`:n$,(B system() $B$+(B qx() $B$J$i!"$3$N%F%/%K%C%/$O%>%s%S$r(B
-$B@8@.$9$k798~$,$"$j$^$9!#(B
-$B$b$7$=$l$,LdBj$J$i!"<+NO$G(B fork() $B$H(B exec() $B$r9T$C$F!"%(%i!<$N5/$-$?(B
-$B;R%W%m%;%9$r(B kill $B$9$kI,MW$,$"$k$G$7$g$&!#(B
+타임아웃을 일으킨 조작이 system() 이나 qx() 라면, 이 테크닉은 좀비를 생성하는 경향이 있습니다.
+만약 그것이 문제라면, 스스로 ㄹork() 나 exec() 를 사용해서 에러를 일으킨 
+자식프로세스를 kill 할 필요가 있을 겁니다.
 
 =begin original
 
@@ -368,15 +357,13 @@ examples in it.
 
 =end original
 
-$B$h$jJ#;($J%7%0%J%k=hM}$N$?$a$K$O!"I8=`$N(B POSIX $B%b%8%e!<%k$r3N$+$a$k$H(B
-$B$h$$$+$b$7$l$^$;$s!#(B
-$BC2$+$o$7$$$3$H$K$3$l$O$[$H$s$I%"%s%I%-%e%a%s%H$J>uBV$G$9$,!"(BPerl $B$N(B
-$B%=!<%9G[I[%-%C%H$K$"$k(B F<t/lib/posix.t> $B$H$$$&%U%!%$%k$K$O4v$D$+$N(B
-$B%5%s%W%k$,$"$j$^$9!#(B
+보다 복잡한 시그널 처리를 위해서는 표준 POSIX 모듈을 정하면 좋을 지도 모릅니다.
+이것은 거의 대부분 문서화되지 않은 상태이지만, Perl 소스배포키트인 
+ F<t/lib/posix.t> 라는 파일에는 몇가지 샘플이 있습니다.
 
 =head2 Handling the SIGHUP Signal in Daemons
 
-($B%G!<%b%s$G(B SIGHUP $B%7%0%J%k$r07$&(B)
+(데몬으로 SIGHUP 시그널을 다루기)
 
 =begin original
 
@@ -391,15 +378,13 @@ you simply send it the C<SIGHUP> signal.
 
 =end original
 
-$BIaDL%7%9%F%`%V!<%H;~$K5/F0$7!"%7%9%F%`%7%c%C%H%@%&%s;~$K=*N;$9$k%W%m%;%9$N(B
-$B$3$H$r%G!<%b%s(B(daemon: Disk And Execution MONitor)$B$H8F$S$^$9!#(B
-$B$b$7%G!<%b%s%W%m%;%9$K@_Dj%U%!%$%k$,$"$j!"$=$l$,%W%m%;%9$,3+;O$7$F$+$i(B
-$BJQ99$5$l$?>l9g!"%W%m%;%9$r;_$a$k$3$H$J$/!"%W%m%;%9$K@_Dj%U%!%$%k$r(B
-$B:FFI$_9~$_$9$k$3$H$rCN$i$;$kJ}K!$,$"$k$Y$-$G$9!#(B
-$BB?$/$N%G!<%b%s$O$3$N5!9=$r(B C<SIGHUP> $B%7%0%J%k%O%s%I%i$r;H$C$F(B
-$BDs6!$7$F$$$^$9!#(B
-$B%G!<%b%s$K%U%!%$%k$r:FFI$_9~$_$7$F$[$7$$>l9g!"C1$K%G!<%b%s$K(B
-C<SIGHUP> $B%7%0%J%k$rAw$j$^$9!#(B
+보통 시스템 부트시 시에 가동하고, 시스템 셧다운 시에 종료하는 프로세스를 
+데몬(daemon: Disk And Execution MONitor) 라고 부릅니다.
+만약 데몬 프로세스에 설정파일이 있고, 그것이 프로세스를 시작하고나서 
+갱신된 경우, 프로세스를 멈추는 것이 아니라, 프로세스에 설정파일을 
+다시 읽어들이는 것을 알리는 방법이 있어야 합니다.
+많은 데몬은 이 기능을 C<SIGHUP> 시그널 핸들러를 사용해서 제공하고 있습니다.
+데몬에 알람을 다시 읽어야할 경우, 단순히 데몬에 C<SIGHUP> 시그널을 보냅니다.
 
 =begin original
 
@@ -411,12 +396,11 @@ is well-defined.
 
 =end original
 
-$BA4$F$N%W%i%C%H%U%)!<%`$K$*$$$F!"%7%0%J%kG[Aw$N8e<+F0E*$K(B($B%M%$%F%#%V$J(B)
-$B%7%0%J%k%O%s%I%i$r:F@_Dj$9$k$o$1$G$O$"$j$^$;$s!#(B
-$B$3$l$O!"%O%s%I%i$O:G=i$K%7%0%J%k$,Aw$i$l$?$H$-$K$N$_F0:n$9$k$3$H$r(B
-$B0UL#$7$^$9!#(B
-$B$3$NLdBj$N2r7h:v$O!"$b$7MxMQ2DG=$G$"$l$P!"?6$kIq$$$,L@3N$G$"$k(B
-C<POSIX> $B%7%0%J%k%O%s%I%i$r;H$&$3$H$G$9!#(B
+모든 플랫폼에 있어서 시그널 송신 뒤 자동적으로(네이티브한) 시그널핸들러를 
+재설정하는 것은 아닙니다.
+이것은 핸들러는 최초에 시그널이 보내진 때에만 동작하는 것을 의미합니다.
+이 문제의 해결책은, 만약 이용가능하다면 행동이 명확하고 C<POSIX> 
+시그널 핸들러를 사용하는 것입니다.
 
 =begin original
 
@@ -427,10 +411,9 @@ info to show that it works and should be replaced with the real code.
 
 =end original
 
-$B0J2<$NNc$O!"(BC<SIGHUP> $B$r<u$1<h$kKh$K:F5/F0$9$k$H$$$&C1=c$J%G!<%b%s$r(B
-$B<BAu$7$F$$$^$9!#(B
-$B<B:]$N%3!<%I$O%5%V%k!<%A%s(B C<code()> $B$KCV$+$l$F$$$F!"$I$N$h$&$KF0:n$9$k$+$r(B
-$B<($7!"<B:]$N%3!<%I$HCV$-49$($i$l$k$h$&$K!"C1$K%G%P%C%0>pJs$r=PNO$7$^$9!#(B
+아래의 예제는 C<SIGHUP> 을 얻을 때마다 재기동하는 단순한 데몬을 구성하고 있습니다.
+시렞의 코드는 서브루틴 C<code()> 에 놓여있고, 어떻게 동작하는 가를 나타내고,
+실제의 코드와 바뀌도록 단순히 디버그 정보를 출력합니다.
 
   #!/usr/bin/perl -w
 
@@ -474,7 +457,7 @@ info to show that it works and should be replaced with the real code.
 
 =head1 Named Pipes
 
-($BL>A0IU$-%Q%$%W(B)
+(이름붙은 파이프)
 
 =begin original
 
@@ -485,10 +468,10 @@ processes rendezvous using a filename and don't have to be related.
 
 =end original
 
-$BL>A0IU$-%Q%$%W(B($B$7$P$7$P(B FIFO $B$H$7$F;2>H$5$l$^$9(B)$B$O!"F1$8%^%7%s>e$G$N(B
-$B%W%m%;%94VDL?.$N$?$a$N8E$$(B UNIX IPC $B5!9=$G$9!#(B
-$B$3$l$ODL>o$NL5L>%Q%$%W$N@\B3$HF1MM$KF0:n$7$^$9$,!"%U%!%$%kL>$r;H$C$F(B
-$B%W%m%;%9$N%i%s%G%V!<$,9T$o$l!"4XO"$E$1$kI,MW$,$J$$$H$$$&E@$,0[$J$j$^$9!#(B
+이름붙은 파이프(간혹 FIFO 로 참조됩니다)는 같은 머신상의 프로세스간 통신을 위한
+낡은 UNIX PC 구조입니다.
+이것은 보통의 이름없는 파이프의 접속처럼 동작하지만, 파일이름을 사용해서 
+프로세스의 랑데뷰가 수행되고, 관련지을 필요가 없다는 점이 다릅니다.
 
 =begin original
 
@@ -496,7 +479,7 @@ To create a named pipe, use the C<POSIX::mkfifo()> function.
 
 =end original
 
-$BL>A0IU$-%Q%$%W$r@8@.$9$k$K$O!"(BC<POSIX::mkfifo()> $B4X?t$r;H$C$F$/$@$5$$!#(B
+이름붙은 파이프를 생성하기 위해선 C<POSIX::mkfifo()> 함수를 사용해주세요.
 
     use POSIX qw(mkfifo);
     mkfifo($path, 0700) or die "mkfifo $path failed: $!";
@@ -508,9 +491,9 @@ systems, mkfifo(1).  These may not be in your normal path.
 
 =end original
 
-$B0lIt$N%7%9%F%`$G$O(B Unix $B%3%^%s%I(B mknod(1) $B$+!"%7%9%F%`$K$h$C$F$O(B
-mkfifo(1) $B$r;H$($^$9!#(B
-$B$3$l$i$O$"$J$?$NDL>o%Q%9(B(normal path)$B$KCV$/$3$H$O$G$-$^$;$s!#(B
+일부의 시스템에서는 Unix 커맨드 mknod(1) 이나, 시스템에 따라서는 
+mkfifo(1) 를 사용할 수 있습니다.
+이것들은 당신의 통상경로(normal path)에 놓을 수는 없습니다.
 
     # system return val is backwards, so && not ||
     #
@@ -530,10 +513,9 @@ on the other end.
 
 =end original
 
-fifo $B$O!"$"$k%W%m%;%9$r$=$l$H$O4X78$J$$JL$N%W%m%;%9$K@\B3$7$?$$$H$-$K(B
-$BJXMx$G$9!#(B
-fifo $B$r%*!<%W%s$7$?$H$-!"%W%m%0%i%`$O$b$&0lJ}$NC<E@$K2?$+$,(B
-$BCV$+$l$k$^$G%V%m%C%/$5$l$^$9!#(B
+fifo 는 어느 프로세스를 그것과는 관계없는 별도의 프로세스에 접속하고 싶을 때에 
+편리합니다.
+fifo 를 오픈한 때, 프로그램은 다른 쪽에 뭔가가 놓이기까지 블록됩니다.
 
 =begin original
 
@@ -546,14 +528,13 @@ to find out whether anyone (or anything) has accidentally removed our fifo.
 
 =end original
 
-$B$?$H$($P!"(BF<.signature> $B$H$$$&%U%!%$%k$r!"$b$&0lJ}$NC<E@$K(B Perl
-$B%W%m%0%i%`$,CV$+$l$F$$$kL>A0IU$-%Q%$%W$K@\B3$7$?$$$H$7$^$7$g$&!#(B
-$B$3$N$H$-!"G$0U$N%W%m%0%i%`$,G$0U$N;~E@$G(B($B%a%$%i!<!"%K%e!<%:%j!<%@!<!"(B
-finger $B%W%m%0%i%`$J$I$N$h$&$K(B)$B$=$N%U%!%$%k$rFI$_=P$=$&$H$7$^$9$+$i!"(B
-$BFI$_=P$7%W%m%0%i%`$O%V%m%C%/$r$7$F$+$i$"$J$?$N%W%m%0%i%`$,?7$7$$(B
-$B%7%0%M%A%c!<$rDs6!$9$k$h$&$K$7$J$1$l$P$J$j$^$;$s!#(B
-$BC/$+(B($B$b$7$/$O2?$+(B)$B$,4V0c$C$F;d$?$A$N(Bfifo$B$r:o=|$7$?$j$7$J$$$+$I$&$+$r(B
-$B4F;k$9$k$?$a$K(B B<-p> $B$H$$$&(B pipe-cheching $B%U%!%$%k%F%9%H$r;HMQ$7$^$9!#(B
+예를들어 F<.signature> 라는 파일을 다른 쪽에 Perl 프로그램이 놓여있는 
+이름붙은 파이프에 접속하고 싶다고 합시다.
+이 때, 임의의 프로그램이 임의의 시점에서(메일러, 뉴스리더, finger 프로그램등과 같이) 
+그 파일을 읽어내려고 하지만, 읽어내는 프로그램은 블록을 하고나서 당신의 
+프로그램이 새로운 시그니쳐를 제공하도록 하지 않으면 안됩니다.
+누군가(혹은 뭔가)가 잘못해서 자신들의 fifo 를 삭제하지는 않는지를 
+감시하기 위해 B<-p> 같은 pipe-checking 파일테스트를 사용합니다.
 
     chdir; # go home
     $FIFO = '.signature';
@@ -575,7 +556,7 @@ finger $B%W%m%0%i%`$J$I$N$h$&$K(B)$B$=$N%U%!%$%k$rFI$_=P$=$&$H$7$^$9$+$i!"(B
 
 =head2 Deferred Signals (Safe Signals)
 
-($BJ]N1%7%0%J%k(B($B0BA4$J%7%0%J%k(B))
+(보류시그널(안전한 시그널))
 
 =begin original
 
@@ -591,17 +572,15 @@ unpredictable behaviour may result.
 
 =end original
 
-Perl 5.7.3 $B0JA0$N(B Perl $B$G$O!"%7%0%J%k$r<h$j07$&(B Perl $B%W%m%0%i%`$r(B
-$B%$%s%9%H!<%k$9$k$3$H$K$h$C$F!"$"$J$?$OFs$D$N4m81@-$KD>LL$9$k$3$H$K(B
-$B$J$j$^$7$?!#(B
-$BBh0l$K!":FF~2DG=$J%i%$%V%i%j4X?t$rHw$($?%7%9%F%`$O?t>/$J$$$3$H!#(B
-Perl $B$,$"$k4X?t(B(malloc(3) $B$d(B printf(3) $B$J$I(B)$B$r<B9TCf$K%7%0%J%k3d$j9~$_$,(B
-$B$"$C$?$H$9$k$H!"$"$J$?$N%7%0%J%k%O%s%I%i$OF1$84X?t$r(B
-$B:FEY8F$S=P$7!"7k2L$H$7$FM=B,$N$D$+$J$$F0:n$K$J$k2DG=@-$,$"$j$^$9!#(B
-$BBhFs$K!"(BPerl $B<+?H$b:GDc%l%Y%k$K$*$$$F$O:FF~2DG=$K(B
-$B$J$C$F$$$J$$$H$$$&$3$H$G$9!#(B
-Perl $B$,<+J,$NFbIt9=B$$rA`:n$7$F$$$k$H$-$K%7%0%J%k3d$j9~$_$,(B
-$B$"$C$?$H$9$k$H!"$3$l$b$^$?M=B,$N$D$+$J$$F0:n$K$J$k$G$7$g$&!#(B
+Perl 5.7.3 이전의 Perl 에서는 시그널을 다루는 Perl 프로그램을 인스톨 하는 것에 의해
+당신은 두가지 위험성에 직면하게 됩니다.
+첫번째는 재입력가능한 라이브러리 함수를 준비한 시스템은 적다는 것.
+Perl 이 어느함수(malloc(3) 나 printf(3)등)을 실행중에 시그널 인터럽트가 
+있다고 하면, 당신의 시그널 핸들러는 가틍ㄴ 함수를 다시 읽고, 결과로써 예측이 불가능한 
+동작이 될 가능성이 있습니다.
+두번째로, Perl 자신도 최저 레벨에 있어서는 재입력가능하게 되지 않는다는 것입니다.
+Perl 이 자신의 내부구조를 조작하고 있을 때에 시그널 인터럽트가 있다고 하면,
+이것도 또한 예측할 수 없는 동작이 되겠죠.
 
 =begin original
 
@@ -618,20 +597,16 @@ and be prepared to clean up core dumps now and again.
 
 =end original
 
-$B$"$J$?$N<h$j$&$k<jCJ$,Fs$D$"$j$^$7$?(B:
-$BJP<968E*$K$J$k$+8=<BE*$K$J$k$+$G$9!#(B
-$BJP<968E*%"%W%m!<%A$O!"$"$J$?$N%7%0%J%k%O%s%I%i$NCf$G$G$-$k$@$1(B
-$B>/$J$$$3$H$r9T$&$H$$$&$b$N$G$7$?!#(B
-$B4{$KCM$r$b$C$FB8:_$7$F$$$k@0?tJQ?t$KCM$r@_Dj$7$F%j%?!<%s$7$^$9!#(B
-$B$3$l$OC1$K%j%9%?!<%H$9$k$h$&$JCY$$%7%9%F%`%3!<%k$NCf$K$$$k$H$-$K$O(B
-$B=u$1$K$J$j$^$;$s!#(B
-$B$3$l$O$D$^$j!"%O%s%I%i$N30$K(B longjmp(3) $B$9$k$K$O(B C<die> $B$9$kI,MW$,(B
-$B$"$k$H$$$&$3$H$G$9!#(B
-$B$3$l$OK\Ev$NJP<968$H$$$&$N$K$O$A$g$C$H$*$*$2$5$G$9$,!"%O%s%I%iCf$G(B
-C<die> $B$rGS=|$7$^$9!#(B
-$B8=<BE*$J%"%W%m!<%A$O!V%j%9%/$,$"$k$N$OJ,$+$C$F$k$1$I$5!"JXMx$J$i(B
-$B$$$$$8$c$J$$!W$H$$$&$b$N$G!"%7%0%J%k%O%s%I%iCf$G9T$$$?$$$3$H$r(B
-$BA4$F9T$$!"%3%"%@%s%W$rA]=|$9$k=`Hw$r$7$F$+$i:FEY9T$&$H$$$&$b$N$G$7$?!#(B
+당신이 할 수 있는 수단은 두가지가 있었습니다:
+편집광적이 되거나 현실적이 되거나 입니다.
+편집광적인 접근은, 당신의 시그널 핸들러 안에서 할 수 있는 만큼 작은 일을 수행하는 것입니다.
+이미 값을 가지고 존재하는 정수변수에 값을 설정해서 리턴합니다.
+이것은 단순히 리스타트하는 느린 시스템 호출의 안에 있을 때에는 도움이 안됩니다.
+이것은 즉, 핸들러의 바깥쪽 longjmp(3) 하기 위해서는 C<die> 할 필요가 있다는 것입니다.
+이것은 정말 편집광적이라는 것에는 조금 무리가 있지만, 핸들러 안에서 C<die> 를 배제합니다.
+현실적인 접근은 "리스크가 있는 것은 알지만, 편리하다면 좋지않아?"라는 것으로,
+시그널 핸들러 안에서 수행하고 싶은 것을 모두 수행해서, 코어덤프를 제거하는 준비를 
+하고나서 다시 수행하는 것이었습니다.
 
 =begin original
 
@@ -649,22 +624,22 @@ previous Perls in the following ways:
 
 =end original
 
-Perl 5.7.3 $B0J9_$G$O!"$3$NLdBj$rHr$1$k$?$a$K!"%7%0%J%k$O!VJ]N1!W$5$l$^$9(B --
-$B$3$l$O!"%7%9%F%`$K$h$C$F%7%0%J%k$,(B (Perl $B$r<BAu$7$F$$$k(B C $B%3!<%I$K(B)
-$BG[Aw$5$l$k$H!"%U%i%0$r%;%C%H$7$F!"%O%s%I%i$OD>$A$KJV$j$^$9!#(B
-$B$=$l$+$i!"(BPerl $B%$%s%?%W%j%?$N@oN,E*$K!V0BA4$J!WCOE@(B
-($BNc$($P!"?7$7$$%*%Z%3!<%I$r<B9T$7$h$&$H$7$F$$$k;~E@(B) $B$G!"(B
-$B%U%i%0$r%A%'%C%/$7$F!"(B%SIG $B$N(B Perl $B%l%Y%k%O%s%I%i$r<B9T$7$^$9!#(B
-$B!VJ]N1!W%9%-!<%`$O!"(BPerl $B%$%s%?%W%j%?$,0BA4$J>uBV$K$"$C$F!"%O%s%I%i$,(B
-$B8F$S=P$5$l$?$H$-$K%7%9%F%`%i%$%V%i%j$NCf$G$O$J$$$3$H$,J,$+$C$F$$$k$N$G!"(B
-$B%7%0%J%k%O%s%I%i$N%3!<%G%#%s%0$,MZ$+$K=@Fp$K$J$j$^$9!#(B
-$B$7$+$7!"<BAu$O0J2<$NJ}8~$G0JA0$N(B Perl $B$H0[$J$j$^$9(B:
+Perl 5.7.3 이후에서는 이 문제를 피하기 위해서 시그널은 "보류" 됩니다 --
+이거은 시스템에 따라 시그널이 (Perl 을 구성하는 C 코드에) 송신되면, 
+플래그를 설정하고, 핸들러는 즉시 반환합니다.
+그리고 Perl 인터프리터의 전략적으로 "안전한" 지점(예를들어, 새로운 
+OPCODE 를 실행하려고 하는 시점)에서, 플래그를 체크하고 %SIG 의 Perl 
+레벨 핸들러를 실행합니다.
+"보류" 스킴은 Perl 인터프리터가 안전한 상태이고, 핸들러가 호출될 때에 
+시스템 라이브러리 안이 아닌 것을 알 고 있기 때문에, 
+시그널 핸들러의 코딩이 유연하게 됩니다.
+그러나, 구성하기에는 아래의 방향으로 이전의 Perl 과는 다릅니다:
 
 =over 4
 
 =item Long-running opcodes
 
-($BD9;~4V<B9T$5$l$k%*%Z%3!<%I(B)
+(장시간 실행되는 OPCODES)
 
 =begin original
 
@@ -675,10 +650,9 @@ not be seen until the current opcode completes.
 
 =end original
 
-Perl $B%$%s%?%W%j%?$O!"$b$7D9;~4V<B9T$5$l$k%*%Z%3!<%I(B
-($BNc$($P$H$F$bD9$$J8;zNs$G$N@55,I=8=A`:n(B)$B$NESCf$G%7%0%J%k$,(B
-$BE~Ce$9$k$H!"?7$7$$%*%Z%3!<%I$r<B9T$7$h$&$H$9$k;~$K$N$_%7%0%J%k%U%i%0$r(B
-$B8+$k$N$G!"%7%0%J%k$O8=:_$N%*%Z%3!<%I$,40N;$9$k$^$G8=$l$^$;$s!#(B
+Perl 인터프리터는 만약 장시간 실행되는 OPCODE( 예를들어 매우 긴 문자열에서의 정규표현조작)의 
+도중에 시그널이 도착하면, 새로운 OPCODE 를 실행하려고 할 때에만 시그널 플래그를 보기때문에
+시그널은 현재의 OPCODE 가 완료하기 까지 나타나지 않습니다.
 
 =begin original
 
@@ -698,24 +672,22 @@ may change in future versions of Perl.
 
 =end original
 
-$BCm0U(B: $B$b$7$I$N$h$&$J<oN`$N%7%0%J%k$G$b(B($BNc$($P9b@:EY$N%?%$%^!<$+$i(B)
-1 $B$D$N%*%Z%3!<%I$N4V$KJ#?t2sH/@8$7$?>l9g!"$=$N%7%0%J%k$N%O%s%I%i$O(B
-$B%*%Z%3!<%I$N40N;8e(B 1 $BEY$7$+8F$S=P$5$l$:!"$=$NB>$N<BBN$OGK4~$5$l$^$9!#(B
-$B$5$i$K!"%7%9%F%`$N%7%0%J%k%-%e!<$,$"$U$l$?$?$a$K(B
-$B$"$k%*%Z%3!<%I$,40N;;~$K!"H/@8$7$?$1$l$I$b$^$@JaB*$5$l$F$$$J$$(B
-($B=>$C$F$^$@J]N1$5$l$F$$$J$$(B)$B%7%0%J%k$,$"$k$H(B
-$B$3$l$i$N%7%0%J%k$,0z$-B3$/%*%Z%3!<%I$N4VJaB*$*$h$SJ]N1$5$l!";~!9(B
-$B6C$/$Y$-7k2L$H$J$k$3$H$,$"$j$^$9!#(B
-$BNc$($P!"(BC<alarm(0)> $B$O%"%i!<%`$NH/@8$r;_$a$^$9$,!"(B
-$BH/@8$7$?$1$l$I$b$^$@JaB*$7$F$$$J$$%"%i!<%`$NG[C#$,%-%c%s%;%k$7$J$$$N$G!"(B
-C<alarm(0)> $B$r8F$S=P$7$?8e$K$b%"%i!<%`$,G[Aw$5$l$k$3$H$,$"$j$^$9!#(B
-$B$3$l$O8=:_$N<BAu$NI{:nMQ$G$"$j!">-Mh$N%P!<%8%g%s$N(B Perl $B$G$O(B
-$BJQ99$5$l$k$+$b$7$l$J$$$N$G!"$3$NCJMn$K5-=R$5$l$??6$kIq$$$K0MB8$7$F$O(B
-$B$$$1$^$;$s!#(B
+주의: 만약 어떤 종류의 시그널에서도(예를들어 높은 정밀성의 타이머에서)
+하나의 OPCODE 사에에 여러번 발생한 경우, 그 시그널의 핸들러는 
+OPCODE 의 완료뒤 한번만 호출되지 않고, 그 외의 실체는 파괴됩니다.
+거기에 시스템의 시그널 큐가 채워지기 때문에 어떤 OPCODE 가 완료할 때에
+발생하지 않지만 아직 충분하지 않은(따라서 아직 보류되지 않은) 시그널이 
+있으면 이 시그널들이 이어서 OPCODE 사이의 보충 및 보류되고, 때때로 
+놀랄만한 결과가 될 수 있습니다.
+예를들어 C<alarm(0)> 은 알람 발생을 멈추지만, 
+발생했지만 아직 충분하지 않은 알람의 배달이 캔슬하지 않았기 때문에,
+C<alarm(0)> 를 호출한 뒤에도 알람이 송신될 수 있습니다.
+이것은 현재의 구성의 부작용이고, 장래의 Perl 버젼에서는 
+갱신될지도 모르기 때문에, 이 단락에서 기술되는 행동에 의존해서는 안됩니다.
 
 =item Interrupting IO
 
-(I/O $B3d$j9~$_(B)
+(I/O 인터럽트)
 
 =begin original
 
@@ -733,20 +705,18 @@ the signal flags and calls %SIG handlers before resuming IO operation.)
 
 =end original
 
-(INT control-C $B$J$I$G(B) $B%7%0%J%k$,G[Aw$5$l$k$H!"(B
-OS $B$O(B (Perl E<lt>E<gt> $B1i;;;R$N<BAu$G;H$o$l$F$$$k(B) C<read> $B$N$h$&$J(B
-I/O $BA`:n$rCfCG$7$^$9!#(B
-$B8E$$(B Perl $B$G$O%O%s%I%i$r$9$0$K8F$S=P$7$^$9(B
-($B$=$7$F(B C<read> $B$O$&$^$/F0$/$N$G!V0BA4$G$O$J$$!W$3$H$O$"$j$^$;$s(B)$B!#(B
-$B!VJ]N1!W%9%-!<%`$G$O%O%s%I%i$O$9$0$K8F$S=P$5$l$:!"(B
-$B$b$7(B Perl $B$,%7%9%F%`$N(B C<stdio> $B%i%$%V%i%j$r;H$C$F$$$k$H!"%i%$%V%i%j$O(B
-Perl $B$KJV$C$F(B %SIG $B%O%s%I%i$r8F$S=P$7$9$k5!2q$J$7$K(B C<read> $B$r(B
-$B:F5/F0$7$^$9!#(B
-$B$b$7$3$l$,5/$-$?>l9g!"2r7hK!$O!"(BI/O $B$r9T$&$H$-$K!<(B
-- $B>/$J$/$H$b%7%0%J%k$GCfCG$G$-$k$h$&$K$7$?$$%O%s%I%k$G(B -
-C<:perlio> $BAX$r;H$&$3$H$G$9(B 
-(C<:perlio> $BAX$O%7%0%J%k%U%i%0$r%A%'%C%/$7$F!"(BI/O $BA`:n$rB39T$9$kA0$K(B
-%SIG $B%O%s%I%i$r8F$S=P$7$^$9!#(B)
+(INT control-C 등에서) 시그널이 배송되면, 
+OS 는 (Perl E<lt>E<gt> 연산자의 구축에서 사용되는) C<read> 같은 
+I/O 조작을 중단합니다.
+옛 Perl 에서는 핸드러를 당장 호출합니다
+(그리고 C<read> 는 잘 움직이기 때문에 "안전하지 않은" 것은 아닙니다).
+"보류" 스킴에서는 핸들러는 곧장 호출되지 않고,
+만약 Perl 이 시스템의 C<stdio> 라이브러리를 사용하면 라이브러리는 
+Perl 에 반환해서 %SIG 핸들러를 호출하는 기회없이 C<read> 를 재기동합니다.
+만약 이것이 발생한 경우, 해결법은 I/O 를 수행할 때에 -- 적어도 시그널에서 
+중단할 수 있도록 한 핸들러에서 - C<:perlio> 층을 사용하는 것입니다
+(C<:perlio> 층은 시그널 플래그를 체크해서 I/O 조작을 속행하기 전에 
+%SIG 핸들러를 호출합니다).
 
 =begin original
 
@@ -755,8 +725,7 @@ the C<:perlio> layer.
 
 =end original
 
-Perl 5.7.3 $B0J9_$G$O%G%U%)%k%H$G$O<+F0E*$K(B C<:perlio> $BAX$,;H$o$l$k$3$H$K(B
-$BCm0U$7$F$/$@$5$$!#(B
+Perl 5.7.3 이후에는 기본으로 자동적으로 C<:perlio> 층이 사용되는 것에 주의해주세요.
 
 =begin original
 
@@ -770,13 +739,12 @@ C<$SIG{ALRM}>:
 
 =end original
 
-gethostbyname() $B$N$h$&$J%M%C%H%o!<%/%i%$%V%i%j4X?t$OFH<+$N%?%$%`%"%&%H(B
-$B<BAu$r;}$C$F$$$k$3$H$,CN$i$l$F$$$k$N$G!"$"$J$?$N%?%$%`%"%&%H$H(B
-$B6%9g$9$k$+$b$7$l$J$$$3$H$KCm0U$7$F$/$@$5$$!#(B
-$B$b$7$3$N$h$&$J4X?t$GLdBj$,5/$-$?>l9g$O!"(BPerl $B$N0BA4$J%7%0%J%k$r2sHr$9$k(B
-POSIX sigaction() $B4X?t$r;n$9$3$H$,$G$-$^$9(B
-($B$3$l$O>e=R$N!"%a%b%jGK2u$N2DG=@-$,$"$k$H$$$&$3$H$KCm0U$7$F$/$@$5$$(B)$B!#(B
-C<$SIG{ALRM}> $B$r%;%C%H$9$kBe$o$j$K(B:
+gethostbyname() 같은 네트워크 라이브러리 함수는 독자적인 타임아웃 구성을 가지고 있는
+것이 알려졌기 때문에, 당신의 타임아웃과 경쟁할지도 모르는 것에 주의해주세요.
+もしこのような関数で問題が起きた場合は、Perl の安全なシグナルを回避する
+POSIX sigaction() 関数を試すことができます
+(これは上述の、メモリ破壊の可能性があるということに注意してください)。
+C<$SIG{ALRM}> をセットする代わりに:
 
    local $SIG{ALRM} = sub { die "alarm" };
 
@@ -786,7 +754,7 @@ try something like the following:
 
 =end original
 
-$B0J2<$N$h$&$J$3$H$r;n$7$F$_$F$/$@$5$$(B:
+以下のようなことを試してみてください:
 
     use POSIX qw(SIGALRM);
     POSIX::sigaction(SIGALRM,
@@ -801,13 +769,13 @@ all signals).
 
 =end original
 
-$B0BA4$J%7%0%J%k$N?6$kIq$$$r6I=jE*$KL58z$K$9$k$b$&0l$D$NJ}K!$O(B
-CPAN $B$N(B C<Perl::Unsafe::Signals> $B%b%8%e!<%k$r;H$&$3$H$G$9(B
-($BA4$F$N%7%0%J%k$K1F6A$rM?$($^$9(B)$B!#(B
+安全なシグナルの振る舞いを局所的に無効にするもう一つの方法は
+CPAN の C<Perl::Unsafe::Signals> モジュールを使うことです
+(全てのシグナルに影響を与えます)。
 
 =item Restartable system calls
 
-($B:F5/F02DG=$J%7%9%F%`%3!<%k(B)
+(再起動可能なシステムコール)
 
 =begin original
 
@@ -821,14 +789,14 @@ where they previously would have succeeded.
 
 =end original
 
-$B$3$l$KBP1~$7$F$$$k%7%9%F%`$G$O!"$h$j8E$$%P!<%8%g%s$N(B Perl $B$G$O(B %SIG
-$B%O%s%I%i$r@_Dj$9$k$H$-$K(B SA_RESTART $B%U%i%0$r;H$$$^$9!#(B
-$B$3$l$O!":F5/F02DG=$J%7%9%F%`%3!<%k$G$O%7%0%J%k$,G[Aw$5$l$?$H$-$K(B
-$BLa$k$N$G$O$J$/B39T$9$k$3$H$r0UL#$7$^$9!#(B
-$BJ]N1%7%0%J%k$rAGAa$/G[Aw$9$k$?$a$K!"(B
-Perl 5.7.3 $B0J9_$G$O(B SA_RESTART $B$r(B I<$B;H$C$F$$$^$;$s(B>$B!#(B
-$B7k2L$H$7$F!":F5/F02DG=$J%7%9%F%`%3!<%k$O!"$$$^$^$G@.8y$7$F$$$?$H$3$m$G$b(B
-($! $B$K(B C<EINTR> $B$r%;%C%H$7$F(B) $B<:GT$9$k$3$H$,$"$j$^$9!#(B
+これに対応しているシステムでは、より古いバージョンの Perl では %SIG
+ハンドラを設定するときに SA_RESTART フラグを使います。
+これは、再起動可能なシステムコールではシグナルが配送されたときに
+戻るのではなく続行することを意味します。
+保留シグナルを素早く配送するために、
+Perl 5.7.3 以降では SA_RESTART を I<使っていません>。
+結果として、再起動可能なシステムコールは、いままで成功していたところでも
+($! に C<EINTR> をセットして) 失敗することがあります。
 
 =begin original
 
@@ -838,13 +806,13 @@ C<waitpid> calls will always be retried.
 
 =end original
 
-$B%G%U%)%k%H$N(B C<:perlio> $BAX$G$O(B C<read>, C<write>, C<close> $B$O>e=R$7$?$h$&$K(B
-$B:F;n9T$7!"CfCG$5$l$?(B C<wait> $B$H(B C<waitpid> $B$N8F$S=P$7$O>o$K(B
-$B:F;n9T$5$l$k$3$H$KCm0U$7$F$/$@$5$$!#(B
+デフォルトの C<:perlio> 層では C<read>, C<write>, C<close> は上述したように
+再試行し、中断された C<wait> と C<waitpid> の呼び出しは常に
+再試行されることに注意してください。
 
 =item Signals as "faults"
 
-($B!V>c32!W$H$7$F$N%7%0%J%k(B)
+(「障害」としてのシグナル)
 
 =begin original
 
@@ -855,14 +823,14 @@ immediately rather than attempting to defer them.
 
 =end original
 
-SEGV, ILL, BUS $B$N$h$&$J%7%0%J%k$O!"2>A[%a%b%j$d$=$NB>$N!V>c32!W$N7k2L$H$7$F(B
-$B@8@.$5$l$^$9!#(B
-$B$3$l$i$OIaDLCWL?E*$G!"(BPerl-$B%l%Y%k$N%O%s%I%i$,$G$-$k$3$H$O$[$H$s$I(B
-$B$J$$$N$G!"$3$l$i$rJ]N1$7$h$&$H$;$:!"D>$A$KG[Aw$7$^$9!#(B
+SEGV, ILL, BUS のようなシグナルは、仮想メモリやその他の「障害」の結果として
+生成されます。
+これらは普通致命的で、Perl-レベルのハンドラができることはほとんど
+ないので、これらを保留しようとせず、直ちに配送します。
 
 =item Signals triggered by operating system state
 
-(OS $B$N>uBV$K$h$C$FH/@8$9$k%7%0%J%k(B)
+(OS の状態によって発生するシグナル)
 
 =begin original
 
@@ -877,15 +845,15 @@ there are un-waited-for completed child processes.
 
 =end original
 
-OS $B$K$h$C$F$O!"$"$k<o$N%7%0%J%k%O%s%I%i$OJV$kA0$K!V2?$+$r$9$k!W$3$H$K(B
-$B$J$C$F$$$k$b$N$b$"$j$^$9!#(B
-1 $B$D$NNc$H$7$F$O!"(BCHLD $B$d(B CLD $B$O;R%W%m%;%9$,40N;$7$?$3$H$r<($7$F$$$^$9!#(B
-OS $B$K$h$C$F$O!"%7%0%J%k%O%s%I%k$O40N;$7$?;R%W%m%;%9$N$?$a$K(B
-C<wait> $B$9$k$3$H$rA[Dj$5$l$F$$$k$b$N$b$"$j$^$9!#(B
-$B$3$N$h$&$J%7%9%F%`$G$OJ]N1%7%0%J%k%9%-!<%`$O$3$l$i$N%7%0%J%k$G$O(B
-$BF0:n$7$^$;$s(B(C<wait> $B$7$^$;$s(B)$B!#(B
-$B:F$S!"LdBj$O!"(Bwait $B$7$F$$$J$$40N;$7$?;R%W%m%;%9$,$"$k$+$N$h$&$K%7%0%J%k$,(B
-$B:F$SH/@8$9$k$3$H$G%k!<%W$N$h$&$K8+$($^$9!#(B
+OS によっては、ある種のシグナルハンドラは返る前に「何かをする」ことに
+なっているものもあります。
+1 つの例としては、CHLD や CLD は子プロセスが完了したことを示しています。
+OS によっては、シグナルハンドルは完了した子プロセスのために
+C<wait> することを想定されているものもあります。
+このようなシステムでは保留シグナルスキームはこれらのシグナルでは
+動作しません(C<wait> しません)。
+再び、問題は、wait していない完了した子プロセスがあるかのようにシグナルが
+再び発生することでループのように見えます。
 
 =back
 
@@ -897,13 +865,13 @@ C<"unsafe"> (a new feature since Perl 5.8.1).
 
 =end original
 
-$B$b$7!"%a%b%jGK2u$N2DG=@-$K$b$+$+$o$i$:!"8E$$%7%0%J%k$N?6$kIq$$$,(B
-$B$[$7$$$J$i!"4D6-JQ?t(B C<PERL_SIGNALS> $B$r(B C<"unsafe"> $B$K@_Dj$7$F$/$@$5$$(B
-(Perl 5.8.1 $B$+$i$N?75!G=$G$9(B)$B!#(B
+もし、メモリ破壊の可能性にもかかわらず、古いシグナルの振る舞いが
+ほしいなら、環境変数 C<PERL_SIGNALS> を C<"unsafe"> に設定してください
+(Perl 5.8.1 からの新機能です)。
 
 =head1 Using open() for IPC
 
-(IPC $B$N$?$a$K(B open() $B$r;H$&(B)
+(IPC のために open() を使う)
 
 =begin original
 
@@ -914,9 +882,9 @@ something up in a child process you intend to write to:
 
 =end original
 
-Perl$B$N(B open() $BJ8$O!"$=$NBhFs0z?t$G%Q%$%W%7%s%\%k$rA0CV$9$k$+KvHx$K(B
-$BIU2C$9$k$3$H$K$h$C$F!"0lJ}8~$N%W%m%;%94VDL?.$N$?$a$K;H$&$3$H$,$G$-$^$9!#(B
-$B0J2<$NNc$O!"=q$-9~$_$r9T$$$?$$;R%W%m%;%9$r5/F0$5$;$k$d$jJ}$G$9(B:
+Perlの open() 文は、その第二引数でパイプシンボルを前置するか末尾に
+付加することによって、一方向のプロセス間通信のために使うことができます。
+以下の例は、書き込みを行いたい子プロセスを起動させるやり方です:
 
     open(SPOOLER, "| cat -v | lpr -h 2>/dev/null")
 		    || die "can't fork: $!";
@@ -930,7 +898,7 @@ And here's how to start up a child process you intend to read from:
 
 =end original
 
-$B$=$7$F0J2<$NNc$O$=$3$+$iFI$_9~$_$r9T$$$?$$;R%W%m%;%9$r5/F0$9$kJ}K!$G$9(B:
+そして以下の例はそこから読み込みを行いたい子プロセスを起動する方法です:
 
     open(STATUS, "netstat -an 2>&1 |")
 		    || die "can't fork: $!";
@@ -948,9 +916,9 @@ like this:
 
 =end original
 
-$BFCDj$N%W%m%0%i%`$N0l$D$,(B @ARGV $B$K$"$k%U%!%$%kL>$r4|BT$7$F$$$k(B
-Perl $B%9%/%j%W%H$G$"$C$F$$$$$N$J$i!"8-$$%W%m%0%i%^$O0J2<$N$h$&$K(B
-$B=q$/$3$H$b$G$-$^$9(B:
+特定のプログラムの一つが @ARGV にあるファイル名を期待している
+Perl スクリプトであっていいのなら、賢いプログラマは以下のように
+書くこともできます:
 
     % program f1 "cmd1|" - f2 "cmd2|" f3 < tmpfile
 
@@ -963,11 +931,11 @@ file.  Pretty nifty, eh?
 
 =end original
 
-$B$=$7$F$=$l$r8F$s$@%7%'%k$K$O4X78$J$/!"$3$N(B Perl $B%W%m%0%i%`$O(B F<f1> $B$H$$$&(B
-$B%U%!%$%k!"(BF<cmd1> $B$H$$$&%W%m%;%9!"I8=`F~NO(B($B$3$NNc$G$O(B F<tmpfile>)$B!"(B
-F<f2> $B$H$$$&%U%!%$%k!"(BF<cmd2> $B$H$$$&%3%^%s%I!"(BF<f3> $B$H$$$&%U%!%$%k$+$i(B
-$BFI$_9~$_$r9T$$$^$9!#(B
-$B$9$4$/$$$$$h$M(B?
+そしてそれを呼んだシェルには関係なく、この Perl プログラムは F<f1> という
+ファイル、F<cmd1> というプロセス、標準入力(この例では F<tmpfile>)、
+F<f2> というファイル、F<cmd2> というコマンド、F<f3> というファイルから
+読み込みを行います。
+すごくいいよね?
 
 =begin original
 
@@ -976,8 +944,8 @@ same effect as opening a pipe for reading:
 
 =end original
 
-$BFI$_9~$_$N$?$a$N%Q%$%W$r3+$/$?$a$K!"5U%/%)!<%H$r;H$C$FF1$8$3$H$,(B
-$B$G$-$k$3$H$K5$$,$D$/$+$b$7$l$^$;$s(B:
+読み込みのためのパイプを開くために、逆クォートを使って同じことが
+できることに気がつくかもしれません:
 
     print grep { !/^(tcp|udp)/ } `netstat -an 2>&1`;
     die "bad netstat" if $?;
@@ -992,11 +960,11 @@ like.
 
 =end original
 
-$B$=$N?dB,$OI=LLE*$K$O@5$7$$$3$H$N$h$&$K8+$($k$+$bCN$l$^$;$s$,!"0lEY$K(B
-$B%a%b%j$K$9$Y$F$rFI$_9~$`I,MW$,$J$$$N$G!"0lEY$K%U%!%$%k$N0l9T$d(B
-$B0l%l%3!<%I$r=hM}$9$k$K$O(B($B:G=i$NNc$N$[$&$,(B)$B$h$j8zN(E*$J$N$G$9!#(B
-$BF1MM$K%W%m%;%9A4BN$N@)8f$rM?$($k$N$G!"$"$J$?$,K>$a$PAa$$;~4|$K(B
-$B;R%W%m%;%9$r(B kill $B$9$k$3$H$,$G$-$^$9!#(B
+その推測は表面的には正しいことのように見えるかも知れませんが、一度に
+メモリにすべてを読み込む必要がないので、一度にファイルの一行や
+一レコードを処理するには(最初の例のほうが)より効率的なのです。
+同様にプロセス全体の制御を与えるので、あなたが望めば早い時期に
+子プロセスを kill することができます。
 
 =begin original
 
@@ -1013,19 +981,19 @@ handle.  Consider:
 
 =end original
 
-open() $B$H(B close() $B$NLa$jCM$r%A%'%C%/$9$k$H$-$OCm0U$7$F$/$@$5$$!#(B
-$B%Q%$%W$KBP$7$F(B B<$B=q$-9~$_(B> $B$r$7$?$N$J$i!"(BSIGPIPE $B$r%H%i%C%W$9$Y$-$G$9!#(B
-$B$=$&$7$J$1$l$P!"B8:_$7$J$$%3%^%s%I$KBP$9$k%Q%$%W$r5/F0$7$?$H$-$K(B
-$B5/$3$k$3$H$K$D$$$F9M$(9~$`$3$H$K$J$k$G$7$g$&(B: open() $B$O$[$H$s$I$N(B
-$B>l9g@.8y$9$k$H8+9~$^$l$k$G$7$g$&$,(B($B$3$l$O(B fork() $B$N@.8y$@$1$r(B
-$BH?1G$7$^$9(B)$B!"$"$J$?$N=PNO$O$=$N8e$GAT4Q$K(B(spectacularly)$B<:GT$9$k$G$7$g$&!#(B
-$B%3%^%s%I$O!"<B:]$K$O(B exec() $B$,<:GT$7$F$$$kJL$N%W%m%;%9$G(B
-$B<B9T$5$l$F$$$k$N$G!"(BPerl $B$O%3%^%s%I$,$&$^$/F0$$$F$$$k$+$I$&$+$r(B
-$BCN$k$3$H$O$G$-$^$;$s!#(B
-$B$7$?$,$C$F!"56$N%3%^%s%I(B(bugus command)$B$NFI$_<j$O$9$0$K(B end of file $B$r(B
-$B<u$1<h$j!"56$N%3%^%s%I$KBP$9$k=q$-<j$O;vA0$K<h$j07$C$F$*$/$Y$-(B
-$B%7%0%J%k$rH/@8$5$;$k$G$7$g$&!#(B
-$B0J2<$NNc$r9M$($F$_$^$7$g$&(B:
+open() と close() の戻り値をチェックするときは注意してください。
+パイプに対して B<書き込み> をしたのなら、SIGPIPE をトラップすべきです。
+そうしなければ、存在しないコマンドに対するパイプを起動したときに
+起こることについて考え込むことになるでしょう: open() はほとんどの
+場合成功すると見込まれるでしょうが(これは fork() の成功だけを
+反映します)、あなたの出力はその後で壮観に(spectacularly)失敗するでしょう。
+コマンドは、実際には exec() が失敗している別のプロセスで
+実行されているので、Perl はコマンドがうまく動いているかどうかを
+知ることはできません。
+したがって、偽のコマンド(bugus command)の読み手はすぐに end of file を
+受け取り、偽のコマンドに対する書き手は事前に取り扱っておくべき
+シグナルを発生させるでしょう。
+以下の例を考えてみましょう:
 
     open(FH, "|bogus")	or die "can't fork: $!";
     print FH "bang\n"	or die "can't write: $!";
@@ -1038,8 +1006,8 @@ To catch it, you could use this:
 
 =end original
 
-$B$3$l$O%/%m!<%:$9$k$^$GGzH/$;$:!"GzH/$9$k$H(B SIGPIPE $B$rH/@8$5$;$^$9!#(B
-$B$3$l$rJa$i$($k$K$O!"0J2<$N$h$&$K$7$^$9(B:
+これはクローズするまで爆発せず、爆発すると SIGPIPE を発生させます。
+これを捕らえるには、以下のようにします:
 
     $SIG{PIPE} = 'IGNORE';
     open(FH, "|bogus")  or die "can't fork: $!";
@@ -1048,7 +1016,7 @@ To catch it, you could use this:
 
 =head2 Filehandles
 
-($B%U%!%$%k%O%s%I%k(B)
+(ファイルハンドル)
 
 =begin original
 
@@ -1061,19 +1029,19 @@ child process cannot outlive the parent.
 
 =end original
 
-$B%a%$%s%W%m%;%9$H;R%W%m%;%9$GF1$8%U%!%$%k%O%s%I%k(B STDIN, STDOUT, 
-STDERR $B$r6&M-$7$^$9!#(B
-$BN>J}$N%W%m%;%9$,F1;~$K$=$l$i$N%O%s%I%k$K%"%/%;%9$7$h$&$H$7$?>l9g!"(B
-$B$*$+$7$J;v$,H/@8$9$k2DG=@-$,$"$j$^$9!#(B
-$B$"$J$?$O;R%W%m%;%9$N$?$a$K%U%!%$%k%O%s%I%k$N%/%m!<%:$H:F%*!<%W%s$K$7$?$$$H(B
-$B9M$($k$+$b$7$l$^$;$s!#(B
-$B$3$l$O!"(Bopen() $B$r;H$C$F%Q%$%W$r%*!<%W%s$9$k$3$H$K$h$C$FBP=h$9$k$3$H$,(B
-$B$G$-$^$9$,!"0lIt$N%7%9%F%`$K$*$$$F$O;R%W%m%;%9$O$=$N?F%W%m%;%9$h$j$b(B
-$BD9@8$-$9$k$3$H$O$G$-$^$;$s!#(B
+メインプロセスと子プロセスで同じファイルハンドル STDIN, STDOUT, 
+STDERR を共有します。
+両方のプロセスが同時にそれらのハンドルにアクセスしようとした場合、
+おかしな事が発生する可能性があります。
+あなたは子プロセスのためにファイルハンドルのクローズと再オープンにしたいと
+考えるかもしれません。
+これは、open() を使ってパイプをオープンすることによって対処することが
+できますが、一部のシステムにおいては子プロセスはその親プロセスよりも
+長生きすることはできません。
 
 =head2 Background Processes
 
-($B%P%C%/%0%i%&%s%I%W%m%;%9(B)
+(バックグラウンドプロセス)
 
 =begin original
 
@@ -1081,7 +1049,7 @@ You can run a command in the background with:
 
 =end original
 
-$B0J2<$N$h$&$K$7$F%3%^%s%I$r%P%C%/%0%i%&%s%I$G<B9T$9$k$3$H$,$G$-$^$9(B:
+以下のようにしてコマンドをバックグラウンドで実行することができます:
 
     system("cmd &");
 
@@ -1094,14 +1062,14 @@ details).
 
 =end original
 
-$B%3%^%s%I$N(B STDOUT $B$H(B STDERR ($B$H$"$J$?$N;H$&%7%'%k$K$h$C$F$O(B STDIN $B$b(B)$B$O(B
-$B$=$N?F%W%m%;%9$N$b$N$HF10l$K$J$j$^$9!#(B
-double-fork $B$N<B9T$K$h$C$F!"(BSIGCHLD $B$rJaB*$9$kI,MW$O$"$j$^$;$s(B
-($B>\$7$/$O8e=R$7$^$9(B)$B!#(B
+コマンドの STDOUT と STDERR (とあなたの使うシェルによっては STDIN も)は
+その親プロセスのものと同一になります。
+double-fork の実行によって、SIGCHLD を捕捉する必要はありません
+(詳しくは後述します)。
 
 =head2 Complete Dissociation of Child from Parent
 
-($B;R$N?F$+$i$N40A4$JJ,N%(B)
+(子の親からの完全な分離)
 
 =begin original
 
@@ -1115,13 +1083,13 @@ output doesn't wind up on the user's terminal).
 
 =end original
 
-$B0lIt$N>l9g(B($BNc$($P%5!<%P!<%W%m%;%9$N%9%?!<%H(B)$B!"?F%W%m%;%9$H;R%W%m%;%9$r(B
-$B40A4$KL54X78$N$b$N$K$7$?$$$3$H$,$"$k$G$7$g$&!#(B
-$B$3$l$O$7$P$7$P%G!<%b%s2=$H8F$P$l$^$9!#(B
-$BNi57@5$7$$%G!<%b%s$O%k!<%H%G%#%l%/%H%j$K(B chdir() ($B$=$N$?$a<B9T%U%!%$%k$N(B
-$B$"$C$?%G%#%l%/%H%j$r4^$`%U%!%$%k%7%9%F%`$N%"%s%^%&%s%H$r<YKb$9$k$3$H$,(B
-$B$"$j$^$;$s(B)$B$7!"$=$NI8=`%U%!%$%k5-=R;R$r(B F</fdev/null> $B$K(B
-$B%j%@%$%l%/%H$7$^$9!#(B
+一部の場合(例えばサーバープロセスのスタート)、親プロセスと子プロセスを
+完全に無関係のものにしたいことがあるでしょう。
+これはしばしばデーモン化と呼ばれます。
+礼儀正しいデーモンはルートディレクトリに chdir() (そのため実行ファイルの
+あったディレクトリを含むファイルシステムのアンマウントを邪魔することが
+ありません)し、その標準ファイル記述子を F</fdev/null> に
+リダイレクトします。
 
     use POSIX 'setsid';
 
@@ -1145,12 +1113,12 @@ C<TIOCNOTTY> ioctl() on it instead.  See tty(4) for details.
 
 =end original
 
-fork() $B$O%W%m%;%9%0%k!<%W%j!<%@!<(B($B$b$7$=$&$J$i(B setsid() $B$O(B
-$B<:GT$9$k$G$7$g$&(B)$B$G$J$$$3$H$rJ]>Z$9$k$?$a$K(B
-setsid() $B$NA0$K$J$1$l$P$J$j$^$;$s!#(B
-$B$"$J$?$N;H$C$F$$$k%7%9%F%`$,(B sesid() $B4X?t$r;}$C$F$$$J$$$N$G$"$l$P!"(B
-F</dev/tty> $B$r%*!<%W%s$7$F(B C<TIONCNOTTY> ioctl() $B$rBe$o$j$K;H$$$^$9!#(B
-$B>\$7$/$O(B tty(4) $B$r;2>H$7$F$/$@$5$$!#(B
+fork() はプロセスグループリーダー(もしそうなら setsid() は
+失敗するでしょう)でないことを保証するために
+setsid() の前になければなりません。
+あなたの使っているシステムが sesid() 関数を持っていないのであれば、
+F</dev/tty> をオープンして C<TIONCNOTTY> ioctl() を代わりに使います。
+詳しくは tty(4) を参照してください。
 
 =begin original
 
@@ -1159,12 +1127,12 @@ solutions.
 
 =end original
 
-$BHs(B UNIX $B%f!<%6!<$O$"$J$?$N(B OS $B$N(B Process $B%b%8%e!<%k$r%A%'%C%/$7$F(B
-$BB>$N2r7h:v$rC5$7$^$7$g$&!#(B
+非 UNIX ユーザーはあなたの OS の Process モジュールをチェックして
+他の解決策を探しましょう。
 
 =head2 Safe Pipe Opens
 
-($B0BA4$J%Q%$%W%*!<%W%s(B)
+(安全なパイプオープン)
 
 =begin original
 
@@ -1181,20 +1149,20 @@ you opened whatever your kid writes to his STDOUT.
 
 =end original
 
-$B$b$&0l$D$N!"(BIPC $B$N$?$a$N6=L#?<$$%"%W%m!<%A$O%^%k%A%W%m%;%9$K$J$C$F(B
-$B$=$l$>$l$N4V$GDL?.$r9T$&C10l$N%W%m%0%i%`$r:n$k$H$$$&$b$N$G$9!#(B
-open() $B4X?t$O(B C<"-|"> $B$d(B C<"|-"> $B$H$$$C$?%U%!%$%k0z?t$rHs>o$K(B
-$B$*$b$7$m$$$3$H$r9T$&$?$a$K<u$1IU$1$^$9(B: $B$3$l$O$"$J$?$,%*!<%W%s$7$?(B
-$B%U%!%$%k%O%s%I$N$?$a$N;R%W%m%;%9$r(Bfork()$B$9$k$N$G$9!#(B
-$B$=$N;R%W%m%;%9$O?F%W%m%;%9$HF1$8%W%m%0%i%`$r<B9T$7$^$9!#(B
-$B$3$l$O$?$H$($P!"2>Dj$5$l$?(B UID $B$d(B GID $B$N$b$H$G<B9T$9$k:]$K0BA4$K%U%!%$%k$r(B
-$B%*!<%W%s$9$k$N$KJXMx$G$9!#(B
-$B%^%$%J%9$K(BB<$BBP$9$k(B>$B%Q%$%W$r%*!<%W%s$9$k$H!"$"$J$?$O%*!<%W%s$7$?(B
-$B%U%!%$%k%O%s%I%k$K=q$-9~$_$,$G$-!";R%W%m%;%9$O$=$l$r<+J,$N(B STDIN $B$K(B
-$B8+$$$@$7$^$9!#(B
-$B%^%$%J%9(B B<$B$+$i$N(B> $B%Q%$%W$r%*!<%W%s$7$?>l9g$K$O!";R%W%m%;%9$,$=$N(B
-STDOUT $B$K=q$-=P$7$?$b$N$,%*!<%W%s$7$?%U%!%$%k%O%s%I%k$+$i(B
-$BFI$_$@$7$9$k$3$H$,$G$-$k$N$G$9!#(B
+もう一つの、IPC のための興味深いアプローチはマルチプロセスになって
+それぞれの間で通信を行う単一のプログラムを作るというものです。
+open() 関数は C<"-|"> や C<"|-"> といったファイル引数を非常に
+おもしろいことを行うために受け付けます: これはあなたがオープンした
+ファイルハンドのための子プロセスをfork()するのです。
+その子プロセスは親プロセスと同じプログラムを実行します。
+これはたとえば、仮定された UID や GID のもとで実行する際に安全にファイルを
+オープンするのに便利です。
+マイナスにB<対する>パイプをオープンすると、あなたはオープンした
+ファイルハンドルに書き込みができ、子プロセスはそれを自分の STDIN に
+見いだします。
+マイナス B<からの> パイプをオープンした場合には、子プロセスがその
+STDOUT に書き出したものがオープンしたファイルハンドルから
+読みだしすることができるのです。
 
     use English '-no_match_vars';
     my $sleep_count = 0;
@@ -1231,12 +1199,12 @@ your arguments.   Instead, use lower-level control to call exec() directly.
 
 =end original
 
-$B$3$N$d$jJ}$r9T$&$b$&0l$D$N0lHLE*$JNc$O!"%7%'%k$N%$%s%?!<%U%'!<%9H4$-$G(B
-$B2?$+$r<B9T$9$kI,MW$,$"$k$H$-$G$7$g$&!#(B
-system() $B$r;H$&$H$=$l$OD>@\E*$J$b$N$G$9$,!"%Q%$%W$N%*!<%W%s$d(B
-$B%P%C%/%/%)!<%H$r0BA4$K;H$&$3$H$,$G$-$^$;$s!#(B
-$B$3$l$O%7%'%k$,$"$J$?$N0z?t$r?($k$N$r;_$a$kJ}K!$,$J$$$+$i$G$9!#(B
-$BBe$o$j$K!"(Bexec() $B$rD>@\8F$S=P$9Dc%l%Y%k$J@)8f$r;H$$$^$9!#(B
+このやり方を行うもう一つの一般的な例は、シェルのインターフェース抜きで
+何かを実行する必要があるときでしょう。
+system() を使うとそれは直接的なものですが、パイプのオープンや
+バッククォートを安全に使うことができません。
+これはシェルがあなたの引数を触るのを止める方法がないからです。
+代わりに、exec() を直接呼び出す低レベルな制御を使います。
 
 =begin original
 
@@ -1244,7 +1212,7 @@ Here's a safe backtick or pipe open for read:
 
 =end original
 
-$B0J2<$NNc$O!"FI$_9~$_MQ$N0BA4$J%P%C%/%/%)!<%H$d%Q%$%W%*!<%W%s$N$b$N$G$9(B:
+以下の例は、読み込み用の安全なバッククォートやパイプオープンのものです:
 
     # add error processing as above
     $pid = open(KID_TO_READ, "-|");
@@ -1269,8 +1237,8 @@ And here's a safe pipe open for writing:
 
 =end original
 
-$B$=$7$F0J2<$NNc$O!"=q$-9~$_MQ$N0BA4$J%P%C%/%/%)!<%H$d(B
-$B%Q%$%W%*!<%W%s$N$b$N$G$9(B:
+そして以下の例は、書き込み用の安全なバッククォートや
+パイプオープンのものです:
 
     # add error processing as above
     $pid = open(KID_TO_WRITE, "|-");
@@ -1296,8 +1264,8 @@ the syntax
 
 =end original
 
-Perl 5.8.0 $B$+$i(B $B%Q%$%W$N$?$a$K(B C<open> $B$N%j%9%H7A<0$r;H$($^$9(B;
-$B0J2<$N$h$&$JJ8K!$G(B:
+Perl 5.8.0 から パイプのために C<open> のリスト形式を使えます;
+以下のような文法で:
 
     open KID_PS, "-|", "ps", "aux" or die $!;
 
@@ -1310,10 +1278,10 @@ pipes (with C<"|-"> in place of C<"-|">) is also implemented.
 
 =end original
 
-ps(1) $B%3%^%s%I$r(B fork $B$7(B(3 $B0J>e$N0z?t$N(B open() $B$N$h$&$K%7%'%k$r(B
-$B5/F0$9$k$3$H$J$/(B)$B!"(BC<KID_PS> $B%U%!%$%k%O%s%I%k7PM3$GI8=`=PNO$rFI$_9~$_$^$9!#(B
-$B%3%^%s%I%Q%$%W$K=q$-9~$`$?$a$NBP1~$9$kJ8K!(B (C<"-|"> $B$NBe$o$j$K(B
-C<"|-">) $B$b<BAu$5$l$F$$$^$9!#(B
+ps(1) コマンドを fork し(3 以上の引数の open() のようにシェルを
+起動することなく)、C<KID_PS> ファイルハンドル経由で標準出力を読み込みます。
+コマンドパイプに書き込むための対応する文法 (C<"-|"> の代わりに
+C<"|-">) も実装されています。
 
 =begin original
 
@@ -1324,15 +1292,15 @@ F<modules> file mentioned below in the SEE ALSO section.
 
 =end original
 
-$B$3$l$i$NA`:n$O(B UNIX $B$N(B fork $B$G$$$C$Q$$$G!"$=$N(B fork $B$,B>$N%7%9%F%`$G$O(B
-$BE,@Z$K<BAu$5$l$F$$$J$$2DG=@-$,$"$k$N$@$H$$$&$3$H$KCm0U$7$F$/$@$5$$!#(B
-$B$=$l$K2C$($F!"$3$l$i$N$d$jJ}$OK\Ev$N%^%k%A%9%l%C%I$G$O$"$j$^$;$s!#(B
-$B%9%l%C%I$K$D$$$F$h$j3X$S$?$$$N$G$"$l$P!"8e=R$9$k(B SEE ALSO $B$N>O$G(B
-$B8@5Z$5$l$F$$$k(B F<modules> $B%U%!%$%k$r;2>H$7$F$/$@$5$$!#(B
+これらの操作は UNIX の fork でいっぱいで、その fork が他のシステムでは
+適切に実装されていない可能性があるのだということに注意してください。
+それに加えて、これらのやり方は本当のマルチスレッドではありません。
+スレッドについてより学びたいのであれば、後述する SEE ALSO の章で
+言及されている F<modules> ファイルを参照してください。
 
 =head2 Bidirectional Communication with Another Process
 
-($BB>$N%W%m%;%9$H$NAPJ}8~DL?.(B)
+(他のプロセスとの双方向通信)
 
 =begin original
 
@@ -1342,9 +1310,9 @@ doesn't actually work:
 
 =end original
 
-$B$3$l$O!"JRJ}8~DL?.$KBP$7$F$&$^$/F/$-$^$9!#(B
-$B$G$OAPJ}8~DL?.$O(B?
-$B$"$J$?$,$d$j$?$$$@$m$&$H$^$:9M$($k$3$H$O!"<B:]$K$O$&$^$/$$$-$^$;$s(B:
+これは、片方向通信に対してうまく働きます。
+では双方向通信は?
+あなたがやりたいだろうとまず考えることは、実際にはうまくいきません:
 
     open(PROG_FOR_READING_AND_WRITING, "| some program |")
 
@@ -1355,8 +1323,8 @@ then you'll miss out entirely on the diagnostic message:
 
 =end original
 
-$B$3$N>uBV$G(B C<use warnings> $B%W%i%0%^$+(B B<-w> $B%U%i%0$r;H$&$N$rK:$l$F$7$^$&$H!"(B
-$B0J2<$N$h$&$J?GCG%a%C%;!<%8$rF@$k5!2q$rF($9$3$H$K$J$k$G$7$g$&!#(B
+この状態で C<use warnings> プラグマか B<-w> フラグを使うのを忘れてしまうと、
+以下のような診断メッセージを得る機会を逃すことになるでしょう。
 
     Can't do bidirectional pipe at -e line 1.
 
@@ -1370,12 +1338,12 @@ operations.
 
 =end original
 
-$BK\Ev$K$3$&$$$C$?$3$H$r$7$?$$$N$J$i!"I8=`$N(B open2() $B$H$$$&%i%$%V%i%j4X?t$r(B
-$B;H$&$3$H$G!"%Q%$%W$NN>J}$NC<E@$rF@$k$3$H$,$G$-$^$9!#(B
-$B;0J}8~(B(tridirectional)$B$NF~=PNO$N$?$a$N(B open3() $B$b$"$k$N$G!";R%W%m%;%9$N(B
-STDERR $B$rJaB*$9$k$3$H$b$G$-$k$N$G$9$,!"$=$N$?$a$K$O(B $BIT3J9%$J(B
-select() $B%k!<%W$,I,MW$H$J$j!"(BPerl $B$NDL>o$NF~NOA`:n$r9T$&$3$H$,(B
-$B$G$-$^$;$s!#(B
+本当にこういったことをしたいのなら、標準の open2() というライブラリ関数を
+使うことで、パイプの両方の端点を得ることができます。
+三方向(tridirectional)の入出力のための open3() もあるので、子プロセスの
+STDERR を捕捉することもできるのですが、そのためには 不格好な
+select() ループが必要となり、Perl の通常の入力操作を行うことが
+できません。
 
 =begin original
 
@@ -1388,13 +1356,13 @@ system or some other one purporting to be POSIX compliant.
 
 =end original
 
-open2() $B$N%=!<%9$r8+$F$_$l$P!"$=$l$,A4$F$N@\B3$r@8@.$9$k$?$a$K(B
-UNIX $B$G$N(B pipe() $B$H(B exec() $B$N$h$&$JDc?e=`$N%W%j%_%F%#%V$r;H$C$F$$$k$3$H$K(B
-$B5$$,$D$/$G$7$g$&!#(B
-$B$3$l$O(B socketpair() $B$r;H$&$h$j8zN($,3JCJ$KNI$$$N$G$9$,!"0\?"@-$H$$$&LL$G$O(B
-$B8+Nt$j$7$^$9!#(B
-open2() $B$H(B open3() $B$O(B UNIX $B%7%9%F%`$d$=$NB>$N(B POSIX $B$K=>$C$?%7%9%F%`$r(B
-$B=|$$$F$O$*$=$i$/F0:n$7$J$$$G$7$g$&!#(B
+open2() のソースを見てみれば、それが全ての接続を生成するために
+UNIX での pipe() と exec() のような低水準のプリミティブを使っていることに
+気がつくでしょう。
+これは socketpair() を使うより効率が格段に良いのですが、移植性という面では
+見劣りします。
+open2() と open3() は UNIX システムやその他の POSIX に従ったシステムを
+除いてはおそらく動作しないでしょう。
 
 =begin original
 
@@ -1402,7 +1370,7 @@ Here's an example of using open2():
 
 =end original
 
-$B0J2<$O(B open2() $B$r;H$C$?Nc$G$9(B:
+以下は open2() を使った例です:
 
     use FileHandle;
     use IPC::Open2;
@@ -1424,17 +1392,17 @@ double-ended pipe.
 
 =end original
 
-$B$3$l$K4X$9$kLdBj$O!"(BUNIX $B$N%P%C%U%!%j%s%0$,<B:]$K$O$"$k;~E@$K;j$k$^$G(B
-$BN1$^$k$H$$$&$3$H$K$"$j$^$9!#(B
-$B%U%!%$%k%O%s%I%k(B C<Writer> $B$r<+F0%U%i%C%7%e$K$7$?$H$7$F$b!"$b$&0lJ}$N(B
-$BC<E@$K$"$k%W%m%;%9$OAw$i$l$?%G!<%?$rE,Ev$J%?%$%_%s%0$G(B
-$B<u$1<h$k$3$H$K$J$j$^$9(B; $B0lHLE*$K1>$C$F!"A4$F$N$3$H$K4X$7$FB(:B$K(B
-$BH?1~$9$k$h$&$K6/@)$9$k$3$H$O$G$-$^$;$s!#(B
-$B>e5-$NNc$G$O!"%P%C%U%!%j%s%0$r$7$J$$$h$&$K$9$k$?$a$K(B B<-u> $B%U%i%0$r(B
-I<cat> $B$KM?$($k$3$H$,$G$-$?$N$G$=$l$,$G$-$^$7$?!#(B
-$B%Q%$%W1[$7$K;H$o$l$k$3$H$rA[Dj$7$F@_7W$5$l$?(B UNIX $B%3%^%s%I$OHs>o$K(B
-$B>/?t$J$N$G!"$3$NNc$N$h$&$J$3$H$O!"N>C<$N$"$k%Q%$%W$N$b$&0lJ}$NC<E@$K$"$k(B
-$B%W%m%0%i%`$r<+J,<+?H$G=q$+$J$$8B$j$O$[$H$s$I$G$-$J$$$N$G$9!#(B
+これに関する問題は、UNIX のバッファリングが実際にはある時点に至るまで
+留まるということにあります。
+ファイルハンドル C<Writer> を自動フラッシュにしたとしても、もう一方の
+端点にあるプロセスは送られたデータを適当なタイミングで
+受け取ることになります; 一般的に云って、全てのことに関して即座に
+反応するように強制することはできません。
+上記の例では、バッファリングをしないようにするために B<-u> フラグを
+I<cat> に与えることができたのでそれができました。
+パイプ越しに使われることを想定して設計された UNIX コマンドは非常に
+少数なので、この例のようなことは、両端のあるパイプのもう一方の端点にある
+プログラムを自分自身で書かない限りはほとんどできないのです。
 
 =begin original
 
@@ -1443,9 +1411,9 @@ pseudo-ttys to make your program behave more reasonably:
 
 =end original
 
-$B$3$N2r7h:v$OHsI8=`$N(B F<Comm.pl> $B%i%$%V%i%j$G$9!#(B
-$B$3$l$O$"$J$?$N%W%m%0%i%`$r$h$j?.Mj@-$N$"$k$b$N$H$9$k$?$a$K(B
-$B5<;w(B TTY $B$r;H$$$^$9(B:
+この解決策は非標準の F<Comm.pl> ライブラリです。
+これはあなたのプログラムをより信頼性のあるものとするために
+擬似 TTY を使います:
 
     require 'Comm.pl';
     $ph = open_proc('cat -n');
@@ -1464,11 +1432,11 @@ in the SEE ALSO section below.
 
 =end original
 
-$B$3$N$d$jJ}$G$O!"$"$J$?$,;H$*$&$H$7$F$$$k%W%m%0%i%`$N%=!<%9%3!<%I$r(B
-$B$$$8$/$j$^$o$9$h$&$JI,MW$O$"$j$^$;$s!#(B
-F<Comm> $B%i%$%V%i%j$K$OB>$K$b(B expect() $B$d(B interact() $B$H$$$C$?4X?t$b$"$j$^$9!#(B
-$B8e=R$9$k(B SEE ALSO $B$N>O$K$"$k@bL@$N:G4s$j$N(B CPAN $B$G!"$3$N%i%$%V%i%j(B($B$H(B
-$B$=$N8e7Q<T$H4|BT$7$F$$$k(B F<IPC::Chat>) $B$r8+$D$1$F$/$@$5$$!#(B
+このやり方では、あなたが使おうとしているプログラムのソースコードを
+いじくりまわすような必要はありません。
+F<Comm> ライブラリには他にも expect() や interact() といった関数もあります。
+後述する SEE ALSO の章にある説明の最寄りの CPAN で、このライブラリ(と
+その後継者と期待している F<IPC::Chat>) を見つけてください。
 
 =begin original
 
@@ -1480,17 +1448,17 @@ amongst those supported, this may be your best bet.
 
 =end original
 
-CPAN $B$K$"$k$h$j?7$7$$%b%8%e!<%k(B Expect.pm $B$O$3$NLdBj$KBP=h$9$k$b$N$G$9!#(B
-$B$3$N%b%8%e!<%k$OB>$K(B IO:Pty$B!"(BIO::Stty $B$H$$$&Fs$D$N(B CPAN $B%b%8%e!<%k$r(B
-$BI,MW$H$7$^$9!#(B
-$B$3$N%b%8%e!<%k$O!"%?!<%_%J%k%G%P%$%9%I%i%$%P$H1~Ez$9$k$h$&$J(B
-$B%W%m%0%i%`$HBPOC$9$k$?$a$K!"5<;wC<Kv$r%;%C%H%"%C%W$7$^$9!#(B
-$B$b$7$"$J$?$N;H$C$F$$$k%7%9%F%`$,$3$&$$$C$?$b$N$r%5%]!<%H$7$F$$$k$N$G$"$l$P!"(B
-$B$=$A$i$r;H$C$?J}$,NI$$$G$7$g$&!#(B
+CPAN にあるより新しいモジュール Expect.pm はこの問題に対処するものです。
+このモジュールは他に IO:Pty、IO::Stty という二つの CPAN モジュールを
+必要とします。
+このモジュールは、ターミナルデバイスドライバと応答するような
+プログラムと対話するために、擬似端末をセットアップします。
+もしあなたの使っているシステムがこういったものをサポートしているのであれば、
+そちらを使った方が良いでしょう。
 
 =head2 Bidirectional Communication with Yourself
 
-($B<+J,$GAPJ}8~DL?.$9$k(B)
+(自分で双方向通信する)
 
 =begin original
 
@@ -1501,11 +1469,11 @@ handles to STDIN and STDOUT and call other processes.
 
 =end original
 
-$B$b$7K>$`$N$J$i!"Dc%l%Y%k$J%7%9%F%`%3!<%k(B pipe() $B$d(B fork() $B$r(B
-$B<j:n6H$G9T$&$?$a$K;H$&$3$H$,$G$-$^$9!#(B
-$B0J2<$NNc$OC1$K@bL@$N$?$a$N$b$N$G$9$,!"(BSTDIN $B$d(B STDOOUT $B$KBP$9$k(B
-$BE,@Z$J%O%s%I%k$r:F%*!<%W%s$9$k$3$H$,$G$-!"$5$i$KJL$N%W%m%;%9$r(B
-$B8F$S=P$9$3$H$,$G$-$^$9!#(B
+もし望むのなら、低レベルなシステムコール pipe() や fork() を
+手作業で行うために使うことができます。
+以下の例は単に説明のためのものですが、STDIN や STDOOUT に対する
+適切なハンドルを再オープンすることができ、さらに別のプロセスを
+呼び出すことができます。
 
     #!/usr/bin/perl -w
     # pipe1 - bidirectional communication using two pipe pairs
@@ -1540,9 +1508,9 @@ have the socketpair() system call, it will do this all for you.
 
 =end original
 
-$B$7$+$7<B:]$KFs$D$N(B pipe $B$N8F$S=P$7$r9T$&I,MW$O$"$j$^$;$s!#(B
-$B$"$J$?$N;H$C$F$$$k%7%9%F%`$,(B socketpair() $B%7%9%F%`%3!<%k$r(B
-$B%5%]!<%H$7$F$$$l$P!"$=$l$,$"$J$?$NBe$o$j$K:n6H$r9T$C$F$/$l$^$9!#(B
+しかし実際に二つの pipe の呼び出しを行う必要はありません。
+あなたの使っているシステムが socketpair() システムコールを
+サポートしていれば、それがあなたの代わりに作業を行ってくれます。
 
     #!/usr/bin/perl -w
     # pipe2 - bidirectional communication using socketpair
@@ -1578,7 +1546,7 @@ have the socketpair() system call, it will do this all for you.
 
 =head1 Sockets: Client/Server Communication
 
-($B%=%1%C%H(B: $B%/%i%$%"%s%H(B/$B%5!<%P!<DL?.(B)
+(ソケット: クライアント/サーバー通信)
 
 =begin original
 
@@ -1591,14 +1559,14 @@ depending on your system.
 
 =end original
 
-UNIX $B$+$iGI@8$7$?%*%Z%l!<%F%#%s%0%7%9%F%`$K8BDj$5$l$k$3$H$O$J$$(B
-($BNc$($P(B PC $B$G$O(B WinSock $B$,(B($B4v$D$+$N(B VMS $B%i%$%V%i%j$N$h$&$K(B)
-$B%=%1%C%H%5%]!<%H$rDs6!$7$F$$$^$9(B)$B$K$b4X$i$:!"$"$J$?$,;H$C$F$$$k(B
-$B%7%9%F%`$G$O%=%1%C%H$,;H$($J$$$+$b$7$l$^$;$s!#(B
-$B$=$N>l9g!"$3$N9`$K=q$+$l$F$$$k$3$H$O$"$J$?$NLr$K$ON)$?$J$$$G$7$g$&!#(B
-$B%=%1%C%H$r;H$($P!"2>A[2sO)(B($B$D$^$j(B TCP $B%9%H%j!<%`(B)$B$d%G!<%?%0%i%`(B(UDP
-$B%Q%1%C%H(B)$B$NN>J}$,2DG=$K$J$j$^$9!#(B
-$B;H$C$F$$$k%7%9%F%`$K!"$h$j0lAX0MB8$9$k$3$H$K$J$k$+$b$7$l$^$;$s!#(B
+UNIX から派生したオペレーティングシステムに限定されることはない
+(例えば PC では WinSock が(幾つかの VMS ライブラリのように)
+ソケットサポートを提供しています)にも関らず、あなたが使っている
+システムではソケットが使えないかもしれません。
+その場合、この項に書かれていることはあなたの役には立たないでしょう。
+ソケットを使えば、仮想回路(つまり TCP ストリーム)やデータグラム(UDP
+パケット)の両方が可能になります。
+使っているシステムに、より一層依存することになるかもしれません。
 
 =begin original
 
@@ -1610,13 +1578,13 @@ don't need to pass that information.
 
 =end original
 
-$B%=%1%C%H$r07$&$?$a$N(B Perl $B$N4X?t8F$S=P$7$OBP1~$9$k(B C $B$G$N%7%9%F%`%3!<%k$H(B
-$BF1$8L>A0$r;}$C$F$$$^$9!#(B
-$B$7$+$7!"0z?t$K4X$7$F$OFs$D$NM}M3$K$h$C$F0[$J$k$b$N$H$J$C$F$$$^$9(B:
-$BBh0l$K!"(BPerl $B$N%U%!%$%k%O%s%I%k$O(B C $B$N%U%!%$%k5-=R;R$H$O(B
-$B0[$J$kF/$-$r$9$k$b$N$G$"$k!#(B
-$BBhFs$K!"(BPerl $B$O$9$G$KJ8;zNs$ND9$5$rCN$C$F$$$k$N$G!"$=$N>pJs$rEO$9(B
-$BI,MW$,$J$$!"$H$$$&$b$N$G$9!#(B
+ソケットを扱うための Perl の関数呼び出しは対応する C でのシステムコールと
+同じ名前を持っています。
+しかし、引数に関しては二つの理由によって異なるものとなっています:
+第一に、Perl のファイルハンドルは C のファイル記述子とは
+異なる働きをするものである。
+第二に、Perl はすでに文字列の長さを知っているので、その情報を渡す
+必要がない、というものです。
 
 =begin original
 
@@ -1629,14 +1597,14 @@ reliably grants access to various constants and functions you'll need.
 
 =end original
 
-Perl $B$K$*$1$k8E$$%=%1%C%H%W%m%0%i%`$K4XO"$9$kBg$-$JLdBj$H$O!"0lIt$N(B
-$BDj?t$NCM$H$7$F(B($BCx$7$/0\?"@-$rB;$J$C$F$7$^$&(B)$B%O!<%I%3!<%I$5$l$?$b$N$,(B
-$B;H$o$l$F$$$?$H$$$&$3$H$G$9!#(B
-C<$AF_INET = 2> $B$N$h$&$KM[$K2?$+$r@_Dj$7$F$$$k%W%m%0%i%`$r8+$?;v$,$"$l$P!"(B
-$B$"$J$?$O$=$l$,Bg$-$J%H%i%V%k$K$J$k$H$$$&$3$H$rCN$C$F$$$k$G$7$g$&(B:
-$B$h$jM%$l$?$d$jJ}$O(B C<Socket> $B%b%8%e!<%k$r;H$&$H$$$&$b$N$G$9!#(B
-$B$3$l$O!"$"$J$?$,I,MW$H$9$k$G$"$m$&MM!9$JDj?t$d4X?t$KBP$9$k$h$j?.Mj$NCV$1$k(B
-$B%"%/%;%9$rDs6!$7$^$9!#(B
+Perl における古いソケットプログラムに関連する大きな問題とは、一部の
+定数の値として(著しく移植性を損なってしまう)ハードコードされたものが
+使われていたということです。
+C<$AF_INET = 2> のように陽に何かを設定しているプログラムを見た事があれば、
+あなたはそれが大きなトラブルになるということを知っているでしょう:
+より優れたやり方は C<Socket> モジュールを使うというものです。
+これは、あなたが必要とするであろう様々な定数や関数に対するより信頼の置ける
+アクセスを提供します。
 
 =begin original
 
@@ -1650,18 +1618,18 @@ messages and responses that end with a period on an empty line
 
 =end original
 
-NNTP $B$d(B SMTP $B$N$h$&$K4{$KB8:_$7$F$$$k%W%m%H%3%k$N$?$a$K%5!<%P!<(B/
-$B%/%i%$%"%s%H$r=q$/$N$G$J$1$l$P!"$"$J$?$N:n$k%5!<%P!<$,$I$N$h$&$K$7$F(B
-$B%/%i%$%"%s%H$,DLOC$r=*$($?$H$-$rCN$C$?$j!"$=$NH?BP$N$3$H$r(B
-$BCN$k$N$+$H$$$&$3$H$r9M$($F$*$/$Y$-$G$7$g$&!#(B
-$B$[$H$s$I$N%W%m%H%3%k$O0l9T$N%a%C%;!<%8$HJV;v(B($BJRJ}$N%W%m%;%9$O!"(B
-$B!H(B\n$B!I$r<u$1<h$C$?$H$-$K$b$&0l$D$N%W%m%;%9$G$N=hM}$,=*N;$7$?$3$H$r(B
-$BCN$j$^$9(B)$B$+!"6u9T$KCV$+$l$?%T%j%*%I$G=*C<$5$l$k(B("\n.\n" $B$,%a%C%;!<%8(B/$BJV;v$r(B
-$B=*C<$9$k(B)$BJ#?t9T%a%C%;!<%8$HJV;v$K4p$E$$$F$$$^$9!#(B
+NNTP や SMTP のように既に存在しているプロトコルのためにサーバー/
+クライアントを書くのでなければ、あなたの作るサーバーがどのようにして
+クライアントが通話を終えたときを知ったり、その反対のことを
+知るのかということを考えておくべきでしょう。
+ほとんどのプロトコルは一行のメッセージと返事(片方のプロセスは、
+“\n”を受け取ったときにもう一つのプロセスでの処理が終了したことを
+知ります)か、空行に置かれたピリオドで終端される("\n.\n" がメッセージ/返事を
+終端する)複数行メッセージと返事に基づいています。
 
 =head2 Internet Line Terminators
 
-($B%$%s%?!<%M%C%H$N9T=*C<;R(B)
+(インターネットの行終端子)
 
 =begin original
 
@@ -1676,20 +1644,20 @@ but unless you're on a Mac, you'll probably be ok.
 
 =end original
 
-$B%$%s%?!<%M%C%H$G$N9T=*C<;R$O(B "\015\012" $B$G$9!#(B
-UNIX $B$G;H$o$l$k(B ASCII $B$N%P%j%(!<%7%g%s$G$O!"DL>o$O!H(B\r\n$B!I$N$h$&$K(B
-$B5-=R$7$^$9$,!"B>$N%7%9%F%`$G$O!"!H(B\r\n$B!I$O(B"\015\015\012" $B$@$C$?$j!"(B
-"\012\012\015" $B$@$C$?$j$"$k$$$O$^$C$?$/0c$&$b$N$G$"$C$?$j$7$^$9!#(B
-$B!H(B\015\012$B!I$OI8=`E*$J=q$-J}(B($B$"$J$?$,=q$$$?$^$^$N$b$N$K$J$j$^$9(B)$B$G$9$,!"(B
-$BF~NOCf$K$"$kFHN)$7$?!H(B\012$B!I$r<u$1IU$1$k$3$H$b?d>)$5$l$F$$$^$9(B($B$,!"(B
-$B$"$J$?$,MW5a$9$k$H$-$K$O$=$l$r2:$d$+$J$b$N$K$7$^$7$g$&(B)$B!#(B
-$B$3$N%^%K%e%"%k%Z!<%8$K$"$k%W%m%0%i%`$K$D$$$F!">o$K:GA1$N$b$N$r(B
-$B;H$C$F$O$$$^$;$s$,!"$"$J$?$,(B Mac $B$r;H$C$F$$$k$N$G$J$1$l$P(B
-$B5$$K$9$k$3$H$O$J$$$G$7$g$&!#(B
+インターネットでの行終端子は "\015\012" です。
+UNIX で使われる ASCII のバリエーションでは、通常は“\r\n”のように
+記述しますが、他のシステムでは、“\r\n”は"\015\015\012" だったり、
+"\012\012\015" だったりあるいはまったく違うものであったりします。
+“\015\012”は標準的な書き方(あなたが書いたままのものになります)ですが、
+入力中にある独立した“\012”を受け付けることも推奨されています(が、
+あなたが要求するときにはそれを穏やかなものにしましょう)。
+このマニュアルページにあるプログラムについて、常に最善のものを
+使ってはいませんが、あなたが Mac を使っているのでなければ
+気にすることはないでしょう。
 
 =head2 Internet TCP Clients and Servers
 
-($B%$%s%?!<%M%C%H$N(B TCP $B%/%i%$%"%s%H$H%5!<%P!<(B)
+(インターネットの TCP クライアントとサーバー)
 
 =begin original
 
@@ -1698,8 +1666,8 @@ communication that might extend to machines outside of your own system.
 
 =end original
 
-$B<+J,$N;H$C$F$$$k%7%9%F%`$N30B&$K$"$k$b%^%7%s$K$^$G%/%i%$%"%s%H(B-
-$B%5!<%P!<$NDL?.$r9-$2$?$$>l9g$K$O(B Internet-domain $B%=%1%C%H$r;H$$$^$9!#(B
+自分の使っているシステムの外側にあるもマシンにまでクライアント-
+サーバーの通信を広げたい場合には Internet-domain ソケットを使います。
 
 =begin original
 
@@ -1707,8 +1675,8 @@ Here's a sample TCP client using Internet-domain sockets:
 
 =end original
 
-$B0J2<$N%W%m%0%i%`$O!"(BInternet-domain $B%=%1%C%H$r;H$C$?(B TCP $B%/%i%$%"%s%H$N(B
-$BNc$G$9(B:
+以下のプログラムは、Internet-domain ソケットを使った TCP クライアントの
+例です:
 
     #!/usr/bin/perl -w
     use strict;
@@ -1743,12 +1711,12 @@ instead.
 
 =end original
 
-$B$=$7$F0J2<$K5s$2$k$N$,>e5-$N%/%i%$%"%s%H$HBP1~$9$k%5!<%P!<$G$9!#(B
-$B$3$3$G$O%"%I%l%9$r(B INADDR_ANY $B$H$7$F$$$k$N$G!"%+!<%M%k$O(B multihomed
-hosts $B>e$NE,@Z$J%$%s%?!<%U%'!<%9$rA*Br$9$k$3$H$,$G$-$^$9!#(B
-($B%U%!%$%d!<%&%)!<%k$d%2%$%H%&%'%$$N30B&$N$h$&$K(B)$BFCDj$N%$%s%?!<%U%'!<%9$r(B
-$B;H$$$?$$$N$G$"$l$P!"$3$NItJ,$r!"<+J,$N;H$$$?$$K\Ev$N%"%I%l%9$G(B
-$BKd$a$k$h$&$K$9$Y$-$G$9!#(B
+そして以下に挙げるのが上記のクライアントと対応するサーバーです。
+ここではアドレスを INADDR_ANY としているので、カーネルは multihomed
+hosts 上の適切なインターフェースを選択することができます。
+(ファイヤーウォールやゲイトウェイの外側のように)特定のインターフェースを
+使いたいのであれば、この部分を、自分の使いたい本当のアドレスで
+埋めるようにすべきです。
 
     #!/usr/bin/perl -Tw
     use strict;
@@ -1797,12 +1765,12 @@ go back to service a new client.
 
 =end original
 
-$B0J2<$NNc$O%^%k%A%9%l%C%I%P!<%8%g%s$G$9!#(B
-$B$3$l$O$[$H$s$I$NE57?E*$J%5!<%P!<$,$=$&$G$"$k$h$&$K%^%k%A%9%l%C%I$K(B
-$B$J$C$F$$$F!"%/%i%$%"%s%H$N%j%/%(%9%H$r=hM}$9$k$?$a$K%9%l%$%V%5!<%P!<$r(B
-spawn(fork) $B$7$^$9!#(B
-$B$3$N$?$a!"%^%9%?!<%5!<%P!<$O?7$7$$%/%i%$%"%s%H$KBP$7$F%5!<%S%9$9$k$?$a$K(B
-$BB(:B$KI|5"$G$-$^$9!#(B
+以下の例はマルチスレッドバージョンです。
+これはほとんどの典型的なサーバーがそうであるようにマルチスレッドに
+なっていて、クライアントのリクエストを処理するためにスレイブサーバーを
+spawn(fork) します。
+このため、マスターサーバーは新しいクライアントに対してサービスするために
+即座に復帰できます。
 
     #!/usr/bin/perl -Tw
     use strict;
@@ -1904,19 +1872,19 @@ living dead.
 
 =end original
 
-$B$3$N%5!<%P!<$O%j%/%(%9%H$,$/$kEY$K(B fork() $B$r;H$C$F;R%P!<%8%g%s$NJ#@=$r(B
-$B9T$&$N$G!"LdBj$r<h$j=|$-$^$9!#(B
-$B$3$N$d$jJ}$O!"$"$J$?$,>o$KK>$s$G$O$$$J$$$+$b$7$l$^$;$s$,!"0lEY$KB?$/$N(B
-$B%j%/%(%9%H$r=hM}$9$k$3$H$,$G$-$^$9!#(B
-fork()$B$r;H$o$J$+$C$?$H$7$F$b!"(Blisten() $B$OB?$/$N0l;~Dd;_$7$?(B
-$B%3%M%/%7%g%s(B(pending connections) $B$r07$($^$9!#(B
-$B%5!<%P!<$r(B fork $B$9$k$N$G!";`$s$@;R6!(B(UNIX $B@$3&$G$O%>%s%S$H8F$P$l$k$b$N(B)$B$N(B
-$B8e;OKv$K4X$7$FCm0U?<$/$9$kI,MW$,$"$j$^$9!#(B
-$B$J$<$J$i!"$=$&$7$J$1$l$P%W%m%;%9%F!<%V%k$,$9$0$KKd$a$D$/$5$l$k$3$H$K(B
-$B$J$k$+$i$G$9!#(B
-$B$3$3$G(B REAPER $B%5%V%k!<%A%s$O=*N;$7$?A4$F$N;R%W%m%;%9$N$?$a$K(B
-waitpid() $B$r8F$S=P$9$?$a$K;H$o$l!"=>$C$F;R%W%m%;%9$,$-$l$$$K=*N;$7!"(B
-$B%>%s%S$N=8CD$K2C$o$i$J$$$3$H$r3N<B$K$7$^$9!#(B
+このサーバーはリクエストがくる度に fork() を使って子バージョンの複製を
+行うので、問題を取り除きます。
+このやり方は、あなたが常に望んではいないかもしれませんが、一度に多くの
+リクエストを処理することができます。
+fork()を使わなかったとしても、listen() は多くの一時停止した
+コネクション(pending connections) を扱えます。
+サーバーを fork するので、死んだ子供(UNIX 世界ではゾンビと呼ばれるもの)の
+後始末に関して注意深くする必要があります。
+なぜなら、そうしなければプロセステーブルがすぐに埋めつくされることに
+なるからです。
+ここで REAPER サブルーチンは終了した全ての子プロセスのために
+waitpid() を呼び出すために使われ、従って子プロセスがきれいに終了し、
+ゾンビの集団に加わらないことを確実にします。
 
 =begin original
 
@@ -1930,15 +1898,15 @@ notifies the parent process with a CHLD signal.
 
 =end original
 
-while $B%k!<%W$NCf$G(B accept() $B$r8F$S=P$7$F!"56$NCM$rJV$9$+$I$&$+$r(B
-$B%A%'%C%/$7$^$9!#(B
-$B$3$l$OIaDLJs9p$9$kI,MW$N$"$k%7%9%F%`%(%i!<$r<($7$F$$$^$9!#(B
-$B$7$+$7!"(BPerl 5.7.3 $B$GF3F~$5$l$?0BA4$J%7%0%J%k(B($B>e=R$N(B
-L</Deferred Signals (Safe Signals)> $B$r;2>H$7$F$/$@$5$$(B) $B$NF3F~$O!"(B
-$B%W%m%;%9$,%7%0%J%k$r<u?.$7$?>l9g$K$b(B accept() $B$,CfCG$5$l$&$k$3$H$r(B
-$B0UL#$7$^$9!#(B
-$B$3$l$OE57?E*$K$O!"(Bfork $B$7$?;R%W%m%;%9$N0l$D$,=*N;$7$F!"?F%W%m%;%9$K(B
-CHLD $B%7%0%J%k$rDLCN$7$?>l9g$K5/$3$j$^$9!#(B
+while ループの中で accept() を呼び出して、偽の値を返すかどうかを
+チェックします。
+これは普通報告する必要のあるシステムエラーを示しています。
+しかし、Perl 5.7.3 で導入された安全なシグナル(上述の
+L</Deferred Signals (Safe Signals)> を参照してください) の導入は、
+プロセスがシグナルを受信した場合にも accept() が中断されうることを
+意味します。
+これは典型的には、fork した子プロセスの一つが終了して、親プロセスに
+CHLD シグナルを通知した場合に起こります。
 
 =begin original
 
@@ -1953,15 +1921,15 @@ update the local copy leaving the original unchanged.
 
 =end original
 
-$B$b$7(B accept() $B$,%7%0%J%k$GCfCG$5$l$k$H!"(B$! $B$K(B EINTR $B$,%;%C%H$5$l$^$9!#(B
-$B$3$l$,5/$-$?>l9g!"<!$NH?I|$H<!$N(B accept() $B$N8F$S=P$7$r0BA4$KB39T$G$-$^$9!#(B
-$B%7%0%J%k%O%s%I%i%3!<%I$,(B $! $B$rJQ99$7$J$$$h$&$K$7$J$$$H!"$3$N%F%9%H$,(B
-$B$[$\3N<B$K<:GT$9$k$H$$$&$3$H$O=EMW$G$9!#(B
-REAPER $B%5%V%k!<%A%s$G$O(B waitpid() $B$r8F$S=P$9A0$K%m!<%+%kHG$N(B $! $B$r(B
-$B:n@.$7$F$$$^$9!#(B
-waitpid() $B$,(B $! $B$K(B ECHILD $B$r%;%C%H$9$k$H(B($B$3$l$O$I$N;R%W%m%;%9$bBT$C$F$$$J$$(B
-$B$H$-$KI,A3E*$KH/@8$7$^$9(B)$B!"$3$l$O85$NCM$rJQ99$;$:!"%m!<%+%k$J%3%T!<$r(B
-$B99?7$7$^$9!#(B
+もし accept() がシグナルで中断されると、$! に EINTR がセットされます。
+これが起きた場合、次の反復と次の accept() の呼び出しを安全に続行できます。
+シグナルハンドラコードが $! を変更しないようにしないと、このテストが
+ほぼ確実に失敗するということは重要です。
+REAPER サブルーチンでは waitpid() を呼び出す前にローカル版の $! を
+作成しています。
+waitpid() が $! に ECHILD をセットすると(これはどの子プロセスも待っていない
+ときに必然的に発生します)、これは元の値を変更せず、ローカルなコピーを
+更新します。
 
 =begin original
 
@@ -1973,12 +1941,12 @@ be able to compromise your system.
 
 =end original
 
-setuid $B$d(Bsetgid $B$r$5$l$F$$$J$$>uBV$G<B9T$5$l$F$$$k$H$7$F$b!"1x@w8!::(B
-(L<perlsec> $B$r;2>H(B)$B$r$9$k$?$a$K(B B<-T> $B%U%i%0$r;H$&$3$H$r$*4+$a$7$^$9!#(B
-$B$3$l$O!"%5!<%P!<$d$=$NB>$NB>$NC/$+$N$?$a$K<B9T$5$l$k(B(CGI $B%9%/%j%W%H$N$h$&$J(B)
-$B%W%m%0%i%`$KBP$7$F$O>o$KNI$$9M$($K$J$j$^$9!#(B
-$B$J$<$J$i$=$&$9$k$3$H$K$h$C$F!"30It$N?M4V$,$"$J$?$N%7%9%F%`$KF~$C$F$/$k(B
-$B$3$H$,$G$-$k2DG=@-$r8:$i$9$+$i$G$9!#(B
+setuid やsetgid をされていない状態で実行されているとしても、汚染検査
+(L<perlsec> を参照)をするために B<-T> フラグを使うことをお勧めします。
+これは、サーバーやその他の他の誰かのために実行される(CGI スクリプトのような)
+プログラムに対しては常に良い考えになります。
+なぜならそうすることによって、外部の人間があなたのシステムに入ってくる
+ことができる可能性を減らすからです。
 
 =begin original
 
@@ -1988,9 +1956,9 @@ differ from the system on which it's being run:
 
 =end original
 
-$B$b$&0l$D$N(B TCP $B%/%i%$%"%s%H$r8+$F$_$^$7$g$&!#(B
-$B$3$l$OJ#?t$N0[$J$k%^%7%s>e$N(B TCP $B$N!H(Btime$B!I%5!<%S%9$K@\B3$7$F%/%i%$%"%s%H$,(B
-$BAv$C$F$$$k%7%9%F%`$H;~7W$,$I$l$/$i$$0c$C$F$$$k$N$r=PNO$7$^$9(B:
+もう一つの TCP クライアントを見てみましょう。
+これは複数の異なるマシン上の TCP の“time”サービスに接続してクライアントが
+走っているシステムと時計がどれくらい違っているのを出力します:
 
     #!/usr/bin/perl  -w
     use strict;
@@ -2023,7 +1991,7 @@ differ from the system on which it's being run:
 
 =head2 Unix-Domain TCP Clients and Servers
 
-(UNIX $B%I%a%$%s$N(B TCP $B%/%i%$%"%s%H$H%5!<%P!<(B)
+(UNIX ドメインの TCP クライアントとサーバー)
 
 =begin original
 
@@ -2035,14 +2003,14 @@ domain sockets can show up in the file system with an ls(1) listing.
 
 =end original
 
-Internet-domain $B$N%5!<%P!<$H%/%i%$%"%s%H$ONI$$$b$N$G$9$,!"%m!<%+%k(B
-$B%3%_%e%K%1!<%7%g%s$K4X$7$F$O$I$&$G$7$g$&$+(B?
-$BF1$8$h$&$K%;%C%H%"%C%W$9$k$3$H$,$G$-$^$9$,!"F1$8MM$K(B($BDL?.$r(B)$B9T$&$3$H$O(B
-$B$G$-$^$;$s!#(B
-UNIX $B%I%a%$%s%=%1%C%H$O%+%l%s%H%[%9%H$K%m!<%+%k$G!"$7$P$7$P%Q%$%W$r(B
-$B<BAu$9$k$?$a$KFbItE*$K;H$o$l$F$$$^$9!#(B
-Internet $B%I%a%$%s%=%1%C%H$H$O0[$J$j!"(BUNIX $B%I%a%$%s%=%1%C%H$O!"(B
-ls(1) $B$r;H$C$F%U%!%$%k%7%9%F%`$NCf$G8+$D$1$k$3$H$,$G$-$^$9!#(B
+Internet-domain のサーバーとクライアントは良いものですが、ローカル
+コミュニケーションに関してはどうでしょうか?
+同じようにセットアップすることができますが、同じ様に(通信を)行うことは
+できません。
+UNIX ドメインソケットはカレントホストにローカルで、しばしばパイプを
+実装するために内部的に使われています。
+Internet ドメインソケットとは異なり、UNIX ドメインソケットは、
+ls(1) を使ってファイルシステムの中で見つけることができます。
 
     % ls -l /dev/log
     srw-rw-rw-  1 root            0 Oct 31 07:23 /dev/log
@@ -2053,7 +2021,7 @@ You can test for these with Perl's B<-S> file test:
 
 =end original
 
-$B$3$l$r!"(BPerl $B$N%U%!%$%k%F%9%H(B B<-S> $B$r;H$C$F9T$($^$9(B:
+これを、Perl のファイルテスト B<-S> を使って行えます:
 
     unless ( -S '/dev/log' ) {
 	die "something's wicked with the log system";
@@ -2065,7 +2033,7 @@ Here's a sample Unix-domain client:
 
 =end original
 
-UNIX $B%I%a%$%s%/%i%$%"%s%H$NNc$G$9(B:
+UNIX ドメインクライアントの例です:
 
     #!/usr/bin/perl -w
     use Socket;
@@ -2088,11 +2056,11 @@ to be on the localhost, and thus everything works right.
 
 =end original
 
-$B$=$7$FBP1~$9$k%5!<%P!<$G$9!#(B
-$B$3$3$G!"$"$J$?$O$d$C$+$$$J%M%C%H%o!<%/=*C<;R$K$D$$$F;W$$HQ$&(B
-$BI,MW$O$"$j$^$;$s!#(B
-$B$J$<$J$i!"(BUNIX $B$N%I%a%$%s%=%1%C%H$O%m!<%+%k%[%9%H$K$*$$$F40A4$K(B
-$BK~$?$5$l$k$b$N$G$"$C$F!"$=$N$?$a!"A4$F$O$&$^$/$$$/$N$G$9!#(B
+そして対応するサーバーです。
+ここで、あなたはやっかいなネットワーク終端子について思い煩う
+必要はありません。
+なぜなら、UNIX のドメインソケットはローカルホストにおいて完全に
+満たされるものであって、そのため、全てはうまくいくのです。
 
     #!/usr/bin/perl -Tw
     use strict;
@@ -2172,9 +2140,9 @@ other server.
 
 =end original
 
-$B8+$F$o$+$k$h$&$K!"(BInternet domain TCP $B%5!<%P!<$H$[$H$s$IF1$8$G$9!#(B
-$B<B:]$K$O!"$^$C$?$/JQ$C$F$$$J$$4v$D$+$N=EJ#$7$?4X?t(B spawn(), 
-logmsg(), ctime(), REAPER() $B$r<h$j=|$$$F$"$j$^$9!#(B
+見てわかるように、Internet domain TCP サーバーとほとんど同じです。
+実際には、まったく変っていない幾つかの重複した関数 spawn(), 
+logmsg(), ctime(), REAPER() を取り除いてあります。
 
 =begin original
 
@@ -2186,13 +2154,13 @@ arguments.
 
 =end original
 
-$B$G$O$J$<!"C1=c$JL>A0IU$-%Q%$%W$G$O$J$/(B UNIX $B%I%a%$%s%=%1%C%H$r(B
-$B;H$$$?$,$k$N$G$7$g$&$+(B?
-$B$=$NM}M3$O!"L>A0IU$-%Q%$%W$,$"$J$?$K%;%C%7%g%s$rM?$($J$$$+$i$G$9!#(B
-$B$"$J$?$O$"$k%W%m%;%9$+$iMh$?%G!<%?$H!"$=$l$H$OJL$N%W%m%;%9$+$i$-$?(B
-$B%G!<%?$H$r6hJL$9$k$3$H$,$G$-$^$;$s!#(B
-$B%=%1%C%H%W%m%0%i%_%s%0$r9T$&$3$H$G!"%/%i%$%"%s%HKh$KJL!9$N%;%C%7%g%s$r(B
-$B;}$F$k$h$&$K$J$j$^$9(B: $B$3$l$,(B accept() $B$,Fs$D$N0z?t$r<h$kM}M3$G$9!#(B
+ではなぜ、単純な名前付きパイプではなく UNIX ドメインソケットを
+使いたがるのでしょうか?
+その理由は、名前付きパイプがあなたにセッションを与えないからです。
+あなたはあるプロセスから来たデータと、それとは別のプロセスからきた
+データとを区別することができません。
+ソケットプログラミングを行うことで、クライアント毎に別々のセッションを
+持てるようになります: これが accept() が二つの引数を取る理由です。
 
 =begin original
 
@@ -2204,15 +2172,15 @@ as a Unix-domain client and connects to your private server.
 
 =end original
 
-$BNc$($P!"(BCGI $B%$%s%?!<%U%'!<%9$rDL$7$F$N$_(B World Wide Web $B$+$i%"%/%;%9$5$l$k!"(B
-$BD9;~4V<B9T$5$l$F$$$k%G!<%?%Y!<%9%5!<%P!<%G!<%b%s$r;}$C$F$$$k$H$7$^$7$g$&!#(B
-$B$3$N>l9g!"$"$J$?$N9%$-$J$h$&$K%A%'%C%/$d%m%0$N5-O?$r<B9T$9$k$h$&$J>.$5$/!"(B
-$BC1=c$J(B CGI $B%W%m%0%i%`$r;}$C$F!"(BUNIX $B%I%a%$%s%/%i%$%"%s%H$H$7$F?6$kIq$&(B
-$B%W%i%$%Y!<%H$J%5!<%P!<$K@\B3$5$;$k$H$$$C$?$3$H$,$G$-$k$G$7$g$&!#(B
+例えば、CGI インターフェースを通してのみ World Wide Web からアクセスされる、
+長時間実行されているデータベースサーバーデーモンを持っているとしましょう。
+この場合、あなたの好きなようにチェックやログの記録を実行するような小さく、
+単純な CGI プログラムを持って、UNIX ドメインクライアントとして振る舞う
+プライベートなサーバーに接続させるといったことができるでしょう。
 
 =head1 TCP Clients with IO::Socket
 
-(IO::Socket $B$r;H$C$?(B TCP $B%/%i%$%"%s%H(B)
+(IO::Socket を使った TCP クライアント)
 
 =begin original
 
@@ -2227,19 +2195,19 @@ to name a few.
 
 =end original
 
-$B%=%1%C%H%W%m%0%i%_%s%0$KBP$9$k9b?e=`%$%s%?!<%U%'!<%9$N$?$a$K!"(BIO::Socket
-$B%b%8%e!<%k$O%*%V%8%'%/%H;X8~%"%W%m!<%A$rDs6!$7$^$9!#(B
-IO::Socket $B%b%8%e!<%k$O%j%j!<%9(B 5.004 $B$NI8=`(B Perl $BG[I[%-%C%H$N0lIt$H$7$F(B
-$B4^$^$l$F$$$^$9!#(B
-$B$"$J$?$,0JA0$N%P!<%8%g%s$N(B Perl $B$r;H$C$F$$$k$N$G$"$l$P!"(B
-CPAN $B$+$i(B IO::Socket $B$rF~<j$7$^$9!#(B
-$B$=$3$G$O!"0J2<$K5s$2$k$h$&$J%7%9%F%`$KBP$9$k4JC1$J%$%s%?!<%U%'!<%9$r(B
-$BDs6!$9$k%7%9%F%`$b8+$D$1$k$3$H$,$G$-$k$G$7$g$&(B: DNS, FTP, Ident (RFC 931),
-NIS, NISPlus, NNTP, Ping, POP3, SMTP, SNMP, SSLeay, Telnet, Time $B$J$I!#(B
+ソケットプログラミングに対する高水準インターフェースのために、IO::Socket
+モジュールはオブジェクト指向アプローチを提供します。
+IO::Socket モジュールはリリース 5.004 の標準 Perl 配布キットの一部として
+含まれています。
+あなたが以前のバージョンの Perl を使っているのであれば、
+CPAN から IO::Socket を入手します。
+そこでは、以下に挙げるようなシステムに対する簡単なインターフェースを
+提供するシステムも見つけることができるでしょう: DNS, FTP, Ident (RFC 931),
+NIS, NISPlus, NNTP, Ping, POP3, SMTP, SNMP, SSLeay, Telnet, Time など。
 
 =head2 A Simple Client
 
-($BC1=c$J%/%i%$%"%s%H(B)
+(単純なクライアント)
 
 =begin original
 
@@ -2249,9 +2217,9 @@ that the server there cares to provide.
 
 =end original
 
-$B0J2<$NNc$O!H(Blocalhost$B!I$H$$$&%[%9%HL>$N(B 13 $BHV%]!<%H$K$"$k!H(Bdyatime$B!I(B
-$B%5!<%S%9$KBP$9$k(B TCP $B%3%M%/%7%g%s$r:n@.$9$k%/%i%$%"%s%H$G!"$=$N%5!<%P!<$,(B
-$BDs6!$9$k%G!<%?$r$9$Y$F=PNO$7$^$9!#(B
+以下の例は“localhost”というホスト名の 13 番ポートにある“dyatime”
+サービスに対する TCP コネクションを作成するクライアントで、そのサーバーが
+提供するデータをすべて出力します。
 
     #!/usr/bin/perl -w
     use IO::Socket;
@@ -2270,7 +2238,7 @@ looks like this:
 
 =end original
 
-$B$3$N%W%m%0%i%`$r<B9T$9$k$H!"0J2<$N$h$&$JJV;v$,JV$C$F$/$k$G$7$g$&(B:
+このプログラムを実行すると、以下のような返事が返ってくるでしょう:
 
     Wed May 14 08:40:46 MDT 1997
 
@@ -2280,7 +2248,7 @@ Here are what those parameters to the C<new> constructor mean:
 
 =end original
 
-C<new> $B%3%s%9%H%i%/%?!<$KBP$9$k%Q%i%a!<%?!<$N0UL#$r@bL@$7$^$9(B:
+C<new> コンストラクターに対するパラメーターの意味を説明します:
 
 =over 4
 
@@ -2296,13 +2264,13 @@ can be used to make a datagram socket, used for message-passing.
 
 =end original
 
-$B$3$l$O;HMQ$9$k%W%m%H%3%k$G$9!#(B
-$B$3$NNc$G$O!";d$?$A$O%9%H%j!<%`;X8~$N%3%M%/%7%g%s!"$D$^$j!"@N$J$,$i$NIaDL$N(B
-$B%U%!%$%k$N$h$&$K?6$kIq$&$b$N$r;H$$$?$$$N$G!"%=%1%C%H$O(B TCP $B%=%1%C%H$K(B
-$B@\B3$5$l$?$b$N$r07$$$^$9!#(B
-$B%=%1%C%H$K$O$3$l0J30$N%?%$%W$b$"$k$3$H$KCm0U$7$F$/$@$5$$!#(B
-$B$?$H$($P!"(BUDP $B%W%m%H%3%k$O(B($B%a%C%;!<%8Aw?.$K;H$o$l$F$$$k(B)
-$B%G!<%?%0%i%`%=%1%C%H$r:n@.$9$k$?$a$K;H$&$3$H$,$G$-$^$9!#(B
+これは使用するプロトコルです。
+この例では、私たちはストリーム指向のコネクション、つまり、昔ながらの普通の
+ファイルのように振る舞うものを使いたいので、ソケットは TCP ソケットに
+接続されたものを扱います。
+ソケットにはこれ以外のタイプもあることに注意してください。
+たとえば、UDP プロトコルは(メッセージ送信に使われている)
+データグラムソケットを作成するために使うことができます。
 
 =item C<PeerAddr>
 
@@ -2317,14 +2285,14 @@ for localhost is C<"127.1">, if you'd rather use that.
 
 =end original
 
-$B$3$l$O%5!<%P!<$,<B9T$5$l$F$$$k%j%b!<%H%[%9%H$N!"%$%s%?!<%M%C%H%"%I%l%9(B
-$B$b$7$/$OL>A0$G$9!#(B
-$B$3$l$r(B C<"www.perl.com"> $B$N$h$&$JD9$$L>A0$G;XDj$9$k$3$H$b(B
-C<"204.148.40.9"> $B$N$h$&$J%"%I%l%9$G;XDj$9$k$3$H$b$G$-$^$9!#(B
-$B@h$NNc$G;H$C$?(B C<"localhost"> $B$O!">o$K<+J,$,;HMQ$7$F$$$k8=:_$N%^%7%s$r(B
-$B0UL#$9$kFCJL$J%[%9%HL>$G$9!#(B
-$B%m!<%+%k%[%9%H$KBP$9$k%$%s%?!<%M%C%H%"%I%l%9$O(B C<"127.1"> $B$G!"$3$A$i$r(B
-$B;H$&$3$H$b$G$-$^$9!#(B
+これはサーバーが実行されているリモートホストの、インターネットアドレス
+もしくは名前です。
+これを C<"www.perl.com"> のような長い名前で指定することも
+C<"204.148.40.9"> のようなアドレスで指定することもできます。
+先の例で使った C<"localhost"> は、常に自分が使用している現在のマシンを
+意味する特別なホスト名です。
+ローカルホストに対するインターネットアドレスは C<"127.1"> で、こちらを
+使うこともできます。
 
 =item C<PeerPort>
 
@@ -2339,13 +2307,13 @@ worked, but constant numbers make careful programmers nervous.
 
 =end original
 
-$B$3$l$O@\B3$7$?$$%5!<%S%9$NL>>N!"$b$7$/$O%]!<%HHV9f$G$9!#(B
-$B;d$?$A$O@h$NNc$G!"$-$A$s$H@_Dj$5$l$?%7%9%F%`%5!<%S%9$N;H$($k(B
-$B%7%9%F%`$G$J$i(B C<"daytime"> $B$r;H$&$3$H$b$G$-$^$7$?(B
-[FOOTNOTE: UNIX$B$G$O(B I</etc/services> $B$K%7%9%F%`%5!<%S%9%U%!%$%k$,$"$j$^$9(B]$B!#(B
-$B$7$+$7!"<B:]$K$O3g8L$G$/$/$C$F(B (13) $B$H$$$&%]!<%HHV9f$N;XDj$r9T$C$F$$$^$7$?!#(B
-$BC1$KHV9f$r;H$C$F$bF1MM$KF0:n$9$k$N$G$9$,!"Dj?t$OCm0U?<$$%W%m%0%i%^$r(B
-$B?@7P<A$K$5$;$F$7$^$$$^$9!#(B
+これは接続したいサービスの名称、もしくはポート番号です。
+私たちは先の例で、きちんと設定されたシステムサービスの使える
+システムでなら C<"daytime"> を使うこともできました
+[FOOTNOTE: UNIXでは I</etc/services> にシステムサービスファイルがあります]。
+しかし、実際には括弧でくくって (13) というポート番号の指定を行っていました。
+単に番号を使っても同様に動作するのですが、定数は注意深いプログラマを
+神経質にさせてしまいます。
 
 =back
 
@@ -2359,12 +2327,12 @@ can read one line from it this way:
 
 =end original
 
-$B%3%s%9%H%i%/%?!<(B C<new> $B$NLa$jCM$,!"(BC<while> $B%k!<%W$NCf$N%U%!%$%k(B
-$B%O%s%I%k$H$7$F$I$N$h$&$K;H$o$l$F$$$k$+$H$$$&$3$H$K5$$,$D$-$^$7$?$+(B?
-$B$3$l$O4V@\%U%!%$%k%O%s%I%k$H8F$P$l$k$b$N$G!"%U%!%$%k%O%s%I%k$rJ];}$7$F$$$k(B
-$B%9%+%i!<JQ?t$G$9!#(B
-$B$3$l$O!"DL>o$N%U%!%$%k%O%s%I%k$HF1MM$N$d$jJ}$G;H$&$3$H$,$G$-$^$9!#(B
-$BNc$($P!"0J2<$N$h$&$K$9$l$P0l9TFI$_9~$_$,$G$-$^$9(B:
+コンストラクター C<new> の戻り値が、C<while> ループの中のファイル
+ハンドルとしてどのように使われているかということに気がつきましたか?
+これは間接ファイルハンドルと呼ばれるもので、ファイルハンドルを保持している
+スカラー変数です。
+これは、通常のファイルハンドルと同様のやり方で使うことができます。
+例えば、以下のようにすれば一行読み込みができます:
 
     $line = <$handle>;
 
@@ -2374,7 +2342,7 @@ all remaining lines from is this way:
 
 =end original
 
-$B;D$j$N9TA4$F$NFI$_9~$_$O0J2<$N$h$&$K$7$^$9(B:
+残りの行全ての読み込みは以下のようにします:
 
     @lines = <$handle>;
 
@@ -2384,13 +2352,13 @@ and send a line of data to it this way:
 
 =end original
 
-$B%G!<%?$r0l9TAw$k$K$O0J2<$N$h$&$K$7$^$9(B:
+データを一行送るには以下のようにします:
 
     print $handle "some data\n";
 
 =head2 A Webget Client
 
-(Webget $B%/%i%$%"%s%H(B)
+(Webget クライアント)
 
 =begin original
 
@@ -2401,11 +2369,11 @@ something to the server before fetching the server's response.
 
 =end original
 
-$B0J2<$NNc$O!"%I%-%e%a%s%H$r$=$3$+$i<h$k%j%b!<%H%[%9%H$H!"$=$N%[%9%H$+$i(B
-$B<hF@$9$k%I%-%e%a%s%H$N%j%9%H$r0z?t$K<h$kC1=c$J%/%i%$%"%s%H$G$9!#(B
-$B$3$l$O@h$NNc$h$j$b6=L#?<$$$b$N$G$9!#(B
-$B$J$<$J$i!"$3$NNc$K$*$$$F$O%5!<%P!<$NH?1~$r%U%'%C%A$9$kA0$K:G=i$K2?$+$r(B
-$B%5!<%P!<$KAw?.$9$k$+$i$G$9!#(B
+以下の例は、ドキュメントをそこから取るリモートホストと、そのホストから
+取得するドキュメントのリストを引数に取る単純なクライアントです。
+これは先の例よりも興味深いものです。
+なぜなら、この例においてはサーバーの反応をフェッチする前に最初に何かを
+サーバーに送信するからです。
 
     #!/usr/bin/perl -w
     use IO::Socket;
@@ -2438,16 +2406,16 @@ be a C<"\015\012"> instead.)
 
 =end original
 
-$B$3$3$G$O!"!H(Bhttp$B!I%5!<%S%9$rDs6!$9$k(B web $B%5!<%P!<$,$=$NI8=`%]!<%H$G$"$k(B
-80 $BHV%]!<%H$r;H$C$F$$$k$H2>Dj$7$F$$$^$9!#(B
-$B$"$J$?$N;H$C$F$$$k(B web $B%5!<%P!<$,0[$J$k%]!<%H(B($BNc$($P(B 1080 $B$H$+(B 8080 $B$H$+(B)$B$r(B
-$B;HMQ$7$F$$$k$N$G$"$l$P!"L>A0IU$-%Q%i%a!<%?%Z%"$K$7$F(BC<< PeerPort => 8080 >>
-$B$N$h$&$J7A<0$G;XDj$9$Y$-$G$7$g$&!#(B
-C<autoflush> $B%a%=%C%I$,%=%1%C%H$KBP$7$F;H$o$l$^$9!#(B
-$B$=$&$7$J$1$l$P%7%9%F%`$O;d$?$A$,Aw?.$7$?=PNO$r(B
-$B%P%C%U%!%j%s%0$7$F$7$^$&$G$7$g$&(B($B$"$J$?$,(B Mac $B$r;H$C$F$$$k$N$G$"$l$P!"(B
-$B%M%C%H%o!<%/1[$7$K%G!<%?$rAw?.$9$k%W%m%0%i%`Cf$K$"$k$9$Y$F$N(B
-C<"\n"> $B$r(B C<"\015\012"> $B$KJQ99$9$kI,MW$b$"$j$^$9(B)$B!#(B
+ここでは、“http”サービスを提供する web サーバーがその標準ポートである
+80 番ポートを使っていると仮定しています。
+あなたの使っている web サーバーが異なるポート(例えば 1080 とか 8080 とか)を
+使用しているのであれば、名前付きパラメータペアにしてC<< PeerPort => 8080 >>
+のような形式で指定すべきでしょう。
+C<autoflush> メソッドがソケットに対して使われます。
+そうしなければシステムは私たちが送信した出力を
+バッファリングしてしまうでしょう(あなたが Mac を使っているのであれば、
+ネットワーク越しにデータを送信するプログラム中にあるすべての
+C<"\n"> を C<"\015\012"> に変更する必要もあります)。
 
 =begin original
 
@@ -2464,18 +2432,18 @@ such a request.
 
 =end original
 
-$B%5!<%P!<$X$N@\B3$O!"$3$N%W%m%;%9$N:G=i$N0lItJ,$G$7$+$"$j$^$;$s(B: 
-$B0lEY@\B3$5$l$F$7$^$($P!"%5!<%P!<$N8@8l$r;H$&$Y$-$J$N$G$9!#(B
-$B%M%C%H%o!<%/>e$N3F%5!<%P!<$O!"F~NO$H$7$F4|BT$7$F$$$k$=$l$>$l$N>.$5$J(B
-$B%3%^%s%I8@8l$r;}$C$F$$$^$9!#(B
-HTTP $B9=J8$K$*$$$F:G=i$K%5!<%P!<$KAw?.$9$k$N$O(B "GET" $B$G$9!#(B
-$B$3$N>l9g!"C1=c$K;XDj$5$l$?%I%-%e%a%s%H$N$=$l$>$l$r%j%/%(%9%H$7$^$9!#(B
-$B$=$&!";d$?$A$O<B:]$K$O!"$?$H$(F1$8%[%9%H$G$"$C$?$H$7$F$b%I%-%e%a%s%HKh$K(B
-$B?7$7$$%3%M%/%7%g%s$r:n@.$7$F$$$^$9!#(B
-$B$3$l$,(B HTTP $B$r;H$&$H$-$K>o$K$=$&$7$J$1$l$P$J$i$J$$J}K!$J$N$G$9!#(B
-$B:G6a$N(Bweb$B%V%i%&%6!<$G$O%3%M%/%7%g%s$r3+$$$?$^$^$A$g$C$H$N4V%j%b!<%H%5!<%P!<$r(B
-$BN%$l$k%j%/%(%9%H$r$9$k$3$H$,$G$-$^$9$,!"%5!<%P!<$O$=$N$h$&$J%j%/%(%9%H$r(B
-$B=hM}$7$J$1$l$P$J$i$J$$$H$$$&$o$1$G$O$"$j$^$;$s!#(B
+サーバーへの接続は、このプロセスの最初の一部分でしかありません: 
+一度接続されてしまえば、サーバーの言語を使うべきなのです。
+ネットワーク上の各サーバーは、入力として期待しているそれぞれの小さな
+コマンド言語を持っています。
+HTTP 構文において最初にサーバーに送信するのは "GET" です。
+この場合、単純に指定されたドキュメントのそれぞれをリクエストします。
+そう、私たちは実際には、たとえ同じホストであったとしてもドキュメント毎に
+新しいコネクションを作成しています。
+これが HTTP を使うときに常にそうしなければならない方法なのです。
+最近のwebブラウザーではコネクションを開いたままちょっとの間リモートサーバーを
+離れるリクエストをすることができますが、サーバーはそのようなリクエストを
+処理しなければならないというわけではありません。
 
 =begin original
 
@@ -2483,8 +2451,8 @@ Here's an example of running that program, which we'll call I<webget>:
 
 =end original
 
-$B0J2<$K5s$2$k$N$O!";d$?$A$,(BI<webget>$B$H8F$V$G$"$m$&%W%m%0%i%`$r(B
-$B<B9T$7$?Nc$G$9!#(B
+以下に挙げるのは、私たちがI<webget>と呼ぶであろうプログラムを
+実行した例です。
 
     % webget www.perl.com /guanaco.html
     HTTP/1.1 404 File Not Found
@@ -2505,9 +2473,9 @@ particular document.  But a long response wouldn't have fit on this page.
 
 =end original
 
-$B$3$l$OFCDj$N%I%-%e%a%s%H$r8+$D$1$i$l$J$$$H$$$&$b$N$G$9$+$i$"$^$j(B
-$BLLGr$$$b$N$G$b$"$j$^$;$s!#(B
-$B$G$b!"D9$$%l%9%]%s%9$r$3$3$K:\$;$k$o$1$K$b$$$+$J$$$G$7$g$&!#(B
+これは特定のドキュメントを見つけられないというものですからあまり
+面白いものでもありません。
+でも、長いレスポンスをここに載せるわけにもいかないでしょう。
 
 =begin original
 
@@ -2516,12 +2484,12 @@ the I<lwp-request> program included with the LWP modules from CPAN.
 
 =end original
 
-$B$3$N%W%m%0%i%`$NA45!G=%P!<%8%g%s(B(fully-featured version)$B$O!"(BCPAN $B$K$"$k(B
-LWP $B%b%8%e!<%kCf$N(B I<lwp-request> $B$H$$$&%W%m%0%i%`$r8+$k$H$h$$$G$7$g$&!#(B
+このプログラムの全機能バージョン(fully-featured version)は、CPAN にある
+LWP モジュール中の I<lwp-request> というプログラムを見るとよいでしょう。
 
 =head2 Interactive Client with IO::Socket
 
-(IO::Socket $B$r;H$C$?BPOCE*%/%i%$%"%s%H(B)
+(IO::Socket を使った対話的クライアント)
 
 =begin original
 
@@ -2532,10 +2500,10 @@ type a line, get the answer, etc.
 
 =end original
 
-$B0l$D$N%3%^%s%I$rAw?.$7!"0l$D$NJVEz$rF@$k$H$$$&$N$G$"$l$P6q9g$,NI$$$N$G$9$,!"(B
-$B40A4$KBPOCE*$J2?$+$r@_Dj$7!"(BI<telnet> $B$N$h$&$KF0:n$9$k$b$N$O$I$&$G$7$g$&$+(B?
-$B$3$3$G$G$-$k$N$O!"$"$k0l9T$r%?%$%W$7$FEz$rF@$F!"JL$N9T$r%?%$%W$7$F$=$l$K(B
-$BBP$9$kEz$rF@$F!D$H$$$&$d$jJ}$G$9!#(B
+一つのコマンドを送信し、一つの返答を得るというのであれば具合が良いのですが、
+完全に対話的な何かを設定し、I<telnet> のように動作するものはどうでしょうか?
+ここでできるのは、ある一行をタイプして答を得て、別の行をタイプしてそれに
+対する答を得て…というやり方です。
 
 =begin original
 
@@ -2554,21 +2522,21 @@ well, which is probably why it's spread to other systems.)
 
 =end original
 
-$B$3$N%/%i%$%"%s%H$O4{$K=P$F$-$?Fs$D$N$b$N$h$j$bJ#;($G$9$,!"$"$J$?$,(B
-$B6/NO$J(B C<fork> $B8F$S=P$7$r%5%]!<%H$7$F$$$k%7%9%F%`$r;H$C$F$$$k$N$G$"$l$P!"(B
-$B2r7h:v$OMpK=$J$b$N$G$O$"$j$^$;$s!#(B
-$BDL?.$7$?$$$J$s$i$+$N%5!<%S%9$KBP$7$F%3%M%/%7%g%s$r:n$C$F$7$^$($P!"%W%m%;%9$N(B
-$BJ#@=$r:n$k$?$a$K(B C<fork> $B$r8F$S=P$7$^$9!#(B
-$B$=$l$K$h$kFs$D$N%W%m%;%9$O$=$l$>$l!"Hs>o$KC1=c$J%8%g%V$r9T$$$^$9(B:
-$B?F%W%m%;%9$O%=%1%C%H$+$iF~NO$5$l$?$9$Y$F$rI8=`=PNO$K%3%T!<$7!";R%W%m%;%9$O(B
-$BI8=`F~NO$r%=%1%C%H$X$HF1$8$h$&$K%3%T!<$7$^$9!#(B
-$B$?$@0l$D$N%W%m%;%9$r;H$C$?$H$-$KF1$8$3$H$r$9$k$N$O(B B<$BHs>o$K(B>
-$BFq$7$$$G$7$g$&!#(B
-$B$J$<$J$i!"Fs$D$N$3$H$r9T$&0l$D$N%W%m%;%9$N$?$a$N%W%m%0%i%`$h$j$b(B
-$B0l$D$N$3$H$r9T$&Fs$D$N%W%m%;%9$N$?$a$N%W%m%0%i%`$N$[$&$,(B
-$B4JC1$@$+$i$G$9(B($B$3$N(B keep-it-simple $BK!B'$O(B UNIX $BJ82=$NMW@P$G!"NI$$(B
-$B%=%U%H%&%'%"%(%s%8%K%"$,;H$&$h$&$K!"(B(UNIX $B$,(B)$BB>$N%7%9%F%`$h$j$b9-$/(B
-$B;H$o$l$F$$$k$3$H$NM}M3$G$7$g$&(B)$B!#(B
+このクライアントは既に出てきた二つのものよりも複雑ですが、あなたが
+強力な C<fork> 呼び出しをサポートしているシステムを使っているのであれば、
+解決策は乱暴なものではありません。
+通信したいなんらかのサービスに対してコネクションを作ってしまえば、プロセスの
+複製を作るために C<fork> を呼び出します。
+それによる二つのプロセスはそれぞれ、非常に単純なジョブを行います:
+親プロセスはソケットから入力されたすべてを標準出力にコピーし、子プロセスは
+標準入力をソケットへと同じようにコピーします。
+ただ一つのプロセスを使ったときに同じことをするのは B<非常に>
+難しいでしょう。
+なぜなら、二つのことを行う一つのプロセスのためのプログラムよりも
+一つのことを行う二つのプロセスのためのプログラムのほうが
+簡単だからです(この keep-it-simple 法則は UNIX 文化の要石で、良い
+ソフトウェアエンジニアが使うように、(UNIX が)他のシステムよりも広く
+使われていることの理由でしょう)。
 
 =begin original
 
@@ -2576,7 +2544,7 @@ Here's the code:
 
 =end original
 
-$B%W%m%0%i%`$NNc$G$9(B:
+プログラムの例です:
 
     #!/usr/bin/perl -w
     use strict;
@@ -2622,9 +2590,9 @@ as soon as the remote server has closed its end of the connection.
 
 =end original
 
-$B?F%W%m%;%9$N(B C<if> $B%V%m%C%/$K$"$k(B C<kill> $B4X?t$O!"%j%b!<%H%5!<%P!<$,(B
-$B%3%M%/%7%g%s$r=*N;$7$F%/%m!<%:$7$F$9$0$K;R%W%m%;%9(B(C<else> $B%V%m%C%/$r(B
-$B<B9T$7$F$$$^$9(B)$B$K%7%0%J%k$rAw$k$?$a$N$b$N$G$9!#(B
+親プロセスの C<if> ブロックにある C<kill> 関数は、リモートサーバーが
+コネクションを終了してクローズしてすぐに子プロセス(C<else> ブロックを
+実行しています)にシグナルを送るためのものです。
 
 =begin original
 
@@ -2635,9 +2603,9 @@ following:
 
 =end original
 
-$B%j%b!<%H%5!<%P!<$,0lEY$K0l%P%$%HAw$C$F$$$F!"$=$7$F!"$"$J$?$,2~9T$r(B
-$BBT$D$3$H$J$7$KB(:B$K%G!<%?$rI,MW$H$9$k(B($B$=$&$=$&$J$$$3$H$G$7$g$&$,(B)$B$N$J$i!"(B
-C<while> $B%k!<%W$r0J2<$N$h$&$J$b$N$KCV$-49$($?$/$J$k$G$7$g$&(B:
+リモートサーバーが一度に一バイト送っていて、そして、あなたが改行を
+待つことなしに即座にデータを必要とする(そうそうないことでしょうが)のなら、
+C<while> ループを以下のようなものに置き換えたくなるでしょう:
 
     my $byte;
     while (sysread($handle, $byte, 1) == 1) {
@@ -2652,12 +2620,12 @@ well.
 
 =end original
 
-$BFI$_=P$7$N$?$a$K0l%P%$%HKh$K%7%9%F%`%3!<%k$r9T$&$N$O<B$KHs8zN(E*$G$9$,!"(B
-$B@bL@$9$k$N$K4JC1$G$H$j$"$($:$OF0$/$N$G$9(B:
+読み出しのために一バイト毎にシステムコールを行うのは実に非効率的ですが、
+説明するのに簡単でとりあえずは動くのです:
 
 =head1 TCP Servers with IO::Socket
 
-(IO::Socket $B$r;H$C$?(B TCP $B%5!<%P!<(B)
+(IO::Socket を使った TCP サーバー)
 
 =begin original
 
@@ -2669,12 +2637,12 @@ slightly different arguments than the client did.
 
 =end original
 
-$B>o$K$=$&$G$"$k$h$&$K!"%5!<%P!<$N%;%C%F%#%s%0$O%/%i%$%"%s%H$r<B9T$9$k$h$j$b(B
-$B$[$s$N$A$g$C$H<j4V$,$+$+$j$^$9!#(B
-$B$3$3$G;H$&$N$O!"%5!<%P!<$,FCDj$N%]!<%H$G@\B3$rBT$D$@$1$H$$$&FC<l$J<oN`$N(B
-$B%=%1%C%H$r:n@.$9$k$H$$$&%b%G%k$G$9!#(B
-$B$3$l$O!"(BC<< IO::Socket::INET->new() >> $B$H$$$&%a%=%C%I$r$O$C$-$j$H0[$J$k(B
-$B0z?t$rIU$1$F8F$S=P$7$F$+$i%/%i%$%"%s%H$r<B9T$9$k$3$H$G9T$$$^$9!#(B
+常にそうであるように、サーバーのセッティングはクライアントを実行するよりも
+ほんのちょっと手間がかかります。
+ここで使うのは、サーバーが特定のポートで接続を待つだけという特殊な種類の
+ソケットを作成するというモデルです。
+これは、C<< IO::Socket::INET->new() >> というメソッドをはっきりと異なる
+引数を付けて呼び出してからクライアントを実行することで行います。
 
 =over 4
 
@@ -2687,8 +2655,8 @@ still specify C<"tcp"> here.
 
 =end original
 
-$B$3$l$O;HMQ$9$k%W%m%H%3%k$G$9!#(B
-$B%/%i%$%"%s%H$HF1MM!"$3$3$G$O(B C<"tcp"> $B$r;XDj$7$^$9!#(B
+これは使用するプロトコルです。
+クライアントと同様、ここでは C<"tcp"> を指定します。
 
 =item LocalPort
 
@@ -2706,15 +2674,15 @@ which services current have servers.
 
 =end original
 
-C<LocalPort> $B0z?t$G%m!<%+%k%]!<%H$r;XDj$7$^$9!#(B
-$B$3$l$O%5!<%P!<$K$7$?$$%5!<%S%9L>$+%]!<%HHV9f$N$$$:$l$+$G$9(B(UNIX $B$G$O!"(B
-1024 $BL$K~$N%]!<%H$O%9!<%Q!<%f!<%6!<8BDj$G$9(B)$B!#(B
-$B;d$?$A$N%5%s%W%k$G$O(B 9000 $BHV%]!<%H$r;H$$$^$9$,!"$"$J$?$N;H$C$F$$$k%7%9%F%`$G(B
-$B=EJ#$7$J$1$l$P9%$-$JHV9f$r;H$&$3$H$,$G$-$^$9!#(B
-$B$b$74{$K;H$o$l$F$$$k%]!<%H$r;H$*$&$H$9$l$P!"(B"Address already in use" $B$N(B
-$B$h$&$J%a%C%;!<%8$rF@$k$3$H$H$J$k$G$7$g$&!#(B
-UNIX $B$G$O!"(BC<netstat -a> $B%3%^%s%I$r;H$C$F%5!<%S%9$,8=:_;H$C$F$$$k%5!<%P!<$r(B
-$B8+$k$3$H$,$G$-$^$9!#(B
+C<LocalPort> 引数でローカルポートを指定します。
+これはサーバーにしたいサービス名かポート番号のいずれかです(UNIX では、
+1024 未満のポートはスーパーユーザー限定です)。
+私たちのサンプルでは 9000 番ポートを使いますが、あなたの使っているシステムで
+重複しなければ好きな番号を使うことができます。
+もし既に使われているポートを使おうとすれば、"Address already in use" の
+ようなメッセージを得ることとなるでしょう。
+UNIX では、C<netstat -a> コマンドを使ってサービスが現在使っているサーバーを
+見ることができます。
 
 =item Listen
 
@@ -2728,11 +2696,11 @@ is SOMAXCONN.
 
 =end original
 
-C<Listen> $B%Q%i%a!<%?!<$O!"%/%i%$%"%s%H$rBT$?$;$F$*$$$F<u$1IU$1$k$3$H$N$G$-$k(B
-$B%3%M%/%7%g%s$N:GBg?t$r@_Dj$7$^$9!#(B
-$BEEOC$N8F$S=P$7$r9M$($F$_$F$/$@$5$$!#(B
-$BDc?e=`%=%1%C%H%b%8%e!<%k$O(B SOMAXCONN $B$H$$$&$=$N%7%9%F%`$N:GBgCM$rI=$9(B
-$BFC<l$J%7%s%\%k$r;}$C$F$$$^$9!#(B
+C<Listen> パラメーターは、クライアントを待たせておいて受け付けることのできる
+コネクションの最大数を設定します。
+電話の呼び出しを考えてみてください。
+低水準ソケットモジュールは SOMAXCONN というそのシステムの最大値を表す
+特殊なシンボルを持っています。
 
 =item Reuse
 
@@ -2744,8 +2712,8 @@ clear out.
 
 =end original
 
-C<Reuse> $B%Q%i%a!<%?!<$O!"%7%9%F%`$,%P%C%U%!!<$r%/%j%"$9$k$?$a$N;~4V$r(B
-$B3]$1$:$K;d$?$A$N%5!<%P!<$r<j:n6H$G:F5/F0$9$k$N$KI,MW$G$9!#(B
+C<Reuse> パラメーターは、システムがバッファーをクリアするための時間を
+掛けずに私たちのサーバーを手作業で再起動するのに必要です。
 
 =back
 
@@ -2759,11 +2727,11 @@ this handle to circumvent buffering.)
 
 =end original
 
-$B>e$G=R$Y$?%Q%i%a!<%?!<$r;}$C$?HFMQ$N%5!<%P!<%=%1%C%H$,@8@.$5$l$l$P!"(B
-$B$=$N%5!<%P!<$O@\B3$5$l$k?7$?$J%/%i%$%"%s%H$rBT$A$^$9!#(B
-C<accept> $B%a%=%C%I$K$"$k%5!<%P!<%V%m%C%/$O%j%b!<%H%/%i%$%"%s%H$+$i$N(B
-$BAPJ}8~@\B3$r5v2D$7$^$9(B($B%P%C%U%!%j%s%0$rM^@)$9$k$?$a$K%O%s%I%k$KBP$7$F(B
-autoflush $B$9$k$3$H$rK:$l$J$$$h$&$K(B)$B!#(B
+上で述べたパラメーターを持った汎用のサーバーソケットが生成されれば、
+そのサーバーは接続される新たなクライアントを待ちます。
+C<accept> メソッドにあるサーバーブロックはリモートクライアントからの
+双方向接続を許可します(バッファリングを抑制するためにハンドルに対して
+autoflush することを忘れないように)。
 
 =begin original
 
@@ -2773,11 +2741,11 @@ you'll have to use the C<sysread> variant of the interactive client above.
 
 =end original
 
-$B%f!<%6!<$K?F@Z$K$9$k$?$a$K!";d$?$A$N%5!<%P!<$O%3%^%s%I$NF~NO$N%W%m%s%W%H$r(B
-$BI=<($7$^$9!#(B
-$B$[$H$s$I$N%5!<%P!<$O$3$&$7$?$3$H$r$7$F$$$^$;$s!#(B
-$B%W%m%s%W%H$K$O2~9T$,$J$$$N$G!">e$NNc$K$"$C$?$h$&$JBPOCE*$J(B
-$B%/%i%$%"%s%H$NN`$G$O(B C<sysread> $B$r;H$&I,MW$,$"$k$G$7$g$&!#(B
+ユーザーに親切にするために、私たちのサーバーはコマンドの入力のプロンプトを
+表示します。
+ほとんどのサーバーはこうしたことをしていません。
+プロンプトには改行がないので、上の例にあったような対話的な
+クライアントの類では C<sysread> を使う必要があるでしょう。
 
 =begin original
 
@@ -2788,11 +2756,11 @@ covered in Chapter 6 of the Camel.
 
 =end original
 
-$B$3$N%5!<%P!<$O8^<oN`$N%3%^%s%I$N$$$:$l$+0l$D$r<h$j!"%/%i%$%"%s%H$KBP$7$F(B
-($B%3%^%s%I$K1~$8$?(B)$B=PNO$r9T$$$^$9!#(B
-$BB?$/$N%M%C%H%o!<%/%5!<%P!<$H$O0[$J$j!"$3$N%5!<%P!<%W%m%0%i%`$O0lEY$K0l$D$N(B
-$B%/%i%$%"%s%H$7$+07$($J$$$H$$$&$3$H$KCm0U$7$F$/$@$5$$!#(B
-$B%^%k%A%9%l%C%I2=$5$l$?%5!<%P!<$O$i$/$@K\$NBhO;>O$G%+%P!<$5$l$F$$$^$9!#(B
+このサーバーは五種類のコマンドのいずれか一つを取り、クライアントに対して
+(コマンドに応じた)出力を行います。
+多くのネットワークサーバーとは異なり、このサーバープログラムは一度に一つの
+クライアントしか扱えないということに注意してください。
+マルチスレッド化されたサーバーはらくだ本の第六章でカバーされています。
 
 =begin original
 
@@ -2800,7 +2768,7 @@ Here's the code.  We'll
 
 =end original
 
-$B0J2<%W%m%0%i%`$G$9!#(B
+以下プログラムです。
 
  #!/usr/bin/perl -w
  use IO::Socket;
@@ -2840,7 +2808,7 @@ Here's the code.  We'll
 
 =head1 UDP: Message Passing
 
-(UDP: $B%a%C%;!<%8G[Aw(B)
+(UDP: メッセージ配送)
 
 =begin original
 
@@ -2856,16 +2824,16 @@ with.
 
 =end original
 
-$B%/%i%$%"%s%H!&%5!<%P!<$r%;%C%H%"%C%W$9$k$b$&0l$D$N<oN`$O%3%M%/%7%g%s$G$O$J$/(B
-$B%a%C%;!<%8$r;H$&$b$N$G$9!#(B
-UDP $BDL?.$O%*!<%P!<%X%C%I$,Dc$$$b$N$N!"%a%C%;!<%8$,$9$Y$FE~Ce$9$k$H$$$&(B
-$BJ]>Z$,$J$/E~Ce$N=g=x$b$-$A$s$HJ]$?$l$F$$$k$3$H$bJ]>Z$5$l$F$J$$$?$a$K(B
-$B?.Mj@-$b$^$?Nt$k$b$N$K$J$C$F$$$^$9!#(B
-$B$=$l$G$b!"(BUDP $B$K$O0lEY$K08$F@h%[%9%H$N2tA4BN(B
-($BDL>o$O%m!<%+%k%5%V%M%C%H(B)$B$KBP$7$F!H%V%m!<%I%-%c%9%H!I!"!H%^%k%A%-%c%9%H!I$,(B
-$B$G$-$k$H$$$&$3$H$r4^$a!"(BTCP$B$KBP$9$k4v$D$+$N%"%I%P%s%F!<%8$,$"$j$^$9!#(B
-$B?.Mj@-$K4X$7$F2aEY$K4X?4$r;}$A!":n@.$9$k%a%C%;!<%8%7%9%F%`$K8!::5!9=$r(B
-$BAH$_9~$b$&$H$$$&$N$G$"$l$P!"$`$7$m(B TCP $B$r;H$&$h$&$K$7$?J}$,$h$$$G$7$g$&!#(B
+クライアント・サーバーをセットアップするもう一つの種類はコネクションではなく
+メッセージを使うものです。
+UDP 通信はオーバーヘッドが低いものの、メッセージがすべて到着するという
+保証がなく到着の順序もきちんと保たれていることも保証されてないために
+信頼性もまた劣るものになっています。
+それでも、UDP には一度に宛て先ホストの塊全体
+(通常はローカルサブネット)に対して“ブロードキャスト”、“マルチキャスト”が
+できるということを含め、TCPに対する幾つかのアドバンテージがあります。
+信頼性に関して過度に関心を持ち、作成するメッセージシステムに検査機構を
+組み込もうというのであれば、むしろ TCP を使うようにした方がよいでしょう。
 
 =begin original
 
@@ -2876,11 +2844,11 @@ or better send(), like in the example below.
 
 =end original
 
-UDP $B$O%P%$%H%9%H%j!<%`(B I<$B$G$O$J$/(B> $B!"$=$N$h$&$K07$&$Y$-$G$b$J$$$3$H$K(B
-$BCm0U$7$F$/$@$5$$!#(B
-$B$3$l$O(B stdio($B$D$^$j(B print() $B$d$=$N?F@L(B) $B$N$h$&$JFbIt%P%C%U%!%j%s%0IU$-$N(B
-I/O $B5!9=$rFC$K07$$$K$/$/$7$^$9!#(B
-$B0J2<$NNc$N$h$&$K!"(Bsyswrite() $B$+!"$h$j$h$$(B send() $B$r;H$C$F$/$@$5$$!#(B
+UDP はバイトストリーム I<ではなく> 、そのように扱うべきでもないことに
+注意してください。
+これは stdio(つまり print() やその親戚) のような内部バッファリング付きの
+I/O 機構を特に扱いにくくします。
+以下の例のように、syswrite() か、よりよい send() を使ってください。
 
 =begin original
 
@@ -2892,12 +2860,12 @@ with TCP, you'd have to use a different socket handle for each host.
 
 =end original
 
-$B0J2<$K5s$2$?(B UDP $B%W%m%0%i%`$O@h$K5s$2$?%$%s%?!<%M%H(B TCP $B%/%i%$%"%s%H$N(B
-$BNc$H;w$F$$$^$9$,!"0lEY$K0l$D$N%[%9%H$r%A%'%C%/$9$k$N$G$O$J$/!"(B
-$B%^%k%A%-%c%9%H$r%7%_%e%l!<%H$7!"$+$D!"(Bselect() $B$rF~=PNO$N%?%$%`%"%&%HBT$A$N(B
-$B$?$a$K;H$&$3$H$K$h$jHsF14|E*$K$?$/$5$s$N%A%'%C%/$r9T$$$^$9!#(B
-TCP $B$G$3$l$HF1$8$3$H$r9T$&$K$O!"%[%9%HKh$K0[$J$k%=%1%C%H%O%s%I%k$r(B
-$B;H$o$J$1$l$P$J$i$J$$$G$7$g$&!#(B
+以下に挙げた UDP プログラムは先に挙げたインターネト TCP クライアントの
+例と似ていますが、一度に一つのホストをチェックするのではなく、
+マルチキャストをシミュレートし、かつ、select() を入出力のタイムアウト待ちの
+ために使うことにより非同期的にたくさんのチェックを行います。
+TCP でこれと同じことを行うには、ホスト毎に異なるソケットハンドルを
+使わなければならないでしょう。
 
     #!/usr/bin/perl -w
     use strict;
@@ -2952,10 +2920,10 @@ list of hosts to contact is sufficiently large.
 
 =end original
 
-$B$3$NNc$G$O0l@Z:F;n9T$r9T$o$J$$$N$G!"E~C#2DG=$J%[%9%H$X$N@\B3$K(B
-$B<:GT$9$k$3$H$,$"$k$3$H$KCm0U$7$F$/$@$5$$!#(B
-$B$3$l$N$b$C$H$bM-L>$J860x$O!"$b$7@\B3$9$k%[%9%H$N%j%9%H$N?t$,==J,$KBg$-$$$H!"(B
-$BAw?.%[%9%H$N%-%e!<$,:.;($9$k$3$H$G$9!#(B
+この例では一切再試行を行わないので、到達可能なホストへの接続に
+失敗することがあることに注意してください。
+これのもっとも有名な原因は、もし接続するホストのリストの数が十分に大きいと、
+送信ホストのキューが混雑することです。
 
 =head1 SysV IPC
 
@@ -2969,13 +2937,13 @@ you weren't wanting it to.
 
 =end original
 
-System V IPC $B$O%=%1%C%H$H$7$F$O$=$lDx9-$/;H$o$l$F$O$$$^$;$s$,!"(B
-$B4v$D$+$N6=L#?<$$;HMQK!$,$"$j$^$9!#(B
-$B$?$@$7!"(BSystem V $B$N(B IPC $B$d(B Berkley $B$N(B mmap() $B$r(B($B0[$J$k4v$D$+$N%W%m%;%9$N(B
-$B4V$GJQ?t$r6&M-$9$k$?$a$N(B)$B6&M-%a%b%j$r;}$DL\E*$N$?$a$K8zN(NI$/(B
-$B;H$&$3$H$O$G$-$^$;$s!#(B
-$B$J$<$J$i(B Perl $B$,!"$"$J$?$,K>$^$J$$$H$-$KJ8;zNs$N:F3d$jIU$1$r$d$C$F$7$^$&(B
-$B2DG=@-$,$"$k$+$i$G$9!#(B
+System V IPC はソケットとしてはそれ程広く使われてはいませんが、
+幾つかの興味深い使用法があります。
+ただし、System V の IPC や Berkley の mmap() を(異なる幾つかのプロセスの
+間で変数を共有するための)共有メモリを持つ目的のために効率良く
+使うことはできません。
+なぜなら Perl が、あなたが望まないときに文字列の再割り付けをやってしまう
+可能性があるからです。
 
 =begin original
 
@@ -2983,7 +2951,7 @@ Here's a small example showing shared memory usage.
 
 =end original
 
-$B6&M-%a%b%j$N;H$$J}$rNc<($9$k>.$5$JNc$G$9!#(B
+共有メモリの使い方を例示する小さな例です。
 
     use IPC::SysV qw(IPC_PRIVATE IPC_RMID S_IRUSR S_IWUSR);
 
@@ -3011,7 +2979,7 @@ Here's an example of a semaphore:
 
 =end original
 
-$B0J2<$O%;%^%U%)$NNc$G$9(B:
+以下はセマフォの例です:
 
     use IPC::SysV qw(IPC_CREAT);
 
@@ -3026,9 +2994,9 @@ Call the file F<take>:
 
 =end original
 
-$BFs$D0J>e$N%W%m%;%9$GF0:n$9$k$h$&$K!"$3$N%3!<%I$rJ,3d$5$l$?%U%!%$%k$K(B
-$BCV$-$^$9!#(B
-$B$=$N%U%!%$%k$r(B F<take> $B$H8F$S$^$9(B:
+二つ以上のプロセスで動作するように、このコードを分割されたファイルに
+置きます。
+そのファイルを F<take> と呼びます:
 
     # create a semaphore
 
@@ -3058,9 +3026,9 @@ Call this file F<give>:
 
 =end original
 
-$B$3$N%3!<%I$r!"Fs$D0J>e$N%W%m%;%9$G<B9T$G$-$k$h$&$KJL$N%U%!%$%k$K(B
-$BCV$-$^$9!#(B
-$B$3$N%U%!%$%k$r(B F<give> $B$H8F$S$^$9!#(B
+このコードを、二つ以上のプロセスで実行できるように別のファイルに
+置きます。
+このファイルを F<give> と呼びます。
 
     # 'give' the semaphore
     # run this in the original process and you will see
@@ -3087,10 +3055,10 @@ which is included with Perl starting from Perl 5.005.
 
 =end original
 
-$B$3$3$GNc<($7$?(B System V $B$N(B IPC $B%3!<%I$O$O$k$+$J@N$K=q$+$l$?$b$N$G!"(B
-$B$X$\$J$b$N$K8+$($^$9!#(B
-$B$h$j8=BeE*$J$b$N$K$D$$$F$O!"(BPerl 5.005 $B$+$i4^$^$l$F$$$k(B
-IPC::SysV $B%b%8%e!<%k$r;2>H$7$F$/$@$5$$!#(B
+ここで例示した System V の IPC コードははるかな昔に書かれたもので、
+へぼなものに見えます。
+より現代的なものについては、Perl 5.005 から含まれている
+IPC::SysV モジュールを参照してください。
 
 =begin original
 
@@ -3098,7 +3066,7 @@ A small example demonstrating SysV message queues:
 
 =end original
 
-SysV $B%a%C%;!<%8%-%e!<$rNc<($9$k4JC1$JNc$G$9(B:
+SysV メッセージキューを例示する簡単な例です:
 
     use IPC::SysV qw(IPC_PRIVATE IPC_RMID IPC_CREAT S_IRUSR S_IWUSR);
 
@@ -3143,14 +3111,14 @@ taint checking flag to the #! line for servers:
 
 =end original
 
-$B$3$l$i$N%k!<%A%s$N$[$H$s$I$OJ*@E$+$G$9$,!"2?$+$K<:GT$7$?>l9g$K$O(B
-$B$"$J$?$N%W%m%0%i%`$r=*N;$5$;$F$7$^$C$?$jJaB*$5$l$J$$Nc30$r(B
-$B0z$-5/$3$7$?$j$9$kBe$o$j$K(B C<undef> $B$rJV$7$^$9(B($B<B:]$K$O!"?7$7$$(B
-I<Socket> $BJQ494X?t$N4v$D$+$OIT@5$J0z?t$KBP$7$F(B croak() $B$7$^$9(B)$B!#(B
-$B$7$?$,$C$FMWE@$O!"$3$l$i$N4X?t$NLa$jCM$r3NG'$9$Y$-$G$"$k$H$$$&$3$H$G$9!#(B
-$B%=%1%C%H%W%m%0%i%`$O>o$K:GNI$N@.8y(B(optimal success)$B$N$?$a$K$3$N$d$jJ}$G(B
-$B;O$a!"$=$7$F%5!<%P!<$KBP$7$F(B pound-bang line (#! $B$N9T$N$3$H(B)$B$K(B
-$B1x@w8!::%U%i%0(B B<-T> $B$rDI2C$9$k$3$H$rK:$l$J$$$h$&$K$7$F$/$@$5$$!#(B
+これらのルーチンのほとんどは物静かですが、何かに失敗した場合には
+あなたのプログラムを終了させてしまったり捕捉されない例外を
+引き起こしたりする代わりに C<undef> を返します(実際には、新しい
+I<Socket> 変換関数の幾つかは不正な引数に対して croak() します)。
+したがって要点は、これらの関数の戻り値を確認すべきであるということです。
+ソケットプログラムは常に最良の成功(optimal success)のためにこのやり方で
+始め、そしてサーバーに対して pound-bang line (#! の行のこと)に
+汚染検査フラグ B<-T> を追加することを忘れないようにしてください。
 
     #!/usr/bin/perl -Tw
     use strict;
@@ -3170,15 +3138,15 @@ want your code to stand a chance of being portable.
 
 =end original
 
-$B$3$l$i$N%k!<%A%s$OA4$F!"%7%9%F%`8GM-$N0\?"@-LdBj$r:n$j=P$7$^$9!#(B
-$BB>$N>l=j$G@bL@$7$?$h$&$K!"(BPerl $B$N?6$kIq$$$O;HMQ$7$F$$$k(BC$B%i%$%V%i%j$K(B
-$B:81&$5$l$^$9!#(B
-System V $B$N$*$+$7$J%7%0%J%k$N%;%^%s%F%#%/%9$r2>Dj$9$k$3$H$H!"C1=c$J(B
-TCP $B$*$h$S(B UDP $B%=%1%C%HA`:n$K=*;O$9$k$h$&$K$9$k$3$H$,$*$=$i$/$O:G$b(B
-$B0BA4$J$b$N$N$G$7$g$&!#(B
-$B$?$H$($P!"$"$J$?$,<+J,$N%W%m%0%i%`$K0\?"@-$r;}$?$;$k$h$&$K$7$?$$$N$G$"$l$P!"(B
-$B%m!<%+%k$J(B UDP $B%G!<%?%0%i%`$N%=%1%C%H$rDL$7$F%U%!%$%k5-=R;R$r(B
-$BEO$9$h$&$J$3$H$r$7$h$&$H$7$F$O$$$1$J$$$H$$$&$3$H$G$9!#(B
+これらのルーチンは全て、システム固有の移植性問題を作り出します。
+他の場所で説明したように、Perl の振る舞いは使用しているCライブラリに
+左右されます。
+System V のおかしなシグナルのセマンティクスを仮定することと、単純な
+TCP および UDP ソケット操作に終始するようにすることがおそらくは最も
+安全なもののでしょう。
+たとえば、あなたが自分のプログラムに移植性を持たせるようにしたいのであれば、
+ローカルな UDP データグラムのソケットを通してファイル記述子を
+渡すようなことをしようとしてはいけないということです。
 
 =head1 AUTHOR
 
@@ -3189,8 +3157,8 @@ version and suggestions from the Perl Porters.
 
 =end original
 
-Tom Christiansen (Larry Wall $B$K$h$k85$NJ8=q$NItJ,E*$JL>;D$H!"(B
-Perl Porters $B$K$h$k<(:6$H6&$K(B)
+Tom Christiansen (Larry Wall による元の文書の部分的な名残と、
+Perl Porters による示唆と共に)
 
 =head1 SEE ALSO
 
@@ -3201,8 +3169,8 @@ started.
 
 =end original
 
-$B%M%C%H%o!<%/$K4X$9$k;vJA$O$^$@$^$@$?$/$5$s$"$j$^$9!#(B
-$B$3$3$K$"$k$3$H$O%9%?!<%H$G$7$+$"$j$^$;$s!#(B
+ネットワークに関する事柄はまだまだたくさんあります。
+ここにあることはスタートでしかありません。
 
 =begin original
 
@@ -3214,12 +3182,12 @@ to Perl is left as an exercise for the reader.
 
 =end original
 
-Richard Stevens $B$K$h$kHs>o$K=EMW$J652J=q(B
+Richard Stevens による非常に重要な教科書
 I<Unix Network Programming, 2nd Edition, Volume 1>
-(Prentice-Hall $B$+$i=PHG$5$l$F$$$^$9(B)$B$,$"$j$^$9!#(B
-$B%M%C%H%o!<%/$K4X$9$k$[$H$s$I$NK\$O!"(BC $B%W%m%0%i%^$rBP>]$H$7$F$$$kE@$K(B
-$BCm0U$7$F$/$@$5$$!#(B
-Perl $B$X$NJQ49$O!"FI<T$N=IBj$H$7$F;D$7$F$*$-$^$9!#(B
+(Prentice-Hall から出版されています)があります。
+ネットワークに関するほとんどの本は、C プログラマを対象としている点に
+注意してください。
+Perl への変換は、読者の宿題として残しておきます。
 
 =begin original
 
@@ -3231,12 +3199,12 @@ FAQ> for a description of what CPAN is and where to get it.)
 
 =end original
 
-IO::Socket(3) $B%^%K%e%"%k%Z!<%8$K$O%*%V%8%'%/%H%i%$%V%i%j$N@bL@$,$"$j!"(B
-Socket(3) $B$K$ODc?e=`$N%=%1%C%H$KBP$9$k%$%s%?!<%U%'!<%9$N@bL@$,$"$j$^$9!#(B
-L<perlfunc> $B$K$"$k4X?t$NB>$K$b!";j6a$K$"$k(B CPAN $B%5%$%H$G(B
-F<modules> $B%U%!%$%k$r%A%'%C%/$7$?$[$&$,NI$$$G$7$g$&(B(L<perlmodlib> $B$r(B
-$B;2>H$9$k$+!"(BCPAN $B$,$I$3$K$"$k$+$N@bL@$,$"$k(B F<Perl FAQ> $B$r8+$k$H(B
-$B$h$$$G$7$g$&(B)$B!#(B
+IO::Socket(3) マニュアルページにはオブジェクトライブラリの説明があり、
+Socket(3) には低水準のソケットに対するインターフェースの説明があります。
+L<perlfunc> にある関数の他にも、至近にある CPAN サイトで
+F<modules> ファイルをチェックしたほうが良いでしょう(L<perlmodlib> を
+参照するか、CPAN がどこにあるかの説明がある F<Perl FAQ> を見ると
+よいでしょう)。
 
 =begin original
 
@@ -3248,12 +3216,12 @@ Threads, and ToolTalk--just to name a few.
 
 =end original
 
-F<modlues> $B%U%!%$%k$NBh(B 5 $B>O$O(B
+F<modlues> ファイルの第 5 章は
 "Networking, Device Control (modems), and Interprocess Communication"
-$B$K=<$F$i$l$F$$$F!"%P%s%I%k$5$l$J$+$C$?B?$/$N%M%C%H%o!<%/4XO"%b%8%e!<%k!"(B
-$B%A%c%C%H(B $B$H(B Expect operations, CGI $B%W%m%0%i%_%s%0(B, DCE, 
-FTP, IPC, NNTP, Proxy, Ptty, RPC, SNMP, SMTP, Telnet, $B%9%l%C%I!"(B
-$B$=$7$F(B ToolTalk $B$r4^$s$G$$$^$9!#(B
+に充てられていて、バンドルされなかった多くのネットワーク関連モジュール、
+チャット と Expect operations, CGI プログラミング, DCE, 
+FTP, IPC, NNTP, Proxy, Ptty, RPC, SNMP, SMTP, Telnet, スレッド、
+そして ToolTalk を含んでいます。
 
 =begin meta
 
