@@ -2766,11 +2766,11 @@ with.
 클라이언트, 서버를 섹업하는 다른 하나의 종류는 커넥션이 아니라 메시지를 사용하는 것입니다.
 UDP 통신은 오버헤드가 낮고, 메시지가 모두 도착한다는 보증이 없이 도착의 순서도 
 제대로 지켜주는 것도 보증되지 않기 때문에 신뢰성이 떨어집니다.
-それでも、UDP には一度に宛て先ホストの塊全体
-(通常はローカルサブネット)に対して“ブロードキャスト”、“マルチキャスト”が
-できるということを含め、TCPに対する幾つかのアドバンテージがあります。
-信頼性に関して過度に関心を持ち、作成するメッセージシステムに検査機構を
-組み込もうというのであれば、むしろ TCP を使うようにした方がよいでしょう。
+그래도 UDP 에는 한번에 송신호스트의 덩어리 전체
+(보통은 로컬서브넷)에 대해서 "브로드캐스트", "멀티캐스트" 가 가능하다는 것을 포함해서,
+TCP 에 대한 몇가지의 이점이 있습니다.
+신뢰성에 관해서는 과도하게 관심을 가지고, 작성하는 메시지 시스템에 검사기능을 
+집어넣으려고 한다면 오히려 TCP 를 사용하는 편이 좋겠죠.
 
 =begin original
 
@@ -2781,11 +2781,10 @@ or better send(), like in the example below.
 
 =end original
 
-UDP はバイトストリーム I<ではなく> 、そのように扱うべきでもないことに
-注意してください。
-これは stdio(つまり print() やその親戚) のような内部バッファリング付きの
-I/O 機構を特に扱いにくくします。
-以下の例のように、syswrite() か、よりよい send() を使ってください。
+UDP 는 바이트스트림이 I<아니고>, 그렇게 다뤄야 하는 것도 아닙니다.
+이것은 stdio(즉 print() 나 그 친척) 처럼 내부 버퍼링이 붙은 I/O 기능을 특히 
+다루기 어렵습니다.
+아래의 예제처럼, syswrite() 나, 보다 좋은 send() 를 사용해주세요.
 
 =begin original
 
@@ -2797,12 +2796,11 @@ with TCP, you'd have to use a different socket handle for each host.
 
 =end original
 
-以下に挙げた UDP プログラムは先に挙げたインターネト TCP クライアントの
-例と似ていますが、一度に一つのホストをチェックするのではなく、
-マルチキャストをシミュレートし、かつ、select() を入出力のタイムアウト待ちの
-ために使うことにより非同期的にたくさんのチェックを行います。
-TCP でこれと同じことを行うには、ホスト毎に異なるソケットハンドルを
-使わなければならないでしょう。
+아래에 예를 든 UDP 프로그램은 앞에 예를든 인터넷 TCP 클라이언트의 예제와 비슷하지만,
+한번에 하나의 호스트를 체크하는 것이 아니라, 멀티캐스트를 시뮬레이트하고, 
+select() 를 입출력의 타임아웃대기를 위해 사용하는 것에 의해 비동기적으로 많은 
+체크를 수행합니다.
+TCP 에서 이것과 같은 일을 하려면 호스트마다 다른 소켓 핸들을 사용하지 않으면 안되겠죠?
 
     #!/usr/bin/perl -w
     use strict;
@@ -2857,10 +2855,10 @@ list of hosts to contact is sufficiently large.
 
 =end original
 
-この例では一切再試行を行わないので、到達可能なホストへの接続に
-失敗することがあることに注意してください。
-これのもっとも有名な原因は、もし接続するホストのリストの数が十分に大きいと、
-送信ホストのキューが混雑することです。
+이 예제에서는 절대 다시 시험하지 않기 때문에, 도달가능한 호스트로의 접속에 실패하는 
+일이 있다는 것에 주의해주세요.
+이것의 제일 유명한 원인은, 만약 접속하는 호스트의 리스트 수가 충분히 크면,
+송신호스트의 큐가 혼잡하다는 것입니다.
 
 =head1 SysV IPC
 
@@ -2874,13 +2872,12 @@ you weren't wanting it to.
 
 =end original
 
-System V IPC はソケットとしてはそれ程広く使われてはいませんが、
-幾つかの興味深い使用法があります。
-ただし、System V の IPC や Berkley の mmap() を(異なる幾つかのプロセスの
-間で変数を共有するための)共有メモリを持つ目的のために効率良く
-使うことはできません。
-なぜなら Perl が、あなたが望まないときに文字列の再割り付けをやってしまう
-可能性があるからです。
+System V IPC 는 소켓으로써는 그렇게 널리 사용되지 않지만, 
+몇가지 흥미깊은 사용법이 있습니다.
+단, System V 의 IPC 나 Berkley 의 mmap() 을 (다른 몇가지 프로세스의 사이에서 
+변수를 공유하기 위한) 공유 메모리를 가지는 목적을 위해서 
+효율 있게 사용할 수는 없습니다.
+왜냐면, Perl 이 당신이 원하지 않을 때에 문자열의 재 할당을 해버릴 가능성이 있기 때문입니다.
 
 =begin original
 
@@ -2888,7 +2885,7 @@ Here's a small example showing shared memory usage.
 
 =end original
 
-共有メモリの使い方を例示する小さな例です。
+공유메모리의 사용법을 표시하는 작은 예제입니다.
 
     use IPC::SysV qw(IPC_PRIVATE IPC_RMID S_IRUSR S_IWUSR);
 
@@ -2916,7 +2913,7 @@ Here's an example of a semaphore:
 
 =end original
 
-以下はセマフォの例です:
+아래는 세마포어의 예제입니다:
 
     use IPC::SysV qw(IPC_CREAT);
 
@@ -2931,9 +2928,8 @@ Call the file F<take>:
 
 =end original
 
-二つ以上のプロセスで動作するように、このコードを分割されたファイルに
-置きます。
-そのファイルを F<take> と呼びます:
+두가지 이상의 프로세스에서 동작하도록 이 코드를 분할된 파일에 놓습니다.
+그 파일을 F<take> 라고 부릅니다:
 
     # create a semaphore
 
@@ -2963,9 +2959,8 @@ Call this file F<give>:
 
 =end original
 
-このコードを、二つ以上のプロセスで実行できるように別のファイルに
-置きます。
-このファイルを F<give> と呼びます。
+이 코드를 두가지 이상의 프로세스에서 실행할 수 있도록 별도의 파일에 놓습니다.
+이 파일을 F<giv> 라고 부릅니다.
 
     # 'give' the semaphore
     # run this in the original process and you will see
@@ -2992,10 +2987,9 @@ which is included with Perl starting from Perl 5.005.
 
 =end original
 
-ここで例示した System V の IPC コードははるかな昔に書かれたもので、
-へぼなものに見えます。
-より現代的なものについては、Perl 5.005 から含まれている
-IPC::SysV モジュールを参照してください。
+여기에서 예시한 System V 의 IPC 코드는 확실히 옛날에 쓰여진 것으로 
+쓸모없는 것으로 보입니다.
+보다 현대적인 것에 대해서는 Perl 5.005 부터 포함된 IPC::SysV 모듈을 참조해주세요.
 
 =begin original
 
@@ -3003,7 +2997,7 @@ A small example demonstrating SysV message queues:
 
 =end original
 
-SysV メッセージキューを例示する簡単な例です:
+SysV 메시지 큐를 예시하는 간단한 예제입니다:
 
     use IPC::SysV qw(IPC_PRIVATE IPC_RMID IPC_CREAT S_IRUSR S_IWUSR);
 
@@ -3048,14 +3042,14 @@ taint checking flag to the #! line for servers:
 
 =end original
 
-これらのルーチンのほとんどは物静かですが、何かに失敗した場合には
-あなたのプログラムを終了させてしまったり捕捉されない例外を
-引き起こしたりする代わりに C<undef> を返します(実際には、新しい
-I<Socket> 変換関数の幾つかは不正な引数に対して croak() します)。
-したがって要点は、これらの関数の戻り値を確認すべきであるということです。
-ソケットプログラムは常に最良の成功(optimal success)のためにこのやり方で
-始め、そしてサーバーに対して pound-bang line (#! の行のこと)に
-汚染検査フラグ B<-T> を追加することを忘れないようにしてください。
+이 루틴의 대부분은 잘 짜여져 있지만, 뭔가 실패한 경우에는 
+당신의 프로그램을 종료시키거나 포착되지 않은 예외를 일으키는 대신에 
+C<undef> 를 반환합니다(실제로는 새로운 
+I<Socket> 변환함수의 몇가지는 부정확한 인수에 대해서 croak() 합니다)
+따라서 요점은, 이 함수들의 반환값들을 확인해야한다는 것입니다.
+소켓 프로그램은 항상 최적의 성공을 위해 이 방법으로 시작하고,
+그리고 서버에 대해서 pound-bang line(#! 의 줄을 말함)에 
+오염검사 플래그 B<-T> 를 추가하는 것을 잊지 말아주세요.
 
     #!/usr/bin/perl -Tw
     use strict;
@@ -3075,15 +3069,13 @@ want your code to stand a chance of being portable.
 
 =end original
 
-これらのルーチンは全て、システム固有の移植性問題を作り出します。
-他の場所で説明したように、Perl の振る舞いは使用しているCライブラリに
-左右されます。
-System V のおかしなシグナルのセマンティクスを仮定することと、単純な
-TCP および UDP ソケット操作に終始するようにすることがおそらくは最も
-安全なもののでしょう。
-たとえば、あなたが自分のプログラムに移植性を持たせるようにしたいのであれば、
-ローカルな UDP データグラムのソケットを通してファイル記述子を
-渡すようなことをしようとしてはいけないということです。
+이 루틴은 모든, 시스템 고유의 이식성 문제를 만들어냅니다.
+다른 장소에서 설명했듯이 Perl 의 행동은 사용하는 C 라이브러리에 좌우됩니다.
+System V 의 이상한 시그널의 시맨틱스를 가정하는 것과, 단순한 
+TCP 와 UDP 소켓 조작에 항상 하는 듯이 하는 일이 아마도 제일 안전한 것이겠죠.
+예를들어, 당신이 자신의 프로그램에 이식성을 가지게 하도록 하고 싶다면,
+로컬한 UDP 데이터 그램의 소켓을 통해서 파일 기술자를 
+건네는 일을 하려고 해서는 안된다는 것입니다.
 
 =head1 AUTHOR
 
@@ -3094,8 +3086,8 @@ version and suggestions from the Perl Porters.
 
 =end original
 
-Tom Christiansen (Larry Wall による元の文書の部分的な名残と、
-Perl Porters による示唆と共に)
+Tom Christiansen, with occasional vestiges of Larry Wall's original
+version and suggestions from the Perl Porters.
 
 =head1 SEE ALSO
 
@@ -3106,8 +3098,8 @@ started.
 
 =end original
 
-ネットワークに関する事柄はまだまだたくさんあります。
-ここにあることはスタートでしかありません。
+네트워크에 관한 사항은 아직 많이 있습니다.
+여기에 있는 것은 스타트일 뿐입니다.
 
 =begin original
 
@@ -3119,12 +3111,11 @@ to Perl is left as an exercise for the reader.
 
 =end original
 
-Richard Stevens による非常に重要な教科書
+Richard Stevens 에 의한 꽤 중요한 교과서 
 I<Unix Network Programming, 2nd Edition, Volume 1>
-(Prentice-Hall から出版されています)があります。
-ネットワークに関するほとんどの本は、C プログラマを対象としている点に
-注意してください。
-Perl への変換は、読者の宿題として残しておきます。
+(Prentice-Hall 에서 출판되었습니다)가 있습니다.
+네트워크에 관한 대부분의 책은 C 프로그래머를 대상으로 하는 점에 주의해주세요.
+Perl 로 변환은 독자의 숙제로 남겨두겠습니다.
 
 =begin original
 
@@ -3136,12 +3127,11 @@ FAQ> for a description of what CPAN is and where to get it.)
 
 =end original
 
-IO::Socket(3) マニュアルページにはオブジェクトライブラリの説明があり、
-Socket(3) には低水準のソケットに対するインターフェースの説明があります。
-L<perlfunc> にある関数の他にも、至近にある CPAN サイトで
-F<modules> ファイルをチェックしたほうが良いでしょう(L<perlmodlib> を
-参照するか、CPAN がどこにあるかの説明がある F<Perl FAQ> を見ると
-よいでしょう)。
+IO::Socket(3) 매뉴얼 페이지에는 오브젝트 라이브러리의 설명이 있고,
+Socket(3) 에는 저수준의 소켓에 대한 인터페이스의 설명이 있습니다.
+L<perlfunc> 에 있는 함수의 외에도 CPAN 사이트에서 F<modules> 파일을 
+체크하는 것도 좋을 겁니다(L<perlmodlib> 를 참조하거나 CPAN 이 어디에 있는지 
+설명이 있는 F<Perl FAQ> 를 보는 것이 좋을 겁니다).
 
 =begin original
 
@@ -3153,17 +3143,8 @@ Threads, and ToolTalk--just to name a few.
 
 =end original
 
-F<modlues> ファイルの第 5 章は
+F<modlues> 파일의 제 5장은
 "Networking, Device Control (modems), and Interprocess Communication"
-に充てられていて、バンドルされなかった多くのネットワーク関連モジュール、
-チャット と Expect operations, CGI プログラミング, DCE, 
-FTP, IPC, NNTP, Proxy, Ptty, RPC, SNMP, SMTP, Telnet, スレッド、
-そして ToolTalk を含んでいます。
-
-=begin meta
-
-Created: KIMURA Koichi
-Updated: Kentaro Shirakata <argrath@ub32.org>
-
-=end meta
-
+를 다루며, 핸들되지 않은 많은 네트워크 관련 무듈, 채트와 Expect operations, CGI 프로그래밍,
+DCE, FTP, IPC, NNTP, Proxy, Ptty, RPC, SNMP, SMTP, Telnet, 쓰레드、
+그리고 ToolTalk 를 포함하고 있습니다.
