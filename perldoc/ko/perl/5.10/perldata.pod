@@ -1450,13 +1450,8 @@ key/value 의 쌍 사이에 C<< => >> 연산자를 사용하면 읽기 쉬워집
 C<< => >> 연산자는 실질, 보기에는 판별하기 쉬운 컴마 연산자 이지만, 
 그 왼쪽에 있는 오퍼랜드가 정당한 단순한 식별지인 것처럼 
 barewords 인 때에 그것을 문자열로 해석하게 됩니다.
-
-key/value のペアの間に  C<< => >> 演算子を使うと読みやすくなります。
-C<< => >> 演算子は実質、見た目に判別しやすいカンマ演算子でありますが、
-その左側にあるオペランドが正当な単純な識別子であるような
-裸の単語であるときに、それを文字列として解釈するようになっています
-(C<< => >> は、2 つのコロンを含むような複合識別子はクォートしません)。
-これは、ハッシュの初期化を格好よいものにします:
+(C<< => >> 는 2가지의 콜론을 포함하는 복합식별자를 인용하지 않습니다)
+이것은 해쉬의 초기화를 보기좋게 합니다:
 
     %map = (
                  red   => 0x00f,
@@ -1470,8 +1465,7 @@ or for initializing hash references to be used as records:
 
 =end original
 
-あるいは、レコードとして使うハッシュリファレンスを初期化するために
-使います:
+혹은, 레코드로써 사용하는 해쉬 리퍼런스를 초기화하기 위해서 사용합니다:
 
     $rec = {
                 witch => 'Mable the Merciless',
@@ -1485,8 +1479,7 @@ or for using call-by-named-parameter to complicated functions:
 
 =end original
 
-複雑な関数のために名前付きパラメータによる呼び出しを使うためにも
-使えます:
+복잡한 함수를 위해서 이름붙은 파라메터에 의한 호ㅜㄹ을 사용하기 위해서도 사용할 수 있습니다:
 
    $field = $query->radio_group(
                name      => 'group_name',
@@ -1504,13 +1497,12 @@ of how to arrange for an output ordering.
 
 =end original
 
-ハッシュでは順番に意味がないので、初期化の順序にも意味はないということに
-注意してください。
-出力の順序を変える方法の例は、L<perlfunc/sort> を参照してください。
+해쉬에서는 순서에 의미가 없기 때문에, 초기화의 순서에도 의미는 없다는 것에 주의해주세요.
+출력의 순서를 바꾸는 방법의 예제는 L<perlfunc/sort> 를 참조해주세요.
 
 =head2 Subscripts
 
-(添え字)
+(첨자)
 
 =begin original
 
@@ -1520,9 +1512,9 @@ square brackets.  For example:
 
 =end original
 
-配列は、ドル記号 (C<$>)、(先頭の C<@> なしの)配列名、大かっこで囲われた
-添え字、の順で指定することで添え字付けされます。
-例:
+배열은 달러기호 (C<$>), (앞의 C<@> 없는) 배열이름, 대괄호로 감싸진 첨자 의 순서로 
+지정하는 것으로 첨자가 붙습니다.
+예제:
 
     @myarray = (5, 50, 500, 5000);
     print "Element Number 2 is", $myarray[2], "\n";
@@ -1535,10 +1527,10 @@ value from the end.  In our example, C<$myarray[-1]> would have been
 
 =end original
 
-配列の添え字は 0 から始まります。
-負数の添え字は後ろから値を取り出します。
-前述の例では、C<$myarray[-1]> は 5000 となり、C<$myarray[-2]> は
-500 となります。
+배열의 첨자는 0 에서 시작됩니다.
+부수의 첨자는 뒤에서 값을 뽑아냅니다.
+앞에 기술한 예제에서는 C<$myarray[-1]> 은 5000이고, C<$myarray[-2]> 는 
+500이 됩니다.
 
 =begin original
 
@@ -1547,8 +1539,8 @@ are used. For example:
 
 =end original
 
-ハッシュの添え字も同様ですが、大かっこの代わりに中かっこを使います。
-例:
+해쉬의 첨자도 마찬가지지만, 대괄호 대신에 중괄호를 사용합니다.
+예제:
 
     %scientists = 
     (
@@ -1563,7 +1555,7 @@ are used. For example:
 =head2 Slices
 X<slice> X<array, slice> X<hash, slice>
 
-(スライス)
+(슬라이스)
 
 =begin original
 
@@ -1572,8 +1564,8 @@ time.  You can also subscript a list to get a single element from it.
 
 =end original
 
-配列やハッシュにアクセスする一般的な方法は、一度に一つのスカラ要素です。
-リストから一つの要素を取り出すためにも、添え字を使えます。
+배열이나 해쉬에 접근하는 일반적인 방법은 한번에 하나의 스칼라 요소입니다.
+리스트에서 하나의 요소를 뽑아내기 위해서도, 첨자를 사용할 수 있습니다.
 
     $whoami = $ENV{"USER"};             # one element from the hash
     $parent = $ISA[0];                  # one element from the array
@@ -1588,9 +1580,9 @@ scalar values.
 
 =end original
 
-スライスは、添え字のリストを使ってリスト、配列、ハッシュの複数の要素に
-同時にアクセスします。
-これはそれぞれの要素を個々のスカラ値のリストとして扱うより便利です。
+슬라이스는 첨자의 리스트를 사용해서 리스트, 배열, 해쉬의 복수의 요소에 동시에 
+접근합니다.
+이것은 각각의 요소를 개개의 스칼라 값의 리스트로 다루는 것보다 편리합니다.
 
     ($him, $her)   = @folks[0,-1];              # array slice
     @them          = @folks[0 .. 3];            # array slice
@@ -1604,7 +1596,7 @@ an array or hash slice.
 
 =end original
 
-変数のリストに代入できるので、配列やハッシュのスライスにも代入できます。
+변수의 리스트에 대입할 수 있기 때문에, 배열이나 해쉬의 슬라이스에도 대입할 수 있습니다.
 
     @days[3..5]    = qw/Wed Thu Fri/;
     @colors{'red','blue','green'} 
@@ -1617,7 +1609,7 @@ The previous assignments are exactly equivalent to
 
 =end original
 
-前述の代入は以下と完全に等価です:
+앞에 기술한 대입은 아래와 완전히 같습니다:
 
     ($days[3], $days[4], $days[5]) = qw/Wed Thu Fri/;
     ($colors{'red'}, $colors{'blue'}, $colors{'green'})
@@ -1632,9 +1624,9 @@ values of the array or hash.
 
 =end original
 
-スライスを変更すると、スライスした元の配列やハッシュを変更するので、
-C<foreach> 構造は配列やハッシュの値の一部 -- あるいは全部 -- を
-置き換えます。
+슬라이스를 변경하면, 슬라이스한 원래의 배열이나 해쉬를 변경하기 때문에, 
+C<foreach> 구조는 배열이나 해쉬의 값의 일부 -- 혹은 전부 -- 를 
+치환할 수 있습니다.
 
     foreach (@array[ 4 .. 10 ]) { s/peter/paul/ } 
 
@@ -1650,8 +1642,8 @@ A slice of an empty list is still an empty list.  Thus:
 
 =end original
 
-空リストのスライスはやはり空リストです。
-従って:
+빈 리스트의 슬라이스는 역시 빈 리스트입니다.
+따라서:
 
     @a = ()[1,0];           # @a has no elements
     @b = (@a)[0,1];         # @b has no elements
@@ -1663,7 +1655,7 @@ But:
 
 =end original
 
-しかし:
+그러나:
 
     @a = (1)[1,0];          # @a has two elements
     @b = (1,undef)[1,0,2];  # @b has three elements
@@ -1675,7 +1667,7 @@ is returned:
 
 =end original
 
-これを使うと、空リストが返ったら終了するループを簡単に書けます:
+이것을 사용하면, 빈리스트가 반환되면 종료하는 룰을 간단하게 쓸 수 있습니다:
 
     while ( ($home, $user) = (getpwent)[7,0]) {
         printf "%-8s %s\n", $user, $home;
@@ -1690,10 +1682,9 @@ exhausted, the result is 0, not 2.
 
 =end original
 
-この文書で前述したように、リスト代入のスカラ評価は、代入の右側の要素の
-数です。
-空リストは要素を含まないので、パスワードファイルを読み込み終わると、
-結果は 2 ではなく 0 になります。
+이 문서에서 앞서 기술한 대로, 리스트 대입의 스칼라 평가는 대입의 좌측의 요소의 수입니다.
+빈리스트는 요소를 포함하지 않기 때문에, 패스워드 파일을 다 읽으면, 
+결과는 2가 아닌 0이 됩니다.
 
 =begin original
 
@@ -1706,17 +1697,17 @@ scalar) or a plural one (a list).
 
 =end original
 
-もし、なぜここでハッシュスライスに '%' ではなく '@' を使うのかについて
-混乱するなら、次のように考えてみてください。
-かっこの種類(大かっこか中かっこか)は、見ているものが配列かハッシュかを
-つかさどっています。
-一方、配列やハッシュの先頭の記号('$' か '@') は、返ってくるものが単一の
-値(スカラ)か、複数の値(リスト)かを示しています。
+만약, 왜 여기에서 해쉬 슬라이스에 '%' 가 아닌 '@' 를 사용하는 가에 대해서 
+혼란한다면, 다음처럼 생각해보세요.
+괄호의 종류(대괄호나 중괄호나)는, 보고있는 것이 배열인지 해쉬인지를 
+구분합니다.
+한편, 배열이나 해쉬의 앞의 기호('$' 나 '@') 는, 반환해주는 것이 
+단일의 값(슬라이스)나 복수의 값(리스트)를 나타내고 있습니다.
 
 =head2 Typeglobs and Filehandles
 X<typeglob> X<filehandle> X<*>
 
-(型グロブとファイルハンドル)
+(형태 글로브와 파일핸들)
 
 =begin original
 
@@ -1728,14 +1719,14 @@ we have real references, this is seldom needed.
 
 =end original
 
-Perl は I<型グロブ> と呼ばれる内部型を、シンボルテーブルエントリ全体を
-保持するために使っています。
-この型グロブの型接頭辞は C<*> です。
-なぜなら、それが型全てを表すからです。
-これは関数に対してリファレンスを使って配列やハッシュを渡すために
-好んで使われていた方法でした。
-しかし、私たちは今では本当のリファレンスを持っていますから、
-型グロブを使う必要はほとんどありません。
+Perl 은 I<형태 글로브> 라고 불리는 내부형을 심볼 테이블 엔트리 전체를 
+가지기 위해 사용하고 있습니다.
+이 형태 글로브의 형태 접두사는 C<*> 입니다.
+왜냐면, 그것이 형태 전체를 나타내기 때문입니다.
+이것은 함수에 대해서 리퍼런스를 사용해서 배열이나 해쉬를 건네기 위해서 
+자주 선호되는 방법이었습니다.
+그러나, 저희들은 이금에서는 진짜 리퍼런스를 가지고 있기 때문에, 
+형태 글로브를 사용하는 필요는 거의 없습니다.
 
 =begin original
 
@@ -1744,9 +1735,8 @@ This assignment:
 
 =end original
 
-最近の Perl での型グロブの主な用途は、シンボルテーブルのエイリアスを
-作るというものです。
-具体的には以下のようにします:
+최근의 Perl 에서의 형태 글로브의 주요한 용도는 심볼 테이블의 alias 를 만드는 것입니다.
+구체적으로는 아래처럼 합니다:
 
     *this = *that;
 
@@ -1758,10 +1748,10 @@ This:
 
 =end original
 
-これは $this を $that のエイリアスにし、
-@this を $that のエイリアスにし、%this を %that のエイリアスに、
-&this を &that のエイリアスにし…のようにします。
-より安全にするにはリファレンスを使います。
+이것은 $this 를 $that 의 alias 로 해서, 
+@this 를 $that 의 alias 로 해서, %this 를 %that 의 alis 로, 
+&this 를 &that 의 alias 로 하는... 것처럼 합니다.
+보다 안전하게 하기위해서는 리퍼런스를 사용합니다.
 
     local *Here::blue = \$There::green;
 
@@ -1775,11 +1765,11 @@ module import/export system.
 
 =end original
 
-この例では $Here::blue を一時的に $There::green のエイリアスにしますが、
-@Here::blue を $There::blue のエイリアスにはしませんし、
-同様に %Here::blue を %There::green のエイリアスにはしません。
-これは奇妙に思えるかもしれませんが、これが
-モジュールのインポート/エクスポートシステムの基盤となっているのです。
+이 예제에서는 $Here::blue 를 일시적으로 $There::green 의 alias 로 했지만, 
+@Here::blue 를 $There::blue 의 alias 로는 하지 않고, 
+마찬가지로 %Here::blue 를 %There::green 의 alias 로는 하지 않습니다.
+이것은 기묘하게 생각할 수 있지만, 이것이 모듈의 임포트/익스포트 시스템의 
+기반이 되는 것입니다.
 
 =begin original
 
@@ -1789,10 +1779,10 @@ a filehandle, do it this way:
 
 =end original
 
-型グロブの別の用途には、関数にファイルハンドルを渡したり、
-新たなファイルハンドルを生成するというものがあります。
-もしファイルハンドルを保存するために型グロブを使う必要があるのなら、
-以下のようにします:
+형태 글로브의 별도의 용도에는 함수에 파일핸들을 건내거나, 
+새로운 파일핸들을 생성하는 것이 있습니다.
+만약 파일핸들을 가지기 위해서는 형태 글로브를 사용하는 필요가 있다면, 
+아래처럼 합니다:
 
     $fh = *STDOUT;
 
@@ -1802,7 +1792,7 @@ or perhaps as a real reference, like this:
 
 =end original
 
-あるいは、以下のように本当のリファレンスを使います:
+혹은, 아래처럼 진짜 리퍼런스를 사용합니다:
 
     $fh = \*STDOUT;
 
@@ -1813,8 +1803,8 @@ in functions.
 
 =end original
 
-関数中で間接的にファイルハンドルを使う例については L<perlsub> を
-参照してください。
+개발중에서 간접적으로 파일핸들을 사용하는 예제에 대해서는 L<perlsub> 를 
+참조해주세요.
 
 =begin original
 
@@ -1824,11 +1814,10 @@ For example:
 
 =end original
 
-型グロブは local() 演算子を使ったローカルなファイルハンドルを
-作成するのにも使われます。
-それによって作成されたものはそれを囲むブロックが存在する間だけ
-存在しますが、呼び出し元へ返すことが可能です。
-例を挙げましょう:
+형태 글로브는 local() 연산자를 사용한 로컬한 파일핸들을 작성하는 것에도 사용됩니다.
+그에 의해 작성된 것은 그것을 감싸는 블록이 존재하는 사이에서만 존재하지만, 
+호출한 곳으로 반환하는 것이 가능합니다.
+예를 들어보겠습니다:
 
     sub newopen {
         my $path = shift;
@@ -1849,15 +1838,15 @@ C<*foo{THING}> cannot.  When in doubt, use C<*FH>.
 
 =end original
 
-今では C<*foo{THING}> 表記がありますから、型グロブはファイルハンドルの
-操作のために用いられることはそれほどではありませんが、
-ファイルハンドルやディレクトリハンドルを関数に対して渡したり、
-関数の外へ返すためにはまだ必要となります。
-これは C<*HANDLE{IO}> は HANDLE が既にハンドルとして使われた場合にのみ
-動作するからです。
-言い換えると、C<*FH> は新しいシンボルテーブルのエントリーを作成するために
-使わなければなりませんが、C<*foo{THING}> を使うことはできません。
-疑わしい場合は、C<*FH> を使ってください。
+지금에서는 C<*foo{THING}> 표기가 있기때문에, 형태 글로브는 파일핸들의 
+조작을 위해서 사용되는 것은 그렇게 많지 많습니다만, 
+파일핸들이나 디렉토리 핸들을 함수에 대해서 건네거나,
+함수의바깥으로 반환하기 위해서는 아직 필요합니다.
+이것은 C<*HANDLE{IO}> 는 HANDLE 이 이미 핸들로써 사용되는 경우에만 
+동작하기 때문입니다.
+바꿔 말하면, C<*FH> 는 새로운 심볼 테이블의 엔트리를 작성하기 위해서 
+사용하지 않으면 안되지만, C<*foo{THING}> 를 사용할 수는 없습니다.
+의심되는 경우는 C<*FJ> 를 사용해주세요.
 
 =begin original
 
@@ -1873,15 +1862,15 @@ that must be passed around, as in the following example:
 
 =end original
 
-ファイルハンドルを作成できる全ての関数 (open(),
-opendir(), pipe(), socketpair(), sysopen(), socket(), and accept()) は、
-もし渡されたハンドルが初期化されていないスカラ変数の場合、
-無名ファイルハンドルを作成します。
-これにより、C<open(my $fh, ...)> や C<open(local $fh,...)> のような
-構文によって、他からのリファレンスがなければスコープの終わりに自動的に
-閉じられる便利なファイルハンドルを作ることができます。
-これは、以下の例のように、他に渡す必要があるファイルハンドルを開く時に
-型グロブを使う必要性を大きく減らします:
+파일핸들을 작성할 수 있는 모든 함수 (open(), opendir(), pipe(), socketpair(), 
+sysopen(), socket(), adn accept()) 는 
+만약 건네진 핸들이 초기화되지 않은 스칼라 변수인 경우, 
+이름없는 파일핸들을 작성합니다.
+이것에 의해 C<open(my $fh, ...)> 나 C<open(local $fh, ...)> 가은 
+구문에 의해서, 다른 곳에서의 리퍼런스가 없다면, 영역의 끝에 자동적으로 
+닫혀진 편리한 파일핸들을 만들 수 있습니다.
+이것은 라애의 예제처럼, 다른 곳에 건넬 필요가 있는 파일핸들을 열 때에 
+형태 글로브를 사용하는 필요성은 크게 줄어듭니다:
 
     sub myopen {
         open my $fh, "@_"
@@ -1904,10 +1893,9 @@ C<use strict 'refs'> forbids such practice.
 
 =end original
 
-代わりに初期化されたスカラ変数が使われると、結果は異なることに
-注意してください。
-C<my $fh='zzz'; open($fh, ...)> は C<open( *{'zzz'}, ...)> と等価です。
-このような動作を禁止するには C<use strict 'refs'> を使ってください。
+대신에 초기화된 스칼라 변수가 사용되면, 결과는 다르다는 것에 주의해주세요.
+C<my $fh = 'zzz'; open($fh, ...)> 는 C<open( *{'zzz'}, ...)> 와 같습니다.
+이 같은 동작을 금지하기에는 C<use strict 'refs'> 를 사용해주세요.
 
 =begin original
 
@@ -1919,11 +1907,11 @@ example.
 
 =end original
 
-無名ファイルハンドルを作るもう一つの方法は Symbol モジュールか
-IO::Handle モジュールを使用するというものです。
-このモジュールは local() を使ったときのように同じ名前を
-隠してしまうようなことがないという利点があります。
-これを使った例は L<perlfunc/open()> の末尾を参照してください。
+이름없는 파일햄드릉ㄹ 사용하는 다른 하나의 방법은 Symbol 모듈이나 
+IO::Handle 모듈을 사용하는 것입니다.
+이것은 모듈은 local() 을 사용한 때처럼 같은 이름을 
+숨겨버리는 일이 없다는 이점이 있습니다.
+이것을 사용한 예제는 L<perlfunc/open()> 의 끝을 참조해주세요.
 
 =head1 SEE ALSO
 
@@ -1936,15 +1924,7 @@ the C<*foo{THING}> syntax.
 
 =end original
 
-Perl の組み込み変数と、有効な変数名に関する議論に関しては、
-L<perlvar> を参照してください。
-型グロブに関する議論と *foo{THING} 構文に関することは、L<perlref>, 
-L<perlsub>, L<perlmod/"Symbol Tables"> を参照してください。
-
-=begin meta
-
-Created: KIMURA Koichi
-Updated: Kentaro Shirakata <argrath@ub32.org> (5.8.8-)
-
-=end meta
-
+Perl 의 내장변수와 유명한 변수이름에 관한 의논에 관해서는 
+L<perlvar> 를 참조해주세요.
+형태 글로브에 관한 의논과 *foo{THING} 구문에 관한 것은, L<perlref>,
+L<perlsub>, L<perlmod/"Symbol Tables"> 을 참조해주세요.
