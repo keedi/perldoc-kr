@@ -80,8 +80,8 @@ notation used to express these concepts.
 정규표현식은 조건과 loop와 같은 간단한 개념으로 구성되어 있고,
 펄 언어 안에 있는 C<if> 조건문과 C<while> loop와 비교했을때 이러한 개념을
 이해하는 것은 어려운 것이 아닙니다. 사실, 정규식을 배우는데 주된 문제점은
-저런 개념을 표현하기 위해 사용된 간결한 기호의 사용법을 익히는것입니다.
-### 마지막문장은 해석이 좀;
+저런 개념을 표현하기 위해 사용된 간결한 표기법의 사용법을 익히는것입니다.
+#!# 마지막문장은 해석이 좀;
 
 
 =begin original
@@ -98,21 +98,52 @@ introduces the latest cutting edge innovations in 5.6.0.
 
 =end original
 
+이 설명서는 정규표현식 개념과 함께 표기법을 한번에 하나씩 많은 예제들과 함께 
+설명함으로서 학습곡선을 완만하게 합니다. 이 설명서의 첫부분은 정규표현식 개념을
+위하여 가장 간단한 단어 검색들부터 진행할것입니다. 만약 당신이 첫부분을
+익힌다면 당신이 하고자하는 일의 98%를 해결할수있는 모든 도구를 갖게 될것입니다.
+이 설명서의 두번째 부분은 기초들을 편안하게 하고 더욱 강력한 도구를 원하는
+이들을 위한 것입니다. 더욱 진보된 정규표현식 연자사들을 논의하고 5.6.0의
+가장 최근의 cutting edge innovations을 소개합니다.
+
+=begin original
+
 A note: to save time, 'regular expression' is often abbreviated as
 regexp or regex.  Regexp is a more natural abbreviation than regex, but
 is harder to pronounce.  The Perl pod documentation is evenly split on
 regexp vs regex; in Perl, there is more than one way to abbreviate it.
 We'll use regexp in this tutorial.
 
+=end original
+
+참고: 시간을 절약하기 위해, 'regular expression'은 자주 regexp 또는 regex 로
+짧게 표현합니다. regexp 가 regex 보다 좀더 자연스러운 짧은 표현이지만, 발음상
+조금 더 어렵습니다. Perl pod 문서는 regexp, regex 모두 고르게 사용합니다;
+Perl에서는 이것을 짧게 표현하기 위한 하나 이상의 방법이 있습니다.
+이 설명서에서 우리는 regexp 를 사용할 것입니다.
+
+#!# 번역은 정규표현식 대신 정규식으로 합니다.
+
 =head1 Part 1: The basics
 
 =head2 Simple word matching
+
+=begin original
 
 The simplest regexp is simply a word, or more generally, a string of
 characters.  A regexp consisting of a word matches any string that
 contains that word:
 
+=end original
+
+가장 간단한 정규식은 간단하게 하나의 단어나 좀더 일반적으로 문자들의 연속
+(문자열)입니다. 하나의 단어로 이루어진 정규식은 그 단어를 포함하고 있는
+어떠한 문자열과도 매치합니다:
+
+
     "Hello World" =~ /World/;  # matches
+
+=begin original
 
 What is this Perl statement all about? C<"Hello World"> is a simple
 double quoted string.  C<World> is the regular expression and the
@@ -122,6 +153,12 @@ produces a true value if the regexp matched, or false if the regexp
 did not match.  In our case, C<World> matches the second word in
 C<"Hello World">, so the expression is true.  Expressions like this
 are useful in conditionals:
+
+=end original
+
+이 Perl 문장은 모두 무엇일까요? C<"Hello World"> 는 단순히 더블쿼터로 둘러쌓인
+문자열입니다. C<World> 는 정규식이며 C</World/>를 감싸고있는 C<//> 는 펄에게
+매치를 위한 문자열 검색을 펄에게 알려줍니다.
 
     if ("Hello World" =~ /World/) {
         print "It matches\n";
