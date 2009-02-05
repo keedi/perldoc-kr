@@ -160,6 +160,8 @@ are useful in conditionals:
 문자열입니다. C<World> 는 정규식이며 C</World/>를 감싸고있는 C<//> 는 펄에게
 매치를 위한 문자열 검색을 펄에게 알려줍니다.
 
+#!# 아직 번역안끝남.
+
     if ("Hello World" =~ /World/) {
         print "It matches\n";
     }
@@ -167,8 +169,15 @@ are useful in conditionals:
         print "It doesn't match\n";
     }
 
+=begin original
+
 There are useful variations on this theme.  The sense of the match can
 be reversed by using the C<!~> operator:
+
+=end original
+
+같은 주제로 유용한 변형들이 있습니다. C<!~> 연산자를 사용함으로서 매칭의 의미는
+정반대가 되어집니다.
 
     if ("Hello World" !~ /World/) {
         print "It doesn't match\n";
@@ -177,7 +186,13 @@ be reversed by using the C<!~> operator:
         print "It matches\n";
     }
 
+=begin original
+
 The literal string in the regexp can be replaced by a variable:
+
+=end original
+
+정규식안의 리터럴 문자열은 변수로 대체가능 합니다.
 
     $greeting = "World";
     if ("Hello World" =~ /$greeting/) {
@@ -187,8 +202,14 @@ The literal string in the regexp can be replaced by a variable:
         print "It doesn't match\n";
     }
 
+=begin original
+
 If you're matching against the special default variable C<$_>, the
 C<$_ =~> part can be omitted:
+
+=end original
+
+특수한 기본변수 C<$_>에 대해 매칭을 원한다면, C<$_ =~>부분은 생략가능합니다.
 
     $_ = "Hello World";
     if (/World/) {
@@ -198,20 +219,41 @@ C<$_ =~> part can be omitted:
         print "It doesn't match\n";
     }
 
+=begin original
+
 And finally, the C<//> default delimiters for a match can be changed
 to arbitrary delimiters by putting an C<'m'> out front:
+
+=end original
+
+그리고 마지막으로, 매치를 위한 기본구분자 C<//>는 C<'m'>을 앞부분에 넣어
+마음대로 구분자를 변경할 수 있습니다.
 
     "Hello World" =~ m!World!;   # matches, delimited by '!'
     "Hello World" =~ m{World};   # matches, note the matching '{}'
     "/usr/bin/perl" =~ m"/perl"; # matches after '/usr/bin',
                                  # '/' becomes an ordinary char
 
+=begin original
+
 C</World/>, C<m!World!>, and C<m{World}> all represent the
 same thing.  When, e.g., the quote (C<">) is used as a delimiter, the forward
 slash C<'/'> becomes an ordinary character and can be used in this regexp
 without trouble.
 
+=end original
+
+C</World/>, C<m!World!>, 그리고 C<m{World}> 모두 같은 것을 표현한 것입니다.
+예를 들어, 쿼터 (C<">)는 구분자로 사용되어졌을때, 다음의 슬래쉬 (C<'/'>)는
+일반적인 문자가 되고, 이는 정규식안에서 문제없이 사용가능합니다.
+
+=begin original
+
 Let's consider how different regexps would match C<"Hello World">:
+
+=end original
+
+C<"Hello World">를 정규식들이 매치할때 어떻게 다른지 생각해보자.
 
     "Hello World" =~ /world/;  # doesn't match
     "Hello World" =~ /o W/;    # matches
