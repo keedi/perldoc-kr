@@ -159,8 +159,11 @@ are useful in conditionals:
 이 Perl 문장은 모두 무엇일까요? C<"Hello World"> 는 단순히 더블쿼터로 둘러쌓인
 문자열입니다. C<World> 는 정규식이며 C</World/>를 감싸고있는 C<//> 는 펄에게
 매치를 위한 문자열 검색을 펄에게 알려줍니다.
-
-#!# 아직 번역안끝남.
+The operator C<=~> associates the string with the regexp match and
+produces a true value if the regexp matched, or false if the regexp
+did not match.  In our case, C<World> matches the second word in
+C<"Hello World">, so the expression is true.  Expressions like this
+are useful in conditionals:
 
     if ("Hello World" =~ /World/) {
         print "It matches\n";
@@ -260,6 +263,8 @@ C<"Hello World">를 정규식들이 매치할때 어떻게 다른지 생각해�
     "Hello World" =~ /oW/;     # doesn't match
     "Hello World" =~ /World /; # doesn't match
 
+=begin original
+
 The first regexp C<world> doesn't match because regexps are
 case-sensitive.  The second regexp matches because the substring
 S<C<'o W'>> occurs in the string S<C<"Hello World">>.  The space
@@ -271,22 +276,59 @@ regexp, but not at the end of the string.  The lesson here is that
 regexps must match a part of the string I<exactly> in order for the
 statement to be true.
 
+=end original
+
+정규식은 대소문자를 구별하기 때문에 첫번째 정규식 C<world>은 매치되지
+않습니다. 두번째 정규식은 부분문자열 S<C<'o W'>>이 문자열 S<C<"Hello World">>
+안에서 발견되었기 때문에 두번째 정규식은 매치됩니다. 공백문자 ' '은
+정규식안에서 어떤 다른문자와 같이 간주되고 이 경우는 매치하기 위해
+필요합니다. 공백문자가 빠졌기 때문에 세번째 정규식 C<'oW'>은 매치되지
+않습니다. 마지막의 공백이 있기 때문에 네번째 정규식 C<'World '>은
+매치되지 않습니다. but not at the end of the string. (해석이 애매함)
+문자열이 마지막, 즉 공백이 없다면 참입니다.
+참이 되기 위한 문장을 위해서는 정규식은 <exactly> <정확한> 순서의 문자열의
+일부분을 매치 되어진다는 것을 알아야 합니다.
+
+=begin original
+
 If a regexp matches in more than one place in the string, Perl will
 always match at the earliest possible point in the string:
 
+=end original
+
+문자열 안에서 한군데 이상에서 정규식이 매치된다면, 언제나 펄은
+문자열의 가장 먼저 매치되는곳에서 매치될 것입니다.
+
     "Hello World" =~ /o/;       # matches 'o' in 'Hello'
     "That hat is red" =~ /hat/; # matches 'hat' in 'That'
+
+=begin original
 
 With respect to character matching, there are a few more points you
 need to know about.   First of all, not all characters can be used 'as
 is' in a match.  Some characters, called I<metacharacters>, are reserved
 for use in regexp notation.  The metacharacters are
 
+=end original
+
+문자가 매치되어지 것과 관련하여, 당신이 숙지할 필요가 있는 항목들이
+몇가지 더 있습니다. 그것들 중에 첫번째는 매치를 위해서 문자들만 사용되어지는
+것이 아니라는것입니다. 정규식 표기법에는 <metacharacters> 라고 불리는, 
+몇가지 문자들이 지정되어 있습니다.
+
     {}[]()^$.|*+?\
+
+=begin original
 
 The significance of each of these will be explained
 in the rest of the tutorial, but for now, it is important only to know
 that a metacharacter can be matched by putting a backslash before it:
+
+=end original
+
+이들의 각각의 의미는 설명서의 나머지 부분에서 설명할 것입니다, 하지만
+지금 당장은, 메타문자는 메타문자 앞에 역슬러시를 넣음으로서
+매치되어지는것을 숙지하는것은 중요합니다.
 
     "2+2=4" =~ /2+2/;    # doesn't match, + is a metacharacter
     "2+2=4" =~ /2\+2/;   # matches, \+ is treated like an ordinary +
@@ -294,17 +336,35 @@ that a metacharacter can be matched by putting a backslash before it:
     "The interval is [0,1)." =~ /\[0,1\)\./  # matches
     "#!/usr/bin/perl" =~ /#!\/usr\/bin\/perl/;  # matches
 
+=begin original
+
 In the last regexp, the forward slash C<'/'> is also backslashed,
 because it is used to delimit the regexp.  This can lead to LTS
 (leaning toothpick syndrome), however, and it is often more readable
 to change delimiters.
 
+=end original
+
+마지막 정규식에서, 정규식의 경계를 구분하기 위해 C<'/'>앞에
+역슬러시가 사용되었습니다. 이것은 LTS(leaning toothpick syndrome)를
+유발합니다. 하지만, 이경우는 종종 정규식 구분자를 변경하는것이
+한층 읽기 쉬워집니다.
+
     "#!/usr/bin/perl" =~ m!#\!/usr/bin/perl!;  # easier to read
+
+=begin original
 
 The backslash character C<'\'> is a metacharacter itself and needs to
 be backslashed:
 
+=end original
+
+백슬러시 문자 C<'\'>는 그 자체로 메타문자이고 백슬러시를 표현하기
+위해서는 백슬러시가 필요합니다.
+
     'C:\WIN32' =~ /C:\\WIN/;   # matches
+
+=begin original
 
 In addition to the metacharacters, there are some ASCII characters
 which don't have printable character equivalents and are instead
@@ -315,10 +375,23 @@ bytes, the octal escape sequence, e.g., C<\033>, or hexadecimal escape
 sequence, e.g., C<\x1B> may be a more natural representation for your
 bytes.  Here are some examples of escapes:
 
+=end original
+
+메타문자들과 관련하여, I<escape sequences>를 대신하고 이와 동등한 의미를
+가진 출력가능한 문자가 아닌 여러가지 ASCII 문자들이 있습니다.
+tab을 위한 C<\t>, newline을 위한 C<\n>, carriage return을 위한 C<\r>
+그리고 bell을 위한 C<\a>이 일반적인 예들입니다. 만약 당신의 문자열이
+임의의 바이트의 순서로 보는것이 더 나은 생각이라면,
+8진수 escape sequence, C<\x1B>, 또는 16진수 escape sequence, C<\x1B>
+같은 예는 당신의 바이트를 더욱 자연스럽게 표현합니다.
+여기에 escape의 몇가지 예들이 있습니다.
+
     "1000\t2000" =~ m(0\t2)   # matches
     "1000\n2000" =~ /0\n20/   # matches
     "1000\t2000" =~ /\000\t2/ # doesn't match, "0" ne "\000"
     "cat"        =~ /\143\x61\x74/ # matches, but a weird way to spell cat
+
+=begin original
 
 If you've been around Perl a while, all this talk of escape sequences
 may seem familiar.  Similar escape sequences are used in double-quoted
@@ -328,14 +401,32 @@ regexps as well.  Just like double-quoted strings, the values of the
 variables in the regexp will be substituted in before the regexp is
 evaluated for matching purposes.  So we have:
 
+=end original
+
+당신이 펄을 조금만 사용하여도, escape sequence들에 대한 이런 이야기는
+매우 친숙하게(familiar) 보여질것입니다. 유사한 escape sequence들은
+더블쿼터로 쌓여진 문자열들 안에서 사용되고 사실 펄의 정규식들은 더블쿼터로
+둘러쌓인 문자열들로 취급됩니다. 이것은 정규식들 안에서 변수들이 잘 사용
+되어질수 있음을 의미합니다. 쉽게 말해서 더블쿼터로 둘러쌓인 문자열들 즉,
+정규식안의 변수들의 값들은 매칭의 목적를 위해 정규식이 평가되기 전에
+치환되어질것입니다.
+
     $foo = 'house';
     'housecat' =~ /$foo/;      # matches
     'cathouse' =~ /cat$foo/;   # matches
     'housecat' =~ /${foo}cat/; # matches
 
+=begin original
+
 So far, so good.  With the knowledge above you can already perform
 searches with just about any literal string regexp you can dream up.
 Here is a I<very simple> emulation of the Unix grep program:
+
+=end original
+
+좋습니다. 위의 내용을 알고 있다면, 당신은 이미 당신이 생각하는 어떠한
+리터럴 문자열 정규식에 대한 검색들을 실행할 수 있습니다.
+여기 유닉스 grep 프로그램의 I<very simple> emulation 이 있습니다.
 
     % cat > simple_grep
     #!/usr/bin/perl
@@ -358,6 +449,8 @@ Here is a I<very simple> emulation of the Unix grep program:
     scabbard
     scabbards
 
+=begin original
+
 This program is easy to understand.  C<#!/usr/bin/perl> is the standard
 way to invoke a perl program from the shell.
 S<C<$regexp = shift;>> saves the first command line argument as the
@@ -367,6 +460,18 @@ all the files.  For each line, S<C<print if /$regexp/;>> prints the
 line if the regexp matches the line.  In this line, both C<print> and
 C</$regexp/> use the default variable C<$_> implicitly.
 
+=end original
+
+이 프로그램은 이해하기 쉽습니다. C<#!/usr/bin/perl>은 쉘에서 펄 프로그램을
+호출하기 위한 일반적인 관례입니다. S<C<$regexp = shift;>>은 파일들을 다루기
+위한 커맨드라인 인자들의 나머지는 남기고, 정규식에 사용할 첫번째 커맨드라인
+인자를 저장합니다. S<C<< while (<>) >>>은 모든 파일들의 모든 라인들을
+반복합니다. 각 라인에서, S<C<print if /$regexp/;>>은 정규식이 그 라인에서
+매치된다면 라인을 출력합니다. 이 라인 안에서, C<print>와 C</$regexp/> 모두
+기본변수 C<$_>를 암묵적으로 사용합니다.
+
+=begin original
+
 With all of the regexps above, if the regexp matched anywhere in the
 string, it was considered a match.  Sometimes, however, we'd like to
 specify I<where> in the string the regexp should try to match.  To do
@@ -375,23 +480,50 @@ anchor C<^> means match at the beginning of the string and the anchor
 C<$> means match at the end of the string, or before a newline at the
 end of the string.  Here is how they are used:
 
+=end original
+
+위 정규식들 모두는, 문자열안의 어느곳에서나 정규식이 매치되었다면,
+그것은 매치로 간주되어졌습니다. 때로는, 하지만, 우리는 매치를 시도하는
+문자열안에서 I<where>를 기술하기를 원합니다. 이를 위해서는, 우리는
+I<anchor> 메타케릭터들 C<^>와 C<$>를 사용할 것입니다. 앵커 C<^>는 문자열의
+시작에서 매치를 의미하고 앵커 C<$>는 문자열의 끝에서 매치, 또는 문자열의
+끝 앞에 있는 newline 전에서 매치를 의미합니다.
+
     "housekeeper" =~ /keeper/;    # matches
     "housekeeper" =~ /^keeper/;   # doesn't match
     "housekeeper" =~ /keeper$/;   # matches
     "housekeeper\n" =~ /keeper$/; # matches
+
+=begin original
 
 The second regexp doesn't match because C<^> constrains C<keeper> to
 match only at the beginning of the string, but C<"housekeeper"> has
 keeper starting in the middle.  The third regexp does match, since the
 C<$> constrains C<keeper> to match only at the end of the string.
 
+=end original
+
+C<^>은 C<keeper>이 오직 문자열의 시작에서 매치되기를 강제하지만
+C<housekeeper>은 keeper 문자열이 중간에서 시작되기 때문에 두번째 정규식은
+매치되지 않는다. 세번째 정규식은 매치된다. C<$>은 C<keeper>을 오직
+문자열의 마지막에서 매치되기를 강제했다.
+
+=begin original
+
 When both C<^> and C<$> are used at the same time, the regexp has to
 match both the beginning and the end of the string, i.e., the regexp
 matches the whole string.  Consider
 
+=end original
+
+C<^>와 C<$> 둘다 같이 사용되어졌을때, 정규식은 문자열의 시작과 끝 둘다
+매치되어야한다. 예를 들면, 정규식은 문자열 전체와 매치한다. 잘생각해보자.
+
     "keeper" =~ /^keep$/;      # doesn't match
     "keeper" =~ /^keeper$/;    # matches
     ""       =~ /^$/;          # ^$ matches an empty string
+
+=begin original
 
 The first regexp doesn't match because the string has more to it than
 C<keep>.  Since the second regexp is exactly the string, it
@@ -399,6 +531,14 @@ matches.  Using both C<^> and C<$> in a regexp forces the complete
 string to match, so it gives you complete control over which strings
 match and which don't.  Suppose you are looking for a fellow named
 bert, off in a string by himself:
+
+=end original
+
+C<keep>보다 더 많은 문자열을 가지기 때문에 첫번째 정규식은 매치하지 않는다.
+두번째 정규식은 정확하게 문자열에 일치하고, 매치된다. 정규식에서 C<^>와
+C<$> 모두를 사용하는것은 문자열 전부와 매치를 강요하므로, so it gives you
+complete control over which strings match and which don't.  Suppose you are
+looking for a fellow named bert, off in a string by himself:
 
     "dogbert" =~ /bert/;   # matches, but not what you want
 
