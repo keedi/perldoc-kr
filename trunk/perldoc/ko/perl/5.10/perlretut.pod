@@ -1,4 +1,4 @@
-
+                
 =encoding utf8
 
 =head1 NAME
@@ -159,11 +159,12 @@ are useful in conditionals:
 이 Perl 문장은 모두 무엇일까요? C<"Hello World"> 는 단순히 더블쿼터로 둘러쌓인
 문자열입니다. C<World> 는 정규식이며 C</World/>를 감싸고있는 C<//> 는 펄에게
 매치를 위한 문자열 검색을 펄에게 알려줍니다.
-The operator C<=~> associates the string with the regexp match and
-produces a true value if the regexp matched, or false if the regexp
-did not match.  In our case, C<World> matches the second word in
-C<"Hello World">, so the expression is true.  Expressions like this
-are useful in conditionals:
+# sj
+C<=~> 식은 문자열과 같이 정규식 매치(regexp match)로 결과에 따라 match
+가 되었을경우 true, 안되었을경우 false를 생성합니다. 이 경우에는
+C<World>가 C<"Hello World">의 두번째 단어와 매치되었기때문에 식은 true
+인것입니다. 이런식은 다음과같은 경우에 쓰면 좋습니다:
+# sj
 
     if ("Hello World" =~ /World/) {
         print "It matches\n";
@@ -505,8 +506,8 @@ C<$> constrains C<keeper> to match only at the end of the string.
 
 C<^>은 C<keeper>이 오직 문자열의 시작에서 매치되기를 강제하지만
 C<housekeeper>은 keeper 문자열이 중간에서 시작되기 때문에 두번째 정규식은
-매치되지 않는다. 세번째 정규식은 매치된다. C<$>은 C<keeper>을 오직
-문자열의 마지막에서 매치되기를 강제했다.
+매치되지 않습니다. 세번째 정규식은 매치됩니다. C<$>은 C<keeper>을 오직
+문자열의 마지막에서 매치되기를 강제했습니다.
 
 =begin original
 
@@ -517,7 +518,7 @@ matches the whole string.  Consider
 =end original
 
 C<^>와 C<$> 둘다 같이 사용되어졌을때, 정규식은 문자열의 시작과 끝 둘다
-매치되어야한다. 예를 들면, 정규식은 문자열 전체와 매치한다. 잘생각해보자.
+매치되어야합니다. 예를 들면, 정규식은 문자열 전체와 매치합니다. 잘생각해보자.
 
     "keeper" =~ /^keep$/;      # doesn't match
     "keeper" =~ /^keeper$/;    # matches
@@ -536,9 +537,11 @@ bert, off in a string by himself:
 
 C<keep>보다 더 많은 문자열을 가지기 때문에 첫번째 정규식은 매치하지 않는다.
 두번째 정규식은 정확하게 문자열에 일치하고, 매치된다. 정규식에서 C<^>와
-C<$> 모두를 사용하는것은 문자열 전부와 매치를 강요하므로, so it gives you
-complete control over which strings match and which don't.  Suppose you are
-looking for a fellow named bert, off in a string by himself:
+C<$> 모두를 사용하는것은 문자열 전부와 매치를 강요하므로,
+# sj
+당신에게 어떤 문자열이 매치되고 안되는지에 대한 풀 컨드롤을 줍니다.
+만약에 당신이 bert라고만 쓰여진 사람을 찾고 싶다면:
+# sj
 
     "dogbert" =~ /bert/;   # matches, but not what you want
 
@@ -647,11 +650,23 @@ than just a few characters in the ISO 8859-1 range.
 
 =item *
 
+=begin original
+
 \d matches a digit, not just [0-9] but also digits from non-roman scripts
+
+=end original
+
+\d 숫자를 매치합니다, not just [0-9] but also digits from non-roman scripts
 
 =item *
 
+=begin original
+
 \s matches a whitespace character, the set [\ \t\r\n\f] and others
+
+=end original
+
+\s 공백문자를 매치합니다, [\ \t\r\n\f] 등도 포함
 
 =item *
 
