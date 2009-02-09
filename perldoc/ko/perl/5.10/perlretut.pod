@@ -552,12 +552,22 @@ C<$> 모두를 사용하는것은 문자열 전부와 매치를 강요하므로,
     "dilbert" =~ /^bert$/; # doesn't match, good
     "bert"    =~ /^bert$/; # matches, perfect
 
+=begin original
+
 Of course, in the case of a literal string, one could just as easily
 use the string comparison S<C<$string eq 'bert'>> and it would be
 more efficient.   The  C<^...$> regexp really becomes useful when we
 add in the more powerful regexp tools below.
 
+=end original
+
+물론, 리터럴 문자열의 경우에서는, 문자열 비교 S<C<$string eq 'bert'>>를
+사용하는 것이 더 쉽고 더욱 효과적입니다. C<^...$> 정규식은 뒤에서 설명하는
+더욱 강력한 정규식 안에 서술될때 정말로 유용합니다.
+
 =head2 Using character classes
+
+=begin original
 
 Although one can already do quite a lot with the literal string
 regexps above, we've only scratched the surface of regular expression
@@ -566,23 +576,50 @@ concepts (and associated metacharacter notations) that will allow a
 regexp to not just represent a single character sequence, but a I<whole
 class> of them.
 
+=end original
+
+위에서 설명한 리터럴 문자열 정규식들로 이미 많은 것을 할수 있을지라도,
+우리는 단지 정규표현식의 맛만 본 것입니다. 이번과 다음 절에서 우리는
+단지 한개 문자 sequence가 아닌 그들의 I<whole class>를 표현하는
+정규식 개념(메타문자 표기법과 관련된)을 소개할 것입니다.
+
+=begin original
+
 One such concept is that of a I<character class>.  A character class
 allows a set of possible characters, rather than just a single
 character, to match at a particular point in a regexp.  Character
 classes are denoted by brackets C<[...]>, with the set of characters
 to be possibly matched inside.  Here are some examples:
 
+=end original
+
+그런 개념들 중 하나가 I<character class>입니다. 문자클래스는 정규식
+안에서 특정 부분을 매치하기 위한 단지 하나의 문자라기보다는 문자들의
+집합을 의미합니다. 문자클래스들은 매치되기를 원하는 문자들의 집합과
+함께, 괄호 C<[...]>를 사용하여 표기합니다.
+여기 몇가지 예들이 있습니다:
+
     /cat/;       # matches 'cat'
     /[bcr]at/;   # matches 'bat, 'cat', or 'rat'
     /item[0123456789]/;  # matches 'item0' or ... or 'item9'
     "abc" =~ /[cab]/;    # matches 'a'
 
+=begin original
+
 In the last statement, even though C<'c'> is the first character in
 the class, C<'a'> matches because the first character position in the
 string is the earliest point at which the regexp can match.
 
+=end original
+
+마지막 문장에서는, 이 클래스 안에서 첫번째 문자가 C<'c'>일지라도 C<'a'>가
+매치됩니다. 왜냐하면 문자열의 첫번째 문자의 위치가 정규식이 매치할수있는
+가장 빠른 지점이기 때문입니다.
+
     /[yY][eE][sS]/;      # match 'yes' in a case-insensitive way
                          # 'yes', 'Yes', 'YES', etc.
+
+=begin original
 
 This regexp displays a common task: perform a case-insensitive
 match.  Perl provides a way of avoiding all those brackets by simply
@@ -590,6 +627,17 @@ appending an C<'i'> to the end of the match.  Then C</[yY][eE][sS]/;>
 can be rewritten as C</yes/i;>.  The C<'i'> stands for
 case-insensitive and is an example of a I<modifier> of the matching
 operation.  We will meet other modifiers later in the tutorial.
+
+=end original
+
+이 정규식은 대소문자와 구분없이 매치하는 일반적인 작업을 보여줍니다.
+펄은 매치의 마지막 부분에 C<'i'>를 간단히 추가함으로서 모든 괄호들을
+서술하지 않는 방법을 제공합니다. 그래서 C</[yY][eE][sS]/;>은 C</yes/i;>로
+재작성 가능합니다. C<'i'>는 대소문자를 구분하지 않음을 의미하고 이것은
+매칭 연산자 I<modifier>의 한 가지 예입니다. 이 설명서에서 우리는 나중에
+다른 변경자들을 만나게 될것입니다.
+
+=begin original
 
 We saw in the section above that there were ordinary characters, which
 represented themselves, and special characters, which needed a
@@ -602,6 +650,11 @@ C<]> is special because it denotes the end of a character class.  C<$> is
 special because it denotes a scalar variable.  C<\> is special because
 it is used in escape sequences, just like above.  Here is how the
 special characters C<]$\> are handled:
+
+=end original
+
+
+
 
    /[\]c]def/; # matches ']def' or 'cdef'
    $x = 'bcr';
