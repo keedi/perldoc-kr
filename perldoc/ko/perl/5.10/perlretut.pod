@@ -653,8 +653,14 @@ special characters C<]$\> are handled:
 
 =end original
 
-
-
+이전 절에서, 우리는 그들자신을 표현하는 평범한 문자들과 그들자신을 표현하기
+위해 C<\>가 필요한 특수한 문자들을 보았습니다. 이것은 문자클래스에서도
+동일하지만, 문자 클래스 안쪽에는 문자 클래스 바깥에 있을때와 다른 의미를 갖는
+평범하고, 특수한 문자들의 집합들이 있습니다. 그런 특수한 문자들은 C<-]\^$>
+입니다(어떤 문자가 패턴구분자가 될지 모르겠지만 그것 역시 포함됨).
+C<]>은 문자클래스의 끝을 표기하기때문에 특별합니다. C<\>은 위에서처럼
+escape sequences로 사용되어지므로 특별합니다. 여기에 특별한 문자들 C<]$\>을
+처리하는 방법이 있습니다:
 
    /[\]c]def/; # matches ']def' or 'cdef'
    $x = 'bcr';
@@ -662,15 +668,33 @@ special characters C<]$\> are handled:
    /[\$x]at/;  # matches '$at' or 'xat'
    /[\\$x]at/; # matches '\at', 'bat, 'cat', or 'rat'
 
+=begin original
+
 The last two are a little tricky.  In C<[\$x]>, the backslash protects
 the dollar sign, so the character class has two members C<$> and C<x>.
 In C<[\\$x]>, the backslash is protected, so C<$x> is treated as a
 variable and substituted in double quote fashion.
 
+=end original
+
+마지막 두 문자은 조금 신중해야합니다. C<[\$x]>에서, 백슬러시는 달러 기호를
+보호했기 때문에 문자 클래스는 두개의 멤버 C<$>와 C<x>를 가집니다.
+C<[\\$x]>에서는, 백슬러시는 보호되어지고 그래서 C<$x>는 변수로 취급되어
+더블쿼터 방식으로 치환되어집니다.
+
+=begin original
+
 The special character C<'-'> acts as a range operator within character
 classes, so that a contiguous set of characters can be written as a
 range.  With ranges, the unwieldy C<[0123456789]> and C<[abc...xyz]>
 become the svelte C<[0-9]> and C<[a-z]>.  Some examples are
+
+=end original
+
+특수변수 C<'-'>은 문자 클래스들내에서 범위 연산자로 작동하고, 그래서
+서로 이웃관계에 있는(contiguous) 문자들의 집합은 범위로 작성 가능합니다.
+범위연산자를 사용하면, 꼴사나운 C<[0123456789]>와 C<[abc...xyz]>는
+세련된 C<[0-9]>와 C<[a-z]>로 표현할 수 있습니다. 몇가지 예를 들면
 
     /item[0-9]/;  # matches 'item0' or ... or 'item9'
     /[0-9bx-z]aa/;  # matches '0aa', ..., '9aa',
@@ -679,19 +703,35 @@ become the svelte C<[0-9]> and C<[a-z]>.  Some examples are
     /[0-9a-zA-Z_]/; # matches a "word" character,
                     # like those in a Perl variable name
 
+=begin original
+
 If C<'-'> is the first or last character in a character class, it is
 treated as an ordinary character; C<[-ab]>, C<[ab-]> and C<[a\-b]> are
 all equivalent.
+
+=end original
+
+만약 C<'-'>이 문자 클래스안에서 처음과 마지막 문자라면, 평범한 문자로 취급
+됩니다; C<[-ab]>, C<[ab-]> 그리고 C<[a\-b]>은 모두 같은 의미입니다.
+
+=begin original
 
 The special character C<^> in the first position of a character class
 denotes a I<negated character class>, which matches any character but
 those in the brackets.  Both C<[...]> and C<[^...]> must match a
 character, or the match fails.  Then
 
+=end original
+
+문자 클래스의 첫번째 지점에서 특수문자 C<^>은 괄호들 안의 문자가 아닌
+그 어떤 문자와도 매치되는 I<negated character class>를 의미합니다.
+
     /[^a]at/;  # doesn't match 'aat' or 'at', but matches
                # all other 'bat', 'cat, '0at', '%at', etc.
     /[^0-9]/;  # matches a non-numeric character
     /[a^]at/;  # matches 'aat' or '^at'; here '^' is ordinary
+
+=begin original
 
 Now, even C<[0-9]> can be a bother to write multiple times, so in the
 interest of saving keystrokes and making regexps more readable, Perl
@@ -699,27 +739,22 @@ has several abbreviations for common character classes, as shown below.
 Since the introduction of Unicode, these character classes match more
 than just a few characters in the ISO 8859-1 range.
 
+=end original
+
+이제는 C<[0-9]>조차도 매번 서술하는것도 귀찮고, 키보드 타이핑을 적게하고
+더욱 읽기쉬운 정규식들의 작성을 위해, 펄은 일반적인 문자클래스들을 위한
+아래에 보이는 여러가지 단축형들을 가지고 있습니다. 유니코드의 도입 이후로,
+이런 문자 클래스들은 ISO 8859-1 범위의 소수의 문자들보다 더 많이 매치됩니다.
+
 =over 4
 
 =item *
 
-=begin original
-
 \d matches a digit, not just [0-9] but also digits from non-roman scripts
-
-=end original
-
-\d 숫자를 매치합니다, not just [0-9] but also digits from non-roman scripts
 
 =item *
 
-=begin original
-
 \s matches a whitespace character, the set [\ \t\r\n\f] and others
-
-=end original
-
-\s 공백문자를 매치합니다, [\ \t\r\n\f] 등도 포함
 
 =item *
 
@@ -745,8 +780,15 @@ in effect, as explained below).
 
 =back
 
+=begin original
+
 The C<\d\s\w\D\S\W> abbreviations can be used both inside and outside
 of character classes.  Here are some in use:
+
+=end original
+
+C<\d\s\w\D\S\W> 축약어들은 문자 클래스들의 안과 밖 모두 사용 가능합니다.
+여기 몇가지 사용법이 있습니다:
 
     /\d\d:\d\d:\d\d/; # matches a hh:mm:ss time format
     /[\d\s]/;         # matches any digit or whitespace character
@@ -756,15 +798,31 @@ of character classes.  Here are some in use:
     /end\./;          # matches 'end.'
     /end[.]/;         # same thing, matches 'end.'
 
+=begin original
+
 Because a period is a metacharacter, it needs to be escaped to match
 as an ordinary period. Because, for example, C<\d> and C<\w> are sets
 of characters, it is incorrect to think of C<[^\d\w]> as C<[\D\W]>; in
 fact C<[^\d\w]> is the same as C<[^\w]>, which is the same as
 C<[\W]>. Think DeMorgan's laws.
 
+=end original
+
+마침표는 메타문자이므로, 평범한 문자 마침표로 매치되려면 escape가 필요합니다.
+예를 들어, C<\d>와 C<\w>는 문자들의 집합들이므로, C<[\D\W]>을 C<[^\d\w]>로
+평가하는 것은 올바르지 않습니다; 사실 C<[^\d\w]>은 C<[^\w]>와 같고, 이것은
+C<\W]>와 같습니다. 드모르간의 법칙을 생각해보세요.
+
+=begin original
+
 An anchor useful in basic regexps is the I<word anchor>
 C<\b>.  This matches a boundary between a word character and a non-word
 character C<\w\W> or C<\W\w>:
+
+=end original
+
+기본 정규식들에서 유용한 앵커는 I<word anchor> C<\b>입니다.
+이것은 단어와 비단어 즉 C<\w\W> 또는 C<\W\w> 사이에 boundary를 매치합니다.
 
     $x = "Housecat catenates house and cat";
     $x =~ /cat/;    # matches cat in 'housecat'
@@ -772,11 +830,27 @@ character C<\w\W> or C<\W\w>:
     $x =~ /cat\b/;  # matches cat in 'housecat'
     $x =~ /\bcat\b/;  # matches 'cat' at end of string
 
+=begin original
+
 Note in the last example, the end of the string is considered a word
 boundary.
 
+=end original
+
+마지막 예제를 참고하자면, 문자열의 마지막은 단어 boundary로 간주되었습니다.
+
+=begin original
+
 You might wonder why C<'.'> matches everything but C<"\n"> - why not
 every character? The reason is that often one is matching against
+lines and would like to ignore the newline characters.  For instance,
+while the string C<"\n"> represents one line, we would like to think
+of it as empty.  Then
+
+=end original
+
+당신은 왜 C<'.'>이 모든 문자가 아닌 C<"\n">를 제외한 모든 것을 매치한다는것이
+이상하게 여겨질수도 있습니다. The reason is that often one is matching against
 lines and would like to ignore the newline characters.  For instance,
 while the string C<"\n"> represents one line, we would like to think
 of it as empty.  Then
