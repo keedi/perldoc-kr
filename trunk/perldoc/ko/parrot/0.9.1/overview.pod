@@ -1,0 +1,167 @@
+# Copyright (C) 2001-2006, Parrot Foundation.
+# $Id: overview.pod 36833 2009-02-17 20:09:26Z allison $
+
+=head1 NAME
+
+docs/overview.pod - A Parrot Overview
+
+=head1 The Parrot Interpreter
+
+이 문서에서는 bytecode compiler이자 interpreter인 Parrot의 구조와 개념에 대해서
+소개한다. Parrot은 모든 compiler frontend들이 자신들의 code를 컴파일할 때 타겟이
+되는 플랫폼이다. 본 문서에서는 Parorot의 interpreter 측면에 집중하여 살펴볼
+것이다.
+
+=head1 The Software CPU
+
+모든 interpreter system이 그러하듯이 Parrot interpreter는 virtual
+machine (VM)이다. 이것은 다른 말로 software CPU라고도 한다. 그러나 Parrot
+interpreter는 다른 VM들과 달리 보다 더 hardware CPU와 흡사하도록 설계되었다.
+
+예를 들면, Parrot VM은 스택 구조가 아닌 레지스터 구조이다. 또한 매우 낮은 수준의
+명령어들을 가진다. 이것은 Perl이나 Python 같은 언어들의 중간 레벨의
+명령어들보다는 Java VM의 명령어들과 더 유사하다.
+
+이렇게 설계된 가장 큰 이유는 밑에 있는 hardware와 어느 정도 닮게 함으로써
+Parrot bytecode를 효율적인 기계언어로 컴파일할 수 있게 하기 위해서이다.
+
+더욱이, 고수준 언어로 짜여진 많은 프로그램들은 중첩된 함수호출로 구성되어
+있다. 때때로 중간결과를 저장하기 위한 lexical 변수가 쓰인다. JIT 설정이 없는
+경우, stack 기반 VM은 같은 operand를 pop하고 push하는 작업을 여러 번 반복할
+수 있다. 반면 register 기반 VM은 단순히 적절한 수의 register들을 할당하고
+그것들을 가지고 작업하면 된다. 이를 통해 연산의 수와 CPU 실행 시간을 상당히 줄일
+수 있다.
+
+software CPU에 대해서 더 구체적으로 알아보자. Parrot은 많은 수의 register들을
+가지고 있다. 현재 설계에서는 각각 N개의 register로 이루어진 4개 register 그룹을
+제공한다. 각 그룹은 integer, floating-point number, string, PMC를 저장할 수
+있다. (PMC는 Polymorphic Container의 약자이다. PMC에 대해서는 밑에서 다시
+다룬다.)
+
+register들은 register frame들 안에 저장된다. register frame은 register stack으로
+push되거나 pop될 수 있다. 예를 들어 subroutine이나 block들은 각자의 register
+frame이 필요할 수 있다.
+
+=head1 연산 (The Operations)
+
+Parrot interpreter는 많은 양의 매우 낮은 수준의 연산을 갖고 있다. 고수준의
+언어들은 Parrot 기계어로 변환하기 전에 중간 수준의 언어로 컴파일된다.
+
+연산은 몇 바이트의 Parrot 기계어로 나타낸다. 처음의 C<INTVAL>은 operation
+number를 나타내고, 나머지 인자들은 연산에 따라 다르다. 연산은 보통 특정 데이터
+타입과 register 타입을 대상으로 한다. 예를 들면, C<dec_i_c>는 두 개의
+C<INTVAL>을 인수로 가지는데 첫 번째 C<INTVAL>이 지정하는 integer register의
+내용을 두 번째 C<INTVAL>만큼 감소시킨다. 당연히 C<FLOATVAL> register를
+대상으로 한 연산은 C<FLOATVAL> 값을 이용한다. 그러나 대부분의 경우 첫 번째
+인수는 실제 데이터가 아니라 register B<number>를 나타낸다. 심지어 string이나 PMC
+register에 대한 연산들도 C<INTVAL>을 첫 번째 인수로 취한다.
+
+Perl이 그러하듯이, Parrot 연산 역시 bytecode stream 안에서 다음 연산을 가리키는
+포인터를 리턴한다. 연산들은 정해진 개수와 크기의 인수를 가지지만 다음 연산의
+수행을 위해서 인수들을 건너뛰는 것이 해당 opcode를 위해서 건너뛰어야할 바이트
+수를 계산하기 위해서 테이블을 참조하는 것보다 더 효율적이다.
+
+전역/지역 opcode 테이블이 존재한다. bytecode의 특정영역에서 사용할 일련의 custom
+연산들을 정의할 수 있다. 이 영역은 원본 소스의 컴파일 단위(compilation units)와
+대략적으로 매핑한다. 각각의 precompile된 모듈은 그 자신의 opcode 테이블을
+가진다.
+
+F<docs/pdds/pdd06_pasm.pod>에 Parrot 연산에 대한 보다 자세한 사항이 나와있다.
+
+=head1 PMCs
+
+PMC는 Perl 5에서 정의되어 있는 C<SV>, C<AV>, C<HV> 그리고 더 복잡한 타입들과
+대체적으로 동일하다. 그리고 Python의 C<PythonObject>와는 거의 정확하게 같다고 할
+수 있다. 이것들은 모두 추상 데이터 형식(abstracted data type)이다. PMC는
+string, integer, code를 비롯해서 모든 것이 될 수 있다. 앞으로 간략히
+살펴보겠지만 PMC는 값을 1만큼 증가시킨다거나 어떤 정수값으로 값을 바꾸는 것과
+같이 특정 연산을 수행할 때 특정한 방식으로 수행되기를 원한다.
+
+추상화를 통하여 PMC를 다룰 때 stand API를 이용하여 data를 다루는 것과 유사하게
+작업할 수 있다. Perl 코드를 실행시킨다면 Perl scalar처럼 동작하는 PMC를 생성하고
+그것을 가지고 Perlish한 작업을 수행할 수 있다. 만약 Python 코드를 실행시킨다면
+Python 연산을 쓸 수 있는 PMC를 생성하여 Pythonic한 작업을 할 수 있다.
+
+F<docs/pmc> 디렉토리에 PMC에 대해 보다 자세하게 나온 문서들이 있다.
+
+=head1 Vtables
+
+이러한 추상화는 각각의 PMC에게 각종 작업을 수행하기 위한 여러 개의
+함수포인터들을 할당함으로써 이루어진다. 어떤 의미로는 PMC를 추상 가상
+클래스(abstract virtual class)로 간주할 수 있다. PMC가 가지는 메소드들을
+B<vtables>라고 한다.
+
+더 정확하게 말하면 vtable은 함수포인터로 채워지는 구조체이다. PMC는 vtable
+구조체를 가리키는 포인터를 가지고 있다. vtable은 PMC의 행동을 규정짓는다. 그래서
+PMC에게 PMC의 length를 묻는 것은 실제로는 PMC의 C<length> 메소드를 호출하는
+것이다. 이것은 PMC 포인터가 가리키는 vtable 안에 있는 C<length> 슬롯을 찾는
+것으로 구현되어 있다. 그리고 해당하는 함수포인터를 PMC 자체를 인수로 하여
+호출한다:
+
+    (pmc->vtable->length)(pmc);
+
+만약 작업하고 있는 PMC가 string이고 Perl과 유사한 string 연산을 수행는 vtable을
+가졌다면 string의 길이를 리턴할 것이다. 반면 작업하고 있는 PMC가 array이라면
+array 안의 요소의 개수를 리턴할 것이다.
+
+이와 유사하게, 만약 Perl string에게 increment 연산을 수행하면 알파벹 순서로
+다음에 문자열을 얻게 된다. 그러나 Python string에게 increment 연산을 수행하면
+Python은 적당한 increment 연산이 없기 때문에 에러를 보여준다. 또는 Python에
+호환되는 vtable을 만들어서 Python 프로그램과 다른 어떤 언어로 만들어진 프로그램
+간에 데이터 공유를 쉽게 할 수 있도록 하여 어떻게든 올바른 동작을 하도록 할 수도
+있을 것이다.
+
+어찌 되었건, 요점은 vtable을 통하여 모든 프로그래밍 언어에 공통된 기본 연산인
+addition, length, concatenation 등등을 특정 개별 언어에서 요구되어지는 특수한
+동작과 구분할 수 있다는 것이다. Perl 6는 일련의 Perlish한 vtable들을 Parrot을
+통해서 받아서 구현될 것이다. Parrot은 동일한 방식으로 특정 언어의 특정
+데이터들이 취해야할 특정 동작을 정의한 일련의 vtable을 구현함으로써 Python, Tcl,
+Ruby를 비롯한 어떠한 언어든지 실행시킬 수 있다. 이것은 위에서 언급한 custom
+opcode 테이블과 결합될 수 있다. 이를 통하여 Parrot은 bytecompiled language들을
+위한 언어 독립적인 실행환경을 구축할 수 있다.
+
+vtable에 대한 한가지 흥미로운 점은 vtable을 동적으로 구축할 수 있다는 것이다.
+F<docs/vtables.pod>에 vtable에 대한 보다 자세한 사항이 나와있다.
+
+=head1 String Handling
+
+Parrot은 프로그래머들에게 친화적인 string에 대한 시각을 제공한다. Parrot string
+처리부는 메모리 할당, 확장을 비롯한 배후에서 이루어지는 것들을
+다룬다. Unicode-aware 언어에게 골칫거리가 될 수 있는 인코딩에 대해서도 어느
+정도 관리하고 있다.
+
+이것은 PMC에서 사용된 vtable 시스템과 아주 유사한 방식으로 이루어져있다. 각각의
+인코딩은 각 문자에 할당할 최대 바이트 수, 문자열의 길이, 문자열에서 주어진
+문자의 offset 등을 지정하는 특정 함수들을 통하여 기술되어진다. 당연히 인코딩변환
+함수도 제공된다.
+
+F<docs/strings.pod>에 string handling API에 대한 설명이 있다.
+
+=head1 Bytecode format
+
+이미 bytecode의 큰 토대는 설명을 했다. 연산은 각각의 개별 연산에 따라 달라질 수
+있는 인수를 가진다. 이것은 Parrot bytecode file의 세번째 section을
+구성한다. Parrot program은 다음과 같은 구조를 가지고 있다.
+
+제일 처음 나오는 magic number는 bytecode file을 Parrot code로 인식하게
+해준다. 바로 이어서 fixup segment가 있다. 여기에 전역변수저장공간과 main opcode
+segment에서 필요로 하는 다른 메모리 위치을 가리키는 포인터를 저장한다. disk
+상에서는 실행 중인 interpreter의 instance가 할당한 메모리 주소에 있는 bytecode
+loader가 실제 포인터를 대체한다.
+
+유사하게 다음 segment에는 사용하는 모든 string과 PMC들이 정의되어 있다. loader는
+이 부분을 재구성하는데 opcode segment에 있는 상수들에 대한 reference들을 새롭게
+재구성된 데이터에 대한 주소로 수정한다.
+
+다음으로는 우리가 이미 알다시피, opcode segment가 온다. 추가적으로 디버깅을 위한
+code segment가 뒤따를 수도 있다.
+
+F<docs/parrotbyte.pod>에 bytecode format에 대한 모든 것이 설명되어있다.
+
+=for comment
+Local variables:
+  mode: text
+  coding: utf-8
+  fill-column: 80
+End:
+vim: set enc=utf-8 fenc=utf-8
