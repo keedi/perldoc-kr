@@ -21,9 +21,8 @@
 #     REVISION:  ---
 #===============================================================================
 
-use strict;
-use warnings;
-
+use 5.010;
+use common::sense;
 use YAML;
 use Readonly;
 use Switch::Perlish;
@@ -63,8 +62,8 @@ while ( my $line = <> ) {
     chomp $line;
     next unless $line;
 
-    switch $line, sub {
-        case qr/$TAG{code}/, sub {
+    given ( $line ) {
+        when ( /$TAG{code}/ ) {
             # 코드 태그 처리
             my @sub_lines;
             my $opt_str = (split / /, $line, 2)[1];
@@ -75,12 +74,12 @@ while ( my $line = <> ) {
                     or do {
                         push @sub_lines, "Cannot open file [$opt{src}]:\n  $!";
                         print "\n", code_markup(\%opt, @sub_lines);
-                        stop;
+                        break;
                     };
                 @sub_lines = <$fh>;
                 close $fh;
                 print "\n", code_markup(\%opt, @sub_lines);
-                stop;
+                break;
             }
 
             LOOP_CODE_LINES:
@@ -90,7 +89,7 @@ while ( my $line = <> ) {
             }
             print "\n", code_markup(\%opt, @sub_lines);
         };
-        case qr/$TAG{text}/, sub {
+        when ( /$TAG{text}/ ) {
             # 텍스트 태그 처리
             my @sub_lines;
 
@@ -102,7 +101,7 @@ while ( my $line = <> ) {
             }
             print "\n", text_markup(@sub_lines);
         };
-        case qr/($TAG{ul})|($TAG{ul_item})/, sub {
+        when ( /($TAG{ul})|($TAG{ul_item})/ ) {
             # 순서 없는 리스트 태그 처리
             my @sub_lines;
             my %opt;
@@ -125,12 +124,12 @@ while ( my $line = <> ) {
             }
             print "\n", ul_markup(\%opt, @sub_lines);
         };
-        case qr/$TAG{img}/, sub {
+        when ( /$TAG{img}/ ) {
             # 이미지 태그 처리
             print "\n", img_markup($line);
         };
-        default sub {
-            # 일반 적인 경우
+        default {
+            # 기본
             print "\n", normal_markup($line);
         };
     };
