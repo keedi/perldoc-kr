@@ -5,6 +5,7 @@ TARGETS = $(PROJECT)
 
 PROJECT_OBJS = \
 	index.html \
+	logo.png
 
 OBJS = $(PROJECT_OBJS)
 SRCS = $(OBJS:.html=.txt)
@@ -12,26 +13,17 @@ SRCS = $(OBJS:.html=.txt)
 .PHONY: all clean
 
 MKSLIDE := bin/mkslide.pl
+MKSLIDE_LOGO := bin/mkslide-logo.pl
 
 all: $(TARGETS)
 
 clean:
 	rm -rf *~ $(PROJECT_OBJS)
 
-ifeq ($(V),1)
-MSG_G=
-MSG_C=
-MSG_L=
-PREFIX=
-else
-MSG_G=@echo "[G] $@ ..."
-MSG_C=@echo "[C] $@ ..."
-MSG_L=@echo "[L] $@ ..."
-PREFIX=@
-endif
-
 %.html: %.txt $(MKSLIDE)
-	$(MSG_C)
 	$(MKSLIDE) $< > $@
 
 $(PROJECT): $(PROJECT_OBJS)
+
+logo.png: slide.conf $(MKSLIDE_LOGO)
+	$(MKSLIDE_LOGO) > $@
