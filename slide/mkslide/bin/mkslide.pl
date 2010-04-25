@@ -1,31 +1,9 @@
 #!/usr/bin/perl 
-#===============================================================================
-#
-#         FILE:  mkslide.pl
-#
-#        USAGE:  ./mkslide.pl index.txt > index.html
-#
-#  DESCRIPTION:  텍스트 문서를 이용해서 html 슬라이드를 만들어 줍니다.
-#
-#      OPTIONS:  ---
-# REQUIREMENTS:
-#               YAML
-#               Readonly
-#               Switch::Perlish
-#         BUGS:  ---
-#        NOTES:  ---
-#       AUTHOR:  김도형 (Keedi Kim), <keedi@naver.com>
-#      COMPANY:  Emstone; Perlmania
-#      VERSION:  0.01
-#      CREATED:  2008년 06월 21일 09시 48분 33초 KST
-#     REVISION:  ---
-#===============================================================================
 
 use 5.010;
 use common::sense;
 use YAML;
 use Readonly;
-use Switch::Perlish;
 
 Readonly my $CONF_FILE => 'slide.conf';
 Readonly my %TAG       => (
